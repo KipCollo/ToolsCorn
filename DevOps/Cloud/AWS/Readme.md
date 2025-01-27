@@ -1,0 +1,17 @@
+# AWS
+
+AWS (Amazon Web Services) offers a broad set of global cloud-based products including compute, storage, databases, analytics, networking, mobile, developer tools, management tools, IoT, security, and enterprise applications: on-demand, available in seconds, with pay-as-you-go pricing. From data warehousing to deployment tools, directories to content delivery, over 200 AWS services are available. New services can be provisioned quickly, without the upfront fixed expense. This allows enterprises, start-ups, small and medium-sized businesses, and customers in the public sector to access the building blocks they need to respond quickly to changing business requirements. This whitepaper provides you with an overview of the beneﬁts of the AWS Cloud and introduces you to the services that make up the platform.
+
+AWS (Amazon Web Services) offers a broad set of global cloud-based products including compute, storage, databases, analytics, networking, mobile, developer tools, management tools, IoT, security, and enterprise applications: on-demand, available in seconds, with pay-as-you-go pricing. From data warehousing to deployment tools, directories to content delivery, over 200 AWS services are available. New services can be provisioned quickly, without the upfront fixed expense. This allows enterprises, start-ups, small and medium-sized businesses, and customers in the public sector to access the building blocks they need to respond quickly to changing business requirements. This whitepaper provides you with an overview of the beneﬁts of the AWS Cloud and introduces you to the services that make up the platform.
+
+## AWS Global Infrastructure
+
+AWS Global Infrastructure refers to the layout of AWS regions and availability zones around the world. A region is a geographical area, each consisting of two or more availability zones (AZs) which are engineered to be isolated from failures in other AZs. AZs provide inexpensive, low-latency network connectivity to other AZs in the same region. In addition to the regions and AZs, AWS also includes edge locations for content delivery and regional edge caches, enhancing user experience by reducing latency. AWS currently operates in many geographic regions around the world
+
+## Shared Responsibility Model
+
+In Amazon Web Services (AWS), the concept of 'Shared Responsibility' pertains to the distribution of security and compliance responsibilities between AWS and the user/client. Under this model, AWS is responsible for the security "of" the cloud — including the infrastructure, hardware, software, networking, and facilities that run AWS cloud services. On the other hand, the user is responsible for security "in" the cloud — this includes managing and configuring the customer-controlled services, protecting account credentials, and securing customer data. This shared model aims to lessen operational burden for users and provide flexible security controls.
+
+## Well Architected Framework
+
+AWS Well-Architected Framework is a set of strategic guidelines provided by Amazon Web Services. It is designed to provide high-performing and resilient systems while maintaining cost efficiency. The framework divides the architectural best practices across six pillars which include operational excellence, security, reliability, performance efficiency, cost optimization and the sustainability. With this framework, you can assess and improve your cloud-based architectures and applications by leveraging AWS technologies.

@@ -1,0 +1,11 @@
+# What is Cloud Computing?
+
+Cloud Computing refers to the delivery of computing services over the internet instead of using local servers. It offers reliable, scalable, and inexpensive cloud computing services which include data storage, databases, applications, analytics, machine learning, and even setting up virtual servers. The biggest names providing cloud computing services are Amazon Web Services (AWS), Microsoft Azure, Google Cloud, and others. The main selling point is that you only pay for the services you use, helping you manage your expenses more effectively.
+
+## IaaS vs PaaS vs SaaS
+
+IaaS, PaaS, and SaaS are three types of cloud service models. **IaaS** or Infrastructure as a Service provides users with a resource-based service via virtualization technology, offering computing infrastructure, physical or (more often) virtual machines and other resources. **PaaS** or Platform as a Service provides runtime environments for developing, testing, and managing applications, it is utilized for software development and offers a platform to developers to build applications and services over the internet. **SaaS** or Software as a Service provides on-demand software accessed via the internet, it delivers a complete software solution that you purchase on a pay-as-you-go basis from a cloud service provider.
+
+## Public vs Private vs Hybrid Cloud
+
+Amazon Web Services (AWS) offers various cloud-based deployment models to cater to varying business needs, including Public, Private, and Hybrid clouds. A **Public Cloud** is a model where the service provider offers resources, such as applications and storage, available to the general public over the internet. Resources may be free, or sold on a pay-per-usage model. On the other hand, a **Private Cloud** is a type of cloud computing that delivers similar advantages to public cloud, including scalability and self-service, but through a proprietary architecture dedicated to a single organization. Unlike public clouds, which deliver services to multiple organizations, a private cloud is dedicated to the needs and goals of a single entity. Lastly, a **Hybrid Cloud** is a solution that combines a private cloud with one or more public cloud services, with proprietary software enabling communication between each distinct service.
