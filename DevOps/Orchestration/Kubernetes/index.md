@@ -11,6 +11,42 @@ your software components without having to know about the actual servers underne
 This makes Kubernetes great for most on-premises datacenters, but where it starts to shine is when it’s used in the largest datacenters, such as the ones built and oper-
 ated by cloud providers. Kubernetes allows them to offer developers a simple platform for deploying and running any type of application, while not requiring the cloud provider’s own sysadmins to know anything about the tens of thousands of apps running on their hardware.
 
+## KUBERNETES architecture
+
+Kubernetes cluster is split into two parts:
+
+1. The Kubernetes Control Plane
+2. The (worker) nodes
+
+### COMPONENTS OF THE CONTROL PLANE
+
+The Control Plane is what controls and makes the whole cluster function. The components that make up the Control Plane are:-
+
+1. The etcd distributed persistent storage
+2. The API server
+3. The Scheduler
+4. The Controller Manager
+These components store and manage the state of the cluster, but they aren’t what runs the application containers.
+
+### COMPONENTS RUNNING ON THE WORKER NODES
+
+The task of running your containers is up to the components running on each worker node:
+
+1. The Kubelet
+2. The Kubernetes Service Proxy (kube-proxy)
+3. The Container Runtime (Docker, rkt, or others)
+
+### ADD-ON COMPONENTS
+
+Beside the Control Plane components and the components running on the nodes, a few add-on components are required for the cluster to provide everything discussed
+so far. This includes
+
+1. The Kubernetes DNS server
+2. The Dashboard
+3. An Ingress controller
+4. Heapster
+5. The Container Network Interface network plugin
+
 ## MINIKUBE
 
 Minikube is a tool that sets up a single-node cluster that’s great for both testing Kubernetes and developing apps locally.Minikube is a single binary that needs to be downloaded and put onto your path. It’s available for OSX, Linux, and Windows.
@@ -25,6 +61,12 @@ You can run minikube ssh to log into the Minikube VM and explore it from the ins
 
 ```bash
 minikube ssh
+```
+
+To see the adds-on in minikube use the command:-
+
+```bash
+minikube addson list
 ```
 
 ## KUBERNETES CLIENT (KUBECTL)
@@ -80,109 +122,6 @@ external port.You can get the IP and port through which you can access the servi
 minikube service <service-name>
 ```
 
-## PODS
-
-Kubernetes doesn’t deal with individual containers directly. Instead, it uses the concept of multiple co-located containers. This group of containers is called a Pod.
-
-A pod is a group of one or more tightly related containers that will always run together on the same worker node and in the same Linux namespace(s). Each pod
-is like a separate logical machine with its own IP, hostname, processes, and so on, running a single application. The application can be a single process, running in a
-single container, or it can be a main application process and additional supporting processes, each running in its own container. All the containers in a pod will appear
-to be running on the same logical machine, whereas containers in other pods, even if they’re running on the same worker node, will appear to be running on a different one.
-
-Instead of deploying containers individually,you always deploy and operate on a pod of containers. We’re not implying that a pod always includes more than one container—it’s common for pods to contain only a single container. The key thing about pods is that when a pod does contain multiple containers, all of them are always run on a single worker node—it never spans multiple worker nodes.
-
-It contains only a single container, but generally a pod can contain as many containers as you want.The pod has its own unique private IP address and hostname.
-
-Because you can’t list individual containers, since they’re not standalone Kubernetes objects, you can list pods instead:-
-
-```bash
-kubectl get pods
-```
-
-To see more information about the pod, you can also use the kubectl describe pod command:-
-
-```bash
-kubectl describe pods
-```
-
-- Creating pods from YAML or JSON descriptors:- Pods and other Kubernetes resources are usually created by posting a JSON or YAML manifest to the Kubernetes REST API endpoint. Also, you can use other, simpler ways of creating resources, such as the kubectl run command, but they usually only allow you to configure a limited set of properties, not all. Additionally, defining all your Kubernetes objects from YAML files makes it possible to store them in a version control system, with all the benefits it brings.
-
-The pod definition consists of a few parts.
-
-1. There’s the Kubernetes API version used in the YAML and the type of resource the YAML is describing.
-2. Metadata includes the name, namespace, labels, and other information about the pod.
-3. Spec contains the actual description of the pod’s contents, such as the pod’s containers, volumes, and other data.
-4. Status contains the current information about the running pod, such as what condition the pod is in, the description and status of each container, and the
-pod’s internal IP and other basic info.
-
-The status part contains read-only runtime data that shows the state of the resource at a given moment. When creating a new pod, you never need to provide the status part.
-
-```yaml
-apiVersion: v1 #Descriptor conforms to version v1 of Kubernetes API
-kind: Pod # You’re describing a pod
-metadata:
-  name: {PodName} #The name of the pod
-spec:
-  containers:
-  - image: {AppImage} #Container image to create the container from
-  name: {ContainerName} # Name of the container
-  ports:
-  - containerPort: 8080 #The port the app is listening on
-  protocol: TCP
-```
-
-- SPECIFYING CONTAINER PORTS:- Specifying ports in the pod definition is purely informational. Omitting them has no effect on whether clients can connect to the pod through the port or not. If the container is accepting connections through a port bound to the 0.0.0.0 address, other pods can always connect to it, even if the port isn’t listed in the pod spec explicitly. But it makes sense to define the ports explicitly so that everyone using your cluster can quickly see what ports each pod exposes. Explicitly defining ports also allows you to assign a name to each port, which can come in handy.
-
-- Using kubectl create to create the pod:- To create the pod from your YAML file, use the kubectl create command:
-
-```bash
-kubectl create -f {name}.yaml
-```
-
-The kubectl create -f command is used for creating any resource (not only pods) from a YAML or JSON file.
-
-- RETRIEVING THE WHOLE DEFINITION OF A RUNNING POD:- After creating the pod, you can ask Kubernetes for the full YAML of the pod. You’ll see it’s similar to the YAML you saw earlier. You’ll learn about the additional fields appearing in the returned definition in the next sections. Go ahead and use the following command to see the full descriptor of the pod:
-
-```bash
-kubectl get po kubia-manual -o yaml
-```
-
-If you’re more into JSON, you can also tell kubectl to return JSON instead of YAML like this (this works even if you used YAML to create the pod):
-
-```bash
-kubectl get po kubia-manual -o json
-```
-
-## REPLICATIONCONTROLLER
-
-It makes sure there’s always exactly one instance of your pod running. Generally, ReplicationControllers are used to replicate pods (that is, create multiple copies of a pod) and keep them running.
-
-If you dodn’t specify how many pod replicas you want, so the ReplicationController creates a single one. If your pod were to disappear for any reason, the
-ReplicationController would create a new pod to replace the missing one.
-
-One of the main benefits of using Kubernetes is the simplicity with which you can scale your deployments. Let’s see how easy it is to scale up the number of pods. You’ll
-increase the number of running instances to three.
-
-```bash
-kubectl get replicationcontroller
-```
-
-To scale up the number of replicas of your pod, you need to change the desired replica count on the ReplicationController like this:
-
-```bash
-kubectl scale rc kubia --replicas=3
-```
-
-## SERVICE
-
-To understand why you need services, you need to learn a key detail about pods. They’re ephemeral. A pod may disappear at any time—because the node it’s running on has failed, because someone deleted the pod, or because the pod was evicted from an otherwise healthy node. When any of those occurs, a missing pod is replaced with a new one by the ReplicationController, as described previously. This new pod gets a different IP address from the pod it’s replacing. This is where services come in—to solve the problem of ever-changing pod IP addresses, as well as exposing multiple pods at a single constant IP and port pair.
-
-When a service is created, it gets a static IP, which never changes during the lifetime of the service. Instead of connecting to pods directly, clients should connect to the service through its constant IP address. The service makes sure one of the pods receives the connection, regardless of where the pod is currently running (and what its IP address is).
-
-Services represent a static location for a group of one or more pods that all provide the same service. Requests coming to the IP and port of the service will be forwarded to the IP and port of one of the pods belonging to the service at that moment.
-
-They act as a load balancer standing in front of multiple pods. When there’s only one pod, services provide a static address for the single pod. Whether a service is backed by a single pod or a group of pods,those pods come and go as they’re moved around the cluster, which means their IP addresses change, but the service is always there at the same address. This makes it easy for clients to connect to the pods, regardless of how many exist and how often they change location.
-
 ## Using kubectl explain to discover possible API object fields
 
 When preparing a manifest, you can either turn to the Kubernetes reference documentation at <http://kubernetes.io/docs/api> to see which attributes are
@@ -201,48 +140,50 @@ example, you can examine the spec attribute like this:
 kubectl explain pod.spec
 ```
 
-## Projects
+## Managing pods’ computational resources
 
-- Hello World REST API
-- 2 Microservices - Currency Exchange and Currency Conversion
+Requesting resources for a pod’s containers:- When creating a pod, you can specify the amount of CPU and memory that a container needs (these are called requests) and a hard limit on what it may consume(known as limits). They’re specified for each container individually, not for the pod as a whole. The pod’s resource requests and limits are the sum of the requests and limits of all its containers.
 
-## Steps
+- ENABLING HEAPSTER:- If you’re running a cluster in Google Kubernetes Engine, Heapster is enabled by default. If you’re using Minikube, it’s available as an add-on and can be enabled with the following command:
 
-- Step 01 - Getting Started with Docker, Kubernetes and Google Kubernetes Engine
-- Step 02 - Creating Google Cloud Account
-- Step 03 - Creating Kubernetes Cluster with Google Kubernete Engine (GKE)
-- Step 04 - Review Kubernetes Cluster and Learn Few Fun Facts about Kubernetes
-- Step 05 - Deploy Your First Spring Boot Application to Kubernetes Cluster
-- Step 06 - Quick Look at Kubernetes Concepts - Pods, Replica Sets and Deployment
-- Step 07 - Understanding Pods in Kubernetes
-- Step 08 - Understanding ReplicaSets in Kubernetes
-- Step 09 - Understanding Deployment in Kubernetes
-- Step 10 - Quick Review of Kubernetes Concepts - Pods, Replica Sets and Deployment
-- Step 11 - Understanding Services in Kubernetes
-- Step 12 - Quick Review of GKE on Google Cloud Console
-- Step 13 - Understanding Kubernetes Architecture - Master Node and Nodes
-- Step 14 - Understand Google Cloud Regions and Zones
-- Step 15 - Installing GCloud
-- Step 16 - Installing Kubectl
-- Step 17 - Understand Kubernetes Rollouts
-- Step 18 - Generate Kubernetes YAML Configuration for Deployment and Service
-- Step 19 - Understand and Improve Kubernetes YAML Configuration
-- Step 20 - Using Kubernetes YAML Configuration to Create Resources
-- Step 21 - Understanding Kubernetes YAML Configuration - Labels and Selectors
-- Step 22 - Quick Fix to reduce release downtime with minReadySeconds
-- Step 23 - Understanding Replica Sets in Depth - Using Kubernetes YAML Config
-- Step 24 - Configure Multiple Kubernetes Deployments with One Service
-- Step 25 - Playing with Kubernetes Commands - Top Node and Pod
-- Step 26 - Delete Hello World Deployments
-- Step 27 - Quick Introduction to Microservices - CE and CC
-- Step 28 - Deploy Microservices to Kubernetes
-- Step 29 - Understand Environment Variables created by Kubernetes for Services
-- Step 30 - Microservices and Kubernetes Service Discovery - Part 1
-- Step 31 - Microservices and Kubernetes Service Discovery - Part 2 DNS
-- Step 32 - Microservices Centralized Configuration with Kubernetes ConfigMaps
-- Step 33 - Simplify Microservices with Kubernetes Ingress - Part 1
-- Step 34 - Simplify Microservices with Kubernetes Ingress - Part 2
-- Step 35 - Delete Kubernetes Clusters
+```bash
+minikube addons enable heapster
+```
+
+To run Heapster manually in other types of Kubernetes clusters, you can refer to instructions located at <https://github.com/kubernetes/heapster.>
+
+After enabling Heapster, you’ll need to wait a few minutes for it to collect metrics before you can see resource usage statistics for your cluster, so be patient.
+
+- DISPLAYING CPU AND MEMORY USAGE FOR CLUSTER NODES:- Running Heapster in your cluster makes it possible to obtain resource usages for nodes and individual pods through the kubectl top command. To see how much CPU and memory is being used on your nodes, you can run the command shown in
+the following listing.
+
+```bash
+kubectl top node
+```
+
+This shows the actual, current CPU and memory usage of all the pods running on the node, unlike the kubectl describe node command, which shows the amount of CPU
+and memory requests and limits instead of actual runtime usage data.
+
+- DISPLAYING CPU AND MEMORY USAGE FOR INDIVIDUAL PODS:- To see how much each individual pod is using, you can use the kubectl top pod command, as shown in the following listing.
+
+```bash
+kubectl top pod --all-namespaces
+```
+
+The outputs of both these commands are fairly simple, so you probably don’t need me
+to explain them, but I do need to warn you about one thing. Sometimes the top pod
+command will refuse to show any metrics and instead print out an error like this:
+
+```bash
+kubectl top pod
+W0312 22:12:58.02188515126 top_pod.go:186] Metrics not available for pod default/kubia-3773182134-63bmb, age: 1h24m19.021873823s
+error: Metrics not available for pod default/kubia-3773182134-63bmb, age:1h24m19.021873823s
+```
+
+If this happens, don’t start looking for the cause of the error yet. Relax, wait a while,and rerun the command—it may take a few minutes, but the metrics should appear
+eventually. The kubectl top command gets the metrics from Heapster, which aggregates the data over a few minutes and doesn’t expose it immediately.
+
+TIP To see resource usages across individual containers instead of pods, you can use the --containers option.
 
 ## Commands
 
@@ -588,15 +529,6 @@ spec:
   type: LoadBalancer
 ```
 
-## Services: Enabling clients to discover and talk to pods
-
-A Kubernetes Service is a resource you create to make a single, constant point of entry to a group of pods providing the same service. Each service has an IP address
-and port that never change while the service exists. Clients can open connections to that IP and port, and those connections are then routed to one of the pods backing
-that service. This way, clients of a service don’t need to know the location of individual pods providing the service, allowing those pods to be moved around the cluster
-at any time.
-
-Connections to the service are load-balanced across all the backing pods.
-
 ## Setting up an alias and command-line completion for kubectl
 
 You’ll use kubectl often. You’ll soon realize that having to type the full command every time is a real pain. Before you continue, take a minute to make your life easier
@@ -607,3 +539,27 @@ by setting up an alias and tab completion for kubectl.
 alias k=kubectl
 
 NOTE You may already have the k executable if you used gcloud to set up the cluster.
+
+## KUBERNETES DASHBOARD
+
+The dashboard allows you to list all the Pods, ReplicationControllers, Services, and other objects deployed in your cluster, as well as to create, modify, and delete them.
+
+- ACCESSING THE DASHBOARD WHEN RUNNING KUBERNETES IN GKE:- If you’re using Google Kubernetes Engine, you can find out the URL of the dashboard through the kubectl cluster-info command:
+
+```bash
+kubectl cluster-info | grep dashboard
+```
+
+If you open this URL in a browser, you’re presented with a username and password prompt. You’ll find the username and password by running the following command:
+
+```bash
+gcloud container clusters describe {resource-name} | grep -E "(username|password):"
+```
+
+- ACCESSING THE DASHBOARD WHEN USING MINIKUBE:- To open the dashboard in your browser when using Minikube to run your Kubernetes cluster, run the following command:
+
+```bash
+minikube dashboard
+```
+
+The dashboard will open in your default browser. Unlike with GKE, you won’t need to enter any credentials to access it.
