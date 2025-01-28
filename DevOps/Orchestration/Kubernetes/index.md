@@ -11,6 +11,8 @@ your software components without having to know about the actual servers underne
 This makes Kubernetes great for most on-premises datacenters, but where it starts to shine is when it’s used in the largest datacenters, such as the ones built and oper-
 ated by cloud providers. Kubernetes allows them to offer developers a simple platform for deploying and running any type of application, while not requiring the cloud provider’s own sysadmins to know anything about the tens of thousands of apps running on their hardware.
 
+Kubernetes is Open Source Container Orchestration Engine developed by Google.It is now managed by Cloud Native Computing Foundation(CNCF)
+
 ## KUBERNETES architecture
 
 Kubernetes cluster is split into two parts:
@@ -22,9 +24,9 @@ Kubernetes cluster is split into two parts:
 
 The Control Plane is what controls and makes the whole cluster function. The components that make up the Control Plane are:-
 
-1. The etcd distributed persistent storage
-2. The API server
-3. The Scheduler
+1. The etcd - distributed persistent storage
+2. The API server - Accepts REST commands to interact with Cluster resources.
+3. The Scheduler - Regulate tasks on slave nodes
 4. The Controller Manager
 These components store and manage the state of the cluster, but they aren’t what runs the application containers.
 
@@ -563,3 +565,11 @@ minikube dashboard
 ```
 
 The dashboard will open in your default browser. Unlike with GKE, you won’t need to enter any credentials to access it.
+
+## INSTALLATION
+
+- Installation option for Kubernetes:-
+
+1. Kubernetes Managed service:- Amazon EKS,Google Kubernetes Engine,Azure Kubernetes Service(AKS)
+2. Use Minikube
+3. Manual Installation- Install diff component individually -Master Node,Worker Node.

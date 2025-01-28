@@ -43,7 +43,7 @@
 - Step 09 - Understanding Deployment in Kubernetes
 - Step 10 - Quick Review of Kubernetes Concepts - Pods, Replica Sets and Deployment
 - Step 11 - Understanding Services in Kubernetes
-- Step 12 - Quick Review of GKE on Google Cloud Console 
+- Step 12 - Quick Review of GKE on Google Cloud Console
 - Step 13 - Understanding Kubernetes Architecture - Master Node and Nodes
 - Step 14 - Understand Google Cloud Regions and Zones
 - Step 15 - Installing GCloud
