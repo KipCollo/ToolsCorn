@@ -1,5 +1,7 @@
 # What is Cloud Computing?
 
+Cloud computing is the on-demand delivery of IT resources over the Internet with pay-as-you-go pricing. Instead of buying, owning, and maintaining physical data centers and servers, you can access technology services, such as computing power, storage, and databases, on an as-needed basis from a cloud provider like Amazon Web Services (AWS).
+
 Cloud Computing refers to the delivery of computing services over the internet instead of using local servers. It offers reliable, scalable, and inexpensive cloud computing services which include data storage, databases, applications, analytics, machine learning, and even setting up virtual servers. The biggest names providing cloud computing services are Amazon Web Services (AWS), Microsoft Azure, Google Cloud, and others. The main selling point is that you only pay for the services you use, helping you manage your expenses more effectively.
 
 ## IaaS vs PaaS vs SaaS
@@ -9,3 +11,51 @@ IaaS, PaaS, and SaaS are three types of cloud service models. **IaaS** or Infras
 ## Public vs Private vs Hybrid Cloud
 
 Amazon Web Services (AWS) offers various cloud-based deployment models to cater to varying business needs, including Public, Private, and Hybrid clouds. A **Public Cloud** is a model where the service provider offers resources, such as applications and storage, available to the general public over the internet. Resources may be free, or sold on a pay-per-usage model. On the other hand, a **Private Cloud** is a type of cloud computing that delivers similar advantages to public cloud, including scalability and self-service, but through a proprietary architecture dedicated to a single organization. Unlike public clouds, which deliver services to multiple organizations, a private cloud is dedicated to the needs and goals of a single entity. Lastly, a **Hybrid Cloud** is a solution that combines a private cloud with one or more public cloud services, with proprietary software enabling communication between each distinct service.
+
+## Benefits of cloud computing
+
+1. Agility - The cloud gives you easy access to a broad range of technologies so that you can innovate faster and build nearly anything that you can imagine. You can quickly spin up resources as you need them–from infrastructure services, such as compute, storage, and databases, to Internet of Things, machine learning, data lakes and analytics, and much more.You can deploy technology services in a matter of minutes, and get from idea to implementation several orders of magnitude faster than before. This gives you the freedom to experiment, test new ideas to differentiate customer experiences, and transform your business.
+2. Elasticity - With cloud computing, you don’t have to over-provision resources up front to handle peak levels of business activity in the future. Instead, you provision the amount of resources that you actually need. You can scale these resources up or down to instantly grow and shrink capacity as your business needs change.
+3. Cost savings - The cloud allows you to trade fixed expenses (such as data centers and physical servers) for variable expenses, and only pay for IT as you consume it. Plus, the variable expenses are much lower than what you would pay to do it yourself because of the economies of scale.
+
+## Types of cloud computing
+
+The three main types of cloud computing include Infrastructure as a Service, Platform as a Service, and Software as a Service. Each type of cloud computing provides different levels of control, flexibility, and management so that you can select the right set of services for your needs.
+Learn more
+
+- Infrastructure as a Service (IaaS):- IaaS contains the basic building blocks for cloud IT. It typically provides access to networking features, computers (virtual or on dedicated hardware), and data storage space. IaaS gives you the highest level of flexibility and management control over your IT resources. It is most similar to the existing IT resources with which many IT departments and developers are familiar.
+
+- Platform as a Service (PaaS):- PaaS removes the need for you to manage underlying infrastructure (usually hardware and operating systems), and allows you to focus on the deployment and management of your applications. This helps you be more efficient as you don’t need to worry about resource procurement, capacity planning, software maintenance, patching, or any of the other undifferentiated heavy lifting involved in running your application.
+
+- Software as a Service (SaaS):- SaaS provides you with a complete product that is run and managed by the service provider. In most cases, people referring to SaaS are referring to end-user applications (such as web-based email). With a SaaS offering, you don’t have to think about how the service is maintained or how the underlying infrastructure is managed. You only need to think about how you will use that particular software.
+
+## cloud services
+
+Cloud services are IT resources managed by AWS and delivered on demand over the internet. Traditionally, organizations had to purchase and configure everything from server hardware and storage systems to networking and security technologies before launching any digital system. Provisioning and managing IT infrastructure is expensive, complicated; and takes time away from innovation.
+
+Cloud services allow anyone to access the IT infrastructure needed to build and maintain digital systems, abstracting complex infrastructure so anyone can build sophisticated applications quickly and scale globally. Running your applications on a cloud server is just the start. You can use cloud services to add artificial intelligence and machine learning (AI/ML), real-time data analytics, and many other capabilities to your applications.
+
+## cloud managed services
+
+Cloud services are also called cloud managed services because the underlying infrastructure is fully managed by AWS. All required hardware, operating systems, and other infrastructure layers are stored and managed in highly secure AWS data centers distributed around the globe. We purchase and maintain all types of IT resources, making them available as services you can access in your application code.
+
+AWS monitors and maintains cloud servers, storage, networks, databases, and more, ensuring consistent performance and uptime. Beyond hardware maintenance, we handle all types of IT operational tasks from load balancing and patch management to disaster recovery and more.
+
+Today, thanks to AWS, anyone—from college students to enterprise teams—can access cloud services at a fraction of the cost of managing on-premises infrastructure. Anyone can build and deploy software without heavy upfront IT infrastructure investments.
+
+## uses of cloud services
+
+Cloud services can be used for everything—from provisioning servers and storage to data analytics, artificial intelligence, and end-to-end security for every application. Below are a few examples.
+
+Resizable compute capacity:- Access and configure compute capacity as a fully managed cloud service for any type of workload. From Intel, AMD, and Arm processors to Amazon EC2 Mac Instances, and 400 Gbps Ethernet networking, AWS provides cutting-edge computer offerings for flexible use. Choose from hundreds of cloud instance types with the latest processors, operating systems, and purchase models to best match your workload needs. AWS cloud services allow you to quickly scale capacity up or down and pay only for what you use while maintaining complete control of your computing resources.
+Learn more about compute on AWS »
+
+Databases and data storage:- AWS cloud services include an array of secure, reliable, and highly scalable database options and data storage solutions. You can use cloud services for file, block, and object storage systems. AWS also has cloud services for both SQL and NoSQL databases. Use fully managed relational and non-relational databases to simplify database management, scaling, and backup for operational efficiency.
+
+Artificial intelligence and machine learning (AI/ML):- Access the most comprehensive, secure, and price-performant AI infrastructure for all your training and inference needs. Improve customer experiences with interactive chatbots and virtual assistants, conversational and predictive analytics, and agent assistance. Boost employee productivity with conversational search, code generation, and automated report generation. Accelerate process optimization with natural language processing and image recognition, data augmentation, and supply chain optimization.
+
+Networking and content delivery:- Deliver applications and content anywhere in the world while maintaining the highest availability levels with AWS networking and content delivery services. Simplify your networking environment and distribute network traffic more efficiently by switching to the cloud. Deliver faster, more secure applications and connect hybrid infrastructure with the highest level of reliability and performance.
+
+Security, identity and compliance:- Cloud services can enhance your security posture and streamline your security operations at scale. Protect your accounts, workloads, and data from unauthorized access. Our cloud services help you manage resources, permissions, and identities, enforce fine-grained policies at network control points, and continuously monitor with automated compliance checks. Secure your workloads in the cloud with network, application, and data protection services from AWS.
+
+Migration and modernization:- Application and data modernization require cloud migration so you can innovate continuously while reducing operational costs. AWS migration services provide automation and intelligent recommendations to expedite digital transformation. Use our cloud services to automatically convert your source servers to run natively on AWS, perform non-disruptive tests, and move your applications to the cloud. Discover, assess, convert, and migrate any database or analytics workload with minimal downtime.
