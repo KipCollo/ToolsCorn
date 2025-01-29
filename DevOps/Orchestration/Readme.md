@@ -8,6 +8,7 @@ Orchestration tools includes:
 - Docker Swarm/Compose
 - AWS Elastic Container Service
 - Apache Mesos
+- Nomad
 
 Managed Kubernetes service:
 

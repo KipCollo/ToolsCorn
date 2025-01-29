@@ -1,5 +1,8 @@
 # What is Cloud Computing?
 
+Cloud computing is a term used to describe the on-demand access to IT services that comprise compute, network, storage, and software services from third-party suppliers,
+usually via the public internet or some form of direct wide-area network (WAN) access.
+
 Cloud computing is the on-demand delivery of IT resources over the Internet with pay-as-you-go pricing. Instead of buying, owning, and maintaining physical data centers and servers, you can access technology services, such as computing power, storage, and databases, on an as-needed basis from a cloud provider like Amazon Web Services (AWS).
 
 Cloud Computing refers to the delivery of computing services over the internet instead of using local servers. It offers reliable, scalable, and inexpensive cloud computing services which include data storage, databases, applications, analytics, machine learning, and even setting up virtual servers. The biggest names providing cloud computing services are Amazon Web Services (AWS), Microsoft Azure, Google Cloud, and others. The main selling point is that you only pay for the services you use, helping you manage your expenses more effectively.
@@ -8,7 +11,12 @@ Cloud Computing refers to the delivery of computing services over the internet i
 
 IaaS, PaaS, and SaaS are three types of cloud service models. **IaaS** or Infrastructure as a Service provides users with a resource-based service via virtualization technology, offering computing infrastructure, physical or (more often) virtual machines and other resources. **PaaS** or Platform as a Service provides runtime environments for developing, testing, and managing applications, it is utilized for software development and offers a platform to developers to build applications and services over the internet. **SaaS** or Software as a Service provides on-demand software accessed via the internet, it delivers a complete software solution that you purchase on a pay-as-you-go basis from a cloud service provider.
 
-## Public vs Private vs Hybrid Cloud
+## cloud deployment models
+
+There are three primary models of deployment, listed as follows:
+• Public cloud
+• Private cloud
+• Hybrid cloud
 
 Amazon Web Services (AWS) offers various cloud-based deployment models to cater to varying business needs, including Public, Private, and Hybrid clouds. A **Public Cloud** is a model where the service provider offers resources, such as applications and storage, available to the general public over the internet. Resources may be free, or sold on a pay-per-usage model. On the other hand, a **Private Cloud** is a type of cloud computing that delivers similar advantages to public cloud, including scalability and self-service, but through a proprietary architecture dedicated to a single organization. Unlike public clouds, which deliver services to multiple organizations, a private cloud is dedicated to the needs and goals of a single entity. Lastly, a **Hybrid Cloud** is a solution that combines a private cloud with one or more public cloud services, with proprietary software enabling communication between each distinct service.
 
@@ -17,6 +25,12 @@ Amazon Web Services (AWS) offers various cloud-based deployment models to cater 
 1. Agility - The cloud gives you easy access to a broad range of technologies so that you can innovate faster and build nearly anything that you can imagine. You can quickly spin up resources as you need them–from infrastructure services, such as compute, storage, and databases, to Internet of Things, machine learning, data lakes and analytics, and much more.You can deploy technology services in a matter of minutes, and get from idea to implementation several orders of magnitude faster than before. This gives you the freedom to experiment, test new ideas to differentiate customer experiences, and transform your business.
 2. Elasticity - With cloud computing, you don’t have to over-provision resources up front to handle peak levels of business activity in the future. Instead, you provision the amount of resources that you actually need. You can scale these resources up or down to instantly grow and shrink capacity as your business needs change.
 3. Cost savings - The cloud allows you to trade fixed expenses (such as data centers and physical servers) for variable expenses, and only pay for IT as you consume it. Plus, the variable expenses are much lower than what you would pay to do it yourself because of the economies of scale.
+
+Stop guessing capacity: Traditionally, while carrying out capacity planning, you would procure necessary hardware components for future growth. Predicting future growth is extremely difficult, and this often meant that you would overprovision your environment. The result would be expensive idle resources simply going to waste. The fact that you would have made large CAPEX to acquire those components would ultimately be detrimental to the balance sheet due to the rapid loss in value arising from depreciation.
+
+Increase speed and agility: Cloud vendors such as AWS enable you to launch and configure new IT resources in a few mouse clicks—for example, you can provision a new fleet of servers for your developers within minutes, allowing your organization to exponentially increase its agility in building infrastructure and launching applications.
+
+Go global in minutes: AWS host their data centers in various regions across the globe.
 
 ## Types of cloud computing
 
@@ -59,3 +73,11 @@ Networking and content delivery:- Deliver applications and content anywhere in t
 Security, identity and compliance:- Cloud services can enhance your security posture and streamline your security operations at scale. Protect your accounts, workloads, and data from unauthorized access. Our cloud services help you manage resources, permissions, and identities, enforce fine-grained policies at network control points, and continuously monitor with automated compliance checks. Secure your workloads in the cloud with network, application, and data protection services from AWS.
 
 Migration and modernization:- Application and data modernization require cloud migration so you can innovate continuously while reducing operational costs. AWS migration services provide automation and intelligent recommendations to expedite digital transformation. Use our cloud services to automatically convert your source servers to run natively on AWS, perform non-disruptive tests, and move your applications to the cloud. Discover, assess, convert, and migrate any database or analytics workload with minimal downtime.
+
+You can use a cloud computing platform for the following:
+• Application hosting for an on-demand infrastructure that hosts internal or SaaS applications
+• Backup and storage capability to store data and build dependable backup solutions
+• Content delivery to distribute content worldwide with high data transfer speeds
+• Hosting static and dynamic websites
+• Enterprise IT to host internal-facing or external-facing IT applications in the AWS Cloud
+• Various scalable database solutions from hosted enterprise database software to non-relational database solutions
