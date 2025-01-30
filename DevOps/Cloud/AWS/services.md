@@ -60,3 +60,21 @@ AWS service categories
 48. Amazon EFS
 49. AWS Snowball
 50. Amazon ElastiCache
+
+## Identity and Access Management
+
+AWS Identity and Access Management (IAM) service:- AWS IAM is an authentication and authorization service that enables you to decide who or what can access the AWS services in your account (known as authentication), and what these entities are permitted to do in your account (known as authorization).
+
+The email address that you have used to create the account is also known as the root user. The root user is the person who created the account and holds the keys to the kingdom. This privileged user must be guarded well, and knowledge of its credentials (passwords and so on) should not be given to anyone who is not authorized to use it. The root user should also not be used for day-to-day operations. You can create additional user accounts (what we call IAM users) to perform daily tasks.
+
+To access any AWS service, including the IAM service, you can either use the web-based management console, the command-line interface (CLI), or AWS SDKs if you are writing code.
+
+**The AWS IAM console** -To use AWS Management Console. Log in to your AWS account using your root user credentials and you will be presented with a splash screen.
+AWS IAM falls under the Security, Identity, & Compliance category.
+
+The first time you navigate to the IAM console, you will note some security alerts and a list of best practices to follow.You will also note a sign-in URL for IAM users in this account. This is a special URL that your IAM users can browse to access your account. This URL is customizable and you can replace the series of digits shown after the https:// portion with a custom name that is easier to remember.
+
+Simply click the Customize link after the URL and choose an appropriate name for your AWS account, for example, PacktDevAccount.Names chosen must be unique and you may need to associate a common name with your company name to create a name that is unique.
+
+Once you have customized your IAM sign-in URL, you can provide this link to other IAM users, who can use it to sign in to your account. This can only happen if your users
+have an IAM user account to sign in with.
