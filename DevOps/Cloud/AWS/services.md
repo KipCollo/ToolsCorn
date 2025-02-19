@@ -9,10 +9,36 @@ AWS service categories
 - Application management - Monitoring, auditing, and configuring AWS account services and running resources
 - Security and identity - Services for managing authentication and authorization, data and connection encryption, and integration with third-party authentication management systems
 - Application integration - Tools for designing loosely coupled, integrated, and API-friendly application development processes
+- Analytics
+- Media Services
+- Customer Engagement
+- Games
+- Internet of Things
+- Containers
+- Analytics
+- Application Integration
+- Artificial Intelligence
+- Business Applications
+- Cloud Financial Management
+- Contact Center
+- Containers
+- Developer Tools
+- End User Computing
+- Front-End Web & Mobile
+- Management & Governance
+- Media Services
+- Migration & Modernization
+- Networking & Content Delivery
+- Quantum Technologies
+- Satellite
+- Security, Identity, & Compliance
+- Serverless
+- Supply Chain
+- Web3
 
 1. Amazon S3:- Object storage service for storing and retrieving data with high scalability and durability.Done by creating a bucket,uploading objects and setting permissions or lifecycle policies via the console,CLI or SDK.
-2. Amazon RDS:- Managed relational database service supporting MySQL,PostgreSQL,MariaDB,Oracle and SQL Server.Done by launching a databse instance,configuring storage and compute capacity and automating backups and updates.
-3. Amazon CloudFront:- Content Delivey Network(CDN) that deivers content with low latency and high transfer speeds
+2. Amazon RDS:- Managed relational database service supporting MySQL,PostgreSQL,MariaDB,Oracle and SQL Server.Done by launching a database instance,configuring storage and compute capacity and automating backups and updates.
+3. Amazon CloudFront:- Content Delivery Network(CDN) that delivers content with low latency and high transfer speeds
 4. AWS IAM
 5. Amazon VPC
 6. Amazon EC2
