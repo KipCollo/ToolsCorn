@@ -1,6 +1,8 @@
 # Ansible
 
-Ansible is an open-source automation tool used for configuration management,application deployment,provisioning and task automation.
+Ansible is an open-source automation tool used for configuration management,application deployment,cloud provisioning,intra-service orchestration and task automation.When used as configuration management tool,it is used to store current state of our systems and help us maintain that state,makes changes and deployments faster,removing potential for human error.
+
+`Configuration Management`:It is a process for maintaining computer systems,servers and software in desired consistent state.
 
 ## How Ansible Works
 
@@ -16,7 +18,25 @@ It’s important to note that:
 • Ansible waits until all hosts have completed a task before moving to the next task.
 • Ansible runs the tasks in the order that you specify them.
 
-Ansible works by connecting to nodes and pushing out small programs called "Ansible modules" to perform the required tasks.
+Ansible works by connecting to nodes and pushing out small programs called "Ansible modules" to perform the required tasks.These programs are written to be resource models of desired state of system.Ansible then executes these modules and remove them when finished.
+
+`Ansible modules` can be written in any language that can return JSON.There's also various Python APIs for extending Ansible's connection types(SSH is not the ony transport)
+
+## Ansible Concepts
+
+- Control Node:- Any machine with Ansible installed.We can run Ansible commands and playbooks by invoking the ansible or ansible-playbook command from any control node.we can use any computer that has Python installed as control node.However we cannot use a window machine as a control node.We can have multiple control node as well.
+
+- Collections:- Are a distribution format for Ansible content that can include playbooks,roles,modules and plugins.We can install and use collections through Ansible Galaxy.
+
+- Tasks:- Are unit of actions in Ansible.We can execute a single task once with ad hoc command.
+
+- Playbooks:- Ordered list of tasks,saved so we can run those tasks in that order repeatedly.Can include variables,tasks.Are written in YAML and are easy to read,share and write.
+
+- Managed Nodes:- Are network devices,servers that are managed by Ansible Managed nodes can also be called *hosts*.Ansible is not installed on managed nodes.
+
+- Inventory:- A list of managed nodes.An inventory fie is also referred as *hostfile*.Can specify info like IP address for each managed nodes.Typically located at /etc/ansible/host, provide a custom inventory path using *-i* parameter when running commands & playbooks.
+
+- Modules:- Units of code Ansible executes.Each module has a particular use,from administering users on a specific type of database to managing VLAN interfaces on specific type of network device.We can invoke a single module with a task,or invoke several diff modules in a playbook.
 
 ## Installing Ansible
 
