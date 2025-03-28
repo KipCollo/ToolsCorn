@@ -18,13 +18,13 @@ There are three primary models of deployment, listed as follows:
 • Private cloud
 • Hybrid cloud
 
-A **Public Cloud** is a model where the service provider offers resources, such as applications and storage, available to the general public over the internet. Resources may be free, or sold on a pay-per-usage model.also known as Cloud-Native or Cloud First
+A `Public Cloud` is a model where the service provider offers resources, such as applications and storage, available to the general public over the internet. Resources may be free, or sold on a pay-per-usage model.also known as Cloud-Native or Cloud First
 
-A **Private Cloud** is a type of cloud computing that delivers similar advantages to public cloud, including scalability and self-service, but through a proprietary architecture dedicated to a single organization. Unlike public clouds, which deliver services to multiple organizations, a private cloud is dedicated to the needs and goals of a single entity.Also known as On-Premise.
+A `Private Cloud` is a type of cloud computing that delivers similar advantages to public cloud, including scalability and self-service, but through a proprietary architecture dedicated to a single organization. Unlike public clouds, which deliver services to multiple organizations, a private cloud is dedicated to the needs and goals of a single entity.Also known as On-Premise.
 
-A **Hybrid Cloud** is a solution that combines a private cloud with one or more public cloud services, with proprietary software enabling communication between each distinct service.
+A `Hybrid Cloud` is a solution that combines a private cloud with one or more public cloud services, with proprietary software enabling communication between each distinct service.
 
-A **Cross-Cloud** Using multiple cloud providers.Also known as multi-cloud.
+A `Cross-Cloud` Using multiple cloud providers.Also known as multi-cloud.
 
 ## Benefits of cloud computing
 
@@ -41,11 +41,11 @@ Go global in minutes: AWS host their data centers in various regions across the 
 The three main types of cloud computing include Infrastructure as a Service, Platform as a Service, and Software as a Service. Each type of cloud computing provides different levels of control, flexibility, and management so that you can select the right set of services for your needs.
 Learn more
 
-- Infrastructure as a Service (IaaS):- IaaS contains the basic building blocks for cloud IT. It typically provides access to networking features, computers (virtual or on dedicated hardware), and data storage space. IaaS gives you the highest level of flexibility and management control over your IT resources. It is most similar to the existing IT resources with which many IT departments and developers are familiar.
+- `Infrastructure as a Service (IaaS)`:- IaaS contains the basic building blocks for cloud IT. It typically provides access to networking features, computers (virtual or on dedicated hardware), and data storage space. IaaS gives you the highest level of flexibility and management control over your IT resources. It is most similar to the existing IT resources with which many IT departments and developers are familiar.
 
-- Platform as a Service (PaaS):- PaaS removes the need for you to manage underlying infrastructure (usually hardware and operating systems), and allows you to focus on the deployment and management of your applications. This helps you be more efficient as you don’t need to worry about resource procurement, capacity planning, software maintenance, patching, or any of the other undifferentiated heavy lifting involved in running your application.
+- `Platform as a Service (PaaS)`:- PaaS removes the need for you to manage underlying infrastructure (usually hardware and operating systems), and allows you to focus on the deployment and management of your applications. This helps you be more efficient as you don’t need to worry about resource procurement, capacity planning, software maintenance, patching, or any of the other undifferentiated heavy lifting involved in running your application.
 
-- Software as a Service (SaaS):- SaaS provides you with a complete product that is run and managed by the service provider. In most cases, people referring to SaaS are referring to end-user applications (such as web-based email). With a SaaS offering, you don’t have to think about how the service is maintained or how the underlying infrastructure is managed. You only need to think about how you will use that particular software.
+- `Software as a Service (SaaS)`:- SaaS provides you with a complete product that is run and managed by the service provider. In most cases, people referring to SaaS are referring to end-user applications (such as web-based email). With a SaaS offering, you don’t have to think about how the service is maintained or how the underlying infrastructure is managed. You only need to think about how you will use that particular software.
 
 ## cloud services
 

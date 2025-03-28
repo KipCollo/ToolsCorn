@@ -1,6 +1,6 @@
 # Kubernetes
 
-Kubernetes (k8s) is an open source container orchestration platform that automates deployment, scaling and management of containerized apps.It allows devs to focus on writing code while kubernetes handles underlying infrusturcture. Uses declarative configuration files to speify apps and can automatically scale apps based on femands, handle failures and manage networking and storage
+Kubernetes (k8s) is an open source container orchestration platform that automates deployment, scaling and management of containerized apps.It allows devs to focus on writing code while kubernetes handles underlying infrastructure. Uses declarative configuration files to specify apps and can automatically scale apps based on demands, handle failures and manage networking and storage
 
 NOTE:- Kubernetes is Greek for pilot or helmsman (the person holding the ship’s steering wheel). People pronounce Kubernetes in a few different ways.
 Many pronounce it as Koo-ber-nay-tace, while others pronounce it more like Koo-ber-netties. No matter which form you use, people will understand what you mean.
@@ -8,8 +8,7 @@ Many pronounce it as Koo-ber-nay-tace, while others pronounce it more like Koo-b
 Kubernetes abstracts away the hardware infrastructure and exposes your whole data-center as a single enormous computational resource. It allows you to deploy and run
 your software components without having to know about the actual servers underneath. When deploying a multi-component application through Kubernetes, it selects a server for each component, deploys it, and enables it to easily find and communicate with all the other components of your application
 
-This makes Kubernetes great for most on-premises datacenters, but where it starts to shine is when it’s used in the largest datacenters, such as the ones built and oper-
-ated by cloud providers. Kubernetes allows them to offer developers a simple platform for deploying and running any type of application, while not requiring the cloud provider’s own sysadmins to know anything about the tens of thousands of apps running on their hardware.
+This makes Kubernetes great for most on-premises datacenters, but where it starts to shine is when it’s used in the largest datacenters, such as the ones built and operated by cloud providers. Kubernetes allows them to offer developers a simple platform for deploying and running any type of application, while not requiring the cloud provider’s own sysadmins to know anything about the tens of thousands of apps running on their hardware.
 
 Kubernetes is Open Source Container Orchestration Engine developed by Google.It is now managed by Cloud Native Computing Foundation(CNCF)
 
@@ -24,30 +23,33 @@ Kubernetes is an open-source container orchestration platform that automates the
 - Storage: Ways to provide both long-term and temporary storage to Pods in your cluster.
 - Configuration: Resources that Kubernetes provides for configuring Pods.
 - Cluster Administration: Lower-level detail relevant to creating or administering a Kubernetes cluster.
+- Node:- It serves as a worker machine in a kubernetes cluster.It can be a physical computer or a virtual machine.It should contain a kubelet running,container tooling e.g Docker,kube-proxy process running,supervisord
 
 ## KUBERNETES architecture
 
-Kubernetes cluster is split into two parts:
+Kubernetes cluster is an instance of Kubernetes.It is split into two parts:
 
 1. The Kubernetes Control Plane
 2. The (worker) nodes
 
 ### COMPONENTS OF THE CONTROL PLANE
 
-The Control Plane is what controls and makes the whole cluster function. The components that make up the Control Plane are:-
+The Control Plane is what controls and makes the whole cluster function.These resources/components are containerized application run as a pod.To list them you can use the command `kubectl get pods -n kube-system`.
+The components that make up the Control Plane are:-
 
-1. The etcd - distributed persistent storage
+1. The etcd - distributed persistent storage for cluster configurations.
 2. The API server - Accepts REST commands to interact with Cluster resources.
-3. The Scheduler - Regulate tasks on slave nodes
-4. The Controller Manager
+3. The Scheduler - Regulate tasks on slave nodes i.e assigns worker node to each deployable component of your app.
+4. The Controller Manager - Runs on a loop continuously and checks status of a cluster and to make sure things are running properly.
+5. Cloud Controller Manager
 These components store and manage the state of the cluster, but they aren’t what runs the application containers.
 
 ### COMPONENTS RUNNING ON THE WORKER NODES
 
 The task of running your containers is up to the components running on each worker node:
 
-1. The Kubelet
-2. The Kubernetes Service Proxy (kube-proxy)
+1. The Kubelet - It starts a container using Container Runtime Interface(CRI).CRI enables it to create containers with engines:- Containerd,CRI-O,Kata containers,AWS Firecracker.It is a Kubernetes node agent that runs on each node.It communicates with API server to see if pods has been assigned to nodes,executes pod containers via container engine,mounts and runs pod volumes and secrets,executes health checks to identify pod/node status.It works in terms of Podspec(YAML file that describes a pod).It takes a st of Podspecs that are provide by kube-apiserver and ensures that containers described in those Podspecs are running and healthy.It only manages containers created by API server not any container running on the node.
+2. The Kubernetes Service Proxy (kube-proxy) - Make sure pods and services can communicate.It communicates directly with kube-apiserver.Runs on all worker nodes.Reflects services as defined on each node, and can do simple network stream or round-robin forwarding across set of backends.Has 3 modes:- User space mode,Iptables mode,Ipvs mode.
 3. The Container Runtime (Docker, rkt, or others)
 
 ### ADD-ON COMPONENTS
@@ -60,6 +62,8 @@ so far. This includes
 3. An Ingress controller
 4. Heapster
 5. The Container Network Interface network plugin
+
+The command `kubectl api-resources` lists all kubernetes resources and their versions.
 
 ## MINIKUBE
 
@@ -85,7 +89,7 @@ minikube addson list
 
 ## KUBERNETES CLIENT (KUBECTL)
 
-To interact with Kubernetes, you also need the kubectl CLI client. Again, all you need to do is download it and put it on your path.
+To interact with Kubernetes, you also need the kubectl CLI client. Again, all you need to do is download it and put it on your path.It has a kubeconfig files that has server information and authentication information to access API server.
 
 To verify your cluster is working, you can use the kubectl cluster-info command shown in the following listing.
 
@@ -96,7 +100,7 @@ kubectl cluster-info
 This shows the cluster is up. It shows the URLs of the various Kubernetes components,including the API server and the web console.
 
 The simplest way to deploy your app is to use the kubectl run command, which will create all the necessary components without having to deal with JSON or YAML. This
-way, we don’t need to dive into the structure of each object yet. Try to run the image you created and pushed to Docker Hub earlier. Here’s how to run it in Kubernetes:
+way, we don’t need to dive into the structure of each object yet:-
 
 ```bash
 kubectl run <name> --image=<imageName>--port=8080 --generator=run/v1
@@ -287,6 +291,7 @@ kubectl get all -o wide
 kubectl delete replicaset.apps/hello-world-rest-api-797dd4b5dc
 
 kubectl get pods --all-namespaces
+kubectl get pods --show-labels
 kubectl get pods --all-namespaces -l app=hello-world-rest-api
 kubectl get services --all-namespaces
 kubectl get services --all-namespaces --sort-by=.spec.type
@@ -304,6 +309,8 @@ kubectl get nodes
 kubectl get no
 kubectl get pods
 kubectl get po
+
+kubectl scale --replicas=3 <deployment-name>
 
 kubectl delete all -l app=hello-world-rest-api
 kubectl get all
@@ -585,3 +592,22 @@ The dashboard will open in your default browser. Unlike with GKE, you won’t ne
 1. Kubernetes Managed service:- Amazon EKS,Google Kubernetes Engine,Azure Kubernetes Service(AKS)
 2. Use Minikube
 3. Manual Installation- Install diff component individually -Master Node,Worker Node.
+
+## CONTROLLERS
+
+It includes:-
+
+1. ReplicaSets - Ensures that a specified number of replicas for a pod are running at all times.
+2. Deployments - Deployment controller provides declarative updates for pods and ReplicaSets.It manages pods i.e Running a ReplicaSets allows to deploy a number of pods and check their status as single unit,scales a ReplicaSets out of the Pods,Pause and Resume deployments to make changes for larger datasets,getting pod status.
+3. DaemonSets - Ensures that all nodes run a copy of specific pod.As nodes are added or removed from cluster,a DaemonSet will add or remove required pods.
+4. Jobs - A supervisor process for pods carrying out batch jobs.Run individual processes that run once and complete successfully.
+5. Services - Allows communication between one set of deployments with another.Includes Internal services,External services,Load balancer services.
+
+## ORGANIZING APPs
+
+1. Labels - They are key/value pairs that are attached to objects like pods, services and deployments.They are for users of Kubernetes to identify attributes fro objects.E.g
+    - "release" : "stable","release": "canary"
+    - "environment" : "dev", "environment" : "qa", "environment": "production".
+    - "tier" : "frontend", "tier" : "backend", "tier" : "cache"
+2. Label selectors - Allows you to identify a set of objects.There are 2 kinds - Equality-based selectors(=,!=) and Set-based selectors(IN,NOT IN,EXISTS).Used with kubectl to list and filter objects.
+3. Namespaces - Greater for large enterprises.Allows teams to access resources with accountability.Provides scope for names-must be unique in namespaces.
