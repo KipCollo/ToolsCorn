@@ -14,7 +14,6 @@ AWS service categories
 - Customer Engagement
 - Games
 - Internet of Things
-- Containers
 - Analytics
 - Application Integration
 - Artificial Intelligence
