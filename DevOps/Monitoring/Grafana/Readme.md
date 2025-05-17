@@ -5,10 +5,10 @@ Grafana is an open-source platform for monitoring and observability that allows 
 Grafana provides:-
 
 1. Data Source Flexibility-Supports multiple data sources like Prometheus,InfluxDB,Elasticsearch,MySQL,AWS CloudWatch and many more.
-2. Customizable Dahboards- Create beautiful and interactive dashboards with a wide variety of visualization options
+2. Customizable Dashboards- Create beautiful and interactive dashboards with a wide variety of visualization options
 3. Alerting- Set up custom alerts based on your metrics and receive notifications through slack,Email,PagerDuty
 4. Plugins- Extend Grafana's capabilities with plugins for new data sources,visualizations and alerting mechanisms
-5. User authentication & Access Control- Offers user mngmnt,allowing diff teams or individual to have customized access to specific dashboards.
+5. User authentication & Access Control- Offers user management,allowing diff teams or individual to have customized access to specific dashboards.
 
 ## Why use Grafana
 

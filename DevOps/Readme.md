@@ -1,5 +1,56 @@
 # DevOps
 
+DevOps is comination of two words:- `Development` and `Operations`.It is a culture to promote the development and operation process collectively.It allows a single team to handle entire application lifecycle,from development, testing,deployment and operations.It helps us reduce disconnection between software developers,quality assuarance(QA) engineers and system administrators.
+
+## DevOps Architecture
+
+Key features of DevOps includes:-
+
+- Automation:- Reduces time consumption during testing and deployment.Bugs can be catched quickly.
+- Collaboration:- Development and Operations team collaborates as DevOps team,which improves cultural model as teams become more productive.
+- Integration:- Applications need to be integrated with other components in the envoironment.Integration phase is where existing code is combined with new functionality and then tested.
+- Configuration Management:- It ensures application interacts with only those resources that are concerned with the environment in which it runs.The configuartyion file can be written during deloyment,or they can be loaded at run time,depending on environment it is running.
+
+It involves:-
+
+1. Programming Language.
+2. Basics of Operating System(OS):- Windows,Linux,Unix.
+3. Command-line interface(CLI).
+4. Version Control & Hosting:- Git,GitHub,BitBucket,Gitlab.
+5. Cloud providers:- AWS,Azure,GCP.
+6. Containerization and container Orchestration:- Docker,Kubernetes.
+7. CI/CD:- Gitlab CI,Jenkins,Circle CI.
+8. Networking & Security Protocols:- FTP/SFTP,HTTP/HTTPS,SSL/TLS,DNS,SSH.
+9. Setting Up Firewalls,Proxy and Servers.
+10. Serverless:- Cloudflarew
+11. Infrastructure provisioning:- Terraform,Pulumi,AWS CDK
+12. Configuration Management:- Ansible,Chef,Puppet.
+13. Infrastructure Monitoring:- Grafana,Datadog,Prometheus,Zabbix
+14. Application Monitoring:- Jaeger,Datadog,AppDynamic,OpenTelemetry.
+
+## DevOps Tools
+
+Devops tools includes:-
+
+1. Plan - Jira,Slack,Confluence
+2. Code:- VSCode,Intellij,GIT
+3. Deploy:- AWS,Google Cloud,Azure
+4. Operate:- Terraform,Kubernetes,Puppet,Ansible
+5. Monitor:- Prometheus,Grafana,Datadog
+6. Release:- Jenkins,Travis CI,Bamboo
+7. Test: Soap UI,Jest,JUnit,Appium
+8. Build: AWS CodeBuild,Gradle,Apache Maven
+
+`Puppet`:- It allows delivery and release of technology changes quickly and frequently.Has features of versioning,automated testing and continuous delivery.It enables to manage entire infrastructure as code without expanding size of the team.
+
+Puppet is a tool that helps you manage and automate the configuration of servers.Puppet is made up of several packages, which you use to manage, store and run your Puppet code. These packages include puppetserver, puppetdb, and puppet-agent — which includes Facter and Hiera.
+
+`Ansible`:- It is an open source tool that automates application deployment,cloud provisioning,intra service orchestration and other IT tools.
+
+`Docker`:- It is a DevOps tool that allows building,shipping and run distributed applications on multiple systems.
+
+`Nagios`:- It determines the errors and rectify them with help of network,infrastructure,server and log monitoring systems.
+
 ## Start DevOps with Docker
 
 - Step 00 00 - DevOps and Containerization
@@ -211,3 +262,11 @@
 - Step 14 - Creating AWS EC2 Instances with Ansible
 - Step 15 - Providing Declarative Configuration with Ansible
 - Step 16 - Deleting all AWS EC2 Instances
+
+TODO 
+
+1. Deploy Web server with Docker for consistent environments and scalability
+2. Automate CI with Jenkins remoting across environments for better efficiencies.
+3. Automate a CI/CD pipeline on AWS for code deployment,testing and cloud management.
+4. Implement a version control system to manage code changes and ensure collaborations
+5. Automate Java app build and deployment with Gradle to streamline development and boost productivity.

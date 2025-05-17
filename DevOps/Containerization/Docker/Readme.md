@@ -10,10 +10,16 @@ Docker provides tooling and a platform to manage the lifecycle of your container
 - The container becomes the unit for distributing and testing your application.
 - When you're ready, deploy your application into your production environment, as a container or an orchestrated service. This works the same whether your production environment is a local data center, a cloud provider, or a hybrid of the two.
 
+## Docker importance
+
+1. Build and test in exactly same environment.
+2. Same development environments with employees working on same project
+3. Switching between projects should not cause clash.
+
 ## Steps
 
 - Step 01 - Docker and DevOps - Installation and Introduction
-- Step 02 - Your First Docker Usecase
+- Step 02 - Your First Docker Use-case
 - Step 03 - Important Docker Concepts - Registry, Repository, Tag, Image and Container
 - Step 04 - Playing with Docker Images - Java, JavaScript and Python
 - Step 05 - Playing with Docker - Detached Mode and Logs
@@ -146,35 +152,34 @@ By leveraging namespaces, Docker ensures that containers are truly portable and 
 
 In summary, namespaces provide a level of resource isolation that enables running multiple containers with separate system resources within the same host, without them interfering with each other. This is a critical feature that forms the backbone of Docker's container technology.
 
+## Docker Tools and Building blocks
+
+1. Docker Engine
+2. Docker Desktop - Includes Daemon,CLI
+3. Docker Hub
+4. Docker Compose
+
+## Outline
+
+- Images and containers:- A Container is running unit of software while Image is a template/blueprint for containers.Multiple containers can be created based on one image.
+- Data & Volumes in Containers
+- Containers & Networking
+- Multi-Container Project
+- Docker-compose
+- Utility containers
+- Deploying Docker Containers
+
 ## Commands
 
 ```bash
 # Check the version of Docker installed
 docker --version
 
-# Run a Docker container with a Python hello world application
-docker run -p 5000:5000 in28min/hello-world-python:0.0.1.RELEASE
-
-# Run a Docker container with a Java hello world application
-docker run -p 5000:5000 in28min/hello-world-java:0.0.1.RELEASE
-
-# Run a Docker container with a Node.js hello world application
-docker run -p 5000:5000 in28min/hello-world-nodejs:0.0.1.RELEASE
-
-# Run a Docker container with a Node.js hello world application in detached mode
-docker run -d -p 5000:5000 in28min/hello-world-nodejs:0.0.1.RELEASE
-
-# Run a Docker container with a Python hello world application in detached mode
-docker run -d -p 5001:5000 in28min/hello-world-python:0.0.1.RELEASE
-
 # View the logs of a Docker container
 docker logs 04e52ff9270f5810eefe1f77222852dc1461c22440d4ecd6228b5c38f09d838e
 
 # View the logs of a Docker container with a given container ID or name
 docker logs c2ba
-
-# List Docker images
-docker images
 
 # List running containers
 docker container ls
@@ -187,27 +192,6 @@ docker container stop f708b7ee1a8b
 
 # Run a Docker container with a REST API in detached mode
 docker run -d -p 5001:8080 in28min/hello-world-rest-api:0.0.1.RELEASE
-
-# Pull a Docker image from a registry
-docker pull mysql
-
-# Search for Docker images in a registry
-docker search mysql
-
-# Show the history of a Docker image
-docker image history in28min/hello-world-java:0.0.1.RELEASE
-
-# Show the history of a Docker image with a given image ID
-docker image history 100229ba687e
-
-# Inspect a Docker image
-docker image inspect 100229ba687e
-
-# Remove a Docker image
-docker image remove mysql
-
-# Remove a Docker image with a given image name and tag
-docker image remove in28min/hello-world-java:0.0.1.RELEASE
 
 # Remove a Docker container with a given container ID or name
 docker container rm 3e657ae9bd16
@@ -266,14 +250,8 @@ docker container stats 4faca1ea914e3e4587d1d790948ec6cb8fa34f26e900c12632fd64d47
 # Show live resource usage statistics of a Docker container with a given container ID or name
 docker stats 42f170966ce613d2a16d7404495af7b3295e01aeb9142e1fa1762bbdc581f502
 
-
-
-
 # Change directory to the Python hello world project
 cd /in28Minutes/git/devops-master-class/projects/hello-world/hello-world-python
-
-# Build a Docker image with a given tag
-docker build -t in28min/hello-world-python:0.0.2.RELEASE .
 
 # Run a Docker container with a Python hello world application, mapped to port 5000
 docker run -p 5000:5000 -d in28min/hello-world-python:0.0.2.RELEASE
@@ -284,14 +262,6 @@ docker history e66dc383f7a0
 # Push a Docker image to a registry
 docker push in28min/hello-world-python:0.0.2.RELEASE
 
-
-
-
-# Change directory to the Node.js hello world project
-cd ../hello-world-nodejs/
-
-# Build a Docker image with a given tag
-docker build -t in28min/hello-world-nodejs:0.0.2.RELEASE .
 
 # Run a Docker container with a Node.js hello world application, mapped to port 5000
 docker container run -d -p 5000:5000 in28min/hello-world-nodejs:0.0.2.RELEASE
