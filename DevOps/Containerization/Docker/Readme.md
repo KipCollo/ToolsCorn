@@ -175,20 +175,9 @@ In summary, namespaces provide a level of resource isolation that enables runnin
 # Check the version of Docker installed
 docker --version
 
-# View the logs of a Docker container
-docker logs 04e52ff9270f5810eefe1f77222852dc1461c22440d4ecd6228b5c38f09d838e
-
-# View the logs of a Docker container with a given container ID or name
-docker logs c2ba
-
-# List running containers
-docker container ls
-
-# List all containers, including stopped ones
-docker container ls -a
-
-# Stop a running container with a given container ID
-docker container stop f708b7ee1a8b
+# Getting help in Docker commands
+docker --help
+docker image --help
 
 # Run a Docker container with a REST API in detached mode
 docker run -d -p 5001:8080 in28min/hello-world-rest-api:0.0.1.RELEASE
@@ -330,20 +319,6 @@ docker run -d -p 8000:8000 --name=currency-exchange --network=currency-network i
 docker run -d -p 8100:8100 --env CURRENCY_EXCHANGE_SERVICE_HOST=http://currency-exchange --name=currency-conversion --network=currency-network in28min/currency-conversion:0.0.1-RELEASE
 
 
-
-
-# Check the version of Docker Compose installed
-docker-compose --version
-
-# Change directory to the microservices folder
-cd ../../microservices/
-
-# Start the services defined in the Docker Compose file
-docker-compose up
-
-# Start the services defined in the Docker Compose file in detached mode
-docker-compose up -d
-
 # List running containers
 docker container ls
 
@@ -353,27 +328,11 @@ docker network ls
 # Inspect a Docker network with a given network name
 docker network inspect microservices_currency-compose-network
 
-# Stop the services defined in the Docker Compose file
-docker-compose down
-
 # List all containers, including stopped ones
 docker container ls -a
 
 # Remove all unused Docker resources
 docker system prune -a
-
-# Validate the Docker Compose file
-docker-compose config
-
-# List Docker images used by the services defined in the Docker Compose file
-docker-compose images
-
-# List the running services defined in the Docker Compose file
-docker-compose ps
-
-# Display the top resource-consuming processes of the services defined in the Docker Compose file
-docker-compose top
-
 
 ```
 
@@ -384,16 +343,11 @@ docker build -t in28min/hello-world-java:0.0.1.RELEASE .
 # Push the Docker image with the specified tag to a registry
 docker push in28min/hello-world-java:0.0.1.RELEASE
 
-
-
-
 # Build a Docker image for a Python hello world application with a given tag
 docker build -t in28min/hello-world-python:0.0.1.RELEASE .
 
 # Push the Docker image with the specified tag to a registry
 docker push in28min/hello-world-python:0.0.1.RELEASE
-
-
 
 
 # Build a Docker image for a Node.js hello world application with a given tag
