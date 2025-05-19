@@ -179,30 +179,6 @@ docker --version
 docker --help
 docker image --help
 
-# Run a Docker container with a REST API in detached mode
-docker run -d -p 5001:8080 in28min/hello-world-rest-api:0.0.1.RELEASE
-
-# Remove a Docker container with a given container ID or name
-docker container rm 3e657ae9bd16
-
-# List all containers, including stopped ones
-docker container ls -a
-
-# Pause a running container with a given container ID or name
-docker container pause 832
-
-# Unpause a paused container with a given container ID or name
-docker container unpause 832
-
-# Stop a running container with a given container ID or name
-docker container stop 832
-
-# Inspect a Docker container with a given container ID or name
-docker container inspect ff521fa58db3
-
-# Remove all stopped containers
-docker container prune
-
 # Show Docker system information
 docker system
 
@@ -261,11 +237,6 @@ docker push in28min/hello-world-nodejs:0.0.2.RELEASE
 # Change directory to the Java hello world project
 cd ../hello-world-java/
 
-# Build a Docker image with a given tag
-docker build -t in28min/hello-world-java:0.0.2.RELEASE .
-
-# Run a Docker container with a Java hello world application, mapped to port 5000
-docker run -d -p 5000:5000 in28min/hello-world-java:0.0.2.RELEASE
 
 # Push a Docker image to a registry
 docker push in28min/hello-world-java:0.0.2.RELEASE
@@ -363,3 +334,7 @@ docker push in28min/hello-world-nodejs:0.0.1.RELEASE
 - <https://docs.docker.com/network/host/>
 
 >The host networking driver only works on Linux hosts, and is not supported on Docker Desktop for Mac, Docker Desktop for Windows, or Docker EE for Windows Server.
+
+## Ignoring dockerfiles
+
+Create a .dockerignore files.It igonres the files.
