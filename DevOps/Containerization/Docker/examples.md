@@ -5,7 +5,25 @@ Images:-
 NODE:-
 
 ```Dockerfile
-FROM node:latest
+FROM node
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 80
+
+CMD ["node", "app.js"]
+```
+
+REACT:-
+
+```Dockerfile
+FROM node
 
 WORKDIR /app
 
@@ -17,13 +35,15 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["node", "app.js"]
+CMD ["npm", "start"]
 ```
 
-PYTHON:_
+When running the React app container use -it flag.The code runs in the browser,not in the container.
+
+PYTHON:-
 
 ```Dockerfile
-FROM python:latest
+FROM python
 
 WORKDIR /app
 

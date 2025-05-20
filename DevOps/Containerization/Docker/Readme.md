@@ -338,3 +338,8 @@ docker push in28min/hello-world-nodejs:0.0.1.RELEASE
 ## Ignoring dockerfiles
 
 Create a .dockerignore files.It igonres the files.
+
+Containers:
+
+1. Application containers - Includes your code and Environments
+2. Utility containers - contains only environments that can be used in conjuction with the app.
