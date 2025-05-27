@@ -1,6 +1,7 @@
 # Prometheus
 
 - Is an open source system monitoring and alerting toolkit originally built at soundcloud. It collects and stores its metrics as time series data from configured targets,stores them in time-series database and provides powerful query features.
+
 Prometheus collects and stores its metrics as time series data, i.e. metrics information is stored with the timestamp at which it was recorded, alongside optional key-value pairs called labels.
 In 2016 the Prometheus project became the second member1 of the Cloud Native Computing Foundation (CNCF).
 - It can monitor:
