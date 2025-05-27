@@ -1,6 +1,59 @@
-# DevOps
+# DevOps and Site Reliability Engineering
 
-DevOps is comination of two words:- `Development` and `Operations`.It is a culture to promote the development and operation process collectively.It allows a single team to handle entire application lifecycle,from development, testing,deployment and operations.It helps us reduce disconnection between software developers,quality assuarance(QA) engineers and system administrators.
+`DevOps (Development + Operations)` is a set of practices, principles, and cultural philosophies that aim to enhance collaboration and communication between software development (Dev) and IT operations (Ops) teams. The primary goal is to automate and streamline the processes of software delivery and infrastructure changes, fostering a culture of continuous improvement and faster, more reliable releases.It allows a single team to handle entire application lifecycle,from development, testing,deployment and operations.It helps us reduce disconnection between software developers,quality assuarance(QA) engineers and system administrators.
+
+`Site Reliability Engineering`, or SRE, is a discipline that incorporates aspects of software engineering and applies them to infrastructure and operations problems. It was developed at Google to create scalable and highly reliable software systems.
+
+DevOps and SRE are two different disciplines of Software Engineering, but they are deeply interconnected and rely on each other for success. DevOps focuses on creating new features and improvements, while SRE focuses on ensuring the reliability and stability of the system. Both DevOps and SRE require strong collaboration and communication to achieve common goals.
+
+## Characteristics of the Pre-DevOps Era
+
+The pre-DevOps era in software development was a starkly different landscape than what we see today. It was a time of siloed teams, rigid methodologies, and a lot of manual work, which often led to slow and unreliable software delivery.
+
+Here are some key characteristics of the pre-DevOps era:
+
+1. Waterfall Model - The dominant methodology was the Waterfall model, a linear approach where each stage had to be completed before moving on to the next. This made it difficult to adapt to changes and respond quickly to new requirements.
+2. Siloed Teams - Developers, testers, and operations teams worked independently, often with little communication or collaboration. This created a "throw it over the wall" mentality, where each team blamed the other for problems.
+3. Manual Processes - Most tasks, from testing to deployment, were done manually. This was time-consuming and error-prone, leading to delays and inconsistencies.
+4. Limited Automation - There were few tools available to automate repetitive tasks, making it difficult to scale software development.
+5. Slow and Unreliable Delivery - Releases were infrequent and often buggy, causing frustration for both developers and users.
+
+## Emergence of DevOps
+
+DevOps software development methodology that emphasizes collaboration and communication between development and operations teams, didn't appear overnight. Its roots can be traced back to several contributing factors and key turning points.
+
+- `Early Influences`
+
+1. Agile movement: The Agile movement, emerging in the 1990s and formally established in 2001, emphasized iterative development and collaboration, paving the way for DevOps' focus on faster delivery and team integration.
+2. Automation: The rise of automation tools throughout the software development lifecycle (SDLC) simplified manual tasks, allowing teams to focus on higher-level activities.
+3. Cloud computing: The emergence of cloud platforms provided a scalable and flexible environment for development and deployment, further facilitating collaboration and faster delivery.
+
+- `Formative Years (2007-2009)`
+
+1. Patrick Debois: In 2007, frustrated with the traditional silos between development and operations, Patrick Debois, a Belgian consultant and project manager, began advocating for closer collaboration. He coined the term "DevOps" in 2009, which resonated with the growing desire for a more integrated approach to software development. To learn more, you can read "The Origins of DevOps: What's in a Name?" article, by Steve Mezak or watch "The (Short) History of DevOps" video.
+2. Agile Infrastructure: Around the same time, the "Agile Infrastructure" movement emerged, focusing on applying Agile principles to infrastructure management, aligning it with development practices.
+
+- `Gaining Momentum (2010s)`
+
+1. Continuous Integration and Continuous Delivery (CI/CD): The adoption of CI/CD practices became instrumental in accelerating software delivery and improving feedback loops between development and operations.
+2. DevOps tools and platforms: A surge of specialized DevOps tools and platforms emerged, automating tasks and providing shared visibility throughout the SDLC.
+3. Increased awareness and adoption: DevOps became a popular topic in conferences and publications, leading to increased awareness and adoption across various industries.
+
+- `Continuous Evolution (Present Day)`
+
+1. DevOps continues to evolve: As technology and business needs change, new DevOps practices and tools emerge, focusing on areas like security, compliance, and automation in cloud environments.
+2. Shift towards DevOps culture: The focus expands beyond tools and processes to create a collaborative culture that fosters communication, shared responsibility, and continuous improvement.
+
+## Key Principles of DevOps
+
+Adhering to the key principles of DevOps will ensure a more successful development, delivery, and implementation of applications and services.
+
+- Collaboration:- DevOps emphasizes breaking down silos between development and operations teams, encouraging shared responsibilities and improved communication.
+- Automation:- Automation is a core tenet of DevOps, involving the use of tools to automate manual and repetitive tasks in the software development and delivery pipeline.
+- Continuous Integration (CI):- Developers integrate their code into a shared repository multiple times a day, with automated builds and tests to detect and address issues early in the development process.
+- Continuous Deployment (CD):- Continuous Deployment involves automatically deploying code changes to production environments after passing automated tests. This ensures rapid and reliable releases.
+- Infrastructure as Code (IaC):- IaC involves managing and provisioning infrastructure through code, enabling consistent and repeatable infrastructure deployments.
+- Monitoring and Feedback:- DevOps emphasizes continuous monitoring of applications and infrastructure, providing real-time feedback to identify and address issues promptly.
 
 ## DevOps Architecture
 
@@ -22,7 +75,7 @@ It involves:-
 7. CI/CD:- Gitlab CI,Jenkins,Circle CI.
 8. Networking & Security Protocols:- FTP/SFTP,HTTP/HTTPS,SSL/TLS,DNS,SSH.
 9. Setting Up Firewalls,Proxy and Servers.
-10. Serverless:- Cloudflarew
+10. Serverless:- Cloudflare
 11. Infrastructure provisioning:- Terraform,Pulumi,AWS CDK
 12. Configuration Management:- Ansible,Chef,Puppet.
 13. Infrastructure Monitoring:- Grafana,Datadog,Prometheus,Zabbix
@@ -50,6 +103,67 @@ Puppet is a tool that helps you manage and automate the configuration of servers
 `Docker`:- It is a DevOps tool that allows building,shipping and run distributed applications on multiple systems.
 
 `Nagios`:- It determines the errors and rectify them with help of network,infrastructure,server and log monitoring systems.
+
+`Version Control`:-
+
+1. Git is widely used for version control, and helps track changes in source code during development.
+2. Subversion (SVN) is a centralized version control system. It allows users to keep track of all changes made to files and directories in a repository. SVN is known for its simplicity and is often used in projects where a centralized, linear workflow is preferred.
+3. Bitbucket is a cloud-based platform offering Git-based version control, code review, and CI/CD tools. It offers features like code hosting, issue tracking, and pull requests, making it popular for open source projects and collaboration.
+4. GitHub is a popular cloud-based platform for version control, social coding, and project management.
+
+`Continuous Integration/Continuous Deployment (CI/CD)`:-
+
+1. Jenkins is an open source automation server that facilitates building, testing, and deploying code changes.
+2. Travis CI is a CI/CD service that integrates with GitHub repositories for automated testing and deployment.
+3. CircleCI is a cloud-based CI/CD platform supporting automation and parallel testing.
+
+`Configuration Management`:-
+
+1. Ansible is an open source automation tool that simplifies configuration management, application deployment, and task automation.
+2. Chef enables infrastructure automation and configuration management using reusable scripts called recipes.
+3. Puppet is a configuration management tool for automating the provisioning and management of infrastructure.
+
+`Containerization and Orchestration`:-
+
+1. Docker is a very popular platform for developing, shipping, and running applications in containers.
+2. Podman is an open source container engine that offers a Docker-compatible command-line interface and runtime. It features image creation, management, and deployment, but lacks some advanced features like built-in orchestration.
+3. LXC (Linux Containers) is a lightweight containerization technology built into the Linux kernel, offering efficient resource utilization and isolation. It is popular for its simplicity and portability, but lacks some advanced features of other tools.
+4. Kubernetes is an open source container orchestration platform for automating the deployment, scaling, and management of containerized applications. It is considered the de facto orchestration platform for containers due to its popularity.
+5. OpenShift is a container platform developed by Red Hat. It extends Kubernetes and provides additional features for enterprise applications, including source-to-image builds and developer-focused tools.
+6. Apache Mesos is an open source cluster management and orchestration platform designed to simplify the management of distributed applications and resources in data centers or cloud environments.
+
+`Infrastructure as Code (IaC)`:-
+
+1. Terraform is a tool for building, changing, and versioning infrastructure efficiently and safely.
+2. AWS CloudFormation is Amazon's IaC service for provisioning and managing AWS resources using templates.
+3. OpenTofu is a fork of Terraform that is open source, community-driven, and managed by the Linux Foundation.
+
+`Continuous Monitoring`:-
+
+1. Prometheus is an open source monitoring and alerting toolkit designed for reliability and scalability.
+2. Zabbix is a comprehensive monitoring solution for servers, networks, applications, and other IT infrastructure. It offers monitoring capabilities, alerting, and reporting features. It supports various monitoring protocols and provides extensive customization options.
+3. Nagios is a mature and popular open source monitoring tool with a focus on server and network monitoring. It offers a flexible plugin system for extending its monitoring capabilities and features robust alerting and notification options.
+4. OpenNMS is an open source network management system with built-in monitoring capabilities. It provides comprehensive network discovery, mapping, and monitoring features, and offers a web-based interface for managing and visualizing network performance.
+5. Grafana is a visualization platform that integrates with various data sources, including Prometheus, for creating interactive and shareable dashboards.
+
+`Collaboration and Communication`
+
+1. Slack is a team collaboration tool for communication and sharing updates.
+2. Microsoft Teams is a communication and collaboration platform that integrates with other Microsoft tools.
+
+
+`Logging`
+
+1. ELK Stack (Elasticsearch, Logstash, Kibana) is a set of tools for log management, enabling search, analysis, and visualization of log data.
+2. Fluentd is a lightweight and high-performance log collector and forwarder. It offers flexible configuration and supports various input plugins for collecting logs from different sources. It integrates seamlessly with other logging tools and platforms.
+3. Splunk is a comprehensive logging platform offering log collection, indexing, search, analysis, and visualization. It provides powerful real-time analytics and AI-driven insights for troubleshooting and security.
+4. Datadog is a comprehensive monitoring platform offering log management, metrics collection, and application performance monitoring functionalities.
+
+`Source Code Management (SCM)`
+
+1. Bitbucket is a Git repository management solution with features for code collaboration, continuous delivery, and more.
+2. GitLab is a web-based Git repository manager with CI/CD, code review, and collaboration features.
+3. GitHub is a very popular web-based platform that allows developers to store, track changes, and collaborate on code.
 
 ## Start DevOps with Docker
 
@@ -270,3 +384,7 @@ TODO
 3. Automate a CI/CD pipeline on AWS for code deployment,testing and cloud management.
 4. Implement a version control system to manage code changes and ensure collaborations
 5. Automate Java app build and deployment with Gradle to streamline development and boost productivity.
+
+## Linux Foundation
+
+`The Linux Foundation` is the world’s leading home for collaboration on open source software, hardware, standards, and data. Linux Foundation projects are critical to the world’s infrastructure, including Linux, Kubernetes, Node.js, ONAP, PyTorch, RISC-V, SPDX, OpenChain, and more. The Linux Foundation focuses on leveraging best practices and addressing the needs of contributors, users, and solution providers to create sustainable models for open collaboration. The Linux Foundation has registered trademarks and uses trademarks.Linux is a registered trademark of Linus Torvalds.

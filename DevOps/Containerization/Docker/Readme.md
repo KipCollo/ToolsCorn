@@ -343,3 +343,15 @@ Containers:
 
 1. Application containers - Includes your code and Environments
 2. Utility containers - contains only environments that can be used in conjuction with the app.
+
+## Docker Engine
+
+Docker Engine, often simply referred to as Docker, is the heart of Docker technology, providing the necessary functionality to create and manage container lifecycle. Its architecture allows for seamless development, shipment, and running of applications in containers. Docker Engine is modular in nature and consists of many modules which help in container lifecycle management:
+
+1. Containerd - Docker uses containerd as its container runtime. Containerd is an industry-standard core container runtime that provides the basic functionality for container execution and management. It handles low-level container operations, such as container creation, execution, and deletion.
+2. runC - At the core of containerd is runC, which is the industry-standard container runtime. runC is responsible for spawning and running containers based on OCI (Open Container Initiative) specifications. It handles the container lifecycle, including creating and running containers from container images.
+3. libcontainer - Docker initially used libcontainer as its container execution library. However, with the development of containerd, libcontainer's functionality was incorporated into containerd.
+
+## Docker Client
+
+Docker client is a command-line tool that allows users to interact with the Docker daemon (Docker Engine). Users issue commands to the Docker client, which then communicates with the Docker daemon to perform actions like building, running, and managing containers.
