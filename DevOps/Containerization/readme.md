@@ -97,3 +97,17 @@ Kpack is a Kubernetes-native platform for building and updating container images
 Gvisor
 
 Gvisor is a user-space kernel, developed by Google, that provides an additional layer of isolation for containers. It enhances the security and isolation of containers without the performance overhead associated with traditional virtualization.
+
+Containers have seen a huge rejuvenation in the past three years. They provide a great way to package, ship, and run applications - that is the Docker motto, now provided by many tools.
+
+The developer experience has been boosted tremendously thanks to containers. Containers, and Docker specifically, have empowered developers with ease of building container images, simplicity of sharing images via registries, and providing a powerful user experience to manage containers. Now several tools, such as Buildah, Podman, containerd, and others allow for easy container creation and management.
+
+## Containerizing an Application
+
+To containerize an application, you begin by creating your application. Not all applications do well with containerization. The more stateless and transient the application, the better. Also, remove any environmental configuration, as those can be provided using other tools, like ConfigMaps and secrets. Develop the application until you have a single build artifact which can be deployed to multiple environments without needing to be changed, using decoupled configuration instead. Many legacy applications become a series of objects and artifacts, residing among multiple containers.
+
+The use of Docker had been the industry standard. Large companies like Red Hat are moving to other open source tools. While currently new, one may expect them to become the new standard.
+
+buildah is a tool that focuses on creating Open Container Initiative (OCI) images. It allows for creating images with and without a Dockerfile. It also does not require superuser privilege. A growing golang-based API allows for easy integration with other tools. 
+
+podman, a "pod manager" tool, allows for the life cycle management of a container, including creating, starting, stopping and updating. You could consider this a replacement for docker. Red Hat's goal was to replace all Docker functionality with podman, using the same syntax to minimize transition issues. Some places alias docker to actually run podman.

@@ -1,6 +1,6 @@
 # Kubernetes
 
-Kubernetes (k8s) is an open source container orchestration platform that automates deployment, scaling and management of containerized apps.It allows devs to focus on writing code while kubernetes handles underlying infrastructure. Uses declarative configuration files to specify apps and can automatically scale apps based on demands, handle failures and manage networking and storage
+`Kubernetes (k8s)` is an open source container orchestration platform that automates deployment, scaling and management of containerized apps.It allows devs to focus on writing code while kubernetes handles underlying infrastructure. Uses declarative configuration files to specify apps and can automatically scale apps based on demands, handle failures and manage networking and storage
 
 NOTE:- Kubernetes is Greek for pilot or helmsman (the person holding the ship’s steering wheel). People pronounce Kubernetes in a few different ways.
 Many pronounce it as Koo-ber-nay-tace, while others pronounce it more like Koo-ber-netties. No matter which form you use, people will understand what you mean.
@@ -614,81 +614,157 @@ It includes:-
 
 Here's a breakdown of Kubernetes' core functionalities:
 
-    Deployment: Kubernetes automates the deployment of containerized applications across a cluster of nodes.
-    Scaling: It automatically scales applications up or down based on demand, ensuring optimal resource utilization.
-    Load Balancing: Kubernetes evenly distributes traffic across different instances of your application, ensuring high availability and responsiveness.
-    Service Discovery: It enables applications to discover and communicate with each other, regardless of their location within the cluster.
-    Health Monitoring: Kubernetes monitors the health of your applications and automatically restarts them if they fail.
-    Security: Kubernetes provides a robust security framework for managing access control and protecting your applications.
-    Self-healing: Kubernetes restarts containers that fail, replaces containers, kills containers that don't respond to your user-defined health check, and doesn't advertise them to clients until they are ready to serve.
-    Horizontal scaling: Scale your application up and down with a simple command, with a UI, or automatically based on CPU usage.
+1.  Deployment: Kubernetes automates the deployment of containerized applications across a cluster of nodes.
+2.  Scaling: It automatically scales applications up or down based on demand, ensuring optimal resource utilization.
+3.  Load Balancing: Kubernetes evenly distributes traffic across different instances of your application, ensuring high availability and responsiveness.
+4.  Service Discovery: It enables applications to discover and communicate with each other, regardless of their location within the cluster.
+5.  Health Monitoring: Kubernetes monitors the health of your applications and automatically restarts them if they fail.
+6.  Security: Kubernetes provides a robust security framework for managing access control and protecting your applications.
+7.  Self-healing: Kubernetes restarts containers that fail, replaces containers, kills containers that don't respond to your user-defined health check, and doesn't advertise them to clients until they are ready to serve.
+8.  Horizontal scaling: Scale your application up and down with a simple command, with a UI, or automatically based on CPU usage.
 
 Here is a quick look back at Kubernetes' history:
 
-    2014: Kubernetes originates from Google's internal container management system, Borg.
-    2015: Kubernetes is open sourced under the Apache License 2.0.
-    2016: The Cloud Native Computing Foundation (CNCF) adopts Kubernetes as a graduated project.
-    2017: Kubernetes 1.0 is released, marking a significant milestone in its development.
-    2023: Kubernetes is the dominant container orchestration platform, used by millions of organizations worldwide.
+- 2014: Kubernetes originates from Google's internal container management system, Borg.
+- 2015: Kubernetes is open sourced under the Apache License 2.0.
+- 2016: The Cloud Native Computing Foundation (CNCF) adopts Kubernetes as a graduated project.
+- 2017: Kubernetes 1.0 is released, marking a significant milestone in its development.
+- 2023: Kubernetes is the dominant container orchestration platform, used by millions of organizations worldwide.
 
 There are several reasons why Kubernetes has become the leading container orchestration platform: 
 
-    Open source: Kubernetes is free to use and modify, allowing for customization and integration with various tools and technologies.
-    Scalable: Kubernetes can manage thousands of containers across multiple nodes, making it suitable for large-scale applications.
-    Flexible: Kubernetes supports a wide range of container runtimes and container images, offering flexibility in your application development.
-    Community-driven: Kubernetes has a large and active community of developers and users, providing invaluable support and resources.
-    Collaboration: DevOps emphasizes breaking down silos between development and operations teams, encouraging shared responsibilities and improved communication.
+1.  Open source: Kubernetes is free to use and modify, allowing for customization and integration with various tools and technologies.
+2.  Scalable: Kubernetes can manage thousands of containers across multiple nodes, making it suitable for large-scale applications.
+3.  Flexible: Kubernetes supports a wide range of container runtimes and container images, offering flexibility in your application development.
+4.  Community-driven: Kubernetes has a large and active community of developers and users, providing invaluable support and resources.
+5.  Collaboration: DevOps emphasizes breaking down silos between development and operations teams, encouraging shared responsibilities and improved communication.
 
-Key Components of Kubernetes
+## Key Components of Kubernetes
 
 Kubernetes is a powerful container orchestration platform that consists of several key components working together to manage and deploy containerized applications.
-Control Plane Node
 
-Control plane nodes in Kubernetes play a critical role in managing the cluster's state and configuration. They are responsible for making global decisions about the cluster (like scheduling), as well as detecting and responding to cluster events (like starting up a new pod when a deployment's replicas field is unsatisfied). Here are the key components of control plane nodes:
+`Control Plane Node` - Control plane nodes in Kubernetes play a critical role in managing the cluster's state and configuration. They are responsible for making global decisions about the cluster (like scheduling), as well as detecting and responding to cluster events (like starting up a new pod when a deployment's replicas field is unsatisfied). Here are the key components of control plane nodes:
 
-    API Server
-    Serves as the front end for the Kubernetes control plane. The API server is responsible for handling requests, validating them, and updating the corresponding objects in the cluster. It exposes the Kubernetes API.
-    Cluster Data Store – etcd
-    It’s the only stateful part of the cluster which persists the entire cluster configuration aka desired state and the current state of the cluster.
-    Controller Manager
-    Manages controllers that regulate the state of the cluster. Controllers are responsible for maintaining the desired state and handling tasks like node management, replication, and endpoints.
-    Scheduler
-    Assigns pods to nodes based on resource availability, constraints, and other policies. The scheduler makes decisions to ensure that the workload is evenly distributed across the cluster.
+1.  API Server - Serves as the front end for the Kubernetes control plane. The API server is responsible for handling requests, validating them, and updating the corresponding objects in the cluster. It exposes the Kubernetes API.
+2.  Cluster Data Store – etcd - It’s the only stateful part of the cluster which persists the entire cluster configuration aka desired state and the current state of the cluster.
+3.  Controller Manager - Manages controllers that regulate the state of the cluster. Controllers are responsible for maintaining the desired state and handling tasks like node management, replication, and endpoints.
+4. Scheduler - Assigns pods to nodes based on resource availability, constraints, and other policies. The scheduler makes decisions to ensure that the workload is evenly distributed across the cluster.
 
-Worker Node (Minion)
+The Kubernetes master runs various server and manager processes for the cluster. Among the components of the master node are the kube-apiserver, the kube-scheduler, and the etcd database. As the software has matured, new components have been created to handle dedicated needs, such as the cloud-controller-manager; it handles tasks once handled by the kube-controller-manager to interact with other tools, such as Rancher or DigitalOcean for third-party cluster management and reporting.
 
-Worker nodes in Kubernetes are the machines (physical or virtual) where your actual applications (containers) run. They are managed by the control plane and perform the requested, necessary workloads. Each worker node is a part of the Kubernetes cluster and has the necessary components to orchestrate and run applications. Here are the key components of a worker node:
+There are several add-ons which have become essential to a typical production cluster, such as DNS services. Others are third-party solutions where Kubernetes has not yet developed a local component, such as cluster-level logging and resource monitoring.
 
-    Kubelet
-    An agent running on each node that communicates with the control plane node's API server. It ensures that containers are running in a pod and reports back to the control plane about the node's status.
-    Container Runtime
-    Responsible for managing the entire container lifecycle on the node. Containerd is one of the leading container runtimes.
-    Kube Proxy
-    It is a Kubernetes agent installed on every node in the cluster. It is responsible for local cluster networking. It implements local IPTABLES or IPVS rules to handle routing and load-balancing of traffic on the Pod network. It monitors the changes that happen to Service objects and their endpoints. If changes occur, it translates them into actual network rules inside the node. Kube-Proxy is installed as an add-on during the installation process, usually created as a DaemonSet. 
+kube-apiserver
 
-Pod
+The kube-apiserver is central to the operation of the Kubernetes cluster.
 
-A pod is the smallest deployable unit in Kubernetes, representing a single instance of a running process in a cluster. Pods encapsulate one or more containers and share network and storage resources.
-ReplicaSet
+All calls, both internal and external traffic, are handled via this agent. All actions are accepted and validated by this agent, and it is the only agent which connects to the etcd database. As a result, it acts as a master process for the entire cluster, and acts as a frontend of the cluster's shared state. Each API call goes through three steps: authentication, authorization, and several admission controllers.
 
-Manages the lifecycle of pods and ensures that a specified number of replicas for a pod are running at all times. It can scale the number of pods up or down based on defined configurations.
-Deployment
+kube-scheduler
 
-Provides declarative updates to applications. Users define the desired state and the deployment controller changes the actual state to match the desired state, facilitating updates and rollbacks.
-Service
+The kube-scheduler uses an algorithm to determine which node will host a Pod of containers. The scheduler will try to view available resources (such as available CPU) to bind, and then assign the Pod based on availability and success. The scheduler uses pod-count by default, but complex configuration is often done if cluster-wide metrics are collected.
 
-Defines a set of pods and a policy to access them. A service allows communication between different sets of pods in the cluster, abstracting the underlying network details.
-Volume
+There are several ways you can affect the algorithm, or a custom scheduler could be used simultaneously instead. A Pod can also be assigned bind to a particular node in the pod spec, though the Pod may remain in a pending state if the node or other declared resource is unavailable.
 
-Manages storage and provides data persistence for containers. Volumes can be attached to pods, allowing data to persist across pod restarts.
-Namespace
+One of the first configurations referenced during creation is if the Pod can be deployed within the current quota restrictions. If so, then the taints and tolerations, and labels of the Pods are used along with those of the nodes to determine the proper placement. Some is done as an admission controller in the kube-apiserver, the rest is done by the chosen scheduler.
 
-Provides a way to divide cluster resources into multiple virtual clusters. Namespaces are useful for organizing and isolating resources within a cluster.
-ConfigMap and Secret
+etcd Database
 
-ConfigMaps and Secrets are used to manage configuration data and sensitive information (such as passwords or API keys) separately from the application code.
-Kubernetes Dashboard
+The state of the cluster, networking, and other persistent information is kept in an etcd database, or, more accurately, a b+tree key-value store. Rather than finding and changing an entry, values are always appended to the end. Previous copies of the data are then marked for future removal by a compaction process. It works with curl and other HTTP libraries, and provides reliable watch queries.
 
-A web-based UI for visually managing and monitoring the Kubernetes cluster. It provides a graphical representation of various resources and allows users to interact with the cluster.
+Simultaneous requests to update a particular value all travel via the kube-apiserver, which then passes along the request to etcd in a series. The first request would update the database. The second request would no longer have the same version number as found in the object, in which case the kube-apiserver would reply with an error 409 to the requester. There is no logic past that response on the server side, meaning the client needs to expect this and act upon the denial to update.
+
+There is a cp database along with possible followers. They communicate with each other on an ongoing basis to determine which will be master, and determine another in the event of failure. While very fast and potentially durable, there have been some hiccups with some features like whole cluster upgrades. The kubeadm cluster creation tool allows easy deployment of a multi-master cluster with stacked etcd or an external database cluster.
+
+Other Agents
+
+The kube-controller-manager is a core control loop daemon which interacts with the kube-apiserver to determine the state of the cluster. If the state does not match, the manager will contact the necessary controller to match the desired state. There are several controllers in use, such as endpoints, namespace, and replication. The full list has expanded as Kubernetes has matured.
+
+The cloud-controller-manager interacts with agents outside of the cloud. It handles tasks once handled by kube-controller-manager. This allows faster changes without altering the core Kubernetes control process. Each kubelet must use the --cloud-provider-external settings passed to the binary.
+
+`Worker Node (Minion)` - Worker nodes in Kubernetes are the machines (physical or virtual) where your actual applications (containers) run. They are managed by the control plane and perform the requested, necessary workloads. Each worker node is a part of the Kubernetes cluster and has the necessary components to orchestrate and run applications. Here are the key components of a worker node:
+
+1.  Kubelet - An agent running on each node that communicates with the control plane node's API server. It ensures that containers are running in a pod and reports back to the control plane about the node's status.
+2. Container Runtime - Responsible for managing the entire container lifecycle on the node. Containerd is one of the leading container runtimes.
+3. Kube Proxy - It is a Kubernetes agent installed on every node in the cluster. It is responsible for local cluster networking. It implements local IPTABLES or IPVS rules to handle routing and load-balancing of traffic on the Pod network. It monitors the changes that happen to Service objects and their endpoints. If changes occur, it translates them into actual network rules inside the node. Kube-Proxy is installed as an add-on during the installation process, usually created as a DaemonSet.
+
+All worker nodes run the kubelet and kube-proxy, as well as the container engine, such as containerd or cri-o. Other management daemons are deployed to watch these agents or provide services not yet included with Kubernetes.
+
+The kubelet interacts with the underlying container runtime also installed on all the nodes, and makes sure that the containers that need to run are actually running. The kubelet is the heavy lifter for changes and configuration on worker nodes ( a PodSpec is a JSON or YAML file that describes a pod). It will work to configure the local node until the specification has been met.
+
+Should a Pod require access to storage, Secrets or ConfigMaps, the kubelet will ensure access or creation. It also sends back status to the kube-apiserver for eventual persistence.
+
+The kube-proxy is in charge of managing the network connectivity to the containers. It does so through the use of iptables entries. It also has the userspace mode, in which it monitors Services and Endpoints using a random high-number port to proxy traffic. Use of ipvs can be enabled, with the expectation it will become the default, replacing iptables.
+
+Kubernetes does not have cluster-wide logging yet. Instead, another CNCF project is used, called Fluentd. When implemented, it provides a unified logging layer for the cluster, which filters, buffers, and routes messages.
+
+Cluster-wide metrics is not quite fully mature, so Prometheus is also often deployed to gather metrics from nodes and perhaps some applications.
+
+`Pod` - A pod is the smallest deployable unit in Kubernetes, representing a single instance of a running process in a cluster. Pods encapsulate one or more containers and share network and storage resources.Pods are the smallest deployable units of computing that you can create and manage in Kubernetes.
+
+A Pod (as in a pod of whales or pea pod) is a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers. A Pod's contents are always co-located and co-scheduled, and run in a shared context. A Pod models an application-specific "logical host": it contains one or more application containers which are relatively tightly coupled. In non-cloud contexts, applications executed on the same physical or virtual machine are analogous to cloud applications executed on the same logical host.
+
+`ReplicaSet` - Manages the lifecycle of pods and ensures that a specified number of replicas for a pod are running at all times. It can scale the number of pods up or down based on defined configurations.
+
+`Deployment`  - Provides declarative updates to applications. Users define the desired state and the deployment controller changes the actual state to match the desired state, facilitating updates and rollbacks.
+
+`Service` - Defines a set of pods and a policy to access them. A service allows communication between different sets of pods in the cluster, abstracting the underlying network details.
+
+`Volume` - Manages storage and provides data persistence for containers. Volumes can be attached to pods, allowing data to persist across pod restarts.
+
+`Namespace` - Provides a way to divide cluster resources into multiple virtual clusters. Namespaces are useful for organizing and isolating resources within a cluster.
+
+`ConfigMap and Secret` - ConfigMaps and Secrets are used to manage configuration data and sensitive information (such as passwords or API keys) separately from the application code.
+
+`Kubernetes Dashboard` - A web-based UI for visually managing and monitoring the Kubernetes cluster. It provides a graphical representation of various resources and allows users to interact with the cluster.
 
 Understanding the roles and interactions of these components is crucial for effectively deploying and managing containerized applications in a Kubernetes cluster.
+
+Kubernetes can be an integral part of Continuous Integration/Continuous Delivery (CI/CD), as it offers many of the necessary components.
+
+Continuous Integration - A consistent way to build and test software. Deploying new packages with code written each day, or every hour, instead of quarterly. Tools like Helm and Jenkins are often part of this with Kubernetes.
+Continuous Delivery - An automated way to test and deploy software into various environments. Kubernetes handles the lifecycle of containers and connection of infrastructure resources to make rolling updates and rollbacks easy, among other deployment schemes.
+
+Communication to, as well as internally, between components, is API call-driven, which allows for flexibility. Configuration information is stored in a JSON format, but is most often written in YAML. Kubernetes agents convert the YAML to JSON prior to persistence to the database.
+
+NOTE:
+Kubernetes is written in Go Language, a portable language which is like a hybridization between C++, Python, and Java. Some claim it incorporates the best (while some claim the worst) parts of each.
+
+In its simplest form, Kubernetes is made of one or more central managers (aka masters) and worker nodes (we will see in a follow-on chapter how you can actually run everything on a single node for testing purposes). The manager runs an API server, a scheduler, various operators and a datastore to keep the state of the cluster, container settings, and the networking configuration.
+
+Kubernetes exposes an API via the API server: you can communicate with the API using a local client called kubectl or you can write your own client. The kube-scheduler sees the API requests for running a new container and finds a suitable node to run that container. Each node in the cluster runs two components: kubelet and kube-proxy. The kubelet systemd service receives spec information for container configuration, downloads and manages any necessary resources and works with the container engine on the local node to ensure the container runs or is restarted upon failure. The kube-proxy pod creates and manages local firewall rules and networking configuration to expose containers on the network.
+
+## The Borg Heritage
+
+What primarily distinguishes Kubernetes from other systems is its heritage. Kubernetes is inspired by Borg - the internal system used by Google to manage its applications (e.g., Gmail, Apps, GCE). 
+
+With Google pouring the valuable lessons they learned from writing and operating Borg for over 15 years into Kubernetes, this makes Kubernetes a safe choice when having to decide on what system to use to manage containers. While a powerful tool, part of the current growth in Kubernetes is making it easier to work with and handle workloads not found in a Google data center.
+
+## The Twelve Factors
+
+These principles provide great guidance to build web applications that can scale easily, can be deployed in the cloud, and whose build is automated. Borg and Kubernetes address these principles as well.
+
+I. Codebase
+One codebase tracked in revision control, many deploys
+II. Dependencies
+Explicitly declare and isolate dependencies
+III. Config
+Store config in the environment
+IV. Backing services
+Treat backing services as attached resources
+V. Build, release, run
+Strictly separate build and run stages
+VI. Processes
+Execute the app as one or more stateless processes
+VII. Port binding
+Export services via port binding
+VIII. Concurrency
+Scale out via the process model
+IX. Disposability
+Maximize robustness with fast startup and graceful shutdown
+X. Dev/prod parity
+Keep development, staging, and production as similar as possible
+XI. Logs
+Treat logs as event streams
+XII. Admin processes
+Run admin/management tasks as one-off processes
