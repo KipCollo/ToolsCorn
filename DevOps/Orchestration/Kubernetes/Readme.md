@@ -647,7 +647,7 @@ Kubernetes is a powerful container orchestration platform that consists of sever
 
 1.  API Server - Serves as the front end for the Kubernetes control plane. The API server is responsible for handling requests, validating them, and updating the corresponding objects in the cluster. It exposes the Kubernetes API.
 2.  Cluster Data Store – etcd - It’s the only stateful part of the cluster which persists the entire cluster configuration aka desired state and the current state of the cluster.
-3.  Controller Manager - Manages controllers that regulate the state of the cluster. Controllers are responsible for maintaining the desired state and handling tasks like node management, replication, and endpoints.
+3.  Controller Manager - Manages controllers that regulate the state of the cluster. Controllers are responsible for maintaining the desired state and handling tasks like node management, replication, and endpoints.Has Node controller,Replication controller,Endpoints controller,Service Account & Token Controller.
 4. Scheduler - Assigns pods to nodes based on resource availability, constraints, and other policies. The scheduler makes decisions to ensure that the workload is evenly distributed across the cluster.
 
 The Kubernetes master runs various server and manager processes for the cluster. Among the components of the master node are the kube-apiserver, the kube-scheduler, and the etcd database. As the software has matured, new components have been created to handle dedicated needs, such as the cloud-controller-manager; it handles tasks once handled by the kube-controller-manager to interact with other tools, such as Rancher or DigitalOcean for third-party cluster management and reporting.
@@ -709,6 +709,8 @@ A Pod (as in a pod of whales or pea pod) is a group of one or more containers, w
 `Deployment`  - Provides declarative updates to applications. Users define the desired state and the deployment controller changes the actual state to match the desired state, facilitating updates and rollbacks.
 
 `Service` - Defines a set of pods and a policy to access them. A service allows communication between different sets of pods in the cluster, abstracting the underlying network details.
+
+`Ingress`  - Communication with pod outside i.e over internet.
 
 `Volume` - Manages storage and provides data persistence for containers. Volumes can be attached to pods, allowing data to persist across pod restarts.
 
