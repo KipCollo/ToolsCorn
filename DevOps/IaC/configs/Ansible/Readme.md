@@ -2,7 +2,22 @@
 
 Ansible is an open-source automation tool used for configuration management,application deployment,cloud provisioning,intra-service orchestration and task automation.When used as configuration management tool,it is used to store current state of our systems and help us maintain that state,makes changes and deployments faster,removing potential for human error.
 
+Ansible is another powerful configuration management tool. The uniqueness of Ansible compared to other management tools is that it is also used for deployment and
+orchestration. Ansible is especially developed to be simple, secure, reliable and easy to learn. It offers a variety of features for an expert user but it is equally accessible to less skilled users.
+
 `Configuration Management`:It is a process for maintaining computer systems,servers and software in desired consistent state.
+
+Ansible does not use agents, and no additional software should be installed on the remote servers in order to manage them. Ansible manages the remote machines by
+using the remote management frameworks that already exists natively on the OS, for instance, SSH for Linux and UNIX machines and WinRM for Windows machines. The absence of agents results in less resource consumption on the managed machines when Ansible is not operating on them. Ansible also improves security by functioning in a push-based model where the remote machines receive only the necessary parts of the code (called modules), and the remote machines cannot interact or interfere with the
+configuration of the other machines. These features made Ansible suitable for high
+security and high performance systems.
+
+In Ansible, the definition files to configure, automate and manage the IT infrastructure are called Playbooks. These files are written in YAML format and they describe how to perform an operation by clearly stating what should be done by each component of the infrastructure. Each Playbook consists of a list of plays that describe the automation process to a set of hosts, called the inventory. Each play includes several tasks that refer to a single host or a group of hosts in the inventory. Each task calls a module,which is a small piece of code that performs a specific job. The tasks vary from simple jobs to complex operations. Ansible can also enclose Playbook tasks into units known as roles. Ansible uses roles to apply commonly used configurations in several scenariosin a rapid and easy way.
+
+Ansible was developed in a way that facilitates extensibility. The user has always the possibility of extending the native 450+ Ansible modules by writing his own modules.The built-in modules are written in Python and PowerShell, but the user can use any programming language to develop new ones, with the only restriction that they have JSON as input format and produce JSON as output format. In addition, Ansible can be extended to support dynamic inventory, which allows the Playbooks to be executed on a group of machines and infrastructure that are not constant and statically defined, but can run a public or private cloud provider that supports the dynamic creation and deletion of the resources. Ansible supports most of the well-known cloud providers and can always be extended to support new providers by simply writing a custom program (in any programming language) that gives a JSON inventory definition as output.
+
+Ansible is an open source project promoted by Red Hat. The paid commercial version ofAnsible is called Red Hat Ansible Tower, and offers management to complex multi-tier
+deployments by adding control and technical support to Ansible supported systems.
 
 ## How Ansible Works
 

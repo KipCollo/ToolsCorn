@@ -50,30 +50,22 @@ By collecting and analyzing these three types of data, we can gain a deep unders
 
 An observability stack is a collection of tools and technologies that work together to provide insights into the health, performance, and behavior of your software systems. These insights help you identify and resolve issues quickly, optimize performance, and ensure a smooth user experience. A well-integrated observability stack is essential for maintaining high-performing and reliable systems in today's complex digital environments. It empowers teams with the insights needed to make informed decisions and maintain optimal operational efficiency.
 
-Data Collection
+`Data Collection`
 
-    Instrumentation
-    This involves adding code to your applications and infrastructure to collect telemetry data, including metrics, logs, and traces. Popular technologies include OpenTelemetry, Prometheus, and ELK Stack (Elasticsearch, Logstash, Kibana).
-    Agents
-    These are lightweight programs that run on your systems and collect data from various sources, such as applications, containers, and operating systems. Some popular agents include Datadog Agent, Fluentd, and Telegraf.
+Instrumentation - This involves adding code to your applications and infrastructure to collect telemetry data, including metrics, logs, and traces. Popular technologies include OpenTelemetry, Prometheus, and ELK Stack (Elasticsearch, Logstash, Kibana).
+Agents - These are lightweight programs that run on your systems and collect data from various sources, such as applications, containers, and operating systems. Some popular agents include Datadog Agent, Fluentd, and Telegraf.
 
-Data Storage and Management
+`Data Storage and Management`
 
-    Metric stores
-    These databases store and manage time-series metric data, allowing you to track and analyze historical trends. Popular choices include Prometheus, InfluxDB, and TimescaleDB.
-    Log aggregators
-    These systems collect, centralize, and store log data from various sources. Popular choices include Elasticsearch, Logstash, and Graylog.
-    Trace storage
-    Traces require specialized storage solutions due to their high volume and complex structure. Popular options include Jaeger, Zipkin, and Honeycomb.
+Metric stores - These databases store and manage time-series metric data, allowing you to track and analyze historical trends. Popular choices include Prometheus, InfluxDB, and TimescaleDB.
+Log aggregators - These systems collect, centralize, and store log data from various sources. Popular choices include Elasticsearch, Logstash, and Graylog.
+Trace storage - Traces require specialized storage solutions due to their high volume and complex structure. Popular options include Jaeger, Zipkin, and Honeycomb.
 
-Data Analysis and Visualization
+`Data Analysis and Visualization`
 
-    Dashboards and graphs
-    These tools help you visualize your data in a way that is easy to understand and analyze. Popular options include Grafana, Kibana, and Datadog dashboards.
-    Alerting and notification
-    These systems help you stay informed about critical events and incidents by sending alerts when predefined thresholds are breached. Popular choices include Prometheus Alertmanager, PagerDuty, and Slack integrations.
-    Analytics and troubleshooting tools
-    These tools help you analyze your data in depth to identify the root cause of problems and find solutions. Popular choices include Honeycomb, Datadog APM, and New Relic APM.
+Dashboards and graphs - These tools help you visualize your data in a way that is easy to understand and analyze. Popular options include Grafana, Kibana, and Datadog dashboards.
+Alerting and notification - These systems help you stay informed about critical events and incidents by sending alerts when predefined thresholds are breached. Popular choices include Prometheus Alertmanager, PagerDuty, and Slack integrations.
+Analytics and troubleshooting tools - These tools help you analyze your data in depth to identify the root cause of problems and find solutions. Popular choices include Honeycomb, Datadog APM, and New Relic APM.
 
 Additional Components
 

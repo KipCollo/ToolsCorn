@@ -19,8 +19,9 @@ Popular CI/CD tools include:
 4. Jenkins X
 5. Tekton CD
 6. ArgoCD
+7. Github Actions
 
-## Continuous Integration?
+## Continuous Integration
 
 Continuous Integration (CI) is a pivotal methodology in software development, reshaping the way teams collaborate and deliver high-quality code. At its core, CI involves the regular merging of code changes from multiple contributors into a shared repository. This iterative process serves as a proactive measure to identify and rectify integration issues at an early stage, fostering a development environment characterized by stability and efficiency.
 

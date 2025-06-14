@@ -65,3 +65,7 @@ Example: In Kubernetes, YAML manifests define resources like pods and services. 
 
 5. Parallel Execution - Parallel execution allows the tool to perform multiple operations simultaneously, enhancing speed and efficiency. Think of it as cooking a multi-course meal where different dishes are prepared concurrently for a faster dining experience.
 Example: In AWS CloudFormation, templates can define various resources. The tool analyzes dependencies and provisions independent resources concurrently, reducing the overall time needed to deploy the entire infrastructure.
+
+**Automation Tools** - There are two different categories of automation tools for setting up the infrastructure:- `provisioning tools` and `configuration tools`. Provisioning tools are used to specify and allocate the desired resources. These tools use the dynamic infrastructure platform to implement the allocation. Examples of these tools are Terraform, Openstack Heat and CloudFormation by Amazon. Configuration tools are used to configure and manage the already provisioned resources with the required dependencies and settings. There are plenty of available tools on this category, but the three most popular ones are Puppet, Chef and Ansible.
+
+The most popular vendor specific provisioning tools are CloudFormation for AWS, Cloud Deployment Manager for the Google Cloud Platform and Azure Resource Manager for Microsoft Azure Clouds.
