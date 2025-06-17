@@ -1,0 +1,6 @@
+const mats = require("./mats")
+const cust =require("./cust")
+console.log(mats(1,3))
+console.log(cust.PI)
+console.log(cust.sub(5,3))
+new cust.Calculate()

@@ -27,9 +27,18 @@ Terraform describes the infrastructure through the configuration files which are
 
 Terraform also provides execution plans, which describe the procedure that is followed in order to reach the desired state of the infrastructure. The execution plan first gives an overview of that happens by the time it is called and then Terraform actually sets up the infrastructure by executing this plan. In addition, Terraform is able to create a graph of the infrastructure resources by parallelizing the creation and modification of any non-dependent resource. The use of the execution plan combined with the produced resource graph provides more automation towards changes with less human involvement, as the user has more insight on the Terraform’s functionality, avoiding possible human errors.
 
-Terraform stores the state of the managed infrastructure in a local file called terraform.tfstate. This file can also be stored remotely which is useful when working in a
+Terraform stores the state of the managed infrastructure in a local file called `terraform.tfstate`. This file can also be stored remotely which is useful when working in a
 remotely distributed team. This local state is used to create the execution plans and make the necessary infrastructure changes. After each performed operation, Terraform
 refreshes the state in order to match the actual real time infrastructure.
+
+## Installation
+
+Using tfenv
+
+```bash
+tfenv install <version>
+tfenv use <version>
+```
 
 ## Projects
 
@@ -75,39 +84,6 @@ refreshes the state in order to match the actual real time infrastructure.
 - Step 35 - Update User Project to use AWS S3 Remote Backend
 - Step 36 - Creating multiple environments using Terraform Workspaces
 - Step 37 - Creating multiple environments using Terraform Modules
-
-## Commands Executed
-
-```bash
-brew install terraform
-terraform --version
-terraform version
-terraform init
-export AWS_ACCESS_KEY_ID=*******
-export AWS_SECRET_ACCESS_KEY=*********
-terraform plan
-terraform console
-terraform apply -refresh=false
-terraform plan -out iam.tfplan
-terraform apply "iam.tfplan"
-terraform apply -target="aws_iam_user.my_iam_user"
-terraform destroy
-terraform validate
-terraform fmt
-terraform show
-export TF_VAR_iam_user_name_prefix = FROM_ENV_VARIABLE_IAM_PREFIX
-export TF_VAR_iam_user_name_prefix=FROM_ENV_VARIABLE_IAM_PREFIX
-terraform plan -refresh=false -var="iam_user_name_prefix=VALUE_FROM_COMMAND_LINE"
-terraform apply -target=aws_default_vpc.default
-terraform apply -target=data.aws_subnet_ids.default_subnets
-terraform apply -target=data.aws_ami_ids.aws_linux_2_latest_ids
-terraform apply -target=data.aws_ami.aws_linux_2_latest
-terraform workspace show
-terraform workspace new prod-env
-terraform workspace select default
-terraform workspace list
-terraform workspace select prod-env
-```
 
 ## Infrastructure Design
 
@@ -191,3 +167,92 @@ The configuration of a cluster in Terraform is shown in Figure 14 and it include
 3. Master Nodes: Number of master nodes in the cluster
 4. Worker Nodes: Number of worker nodes in the cluster
 5. Keypair: Used for the secure communication between the cluster nodes (e.g., ssh key pair).
+
+
+## Files
+
+1. terraform.tf - Terraform provider configurations. i.e dependencies.
+2. main.tf - Resource definitions.
+3. variables.tf - Defines terraform variables we are using.
+
+```terraform.tf
+terraform {
+   required_providers {
+      aws = {
+         source = "hashicorp/aws"
+         version = "~> 4.66.0"
+      }
+      random = {
+         source = "hashicorp/random"
+         version = "~ 3.5.0"
+      }
+      archive = {
+         resource = "hashicorp/archive"
+         version = "~ 2.3.0"
+      }
+   }
+
+   required_version = "~> 1.4"
+}
+```
+
+```variable.tf
+variable "aws_region" {
+   description = "AWS region for all resources."
+
+   type = string
+   default = "us-east-1"
+}
+```
+
+```main.tf
+provider "aws" {
+   region = var.aws_region
+}
+
+data "aws_caller_identity" "current" {}
+
+resource "random_pot" "lambda_bucket_name" {
+   prefix = "dreamsofcode"
+   lenght = 4
+}
+
+resource "aws_s3_bucket" "resource_name"{
+   bucket = random_pet.lambda_bucket_name.id
+}
+```
+
+
+## Commands Executed
+
+```bash
+brew install terraform
+terraform --version
+terraform version
+terraform init # Downloads providers
+export AWS_ACCESS_KEY_ID=*******
+export AWS_SECRET_ACCESS_KEY=*********
+terraform plan
+terraform console
+terraform apply -refresh=false
+terraform plan -out iam.tfplan
+terraform apply "iam.tfplan"
+terraform apply -target="aws_iam_user.my_iam_user"
+terraform destroy
+terraform validate
+terraform fmt
+terraform show
+export TF_VAR_iam_user_name_prefix = FROM_ENV_VARIABLE_IAM_PREFIX
+export TF_VAR_iam_user_name_prefix=FROM_ENV_VARIABLE_IAM_PREFIX
+terraform plan -refresh=false -var="iam_user_name_prefix=VALUE_FROM_COMMAND_LINE"
+terraform apply -target=aws_default_vpc.default
+terraform apply -target=data.aws_subnet_ids.default_subnets
+terraform apply -target=data.aws_ami_ids.aws_linux_2_latest_ids
+terraform apply -target=data.aws_ami.aws_linux_2_latest
+terraform workspace show
+terraform workspace new prod-env
+terraform workspace select default
+terraform workspace list
+terraform workspace select prod-env
+terraform state show <name> # shows the random generated values.
+```

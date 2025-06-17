@@ -95,6 +95,7 @@ Ansible uses /etc/ansible/hosts as the default location for the inventory file.
 
 ## Playbooks
 
+A play
 A playbook is the term that Ansible uses for a configuration management script.The ansible-playbook command executes playbooks. To run the playbook, do:
 
 ```bash
@@ -102,6 +103,34 @@ ansible-playbook web-notls.yml
 ```
 
 Ansible playbooks are written in YAML syntax. YAML is a file format similar in intent to JSON, but generally easier for humans to read and write.
+Executes modules in a sequence.
+
+
+```yaml
+# Create a jenkins job
+- hosts: webservers
+  remote_user: root
+- jenkins_jon:
+  config: "{{ lookup('file`, 'templates/test.xml')}}"
+  name: test
+  password: admin
+  url: http://localhost:8080
+  user: admin
+```
+
+```yaml
+- hosts: database
+  remote_user: root
+
+- name: create table
+  postgesql_table:
+    table: user
+
+- name: set ownership 
+  postgresql_table:
+    name: user
+    owner: dev
+```
 
 ## Inventory
 
@@ -114,11 +143,20 @@ There is one host that Ansible automatically adds to the inventory by default: l
 Although Ansible adds the localhost to your inventory automatically, you have to have at least one other host in your inventory file;otherwise, ansible-playbook will terminate with the error: `ERROR: provided hosts list is empty`
 In the case where you have no other hosts in your inventory file,you can explicitly add an entry for localhost like this:`localhost ansible_connection=local`.
 
+```yaml
+10.24.0.100
+
+[webservers]
+10.24.0.1
+10.24.0.2
+
+[database]
+10.24.0.7
+10.24.0.8
+```
+
 - ansible_connection
-Ansible supports multiple transports, which are mechanisms that Ansible uses to con‐
-nect to the host. The default transport, smart, will check to see if the locally installed
-SSH client supports a feature called ControlPersist. If the SSH client supports Control‐
-Persist, Ansible will use the local SSH client. If the SSH client doesn’t support
+Ansible supports multiple transports, which are mechanisms that Ansible uses to connect to the host. The default transport, smart, will check to see if the locally installed SSH client supports a feature called ControlPersist. If the SSH client supports Control‐Persist, Ansible will use the local SSH client. If the SSH client doesn’t support
 
 ## Step By Step Details
 
@@ -221,3 +259,5 @@ ansible-playbook playbooks/08-dynamic-inventory-ping.yml
 ansible-playbook playbooks/09-create-ec2.yml 
 
 ```
+
+Ansible Tower - UI dashboard.

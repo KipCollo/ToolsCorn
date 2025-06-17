@@ -111,3 +111,17 @@ A database management system provides three views of the database data:
 1. The external level defines how each group of end-users sees the organization of data in the database. A single database can have any number of views at the external level.
 2. The conceptual level (or logical level) unifies the various external views into a compatible global view.[39] It provides the synthesis of all the external views. It is out of the scope of the various database end-users, and is rather of interest to database application developers and database administrators.
 3. The internal level (or physical level) is the internal organization of data inside a DBMS. It is concerned with cost, performance, scalability and other operational matters. It deals with storage layout of the data, using storage structures such as indexes to enhance performance. Occasionally it stores data of individual views (materialized views), computed from generic data, if performance justification exists for such redundancy. It balances all the external views' performance requirements, possibly conflicting, in an attempt to optimize overall performance across all activities.
+
+## CAP Theorem
+
+Includes:- Consistency,Availability and Partition Tolerance
+
+1. CP - MongoDB,HBase,Redis
+2. C - RDBMS
+3. CA - Neo4j
+4. AP - CouchDB,Cassandra,DynamoDB
+
+## Data consistency Models
+
+1. ACID(relational) - Atomic,Consistent,isolated,Durable
+2. BASE(NoSQL) - Basic availability,Soft state,Eventual consistency
