@@ -35,3 +35,27 @@ cust.add(2,9)
 cust.PI;
 new cust.MathsObj();
 ```
+
+
+```js
+const sub =(num1,num2)=> num1 - num2
+const PI= 3.14;
+class Calculate{
+   constructor(){
+      console.log("Calculate obj....")
+   }
+}
+
+module.exports.sub =sub;
+module.exports.PI=PI
+module.exports.Calculate = Calculate;
+```
+
+```js
+const mats = require("./mats")
+const cust =require("./cust")
+console.log(mats(1,3))
+console.log(cust.PI)
+console.log(cust.sub(5,3))
+new cust.Calculate()
+```

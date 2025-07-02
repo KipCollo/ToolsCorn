@@ -1,0 +1,13 @@
+{
+   "workbench.editor.autoLockGroups": {
+      "default": true,
+      "jsProfileVisualizer.cpuprofile.table": true,
+      "jupyter-notebook": true,
+      "repl": true,
+      "mainThreadWebview-markdown.preview": true
+   },
+   "zenMode.centerLayout": true,
+   "workbench.colorTheme": "Default Dark Modern",
+   "workbench.settings.editor": "json",
+   "workbench.iconTheme": "a-file-icon-vscode"
+}

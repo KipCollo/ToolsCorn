@@ -18,16 +18,12 @@ Docker provides tooling and a platform to manage the lifecycle of your container
 
 ## Steps
 
-- Step 01 - Docker and DevOps - Installation and Introduction
 - Step 02 - Your First Docker Use-case
 - Step 03 - Important Docker Concepts - Registry, Repository, Tag, Image and Container
 - Step 04 - Playing with Docker Images - Java, JavaScript and Python
 - Step 05 - Playing with Docker - Detached Mode and Logs
-- Step 06 - Playing with Docker Images and Containers
 - Step 07 - Understanding Docker Architecture - Docker Client, Docker Engine
 - Step 08 - Understanding Docker Popularity - My 3 Top Reasons
-- Step 09 - Learning Docker Images - Commands
-- Step 10 - Learning Docker Containers - Commands
 - Step 11 - Learning Docker Commands - system and stats
 - Step 12 - Building Docker Images for Python Application
 - Step 13 - Understanding creation of Docker Images in Depth

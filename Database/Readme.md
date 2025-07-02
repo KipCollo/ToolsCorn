@@ -125,3 +125,30 @@ Includes:- Consistency,Availability and Partition Tolerance
 
 1. ACID(relational) - Atomic,Consistent,isolated,Durable
 2. BASE(NoSQL) - Basic availability,Soft state,Eventual consistency
+
+# Relational Database
+
+They are structured,reliable and consistent.
+
+Includes:-
+
+1. Microsoft SQL Server
+2. mySQL
+3. postgreSQL
+
+Stregths:-
+
+1. Reliable
+2. Consistent
+3. Excellent integrity.
+
+Suited for business transactions.
+
+## Types
+
+1. Relational - Structured tables,Data integrity,complex queries,ACID compliance,security control,foreign keys.
+2. Document - JSON document,Flexible schema,varying structure,seni-structured data,content management,Automated sharding.Includes MongoDB,CouchDB,Firebase
+3. In-memory - Real-time data,low latency,data caching,gaming applications,high-speed processing.Includes Redis,Hazelcast,Memcache,Apache geode
+4. Graph - complex relationships,graph structures,transversal social networks,pattern recognition,Knowledge graphs.Includes - neo4j, arangoDB,OrientDB community edition,JanusGraph
+5. Time-series - Temporal data,fast data retrieval,IoT data,Monitoring logs,Trend analysis,Data compression.Includes- Timescale,open tsdb,timescale,kx
+6. Spatial - Geographic data,location-based queries,Maps and GIS,Spatial indexing,Earth science,Geospatial apps.Includes - Oracle,PostGIS,geomesa,Amazon aurora.

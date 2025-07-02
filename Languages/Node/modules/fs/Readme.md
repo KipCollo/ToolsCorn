@@ -25,3 +25,16 @@ The `__dirname` in a node script returns the path of the folder where the curren
 ## \_\_filename
 
 The `__filename` in Node.js returns the filename of the executed code. It gives the absolute path of the code file. The following approach covers implementing `__filename` in the Node.js project.
+
+```js
+const os = require('node:fs')
+
+var cpu = os.readdirSync('../')
+console.log(cpu)
+
+var cpu = os.readdir('../',function(err,files)){
+   if(err) console.log('Error', err);
+   else console.log('Result', files);
+}
+console.log(cpu)
+```

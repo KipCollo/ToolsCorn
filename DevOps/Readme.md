@@ -94,15 +94,6 @@ Devops tools includes:-
 7. Test: Soap UI,Jest,JUnit,Appium
 8. Build: AWS CodeBuild,Gradle,Apache Maven
 
-`Puppet`:- It allows delivery and release of technology changes quickly and frequently.Has features of versioning,automated testing and continuous delivery.It enables to manage entire infrastructure as code without expanding size of the team.
-
-Puppet is a tool that helps you manage and automate the configuration of servers.Puppet is made up of several packages, which you use to manage, store and run your Puppet code. These packages include puppetserver, puppetdb, and puppet-agent — which includes Facter and Hiera.
-
-`Ansible`:- It is an open source tool that automates application deployment,cloud provisioning,intra service orchestration and other IT tools.
-
-`Docker`:- It is a DevOps tool that allows building,shipping and run distributed applications on multiple systems.
-
-`Nagios`:- It determines the errors and rectify them with help of network,infrastructure,server and log monitoring systems.
 
 `Version Control`:-
 
@@ -122,6 +113,9 @@ Puppet is a tool that helps you manage and automate the configuration of servers
 1. Ansible is an open source automation tool that simplifies configuration management, application deployment, and task automation.
 2. Chef enables infrastructure automation and configuration management using reusable scripts called recipes.
 3. Puppet is a configuration management tool for automating the provisioning and management of infrastructure.
+Puppet It allows delivery and release of technology changes quickly and frequently.Has features of versioning,automated testing and continuous delivery.It enables to manage entire infrastructure as code without expanding size of the team.
+Puppet is a tool that helps you manage and automate the configuration of servers.Puppet is made up of several packages, which you use to manage, store and run your Puppet code. These packages include puppetserver, puppetdb, and puppet-agent — which includes Facter and Hiera.
+
 
 `Containerization and Orchestration`:-
 
@@ -164,6 +158,9 @@ Puppet is a tool that helps you manage and automate the configuration of servers
 1. Bitbucket is a Git repository management solution with features for code collaboration, continuous delivery, and more.
 2. GitLab is a web-based Git repository manager with CI/CD, code review, and collaboration features.
 3. GitHub is a very popular web-based platform that allows developers to store, track changes, and collaborate on code.
+
+`Nagios`:- It determines the errors and rectify them with help of network,infrastructure,server and log monitoring systems.
+
 
 ## Start DevOps with Docker
 
@@ -389,7 +386,7 @@ TODO
 
 `The Linux Foundation` is the world’s leading home for collaboration on open source software, hardware, standards, and data. Linux Foundation projects are critical to the world’s infrastructure, including Linux, Kubernetes, Node.js, ONAP, PyTorch, RISC-V, SPDX, OpenChain, and more. The Linux Foundation focuses on leveraging best practices and addressing the needs of contributors, users, and solution providers to create sustainable models for open collaboration. The Linux Foundation has registered trademarks and uses trademarks.Linux is a registered trademark of Linus Torvalds.
 
-## Site Reliability Engineering (SRE)?
+## Site Reliability Engineering (SRE)
 
 Site Reliability Engineering (SRE) is an approach to running large-scale, reliable services. Google is widely credited with formalizing and popularizing the term "SRE" and has since been adopted by many other tech companies. SRE blends aspects of software engineering with traditional IT and focuses on creating scalable and highly reliable software systems. The primary focus of SRE is to improve the reliability of services. Reliability is often measured through service level indicators (SLIs), service level objectives (SLOs), and service level agreements (SLAs). These metrics help define the performance and availability levels expected from a service.
 

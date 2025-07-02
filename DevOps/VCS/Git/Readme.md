@@ -180,3 +180,14 @@ Git is a command line tool,but there are soma visualizations such as:
 
 1. GitKraken
 2. VSCode i.e git history,git history
+
+## Roadmaps
+
+`Fundamental`:- Git init,Git clone,Git status,Git add,Git commit,git log,git config,.gitignore.
+`Branches`:- Git branch,git checkout,git switch,git merge,merge conflicts and resolving,git branch strategies.
+`Remote repositories`:- Git remote add origin,git push,git pull,git fetch,git remote -V,tracking remote branches.
+`undoing changes`:- git reset(soft,mixed,hard),git revert,git checkout,git restore.
+`advanced`:- rebase,interactive rebase,stash,cherry-pick,tagging
+`collaborative workflows`:- forking and pull requests,rebasing and merging,squash commits,handling merge conflicts during PRs.
+`Git internals`:- .git folder,Object models(blobs,Trees,Commits),SHA1 hosting,Detached HEAD.
+`GUI Tools and Git Hosting`:- GitHub Desktop,GitKraken,GitHub actions,GitHub issues

@@ -15,6 +15,21 @@ Advantages of flutter include:-
 The Flutter framework is organized into a series of layers.Each layer is built upon the previous layer.The upper layer is more frequently used thgan the lower layers.
 
 You can compose the ready-made widgets Flutter provoides, or create your custom widgets using same tools and techniques that flutter Team uses to build the framework.
+Flutter is special in that it makes it truly possible to “write once, and deploy everywhere.” As of this writing, Flutter apps will deploy to Android, iOS, and ChromeOS. In the near future, Flutter apps will also run as web apps and desktop apps on all major operating systems.
+
+It’s a platform that provides everything you need to build applications: rendering engine, UI components, testing frameworks, tooling, router, and many more features
+Flutter apps are written in the programming language called Dart.Dart is also owned and maintained by Google.
+
+**Why does Flutter use Dart**:-
+
+1. Dart supports both just-in-time (JIT) compiling and ahead-of-time (AOT) compiling:
+   - The AOT compiler changes Dart into efficient native code. This makes Flutter fast (a win for the user and the developer), but it also means that (nearly) the entire framework is written in Dart. For you, the developer, that means you can customize almost everything.
+   - Dart’s optional JIT compiling allows hot reloading to exist. Fast development and iteration is a key to the joy of using Flutter.
+2. Dart is object-oriented. This makes it easy to write visual user experiences with Dart, with no need for a markup language.
+3. Dart is a productive, predictable language. It’s easy to learn, and it feels familiar.Whether you come from a dynamic language or a static language, you can get up and running with ease.
+
+
+At a high level, Flutter is a reactive, declarative, and composable view-layer library, much like ReactJS on the web (but more like React mixed with the browser, because Flutter is a complete rendering engine as well). In a nutshell, you build a mobile UI by composing together a bunch of smaller components called widgets. Everything is a widget, and widgets are just Dart classes that know how to describe their view. Structure is defined with widgets, styles are defined with widgets, and so are animations and anything else you can think of that makes up a UI.
 
 ## Hot Reload
 

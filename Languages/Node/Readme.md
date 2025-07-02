@@ -55,3 +55,13 @@ network), the thread doesn’t wait (or block) for the result of the operation. 
 - This architecture makes Node ideal for building I/O-intensive applications.
 - You should avoid using Node for CPU-intensive applications, such as a video encoding service. Because while executing these operations, other clients have to wait for the single thread to finish its job and be ready to serve them.
 - In Node, we don’t have browser environment objects such as window or the document object. Instead, we have other objects that are not available in browsers, such as objects for working with the file system, network, operating system, etc.
+
+## Keep App Running
+
+In Node.js, you need to restart the process to make changes take effect. This adds an extra step to your workflow. You can eliminate this extra step by using `nodemon` to restart the process automatically.
+
+Since Node.js 18.11.0, you can run Node with the `--watch` flag to reload your app everytime a file is changed. So you don't need to use `nodemon` anymore.
+
+**Nodemon** - In Node.js, you need to restart the process to make changes take effect. This adds an extra step to your workflow. You can eliminate this extra step by using [nodemon](https://nodemon.io/) or [PM2](https://pm2.keymetrics.io/docs/usage/quick-start/) to restart the process automatically.
+
+`nodemon` is a command-line interface (CLI) utility developed by [@rem](https://twitter.com/rem) that wraps your Node app, watches the file system, and automatically restarts the process.

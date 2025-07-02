@@ -190,6 +190,8 @@ AWS service categories includes:-
 49. AWS Snowball
 50. Amazon ElastiCache
 
+`AWS compute`
+
 ## Identity and Access Management
 
 AWS Identity and Access Management (IAM) service:- AWS IAM is an authentication and authorization service that enables you to decide who or what can access the AWS services in your account (known as authentication), and what these entities are permitted to do in your account (known as authorization).
