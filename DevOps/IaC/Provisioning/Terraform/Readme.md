@@ -34,6 +34,30 @@ Terraform stores the state of the managed infrastructure in a local file called 
 remotely distributed team. This local state is used to create the execution plans and make the necessary infrastructure changes. After each performed operation, Terraform
 refreshes the state in order to match the actual real time infrastructure.
 
+Terraform is an infrastructure provisioning tool, not a CM tool. Provisioning tools
+deploy and manage infrastructure, whereas CM tools like Ansible, Puppet, SaltStack,
+and Chef deploy software onto existing servers. Some CM tools can also perform a
+degree of infrastructure provisioning, but not as well as Terraform, because this isn’t
+the task they were originally designed to do.
+The difference between CM and provisioning tools is a matter of philosophy. CM
+tools favor mutable infrastructure, whereas Terraform and other provisioning tools
+favor immutable infrastructure.
+Mutable infrastructure means you perform software updates on existing servers.
+Immutable infrastructure, by contrast, doesn’t care about existing servers—it treats infra-
+structure as a disposable commodity. The difference between the two paradigms can
+be summarized as a reusable versus disposable mentality.
+
+The main reason Terraform is so easy to use is that the code is written in a domain-
+specific configuration language called HashiCorp Configuration Language (HCL). It’s a
+language invented by HashiCorp as a substitute for more verbose configuration lan-
+guages like JSON and XML. HCL attempts to strike a balance between human and
+machine readability and was influenced by earlier attempts in the field, such as libucl
+and Nginx configuration. HCL is fully compatible with JSON, which means HCL can
+be converted 1:1 to JSON and vice versa. This makes it easy to interoperate with sys-
+tems outside of Terraform or generate configuration code on the fly.
+
+Terraform allows us to automate and manage infrastructure,platform and services that run on that platform.
+
 ## Installation
 
 Using tfenv
@@ -308,6 +332,21 @@ The Terraform Registry is a centralized repository for discovering, sharing, and
 
 `Terraform Registry` - It stores providers of publicly available.
 
+## Terraform Resources
+
+A resource is the fundamental building block of Terraform. It represents the infrastructure components that Terraform manages. Examples of resources include virtual machines, databases,storage buckets, and load balancers.
+Resources are defined in resource blocks within the configuration files. Each resource block specifies the type of resource to be managed, the provider that will manage it, and the configuration for that resource.
+
+To define a resource in Terraform, you use the resource block, which has the following format:-
+
+resource "<PROVIDER>_<RESOURCE_TYPE>" "<RESOURCE_NAME>" {
+ <CONFIGURATION>
+}
+
+- <PROVIDER>:- The cloud provider that manages the resource (e.g., aws, azurerm, google).
+- <RESOURCE_TYPE>:- The type of resource being managed (e.g., instance, bucket, vpc).
+- <RESOURCE_NAME>:- A user-defined name for the resource within Terraform.How Terraform identifies the resource in its internal state.
+- <CONFIGURATION>:- A set of arguments that specify how the resource should be configured.
 
 ## Terraform syntax(HCL)
 
@@ -316,3 +355,55 @@ HCL, or HashiCorp Configuration Language, is a human-readable language for DevOp
 
 Terraform configurations can be either in the native Terraform Language syntax(.tf) or in JSON comatible format(.tf.json).Both are defined in terms of a specification called HCL(Hashicorp Configuration Language).
 
+## Terraform modules
+
+Modules are self-contained packages of code that allow you to create reusable components by grouping related resources together.Modules are useful tools for promoting software abstraction and code reuse.
+
+The syntax for module declarations is:-
+
+```tf
+module "lb_sg"{
+   source = "terraform/sg/aws"
+   version = "1.0.0"
+
+   vpc_id = module.vpc.vpc_id
+   ingress_rules = [{
+      port = 80
+      cidr_blocks = ["0.0.0.0/0"]
+   }]
+}
+```
+
+## Terraform State Management
+
+Terraform uses a `state file` (terraform.tfstate) to keep track of the resources it manages. This state file serves as a snapshot of your infrastructure's current configuration, allowing Terraform to know what resources it has created, updated, or destroyed.
+
+Without state, Terraform would have to query your cloud provider’s API every time to check the current status of resources. Instead, the state file allows Terraform to incrementally manage resources by comparing the current infrastructure state (stored in the state file) with the desired configuration (defined in .tf files).
+when you run terraform apply, Terraform reads the state file to determine:
+
+1. What resources exist.
+2. Which resources need to be created, modified, or destroyed.
+
+## Security and secrets management
+
+Terraform is an infrastructure provisioning technology and therefore handles a lot of secrets.
+Secrets like database passwords, personal identification information (PII), and encryption keys may all be consumed and managed by Terraform. Worse, many of these secrets appear as plaintext, either in Terraform state or in log files.
+Secrets management is about keeping your secret information secret. Best practices for secrets management with Terraform, include the
+following:
+
+- `Securing state files`:- Sensitive information will inevitably find its way into Terraform state pretty much no matter what you do.Terraform is fundamentally a state-management tool, so to perform basic execution tasks like drift detection, it needs to compare previous state with current state.
+Terraform does not treat attributes containing sensitive data any differently than it treats non-sensitive attributes. Therefore, any and all sensitive data is put in the state file, which is stored as plaintext JSON. Because you can’t prevent secrets from making their way into Terraform state, it’s imperative that you treat the state file as sensitive and secure it accordingly.
+Methods for securing state files:
+   1. Removing unnecessary secrets from Terraform state
+   2. Least-privileged access control
+   3. Encryption at rest.
+
+- `Securing logs`
+
+- `Managing static secrets`:- Static secrets are sensitive values that do not change, or at least do not change often.
+Most secrets can be classified as static secrets. Things like username and passwords, long-lived oAuth tokens, and config files containing credentials are all examples of static secrets.
+
+There are two major ways to pass static secrets into Terraform: as environment variables and as Terraform variables.
+
+- `Dynamic just-in-time secrets`
+- `Enforcing “policy as code” with Sentinel`

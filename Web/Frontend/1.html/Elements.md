@@ -1,0 +1,71 @@
+# HTML Elements
+
+HTML Elements includes the tags and the contents in the tags.
+
+
+`Heading Element`:- HTML headings are titles or subtitles that you want to display on a webpage.
+HTML headings are defined with the <h1> to <h6> tags.<h1> defines the most important heading. <h6> defines the least important heading.
+
+```html
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6> 
+```
+
+Note: Browsers automatically add some white space (a margin) before and after a heading.
+Search engines use the headings to index the structure and content of your web pages.Users often skim a page by its headings. It is important to use headings to show the document structure.
+
+Each HTML heading has a default size. However, you can specify the size for any heading with the style attribute, using the CSS font-size property:
+
+```html
+ <h1 style="font-size:60px;">Heading 1</h1>
+```
+
+`Paragraph Element`:- A paragraph always starts on a new line, and browsers automatically add some white space (a margin) before and after a paragraph.The HTML <p> element defines a paragraph.
+
+```html
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p> 
+```
+
+HTML Display - You cannot be sure how HTML will be displayed.Large or small screens, and resized windows will create different results.With HTML, you cannot change the display by adding extra spaces or extra lines in your HTML code.The browser will automatically remove any extra spaces and lines when the page is displayed:
+
+```html
+<p>
+This paragraph
+contains a lot of lines
+in the source code,
+but the browser
+ignores it.
+</p>
+
+<p>
+This paragraph
+contains         a lot of spaces
+in the source         code,
+but the        browser
+ignores it.
+</p> 
+```
+
+`Void Elements`:- They are elements where you are forbidden from putting any content inside the tag.Includes <hr /> and <br />
+
+- HTML Horizontal Rules:- The <hr> tag defines a thematic break in an HTML page, and is most often displayed as a horizontal rule.The <hr> element is used to separate content (or define a change) in an HTML page:
+
+```html
+<h1>This is heading 1</h1>
+<p>This is some text.</p>
+<hr>
+<h2>This is heading 2</h2>
+<p>This is some other text.</p>
+<hr> 
+```
+
+- HTML Line Breaks:- The HTML <br> element defines a line break.Use <br> if you want a line break (a new line) without starting a new paragraph:
+
+```html
+<p>This is<br>a paragraph<br>with line breaks.</p>
+```

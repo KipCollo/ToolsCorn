@@ -1,0 +1,33 @@
+# HTML Links
+
+A link is the “address” to a document (or a resource) located on the World Wide Web or elsewhere within your own Web server.
+
+```html
+<p>
+<a href="lastpage.htm">This text</a> is a link to a page on this Web site.
+</p>
+<p>
+<a href="http://www.microsoft.com/">This text</a> is a link to a page on the World Wide Web.
+</p>
+```
+
+`Open a Link in a New Browser Window`:- The target attribute enables you to control how the browser responds when you click on the link.
+
+```html
+<a href="lastpage.htm" target="_blank">Last Page</a>
+```
+
+In Web terms, a hyperlink is a reference (an address) to a resource on the Web.Hyperlinks can point to any resource on the Web: an HTML page, an image, a
+sound file, a movie, and so on.
+An HTML anchor is a term used to define a hyperlink destination inside a document.The anchor element <a> defines both hyperlinks and anchors.
+
+NOTE:- We will use the term HTML link when the <a> element points to a resource, and the term HTML anchor when the <a> elements defines an address
+inside a document.
+
+The start tag contains attributes about the link.
+<a href="url">Link text</a>
+
+The element content (Link text) defines the part to be displayed. The element content doesn’t have to be text. You can link from an image or any other HTML element.
+
+href Attribute - The href attribute defines the link “address”.
+The target attribute - defines where the linked document will be opened.

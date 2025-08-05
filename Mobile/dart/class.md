@@ -25,3 +25,30 @@ class Car {
    String get getType => type//getter
 }
 ```
+
+## constructors
+
+`Constructors` are special functions that create instances of classes.
+Dart implements many types of constructors. Except for default constructors, these functions use the same name as their class.
+
+1. Generative constructors - Creates new instances and initializes instance variables.
+2. Default constructors - Used to create a new instance when a constructor hasn't been specified. It doesn't take arguments and isn't named.
+3. Named constructors - Clarifies the purpose of a constructor or allows the creation of multiple constructors for the same class.
+4. Constant constructors - Creates instances as compile-time constants.
+5. Factory constructors - Either creates a new instance of a subtype or returns an existing instance from cache.
+6. Redirecting constructor - Forwards calls to another constructor in the same class.
+
+`Generative constructors`:- To instantiate a class, use a generative constructor.
+
+```dart
+class Person{
+   //Instance variables
+   string name;
+   int age;
+
+   //Generative constructor with initializing formal parameters
+   Person(this.name,this.age);
+}
+```
+
+`Default constructors`:- If you don't declare a constructor, Dart uses the default constructor. The default constructor is a generative constructor without arguments or name.
