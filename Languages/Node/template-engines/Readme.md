@@ -10,6 +10,7 @@ Some examples of template engines in Node.js are:
 - EJS
 - Handlebars
 - HAML
+- Pug
 
 ## Template Engines
 

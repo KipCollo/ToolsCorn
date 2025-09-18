@@ -8,13 +8,42 @@ Flutter widgets are built using a modern framework that takes inspiration from R
 
 Row and Column are classes that contain and layout widgets.Widgets inside of a Row or Column are called children,and Row and Column widgets are referred to as parents.Row lays out widgets horizontally,and Column lays out its widgets vertically.
 
+## Stateful and Stateless Widgets
+
+`A stateful widget` is dynamic: for example, it can change its appearance in response to events triggered by user interactions or when it receives data. Checkbox, Radio, Slider, InkWell, Form, and TextField are examples of stateful widgets.
+
+
+`Stateless widgets` in Flutter are widgets that don't maintain any mutable state. They are designed to be immutable and rebuild each time the framework needs to update the UI. They are suitable for static, unchanging views or simple animations. They can be created using the StatelessWidget class and have a single build method that returns a widget tree.It never changes.Includes:- Icon,IconButton anmd Text.Stateless widgets subclass StatelessWidget.
+
+A widget's state is stored in a State object,separating the widget's state from its appearance.The state consists of values that can change.When the widget's state changes,the state object calls setState(),telling framework to redraw the widget.
+
+To create a Stateful widget,you should create two classes, a class of StatefulWidget and a class of State.The state class contains the widget mutable state and the widget build() method.When the widget's state changes,the state object calls setState(), telling the framework to redraw the widget.
+
+## Styled Widgets
+
+`Styled Widgets` are Flutter widgets that are decorated with custom styles, such as colors, fonts, and shapes. They can be created by wrapping existing widgets with other widgets, such as Container, Theme, or BoxDecoration.
+
+
+`Cupertino widgets` are a set of Flutter widgets that mimic the look and feel of Apple's iOS user interface. They are designed to provide a consistent look and feel on both iOS and Android devices, and include widgets such as CupertinoButton, CupertinoAlertDialog, and CupertinoSlider. These widgets are useful for building cross-platform apps that need to conform to the iOS design aesthetics.
+
+
+`Material Widgets` are a set of Flutter widgets that implement Material Design, Google's visual language for design. They are designed to provide a consistent look and feel on both Android and iOS devices.
+
+These widgets are commonly used in Flutter apps to provide a familiar look and feel that follows Material Design guidelines.
+
+
 To attach the Flutter widgets to the device screen,you need to use `runApp` function.All widgets will belong to this function.
+The runApp method renders the provided app widget into the PlatformDispatcher. implicitView by wrapping it in a View widget, which will bootstrap the render tree for the app. Apps that want to control which FlutterView they render into can use runWidget instead.
+
+Calling runApp again will detach the previous root widget from the view and attach the given widget in its place. The new widget tree is compared against the previous widget tree and any differences are applied to the underlying render tree, similar to what happens when a StatefulWidget rebuilds after calling State. setState.
 
 ```dart
 runApp(
    Widget app
 );
 ```
+
+Directionality widget is introduced by the MaterialApp or WidgetsApp at the top of your application widget tree.It determines the ambient reading direction and is used for example, to determine how to lay out text,how to interpret "start" and "end" values.and to ressolve EdgeInsetsDirectionsl, and other Directional objects.
 
 ## MaterialApp widget
 
@@ -53,6 +82,8 @@ void main(){
    ),
 }
 ```
+
+Items in scaffold includes:- key,appBar,body,floatingActionButton,drawer,bottomNavigationBar,backgroundColor..
 
 ## Image Widget
 
@@ -186,27 +217,4 @@ body: SafeArea(
 
 
 `Responsive widgets` in Dart, primarily within Flutter, are crucial for building applications that adapt to diverse screen sizes and orientations. Developers achieve this adaptability using tools like LayoutBuilder to respond to available space, MediaQuery to gather device information, and Expanded and Flexible for dynamic space distribution. AspectRatio maintains proportions, OrientationBuilder adjusts for landscape or portrait modes, and Wrap handles overflow by moving widgets to new lines. Adaptive widgets and custom layouts further enhance platform-specific responsiveness. By employing these techniques and considering breakpoints and thorough testing, developers can create Flutter apps that provide a consistent and optimal user experience across various devices.
-
-## Stateful and Stateless Widgets
-
-`A stateful widget` is dynamic: for example, it can change its appearance in response to events triggered by user interactions or when it receives data. Checkbox, Radio, Slider, InkWell, Form, and TextField are examples of stateful widgets.
-
-
-`Stateless widgets` in Flutter are widgets that don't maintain any mutable state. They are designed to be immutable and rebuild each time the framework needs to update the UI. They are suitable for static, unchanging views or simple animations. They can be created using the StatelessWidget class and have a single build method that returns a widget tree.It never changes.Includes:- Icon,IconButton anmd Text.Stateless widgets subclass StatelessWidget.
-
-A widget's state is stored in a State object,separating the widget's state from its appearance.The state consists of values that can change.When the widget's state changes,the state object calls setState(),telling framework to redraw the widget.
-
-To create a Stateful widget,you should create two classes, a class of StatefulWidget and a class of State.The state class contains the widget mutable state and the widget build() method.When the widget's state changes,the state object calls setState(), telling the framework to redraw the widget.
-
-## Styled Widgets
-
-`Styled Widgets` are Flutter widgets that are decorated with custom styles, such as colors, fonts, and shapes. They can be created by wrapping existing widgets with other widgets, such as Container, Theme, or BoxDecoration.
-
-
-`Cupertino widgets` are a set of Flutter widgets that mimic the look and feel of Apple's iOS user interface. They are designed to provide a consistent look and feel on both iOS and Android devices, and include widgets such as CupertinoButton, CupertinoAlertDialog, and CupertinoSlider. These widgets are useful for building cross-platform apps that need to conform to the iOS design aesthetics.
-
-
-`Material Widgets` are a set of Flutter widgets that implement Material Design, Google's visual language for design. They are designed to provide a consistent look and feel on both Android and iOS devices.
-
-These widgets are commonly used in Flutter apps to provide a familiar look and feel that follows Material Design guidelines.
 

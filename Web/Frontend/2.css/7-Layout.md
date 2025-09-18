@@ -116,16 +116,31 @@ display: grid;
 }
 ```
 
+The CSS grid lets you define a two-dimensional layout of columns and rows and then place elements within the grid. Some elements may only fill one cell of the grid; others can span multiple columns or rows. The size of the grid can be defined precisely, or you can allow it to automatically size itself as needed to fit the
+contents within. You can place items precisely within the grid, or allow them to flow naturally to fill in the gaps.
+
 However, doing this will invariably cause all the child elements to collapse on top of one another. This is because the children do not currently know how to position themselves within the grid. But we can explicitly tell them.
 First we need to tell the grid element .container how many rows and columns will make up its structure and we can do this using the grid-columns and grid-rows properties (note the pluralisation):
 
 ```css
-.container {
+.grid {
 display: grid;
-grid-columns: 50px 50px 50px;
-grid-rows: 50px 50px;
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: auto;
+grid-gap: 0.5em;
 }
 ```
+
+As with flexbox, grid layout applies to two levels of the DOM hierarchy. An element with display: grid becomes a grid container. Its child elements then become grid items.
+`display: grid` defines a grid container. The container behaves like a block display element, filling 100% of the available width. You could also use the value inline-grid; in which case, the element will flow inline and will only be as wide as is necessary to contain its children.
+`grid-template-columns` and `grid-template-rows` defines the size of each of the columns and rows in the grid.
+`fr` represents each column’s (or row’s) fraction unit.
+`grid-gap` property defines the amount of space to add to the gutter between each grid cell. You can optionally provide two values to specify vertical and
+horizontal spacing individually (for example, grid-gap: 0.5em 1em).
+
+You don’t necessarily have to use fraction units for each column or row. You can also use other measures such as px, em, or percent. Or, you could mix and match. For
+instance, grid-template-columns: 300px 1fr would define a fixed-size column of 300 px followed by a second column that will grow to fill the rest of the available
+space. A 2 fr column would be twice as wide as a 1 fr column.
 
 - grid-auto-flow
 - grid-template-columns
@@ -139,3 +154,9 @@ grid-rows: 50px 50px;
 - grid-row-start
 - grid-row-end
 - grid-template-ares
+
+Anatomy of a grid:- 
+   - Grid line—These make up the structure of the grid. A grid line can be vertical or horizontal and lie on either side of a row or column. The grid-gap, if defined,lies atop the grid lines.
+   - Grid track—A grid track is the space between two adjacent grid lines. A grid has horizontal tracks (rows) and vertical tracks (columns).
+   - Grid cell—A single space on the grid, where a horizontal grid track and a vertical grid track overlap.
+   - Grid area—A rectangular area on the grid made up by one or more grid cells.The area is between two vertical grid lines and two horizontal grid lines.

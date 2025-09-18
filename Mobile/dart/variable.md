@@ -68,7 +68,7 @@ info['country'] = 'Kenya';
 
 ```dart
 var x = 10; //Implicitly Integer number
-int x = 20; // explicoitly Integer number
+int x = 20; // explicitly Integer number
 var city = "Nakuru";
 ```
 
@@ -81,3 +81,6 @@ int x = 3
 var y = x.toString();
 var z = x.toDouble();
 ```
+
+int _counter = 0;
+print("The value is $_counter");

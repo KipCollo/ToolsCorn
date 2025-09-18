@@ -1,0 +1,12 @@
+.comp{
+   background-color: red;
+   width: 100%;
+   
+}
+.container{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   grid-template-rows: auto;
+   gap: 2em;
+   padding: 3em;
+}

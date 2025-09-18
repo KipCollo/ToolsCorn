@@ -1,0 +1,17 @@
+
+header{
+   display: flex;
+   justify-content: space-around;
+   background-color: black;
+   color: white;
+   width: 100%;
+
+}
+
+.navbar{
+   display: flex;
+   text-align: center;
+   gap: 20px;
+   padding-top: 13px;
+   
+}

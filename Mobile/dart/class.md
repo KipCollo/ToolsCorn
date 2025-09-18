@@ -4,9 +4,9 @@ A class is a blueprint or protoype(template) from which objects are created..
 
 `Creating a class` - Use `class` keyword to declare a class in Dart.A class definition starts with the keyword class followed by the class name, and class body enclosed by pair of curly braces.
 
-`constructors` - it is a block of code that inoitializes the newly created object.Dart represents a constructor with same na,e as that of class.
+`constructors` - it is a block of code that initializes the newly created object.Dart represents a constructor with same name as that of class.
 
-`Getter $ Setter` - Getters and Setters are used to effectively protect your data,particularly when creating classes.For each instance variable, a getter method returns its value while a setter method sets or updates its value.
+`Getter & Setter` - Getters and Setters are used to effectively protect your data,particularly when creating classes.For each instance variable, a getter method returns its value while a setter method sets or updates its value.
 
 Getter are defined using `get` keyword, whereas setters are defined using the `set` keyword.
 NOTE:- '=>' operator is for returning a value in a brief way.
@@ -52,3 +52,30 @@ class Person{
 ```
 
 `Default constructors`:- If you don't declare a constructor, Dart uses the default constructor. The default constructor is a generative constructor without arguments or name.
+
+## Class Types
+
+`Concrete class`:-
+
+`Abstract class`:-
+
+```dart
+abstract class Vehicle{
+
+   Vehicle(this.wheel);
+   int wheels;
+   void wheelsNum();
+}
+
+class Car extends Vehicle{
+
+   Car(super.wheels);
+
+   @override
+   void wheelsNum(){
+      //implementation
+   }
+}
+```
+
+The StatefulWidget and StatelessWidget classes are abstract classes.

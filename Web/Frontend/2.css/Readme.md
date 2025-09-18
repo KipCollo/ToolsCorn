@@ -102,3 +102,21 @@ h1, h2, p {
   color: red;
 }
 ```
+
+## Inheritance
+
+Inheritance is a fundamental mechanism of CSS by which the computed values of some properties of an element are applied to its' children. This is particularly useful when you want to set a global style to your elements rather than having to set said properties to each and every element in your markup.
+Common properties that are automatically inherited are: font, color, text-align, line-height.
+
+Some properties are not automatically inherited from an element down to its' children. This is because those properties are typically desired to be unique to the element (or selection of elements) to which the property is applied to. Common such properties are margin, padding, background, display, etc.
+However, sometimes inheritance is desired anyway. To achieve this, we can apply the inherit value to the property that should be inherited. The inherit value can be appied to any CSS property and any HTML element.
+
+```css
+body{
+  font-size: 22px;
+}
+
+button,input,textarea,select{
+  font: inherit;
+}
+```

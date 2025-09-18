@@ -4,8 +4,8 @@
 
 1. High level understanding.
 2. HTTP protocol:- HTTP headers,Types of headers(Request,Representational,general,security),CORS,HTTP Requests and Response,HTTP Caching,HTTP compression,SSL/TLS
-3. Routing:- Path param,API versioning
-4. Serialization and Deserialization.
+3. Routing:- Path param,API versioning,Route Deprication,Route grouping,securing and optimizing routes.
+4. Serialization and Deserialization - JSON,Error handling in serialization,security in deserialization.
 5. Authentication and Authorization.
 6. Validation and Transformation.
 7. Middlewares.

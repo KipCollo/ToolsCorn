@@ -1,5 +1,9 @@
 # CSS Box Model
 
+The box model refers to the composition of elements on a page. When you specify the height or width of an element, you’re setting the content size—any padding, border, and margin will be added to that.
+
+Applying box-sizing: border-box to an element changes the box model to a more predictable behavior. Setting height or width will control the size of the entire element, including its padding and border.
+
 `The Edges`:- The browser creates a rectangle for each element in the HTML document. The Box Model describes how the padding, border, and margin are added to the content to create this rectangle.
 The perimeter of each of the four areas is called an edge. Each edge deﬁnes a box.
 
@@ -13,9 +17,9 @@ The following example demonstrates this potential issue with content-box:
 
 ```css
 textarea {
-width: 100%;
-padding: 3px;
-box-sizing: content-box; /* default value */
+   width: 100%;
+   padding: 3px;
+   box-sizing: content-box; /* default value */
 }
 ```
 

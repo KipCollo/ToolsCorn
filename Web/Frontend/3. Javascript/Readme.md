@@ -1,6 +1,6 @@
 # JavaScript
 
-JavaScript is a high-level, interpreted and Dynamic programming language that is commonly used to create interactive effects within web browsers. It is a core technology of the World Wide Web, alongside HTML and CSS.
+`JavaScript` is a high-level, interpreted and Dynamic programming language that is commonly used to create interactive effects within web browsers. It is a core technology of the World Wide Web, alongside HTML and CSS.
 
 Javascript can be run in the Browser(contains Javascript Engine) e.g FireFox(SpiderMonkey), Chrome(v8) and also can be run in Node.  
 JavaScript allows you to add interactivity to your pages. Common examples that you may have seen on the websites are sliders, click interactions, popups and so on.
@@ -14,6 +14,8 @@ Disabling Javascript enables adds free web sites.
 It was created by Brendan in 10 days.It was earlier called LiveScript.The microsoft team re-engineered and called it JScript.This led to confusion which ECMAscript(European Computer Manufacturers Association Cript) was introduced to standardize the language.  
 
 It can be used to build: Web/Mobile Apps,Real-Time Networking apps,Command-line tools and games.
+JavaScript is an object orient programming language designed to make web development easier and more attractive. In most cases, JavaScript is used to create
+responsive, interactive elements for web pages, enhancing the user experience. Things like menus, animations, video players, interactive maps, and even simple in-browser games can be created quickly and easily with JavaScript.
 
 * ECMAScript is a specification while JavaScript is a programming language that follows ECMAScript.
 

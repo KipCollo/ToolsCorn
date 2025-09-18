@@ -12,7 +12,7 @@ Advantages of flutter include:-
 
 ## Flutter Framework
 
-The Flutter framework is organized into a series of layers.Each layer is built upon the previous layer.The upper layer is more frequently used thgan the lower layers.
+The Flutter framework is organized into a series of layers.Each layer is built upon the previous layer.The upper layer is more frequently used than the lower layers.
 
 You can compose the ready-made widgets Flutter provoides, or create your custom widgets using same tools and techniques that flutter Team uses to build the framework.
 Flutter is special in that it makes it truly possible to “write once, and deploy everywhere.” As of this writing, Flutter apps will deploy to Android, iOS, and ChromeOS. In the near future, Flutter apps will also run as web apps and desktop apps on all major operating systems.
