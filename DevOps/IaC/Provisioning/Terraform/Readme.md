@@ -2,7 +2,6 @@
 
 Terraform is a powerful tool designed by HashiCorp that helps you set up, manage, and update infrastructure safely and efficiently across various cloud providers. Think of it as a way to define your cloud resources—like servers, storage, and networks—using a simple code format. This makes it easier to automate, share, and manage your infrastructure, ensuring that everything is consistent and can be quickly reproduced or modified as needed.
 
-
 Terraform is an infrastructure automation tool developed by HashiCorp and it is written in the Go programming language. It is the first multi-cloud infrastructure tool that allows the user to automate and set up infrastructure elements from several cloud vendors simultaneously, as well as custom in-house solutions.
 
 Terraform is a powerful open source IaC tool that lets you define your infrastructure in human-readable configuration files. Instead of manually clicking through clunky web interfaces, you write code that describes the infrastructure you need. This code essentially becomes a blueprint for your infrastructure, allowing you to:
@@ -31,30 +30,15 @@ Terraform describes the infrastructure through the configuration files which are
 Terraform also provides execution plans, which describe the procedure that is followed in order to reach the desired state of the infrastructure. The execution plan first gives an overview of that happens by the time it is called and then Terraform actually sets up the infrastructure by executing this plan. In addition, Terraform is able to create a graph of the infrastructure resources by parallelizing the creation and modification of any non-dependent resource. The use of the execution plan combined with the produced resource graph provides more automation towards changes with less human involvement, as the user has more insight on the Terraform’s functionality, avoiding possible human errors.
 
 Terraform stores the state of the managed infrastructure in a local file called `terraform.tfstate`. This file can also be stored remotely which is useful when working in a
-remotely distributed team. This local state is used to create the execution plans and make the necessary infrastructure changes. After each performed operation, Terraform
-refreshes the state in order to match the actual real time infrastructure.
+remotely distributed team. This local state is used to create the execution plans and make the necessary infrastructure changes. After each performed operation, Terraform refreshes the state in order to match the actual real time infrastructure.
 
-Terraform is an infrastructure provisioning tool, not a CM tool. Provisioning tools
-deploy and manage infrastructure, whereas CM tools like Ansible, Puppet, SaltStack,
-and Chef deploy software onto existing servers. Some CM tools can also perform a
-degree of infrastructure provisioning, but not as well as Terraform, because this isn’t
-the task they were originally designed to do.
-The difference between CM and provisioning tools is a matter of philosophy. CM
-tools favor mutable infrastructure, whereas Terraform and other provisioning tools
+Terraform is an infrastructure provisioning tool, not a CM tool. Provisioning tools deploy and manage infrastructure, whereas CM tools like Ansible, Puppet, SaltStack, and Chef deploy software onto existing servers. Some CM tools can also perform a degree of infrastructure provisioning, but not as well as Terraform, because this isn’t the task they were originally designed to do.
+The difference between CM and provisioning tools is a matter of philosophy. CM tools favor mutable infrastructure, whereas Terraform and other provisioning tools
 favor immutable infrastructure.
-Mutable infrastructure means you perform software updates on existing servers.
-Immutable infrastructure, by contrast, doesn’t care about existing servers—it treats infra-
-structure as a disposable commodity. The difference between the two paradigms can
-be summarized as a reusable versus disposable mentality.
+Mutable infrastructure means you perform software updates on existing servers.Immutable infrastructure, by contrast, doesn’t care about existing servers—it treats infrastructure as a disposable commodity. The difference between the two paradigms can be summarized as a reusable versus disposable mentality.
 
-The main reason Terraform is so easy to use is that the code is written in a domain-
-specific configuration language called HashiCorp Configuration Language (HCL). It’s a
-language invented by HashiCorp as a substitute for more verbose configuration lan-
-guages like JSON and XML. HCL attempts to strike a balance between human and
-machine readability and was influenced by earlier attempts in the field, such as libucl
-and Nginx configuration. HCL is fully compatible with JSON, which means HCL can
-be converted 1:1 to JSON and vice versa. This makes it easy to interoperate with sys-
-tems outside of Terraform or generate configuration code on the fly.
+The main reason Terraform is so easy to use is that the code is written in a domain- specific configuration language called HashiCorp Configuration Language (HCL). It’s a language invented by HashiCorp as a substitute for more verbose configuration languages like JSON and XML. HCL attempts to strike a balance between human and
+machine readability and was influenced by earlier attempts in the field, such as libucl and Nginx configuration. HCL is fully compatible with JSON, which means HCL can be converted 1:1 to JSON and vice versa. This makes it easy to interoperate with systems outside of Terraform or generate configuration code on the fly.
 
 Terraform allows us to automate and manage infrastructure,platform and services that run on that platform.
 
@@ -65,6 +49,12 @@ Using tfenv
 ```bash
 tfenv install <version>
 tfenv use <version>
+```
+
+You can use package mmanagers.
+
+```sh
+brew install terraform
 ```
 
 ## Projects
@@ -253,20 +243,33 @@ resource "aws_s3_bucket" "resource_name"{
 ## Common Commands 
 
 ```bash
+terraform
+terraform --help
 terraform --version
 terraform version
-terraform init # Downloads providers
+
 export AWS_ACCESS_KEY_ID=*******
 export AWS_SECRET_ACCESS_KEY=*********
-terraform plan
+terraform plan # Preview changes.Show changes required by the current configuration
 terraform console
+
+terraform apply # Create or update infrastructure
+terraform apply -auto-approve
 terraform apply -refresh=false
 terraform plan -out iam.tfplan
 terraform apply "iam.tfplan"
 terraform apply -target="aws_iam_user.my_iam_user"
-terraform destroy
+terraform apply -replace="aws_instance.server"
+
+terraform destroy # Destroy previously-created infrastructure
+terraform destroy -target="aws_vpc.dev_subnet"
+
 terraform validate
+
 terraform fmt
+terraform fmt --diff
+terraform fmt -recursive
+
 terraform show
 export TF_VAR_iam_user_name_prefix = FROM_ENV_VARIABLE_IAM_PREFIX
 export TF_VAR_iam_user_name_prefix=FROM_ENV_VARIABLE_IAM_PREFIX
@@ -283,10 +286,29 @@ terraform workspace select prod-env
 terraform state show <name> # shows the random generated values.
 ```
 
+## Terraform syntax
+
+Terraform configurations can be either in the native Terraform Language syntax(.tf) or in JSON compatible format(.tf.json).Both are defined in terms of a specification called HCL(Hashicorp Configuration Language).
+
+HashiCorp Configuration Language (HCL) is a configuration language built by HashiCorp that is used for configuring products in the HashiCorp ecosystem. With its human-readable style, HCL is designed to strike a balance between a generic configuration language like JSON or YAML and a high-level scripting language. In relation to the Terraform Roadmap, HCL is the primary language used for writing Terraform configuration files, thus making it a fundamental part of defining and providing data center infrastructure in a descriptive manner.
+
+`HCL, or HashiCorp Configuration Language`, is a human-readable language for DevOps tools. It is used to code infrastructure management and service orchestration in a clear and manageable way. Several HashiCorp products, including Terraform, use HCL as their primary configuration language. Terraform uses HCL to provision and manage cloud resources efficiently. Its clear syntax and structure are instrumental in creating resource modules and configurations that align with the Terraform Roadmap's goals for providing a seamless, user-friendly platform for infrastructure as code.
+
+The Basic Syntax of HashiCorp Configuration Language (HCL) includes defining blocks, attributes, and expressions. Blocks are fundamental units like `resource`, `module`, and `provider`, identified by keywords and enclosed in curly braces. Attributes are key-value pairs within blocks, where keys are strings and values can be strings, numbers, or other data types. Expressions allow embedding variables, functions, and references to other resources, enabling dynamic configurations.
+
+Terraform configuration syntax is built around two key syntax constructs,blocks and arguments.
+A block has none, one or more labels.
+After the block type keyword in the label,the block body is delimited by a pair of curly braces.Within the block body,there is arguments and other nested blocks.
+
+Terraform syntax comments includes:-
+
+`#`:- Single line commments(Default).The alternative is using double slashes(//)
+`/*--*/`:- Multiline comment.
+
+
 ## Project Initialization
 
 Project initialization in Terraform involves setting up the necessary configuration files and directory structure for managing infrastructure as code. The `terraform init` command is crucial in this process, as it initializes the working directory, downloads the required provider plugins, and sets up the backend configuration for storing state files. This command ensures that the project is correctly configured and ready for subsequent Terraform commands, laying the foundation for efficient and organized infrastructure management.
-
 
 
 The terraform workflow has 3 core steps:-
@@ -334,6 +356,8 @@ The Terraform Registry is a centralized repository for discovering, sharing, and
 
 ## Terraform Resources
 
+Resources represent components of your infrastructure such as Virtual Machines, Storage Buckets, Databases or Virtual Private Clouds. Access to provider resources comes after successful project initalization after declaring your desired providers.
+
 A resource is the fundamental building block of Terraform. It represents the infrastructure components that Terraform manages. Examples of resources include virtual machines, databases,storage buckets, and load balancers.
 Resources are defined in resource blocks within the configuration files. Each resource block specifies the type of resource to be managed, the provider that will manage it, and the configuration for that resource.
 
@@ -348,12 +372,122 @@ resource "<PROVIDER>_<RESOURCE_TYPE>" "<RESOURCE_NAME>" {
 - <RESOURCE_NAME>:- A user-defined name for the resource within Terraform.How Terraform identifies the resource in its internal state.
 - <CONFIGURATION>:- A set of arguments that specify how the resource should be configured.
 
-## Terraform syntax(HCL)
+## Variables in Terraform
 
-HCL, or HashiCorp Configuration Language, is a human-readable language for DevOps tools. It is used to code infrastructure management and service orchestration in a clear and manageable way. Several HashiCorp products, including Terraform, use HCL as their primary configuration language. Terraform uses HCL to provision and manage cloud resources efficiently. Its clear syntax and structure are instrumental in creating resource modules and configurations that align with the Terraform Roadmap's goals for providing a seamless, user-friendly platform for infrastructure as code.
+Variables in Terraform allow you to parameterize your configuration files. Instead of hardcoding values, you can define variables and use them throughout your configuration. This makes your code more modular and reusable, especially when working across different environments such as development, staging, and production.
+
+Terraform input variables are parameters for modules, declared using variable blocks. They support multiple data types, default values, and descriptions. Users provide values when invoking modules or running Terraform. Accessed via `var.<name>` syntax, input variables enable flexible, reusable infrastructure templates adaptable to various deployment scenarios. They can be marked sensitive for security and are typically defined in a `variables.tf` file.
+
+Terraform uses variables to make configurations more flexible and reusable. Variables can be declared in `.tf` files and assigned values through various methods, including default values, command-line flags, environment variables, or separate `.tfvars` files. They support multiple data types such as string, number, bool, list, and map. Variables can be referenced throughout the configuration using the `var` prefix. This system enables infrastructure as code to be more dynamic and adaptable to different environments or use cases.
+
+Variables in Terraform are declared using the variable block. Each variable can have the following attributes:
+1. default: The default value of the variable.
+2. type: The type of the variable (e.g., string, list, map).
+3. description: A brief description of what the variable represents.
+4. sensitive: Marks the variable as sensitive, ensuring it is not displayed in logs or outputs.
+
+Terraform supports several types of variables, including:
+1. String: A single value, such as a region or instance type.
+2. List: A collection of values. Useful for defining multiple instances, subnets, etc.
+3. Map: A collection of key-value pairs. Useful for specifying configuration options in a structured format.
+4. Boolean: A true or false value.
+
+There are several ways to pass values to variables in Terraform:
+1. Default Values: If no value is provided, Terraform will use the default value defined in the variable block.
+2. Command Line Flags: You can pass variables directly through the terraform apply or terraform plan command using the -var flag.
+3. Environment Variables: Variables can be set using environment variables. For example, to pass the AWS region, you can use:
+4. Terraform .tfvars Files: Variables can be defined in a separate .tfvars file and passed to Terraform during runtime. Example of a terraform.tfvars file:
+
+```sh
+terraform apply -var="aws_region=us-east-1"
+
+export TF_VAR_aws_region=us-east-1
+export AWS_SECRET_ACCESS_KEY=
+export AWS_ACCESS_KEY_ID=
+
+terraform apply
+```
+
+```terraform.tfvars
+aws_region = "us-east-1" 
+instance_type = "t2.medium"
+```
+
+```bash
+terraform apply -var-file="terraform.tfvars" # Not compulsory to add the file,terraform can detect
+```
+
+`Environment variables`:-
+
+## Data Sources
+
+Data sources allow you to query and reference existing infrastructure outside of Terraform. This is useful for situations where you need to use resources that are managed by another team, project, or process but still want to integrate them into your Terraform configuration.
+Data Sources Allow data to be fetched dynamically for use in Terraform configuration.
+Data source let's you query existing resources from provider.
+A data source in Terraform allows you to read information about existing infrastructure components.Data sources do not create new resources; instead, they retrieve data about resources that already exist.
+
+## Output
+
+Outputs in Terraform allow you to extract and share data from your infrastructure. They can be used to display essential information after resources are provisioned or to pass values between Terraform modules.
+
+You can define an output using the output block. Each output block contains:
+1. value: The value to output (typically, the result of a resource attribute).
+2. description: A brief description of the output (optional).
+3. sensitive: If set to true, the value will not be displayed in the Terraform output logs.
+
+```tf
+output "instance_public_ip" { 
+   value = aws_instance.my_instance.public_ip 
+   description = "The public IP address of the EC2 instance."
+}
+```
+
+After applying the configuration, you can view outputs by running the terraform output command: `terraform output`
+This command will display all the outputs defined in your configuration. 
+
+To view a specific output, you can run: `terraform output instance_public_ip`
+
+**Outputs**:- Terraform outputs expose selected values from a configuration or module, making them accessible to users or other modules. Defined in output blocks, typically in an `outputs.tf` file, they can reference resource attributes or other computed values. Outputs are displayed after apply operations, can be queried using terraform output commands, and are crucial for passing information between modules or to external systems.
 
 
-Terraform configurations can be either in the native Terraform Language syntax(.tf) or in JSON comatible format(.tf.json).Both are defined in terms of a specification called HCL(Hashicorp Configuration Language).
+**Initializing directory**:- terraform init - Initializes and Downloads providers
+Ater running the command `terraform init`,it creates `.terraform` directory and a file called .`terraform.lock.hcl`.
+- .terraform.lock.hcl - A dependency lock file that is created or updated after running init.Contains all versions of providers.It is part of terraform strategy for defence against attacks(checksums in providers).
+- .terraform - 
+
+`terraform plan`:- The plan command lets you see what Terraform will do before actually making any changes.The output of the plan command is similar to the output of the diff command that is part of Unix, Linux, and git: anything with a plus sign (+) will be created, anything with a minus sign (–) will be deleted, and anything with a tilde sign (~) will be modified in place.
+
+`terraform plan -out=tfplan`
+
+## Terraform State Management
+
+Terraform uses a `state file` (terraform.tfstate) to keep track of the resources it manages. This state file serves as a snapshot of your infrastructure's current configuration, allowing Terraform to know what resources it has created, updated, or destroyed.
+
+Without state, Terraform would have to query your cloud provider’s API every time to check the current status of resources. Instead, the state file allows Terraform to incrementally manage resources by comparing the current infrastructure state (stored in the state file) with the desired configuration (defined in .tf files).
+when you run terraform apply, Terraform reads the state file to determine:
+
+1. What resources exist.
+2. Which resources need to be created, modified, or destroyed.
+
+When Terraform creates or modifies resources, it updates the state file to reflect the changes. For example, when you provision an EC2 instance on AWS, Terraform saves information about that instance (like the instance ID and public IP) in the state file.
+
+Here’s how Terraform uses state:
+1. State Initialization: When you first run terraform init, Terraform creates an empty state file or fetches an existing one if it’s stored remotely.
+2. State Refresh: Terraform refreshes the state by querying the provider's API to make sure the state file matches the actual state of resources.
+3. Plan: When you run terraform plan, Terraform compares the state file to the configuration files to generate a plan of what needs to be changed.
+4. Apply: After reviewing the plan, terraform apply updates the infrastructure and the state file accordingly.
+5. Destroy: When running terraform destroy, Terraform reads the state file to identify and delete the existing resources.
+
+By default, Terraform stores the state file locally in the directory where you run Terraform (terraform.tfstate). However, for collaborative environments or projects, it's better to store the state file in a remote backend (like Amazon S3 or Azure Blob Storage) to avoid conflicts when multiple team members work on the same infrastructure.
+
+The state file contains information about all the resources Terraform manages. This includes:
+- Resource IDs: Unique identifiers for the resources created, such as EC2 instance IDs or S3 bucket names.
+- Resource Attributes: Additional information like IP addresses, security group rules, or subnet IDs.
+- Outputs: Any values specified in output blocks, such as public IP addresses or database endpoints.
+
+Sensitive information, such as passwords or access keys, may also be stored in the state file. This is why it’s important to protect the state file and ensure it’s not accessible to unauthorized users.
+
+`terraform state`:-
 
 ## Terraform modules
 
@@ -374,15 +508,33 @@ module "lb_sg"{
 }
 ```
 
-## Terraform State Management
+## Terraform Workspaces
 
-Terraform uses a `state file` (terraform.tfstate) to keep track of the resources it manages. This state file serves as a snapshot of your infrastructure's current configuration, allowing Terraform to know what resources it has created, updated, or destroyed.
+Terraform workspaces allow you to manage multiple environments (e.g., development, staging, production) from the same configuration. Each workspace has its own separate state file, which means that changes in one workspace won’t affect the resources in another workspace.
+By default, Terraform operates in a single workspace called default. However, you can create additional workspaces to manage different environments using the same configuration files.
+Workspaces are useful when:
 
-Without state, Terraform would have to query your cloud provider’s API every time to check the current status of resources. Instead, the state file allows Terraform to incrementally manage resources by comparing the current infrastructure state (stored in the state file) with the desired configuration (defined in .tf files).
-when you run terraform apply, Terraform reads the state file to determine:
+1. You want to maintain separate infrastructure environments (e.g., dev, staging, prod) without duplicating configuration code.
+2. You need to create isolated copies of the infrastructure for testing or QA purposes.
 
-1. What resources exist.
-2. Which resources need to be created, modified, or destroyed.
+Each workspace has its own state, so the resources created in one workspace are independent of those in another.
+ou can create a new workspace using the terraform workspace new command, and switch between workspaces using the terraform workspace select command.
+
+```bash
+terraform workspace new dev #This creates a new workspace called dev. Terraform will automatically create a new state file for this workspace.
+workspace select dev
+workspace list
+```
+
+You can reference the active workspace in your configuration using the terraform.workspace variable.This is useful for customizing resource names or tags based on the workspace.
+
+```tf
+resource "aws_instance" "name" {
+  tags = {
+    Name ="My-Instance-${terraform.workspace}"
+  }
+}
+```
 
 ## Security and secrets management
 
@@ -400,10 +552,13 @@ Methods for securing state files:
 
 - `Securing logs`
 
-- `Managing static secrets`:- Static secrets are sensitive values that do not change, or at least do not change often.
+- `Managing static secrets(static credentials)`:- Static secrets are sensitive values that do not change, or at least do not change often.
 Most secrets can be classified as static secrets. Things like username and passwords, long-lived oAuth tokens, and config files containing credentials are all examples of static secrets.
 
 There are two major ways to pass static secrets into Terraform: as environment variables and as Terraform variables.
 
 - `Dynamic just-in-time secrets`
 - `Enforcing “policy as code” with Sentinel`
+
+
+The terraform binary contains the basic functionality for Terraform, but it does not come with the code for any of the providers (e.g., the AWS Provider, Azure provider, GCP provider, etc.), so when you’re first starting to use Terraform, you need to run terraform init to tell Terraform to scan the code, figure out which providers you’re using, and download the code for them. By default, the provider code will be downloaded into a .terraform folder, which is Terraform’s scratch directory (you may want to add it to .gitignore). Terraform will also record information about the provider code it downloaded into a .terraform.lock.hcl file

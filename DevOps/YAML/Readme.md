@@ -89,3 +89,6 @@ You can also write this in one line, using the JSON syntax:
 ```yaml
 sequence: [item1, item2, item3]
 ```
+
+
+YAML validator -- YAML lint

@@ -80,9 +80,49 @@ You can configure an S3 backend in Terraform by specifying the backend configura
 
 ## Virtual Private Cloud(VPC)
 
-A VPC is a virtual network within AWS that allows you to isolate and control the networking environment for your resources. It provides
-enhanced security, routing control, and segmentation of resources in the cloud.
+A VPC is a virtual network within AWS that allows you to isolate and control the networking environment for your resources. It provides enhanced security, routing control, and segmentation of resources in the cloud.
 To create a VPC in Terraform, you use the "aws_vpc" resource block, specifying the desired CIDR block and other optional configurations like subnets and route tables.
+You have overlapping IP ranges between different VPCs in AWS.However, it's important to avoid such conflicts as they can lead to connectivity issues.
+
+`enable_dns_hostnames`:- You can enable DNS hostname resolution in Terraform by setting the attribute to true.
+
+**aws_flow_log**:- Enable VPC flow logs, specifying the VPC ID, traffic type, and the destination where logs should be sent (e.g., CloudWatch Logs).
+
+**VPC peering**:-VPC peering allows direct communication between two VPCs. In Terraform, you use the "aws_vpc_peering_connection" resource block to create peering connections and establish communication between VPCs.
+VPC peering does not support transitive relationships. If VPC A is peered with VPC B and VPC B is peered with VPC C, VPC A and VPC C do not have direct communication.
+
+To connect VPCs from different accounts, you can use AWS PrivateLink or AWS Transit Gateway, which allows you to centralize connectivity between multiple VPCs.
+
+Some aspects of a VPC, like CIDR block and tenancy, cannot be modified after creation. However, other attributes, such as subnets and route tables, can be modified in Terraform by updating the configuration.
+
+## NAT Gateway
+
+A NAT Gateway allows private subnets to access the internet while preventing direct incoming traffic. In Terraform, you use the "aws_nat_gateway" resource block to create a NAT Gateway and associate it with a public subnet.
+
+## Internet Gateway(IGW)
+
+The Internet Gateway enables communication between instances in a VPC and the internet. It allows resources within the VPC to access the internet and be accessed by resources outside the VPC.
+Defined in aws_internet_gateway.
+
+`aws_vpc_attachment` - associate an Internet Gateway with a VPC.
+
+## Network Access Control List (NACL)
+
+NACL is a stateless firewall that controls inbound and outbound traffic at the subnet level. Unlike Security Groups, NACLs operate at the subnet level and require explicit rules for both inbound and outbound traffic.
+You use the "aws_network_acl".
+
+**aws_network_acl_rule** - create and define rules for a Network Access Control List associated with a VPC subnet.
+
+## VPN (Virtual Private Network) Gateway
+
+A VPN Gateway is a virtual private network connection used to establish secure connections between on-premises networks and VPCs, allowing for secure communication.
+To create a VPN Gateway in Terraform, you use the "aws_vpn_gateway" resource block and associate it with the VPC using the "aws_vpn_gateway_attachment" resource block.
+
+## Subnet
+
+A subnet is a segmented portion of an IP network within a VPC. Each subnet must be associated with a VPC, and instances launched within a subnet are assigned IP addresses from the subnet's CIDR range.
+You can create subnets in Terraform using the "aws_subnet" resource block, specifying the VPC ID, CIDR block, and availability zone.
+A public subnet is associated with a route table that has an Internet Gateway route, allowing instances to communicate with the internet. A private subnet does not have such a route, making instances in it inaccessible from the internet directly.
 
 ## EC2
 
@@ -101,3 +141,24 @@ You define an EC2 instance resource using the "aws_instance" resource block in T
 `spot_price`:- provision spot instances instead of on- demand instances.
 `monitoring`:- enables detailed monitoring (CloudWatch) for an EC2 instance in Terraform.
 `availability_zone`:- deploy EC2 instances across multiple AWS availability zones.
+
+## S3 Bucket
+
+An S3 bucket is defined using the `aws_s3_bucket` resource block in Terraform, specifying the required parameters like bucket name and region.
+You can apply an IAM policy to the S3 bucket, allowing access only to specific IAM users or roles.
+Object lifecycle management defines actions to be taken on objects in an S3 bucket at certain stages of their lifecycle. For example, you can transition objects to Glacier storage after a certain period.
+
+`versioning`:- Versioning in an S3 bucket keeps multiple versions of an object. You
+can enable versioning by setting it to true.
+`server_side_encryption_configuration`:- Data at rest can be encrypted in an S3 bucket by setting the desired encryption type.
+`lifecycle_rule`:- configures Object lifecycle management.
+
+## AWS RDS(Amazon Relational Database Service)
+
+An AWS RDS instance is defined using the "aws_db_instance" resource block in Terraform. You specify the required parameters like instance class, engine, username, and password.
+
+`multi_az`:- enables multi-AZ.
+`backup_retention_period`:- specifies the number of days to retain automatic backups of the RDS instance.
+`name`:- specify the initial database name to create.
+
+You can modify the "allocated_storage" attribute in the "aws_db_instance" resource block and apply the changes.

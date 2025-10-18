@@ -52,27 +52,25 @@ An observability stack is a collection of tools and technologies that work toget
 
 `Data Collection`
 
-Instrumentation - This involves adding code to your applications and infrastructure to collect telemetry data, including metrics, logs, and traces. Popular technologies include OpenTelemetry, Prometheus, and ELK Stack (Elasticsearch, Logstash, Kibana).
-Agents - These are lightweight programs that run on your systems and collect data from various sources, such as applications, containers, and operating systems. Some popular agents include Datadog Agent, Fluentd, and Telegraf.
+- Instrumentation - This involves adding code to your applications and infrastructure to collect telemetry data, including metrics, logs, and traces. Popular technologies include OpenTelemetry, Prometheus, and ELK Stack (Elasticsearch, Logstash, Kibana).
+- Agents - These are lightweight programs that run on your systems and collect data from various sources, such as applications, containers, and operating systems. Some popular agents include Datadog Agent, Fluentd, and Telegraf.
 
 `Data Storage and Management`
 
-Metric stores - These databases store and manage time-series metric data, allowing you to track and analyze historical trends. Popular choices include Prometheus, InfluxDB, and TimescaleDB.
-Log aggregators - These systems collect, centralize, and store log data from various sources. Popular choices include Elasticsearch, Logstash, and Graylog.
-Trace storage - Traces require specialized storage solutions due to their high volume and complex structure. Popular options include Jaeger, Zipkin, and Honeycomb.
+- Metric stores - These databases store and manage time-series metric data, allowing you to track and analyze historical trends. Popular choices include Prometheus, InfluxDB, and TimescaleDB.
+- Log aggregators - These systems collect, centralize, and store log data from various sources. Popular choices include Elasticsearch, Logstash, and Graylog.
+- Trace storage - Traces require specialized storage solutions due to their high volume and complex structure. Popular options include Jaeger, Zipkin, and Honeycomb.
 
 `Data Analysis and Visualization`
 
-Dashboards and graphs - These tools help you visualize your data in a way that is easy to understand and analyze. Popular options include Grafana, Kibana, and Datadog dashboards.
-Alerting and notification - These systems help you stay informed about critical events and incidents by sending alerts when predefined thresholds are breached. Popular choices include Prometheus Alertmanager, PagerDuty, and Slack integrations.
-Analytics and troubleshooting tools - These tools help you analyze your data in depth to identify the root cause of problems and find solutions. Popular choices include Honeycomb, Datadog APM, and New Relic APM.
+- Dashboards and graphs - These tools help you visualize your data in a way that is easy to understand and analyze. Popular options include Grafana, Kibana, and Datadog dashboards.
+- Alerting and notification - These systems help you stay informed about critical events and incidents by sending alerts when predefined thresholds are breached. Popular choices include Prometheus Alertmanager, PagerDuty, and Slack integrations.
+- Analytics and troubleshooting tools - These tools help you analyze your data in depth to identify the root cause of problems and find solutions. Popular choices include Honeycomb, Datadog APM, and New Relic APM.
 
 Additional Components
 
-    Service mesh
-    This technology provides additional observability features like distributed tracing and traffic management. Popular service meshes include Istio and Linkerd.
-    Chaos engineering
-    This practice involves intentionally injecting faults into your system to see how it reacts, helping you identify and mitigate potential weaknesses. Popular tools include Chaos Monkey and Gremlin.
+- Service mesh - This technology provides additional observability features like distributed tracing and traffic management. Popular service meshes include Istio and Linkerd.
+- Chaos engineering - This practice involves intentionally injecting faults into your system to see how it reacts, helping you identify and mitigate potential weaknesses. Popular tools include Chaos Monkey and Gremlin.
 
 ## Observability in DevOps and SRE
 
@@ -107,40 +105,34 @@ Understanding Service Level Agreement (SLA), Service Level Objective (SLO) and S
 
 ## Observability Tools
 
-Monitoring and Metrics
+`Monitoring and Metrics`:-
 
-Prometheus is an open source monitoring and alerting toolkit designed for reliability and scalability. It collects metrics from configured targets, stores them, and makes them available for querying.
+1. Prometheus is an open source monitoring and alerting toolkit designed for reliability and scalability. It collects metrics from configured targets, stores them, and makes them available for querying.
+2. Grafana is a popular open source platform for visualizing and analyzing metrics. Grafana integrates with various data sources, including Prometheus, InfluxDB, and Elasticsearch.
+3. InfluxDB is a high-performance, distributed, and scalable time-series database. It is commonly used for storing and querying metrics data.
+4. Datadog is a cloud-based observability platform that integrates monitoring, logging, and APM (Application Performance Monitoring) capabilities. It supports a wide range of integrations.
 
-Grafana is a popular open source platform for visualizing and analyzing metrics. Grafana integrates with various data sources, including Prometheus, InfluxDB, and Elasticsearch.
+`Logging`:-
 
-InfluxDB is a high-performance, distributed, and scalable time-series database. It is commonly used for storing and querying metrics data.
+1. ELK Stack stands for Elasticsearch, Logstash, Kibana. Elasticsearch is a distributed search and analytics engine, Logstash is a log pipeline tool, and Kibana is a visualization platform. Together, they form a powerful stack for log management.
+2. Splunk is a widely used platform for searching, monitoring, and analyzing machine-generated data, including logs. It provides powerful search and visualization features.
 
-Datadog is a cloud-based observability platform that integrates monitoring, logging, and APM (Application Performance Monitoring) capabilities. It supports a wide range of integrations.
-Logging
+`Tracing`:-
 
-ELK Stack stands for Elasticsearch, Logstash, Kibana. Elasticsearch is a distributed search and analytics engine, Logstash is a log pipeline tool, and Kibana is a visualization platform. Together, they form a powerful stack for log management.
-
-Splunk is a widely used platform for searching, monitoring, and analyzing machine-generated data, including logs. It provides powerful search and visualization features.
-Tracing
-
-Jaeger is an open source, end-to-end distributed tracing system. It helps in monitoring and troubleshooting the latency of requests in complex, microservices-based architectures.
-
-Zipkin is another open source distributed tracing system. Zipkin allows users to trace requests as they travel through various services in a distributed system.
+1. Jaeger is an open source, end-to-end distributed tracing system. It helps in monitoring and troubleshooting the latency of requests in complex, microservices-based architectures.
+2. Zipkin is another open source distributed tracing system. Zipkin allows users to trace requests as they travel through various services in a distributed system.
 Application Performance Monitoring (APM)
+3. New Relic is a cloud-based APM tool that provides detailed insights into application performance. It offers features like transaction tracing, error tracking, and infrastructure monitoring.
+4. AppDynamics is a comprehensive APM solution that provides real-time monitoring of applications, user experience, and infrastructure. It helps in identifying performance bottlenecks.
 
-New Relic is a cloud-based APM tool that provides detailed insights into application performance. It offers features like transaction tracing, error tracking, and infrastructure monitoring.
+`Infrastructure Monitoring`:-
 
-AppDynamics is a comprehensive APM solution that provides real-time monitoring of applications, user experience, and infrastructure. It helps in identifying performance bottlenecks.
-Infrastructure Monitoring
+1. Nagios is a widely used open source infrastructure monitoring solution. Nagios can monitor hosts, services, and network devices, providing alerts in case of issues.
+2. Zabbix is an open source monitoring solution that offers features for monitoring servers, networks, applications, and services. It supports a range of data visualization options.
 
-Nagios is a widely used open source infrastructure monitoring solution. Nagios can monitor hosts, services, and network devices, providing alerts in case of issues.
+`Cloud Native Observability`:-
 
-Zabbix is an open source monitoring solution that offers features for monitoring servers, networks, applications, and services. It supports a range of data visualization options.
-
-    Cloud Native Observability
-
-    AWS CloudWatch is Amazon's monitoring and observability service for AWS resources. It provides metrics, logs, and traces for AWS services and applications.
-
-    Azure Monitor is Microsoft Azure's observability service, offering insights into the performance and health of applications and infrastructure on the Azure platform.
+1. AWS CloudWatch is Amazon's monitoring and observability service for AWS resources. It provides metrics, logs, and traces for AWS services and applications.
+2. Azure Monitor is Microsoft Azure's observability service, offering insights into the performance and health of applications and infrastructure on the Azure platform.
 
 These tools cater to different aspects of observability, and organizations often use a combination of them to get a comprehensive view of their systems. When selecting observability tools, it's important to consider factors such as the specific needs of the organization, integration capabilities, ease of use, and scalability. Additionally, checking for the most recent updates and community support for these tools is recommended.

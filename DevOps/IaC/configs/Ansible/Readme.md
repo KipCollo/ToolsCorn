@@ -5,8 +5,6 @@ Ansible is an open-source automation tool used for configuration management,appl
 Ansible is another powerful configuration management tool. The uniqueness of Ansible compared to other management tools is that it is also used for deployment and
 orchestration. Ansible is especially developed to be simple, secure, reliable and easy to learn. It offers a variety of features for an expert user but it is equally accessible to less skilled users.
 
-`Configuration Management`:It is a process for maintaining computer systems,servers and software in desired consistent state.
-
 Ansible does not use agents, and no additional software should be installed on the remote servers in order to manage them. Ansible manages the remote machines by
 using the remote management frameworks that already exists natively on the OS, for instance, SSH for Linux and UNIX machines and WinRM for Windows machines. The absence of agents results in less resource consumption on the managed machines when Ansible is not operating on them. Ansible also improves security by functioning in a push-based model where the remote machines receive only the necessary parts of the code (called modules), and the remote machines cannot interact or interfere with the configuration of the other machines. These features made Ansible suitable for high security and high performance systems.
 

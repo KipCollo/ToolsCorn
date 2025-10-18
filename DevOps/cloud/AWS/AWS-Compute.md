@@ -48,6 +48,7 @@ AWS offers a variety of compute services designed to meet different application 
     - Enables running VMware workloads on AWS infrastructure.
     - Supports hybrid cloud strategies.
     - Provides integration with AWS services.
+13. Beanstalk
 
 ## Amazon EC2
 

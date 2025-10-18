@@ -5,6 +5,14 @@ AWS offers different storage options.Amazon Simple Storage Service (Amazon S3). 
 A storage service provides the necessary infrastructure to enable you to store and access data. However, different use cases require varied storage architectures to ensure
 performance, reliability, durability, and the right type of access to the data. There are three primary storage options available, and AWS offers services to cater to each of these.
 
+Storage services includes:-
+1. S3
+2. EFS
+3. FSx
+4. S3 Glacier
+5. Storage Gateway
+6. AWS Backup
+
 - **Block storage**:- Block storage is an architectural design that enables the storage of data onto media such as a hard disk, in fixed-sized chunks. Data is broken up into small blocks and placed on the media in these chunks, with a unique address assigned that forms part of its metadata.
 Block storage makes use of a management software (which can be part of the operating system) to organize the blocks of data. When a user tries to retrieve a file, the management software identifies the blocks to retrieve, reassembles the data, and presents the whole file to the user.
 

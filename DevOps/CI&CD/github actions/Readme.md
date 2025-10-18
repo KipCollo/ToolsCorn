@@ -49,8 +49,7 @@ jobs: # Jobs
 ```
 
 
-GitHub workflows are intended to automate various tasks. In addition to pushing code,there are numerous triggers available. A workflow can be activated when a label is
-added to an issue, when a pull request is opened, or when a repository is starred.
+GitHub workflows are intended to automate various tasks. In addition to pushing code,there are numerous triggers available. A workflow can be activated when a label is added to an issue, when a pull request is opened, or when a repository is starred.
 
 
 ```yaml
@@ -217,8 +216,7 @@ but the most practical approach is normally the name of the workflow file.
 
 - **Workflow jobs and steps**:- The logic of the workflow is configured in the jobs section. Every job is executed on a runner. The runner can be self-hosted, or you can pick one from the cloud. There are different versions available in the cloud for all platforms. If you want to always use the latest version, you can use ubuntu-latest, windows-latest, or macos-latest.
 
-Jobs are a YAML map—not a list—and they run in parallel by default. You can chain them in a sequence by having a job depend on the successful output of one or multiple
-other jobs, using the needs keyword.
+Jobs are a YAML map—not a list—and they run in parallel by default. You can chain them in a sequence by having a job depend on the successful output of one or multiple other jobs, using the needs keyword.
 
 ```yaml
 jobs:

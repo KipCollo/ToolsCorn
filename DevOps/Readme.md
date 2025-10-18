@@ -61,8 +61,8 @@ Key features of DevOps includes:-
 
 - Automation:- Reduces time consumption during testing and deployment.Bugs can be catched quickly.
 - Collaboration:- Development and Operations team collaborates as DevOps team,which improves cultural model as teams become more productive.
-- Integration:- Applications need to be integrated with other components in the envoironment.Integration phase is where existing code is combined with new functionality and then tested.
-- Configuration Management:- It ensures application interacts with only those resources that are concerned with the environment in which it runs.The configuartyion file can be written during deloyment,or they can be loaded at run time,depending on environment it is running.
+- Integration:- Applications need to be integrated with other components in the environment.Integration phase is where existing code is combined with new functionality and then tested.
+- Configuration Management:- It ensures application interacts with only those resources that are concerned with the environment in which it runs.The configuartion file can be written during deployment,or they can be loaded at run time,depending on environment it is running.
 
 It involves:-
 
@@ -506,3 +506,11 @@ Site Reliability Engineering (SRE) follows a set of principles that guide the ap
     Postmortems go beyond just identifying the root cause. They also ask crucial questions about how to better detect, respond to, and fix issues faster. This focus on improving response is often a challenge for organizations used to traditional blame-oriented RCAs. Building a "blameless culture" where learning is prioritized is key to getting the most out of postmortems. 
 
 The seven principles of SRE provide a framework for building and operating reliable systems at scale. By focusing on measurable objectives, automation, and a culture of continuous improvement, SRE teams aim to deliver services that meet user expectations while allowing for innovation and adaptation to changing requirements.
+
+Overal DevOps skills:-
+
+1. Agile methodoligies
+2. Development experience
+3. Troubleshooting prodcuction issues:- Infrastructure,Configurations,Monitoring,CI
+4. Cloud,Networking & OS.
+5. Communication & Collaboration skills.

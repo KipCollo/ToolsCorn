@@ -1,4 +1,63 @@
-# Android Project Structure
+# Android
+
+Android is a Linux-based operating system designed primarily for tuch-screen mobile devices such as smartphoes and tablets.
+
+
+`Types of Devices`:- There are two most popular Android devices,a smartphone and a tablet.
+The code for Android is open-source,it can be customized to work with other types of electronic devices such as eBook readers,cameras,home automation systems,home appliances,vehicle systems..
+
+`Types of Apps`:- Android has a large community of developers writing applications(apps),that extends functionality of Android devices.
+Android Apps are available for download through Google Play or third-party sites.
+
+
+
+## History of Android
+
+- 2003 - Android Inc is funded in Palo Alto,California.
+- 2005 - Google buys Android Inc.
+- 2007 - Google releases Android code as open source under Apache License.
+- 2008 - Android Software Development Kit(SDK) 1.0 is released.This kit contains all of the tools neede to develop Android Apps.The first Android phones become available.
+
+
+
+## System Architecture
+
+Android Architecture also known as Android stack has four layers:-
+
+1. Bottom Layer - Linux.This provides low-level drivers for hardware,networking,file system access and inter-process communication(IPC).
+2. Second Layer - Native Libraries - These libraries are written in C or C++.They include Dalvik virtual machine(VM),which works similarly to Java virtual machine.However,the Dalvik VM was designed specifically for mobile devices and their inherent limitations,such as battery life and processing power.
+3. Third Layer - Application Framework - Written mostly in Java, and it provides libraries that can be used by top layer of the stack.They include notification manager,content providers and location manager.
+4. Top Layer - Android Apps - These includes pre-installed apps such as the apps that you can use to manage the Home screen,manage your contacts,make and receive calls,browse the web.in addition, you can download and install other apps.These types of apps are written in Java.
+
+
+## How Apps are compiled and Run.
+
+When you develop an Android App,you typically use an IDE such as Android Studio to create project.A project contains all of files for app including the files for Java source code.
+
+When you run a project,the IDE typically compiles and packages the project automatically before running it.This is known as building the proect.
+
+When the IDE builds a project,it compiles the Java source code(.java files) into Java bytecodes(.class files).Then,it compiles bytecode into Dalvik executable files(.dex files) that can be run by Dalvik virtual machine that's available from all Android devices.
+
+When IDE builds a project,it puts the .dex files and rest of files for the project into Android package(.apk file).This file contains all of the files necessary to run your app including .dex files and other compiled resources,uncompiled resources, and a binary version of the Android manifest.
+The `Android manifest` is a file that specifies some essential information about your app that Andoid system must have before it can run the app.In its non-binary version,the Android manifest is stored in a file name AndroidManifest.xml
+
+For security reasons, all Android apps must be digitally signed with a certificate.During Dev,the IDE typically signs the app for you automatically using special debug key.Then, it runs the app on the specified physical devie such a smartphone or tablet.Or,it runs the app on the specified emulator,which is apiece of software that runs on your computer and mimics an Android device.An Android emulator can also be called an Android Virtual Device(AVD).
+
+The Android Debug Bridge(ADB) lets your IDE communicate with an emulator or physical Android device.This is necessary to provide the debugging capabilities.
+
+When you are ready to release the app,you must sign the app in release mode,using your own private key.
+
+Android Project ---> Compilation -----> Android Package(.apk)---->Signing ---> Device/emulator
+
+
+
+## Android Studio
+
+Android Studio is an IDE that you can use to develop Android apps.It is based on Intellij IDEA.
+It's open source,available for free and runs on all modern OS.
+
+
+## Android Project Structure
 
 When you create a new Android project in Android Studio, the IDE generates files and directories in a specific structure.
 Before we dive in, it’s helpful to know that the project structure varies slightly depending on the template you choose when creating your project. In this topic, we’ll focus on the two most common templates for building Android apps:
