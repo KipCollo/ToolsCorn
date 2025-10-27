@@ -85,14 +85,15 @@ It involves:-
 
 Devops tools includes:-
 
-1. Plan - Jira,Slack,Confluence
+1. Plan - Jira,Slack,Confluence,GitHub Projects,Notion.
 2. Code:- VSCode,Intellij,GIT
-3. Deploy:- AWS,Google Cloud,Azure
-4. Operate:- Terraform,Kubernetes,Puppet,Ansible
-5. Monitor:- Prometheus,Grafana,Datadog
-6. Release:- Jenkins,Travis CI,Bamboo
-7. Test: Soap UI,Jest,JUnit,Appium
-8. Build: AWS CodeBuild,Gradle,Apache Maven
+3. Build: AWS CodeBuild,Gradle,Apache Maven
+4. Test: Soap UI,Jest,JUnit,Appium
+5. Release:- Jenkins,Travis CI,Bamboo
+6. Deploy:- AWS,Google Cloud,Azure
+7. Operate:- Terraform,Kubernetes,Puppet,Ansible
+8. Monitor:- Prometheus,Grafana,Datadog
+
 
 
 `Version Control`:-
@@ -139,6 +140,7 @@ Puppet is a tool that helps you manage and automate the configuration of servers
 3. Nagios is a mature and popular open source monitoring tool with a focus on server and network monitoring. It offers a flexible plugin system for extending its monitoring capabilities and features robust alerting and notification options.
 4. OpenNMS is an open source network management system with built-in monitoring capabilities. It provides comprehensive network discovery, mapping, and monitoring features, and offers a web-based interface for managing and visualizing network performance.
 5. Grafana is a visualization platform that integrates with various data sources, including Prometheus, for creating interactive and shareable dashboards.
+6. New Relic.
 
 `Collaboration and Communication`
 
@@ -514,3 +516,6 @@ Overal DevOps skills:-
 3. Troubleshooting prodcuction issues:- Infrastructure,Configurations,Monitoring,CI
 4. Cloud,Networking & OS.
 5. Communication & Collaboration skills.
+
+Arcjet
+Warp

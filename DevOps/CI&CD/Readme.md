@@ -14,7 +14,7 @@ Every time a new revision of your code is ready to be deployed, the pipeline sta
 Popular CI/CD tools include:
 
 1. Spinnaker
-2. GitLab
+2. GitLab CI
 3. Jenkins
 4. Jenkins X
 5. Tekton CD

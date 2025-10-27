@@ -1,15 +1,12 @@
 # Docker
 
-Docker is an open source project for building, shipping, and running programs. It is a commandline program, a background process, and a set of remote services that take a logistical approach to solving common software problems and simplifying your experience installing, running, publishing, and removing software. It accomplishes this by using
-an operating system technology called containers.
+`Docker` is an open source project for building, shipping, and running programs. It is a commandline program, a background process, and a set of remote services that take a logistical approach to solving common software problems and simplifying your experience installing, running, publishing, and removing software. It accomplishes this by using an operating system technology called containers.
 
 Docker is an open source platform that automates deployment, scaling and management of applications by isolating them into lightweight and portable containers.It provides developers and admins with set of tools and APIs to manage containerized apps.You build and package app code, libraries and dependencies into a container image, which can be distributed and run consistently in any environment that support docker
 
 It was launched in March 2013, Docker works with your operating system to package,ship, and run software.
 
-Docker runs Linux software on most systems. Docker for Mac and Docker for Windows integrate with common virtual machine (VM) technology to create portability
-with Windows and macOS. But Docker can run native Windows applications on modern Windows server machines.
-
+Docker runs Linux software on most systems. Docker for Mac and Docker for Windows integrate with common virtual machine (VM) technology to create portability with Windows and macOS. But Docker can run native Windows applications on modern Windows server machines.
 Docker is a tool that helps solve common problems such as installing, removing, upgrading, distributing, trusting, and running software. It’s open source Linux software.
 Docker doesn’t provide container technology; it hides the complexity of working directly with the container software and turns best practices into reasonable defaults.
 

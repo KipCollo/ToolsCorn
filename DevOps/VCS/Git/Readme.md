@@ -1,6 +1,7 @@
 # Git
 
-Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. Git’s purpose is to keep track of projects and files as they change over time with manipulations happening from different users. Git stores information about the project’s progress on a repository. A repository has commits to the project or a set of references to the commits called heads. All this information is stored in the same folder as the project in a sub-folder called .git and will mostly be hidden by default in most systems.
+Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. Git’s purpose is to keep track of projects and files as they change over time with manipulations happening from different users. 
+Git stores information about the project’s progress on a repository. A repository has commits to the project or a set of references to the commits called heads. All this information is stored in the same folder as the project in a sub-folder called .git and will mostly be hidden by default in most systems.
 
 So basically. Git keeps track of the changes a couple of people make on a single project and then merges the code where people have worked on different parts into one project.This way, when someone introduces a bug, you can track down the code that introduced the bug by going through the commits. Commits must be made to a project to tell git that you’re satisfied with the changes you’ve made and want to commit the changes into the main branch called master by default.
 
@@ -36,8 +37,8 @@ Before we dive in, let me explain the structure of Git so that you can understan
 
 Based on scopes:
 
-  1. Global- **~.gitconfig**, or **C:\users\[user\.gitconfig]**
-  2. Local:- For specific repo **.git/config**.It overrides global configurations
+1. Global- **~.gitconfig**, or **C:\users\[user\.gitconfig]**
+2. Local:- For specific repo **.git/config**.It overrides global configurations
 
 * git config
 
@@ -191,3 +192,7 @@ Git is a command line tool,but there are soma visualizations such as:
 `collaborative workflows`:- forking and pull requests,rebasing and merging,squash commits,handling merge conflicts during PRs.
 `Git internals`:- .git folder,Object models(blobs,Trees,Commits),SHA1 hosting,Detached HEAD.
 `GUI Tools and Git Hosting`:- GitHub Desktop,GitKraken,GitHub actions,GitHub issues
+
+```sh
+git --version
+```

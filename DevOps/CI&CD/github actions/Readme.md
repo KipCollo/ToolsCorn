@@ -354,6 +354,7 @@ jobs:
         with:
           name: presentations
           path: ./presentations/*.pptx
+          
   release-content:
     name: 'Create GitHub Release'
     runs-on: ubuntu-latest
@@ -419,14 +420,10 @@ inputs and outputs.
 
 
 
-## Workflow runtime
-
-## Runners
+## Workflow runtime (Runners)
 
 The runtime of GitHub actions is provided by services called `runners`.Runners are standalone instances that continuously ask GitHub if there is work for them to execute.
 They provide the runtime for your job definitions:they will execute the steps defined in the job for you and provide information about the outcome back to GitHub as well as logs and any data uploaded to GitHub e.g artifacts,cache information.
-
-**GitHub-hosted runners**:- GitHub provides runners as a service.Thses are called `GitHub-hosted runners` and comes with certain compute power and preinstalled software, and they are maintained with latest security and operating system (OS) updates.There is no cost attached to using these runners.Depending on your plan,you will have a certain amount of action minutes included for free.
 
 `Targetting a runner`:-Job definitions have to specify a set of labels they want to use for the GitHub service to find a match when job is queued to be executed.
 A job must target at least one runner label and can target multiple labels if needed.The GitHub-hosted runners have several default labels available to indicate,e.g operating system of runner.
@@ -441,10 +438,17 @@ job:
 
 GitHub will use the list of labels to find a runner that is online and ready to handle jobs.For a job to find a runner,all labels in the *runs_on* array need to match.
 
-**Self-hosted runners**:- You can also install your own runners in your own enevironments,which are reffered to as `self-hosted runners`.
+**GitHub-hosted runners**:- GitHub provides runners as a service.Thses are called `GitHub-hosted runners` and comes with certain compute power and preinstalled software, and they are maintained with latest security and operating system (OS) updates.There is no cost attached to using these runners.Depending on your plan,you will have a certain amount of action minutes included for free.
+GitHub hosts runners to allow their users to get started using GitHub Actions quickly.That means that GitHub hosts the environments that execute the runner service and makes sure the OS is secured, continuously updated, and has the latest security updates installed. Any tool they provide on the environment also needs to be updated to the latest version and include new security fixes.
+
+
+**Self-hosted runners**:- You can also install your own runners in your own environments,which are referred to as `self-hosted runners`.
 Creating self-hosted runners gives you full control over their execution environment,like placing it inside of the company network or adding specific hardware or software capabilities,cost perspective since you do not need to pay for any action minutes for job that run on self-hosted runners.
+Self-hosted runners can prove beneficial by allowing you to run a self-hosted runner inside of your company network, enabling the runtime to connect to a database service to run certain integration tests or deploy into your production environment, which cannot be accessed from outside the company perimeter.
 
-
+`Setting up self-hosted runners`:- Self-hosted runners can be set up by installing the runner application and following the steps from the documentation for the OS that will be hosting the service.
+The service itself is open source and can be found in the following repository: <https://github.com/actions/runner>. This repository also hosts the releases of the application. The application is based on the .NET core runtime and can be executed on a large number of operating systems and processor types, including x86, x64, and ARM processors as well as on Linux, Windows, and macOS.
+To get started installing the runner, you will need to have an environment that is supported by the .NET core version.The .NET core does not need to be preinstalled; the runner is self-contained. It also includes the two most recent versions of the Node binaries it supports, as most of the public actions will need Node to execute. To run the checkout action, you will need to have a recent version of Git installed.
 
 ## CI/CD with GitHub Actions
 

@@ -40,3 +40,19 @@ To add comments to our program,
 This is also a comment
 This is the third comment */
 ```
+
+Filtering Data- Insert,update,delete
+Sorting and Limiting Data - Order by,limit,distinct
+Aggregating data - count(),sum(),avg(),min(),max(),group by,having
+Set operations - Union,union all,intersect,except
+Views - create view,drop view,alter view,insert into view,update view
+Subqueries -  subqueries in SELECT,subqueries in WHERE,suqueries in FROM
+Transcations - Begin transaction,commit,rollback,savepoint,set transaction isolation level
+Window functions - row_number(),rank(),dense_rank(),ntile(),lead(),lag(),sum() over(),AVG() OVER(),PARTITION BY,ORDER BY
+Date and Time functions - getdate(),current_timestamp,dateadd(),datediff(),datepart(),date_format(),now(),extract(),timestampdiff()
+Triggers - create trigger,drop trigger,after insert/update/delete,before insert/update/delete
+Conditional logic - ifnull(),coalesce(),case when
+Date Modification - where,and ,or, not, in, between,like,is null,is not null,exists
+Common table expressions - with cte as,recursive cte,with temporary cte
+Indexing - Create index,drop index,unique index,full-text index,composite index
+Joins - Inner,left,right,full,cross,self join.
