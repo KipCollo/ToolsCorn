@@ -208,147 +208,75 @@ keys in React lists - Keys are used to give a unique identity to each element in
 
 ## React versions
 
-✅ React 0.3 – 0.14 (2013–2015)
+- React 0.3 – 0.14 (2013–2015) - Initial Release & Core Concepts
+  1.  JSX: JavaScript syntax extension for describing UI (HTML-like in JS).
+  2.  Components: Reusable, stateful UI elements.
+  3.  Virtual DOM: Efficient UI updates.
+  4.  Unidirectional Data Flow: Props from parent → child.
+  5.  ReactDOM.render() introduced for mounting.
 
-Initial Release & Core Concepts
+- React 0.14 (2015)
+  1.  Split: react (core) and react-dom (DOM rendering).
+  2.  Stateless Functional Components introduced.
+  3.  PureComponent introduced for performance optimization.
 
-    JSX: JavaScript syntax extension for describing UI (HTML-like in JS).
+- React 15 (2016) - Custom DOM Attributes: Non-standard attributes are passed to the DOM (e.g., data-*, aria-*).
+  1. Improved SVG Support
+  2.  Development & Production Builds separated.
 
-    Components: Reusable, stateful UI elements.
+- React 16 (2017) – “Fiber”
+  1.  New Core Architecture (Fiber): Enables async rendering.
+  2. Fragments: Return multiple elements (<> </>) without a parent div.
+  3.  Error Boundaries: Catch errors in component trees.
+  4.  Portals: Render children outside the parent DOM hierarchy.
+  5.  render() can return strings, arrays, and booleans.
 
-    Virtual DOM: Efficient UI updates.
+- React 16.8 (2019) – Hooks
+  1.  Hooks API introduced:- useState, useEffect, useContext, useReducer, etc.
+  2.  Replaces many class component patterns with functional approaches.
+  3.  Makes logic reuse easier without HOCs or render props.
 
-    Unidirectional Data Flow: Props from parent → child.
+- React 17 (2020) – No New Features
+  1.  Focused on:
+    -  Gradual upgrades
+    -  Improved event delegation to root instead of document
+  2.  New JSX Transform: No need to import React in every file.
 
-    ReactDOM.render() introduced for mounting.
+- React 18 (2022) – Concurrent Features
+  1.  Automatic Batching of state updates.
+  2.  createRoot() API replaces ReactDOM.render() for concurrent rendering.
+  3.  useTransition, useDeferredValue for smooth interactions.
+  4.  Suspense for Data Fetching support expanded.
+  5.  Streaming SSR with support for selective hydration.
 
-React 0.14 (2015)
+- React 19 (RC as of 2024)
+  1.  New use() hook for async/await in components (Suspense-first APIs).
+  2.  New Form Features: useFormStatus, useFormState
+  3.  Actions API: For server mutations.
+  4.  React Compiler (experimental): Automatic memoization and optimization.
+  5.  Improved Server Components Support
 
-    Split: react (core) and react-dom (DOM rendering).
+React Native is a framework for building native mobile applications using React. It allows developers to write mobile apps using JavaScript and leverage the power of React to create reusable UI components.
+React is a JavaScript library for building user interfaces, primarily for web applications, while React Native is a framework for building native mobile applications. React Native uses native components and APIs specific to each platform.
 
-    Stateless Functional Components introduced.
+React Native components are similar to React components but are built specifically for mobile app development. They include components for handling user input, displaying data, navigating between screens, and more.
 
-    PureComponent introduced for performance optimization.
+StyleSheet is a built-in component in React Native that allows you to define styles for your components. It provides a way to write styles using JavaScript objects or create reusable style constants.
 
-⚛️ React 15 (2016)
+The difference between state and props in React Native is the same as in React.js. State is managed within a component and can be changed, while propsare passed to a component from its parent and cannot be modified directly by the component receiving them.
 
-    Custom DOM Attributes: Non-standard attributes are passed to the DOM (e.g., data-*, aria-*).
+AsyncStorage is a simple, asynchronous, persistent key-value storage system provided by React Native. It allows you to store data on the device's disk and retrieve it later, making it useful for caching data or storing user preferences.
+Expo is a set of tools, libraries, and services built on top of React Native. It provides a simplified development workflow, pre-configured native modules, and access to device features, allowing developers to build and deploy React Native apps faster.
 
-    Improved SVG Support
+React DevTools is a browser extension that allows you to inspect and debug React component hierarchies. It provides a set of tools for inspecting components, examining props and state, and profiling performance.
 
-    Development & Production Builds separated.
+React.memo() is a higher-order component that memoizes the rendering of a functional component, similar to the shouldComponentUpdate() lifecycle method for class components. It prevents unnecessary re-renders of the component if its props have not changed.
+A controlled component is a component where form data is handled by React stateand is fully controlled by React. An uncontrolled component, on the other hand, manages its own stateand stores form data internally without relying on React state.
 
-🧬 React 16 (2017) – “Fiber”
+Error boundaries are React components that catch JavaScript errors during rendering, in lifecycle methods, and in constructors of their child component tree. They help to prevent the entire application from crashing and allow for graceful error handling.
 
-    New Core Architecture (Fiber): Enables async rendering.
-
-    Fragments: Return multiple elements (<> </>) without a parent div.
-
-    Error Boundaries: Catch errors in component trees.
-
-    Portals: Render children outside the parent DOM hierarchy.
-
-    render() can return strings, arrays, and booleans.
-
-🧩 React 16.8 (2019) – Hooks
-
-    Hooks API introduced:
-
-        useState, useEffect, useContext, useReducer, etc.
-
-    Replaces many class component patterns with functional approaches.
-
-    Makes logic reuse easier without HOCs or render props.
-
-🔄 React 17 (2020) – No New Features
-
-    Focused on:
-
-        Gradual upgrades
-
-        Improved event delegation to root instead of document
-
-    New JSX Transform: No need to import React in every file.
-
-⚡ React 18 (2022) – Concurrent Features
-
-    Automatic Batching of state updates.
-
-    createRoot() API replaces ReactDOM.render() for concurrent rendering.
-
-    useTransition, useDeferredValue for smooth interactions.
-
-    Suspense for Data Fetching support expanded.
-
-    Streaming SSR with support for selective hydration.
-
-🔬 React 19 (RC as of 2024)
-
-    New use() hook for async/await in components (Suspense-first APIs).
-
-    New Form Features: useFormStatus, useFormState
-
-    Actions API: For server mutations.
-
-    React Compiler (experimental): Automatic memoization and optimization.
-
-    Improved Server Components Support
-
-React Native is a framework for building native mobile applications using React. It
-allows developers to write mobile apps using JavaScript and leverage the power of
-React to create reusable UI components.
-
-React is a JavaScript library for building user interfaces, primarily for web
-applications, while React Native is a framework for building native mobile
-applications. React Native uses native components and APIs specific to each
-platform.
-
-React Native components are similar to React components but are built specifically
-for mobile app development. They include components for handling user input,
-displaying data, navigating between screens, and more.
-
-StyleSheet is a built-in component in React Native that allows you to define styles for
-your components. It provides a way to write styles using JavaScript objects or create
-reusable style constants.
-
-The difference between state and props in React Native is the same as in React.js.
-State is managed within a component and can be changed, while propsare passed
-to a component from its parent and cannot be modified directly by the component
-receiving them.
-
-AsyncStorage is a simple, asynchronous, persistent key-value storage system
-provided by React Native. It allows you to store data on the device's disk and retrieve
-it later, making it useful for caching data or storing user preferences.
-
-Expo is a set of tools, libraries, and services built on top of React Native. It provides a
-simplified development workflow, pre-configured native modules, and access to
-device features, allowing developers to build and deploy React Native apps faster.
-
-React DevTools is a browser extension that allows you to inspect and debug React
-component hierarchies. It provides a set of tools for inspecting components,
-examining props and state, and profiling performance.
-
-React.memo() is a higher-order component that memoizes the rendering of a
-functional component, similar to the shouldComponentUpdate() lifecycle method for
-class components. It prevents unnecessary re-renders of the component if its props
-have not changed.
-
-A controlled component is a component where form data is handled by React stateand is fully controlled by React. An uncontrolled component, on the other hand,
-manages its own stateand stores form data internally without relying on React state.
-
-Error boundaries are React components that catch JavaScript errors during
-rendering, in lifecycle methods, and in constructors of their child component tree.
-They help to prevent the entire application from crashing and allow for graceful error
-handling.
-
-React.StrictMode is a component that helps highlight potential problems in an
-application. It enables additional checks and warnings in the development mode to
-help identify and address potential bugs and deprecated features.
-
-React.Fragment is a built-in component in React that allows you to group multiple
-elements without adding an extra node to the DOM. It is useful when you need to
-return multiple elements from a component's render method without introducing
-unnecessary wrapping elements.
+React.StrictMode is a component that helps highlight potential problems in an application. It enables additional checks and warnings in the development mode to help identify and address potential bugs and deprecated features.
+React.Fragment is a built-in component in React that allows you to group multiple elements without adding an extra node to the DOM. It is useful when you need to return multiple elements from a component's render method without introducing unnecessary wrapping elements.
 
 ## React Render HTML
 
