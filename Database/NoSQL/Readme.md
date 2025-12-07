@@ -20,7 +20,7 @@ There are 4 main types of NoSQL databases that differ from each other:-
 Useful for caching,session maanagement.
 Redis,DynamoDB and Oracle NoSQL are popular key-value NoSQL database.
 
-`Document database` - General purpose
+`Document database` - General purpose.
 Includes:- Apache CouchDB, MongoDB,Azure Cosmos DB.
 
 `Wide column` - Subset f key-value.Uses Tables,rows and columns but can vary.Large volumes of data.Focuses on your app's queries.

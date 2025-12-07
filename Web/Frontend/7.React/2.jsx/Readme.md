@@ -62,8 +62,7 @@ JSX will throw an error if the HTML is not correct, or if the HTML misses a pare
 
 
 `Fragment`:-  Alternatively, you can use a "fragment" to wrap multiple lines. This will prevent unnecessarily adding extra nodes to the DOM.A fragment looks like an empty HTML tag: <></>.
-React Fragments allow you to group multiple elements without adding an extra node to the DOM. They are useful when you need to return multiple elements from a
-component's render method without introducing unnecessary wrapping elements.
+React Fragments allow you to group multiple elements without adding an extra node to the DOM. They are useful when you need to return multiple elements from a component's render method without introducing unnecessary wrapping elements.
 
 ```jsx
 const myElement = (

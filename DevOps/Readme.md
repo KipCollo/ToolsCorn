@@ -95,7 +95,6 @@ Devops tools includes:-
 8. Monitor:- Prometheus,Grafana,Datadog
 
 
-
 `Version Control`:-
 
 1. Git is widely used for version control, and helps track changes in source code during development.

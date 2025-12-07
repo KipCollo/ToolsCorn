@@ -1,15 +1,13 @@
 # Cloning
 
-If you want to use an already existing git repo(remote repo), you need to create a copy of it on your local device first(local repo). For that, we use the clone command. First, copy the cloning link of that repo(this is usually present where the remote repo is stored).
+- `git clone` - If you want to use an already existing git repo(remote repo), you need to create a copy of it on your local device first(local repo). For that, we use the clone command. First, copy the cloning link of that repo(this is usually present where the remote repo is stored).
 
 ```bash
  git clone LINK
  git clone https://github.com/KipCollo
 ```
 
-* git fetch
-
-The command git fetch downloads the remote repository details and changes on your device
+- `git fetch` - The command git fetch downloads the remote repository details and changes on your device
 
 ```bash
 $ git fetch 

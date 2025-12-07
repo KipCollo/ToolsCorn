@@ -55,8 +55,8 @@ export class PipeComponent {
   schoolToLowerCase="EGERTON UNIVERSITY"
   amount =20.00
   PI=3.14159265359
-  promise = new Promise((ressolve,reject)=>{
-      setTimeout (()=>{
+  promise = new Promise((ressolve,reject)=> {
+      setTimeout (()=> {
         ressolve(this.names.length),3000
       })
   })

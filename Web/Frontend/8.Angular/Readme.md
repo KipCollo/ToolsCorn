@@ -186,93 +186,65 @@ Angular uses webpack to bundle and minify the styles and html.When app changes w
 Key Features and Changes Across Angular Versions
 
 1. Angular 2 (September 2016) - Angular 2 was a complete rewrite of the original AngularJS (version 1.x), making it one of the most transformative versions of Angular. Some key features included:
-    TypeScript Support: Angular 2 was built using TypeScript, bringing in the benefits of strong typing, classes, and interfaces.
-    Component-Based Architecture: Angular 2 introduced components as the fundamental building blocks of applications.
-    Angular CLI: The Angular Command Line Interface (CLI) was introduced to simplify project creation, configuration, and build processes.
-    Improved Dependency Injection: A more flexible and powerful dependency injection system.
-
+    - TypeScript Support: Angular 2 was built using TypeScript, bringing in the benefits of strong typing, classes, and interfaces.
+    - Component-Based Architecture: Angular 2 introduced components as the fundamental building blocks of applications.
+    - Angular CLI: The Angular Command Line Interface (CLI) was introduced to simplify project creation, configuration, and build processes.
+    - Improved Dependency Injection: A more flexible and powerful dependency injection system.
 2. Angular 4 (March 2017) - Angular 4 brought important performance improvements and new features
-    Smaller Bundle Sizes: Optimized the application size for better performance.
-    Angular Animation Package: Angular 4 made animations easier with a dedicated @angular/animations module.
-    Enhanced Template Syntax: Improved handling of dynamic content and template syntax for better developer experience.
-
+    - Smaller Bundle Sizes: Optimized the application size for better performance.
+    - Angular Animation Package: Angular 4 made animations easier with a dedicated @angular/animations module.
+    - Enhanced Template Syntax: Improved handling of dynamic content and template syntax for better developer experience.
 3. Angular 5 (November 2017) - Angular 5 focused on optimizing applications and improving features like
-    Build Optimizer: Introduced a build optimizer to reduce the size of production builds.
-    Angular Universal (SSR): Improved server-side rendering support, enabling better SEO and performance.
-    AOT Compilation: Advanced Ahead-of-Time compilation to improve application startup time.
-
+    - Build Optimizer: Introduced a build optimizer to reduce the size of production builds.
+    - Angular Universal (SSR): Improved server-side rendering support, enabling better SEO and performance.
+    - AOT Compilation: Advanced Ahead-of-Time compilation to improve application startup time.
 4. Angular 6 (May 2018) - Angular 6 introduced more tools and improvements to keep the framework modern and flexible
-
-    CLI Updates: New commands like ng add were introduced to simplify adding libraries and tools.
-    Angular Elements: A new feature that allowed Angular components to be packaged as custom elements (Web Components).
-    RxJS 6: Angular 6 upgraded to RxJS 6, simplifying the API for reactive programming.
-
+    - CLI Updates: New commands like ng add were introduced to simplify adding libraries and tools.
+    - Angular Elements: A new feature that allowed Angular components to be packaged as custom elements (Web Components).
+    - RxJS 6: Angular 6 upgraded to RxJS 6, simplifying the API for reactive programming.
 5. Angular 7 (October 2018) - Angular 7 included several enhancements
-
-    CLI Prompts: Interactive CLI prompts made it easier to work with the Angular CLI.
-    Virtual Scrolling: Optimized large list rendering with virtual scrolling.
-    Angular Material Updates: Further refinements to Angular Material, including better performance and new components.
-
+    - CLI Prompts: Interactive CLI prompts made it easier to work with the Angular CLI.
+    - Virtual Scrolling: Optimized large list rendering with virtual scrolling.
+    - Angular Material Updates: Further refinements to Angular Material, including better performance and new components.
 6. Angular 8 (May 2019) - Angular 8 introduced exciting new capabilities
-
-    Differential Loading: Angular 8 used differential loading to generate separate bundles for modern and legacy browsers, improving load time.
-    Lazy Loading Ivy: Ivy compiler and renderer were introduced in Angular 8, although fully available in Angular 9.
-    Web Workers: Enhanced support for Web Workers for offloading computation to background threads.
-
+    - Differential Loading: Angular 8 used differential loading to generate separate bundles for modern and legacy browsers, improving load time.
+    - Lazy Loading Ivy: Ivy compiler and renderer were introduced in Angular 8, although fully available in Angular 9.
+    - Web Workers: Enhanced support for Web Workers for offloading computation to background threads.
 7. Angular 9 (February 2020) - Angular 9 marked a significant milestone with the introduction of
-
-    Ivy Rendering Engine: Ivy became the default rendering engine, significantly improving performance and reducing bundle sizes.
-    Type Checking Improvements: Angular 9 enhanced type-checking for templates, reducing runtime errors.
-
+    - Ivy Rendering Engine: Ivy became the default rendering engine, significantly improving performance and reducing bundle sizes.
+    - Type Checking Improvements: Angular 9 enhanced type-checking for templates, reducing runtime errors.
 8. Angular 10 (June 2020) - Angular 10 was focused on improving tooling, deprecations, and stability
-
-    TypeScript 3.9 Support: Angular 10 upgraded to TypeScript 3.9.
-    End of Support for IE 9/10: Dropped support for older browsers to focus on modern web technologies.
-    Angular CLI Improvements: Enhancements for faster builds and better performance.
-
+    - TypeScript 3.9 Support: Angular 10 upgraded to TypeScript 3.9.
+    - End of Support for IE 9/10: Dropped support for older browsers to focus on modern web technologies.
+    - Angular CLI Improvements: Enhancements for faster builds and better performance.
 9. Angular 11 (November 2020) - Angular 11 included
-
-    Faster Build Performance: Optimized build speeds and improved error messages in the development environment.
-    Component Test Harness: Introduced a standardized way of testing Angular components.
-    Angular Language Service: Improvements in the Angular Language Service, offering better code completion and inline documentation.
-
+    - Faster Build Performance: Optimized build speeds and improved error messages in the development environment.
+    - Component Test Harness: Introduced a standardized way of testing Angular components.
+    - Angular Language Service: Improvements in the Angular Language Service, offering better code completion and inline documentation.
 10. Angular 12 (May 2021) - Angular 12 continued the focus on making the framework more modern
-
-    Deprecation of View Engine: Angular 12 fully moved to Ivy, deprecating the old View Engine.
-    Ivy Everywhere: Improved performance with the Ivy rendering engine, and enhanced type-checking for templates.
-    TypeScript 4.2: Support for TypeScript 4.2 introduced new features like improved type inference.
-
+    - Deprecation of View Engine: Angular 12 fully moved to Ivy, deprecating the old View Engine.
+    - Ivy Everywhere: Improved performance with the Ivy rendering engine, and enhanced type-checking for templates.
+    - TypeScript 4.2: Support for TypeScript 4.2 introduced new features like improved type inference.
 11. Angular 13 (November 2021) - Angular 13 continued optimizing performance
-
-    Ivy Everywhere: Fully embraced Ivy, making it easier to work with modern features and improving overall performance.
-    Angular Material Enhancements: Updated Angular Material components for better accessibility and usability.
-    Build Times: Faster build times, especially in large applications.
-
+    - Ivy Everywhere: Fully embraced Ivy, making it easier to work with modern features and improving overall performance.
+    - Angular Material Enhancements: Updated Angular Material components for better accessibility and usability.
+    - Build Times: Faster build times, especially in large applications.
 12. Angular 14 (March 2022) - Angular 14 introduced new features like
-
-    Standalone Components: Allowed the use of components without requiring an Angular module, making the framework more flexible.
-    Typed Reactive Forms: Improved support for strongly typed forms with better type safety.
-
+    - Standalone Components: Allowed the use of components without requiring an Angular module, making the framework more flexible.
+    - Typed Reactive Forms: Improved support for strongly typed forms with better type safety.
 13. Angular 15 (November 2022) - Angular 15 improved the framework with
-
-    Simplified Component APIs: Made components even easier to create and manage.
-    Tree-Shakable Routes: Enhanced support for tree-shaking routes to reduce bundle sizes.
-
+    - Simplified Component APIs: Made components even easier to create and manage.
+    - Tree-Shakable Routes: Enhanced support for tree-shaking routes to reduce bundle sizes.
 14. Angular 16 (2023) - Angular 16 focused on
-
-    Structural Directive API: Introduced a new API for working with structural directives.
-    CLI Enhancements: Further optimizations in the Angular CLI, improving overall developer experience.
-
+    - Structural Directive API: Introduced a new API for working with structural directives.
+    - CLI Enhancements: Further optimizations in the Angular CLI, improving overall developer experience
 15. Angular 17 (2023) - Angular 17 continued to improve the ecosystem with
-
-    Improved Hydration Support: Better support for server-side rendering.
-    Server-Side Rendering Tools: Enhanced tools for easier SSR integration.
-
+    - Improved Hydration Support: Better support for server-side rendering.
+    - Server-Side Rendering Tools: Enhanced tools for easier SSR integration.
 16. Angular 18 (2024) - Angular 18 focuses on
-
-    Performance Optimization: Even more performance tweaks to make Angular applications faster and more efficient.
-    Improved Tree-Shaking: Enhancements to tree-shaking for better bundling and load times.
-    Better Tooling for Large-Scale Applications: Introduces features for making large Angular applications more manageable and faster to build.
+    - Performance Optimization: Even more performance tweaks to make Angular applications faster and more efficient.
+    - Improved Tree-Shaking: Enhancements to tree-shaking for better bundling and load times.
+    - Better Tooling for Large-Scale Applications: Introduces features for making large Angular applications more manageable and faster to build.
 
 ## Angular service worker overview
 

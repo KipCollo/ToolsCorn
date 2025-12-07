@@ -1,8 +1,6 @@
 # Pushing
 
-* git push
-
-Till now, whatever we were doing was happening to our local repository, but at some point, we needed to push it to the remote repository as well so that others could see and use our code. The git push command does this.
+- `git push` - Till now, whatever we were doing was happening to our local repository, but at some point, we needed to push it to the remote repository as well so that others could see and use our code. The git push command does this.
 
 ```bash
 $ git push <remote> <local> 

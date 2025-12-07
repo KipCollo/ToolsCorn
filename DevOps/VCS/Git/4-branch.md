@@ -1,8 +1,6 @@
 # Branching
 
-* git branch
-
-This command lets us create, list, rename, and delete branches. Let's look at a few examples.
+- `git branch` - This command lets us create, list, rename, and delete branches. Let's look at a few examples.
 
 ```bash
 # this lists the name of the branches present
@@ -15,9 +13,7 @@ $ git branch -d <branch>
 $ git branch -d another_branch
 ```
 
-* Git checkout
-
-The git checkout command lets you navigate between the branches created by git branch.
+- `Git checkout` - The git checkout command lets you navigate between the branches created by git branch.
 
 ```bash
 $ git checkout <branch_name>
@@ -27,9 +23,7 @@ $ git checkout -b <new_branch_name>
 $ git checkout -b new_feature_branch
 ```
 
-* git diff
-
-There are times when we will need to compare the code between versions or between branches; that is when we use git diff.
+- `git diff` - There are times when we will need to compare the code between versions or between branches; that is when we use git diff.
 
 ```bash
 # print any uncommitted changes since the last commit.
@@ -40,9 +34,7 @@ $ git diff branch1 branch2
 $ git diff /filepath/filename
 ```
 
-* git rebase
-
-Rebase is one of two Git utilities that specializes in integrating changes from one branch onto another. The other change integration utility is git merge. Merge is always a forward-moving change record. Alternatively, rebase has powerful history rewriting features.
+- `git rebase` - Rebase is one of two Git utilities that specializes in integrating changes from one branch onto another. The other change integration utility is git merge. Merge is always a forward-moving change record. Alternatively, rebase has powerful history rewriting features.
 Let's see a visual of what git rebase does.
 
 ```bash

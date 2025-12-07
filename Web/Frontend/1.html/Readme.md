@@ -6,7 +6,7 @@ HyperText refers to the pieces of text which can link to other documents in the 
 Markup Language is done by HTML tags.
 HTML utilizes a system of tags,known as `Markup`,to define the structure and elements within a document.These tags tell the browser how to display the content,whether it's text,images,links,or other media.
 
-HTML5 is dynamic nature hence usable for far more than just mobile and desktop browsers. It can be compiled into a native mobile app through platforms such as PhoneGap and appMobi
+HTML5 is dynamic nature hence usable for far more than just mobile and desktop browsers. It can be compiled into a native mobile app through platforms such as PhoneGap and appMobi.
 
 ## HTML Evolutions
 

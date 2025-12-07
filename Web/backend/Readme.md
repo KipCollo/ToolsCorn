@@ -10,7 +10,7 @@
 6. Validation and Transformation.
 7. Middlewares.
 8. Request context.
-9. REST.
+9. API - REST.
 10. Databases.
 11. Business Logic Layers.
 12. Caching.
@@ -29,7 +29,6 @@
 25. Testing & Code Quality.
 26. OpenAPI standard.
 27. WebHooks
-
 
 
 As developers, we’re not just writing code on a text editor without any other external help. Whether we realize it or not, we’re constantly using different development tools to improve the way we work and the speed at which we can deliver our code.

@@ -34,7 +34,3 @@ calculator.add(1, 2);
 ```
 
 In this example, we use the `@log` decorator to modify the behavior of the `add` method in the `Calculator` class. The `log` decorator logs the arguments passed to the method before calling the original method. This allows us to see what arguments are being passed to the method, without having to modify the method's code.
-
-Learn more from the following links:
-
-- [@article@Decorators](https://www.typescriptlang.org/docs/handbook/decorators.html#handbook-content)

@@ -68,7 +68,7 @@ render(){
 
 ## Functional Components
 
-Functional components are simply JavaScript functions. We can create a functional component to React by writing a JavaScript function. These functions may or may not receive data as parameters. In the functional Components, the return value is the JSX code to render to the DOM tree. Functional components can also have state which is managed using React hooks.
+Functional components are simply JavaScript functions that returns JSX. We can create a functional component to React by writing a JavaScript function. These functions may or may not receive data as parameters. In the functional Components, the return value is the JSX code to render to the DOM tree. Functional components can also have state which is managed using React hooks.
 
 ```jsx
 function FunctionName(){
@@ -124,3 +124,15 @@ root.render(<Garage />);
 
 React is all about re-using code, and it is recommended to split your components into separate files.
 To do that, create a new file with a .js file extension and put the code inside it.
+
+Functional components are stateless and are typically written as plain JavaScript functions. They are simpler and easier to test. Class components, on the other hand,have a state, can use lifecycle methods, and are written as ES6 classes.
+
+```js
+import React from "react"//compiles jsx to plain js
+import ReactDOM from "react-dom"//renders element in the DOM
+
+const element = <h1>Hello World</h1>
+ReactDOM.render(element,document.getElementById("root"));//element is referenced in a div inside index.html
+```
+
+The constructor is used to initialize the state and bind event handlers in a class component. It is called before the component is mounted.

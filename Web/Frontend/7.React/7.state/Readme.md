@@ -4,7 +4,7 @@ State is an object that holds data and determines how a component renders and be
 State is managed within a component and can be changed, while props are passed to a component from its parent and cannot be modified directly by the component receiving them.
 
 State Management is the implementation of a design pattern to synchronize the state of the application throghout all components of the application.
-State management solutions includes:- React API:- useState and useReducer,context API,Redux,MobX,VueX,Recoil,Zustand
+State management solutions includes:- React API:- useState and useReducer,context API,Redux,MobX,VueX,Recoil,Zustand,Hookstate,Akita.
 
 ## Hooks
 

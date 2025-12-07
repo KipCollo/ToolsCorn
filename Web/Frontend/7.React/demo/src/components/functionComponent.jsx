@@ -25,6 +25,7 @@ function FnComponent(){
         {id:2,name:"Collo",age: 22},
         {id:2,name:"Collo",age: 22},
         {id:2,name:"Collo",age: 22}]
+
     const person = persons.map(
         p => {
             return  <SecondComp name={p.name} age={p.age}/>

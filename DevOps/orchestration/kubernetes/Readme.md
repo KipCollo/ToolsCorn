@@ -90,7 +90,7 @@ Kubernetes cluster is an instance of Kubernetes.At the hardware level, a Kuberne
 1. The (Master node) - Hosts the Kubernetes Control Plane that controls and manages the whole Kubernetes system.
 2. The (worker) nodes - Runs actual applications you deploy.
 
-**COMPONENTS OF THE CONTROL PLANE** - The Control Plane is what controls and makes the whole cluster function.t consists of multiple components that can run on a single master node or be split across multiple nodes and replicated to ensure high availability.These resources/components are containerized application run as a pod.To list them you can use the command `kubectl get pods -n kube-system`.
+**COMPONENTS OF THE CONTROL PLANE** - The Control Plane is what controls and makes the whole cluster function.It consists of multiple components that can run on a single master node or be split across multiple nodes and replicated to ensure high availability.These resources/components are containerized application run as a pod.To list them you can use the command `kubectl get pods -n kube-system`.
 
 The Kubernetes master runs various server and manager processes for the cluster. Among the components of the master node are the kube-apiserver, the kube-scheduler, and the etcd database. As the software has matured, new components have been created to handle dedicated needs, such as the cloud-controller-manager; it handles tasks once handled by the kube-controller-manager to interact with other tools, such as Rancher or DigitalOcean for third-party cluster management and reporting.
 

@@ -12,7 +12,6 @@ React allows us to write components using a domain-speciﬁc language called JSX
 
 React "reacts" to state changes in your components quickly and automatically to rerender the components in the HTML DOM by utilizing the virtual DOM. The virtual DOM is an in-memory representation of an actual DOM. By doing most of the processing inside the virtual DOM rather than directly in the browser's DOM, React can act quickly and only add, update, and remove components which have changed since the last render cycle occurred.
 
-
 React creates a VIRTUAL DOM in memory.Instead of manipulating the browser's DOM directly, React creates a virtual DOM in memory, where it does all the necessary manipulating, before making the changes in the browser DOM.React only changes what needs to be changed.
 React finds out what changes have been made, and changes only what needs to be changed. 
 
@@ -89,6 +88,18 @@ React also supports JSX syntax. JSX is an extension created by Facebook that add
 </html>
 ```
 
+## CLI Tools
+
+Here is the list of most common CLI tools for React development:
+
+1. [@article@create-react-app](https://create-react-app.dev)
+2. [@article@vite](https://vitejs.dev)
+
+- Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects.
+- Create React App is the CLI based tool and is the best way to start building a new single-page application in React.
+
+It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production. You’ll need to have Node >= 14.0.0 and npm >= 5.6 on your machine.
+
 - **create-react-app**:-
 
 create-react-app is a command line application, aimed at getting you up to speed with React in no time
@@ -162,19 +173,6 @@ In a project where Vite is installed, you can use the vite binary in your npm sc
 } 
 ```
 
-## CLI Tools
-
-Here is the list of most common CLI tools for React development:
-
-1. [@article@create-react-app](https://create-react-app.dev)
-2. [@article@vite](https://vitejs.dev)
-
-- Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects.
-
-- Create React App is the CLI based tool and is the best way to start building a new single-page application in React.
-
-It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production. You’ll need to have Node >= 14.0.0 and npm >= 5.6 on your machine.
-
 1. Objects: Collections of key value pairs.
 
 ```js
@@ -187,22 +185,6 @@ const Person = {
 
 Person.talk()
 ```
-
-## Components
-
-Functional components are stateless and are typically written as plain JavaScript functions. They are simpler and easier to test. Class components, on the other hand,have a state, can use lifecycle methods, and are written as ES6 classes.
-
-```js
-import React from "react"//compiles jsx to plain js
-import ReactDOM from "react-dom"//renders element in the DOM
-
-const element = <h1>Hello World</h1>
-ReactDOM.render(element,document.getElementById("root"));//element is referenced in a div inside index.html
-```
-
-The constructor is used to initialize the state and bind event handlers in a class component. It is called before the component is mounted.
-
-keys in React lists - Keys are used to give a unique identity to each element in a list of components. They help React efficiently update and re-render the components by identifying which items have changed, been added, or removed.
 
 `Context` provides a way to pass data through the component tree without having to pass props manually at every level. It is used for sharing data that can be considered "global" for a tree of React components.
 
@@ -299,3 +281,25 @@ ReactDOM.render(<p>Hello</p>, document.getElementById('root'));
 Note that the element id does not have to be called "root", but this is the standard convention.
 
 `The Root Node`: The root node is the HTML element where you want to display the result.It is like a container for content managed by React.It does NOT have to be a <div> element and it does NOT have to have the id='root'.
+
+
+
+## React JS packages
+
+1. React Router
+2. React Query
+3. Axios
+4. React Hook Form
+5. Styled components
+6. Storybook
+7. Framer Motion.
+
+## UI Frameworks
+
+1. Material UI
+2. Ant Design
+3. Chakra UI
+4. React Bootstrap
+5. Rebass
+6. Blueprint
+7. Semantic UI.

@@ -64,7 +64,6 @@ Event binding lets you listen for and respond to user actions such as keystrokes
 ```
 
 The event binding listens for the button's click events and calls the component's onSave() method whenever a click occurs.
-
 To determine an event target, Angular checks if the name of the target event matches an event property of a known directive.
 
 ## Two way binding

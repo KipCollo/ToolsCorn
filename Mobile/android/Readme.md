@@ -2,13 +2,11 @@
 
 Android is a Linux-based operating system designed primarily for tuch-screen mobile devices such as smartphoes and tablets.
 
-
 `Types of Devices`:- There are two most popular Android devices,a smartphone and a tablet.
 The code for Android is open-source,it can be customized to work with other types of electronic devices such as eBook readers,cameras,home automation systems,home appliances,vehicle systems..
 
 `Types of Apps`:- Android has a large community of developers writing applications(apps),that extends functionality of Android devices.
 Android Apps are available for download through Google Play or third-party sites.
-
 
 
 ## History of Android
@@ -17,7 +15,6 @@ Android Apps are available for download through Google Play or third-party sites
 - 2005 - Google buys Android Inc.
 - 2007 - Google releases Android code as open source under Apache License.
 - 2008 - Android Software Development Kit(SDK) 1.0 is released.This kit contains all of the tools neede to develop Android Apps.The first Android phones become available.
-
 
 
 ## System Architecture
@@ -33,7 +30,6 @@ Android Architecture also known as Android stack has four layers:-
 ## How Apps are compiled and Run.
 
 When you develop an Android App,you typically use an IDE such as Android Studio to create project.A project contains all of files for app including the files for Java source code.
-
 When you run a project,the IDE typically compiles and packages the project automatically before running it.This is known as building the proect.
 
 When the IDE builds a project,it compiles the Java source code(.java files) into Java bytecodes(.class files).Then,it compiles bytecode into Dalvik executable files(.dex files) that can be run by Dalvik virtual machine that's available from all Android devices.
@@ -48,7 +44,6 @@ The Android Debug Bridge(ADB) lets your IDE communicate with an emulator or phys
 When you are ready to release the app,you must sign the app in release mode,using your own private key.
 
 Android Project ---> Compilation -----> Android Package(.apk)---->Signing ---> Device/emulator
-
 
 
 ## Android Studio
