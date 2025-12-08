@@ -1159,7 +1159,109 @@ public class UserRequest{
 }
 ```
 
-**Pagination**:-
+**Pagination**:- Spring Boot provides many features to support Pagination natively. 
+As of Spring version 3.3, a class PagedModel is available to enable the serialization of a page in the API. The last section describes the old approach providing our own implementation.
+
+```java
+@GetMapping("/tutorials")
+public ResponseEntity<Map<String, Object>> getAllTutorialsPage(
+    @RequestParam(required = false) String title,
+    @RequestParam(defaultValue = "0") int page,
+    @RequestParam(defaultValue = "3") int size,
+    @RequestParam(defaultValue = "id,desc") String[] sort)
+```
+
+
+**Data Transfer Object (DTO)**:- is a design pattern used to transfer data between software application subsystems or layers, particularly over a network or between different parts of a system like a client and a server. Think of DTOs as specialized containers that carry data from one place to another without containing any business logic.
+A DTO is typically a simple object with no business logic — just fields and corresponding getters/setters. It acts as a structured data container that defines exactly what information should be shared between different parts of your application.
+
+```java
+// Simple DTO example
+public class UserDTO {
+    private String name;
+    private String email;
+
+    public UserDTO(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    // Getters and Setters
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+}
+```
+
+DTOs solve several critical problems in modern software development by creating a clear boundary between your internal domain models and the data you expose externally. This separation is particularly valuable when building APIs, microservices, or any system where different layers need to communicate.
+Key scenarios where DTOs shine:
+
+1. API Communication: REST APIs, GraphQL endpoints, and RPC calls
+2. Serialization/Deserialization: Converting objects to JSON, XML, or other formats
+3. Data Privacy: Controlling what sensitive information gets exposed
+4. Network Optimization: Reducing payload size by including only necessary fields
+5. Version Management: Maintaining API compatibility while evolving internal models
+
+Benefits of Using DTOs:-
+
+1. `Encapsulation and Security` - DTOs act as a protective barrier around your internal domain models. They expose only the necessary data fields, protecting sensitive information like passwords, internal IDs, or business logic details.
+2. `Simplified API Responses` - DTOs allow you to craft responses that include exactly what your API consumers need, reducing payload size and improving performance.
+3. `Decoupling Layers` - DTOs create a clean separation between your data persistence layer (database entities) and your presentation layer (API responses), making your application more maintainable and flexible.
+4. `Improved Testability` - By isolating data structures, DTOs make unit testing easier and more focused. You can test your API layer independently from your domain logic.
+5. `Validation and Transformation` - DTOs serve as excellent input models where you can apply validation rules and transform raw user input into domain-specific structures.
+
+Records can be used for DTOs to avoid relying on Lombok. Records automatically give us a concise syntax, built-in immutability, generated equals, hashCode, and toString methods, and clear intent without extra boilerplate.
+
+```java
+// Java Record (Java 14+) - Immutable, concise
+public record UserRecord(String name, String email, LocalDateTime createdAt, boolean active) {
+    
+    // Compact constructor for validation and normalization
+    public UserRecord {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Name cannot be blank");
+        }
+        if (email == null || !email.contains("@")) {
+            throw new IllegalArgumentException("Invalid email format");
+        }
+        // Normalize name
+        name = name.trim();
+        email = email.toLowerCase().trim();
+    }
+}
+```
+
+```java
+// Records with Bean Validation
+public record CreateUserRecord(
+    @NotBlank(message = "Name is required")
+    @Size(min = 2, max = 50, message = "Name must be between 2 and 50 characters")
+    String name,
+    
+    @Email(message = "Invalid email format")
+    @NotBlank(message = "Email is required")
+    String email,
+    
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$", 
+             message = "Password must be at least 8 characters with letters and numbers")
+    String password,
+    
+    @Valid
+    AddressRecord address
+) {
+    // Validation logic in compact constructor
+    public CreateUserRecord {
+        if (name != null) {
+            name = name.trim();
+        }
+        if (email != null) {
+            email = email.toLowerCase().trim();
+        }
+    }
+}
+```
+
 
 **Serving more than resources**:- The @ResponseBody annotation is helpful in transforming a Java object returned from a controller to a resource representation to send to the client.A good REST API does more than transfer resources between the client and server. It also gives the client additional metadata to help the client understand the resource or know what has just taken place in the request.
 
