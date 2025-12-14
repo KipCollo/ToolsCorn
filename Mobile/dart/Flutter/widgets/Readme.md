@@ -22,15 +22,10 @@ To create a Stateful widget,you should create two classes, a class of StatefulWi
 ## Styled Widgets
 
 `Styled Widgets` are Flutter widgets that are decorated with custom styles, such as colors, fonts, and shapes. They can be created by wrapping existing widgets with other widgets, such as Container, Theme, or BoxDecoration.
-
-
 `Cupertino widgets` are a set of Flutter widgets that mimic the look and feel of Apple's iOS user interface. They are designed to provide a consistent look and feel on both iOS and Android devices, and include widgets such as CupertinoButton, CupertinoAlertDialog, and CupertinoSlider. These widgets are useful for building cross-platform apps that need to conform to the iOS design aesthetics.
-
-
 `Material Widgets` are a set of Flutter widgets that implement Material Design, Google's visual language for design. They are designed to provide a consistent look and feel on both Android and iOS devices.
 
 These widgets are commonly used in Flutter apps to provide a familiar look and feel that follows Material Design guidelines.
-
 
 To attach the Flutter widgets to the device screen,you need to use `runApp` function.All widgets will belong to this function.
 The runApp method renders the provided app widget into the PlatformDispatcher. implicitView by wrapping it in a View widget, which will bootstrap the render tree for the app. Apps that want to control which FlutterView they render into can use runWidget instead.

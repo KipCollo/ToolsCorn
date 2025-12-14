@@ -1630,12 +1630,7 @@ The Spring Framework provides a WebSocket API that you can use to write client- 
 `WebSocketHandler` - Creating a WebSocket server is as simple as implementing WebSocketHandler or, more likely, extending either TextWebSocketHandler or BinaryWebSocketHandler. The following example uses TextWebSocketHandler:
 
 ```java
-import org.springframework.web.socket.WebSocketHandler;
-import org.springframework.web.socket.WebSocketSession;
-import org.springframework.web.socket.TextMessage;
-
 public class MyHandler extends TextWebSocketHandler {
-
  @Override
  public void handleTextMessage(WebSocketSession session, TextMessage message) {
   // ...
@@ -1648,10 +1643,6 @@ public class MyHandler extends TextWebSocketHandler {
 There is dedicated WebSocket Java configuration and XML namespace support for mapping the preceding WebSocket handler to a specific URL, as the following example shows:
 
 ```java
-import org.springframework.web.socket.config.annotation.EnableWebSocket;
-import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
-import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
-
 @Configuration
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {

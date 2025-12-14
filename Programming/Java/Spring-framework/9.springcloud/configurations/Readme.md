@@ -62,12 +62,11 @@ The spring.cloud.config.password and spring.cloud.config.username values overrid
 ## SERVER SIDE
 
 `Spring cloud config server`:- Helps in externalizing configurations.It is a rest api,it exposes the endpoints to retrieve config for microservice.
-Spring Cloud Config Server provides an HTTP resource-based API for external configuration (name-value pairs or equivalent YAML content). The server is embeddable in a Spring Boot application, by using the @EnableConfigServer annotation. Consequently, the following application is a config server:
+Spring Cloud Config Server provides an HTTP resource-based API for external configuration (name-value pairs or equivalent YAML content). The server is embeddable in a Spring Boot application, by using the `@EnableConfigServer` annotation. Consequently, the following application is a config server:
 
 ```java
-
 @SpringBootApplication
-@EnableConfigserver
+@EnableConfigServer
 public class ConfigApplication{
      ....
 }
@@ -79,7 +78,6 @@ Spring Cloud Config Server features:
 - Encrypt and decrypt property values (symmetric or asymmetric)
 - Embeddable easily in a Spring Boot application using @EnableConfigServer
 
-
 Spring Cloud Config Server pulls configuration for remote clients from various sources:-
 
 1. Git Backend
@@ -88,7 +86,7 @@ Spring Cloud Config Server pulls configuration for remote clients from various s
 4. JDBC compatible Databases
 5. Subversion
 
-- The strategy that governs the behaviour of storing the configuration datais the EnvironmentRepository, serving Environment objects. This Environment is a shallow copy of the domain from the Spring Environment (including propertySources as the main feature). The Environment resources are parametrized by three variables:
+- The strategy that governs the behaviour of storing the configuration details the EnvironmentRepository, serving Environment objects. This Environment is a shallow copy of the domain from the Spring Environment (including propertySources as the main feature). The Environment resources are parametrized by three variables:
      1. {application}, which maps to spring.application.name on the client side.
      2. {profile}, which maps to spring.profiles.active on the client (comma-separated list).
      3. {label}, which is a server side feature labelling a "versioned" set of config files.
@@ -101,7 +99,8 @@ spring.profiles.active = dev,mysql
 ```
 
 You can set spring.cloud.config.server.accept-empty to false so that Server would return a HTTP 404 status, if the application is not found. By default, this flag is set to true.
-NOTE:-  You cannot place spring.main.* properties in a remote EnvironmentRepository. These properties are used as part of the application initialization. 
+NOTE:- You cannot place spring.main.* properties in a remote EnvironmentRepository. These properties are used as part of the application initialization. 
+
 
 - **GIT Backend Repository(External Config)**
 
@@ -140,7 +139,6 @@ spring.cloud.config.git.default-label=//This is branchs name
 ```
 
 - **Fie System Backend** - It is a “native” profile in the Config Server that does not use Git but loads the config files from the local classpath or file system (any static URL you want to point to with `spring.cloud.config.server.native.searchLocations`).
-
 To use the native profile, launch the Config Server with `spring.profiles.active=native`.
 
 NOTE:- A filesystem backend is great for getting started quickly and for testing. To use it in production, you need to be sure that the file system is reliable and shared across all instances of the Config Server.

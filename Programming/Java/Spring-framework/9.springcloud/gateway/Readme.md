@@ -3,11 +3,9 @@
 API Gateway built on top of the Spring Ecosystem, including: Spring 5, Spring Boot 2 and Project Reactor.Spring Cloud Gateway aims to provide a simple,yet effective way to route to APIs and provide cross cutting concerns to them such as: security, monitoring/metrics, and resiliency.
 
 To include Spring Cloud Gateway in your project, use the starter with a group ID of org.springframework.cloud and an artifact ID of spring-cloud-starter-gateway .
-
-* If you include the starter, but you do not want the gateway to be enabled, set spring.cloud.gateway.enabled=false
+- If you include the starter, but you do not want the gateway to be enabled, set spring.cloud.gateway.enabled=false
 
 Spring Cloud Gateway is built on Spring Boot 2.x, Spring WebFlux, and Project Reactor. As a consequence, many of the familiar synchronous libraries (Spring Data and Spring Security, for example) and patterns you know may not apply when you use Spring Cloud Gateway.
-
 Spring Cloud Gateway requires the Netty runtime provided by Spring Boot and Spring Webflux. It does not work in a traditional Servlet Container or when built as a WAR
 
 There are two distinct flavors of Spring Cloud Gateway: Server and Proxy Exchange. Each flavor offers WebFlux and MVC compatibility.
@@ -104,7 +102,6 @@ Notice how we made use of the main building blocks of this API:
 ## Dynamic routing
 
 Spring Cloud Gateway provides means for routing requests to different services.
-
 The routing configuration can be created by using pure Java (RouteLocator) or by using properties configuration:
 
 ```yaml

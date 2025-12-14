@@ -39,7 +39,7 @@ To split monolithic to microservice:
 Every micro-service should have its database and have backward compatibilIty(i.e should maintain versioning).It also should have its own source code control(each micro-service should have its git repo)
 
 1. Developing microservices:Can be developed with: Spring Rest,Spring Boot using Rest Principles
-2. Delivering microseRvices:
+2. Delivering microservices:
 
 - `Netflix`: It has adopted microservice architecture and implemented several tools that helps integrate,manage and deploy microservice.It includes:
     1. Eureka Server - service discovery
