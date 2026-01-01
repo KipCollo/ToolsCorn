@@ -10,7 +10,8 @@ Code example:
 
 ```sql
 INSERT INTO table_name 
-VALUES (value1, value2, ..., valueN);
+VALUES (value1, value2, ..., valueN),
+       (value1, value2, ..., valueN) ;
 ```
 
 In the example above, you need to provide values for all columns available in the table.

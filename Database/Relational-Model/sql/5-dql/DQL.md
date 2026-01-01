@@ -33,13 +33,12 @@ FROM customers
 WHERE country = 'Germany';
 ```
 
-`GROUP BY clause`:- Using GROUP BY ... HAVING to filter aggregate records is analogous to using SELECT ... WHERE to filter individual
-records.It combines rows with the same values.It aggregates a column by another column.
+`GROUP BY clause`:- Using GROUP BY ... HAVING to filter aggregate records is analogous to using SELECT ... WHERE to filter individual records.It combines rows with the same values.It aggregates a column by another column.
 
 ```sql
 SELECT column_name, AGGREGATE_FUN()
 FROM table_name;
-GROUP BY column_name
+GROUP BY column_name DESC
 ```
 
 ```sql
@@ -81,4 +80,27 @@ SELECT *
 FROM table_name;
 WHERE condition
 ORDER BY x ASC, y DESC
+```
+
+`LIMIT clause`:- Used to limit number of records returned by table.
+
+```sql
+SELECT column_name
+FROM table_name;
+LIMIT argument
+```
+
+```sql
+--page 1: 1-3
+--page 2: 4-6
+SELECT column_name
+FROM table_name;
+LIMIT offset,argument
+```
+
+
+```sql
+SELECT column_name
+FROM table_name;
+LIMIT 6,3
 ```
