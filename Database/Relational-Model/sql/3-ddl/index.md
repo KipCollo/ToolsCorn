@@ -5,6 +5,8 @@ Data Definition Language (DDL) is a subset of SQL. Its primary function is to cr
 - `CREATE`: This command is used to create the database or its objects (like table, index, function, views, store procedure, and triggers).
 
 ```sql
+CREATE DATABASE IF NOT EXISTS database_name;
+
 CREATE TABLE table_name (
 column1 data_type(size),
 column2 data_type(size),
@@ -15,6 +17,7 @@ column2 data_type(size),
 2. `DROP`: This command is used to delete an existing database or table.
 
     ```sql
+    DROP DATABASE IF NOT EXISTS database_name;
     DROP TABLE table_name;
     ```
 

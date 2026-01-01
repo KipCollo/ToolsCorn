@@ -2,9 +2,8 @@
 
 Jenkins is a self-contained, open-source automation server which can be used to automate all sorts of tasks related to building, testing and deploying software.i.e Continuous Intergration, Continuous Delivery,Continuus Testing and Continuous Deployment.
 
-Jenkins is a Continuous Integration/Continuous Delivery or Deployment (CI/CD)tool in DevOps. Jenkins is developed in the “Java” language. It implements the CI/CD workflows using pipelines or automation.
+Jenkins is a Continuous Integration/Continuous Delivery or Deployment (CI/CD)tool in DevOps. Jenkins and its plugins is developed in the “Java” language. It implements the CI/CD workflows using pipelines or automation.
 
-Jenkins tool is written in java and its plugins.
 Can be installed through native system packages, Docker or standalone by any machine running Java Runtime Environment.
 
 Jenkins works on “Master-Slave” architecture. This means you have to set up two nodes named “Master” & “Slave”. On the “Master” node, you will configure “Jenkins” with “Java”, while on “Slave”, you have to install “Java” only.

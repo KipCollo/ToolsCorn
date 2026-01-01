@@ -1,6 +1,6 @@
 # CSS Lists
 
-1. -style-type - the type of list-item marker.
+1. list-style-type - the type of list-item marker.
 2. list-style-position - speciﬁes where to place the marker
 3. list-style-image - speciﬁes the type of list-item marker
 4. initial - sets this property to its default value

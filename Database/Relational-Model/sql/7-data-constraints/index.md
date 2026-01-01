@@ -51,7 +51,7 @@ Data constraints in SQL are used to specify rules for the data in a table. Const
         OrderNumber int NOT NULL,
         ID int,
         PRIMARY KEY (OrderID),
-        FOREIGN KEY (ID) REFERENCES Students(ID)
+        FOREIGN KEY fk_orders_customers (ID) REFERENCES Students (ID) ON UPDATE CASCADE ON DELETE NO ACTION
     );
     ```
 

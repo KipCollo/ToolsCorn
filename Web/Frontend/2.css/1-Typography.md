@@ -6,12 +6,12 @@ Typography is the way that text is arranged and presented.
 
 ```css
 #element-one {
-font-size: 30px;
+   font-size: 30px;
 }
 ```
 
 `color`:- Any valid CSS color representation, like red, #00FF00, hsl(240, 100%, 50%) etc.
-`font-stretch`:- Whether or not to use a confenced or expanded face from font. Valid values are normal, ultra-condensed, extra-condensed, condensed, semi-condensed, semi-expanded, expanded, extra-expanded or ultra-expanded
+`font-stretch`:- Whether or not to use a confenced or expanded face from font. Valid values are normal, ultra-condensed, extra-condensed, condensed, semi-condensed, semi-expanded, expanded, extra-expanded or ultra-expanded.--obsolete/depricated
 `text-align`:- start, end, left, right, center, justify, match-parent
 `text-decoration`:- none, underline, overline, line-through, initial, inherit;
 `font-style`:- italics or oblique.

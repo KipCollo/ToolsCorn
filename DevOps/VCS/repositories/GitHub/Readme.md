@@ -1,5 +1,7 @@
 # GitHub
 
+GitHub is more than just a platform for hosting and sharing code. It has become the beating heart of the open source community, with millions of developers from all over the world collaborating on projects of every type and size. Founded in 2008, GitHub has since grown to host over 200 million repositories and 100 million users, with a staggering 3.5 billion contributions made in the last year alone.
+
 At the core of GitHub lies the essential component of version control - Git.
 GitHub has extended beyond its function as a hosting platform for Git and has evolved into a comprehensive DevOps platform that supports collaborative coding through aynchronous means,such as pull requests and issues.
 The platform's capabilities have expanded into six broad categories:-

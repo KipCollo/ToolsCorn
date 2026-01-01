@@ -1,12 +1,9 @@
 # GitHub Actions
 
-GitHub is more than just a platform for hosting and sharing code. It has become the beating heart of the open source community, with millions of developers from all over the world collaborating on projects of every type and size. Founded in 2008, GitHub has since grown to host over 200 million repositories and 100 million users, with a staggering 3.5 billion contributions made in the last year alone.
-
-`GitHub Actions` is a CI/CD tool integrated within GitHub. It allows you to create custom workflows to build, test, and deploy code directly from your GitHub repository.
+GitHub Actions is a CI/CD tool integrated within GitHub. It allows you to create custom workflows to build, test, and deploy code directly from your GitHub repository.
 GitHub actions make it easy to automate all your software workflows.Workflows are defined as YAML files inside your repository.
 
-GitHub Actions serves as the automation engine for the GitHub ecosystem. It allows users to automate various tasks, with a vast library of over 18,000 actions
-available in the marketplace. From issue triaging to automatic documentation generation, there is a building block—called Action—available to address nearly any task.
+GitHub Actions serves as the automation engine for the GitHub ecosystem. It allows users to automate various tasks, with a vast library of over 18,000 actions available in the marketplace. From issue triaging to automatic documentation generation, there is a building block—called Action—available to address nearly any task.
 With GitHub Actions, users can easily and securely automate their workflows.
 That’s why GitHub Actions is more than just CI/CD. It is an automation engine that can be used to automate any kind of manual tasks in engineering, and it is already used by millions of developers worldwide. It can be used to automate not only GitHub but the entire GitHub universe.
 
@@ -15,39 +12,11 @@ That’s why GitHub Actions is more than just CI/CD. It is an automation engine 
 
 - `GitHub Actions` is both the name of the workflow engine and the name of an individual, reusable, and easily sharable workflow step within GitHub.GitHub Actions is a workflow engine that allows you to automate all kinds of manual engineering tasks in the GitHub ecosystem beyond CI/CD.
 - `Workflows` are composed of YAML files that are stored in a specific repository location (.github/workflows).
-
-`Triggers` initiate the workflow,and one or more jobs are included in the workflow. Jobs are executed on a `workflow runner`, which can be a machine or container with an installed runner service. GitHub offers runners with Linux, macOS, and Windows operating systems in various machine sizes, but you can also host your own runners.
-Jobs execute in parallel by default, but the needs property can be used to chain jobs together. This enables you to fan out your workflow and run multiple jobs in
-parallel while waiting for all parallel jobs to complete before proceeding.
-`Environments` in GitHub Actions provide a way to protect jobs by defining protection rules, such as manual approvals, wait timers, and protected secrets. With this, you
+- `Triggers` initiate the workflow,and one or more jobs are included in the workflow. Jobs are executed on a `workflow runner`, which can be a machine or container with an installed runner service. GitHub offers runners with Linux, macOS, and Windows operating systems in various machine sizes, but you can also host your own runners.
+- `Environments` in GitHub Actions provide a way to protect jobs by defining protection rules, such as manual approvals, wait timers, and protected secrets. With this, you
 can create visual workflows that track, for example, your entire release pipeline, giving you complete control over your deployment process.
-
-A `job` is composed of one or more steps that are executed sequentially. A step can take the form of a command line, script, or reusable step that is easily shareable, known as a `GitHub Action`. These actions can be authored in JavaScript or TypeScript and executed in a NodeJS environment. Additionally, it is possible to run containers as Actions or create composite Actions that serve as a wrapper for one or multiple other Actions.
-
-
-```yaml
-name: Build and publish package # Name of the workflow
-
-on: # Events that trigger the workflow(with filters)
-  release:
-    types: [created]
-
-jobs: # Jobs
-  build:
-    runs-on: ubuntu-latest # Runner that executes the job
-    steps: # Steps
-      - uses: actions/checkout@v3 # actions with input parameters
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
-      - run: npm ci
-      - run: npm test
-      - run: npm publish # shell execution with secrets as environment variables
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-```
-
+- A `job` is composed of one or more steps that are executed sequentially. A step can take the form of a command line, script, or reusable step that is easily shareable, known as a `GitHub Action`. These actions can be authored in JavaScript or TypeScript and executed in a NodeJS environment. Additionally, it is possible to run containers as Actions or create composite Actions that serve as a wrapper for one or multiple other Actions.
+Jobs execute in parallel by default, but the needs property can be used to chain jobs together. This enables you to fan out your workflow and run multiple jobs in parallel while waiting for all parallel jobs to complete before proceeding.
 
 GitHub workflows are intended to automate various tasks. In addition to pushing code,there are numerous triggers available. A workflow can be activated when a label is added to an issue, when a pull request is opened, or when a repository is starred.
 
@@ -110,7 +79,6 @@ addition to the default notifications for utilizing the same percentages of the 
 
 ## Creating a new workflow
 
-
 Sign into your GitHub account.Navigate to repository you want to use workflows.
 Navigate to the Actions tab inside the repository. If this is a new repository and there are no workflows set up yet, you will automatically be redirected to the new
 Action page (Actions/New). This is the same page you would land on if you clicked the New Workflow button in the workflow overview page, which is displayed if there are workflows in the repository. The new workflow page presents a plethora of templates for different languages and scenarios.
@@ -130,6 +98,28 @@ the Actions tab and select the workflow from the left-hand side.Once selected, y
 
 ## Workflows
 
+```yaml
+name: Build and publish package # Name of the workflow
+
+on: # Events that trigger the workflow(with filters)
+  release:
+    types: [created]
+
+jobs: # Jobs
+  build:
+    runs-on: ubuntu-latest # Runner that executes the job
+    steps: # Steps
+      - uses: actions/checkout@v3 # actions with input parameters
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - run: npm ci
+      - run: npm test
+      - run: npm publish # shell execution with secrets as environment variables
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+```
 
 - **Name** - The first element in a workflow file is typically the name of the workflow. The workflow can have a different name than the workflow file itself.The name is set using the name property:
 

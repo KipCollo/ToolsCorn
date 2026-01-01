@@ -20,6 +20,7 @@ Prometheus provides:
 
 A simple text format makes it easy to expose metrics to Prometheus. Other monitoring systems, both open source and commercial, have added support for this format.
 This allows all of these monitoring systems to focus more on core features, rather than each having to spend time duplicating effort to support every single piece of software a user like you may wish to monitor.
+
 The data model identifies each time series not just with a name, but also with an unordered set of key-value pairs called labels. The PromQL query language allows aggregation across any of these labels, so you can analyse not just per process but also per datacenter and per service or by any other labels that you have defined. These can be graphed in dashboard systems such as Grafana.
 
 Alerts can be defined using the exact same PromQL query language that you use for graphing. If you can graph it, you can alert on it. Labels make maintaining alerts easier, as you can create a single alert covering all possible label values. In some other monitoring systems you would have to individually create an alert per machine/application. Relatedly, service discovery can automatically determine what applications and machines should be scraped from sources such as Kubernetes, Consul,Amazon Elastic Compute Cloud (EC2), Azure, Google Compute Engine (GCE), and OpenStack.
@@ -36,12 +37,13 @@ Operational monitoring of computer systems down to four things:
 ## Components
 
 The Prometheus ecosystem consists of multiple components, many of which are optional:
-• the main Prometheus server (https://github.com/prometheus/prometheus) which scrapes and stores time series data
-• client libraries (/docs/instrumenting/clientlibs/) for instrumenting application code
-• a push gateway (https://github.com/prometheus/pushgateway) for supporting short-lived jobs
-• special-purpose exporters (/docs/instrumenting/exporters/) for services like HAProxy, StatsD, Graphite, etc.
-• an alertmanager (https://github.com/prometheus/alertmanager) to handle alerts
-• various support tools
+
+1. The main Prometheus server (https://github.com/prometheus/prometheus) which scrapes and stores time series data
+2. Client libraries (/docs/instrumenting/clientlibs/) for instrumenting application code
+3. A push gateway (https://github.com/prometheus/pushgateway) for supporting short-lived jobs
+4. Special-purpose exporters (/docs/instrumenting/exporters/) for services like HAProxy, StatsD, Graphite, etc.
+5. An alertmanager (https://github.com/prometheus/alertmanager) to handle alerts
+6. various support tools
 
 Most Prometheus components are written in Go (https://golang.org/), making them easy to build and deploy as static binaries.
 
@@ -233,7 +235,7 @@ If no client library is available for your language, or you want to avoid depend
 
 ## Infrastructure Monitoring
 
-The entire world does not (yet) revolve around Prometheus, nor provide Prometheus metrics out of the box. Exporters are tools that let you translate metrics from other systems into a format that Prometheus understands.
+Exporters are tools that let you translate metrics from other systems into a format that Prometheus understands.
 
 `Node Exporter` - It exposes machine-level metrics, largely from your operating system’s kernel, such as CPU, memory, disk space, disk I/O, network bandwidth, and motherboard temperature. The Node exporter is used with Unix systems; Windows users should use the wmi_exporter instead.
 

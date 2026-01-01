@@ -8,7 +8,7 @@ A single column can be added using the following syntax:
 
 ```sql
 ALTER TABLE tableName
-ADD columnName datatype;
+ADD columnName datatype AFTER column_name;
 ```
 
 To add more than one column:

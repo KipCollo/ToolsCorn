@@ -428,6 +428,8 @@ A data source in Terraform allows you to read information about existing infrast
 
 ## Output
 
+**Outputs**:- Terraform outputs expose selected values from a configuration or module, making them accessible to users or other modules. Defined in output blocks, typically in an `outputs.tf` file, they can reference resource attributes or other computed values. Outputs are displayed after apply operations, can be queried using terraform output commands, and are crucial for passing information between modules or to external systems.
+
 Outputs in Terraform allow you to extract and share data from your infrastructure. They can be used to display essential information after resources are provisioned or to pass values between Terraform modules.
 
 You can define an output using the output block. Each output block contains:
@@ -446,8 +448,6 @@ After applying the configuration, you can view outputs by running the terraform 
 This command will display all the outputs defined in your configuration. 
 
 To view a specific output, you can run: `terraform output instance_public_ip`
-
-**Outputs**:- Terraform outputs expose selected values from a configuration or module, making them accessible to users or other modules. Defined in output blocks, typically in an `outputs.tf` file, they can reference resource attributes or other computed values. Outputs are displayed after apply operations, can be queried using terraform output commands, and are crucial for passing information between modules or to external systems.
 
 
 **Initializing directory**:- terraform init - Initializes and Downloads providers
