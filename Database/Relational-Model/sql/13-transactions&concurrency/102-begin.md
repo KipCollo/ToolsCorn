@@ -25,8 +25,8 @@ Below is a simple example of using `BEGIN` in SQL:
 ```sql
 BEGIN;
 
-INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
-VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+INSERT INTO Customers (CustomerId,CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES (LAST_INSERT_ID(),'Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
 
 COMMIT;
 ```

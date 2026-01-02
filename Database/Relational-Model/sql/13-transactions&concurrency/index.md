@@ -1,6 +1,7 @@
 # Transactions
 
 A `transaction` in SQL is a unit of work that is performed against a database. Transactions are units or sequences of work accomplished in a logical order, whether in a manual fashion by a user or automatically by some sort of a database program.
+Transaction is a group SQL statements that represent a single unit of work.
 
 Transactions are used to ensure data integrity and to handle database errors while processing. SQL transactions are controlled by the following commands:
 

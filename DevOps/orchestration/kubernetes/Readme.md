@@ -627,9 +627,30 @@ kubectl describe pod kubia-hczji
 
 ## KUBERNETES DASHBOARD
 
+Dashboard is a web-based Kubernetes user interface. You can use Dashboard to deploy containerized applications to a Kubernetes cluster, troubleshoot your containerized application, and manage the cluster resources. You can use Dashboard to get an overview of applications running on your cluster, as well as for creating or modifying individual Kubernetes resources (such as Deployments, Jobs, DaemonSets, etc). For example, you can scale a Deployment, initiate a rolling update, restart a pod or deploy new applications using a deploy wizard.
+Dashboard also provides information on the state of Kubernetes resources in your cluster and on any errors that may have occurred.
 The dashboard allows you to list all the Pods, ReplicationControllers, Services, and other objects deployed in your cluster, as well as to create, modify, and delete them.
 
-- ACCESSING THE DASHBOARD WHEN RUNNING KUBERNETES IN GKE:- If you’re using Google Kubernetes Engine, you can find out the URL of the dashboard through the kubectl cluster-info command:
+Note:- Kubernetes Dashboard supports only Helm-based installation currently as it is faster and gives us better control over all dependencies required by Dashboard to run.
+The Dashboard UI is not deployed by default. To deploy it, run the following command:
+
+```sh
+# Add kubernetes-dashboard repository
+helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+# Deploy a Helm Release named "kubernetes-dashboard" using the kubernetes-dashboard chart
+helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard
+```
+
+Accessing the Dashboard UI - To protect your cluster data, Dashboard deploys with a minimal RBAC configuration by default. Currently, Dashboard only supports logging in with a Bearer Token. To create a token for this demo, you can follow our guide on creating a sample user.
+You can enable access to the Dashboard using the kubectl command-line tool, by running the following command:
+
+```sh
+kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8443:443
+```
+
+Kubectl will make Dashboard available at https://localhost:8443.
+
+- **ACCESSING THE DASHBOARD WHEN RUNNING KUBERNETES IN GKE**:- If you’re using Google Kubernetes Engine, you can find out the URL of the dashboard through the kubectl cluster-info command:
 
 ```bash
 kubectl cluster-info | grep dashboard
@@ -641,7 +662,7 @@ If you open this URL in a browser, you’re presented with a username and passwo
 gcloud container clusters describe {resource-name} | grep -E "(username|password):"
 ```
 
-- ACCESSING THE DASHBOARD WHEN USING MINIKUBE:- To open the dashboard in your browser when using Minikube to run your Kubernetes cluster, run the following command:
+- **ACCESSING THE DASHBOARD WHEN USING MINIKUBE**:- To open the dashboard in your browser when using Minikube to run your Kubernetes cluster, run the following command:
 
 ```bash
 minikube dashboard

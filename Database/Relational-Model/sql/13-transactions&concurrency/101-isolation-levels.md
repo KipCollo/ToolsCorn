@@ -13,7 +13,7 @@ SQL supports four transaction isolation levels, each differing in how it deals w
     ```
 
 2. **READ COMMITTED**
-    A transaction only sees data changes committed before it started, averting "Dirty Reads". However, it may experience "Non-repeatable Reads", i.e. if a transaction reads the same row multiple times, it might get a different result each time. Here's how to set this level:
+    A transaction only sees data changes committed before it started, averting "Dirty Reads". However, it may experience "Non-repeatable Reads", i.e. if a transaction reads the same row multiple times, it might get a different result each time.(Dirty Reads) Here's how to set this level:
 
     ```sql
     SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
@@ -23,7 +23,7 @@ SQL supports four transaction isolation levels, each differing in how it deals w
     ```
 
 3. **REPEATABLE READ**
-    Here, once a transaction reads a row, any other transaction's writes (changes) onto those rows are blocked until the first transaction is finished, preventing "Non-repeatable Reads". However, "Phantom Reads" may still occur. Here's how to set this level:
+    Here, once a transaction reads a row, any other transaction's writes (changes) onto those rows are blocked until the first transaction is finished, preventing "Non-repeatable Reads". However, "Phantom Reads" may still occur.(Lost updates,Dirty Reads & Non-repeating Reads) Here's how to set this level:
 
     ```sql
     SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
@@ -33,7 +33,7 @@ SQL supports four transaction isolation levels, each differing in how it deals w
     ```
 
 4. **SERIALIZABLE**
-    This is the highest level of isolation. It avoids "Dirty Reads", "Non-repeatable Reads" and "Phantom Reads". This is done by fully isolating one transaction from others: read and write locks are acquired on data that are used in a query, preventing other transactions from accessing the respective data. Here's how to set this level:
+    This is the highest level of isolation. It avoids "Dirty Reads", "Non-repeatable Reads" and "Phantom Reads". This is done by fully isolating one transaction from others: read and write locks are acquired on data that are used in a query, preventing other transactions from accessing the respective data.(Lost updates,Dirty Reads,Non-repeating Reads,Phantom Reads) Here's how to set this level:
 
     ```sql
     SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
