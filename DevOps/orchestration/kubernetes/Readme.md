@@ -650,6 +650,18 @@ kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy
 
 Kubectl will make Dashboard available at https://localhost:8443.
 
+Installation (official manifest):-
+
+```sh
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+```
+
+Access (local, secure):- Start a local proxy:
+
+```sh
+kubectl proxy
+```
+
 - **ACCESSING THE DASHBOARD WHEN RUNNING KUBERNETES IN GKE**:- If you’re using Google Kubernetes Engine, you can find out the URL of the dashboard through the kubectl cluster-info command:
 
 ```bash

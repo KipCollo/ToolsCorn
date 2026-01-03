@@ -28,10 +28,7 @@ export class AppModule { }
 
 The decorator of an Angular module defines a set of properties that can be used to
 configure the module. The most common ones are as follows:
-• *declarations*: Defines Angular components that are part of the Angular
-module. Every component that exists in the Angular module must be added to the
-declarations array.
-• *imports*: Defines other Angular modules that contain functionality the Angular
-module needs.
+• *declarations*: Defines Angular components that are part of the Angular module. Every component that exists in the Angular module must be added to the declarations array.
+• *imports*: Defines other Angular modules that contain functionality the Angular module needs.
 
 NOTE:- The component that is displayed when an Angular application is bootstrapped is indicated by the bootstrap property of the main module of the application. We rarely need to change this property. The selector of that component is used in the index.html file by default.
