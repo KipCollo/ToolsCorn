@@ -161,30 +161,21 @@ The `ng-app` directive is used to define the root element of an AngularJS applic
 
 The `"ngStyle"` directive is used to dynamically apply styles to an element based on the values of expressions in the component. It allows for dynamic styling without directly manipulating the CSS classes.Angular's ngStyle directive is used to conditionally apply inline styles to an element based on expressions in the component. It allows dynamic style binding by evaluating the expressions and applying the styles accordingly. It is used by adding the ngStyle directive to an element and providing it with the desired style bindings.
 
-The `"ngClass"` directive is used to conditionally apply CSS classes to an element based on the values of expressions in the component. It allows for dynamic class
-binding.Angular's ngClass directive is used to conditionally apply CSS classes to an element based on expressions in the component. It allows dynamic class binding by
-evaluating the expressions and adding or removing CSS classes accordingly. It is used by adding the ngClass directive to an element and providing it with the desired
-class bindings.
+The `"ngClass"` directive is used to conditionally apply CSS classes to an element based on the values of expressions in the component. It allows for dynamic class binding.Angular's ngClass directive is used to conditionally apply CSS classes to an element based on expressions in the component. It allows dynamic class binding by evaluating the expressions and adding or removing CSS classes accordingly. It is used by adding the ngClass directive to an element and providing it with the desired class bindings.
 
 The `"ngModel"` directive is used for two-way data binding between a form input element and a component property. It allows the component to get and set the value
 of the input element.
 
-The `"ng-container"` directive is a structural directive that acts as a grouping element without rendering any additional element to the DOM. It is often used to apply
-structural directives to multiple elements.
+The `"ng-container"` directive is a structural directive that acts as a grouping element without rendering any additional element to the DOM. It is often used to apply structural directives to multiple elements.
 Angular's ng-container directive is a grouping element that does not generate any additional DOM element. It is used to apply structural directives to multiple elements without the need for a wrapping element. It is often used in conjunction with ngIf, ngFor, and ngTemplateOutlet to structure the layout and logic of the template.
-ng-content is a placeholder element in Angular that allows the insertion of content from the parent component into a child component. It is used to create reusable
-components with customizable content.
+ng-content is a placeholder element in Angular that allows the insertion of content from the parent component into a child component. It is used to create reusable components with customizable content.
 
-The `"ng-content"` directive is used to project content from a parent component into a child component. It allows for dynamic composition of components and flexible
-content insertion.
+The `"ng-content"` directive is used to project content from a parent component into a child component. It allows for dynamic composition of components and flexible content insertion.
 ng-content directive is used to project content from a parent component into a child component. It allows for dynamic composition of components and flexible
 content insertion. It is used by adding the ng-content directive to the template of the child component and using it as a placeholder for the projected content.
 
-The `"RouterOutlet"` directive is used in Angular to define the location where the router should render the components associated with different routes. It acts as a
-placeholder for dynamically loaded components.
+The `"RouterOutlet"` directive is used in Angular to define the location where the router should render the components associated with different routes. It acts as a placeholder for dynamically loaded components.
 
-Angular's `ng-template` directive is used to define a template block that can be conditionally rendered or used as a template for other structural directives like ngIf
-and ngFor. It allows for the creation of reusable templates that can be dynamically rendered or applied to elements. It is used by adding the ng-template directive to the template and providing it with a template block to be rendered or used as a template.
+Angular's `ng-template` directive is used to define a template block that can be conditionally rendered or used as a template for other structural directives like ngIf and ngFor. It allows for the creation of reusable templates that can be dynamically rendered or applied to elements. It is used by adding the ng-template directive to the template and providing it with a template block to be rendered or used as a template.
 
-Angular's `ngTemplateOutlet` directive is used to render a template dynamically within the current component's view. It allows the reuse of templates and the dynamic
-insertion of content. It is used by adding the ngTemplateOutlet directive to an element and providing it with the template reference to be rendered.Angular's ngTemplateOutlet directive is used to render a template dynamically within the current component's view. It allows the reuse of templates and the dynamic insertion of content. It is used by adding the ngTemplateOutlet directive to an element and providing it with the template reference to be rendered.
+Angular's `ngTemplateOutlet` directive is used to render a template dynamically within the current component's view. It allows the reuse of templates and the dynamic insertion of content. It is used by adding the ngTemplateOutlet directive to an element and providing it with the template reference to be rendered.Angular's ngTemplateOutlet directive is used to render a template dynamically within the current component's view. It allows the reuse of templates and the dynamic insertion of content. It is used by adding the ngTemplateOutlet directive to an element and providing it with the template reference to be rendered.

@@ -2,6 +2,15 @@
 
 A component in Angular is a reusable building block that encapsulates the template,logic, and styling required to render a part of the user interface.
 
+Controllers, which are known as components in Angular, are the connective tissue in an Angular web app,acting as conduits between the data model and views. Components add business domain logic required to present some aspect of the model and perform operations on it. A component that follows the MVC pattern should
+1. Contain the logic required to set up the initial state of the template
+2. Contain the logic/behaviors required by the template to present data from the model
+3. Contain the logic/behaviors required to update the model based on user interaction
+
+A component should not
+1. Contain logic that manipulates the DOM (that is the job of the template)
+2. Contain logic that manages the persistence of data (that is the job of the model)
+
 The application source code resides inside the src\app folder, in the root of our Angular CLI project. It contains all the files needed to build and test our Angular application,including a component and a module. The component is the main component of the Angular application:
 
 ```ts
@@ -316,8 +325,7 @@ A component's lifecycle is the sequence of steps that happen between the compone
 
 In your components, you can implement lifecycle hooks to run code during these steps. Lifecycle hooks that relate to a specific component instance are implemented as methods on your component class. Lifecycle hooks that relate the Angular application as a whole are implemented as functions that accept a callback.
 
-Angular components can get data either from external sources such as HTTP or from other Angular components. In the latter case, they interact with components that have
-data using a public API:
+Angular components can get data either from external sources such as HTTP or from other Angular components. In the latter case, they interact with components that have data using a public API:
 • @Input(): This is used to pass data into a component.
 • @Output(): This is used to get notified about changes or get data back from a component.
 
