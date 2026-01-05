@@ -1,4 +1,4 @@
-# AngulAR cli
+# Angular CLI
 
 Angular CLI (Command Line Interface) is a powerful command-line tool that helps in initializing, developing,scaffolding and maintaining Angular applications directly from command shell. It provides various commands to generate components, services, modules, etc.The Angular CLI is a command-line interface tool which allows you to scaffold, develop, test, deploy, and maintain Angular applications directly from a command shell.
 
