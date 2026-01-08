@@ -23,7 +23,7 @@ Before you can use HttpClient, you must add it to the application's root depende
 
 Setting up HttpClient - Before you can use HttpClient in your app, you must configure it using dependency injection.
 
-- Providing HttpClient through dependency injection - HttpClient is provided using the provideHttpClient helper function, which most apps include in the application providers in app.config.ts.
+- `Providing HttpClient through dependency injection` - HttpClient is provided using the provideHttpClient helper function, which most apps include in the application providers in app.config.ts.
 
 ```ts
 export const appConfig: ApplicationConfig = {
@@ -56,7 +56,7 @@ export class ConfigService {
 }
 ```
 
-- Configuring features of HttpClient - provideHttpClient accepts a list of optional feature configurations, to enable or configure the behavior of different aspects of the client. This section details the optional features and their usages.
+- `Configuring features of HttpClient` - provideHttpClient accepts a list of optional feature configurations, to enable or configure the behavior of different aspects of the client. This section details the optional features and their usages.
 
 withFetch:-
 

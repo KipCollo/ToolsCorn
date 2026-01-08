@@ -73,8 +73,7 @@ exports: [RouterModule]
 export class AppRoutingModule { }
 ```
 
-- It imports AppRoutingModule into the main module of our application,
-app.module.ts:
+- It imports AppRoutingModule into the main module of our application,app.module.ts:
 
 ```ts
 import { NgModule } from '@angular/core';
@@ -496,9 +495,6 @@ and generating links dynamically based on the current route's parameters and dat
 Angular's RouterOutlet directive is used to define the location where the router should render the components associated with different routes. It acts as a placeholder for
 dynamically loaded components based on the current route. It is used by adding the RouterOutlet directive to a container element in the template where the routed components should be rendered.
 
-Angular's RouterStateSnapshot is an interface that represents the state of the router at a particular moment in time. It contains information about the current URL, the
-activated route hierarchy, and the state of the route guards. It is used to access the current router state in Angular's route guards or resolver services.
+Angular's RouterStateSnapshot is an interface that represents the state of the router at a particular moment in time. It contains information about the current URL, the activated route hierarchy, and the state of the route guards. It is used to access the current router state in Angular's route guards or resolver services.
 
-Angular's RouteResolver is an interface that defines a resolver service that retrieves data before activating a route. It allows for fetching data from a server or performing
-other tasks asynchronously before the route is activated. It is used by implementing the resolve() method in a resolver service class and providing the resolver in the route
-configuration.
+Angular's RouteResolver is an interface that defines a resolver service that retrieves data before activating a route. It allows for fetching data from a server or performing other tasks asynchronously before the route is activated. It is used by implementing the resolve() method in a resolver service class and providing the resolver in the route configuration.

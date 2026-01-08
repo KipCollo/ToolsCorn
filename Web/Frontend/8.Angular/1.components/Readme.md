@@ -38,8 +38,7 @@ The following properties characterize an Angular component:
 NOTE:- The Angular CLI provides the app prefix by default in component selectors.We can use a custom one using the --prefix option when creating a new Angular CLI application from scratch. A custom prefix can be based on the name of an organization or a particular product, and it helps avoid collisions with other libraries or modules.
 
 - `templateUrl`: The path pointing to an HTML file that contains the HTML content of the component, which is called the template of the component.
-- `styleUrls`: A list of paths where each one points to a stylesheet file containing the
-CSS styles of the component.
+- `styleUrls`: A list of paths where each one points to a stylesheet file containing the CSS styles of the component.
 
 The preceding properties are defined using the `@Component decorator`. It is a function that decorates the TypeScript class of the component and recognizes it as an Angular component.
 
@@ -50,10 +49,10 @@ There are two ways of creating a component:
 1. The best way to create a component is with the Angular CLI.
 2. You can also create a component manually.
 
-### To create a component using the Angular CLI
+- **To create a component using the Angular CLI**:-
 
-- From a terminal window, navigate to the directory containing your application.
-- Run the **ng generate component component-name** command, where component-name is the name of your new component.
+From a terminal window, navigate to the directory containing your application.
+Run the `ng generate component <component-name>` command, where component-name is the name of your new component.
 
 By default, this command creates the following:
 
@@ -63,24 +62,24 @@ By default, this command creates the following:
  4. A CSS file, component-name.component.css
  5. A testing specification file, component-name.component.spec.ts
 
-### Creating a component manually
+- **Creating a component manually**:-
 
-- Navigate to your Angular project directory.
-- Create a new file, component-name.component.ts.
-- At the top of the file, add the following import statement.
+Navigate to your Angular project directory.
+Create a new file, component-name.component.ts.
+At the top of the file, add the following import statement.
 
 ```ts
-  import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 ```
 
-- After the import statement, add a @Component decorator.
+After the import statement, add a @Component decorator.
 
 ```ts
 @Component({
 })
 ```
 
-- Choose a CSS selector for the component.
+Choose a CSS selector for the component.
 
 ```ts
 @Component({
@@ -88,7 +87,7 @@ By default, this command creates the following:
 })
 ```
 
-- Define the HTML template that the component uses to display information. In most cases, this template is a separate HTML file.
+Define the HTML template that the component uses to display information. In most cases, this template is a separate HTML file.
 
 ```ts
 @Component({
@@ -97,7 +96,7 @@ By default, this command creates the following:
 })
 ```
 
-- Select the styles for the component's template. In most cases, you define the styles for your component's template in a separate file.
+Select the styles for the component's template. In most cases, you define the styles for your component's template in a separate file.
 
 ```ts
 @Component({
@@ -107,7 +106,7 @@ By default, this command creates the following:
 })
 ```
 
-- Add a class statement that includes the code for the component.
+Add a class statement that includes the code for the component.
 
 ```ts
 export class ComponentOverviewComponent {
@@ -115,7 +114,7 @@ export class ComponentOverviewComponent {
 }
 ```
 
-## Steps when using components
+## Using components
 
 1. Create a component.
 2. Register component in the module.
