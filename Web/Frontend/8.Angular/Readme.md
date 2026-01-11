@@ -4,6 +4,8 @@ Angular is a front-end JavaScript framework that can run on a broad range of pla
 
 Angular is a popular open-source JavaScript framework developed by Google for building dynamic web applications.Maintained by a dedicated team at Google, Angular provides a broad suite of tools, APIs, and libraries to simplify and streamline your development workflow. Angular gives you a solid platform on which to build fast, reliable applications that scale with both the size of your team and the size of your codebase.
 
+Angular is a platform and framework for building single-page client applications using HTML and TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set of TypeScript libraries that you import into your applications.
+
 The key features of Angular include two-way data binding, dependency injection, modular architecture, component-based development, and a powerful template system.
 
 ## AngularJS vs. Angular

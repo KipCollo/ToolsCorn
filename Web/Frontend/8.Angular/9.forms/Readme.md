@@ -20,7 +20,7 @@ They both capture user input events from the view, validate the user input, crea
 
 Template-driven forms rely on directives in the template to create and handle forms, while reactive forms use explicit form controls and reactive programming to manage form data and validation.
 
-## Dat flow in forms
+## Data flow in forms
 
 When an application contains a form, Angular must keep the view in sync with the component model and the component model in sync with the view. As users change values and make selections through the view, the new values must be reflected in the data model. Similarly, when the program logic changes values in the data model, those values must be reflected in the view.
 

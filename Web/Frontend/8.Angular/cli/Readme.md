@@ -35,8 +35,7 @@ Angular CLI roughly follows Unix/POSIX conventions for option syntax.
 ## CLI Commands
 
 - `ng new <project-name> [ options ]` - The new command is used to create a new Angular application or a new Angular workspace. By default, the project is created under the current directory.Creates and initializes a new Angular application that is the default project for a new workspace.Alias is 'n'.The Angular CLI installs the necessary Angular npm packages and other dependencies. This can take a few minutes.
-That’s the default usage of the command and creating a new project folder with name. The project which is created in that folder is containing:
-The default Angular project, All dependencies installed in node_modules folder , Testing files for each components
+That’s the default usage of the command and creating a new project folder with name. The project which is created in that folder is containing:- The default Angular project, All dependencies installed in node_modules folder , Testing files for each components
 
 An Angular workspace is an Angular CLI project that contains one or more Angular applications,where some of them can be Angular libraries.You develop apps in the context of an Angular workspace. A workspace can contain multiple applications and libraries.
 

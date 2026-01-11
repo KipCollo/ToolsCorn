@@ -1,5 +1,21 @@
 # Component
 
+The basic building blocks of the Angular framework are Angular components.
+Components define views, which are sets of screen elements that Angular can choose among and modify according to your program logic and data
+Components use services, which provide background functionality not directly related to views such as fetching data. Such services can be injected into components as dependencies, making your code modular, reusable, and efficient.
+
+Components and services are classes marked with decorators. These decorators provide metadata that tells Angular how to use them.
+The metadata for a component class associates it with a template that defines a view. A template combines ordinary HTML with Angular directives and binding markup that allow Angular to modify the HTML before rendering it for display.
+
+The metadata for a service class provides the information Angular needs to make it available to components through dependency injection (DI)
+An application's components typically define many views, arranged hierarchically. Angular provides the Router service to help you define navigation paths among views. The router provides sophisticated in-browser navigational capabilities.
+
+Every Angular application has at least one component, the root component that connects a component hierarchy with the page document object model (DOM). Each component defines a class that contains application data and logic, and is associated with an HTML template that defines a view to be displayed in a target environment.
+
+The @Component() decorator identifies the class immediately below it as a component, and provides the template and related component-specific metadata.
+
+Decorators are functions that modify JavaScript classes. Angular defines a number of decorators that attach specific kinds of metadata to classes, so that the system knows what those classes mean and how they should work.
+
 A component in Angular is a reusable building block that encapsulates the template,logic, and styling required to render a part of the user interface.
 
 Controllers, which are known as components in Angular, are the connective tissue in an Angular web app,acting as conduits between the data model and views. Components add business domain logic required to present some aspect of the model and perform operations on it. A component that follows the MVC pattern should
@@ -41,6 +57,19 @@ NOTE:- The Angular CLI provides the app prefix by default in component selectors
 - `styleUrls`: A list of paths where each one points to a stylesheet file containing the CSS styles of the component.
 
 The preceding properties are defined using the `@Component decorator`. It is a function that decorates the TypeScript class of the component and recognizes it as an Angular component.
+
+
+**Component metadata**:- The @Component decorator identifies the class immediately below it as a component class, and specifies its metadata.
+The metadata for a component tells Angular where to get the major building blocks that it needs to create and present the component and its view. In particular, it associates a template with the component, either directly with inline code, or by reference. Together, the component and its template describe a view.
+In addition to containing or pointing to the template, the @Component metadata configures, for example, how the component can be referenced in HTML and what services it requires.
+Useful @Component configuration options:
+1. standalone	- true when this is a self-describing, "Standalone" component. If false or unspecified, the component must be declared in an ngModule which is an older style. Prefer true if you can.
+2. selector -	A CSS selector that tells Angular to create and insert an instance of this component wherever it finds the corresponding tag in template HTML.
+3. templateUrl	The relative address of this component's HTML template. Alternatively, you can provide the HTML template inline, as the value of the template property. This template defines the component's host view.
+4. imports	- An array of the components, directives, and packages that your template references. Essential for "Standalone" components.
+5. providers	- An array of providers for services that the component requires. In the example, this tells Angular how to provide the HeroService instance that the component's constructor uses to get the list of heroes to display.
+
+
 
 ## Creating a Component
 
