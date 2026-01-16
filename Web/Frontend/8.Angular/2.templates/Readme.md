@@ -36,9 +36,6 @@ To eliminate the risk of script injection attacks, Angular does not support the 
 title: string ="Home";
 ```
 
-## Property binding
-
-Property binding helps you set values for properties of HTML elements or directives. To bind to an element's property, enclose it in square brackets `[]` which causes Angular to evaluate the right-hand side of the assignment as a dynamic expression.
 
 ## Template statements
 
@@ -166,7 +163,7 @@ all whitespace characters, including line breaks and spaces. When set to "false"
 
 ---------
 
-# Data Binding
+## Data Binding
 
 Data binding is a mechanism in Angular that establishes a connection between the component and the template, allowing the synchronization of data between them.Data binding automatically keeps your page up-to-date based on your application's state. You use data binding to specify things such as the source of an image, the state of a button, or data for a particular user.
 
@@ -184,10 +181,7 @@ Angular processes all data bindings once for each JavaScript event cycle, from t
 Data binding plays an important role in communication between a template and its component, and is also important for communication between parent and child components.
 
 
-
-## Interpolation
-
-Interpolation refers to embedding expressions into marked up text. By default, interpolation uses the double curly braces {{ and }} as delimiters.
+**Interpolation**:- Interpolation refers to embedding expressions into marked up text. By default, interpolation uses the double curly braces {{ and }} as delimiters.
 To illustrate how interpolation works, consider an Angular component that contains a currentCustomer variable:
 
 ```ts
@@ -209,9 +203,9 @@ In the following example, Angular evaluates the title and itemImageUrl propertie
 <div><img alt="item" src="{{itemImageUrl}}"></div>
 ```
 
-## Property Binding
 
-Property binding in Angular helps you set values for properties of HTML elements or directives. Use property binding to do things such as toggle button features, set paths programmatically, and share values between components.Property binding moves a value in one direction, from a component's property into a target element property.
+**Property Binding**:- Property binding in Angular helps you set values for properties of HTML elements or directives. Use property binding to do things such as toggle button features, set paths programmatically, and share values between components.Property binding moves a value in one direction, from a component's property into a target element property.
+Property binding helps you set values for properties of HTML elements or directives. To bind to an element's property, enclose it in square brackets `[]` which causes Angular to evaluate the right-hand side of the assignment as a dynamic expression.
 
 To bind to an element's property, enclose it in square brackets, [], which identifies the property as a target property.A target property is the DOM property to which you want to assign a value.
 
@@ -231,9 +225,8 @@ src/app/app.component.ts
 itemImageUrl = '../assets/phone.svg';
 ```
 
-## Event Binding
 
-Event binding lets you listen for and respond to user actions such as keystrokes, mouse movements, clicks, and touches.To bind to an event you use the Angular event binding syntax. This syntax consists of a target event name within parentheses to the left of an equal sign, and a quoted template statement to the right.
+**Event Binding**:- Event binding lets you listen for and respond to user actions such as keystrokes, mouse movements, clicks, and touches.To bind to an event you use the Angular event binding syntax. This syntax consists of a target event name within parentheses to the left of an equal sign, and a quoted template statement to the right.
 
 ```html
 <button (click)="onSave()">Save</button>
@@ -242,9 +235,8 @@ Event binding lets you listen for and respond to user actions such as keystrokes
 The event binding listens for the button's click events and calls the component's onSave() method whenever a click occurs.
 To determine an event target, Angular checks if the name of the target event matches an event property of a known directive.
 
-## Two way binding
 
-Two-way binding gives components in your application a way to share data. Use two-way binding to listen for events and update values simultaneously between parent and child components.
+**Two way binding**:- Two-way binding gives components in your application a way to share data. Use two-way binding to listen for events and update values simultaneously between parent and child components.
 Two-way binding combines the syntax from property binding, [], and the syntax from event binding, ()
 
 1. Property binding - Sets a specific element property.
@@ -363,7 +355,7 @@ export class AppComponent {
 
 ------------
 
-# Pipes
+## Pipes
 
 Angular pipes let you declare display-value transformations in your template HTML. A class with the @Pipe decorator defines a function that transforms input values to output values for display in a view.
 
@@ -372,13 +364,11 @@ To specify a value transformation in an HTML template, use the pipe operator (|)
 
 You can chain pipes, sending the output of one pipe function to be transformed by another pipe function. A pipe can also take arguments that control how it performs its transformation. For example, you can pass the desired format to the date pipe.
 
-# Angular pipes
-
 Angular pipes are a feature that transforms data before displaying it in the template.They are used for tasks such as formatting dates, numbers, and strings, as well as creating custom transformations.
 
 Angular's Pipe is a class that allows for the creation of custom data transformation functions that can be applied in templates using the pipe syntax. Pipes are used to format, filter, or transform data before displaying it in the template. They are used by creating a custom pipe class with the @Pipe decorator and implementing the transform() method to define the transformation logic. The pipe can then be used in the template by adding it to the pipe syntax.
 
-## Custom Pipes
+**Custom Pipes**:-
 
 Pipes to transform strings, currency amounts, dates, and other data for display. Pipes are simple functions in template expressions to accept an input value and return a transformed value. Pipes are helpful because you can use them throughout your application while only declaring each pipe once. For example, you would use a pipe to show the date as April 15, 1988, rather than the raw string format.
 
@@ -457,7 +447,7 @@ The "async" pipe in Angular is used to subscribe to an asynchronous data source,
 
 -------
 
-# Directives
+## Directives
 
 Angular templates are dynamic. When Angular renders them, it transforms the DOM according to the instructions given by directives. A directive is a class with a @Directive() decorator.
 
@@ -470,8 +460,6 @@ Structural directives - Structural directives alter layout by adding, removing, 
 
 Attribute directives - alter the appearance or behavior of an existing element. In templates they look like regular HTML attributes, hence the name.The ngModel directive, which implements two-way data binding, is an example of an attribute directive. ngModel modifies the behavior of an existing element (typically <input>) by setting its display value property and responding to change events.
 
-# Directives
-
 Directives are core feature that allows you to extend HTML by attaching custom behavior to elements and components.They help to manipulate the DOM,add event and control rendering dynamically. A directive is a class with a @Directive() decorator.
 
 Types of directives includes:-
@@ -480,9 +468,8 @@ Types of directives includes:-
 2. Structural directives - Modify DOM structure.
 3. Attribute directives - Change behavior or appearance of an element.
 
-## Component directives
 
-A Component is a special type of directive that has a template(view).It is commonly used directive in Angular.Component directive must have a selector and a template.
+**Component directives**:- A Component is a special type of directive that has a template(view).It is commonly used directive in Angular.Component directive must have a selector and a template.
 A component is technically a directive. However, components are so distinctive and central to Angular applications that Angular defines the @Component() decorator, which extends the @Directive() decorator with template-oriented features.
 
 Angular templates are dynamic. When Angular renders them, it transforms the DOM according to the instructions given by directives.
@@ -507,11 +494,10 @@ export class DirectComponent {
 
 The common directive that can be used in HTML is `<app-direct> </app-direct>`
 
-## Structural directives
 
-Structural directives are directives which change the DOM layout by adding and removing DOM elements.Structural directives alter layout by adding, removing, and replacing elements in the DOM. The example template uses two built-in structural directives to add application logic to how the view is rendered.
-
-Angular provides a set of built-in structural directives (such as NgIf, NgForOf, NgSwitch and others) which are commonly used in all Angular projects
+**Structural directives**:- Structural directives are directives which change the DOM layout by adding and removing DOM elements.Structural directives alter layout by adding, removing, and replacing elements in the DOM. The example template uses two built-in structural directives to add application logic to how the view is rendered.
+Angular provides a set of built-in structural directives (such as NgIf, NgForOf, NgSwitch and others) which are commonly used in all Angular projects.
+Structural directives are directives applied to an <ng-template> element that conditionally or repeatedly render the content of that <ng-template>.
 
 If a directive modifies the structure of template by removing or adding an element you use an aestrik.E.g *ngFor
 
@@ -577,8 +563,7 @@ render elements based on the data in the collection. It is used by adding the ng
 
 The "trackBy" function is used in conjunction with the ngFor directive in Angular to improve the performance of rendering lists. It provides away to uniquely identify and track items in the collection, allowing Angular to optimize the rendering process by reusing existing DOM elements instead of recreating them.
 
-The "trackBy" function in Angular ngFor is used to optimize the rendering of lists by providing a unique identifier for each item. It helps Angular in identifying changes in
-the list and updating only the necessary elements in the DOM.
+The "trackBy" function in Angular ngFor is used to optimize the rendering of lists by providing a unique identifier for each item. It helps Angular in identifying changes in the list and updating only the necessary elements in the DOM.
 
 ```ts
 courses = ["course1","course2","course3"]
@@ -602,11 +587,11 @@ multiple templates based on the value of an expression. It is used by adding the
 The @for block is part of the new control flow syntax introduced in Angular 17.0
 The control flow blocks ( @if , @for , @switch ) are here to replace the 3 structural directives ngIf , ngFor and ngSwitch .
 In the case of the @for block, feature wise they serve the same purpse with a few advantages :
-• No need to import the directive in standalone components
-• Generate a bit less code in the final bundle
-• enable better DX for track by passing a key directly.
-• Make devs more concious about the track functionality by making it required.
-• Nice DX for empty for-loops with the @empty block
+1. No need to import the directive in standalone components
+2. Generate a bit less code in the final bundle
+3. enable better DX for track by passing a key directly.
+4. Make devs more concious about the track functionality by making it required.
+5. Nice DX for empty for-loops with the @empty block
 
 ```ts
 @for (car of cars; track car.id) {
@@ -623,9 +608,8 @@ instead of *ngFor
 The @for block makes it easier to loop through items in a collection and manage them efficiently.Unlike NgFor, which needs a trackBy function to identify each item uniquely, @for just needs a simple tracking expression.
 If the collection is empty, you can use the @empty block to display something specific.Also, @for automatically figures out the least amount of changes needed to update the list on the screen, making it more efficient than NgFor, which allowed for custom ways to track changes but @for doesn't support that.
 
-## Attribute directives
 
-Change the appearance or behavior of DOM elements and Angular components with attribute directives.Attribute directives alter the appearance or behavior of an existing element. In templates they look like regular HTML attributes, hence the name.
+**Attribute directives**:- Change the appearance or behavior of DOM elements and Angular components with attribute directives.Attribute directives alter the appearance or behavior of an existing element. In templates they look like regular HTML attributes, hence the name.
 
 The `ngModel` directive, which implements two-way data binding, is an example of an attribute directive. ngModel modifies the behavior of an existing element (typically <input>) by setting its display value property and responding to change events.
 
@@ -640,11 +624,10 @@ of the input element.
 
 The `"ng-container"` directive is a structural directive that acts as a grouping element without rendering any additional element to the DOM. It is often used to apply structural directives to multiple elements.
 Angular's ng-container directive is a grouping element that does not generate any additional DOM element. It is used to apply structural directives to multiple elements without the need for a wrapping element. It is often used in conjunction with ngIf, ngFor, and ngTemplateOutlet to structure the layout and logic of the template.
-ng-content is a placeholder element in Angular that allows the insertion of content from the parent component into a child component. It is used to create reusable components with customizable content.
 
 The `"ng-content"` directive is used to project content from a parent component into a child component. It allows for dynamic composition of components and flexible content insertion.
-ng-content directive is used to project content from a parent component into a child component. It allows for dynamic composition of components and flexible
-content insertion. It is used by adding the ng-content directive to the template of the child component and using it as a placeholder for the projected content.
+ng-content directive is used to project content from a parent component into a child component. It allows for dynamic composition of components and flexible content insertion. It is used by adding the ng-content directive to the template of the child component and using it as a placeholder for the projected content.
+ng-content is a placeholder element in Angular that allows the insertion of content from the parent component into a child component. It is used to create reusable components with customizable content.
 
 The `"RouterOutlet"` directive is used in Angular to define the location where the router should render the components associated with different routes. It acts as a placeholder for dynamically loaded components.
 
@@ -652,3 +635,124 @@ Angular's `ng-template` directive is used to define a template block that can be
 
 Angular's `ngTemplateOutlet` directive is used to render a template dynamically within the current component's view. It allows the reuse of templates and the dynamic insertion of content. It is used by adding the ngTemplateOutlet directive to an element and providing it with the template reference to be rendered.Angular's ngTemplateOutlet directive is used to render a template dynamically within the current component's view. It allows the reuse of templates and the dynamic insertion of content. It is used by adding the ngTemplateOutlet directive to an element and providing it with the template reference to be rendered.
 
+
+-------
+
+## Control flow
+
+Angular templates support control flow blocks that let you conditionally show, hide, and repeat elements.
+
+**Conditionally display content with `@if`, `@else-if` and `@else`**:- The @if block conditionally displays its content when its condition expression is truthy:
+
+```ts
+@if (a > b) {
+  {{a}} is greater than {{b}}
+}
+```
+
+The @if block might have one or more associated branches. Immediately after an @if block, you can optionally specify any number of @else if blocks and one @else block:
+
+```ts
+@if (a > b) {
+{{a}} is greater than {{b}}
+} @else if (b > a) {
+{{a}} is less than {{b}}
+} @else {
+{{a}} is equal to {{b}}
+}
+```
+
+You can create a reference to the result of an @if block's conditional expression and use that reference inside the block's content.
+
+```ts
+@if (users$ | async; as users) {
+{{ users.length }}
+}
+```
+
+**`@for` block-repeaters**:- The @for block loops through a collection and repeatedly renders the content of a block. The collection can be any JavaScript iterable, but Angular has additional performance optimizations for Array values.The @for block renders its content for each item in a collection.
+Angular's @for block does not support flow-modifying statements like JavaScript's continue or break.
+
+```ts
+@for (item of items; track item.id) {
+  {{ item.name }}
+}
+```
+
+The @for block requires a track expression. Angular uses the value of this expression as a unique identity for each item. This identity allows the framework to perform the minimal set of DOM operations necessary after items are added, removed, or reordered.
+The track expression allows Angular to maintain a relationship between your data and the DOM nodes on the page. This allows Angular to optimize performance by executing the minimum necessary DOM operations when the data changes.
+Using track effectively can significantly improve your application's rendering performance when looping over data collections.
+
+Select a property that uniquely identifies each item in the track expression. If your data model includes a uniquely identifying property, commonly id or uuid, use this value. If your data does not include a field like this, strongly consider adding one.
+
+For static collections that never change, you can use $index to tell Angular to track each item by its index in the collection.
+
+If no other option is available, you can specify identity. This tells Angular to track the item by its reference identity using the triple-equals operator (===). Avoid this option whenever possible as it can lead to significantly slower rendering updates, as Angular has no way to map which data item corresponds to which DOM nodes.
+
+- Inside @for contents, several implicit variables are always available:
+  1. $count - Number of items in a collection iterated over
+  2. $index - Index of the current row
+  3. $first - Whether the current row is the first row
+  4. $last - Whether the current row is the last row
+  5. $even - Whether the current row index is even
+  6. $odd - Whether the current row index is odd
+
+These variables are always available with these names, but can be aliased via a let segment:
+
+```ts
+@for (item of items; track item.id; let idx = $index, e = $even) {
+  Item #{{ idx }}: {{ item.name }}
+}
+```
+
+Aliasing is useful when nesting @for blocks so that you can reference these variable values in deeper blocks.
+
+`Providing a fallback for @for blocks with the @empty block`:- You can optionally include an @empty section immediately after the @for block content. The content of the @empty block displays when there are no items:
+
+```ts
+@for (item of items; track item.name) {
+   <li>{{ item.name }}</li>
+} @empty {
+   <li>There are no items.<li>
+}
+```
+
+**Conditionally display content with the @switch block `@switch` block section**:- The syntax for switch is similar to if , inspired by the JavaScript switch statement:
+
+```ts
+@switch (condition) {
+   @case (caseA) {
+      Case A.
+   }
+   @case (caseB) {
+      Case B.
+   }
+   @default {
+      Default case.
+   }
+}
+```
+
+The value of the conditional expression is compared to the case expression using the === operator.
+@switch does not have fallthrough, so you do not need an equivalent to a break or return statement.
+The @default block is optional and can be omitted. If no @case matches the expression and there is no @default block, nothing is shown.
+
+**NOTE**:-
+
+- The @if block replaces *ngIf for expressing conditional parts of the UI.
+- The @switch block replaces ngSwitch with major benefits:
+   • The @switch block does not require a container element for the condition expression or each conditional template.
+   • The @switch block supports template type-checking, including type narrowing within each branch.
+- The @for block replaces *ngFor for iteration, and has several differences compared to its structural directive NgFor predecessor:
+   • The @for block requires a tracking expression to uniquely identify items in the collection. While NgFor requires a trackBy method, however, the @for block simpli�es tracking by accepting a track expression.
+   • You can specify content to show when the collection is empty with the @empty block.
+   • The @for block uses an optimized algorithm for determining a minimal number of DOM operations necessary after a collection is modi�ed. While NgFor allowed developers to provide a custom IterableDiffer implementation, the @for block does not support custom differs.
+- The track setting replaces NgFor 's concept of a trackBy function. Because @for is built-in, we can provide a better experience than passing a trackBy function, and directly use an expression representing the key instead. Migrating from trackBy to track is possible by invoking the trackBy function:
+
+```ts
+@for (item of items; track itemId($index, item)) {
+{{ item.name }}
+}
+```
+
+With NgFor,loops over immutable data without trackBy are the most common cause of performance bugs across Angular applications.

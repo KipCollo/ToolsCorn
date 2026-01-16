@@ -18,6 +18,10 @@ Decorators are functions that modify JavaScript classes. Angular defines a numbe
 
 A component in Angular is a reusable building block that encapsulates the template,logic, and styling required to render a part of the user interface.
 
+- Template - The template defines structure and appearance of component' UI.It uses HTML along with Angular's specific syyntax to bind data,handle events, and rende dynamic content.
+- class - The class contains components logic and data.Written in Typescript  and includes properties,methods and lifecycle hooks.
+- Metadata - Defined using decorators.It provides Angular with information about component, such as its selector,template,styles and dependencies.
+
 Controllers, which are known as components in Angular, are the connective tissue in an Angular web app,acting as conduits between the data model and views. Components add business domain logic required to present some aspect of the model and perform operations on it. A component that follows the MVC pattern should
 1. Contain the logic required to set up the initial state of the template
 2. Contain the logic/behaviors required by the template to present data from the model
@@ -68,7 +72,6 @@ Useful @Component configuration options:
 3. templateUrl	The relative address of this component's HTML template. Alternatively, you can provide the HTML template inline, as the value of the template property. This template defines the component's host view.
 4. imports	- An array of the components, directives, and packages that your template references. Essential for "Standalone" components.
 5. providers	- An array of providers for services that the component requires. In the example, this tells Angular how to provide the HeroService instance that the component's constructor uses to get the list of heroes to display.
-
 
 
 ## Creating a Component
@@ -191,7 +194,6 @@ export class AppModule{}
   standalone: true,
   imports: [
    CourseComponent
- 
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -207,7 +209,7 @@ export class AppComponent {
 <courses></courses>
 ```
 
-## Accepting data with input properties
+## Accepting data with properties
 
 When you use a component, you commonly want to pass some data to it. A component specifies the data that it accepts by declaring inputs:
 
@@ -253,7 +255,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ChildComponent {
   @Input() name: string = '';
-
   @Output() notify = new EventEmitter<string>();
 
   sendData() {
@@ -347,12 +348,6 @@ export class ChildComponent {}
 @ContentChild('projectedContent') content!: any;
 ```
 
-## component lifecycle
-
-A component's lifecycle is the sequence of steps that happen between the component's creation and its destruction. Each step represents a different part of Angular's process for rendering components and checking them for updates over time.
-
-In your components, you can implement lifecycle hooks to run code during these steps. Lifecycle hooks that relate to a specific component instance are implemented as methods on your component class. Lifecycle hooks that relate the Angular application as a whole are implemented as functions that accept a callback.
-
 Angular components can get data either from external sources such as HTTP or from other Angular components. In the latter case, they interact with components that have data using a public API:
 • @Input(): This is used to pass data into a component.
 • @Output(): This is used to get notified about changes or get data back from a component.
@@ -371,3 +366,25 @@ Angular components of the Clarity library:
 • clr-dg-row: Defines a row of a table. It uses the clrDgItems directive to iterate over the issues and create one row for each issue.
 • clr-dg-cell: Each row contains a collection of clr-dg-cell components to display the value of each column using interpolation. In the last cell, we add the label-danger class when an issue has a high priority to indicate its importance.
 • clr-dg-footer: Defines the footer of a table. In this case, it displays the total number of issues.
+
+
+## component lifecycle
+
+A component's lifecycle is the sequence of steps that happen between the component's creation and its destruction. Each step represents a different part of Angular's process for rendering components and checking them for updates over time.
+
+In your components, you can implement lifecycle hooks to run code during these steps. Lifecycle hooks that relate to a specific component instance are implemented as methods on your component class. Lifecycle hooks that relate the Angular application as a whole are implemented as functions that accept a callback.
+
+**Lifecycle hooks** - A component instance has a lifecycle that starts when Angular instantiates the component class and renders the component view along with its child views. The lifecycle continues with change detection, as Angular checks to see when data-bound properties change, and updates both the view and the component instance as needed. The lifecycle ends when Angular destroys the component instance and removes its rendered template from the DOM. Directives have a similar lifecycle, as Angular creates, updates, and destroys instances in the course of execution.
+
+Your application can use lifecycle hook methods to tap into key events in the lifecycle of a component or directive to initialize new instances, initiate change detection when needed, respond to updates during change detection, and clean up before deletion of instances.
+
+Angular lifecycle hooks are methods provided by Angular that allow you to tap into different stages of a component's lifecycle, such as initialization, change detection,and destruction. Examples include ngOnInit, ngOnChanges, and ngOnDestroy.
+The following life cycle hooks of angular are :`OnChanges` , `OnInit` , `DoCheck` , `OnDestroy` , `AfterContentInit` , `AfterContentChecked` , `AfterViewInit` , `AfterViewChecked`
+
+1. The `ngOnChanges` method is a lifecycle hook in Angular that is called when one or more input properties of a component change. It allows the component to respond to changes in input values.
+2. The `ngOnInit` method is a lifecycle hook in Angular that is called once, after the component has been initialized and its inputs have been bound. It is commonly used to perform initialization tasks.The "ngOnInit" method is a lifecycle hook in Angular that is called after the component has been initialized and its inputs have been bound. It is commonly used to perform initialization tasks such as retrieving data from a server or setting up subscriptions.
+The "ngOnInit" method is a lifecycle hook in Angular that is called after the component has been initialized and its inputs have been bound. It is commonly used to perform initialization tasks such as retrieving data from a server or setting up subscriptions.
+3. The `ngDoCheck` method is a lifecycle hook in Angular that is called during every change detection cycle. It is used to implement custom change detection logic and perform manual checks for changes.
+4. The `ngAfterViewInit` method is a lifecycle hook in Angular that is called after the component's view has been fully initialized. It is used to perform tasks that require access to the rendered DOM elements.
+5. The `ngAfterViewChecked` method is a lifecycle hook in Angular that is called after every check of the component's view. It is used to perform tasks that need to be executed after the view has been checked for changes.
+6. The `ngOnDestroy` method is a lifecycle hook in Angular that is called just before a component is destroyed and removed from the DOM. It is used to perform cleanup tasks and unsubscribe from subscriptions.

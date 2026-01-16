@@ -121,7 +121,7 @@ options
 --gh-token=<token>API token to use to deploy. Required.
 --gh-username=<username>The Github username to use. Required.
 
-- `ng lint` - Run the codelyzer linter on your project.
+- `ng lint` - Run the codelyzer linter on your project.Check the project source code for common errors and formatting issues.
 
 - `ng test [options]`,`ng test <project> [options]` | `ng t <project> [options]` - Run unit tests, using karma.
 Options:
