@@ -4,6 +4,8 @@ The basic building blocks of the Angular framework are Angular components.
 Components define views, which are sets of screen elements that Angular can choose among and modify according to your program logic and data
 Components use services, which provide background functionality not directly related to views such as fetching data. Such services can be injected into components as dependencies, making your code modular, reusable, and efficient.
 
+An Angular component is responsible for managing a template and providing it with the data and logic it needs.
+
 Components and services are classes marked with decorators. These decorators provide metadata that tells Angular how to use them.
 The metadata for a component class associates it with a template that defines a view. A template combines ordinary HTML with Angular directives and binding markup that allow Angular to modify the HTML before rendering it for display.
 
@@ -209,7 +211,7 @@ export class AppComponent {
 <courses></courses>
 ```
 
-## Accepting data with properties
+## Component communication
 
 When you use a component, you commonly want to pass some data to it. A component specifies the data that it accepts by declaring inputs:
 

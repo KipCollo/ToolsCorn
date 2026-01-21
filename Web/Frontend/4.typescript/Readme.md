@@ -1,6 +1,7 @@
 # TypeScript
 
 TypeScript is a statically-typed programming language that is a superset of JavaScript. It was developed and is maintained by Microsoft. TypeScript was created to address the challenges of building large-scale JavaScript applications and adds optional type annotations, classes, interfaces, and other features to the language.
+It lets you write code using the latest JavaScript language specification with features that are not yet supported in all of the browsers that can run Angular applications.
 
 The main benefits of using TypeScript include:
 
@@ -46,6 +47,7 @@ Browsers doesn't understand Javascript.It is transpiled(compiled) to javascript
 ## Installing Typescript
 
 To install the TypeScript Compiler tsc globally. You can use npx or similar tools if you’d prefer to run tsc from a local node_modules package instead.
+TypeScript compiler, which is set up to generate browser-friendly JavaScript files automatically when a change to a TypeScript file is detected.
 
 ```js
 npm install -g typescript

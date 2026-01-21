@@ -205,6 +205,22 @@ In the following example, Angular evaluates the title and itemImageUrl propertie
 
 
 **Property Binding**:- Property binding in Angular helps you set values for properties of HTML elements or directives. Use property binding to do things such as toggle button features, set paths programmatically, and share values between components.Property binding moves a value in one direction, from a component's property into a target element property.
+Angular relies on HTML element attributes to apply a lot of its functionality. Most of the time, the values of attributes are evaluated as JavaScript expressions.
+
+```html
+<td [ngSwitch]="item.done">
+```
+
+The attribute applied to the td element tells Angular to read the value of a property called done on an object that has been assigned to a variable called item. 
+There will be occasions when you need to provide a specific value rather than have Angular read a value from the data model, and this requires additional quoting to tell Angular that it is dealing with a literal value, like this:
+
+```html
+<td [ngSwitch]="'Apples'">
+```
+
+The attribute value contains the string Apples, which is quoted in both single and double quotes. When Angular evaluates the attribute value, it will see the single quotes and process the value as a literal string.
+
+
 Property binding helps you set values for properties of HTML elements or directives. To bind to an element's property, enclose it in square brackets `[]` which causes Angular to evaluate the right-hand side of the assignment as a dynamic expression.
 
 To bind to an element's property, enclose it in square brackets, [], which identifies the property as a target property.A target property is the DOM property to which you want to assign a value.
@@ -579,34 +595,18 @@ courses = ["course1","course2","course3"]
 
 Angular's ngSwitch directive is used to conditionally render content based on the value of an expression in the component. It allows the component to choose among
 multiple templates based on the value of an expression. It is used by adding the ngSwitch directive to a container element and providing it with the expression to evaluate.
+*ngSwitchCase and *ngSwitchDefault and that are equivalent to the case and default keywords of a regular JavaScript switch block.
 
 1. Every view that matches is rendered.
 2. If there are no matches, a view with the ngSwitchDefault directive is rendered.
 3. Elements within the [NgSwitch] statement but outside of any NgSwitchCase or ngSwitchDefault directive are preserved at the location.
 
-The @for block is part of the new control flow syntax introduced in Angular 17.0
-The control flow blocks ( @if , @for , @switch ) are here to replace the 3 structural directives ngIf , ngFor and ngSwitch .
-In the case of the @for block, feature wise they serve the same purpse with a few advantages :
-1. No need to import the directive in standalone components
-2. Generate a bit less code in the final bundle
-3. enable better DX for track by passing a key directly.
-4. Make devs more concious about the track functionality by making it required.
-5. Nice DX for empty for-loops with the @empty block
-
-```ts
-@for (car of cars; track car.id) {
-<option [value]="car.value">{{car.viewValue}}</option>
-}
+```html
+<td [ngSwitch]="items.done">
+  <span *ngSwitchCase="true">Yes</span>
+  <span *ngSwitchDefault>No</span>
+</td>
 ```
-
-instead of *ngFor
-
-```ts
-<option *ngFor="let car of cars" [value]="car.value">{{car.viewValue}}</option>
-```
-
-The @for block makes it easier to loop through items in a collection and manage them efficiently.Unlike NgFor, which needs a trackBy function to identify each item uniquely, @for just needs a simple tracking expression.
-If the collection is empty, you can use the @empty block to display something specific.Also, @for automatically figures out the least amount of changes needed to update the list on the screen, making it more efficient than NgFor, which allowed for custom ways to track changes but @for doesn't support that.
 
 
 **Attribute directives**:- Change the appearance or behavior of DOM elements and Angular components with attribute directives.Attribute directives alter the appearance or behavior of an existing element. In templates they look like regular HTML attributes, hence the name.
@@ -641,6 +641,31 @@ Angular's `ngTemplateOutlet` directive is used to render a template dynamically 
 ## Control flow
 
 Angular templates support control flow blocks that let you conditionally show, hide, and repeat elements.
+The @for block is part of the new control flow syntax introduced in Angular 17.0
+The control flow blocks ( @if , @for , @switch ) are here to replace the 3 structural directives ngIf , ngFor and ngSwitch .
+In the case of the @for block, feature wise they serve the same purpse with a few advantages :
+1. No need to import the directive in standalone components
+2. Generate a bit less code in the final bundle
+3. enable better DX for track by passing a key directly.
+4. Make devs more concious about the track functionality by making it required.
+5. Nice DX for empty for-loops with the @empty block
+
+```ts
+@for (car of cars; track car.id) {
+<option [value]="car.value">{{car.viewValue}}</option>
+}
+```
+
+instead of *ngFor
+
+```ts
+<option *ngFor="let car of cars" [value]="car.value">{{car.viewValue}}</option>
+```
+
+The @for block makes it easier to loop through items in a collection and manage them efficiently.Unlike NgFor, which needs a trackBy function to identify each item uniquely, @for just needs a simple tracking expression.
+If the collection is empty, you can use the @empty block to display something specific.Also, @for automatically figures out the least amount of changes needed to update the list on the screen, making it more efficient than NgFor, which allowed for custom ways to track changes but @for doesn't support that.
+
+
 
 **Conditionally display content with `@if`, `@else-if` and `@else`**:- The @if block conditionally displays its content when its condition expression is truthy:
 
