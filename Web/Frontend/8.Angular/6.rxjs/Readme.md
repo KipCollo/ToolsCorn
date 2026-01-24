@@ -23,16 +23,15 @@ Observables are a technique for event handling, asynchronous programming, and ha
 
 The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of state changes. This pattern is similar (but not identical) to the publish/subscribe design pattern.
 
-Angular apps tend to use the RxJS library for Observables. This overview covers just the basics of observables as implemented by that library.
-
-Observables are declarative. You define a function for publishing values — the source — but that function is not executed until a consumer subscribes to the observable by calling the observable's subscribe method.
-
+Angular apps tend to use the RxJS library for Observables.Observables are declarative. You define a function for publishing values — the source — but that function is not executed until a consumer subscribes to the observable by calling the observable's subscribe method.
 This subscriber then receives notifications from the observable until it completes, emits an error, or the consumer unsubscribes.
 
 An observable can deliver multiple values of any type — literals, messages, or events — depending on the context. A stream of keystrokes, an HTTP response, and the ticks of an interval timer are among the typical observable sources. The observable API applies consistently across all of these diverse sources.
 
+The key Reactive Extensions building block is an observable, which is represented by the Observable<T> class, and which presents a sequence of values that are produced over time.The generic type argument <T> denotes the type of data the observable produces so that an Observable<string> will produce a series of string values, for example.
 An observable can emit one, many, or no values while subscribed. It can emit synchronously (emit the first value immediately) or asynchronously (emit values over time).
 
+An object can subscribe to an observable and receive a notification each time a value is produced, allowing it to respond only when a new value has been observed.
 Because setup and teardown logic are both handled by the observable, your application code only needs to worry about subscribing to consume values and unsubscribing when done.
 
 RxJS Operators enable transformations of observable values. An Operator takes an observable source, manipulates the values from that source in some useful way, and returns a new observable of the transformed values. When you subscribe to that new observable, you get the results of the intermediate transformations.
@@ -63,10 +62,15 @@ This is a widely adopted naming convention for observables.
 Not everyone likes it. Because Angular applications are written in TypeScript and code editors are good at revealing an object's type, you can usually tell when a variable is an observable. Many feel the "$" suffix is unnecessary and potentially misleading.
 
 On the other hand, the trailing "$" can help you quickly identify observables when scanning the code. Also, if you want a property to hold the most recent value emitted from an observable, it can be convenient to use the source observable's root name without the "$".
-
 The Angular framework and tooling do not enforce this convention. Feel free to use it or not.
 
+The basic method provided by an Observable<T> is subscribe, which accepts an object whose properties are set to functions that respond to the sequence of values.
 - Subscribing:- An observable begins publishing values only when someone subscribes to it. That "1-2-3" observable won't emit any numbers until you subscribe by calling the observable's subscribe() method.
+
+The Observable<T> subscribe argument properties:-
+next - This function is invoked when a new value is produced.
+error - This function is invoked when an error occurs.
+complete - This function is invoked when the sequence of values ends.
 
 If you want to begin publishing but don't care about the values or when it completes, you can call subscribe with no arguments at all
 

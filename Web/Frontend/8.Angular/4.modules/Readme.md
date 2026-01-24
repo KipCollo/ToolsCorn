@@ -32,3 +32,7 @@ The decorator of an Angular module defines a set of properties that can be used 
 - *imports*: Defines other Angular modules that contain functionality the Angular module needs.
 
 NOTE:- The component that is displayed when an Angular application is bootstrapped is indicated by the bootstrap property of the main module of the application. We rarely need to change this property. The selector of that component is used in the index.html file by default.
+
+An Angular application can have many features that are called modules.Each module servers a block of single functionality that corresponds to particular application domain or workflow.Angular modules are used to group Angular Components that share similar functionality.
+
+An Angular application has one main module called `AppModule`.Each module can import other modules in an Angular application.

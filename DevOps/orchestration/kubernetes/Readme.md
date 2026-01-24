@@ -1,11 +1,11 @@
 # Kubernetes
 
-`Kubernetes (k8s)` is an open source container orchestration platform that automates deployment, scaling and management of containerized apps.It allows devs to focus on writing code while kubernetes handles underlying infrastructure. Uses declarative configuration files to specify apps and can automatically scale apps based on demands, handle failures and manage networking and storage.
+`Kubernetes (k8s)` is an open source container orchestration platform/Engine that automates deployment, scaling and management of containerized apps.It allows devs to focus on writing code while kubernetes handles underlying infrastructure. Uses declarative configuration files to specify apps and can automatically scale apps based on demands, handle failures and manage networking and storage.
 
 Initially developed by Google, Kubernetes has become the de facto standard for container orchestration and is now maintained by the Cloud Native Computing Foundation (CNCF).
 
 NOTE:- Kubernetes is Greek for pilot or helmsman (the person holding the ship’s steering wheel). People pronounce Kubernetes in a few different ways.
-Many pronounce it as Koo-ber-nay-tace, while others pronounce it more like Koo-ber-netties. No matter which form you use, people will understand what you mean.
+Many pronounce it as Koo-ber-nay-tace, while others pronounce it more like Koo-ber-netties.
 
 Kubernetes abstracts away the hardware infrastructure and exposes your whole data-center as a single enormous computational resource. It allows you to deploy and run your software components without having to know about the actual servers underneath. When deploying a multi-component application through Kubernetes, it selects a server for each component, deploys it, and enables it to easily find and communicate with all the other components of your application
 
@@ -15,15 +15,12 @@ This makes Kubernetes great for most on-premises datacenters, but where it start
 
 The name Kubernetes originates from Greek, meaning helmsman or pilot. K8s as an abbreviation results from counting the eight letters between the "K" and the "s". Google open sourced the Kubernetes project in 2014. Kubernetes combines over 15 years of Google's experience running production workloads at scale with best-of-breed ideas and practices from the community.
 
-Kubernetes is Open Source Container Orchestration Engine developed by Google.It is now managed by Cloud Native Computing Foundation(CNCF)
-
 Kubernetes uses Linux container technologies to provide isolation of running applications.
 
 Deploying applications through Kubernetes is always the same, whether your cluster contains only a couple of nodes or thousands of them. The size of the cluster
 makes no difference at all. Additional cluster nodes simply represent an additional amount of resources available to deployed apps.
 
-Kubernetes can be thought of as an operating system for the cluster. It relieves application developers from having to implement certain infrastructure-related services
-into their apps; instead they rely on Kubernetes to provide these services. This includes things such as service discovery, scaling, load-balancing, self-healing, and even leader election.
+Kubernetes can be thought of as an operating system for the cluster. It relieves application developers from having to implement certain infrastructure-related services into their apps; instead they rely on Kubernetes to provide these services. This includes things such as service discovery, scaling, load-balancing, self-healing, and even leader election.
 
 Kubernetes provides you with a framework to run distributed systems resiliently. It takes care of scaling and failover for your application, provides deployment patterns, and more. For example: Kubernetes can easily manage a canary deployment for your system.
 

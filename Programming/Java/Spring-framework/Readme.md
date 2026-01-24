@@ -99,7 +99,7 @@ Spring Framework Runtime:
 9. Security.
 
 - `Core Container`:- The Core Container consists of the Core, Beans, Context, and Expression Language modules.
-    1. The Core and Beans modules provide the fundamental parts of the framework, including the IoC and Dependency Injection features. The BeanFactory is a sophisticated implementation of the factory pattern. It removes the need for programmatic singletons and allows you to decouple the configuration and specification of dependencies from your actual program logic.
+    1. The Core and Beans modules provide the fundamental parts of the framework, including the IoC and Dependency Injection features. The BeanFactory is a sophisticated implementation of the factory pattern.It removes the need for programmatic singletons and allows you to decouple the configuration and specification of dependencies from your actual program logic.
     2. The Context module builds on the solid base provided by the Core and Beans modules: it is a means to access objects in a framework-style manner that is similar to a JNDI registry. The Context module inherits its features from the Beans module and adds support for internationalization (using, for example, resource bundles), event-propagation, resource-loading, and the transparent creation of contexts by, for example, a servlet container. The Context module also supports Java EE features such as EJB, JMX ,and basic remoting. The ApplicationContext interface is the focal point of the Context module.
     3. The Expression Language module provides a powerful expression language for querying and manipulating an object graph at runtime. It is an extension of the unified expression language (unified EL) as specified in the JSP 2.1 specification. The language supports setting and getting property values, property assignment, method invocation, accessing the context of arrays, collections and indexers, logical and arithmetic operators, named variables, and retrieval of objects by name from Spring’s IoC container. It also supports list projection and selection as well as common list aggregations.
     4. Context support module
@@ -109,7 +109,7 @@ Spring Framework Runtime:
     3. The OXM module provides an abstraction layer that supports Object/XML mapping implementations for JAXB, Castor,XMLBeans, JiBX and XStream.
     4. The Java Messaging Service (JMS) module contains features for producing and consuming messages.
     5. The Transaction module supports programmatic and declarative transaction management for classes that implement special interfaces and for all your POJOs (plain old Java objects)
-- `Web`:- The Web layer consists of the Web, Web-Servlet, WebSocket and Web-Portlet modules.
+- `Web`:- The Web layer consists of the Web, Web-Servl                        nnnhhhghfuiu,fgcgvg  0h et, WebSocket and Web-Portlet modules.
     1. Spring’s Web module provides basic web-oriented integration features such as multipart file-upload functionality and the initialization of the IoC container using servlet listeners and a web-oriented application context. It also contains the web-related parts of Spring’s remoting support.
     2. The Web-Servlet module contains Spring’s model-view-controller (MVC) implementation for web applications. Spring’s MVC framework provides a clean separation between domain model code and web forms, and integrates with all the other features of the Spring Framework.
     3. The Web-Portlet module provides the MVC implementation to be used in a portlet environment and mirrors the functionality of Web-Servlet module.

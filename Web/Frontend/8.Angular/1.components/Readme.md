@@ -1,8 +1,7 @@
 # Component
 
 The basic building blocks of the Angular framework are Angular components.
-Components define views, which are sets of screen elements that Angular can choose among and modify according to your program logic and data
-Components use services, which provide background functionality not directly related to views such as fetching data. Such services can be injected into components as dependencies, making your code modular, reusable, and efficient.
+Components define views, which are sets of screen elements that Angular can choose among and modify according to your program logic and data.Components use services, which provide background functionality not directly related to views such as fetching data. Such services can be injected into components as dependencies, making your code modular, reusable, and efficient.
 
 An Angular component is responsible for managing a template and providing it with the data and logic it needs.
 
@@ -13,6 +12,7 @@ The metadata for a service class provides the information Angular needs to make 
 An application's components typically define many views, arranged hierarchically. Angular provides the Router service to help you define navigation paths among views. The router provides sophisticated in-browser navigational capabilities.
 
 Every Angular application has at least one component, the root component that connects a component hierarchy with the page document object model (DOM). Each component defines a class that contains application data and logic, and is associated with an HTML template that defines a view to be displayed in a target environment.
+An Angular Application has one AppComponent,by convention.Each component in the tree can communicate and interact with its siblings using API defined by each one.
 
 The @Component() decorator identifies the class immediately below it as a component, and provides the template and related component-specific metadata.
 
@@ -390,3 +390,8 @@ The "ngOnInit" method is a lifecycle hook in Angular that is called after the co
 4. The `ngAfterViewInit` method is a lifecycle hook in Angular that is called after the component's view has been fully initialized. It is used to perform tasks that require access to the rendered DOM elements.
 5. The `ngAfterViewChecked` method is a lifecycle hook in Angular that is called after every check of the component's view. It is used to perform tasks that need to be executed after the view has been checked for changes.
 6. The `ngOnDestroy` method is a lifecycle hook in Angular that is called just before a component is destroyed and removed from the DOM. It is used to perform cleanup tasks and unsubscribe from subscriptions.
+
+
+## Standalone Component
+
+Standalone components provide a simplified way to build Angular applications. Standalone components, directives, and pipes aim to streamline the authoring experience by reducing the need for NgModules. Existing applications can optionally and incrementally adopt the new standalone style without any breaking changes.

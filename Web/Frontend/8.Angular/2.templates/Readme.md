@@ -167,6 +167,13 @@ all whitespace characters, including line breaks and spaces. When set to "false"
 
 Data binding is a mechanism in Angular that establishes a connection between the component and the template, allowing the synchronization of data between them.Data binding automatically keeps your page up-to-date based on your application's state. You use data binding to specify things such as the source of an image, the state of a button, or data for a particular user.
 
+Data binding can be divided into two types:-
+
+1. One way Data Binding - It is when data can be accessed from component into its corresponding view or vice versa(component to view, view to comonent).
+  - component to view - Data flows from component to class view template - String Interpolation, Property Binding.
+  - view to component - Data flows from view template to component - Event binding.
+2. Two Way Data Binding - Binds data from component class to view template and view template to component class.It is a combination of property binding & event binding - ngModel.
+
 The different types of data binding in Angular are:
 
 1. Interpolation ({{}})
@@ -181,7 +188,8 @@ Angular processes all data bindings once for each JavaScript event cycle, from t
 Data binding plays an important role in communication between a template and its component, and is also important for communication between parent and child components.
 
 
-**Interpolation**:- Interpolation refers to embedding expressions into marked up text. By default, interpolation uses the double curly braces {{ and }} as delimiters.
+**Interpolation**:- Interpolation refers to embedding expressions into marked up text. By default, interpolation uses the double curly braces {{ and }} as delimiters.You can pass variables, call a function, ternary operator in the curly brackets.
+It is used to display a piece of data in HTML.
 To illustrate how interpolation works, consider an Angular component that contains a currentCustomer variable:
 
 ```ts
@@ -200,11 +208,17 @@ In the following example, Angular evaluates the title and itemImageUrl propertie
 
 ```html
 <p>{{ title }}</p>
-<div><img alt="item" src="{{itemImageUrl}}"></div>
+<div><img alt="item" src="{{ itemImageUrl }}" /></div>
 ```
 
 
 **Property Binding**:- Property binding in Angular helps you set values for properties of HTML elements or directives. Use property binding to do things such as toggle button features, set paths programmatically, and share values between components.Property binding moves a value in one direction, from a component's property into a target element property.
+It let's us bind a property of a DOM object to some data value.This can let us show or hide a DOM element,or manipulate DOM in some other way.
+
+Property binding helps you set values for properties of HTML elements or directives. To bind to an element's property, enclose it in square brackets `[]` which causes Angular to evaluate the right-hand side of the assignment as a dynamic expression.
+To bind to an element's property, enclose it in square brackets, [], which identifies the property as a target property.A target property is the DOM property to which you want to assign a value.
+You can also use bind-prefix instead of brackets.
+
 Angular relies on HTML element attributes to apply a lot of its functionality. Most of the time, the values of attributes are evaluated as JavaScript expressions.
 
 ```html
@@ -220,25 +234,26 @@ There will be occasions when you need to provide a specific value rather than ha
 
 The attribute value contains the string Apples, which is quoted in both single and double quotes. When Angular evaluates the attribute value, it will see the single quotes and process the value as a literal string.
 
-
-Property binding helps you set values for properties of HTML elements or directives. To bind to an element's property, enclose it in square brackets `[]` which causes Angular to evaluate the right-hand side of the assignment as a dynamic expression.
-
-To bind to an element's property, enclose it in square brackets, [], which identifies the property as a target property.A target property is the DOM property to which you want to assign a value.
-
 To bind the src property of an *img* element to a component's property, place src in square brackets followed by an equal sign and then the property.
 
 Using the property itemImageUrl, type the following code:
 
 ```html
-src/app/app.component.html
 <img alt="item" [src]="itemImageUrl">
+<button [disabled]="!(inStock < 0)">Buy Now</button>
+<button bind-disabled="!(inStock < 0)">Buy Now</button>
 ```
 
 Declare the itemImageUrl property in the class, in this case AppComponent.
 
 ```ts
-src/app/app.component.ts
 itemImageUrl = '../assets/phone.svg';
+```
+
+Attribute Binding:-
+
+```html
+<input [value]="name" [attr.aria-hidden]="">
 ```
 
 
@@ -465,7 +480,20 @@ The "async" pipe in Angular is used to subscribe to an asynchronous data source,
 
 ## Directives
 
-Angular templates are dynamic. When Angular renders them, it transforms the DOM according to the instructions given by directives. A directive is a class with a @Directive() decorator.
+Directives are core feature that allows you to extend HTML by attaching custom behavior to elements and components.They help to manipulate the DOM,add event and control rendering dynamically. A directive is a class with a @Directive() decorator.
+Angular templates are dynamic. When Angular renders them, it transforms the DOM according to the instructions given by directives. 
+A directive is a class with a @Directive() decorator.
+
+```html
+<div changeToGreen> Content</div>
+```
+
+```ts
+@Directive({
+  selector: "[changeToGreen]"
+})
+export class ChangeToGreen{}
+```
 
 A component is technically a directive. However, components are so distinctive and central to Angular applications that Angular defines the @Component() decorator, which extends the @Directive() decorator with template-oriented features.
 In addition to components, there are two other kinds of directives: structural and attribute. Angular defines a number of directives of both kinds, and you can define your own using the @Directive() decorator.
@@ -476,7 +504,6 @@ Structural directives - Structural directives alter layout by adding, removing, 
 
 Attribute directives - alter the appearance or behavior of an existing element. In templates they look like regular HTML attributes, hence the name.The ngModel directive, which implements two-way data binding, is an example of an attribute directive. ngModel modifies the behavior of an existing element (typically <input>) by setting its display value property and responding to change events.
 
-Directives are core feature that allows you to extend HTML by attaching custom behavior to elements and components.They help to manipulate the DOM,add event and control rendering dynamically. A directive is a class with a @Directive() decorator.
 
 Types of directives includes:-
 
@@ -487,8 +514,6 @@ Types of directives includes:-
 
 **Component directives**:- A Component is a special type of directive that has a template(view).It is commonly used directive in Angular.Component directive must have a selector and a template.
 A component is technically a directive. However, components are so distinctive and central to Angular applications that Angular defines the @Component() decorator, which extends the @Directive() decorator with template-oriented features.
-
-Angular templates are dynamic. When Angular renders them, it transforms the DOM according to the instructions given by directives.
 
 You can define your own using the @Directive() decorator.
 
@@ -611,16 +636,23 @@ multiple templates based on the value of an expression. It is used by adding the
 
 **Attribute directives**:- Change the appearance or behavior of DOM elements and Angular components with attribute directives.Attribute directives alter the appearance or behavior of an existing element. In templates they look like regular HTML attributes, hence the name.
 
-The `ngModel` directive, which implements two-way data binding, is an example of an attribute directive. ngModel modifies the behavior of an existing element (typically <input>) by setting its display value property and responding to change events.
-
 The `ng-app` directive is used to define the root element of an AngularJS application.It initializes the application and auto-bootstraps the AngularJS framework.
 
 The `"ngStyle"` directive is used to dynamically apply styles to an element based on the values of expressions in the component. It allows for dynamic styling without directly manipulating the CSS classes.Angular's ngStyle directive is used to conditionally apply inline styles to an element based on expressions in the component. It allows dynamic style binding by evaluating the expressions and applying the styles accordingly. It is used by adding the ngStyle directive to an element and providing it with the desired style bindings.
 
+```html
+<div [ngStyle]="color: prod.inStock ? 'Green' : 'Red' ">{{ prod.inStock ? 'Available' : 'Out of Stock'  }}</div>
+```
+
 The `"ngClass"` directive is used to conditionally apply CSS classes to an element based on the values of expressions in the component. It allows for dynamic class binding.Angular's ngClass directive is used to conditionally apply CSS classes to an element based on expressions in the component. It allows dynamic class binding by evaluating the expressions and adding or removing CSS classes accordingly. It is used by adding the ngClass directive to an element and providing it with the desired class bindings.
+
+```html
+<button [ngClass]="{'btn': true, 'btn-search': search, btn-search-disabled: !search}" [disabled]="!search">Search</button>
+```
 
 The `"ngModel"` directive is used for two-way data binding between a form input element and a component property. It allows the component to get and set the value
 of the input element.
+The ngModel directive, which implements two-way data binding, is an example of an attribute directive. ngModel modifies the behavior of an existing element (typically <input>) by setting its display value property and responding to change events.
 
 The `"ng-container"` directive is a structural directive that acts as a grouping element without rendering any additional element to the DOM. It is often used to apply structural directives to multiple elements.
 Angular's ng-container directive is a grouping element that does not generate any additional DOM element. It is used to apply structural directives to multiple elements without the need for a wrapping element. It is often used in conjunction with ngIf, ngFor, and ngTemplateOutlet to structure the layout and logic of the template.
@@ -664,8 +696,6 @@ instead of *ngFor
 
 The @for block makes it easier to loop through items in a collection and manage them efficiently.Unlike NgFor, which needs a trackBy function to identify each item uniquely, @for just needs a simple tracking expression.
 If the collection is empty, you can use the @empty block to display something specific.Also, @for automatically figures out the least amount of changes needed to update the list on the screen, making it more efficient than NgFor, which allowed for custom ways to track changes but @for doesn't support that.
-
-
 
 **Conditionally display content with `@if`, `@else-if` and `@else`**:- The @if block conditionally displays its content when its condition expression is truthy:
 

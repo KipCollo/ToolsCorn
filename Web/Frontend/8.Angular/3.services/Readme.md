@@ -8,6 +8,13 @@ Ideally, a component's job is to enable only the user experience. A component sh
 A component should use services for tasks that don't involve the view or application logic. Services are good for tasks such as fetching data from the server, validating user input, or logging directly to the console. By defining such processing tasks in an injectable service class, you make those tasks available to any component. You can also make your application more adaptable by injecting different providers of the same kind of service, as appropriate in different circumstances.
 Angular doesn't enforce these principles. Instead, Angular helps you follow these principles by making it easy to factor your application logic into services. In Angular, dependency injection makes those services available to components.
 
+Angular service should follow single responsibility principle,and it should not cross boundaries between different Angular modules.Some can be:-
+
+1. Access data from a backend API using HTTP protocol.
+2. Interact with local storage of browser.
+3. Error logging
+4. Data transformations
+
 Services can depend on other services.
 
 For data or logic that isn't associated with a specific view, and that you want to share across components, you create a service class. A service class definition is immediately preceded by the @Injectable() decorator. The decorator provides the metadata that allows other providers to be injected as dependencies into your class.

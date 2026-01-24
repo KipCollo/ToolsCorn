@@ -54,7 +54,6 @@ Dart is the primary language for [Flutter], enabling compilation to native code 
 Dart is strongly integrated with the Flutter framework, which may limit its support and resources outside of the framework. moreover, Dart has limited adoption compared to other programming languages, restricting its usage in other domains.
 
 `Swift` - Swift is a high-level, multi-paradigm, compiled programming language developed for all Apple platforms. It was released in 2014 to replace Apple’s earlier programming language, Objective-C. Swift is known for its speed, modernity, and safety, making it ideal for building iOS (mobile) applications, macOS (desktop), and other Apple platforms.
-
 Swift is fast, secure, and has a smaller memory footprint due to its standard libraries being integrated by default.
 
 Swift is primarily designed to support the Apple platform and has limited support for cross-platform development.

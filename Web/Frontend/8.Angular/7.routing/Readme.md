@@ -56,11 +56,9 @@ The following command uses the Angular CLI to generate a basic Angular applicati
 ng new routing-app --routing
 ```
 
-When we enable routing in an Angular application, the Angular CLI imports several
-artifacts from the @angular/router npm package in our application:
+When we enable routing in an Angular application, the Angular CLI imports several artifacts from the @angular/router npm package in our application:
 
-- It creates the app-routing.module.ts file, which is the main routing module
-of our application:
+- It creates the app-routing.module.ts file, which is the main routing module of our application:
 
 ```ts
 import { NgModule } from '@angular/core';
@@ -98,7 +96,7 @@ export class AppModule { }
 
 ## Defining a basic route
 
-There are three fundamental building blocks to creating a route.
+There are three fundamental building blocks to creating a route:-
 
 - Import the routes into app.config.ts and add it to the provideRouter function.- The Angular CLI performs this step for you. However, if you are creating an application manually or working with an existing, non-CLI application, verify that the imports and configuration are correct. The following is the default ApplicationConfig using the CLI.
 
@@ -280,8 +278,7 @@ const routes: Routes = [
 export class AppRoutingModule {}
 ```
 
-Angular 5 - Introduced RouterLinkWithHref for better handling of links.
-Added support for custom URL serialization.
+Angular 5 - Introduced RouterLinkWithHref for better handling of links.Added support for custom URL serialization.
 
 Angular 7 - Introduced pathMatch: 'full' to ensure exact route matching.
 

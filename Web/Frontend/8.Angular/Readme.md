@@ -103,7 +103,7 @@ Key Features and Changes Across Angular Versions
 15. Angular 17 (2023) - Angular 17 continued to improve the ecosystem with
     - Improved Hydration Support: Better support for server-side rendering.
     - Server-Side Rendering Tools: Enhanced tools for easier SSR integration.
-16. Angular 18 (2024) - Angular 18 focuses on
+16. Angular 18 (2024) - Angular 18 focuses on:-
     - Performance Optimization: Even more performance tweaks to make Angular applications faster and more efficient.
     - Improved Tree-Shaking: Enhancements to tree-shaking for better bundling and load times.
     - Better Tooling for Large-Scale Applications: Introduces features for making large Angular applications more manageable and faster to build.
@@ -150,7 +150,7 @@ You develop applications in the context of an Angular workspace. A workspace con
 5. package.json - Configures npm package dependencies that are available to all projects in the workspace.
 6. package-lock.json - Provides version information for all packages installed into node_modules by the npm client.If you use the yarn client, this file will be yarn.lock instead.
 7. src/ - Source files for the root-level application project.
-8. node_modules/ - Provides npm packages to the entire workspace. Workspace-wide node_modules dependencies are visible to all projects.
+8. node_modules/ - Provides npm packages to the entire workspace. Workspace-wide node_modules dependencies are visible to all projects.Third party lib stored.
 9. tsconfig.json - The base TypeScript configuration for projects in the workspace. All other configuration files inherit from this base file.
 10. karma.conf.js - Test runner use by cli to run tests.
 11. browserlistrc -
@@ -234,40 +234,8 @@ If the user is accessing your application with a browser that does not support s
 
 It is highly recommended that you ensure that your application works even without service worker support in the browser. Although an unsupported browser ignores service worker caching, it still reports errors if the application attempts to interact with the service worker. For example, calling SwUpdate.checkForUpdate() returns rejected promises. To avoid such an error, check whether the Angular service worker is enabled using SwUpdate.isEnabled.
 
-PWA stands for Progressive Web App, a web app that can be installed on a device like a native app. PWAs are built using web technologies and can run on many devices and operating systems
-How PWAs work:-
-
-1. PWAs are installed using the device's web browser's offline cache.
-2. They can operate in the background and while offline.
-3. They can integrate with the device and other installed apps.
-4. They can be accessed directly from the web.
-5. They provide a native-like experience to users on supporting devices.
-
-Benefits of PWAs
-
-- PWAs can be developed using a single codebase, which can save time and money.
-- PWAs can provide a reliable experience that feels fast and dependable regardless of the network.
-- PWAs can provide a more integrated experience.
-- PWAs can reach anyone, anywhere, on any device
-
 Angular consists of a collection of JavaScript libraries that we can use for building highly performant and scalable web applications. The architecture of an Angular application is based on a hierarchical representation of components. Components are the fundamental building blocks of an Angular application. They represent and control a particular portion of a web page called the `view`.
 
-An Angular Application has one AppComponent,by convention.Each component in the tree can communicate and interact with its siblings using API defined by each one.
-
-An Angular application can have many features that are called modules.Each module servers a block of single functionality that corresponds to particular application domain or workflow.Angular modules are used to group Angular Components that share similar functionality.
-
-An Angular application has one main module called `AppModule`.Each module can import other modules in an Angular application.
-
-The functionality of a module can be analyzed in presentational and business logic of a feature.Angular Components should only be responsible for handling the presentational logic and delegating business logic tasks to services.The Angular framework provides Angular services to components using built-in `dependency injection (DI)` mechanism.
-
-The Angular DI framework uses special-purpose objects,called injectors,to hide much of complexity of providing dependencies to an Angular application.Components are not required to know any of the actual implementation of Angular service.They only need to ask for it from an injector.
-
-Angular service should follow single responsibility principle,and it should not cross boundaries between different Angular modules.Some can be:-
-
-1. Access data from a backend API using HTTP protocol.
-2. Interact with local storage of browser.
-3. Error logging
-4. Data transformations
 
 The Angular tooling ecosystem is full of extensions and utilities that can help us when developing Angular Applications.There are many extensions available in VSCode Marketplace:-
 
@@ -282,24 +250,6 @@ The Angular tooling ecosystem is full of extensions and utilities that can help 
   B. Upgrading Angular dependencies to next version
   C. Upgrading all npm dependencies.
 5. Material Icon Theme - Contains ton of icons that are based on Material Design.It can understand type of each file in your project and display related icon automatically.
-
-## Deployment
-
-There are 2 methods:-
-
-1. Copy/paste Deployment - Large sizes of node_modules and bundlers.
-
-Optimization Techniques:
-
-1. Minification
-2. Uglification
-3. Bundling
-4. Dead code elimination
-5. Ahead-of-time(AOT) compilation.
-
-The `ng build -prod` produces highly optimized bundles.
-
-
 
 
 ## Angular Modules
@@ -316,9 +266,6 @@ From the core concept, Angular directives are categorized into three categories:
 
 Use the Angular CLI and the npm package manager to build and publish your library as an npm package.
 
-## Standalone Component
-
-Standalone components provide a simplified way to build Angular applications. Standalone components, directives, and pipes aim to streamline the authoring experience by reducing the need for NgModules. Existing applications can optionally and incrementally adopt the new standalone style without any breaking changes.
 
 `Lazy Loading`:- Lazy loading is a technique in Angular where modules are loaded on-demand when the user navigates to a specific route. It helps in improving the initial loading time of the application by loading only the necessary modules.
 

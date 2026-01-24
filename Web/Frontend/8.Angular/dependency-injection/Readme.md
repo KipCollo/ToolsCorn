@@ -146,3 +146,8 @@ src/app/hero-list.component.ts (component providers)
   providers:  [ HeroService ]
 })
 ```
+
+
+The functionality of a module can be analyzed in presentational and business logic of a feature.Angular Components should only be responsible for handling the presentational logic and delegating business logic tasks to services.The Angular framework provides Angular services to components using built-in `dependency injection (DI)` mechanism.
+
+The Angular DI framework uses special-purpose objects,called injectors,to hide much of complexity of providing dependencies to an Angular application.Components are not required to know any of the actual implementation of Angular service.They only need to ask for it from an injector.

@@ -123,10 +123,6 @@ The compiler accepts any of these. The variable name args is common because it h
 
 To compile Java code with the javac command, the file must have the extension .java.The name of the file must match the name of the public class. The result is a file of bytecode with the same name but with a .class filename extension. Remember that bytecode consists of instructions that the JVM knows how to execute.
 
-## Java Runtime Environment(JRE)
-
-Is an environment required to run Java applications.Includes JVM class libraries and other supporting files.It is updated regularly to keep up with security issues.Allows running of Java apps without needing development tools. It is the implementation of JVM.It physically exist.
-
 ## Java Virtual Machine(JVM)
 
 It is an abstract machine that executes Java Bytecode.It is a specification that provides runtime environment in which java bytecode can be executed.It is platform dependent.Called virtual machine because it doesn't exist physically.
@@ -164,6 +160,12 @@ It also acts as an interpreter for Java bytecode, transforming high-level Java c
 
 Java is a platform independent language. Java compiler converts Java code in to byte code that can be interpreted by JVM. There are JVM written for almost all the popular platforms in the world.
 Java byte code can run on any supported platform in same way. Where as other languages require libraries compiled for a specific platform to run.
+
+
+## Java Runtime Environment(JRE)
+
+Is an environment required to run Java applications.Includes JVM class libraries and other supporting files.It is updated regularly to keep up with security issues.Allows running of Java apps without needing development tools. It is the implementation of JVM.It physically exist.
+
 
 ## Comments
 
