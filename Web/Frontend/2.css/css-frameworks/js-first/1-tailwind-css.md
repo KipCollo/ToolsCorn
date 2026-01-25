@@ -13,6 +13,7 @@ Features of Tailwind CSS:-
 4. Dark mode support - Tailwind includes built-in support for dark mode.You can use the dark modifier to adjust your styles for dark themes.
 5. JIT compilation - Tailwind's JIT mode generates only necessary CSS,making builds faster and keeping file sizes smaller.It enables you to use arbitrary values(bg-[#1da1f2]) and utilities not present in default configuration.
 
+
 ## Installation $ SetUp
 
 **Tailwind CLI:**- The CLI is available as a standalone executable if you want to use it without installing Node.js.

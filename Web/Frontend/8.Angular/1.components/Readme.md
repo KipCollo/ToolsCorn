@@ -215,7 +215,7 @@ export class AppComponent {
 
 When you use a component, you commonly want to pass some data to it. A component specifies the data that it accepts by declaring inputs:
 
-`@Input()` is a decorator in Angular that allows data to be passed from a parent component to a child component.
+- **@Input()** is a decorator in Angular that allows data to be passed from a parent component to a child component.
 Declaring inputs with the @Input decorator:-You can alternatively declare component inputs by adding the @Input decorator to a property:
 
 ```ts
@@ -225,8 +225,7 @@ export class CustomSlider {
 }
 ```
 
-Pass Data from Parent to Child.
-Binding to an input is the same in both signal-based and decorator-based inputs:
+Pass Data from Parent to Child - Binding to an input is the same in both signal-based and decorator-based inputs:
 
 ```html
 <app-child [name]="'John Doe'"></app-child>
@@ -243,7 +242,7 @@ export class CustomSlider {
 
 If you try to use a component without specifying all of its required inputs, Angular reports an error at build-time.
 
-`@Output()` allows the Child → Parent communication.
+- **@Output()** allows the Child → Parent communication.
 
 ```ts
 import { Component, Input, Output, EventEmitter } from '@angular/core';
@@ -280,7 +279,7 @@ export class AppComponent {
 <p>Message from Child: {{ parentMessage }}</p>
 ```
 
-`@ViewChild and @ContentChild`:- @ViewChild and @ContentChild are used to access child elements or components in Angular. @ViewChild is used to access a single child component or element, while @ContentChild is used to access projected content within a component.
+- **@ViewChild and @ContentChild**:- @ViewChild and @ContentChild are used to access child elements or components in Angular. @ViewChild is used to access a single child component or element, while @ContentChild is used to access projected content within a component.
 Angular's ViewChild decorator is used to access child elements or components in a parent component. It allows the parent component to obtain a reference to a child
 component or DOM element and interact with it. It is used by adding the ViewChild decorator to a property in the parent component and specifying the selector of the
 child component or element to be referenced.
@@ -351,11 +350,10 @@ export class ChildComponent {}
 ```
 
 Angular components can get data either from external sources such as HTTP or from other Angular components. In the latter case, they interact with components that have data using a public API:
-• @Input(): This is used to pass data into a component.
-• @Output(): This is used to get notified about changes or get data back from a component.
+- @Input(): This is used to pass data into a component.
+- @Output(): This is used to get notified about changes or get data back from a component.
 
-Clarity is a design system that contains a set of UX and UI guidelines for building web applications. It also consists of a proprietary HTML and CSS framework packed with these
-guidelines. Luckily, we do not have to use this framework since Clarity already provides a wide variety of Angular-based UI components that we can use in our Angular applications.
+Clarity is a design system that contains a set of UX and UI guidelines for building web applications. It also consists of a proprietary HTML and CSS framework packed with these guidelines. Luckily, we do not have to use this framework since Clarity already provides a wide variety of Angular-based UI components that we can use in our Angular applications.
 
 ```bash
 ng add @clr/angular
@@ -363,11 +361,11 @@ ng add @clr/angular
 
 Data grid UI component of the Clarity library is used to display data in a tabular format. A data grid also provides mechanisms for filtering and sorting out of the box.
 Angular components of the Clarity library:
-• clr-datagrid: Defines a table.
-• clr-dg-column: Defines a column of a table. Each column uses the clrDgField directive to bind to the property name of the issue represented by that column. The clrDgField directive provides us with sorting and filtering capabilities without writing even a single line of code in the TypeScript class file.Sorting works automatically only with string-based content. If we want to sort by a different primitive type, we must use the clrDgColType directive and specify the particular type.
-• clr-dg-row: Defines a row of a table. It uses the clrDgItems directive to iterate over the issues and create one row for each issue.
-• clr-dg-cell: Each row contains a collection of clr-dg-cell components to display the value of each column using interpolation. In the last cell, we add the label-danger class when an issue has a high priority to indicate its importance.
-• clr-dg-footer: Defines the footer of a table. In this case, it displays the total number of issues.
+- clr-datagrid: Defines a table.
+- clr-dg-column: Defines a column of a table. Each column uses the clrDgField directive to bind to the property name of the issue represented by that column. The clrDgField directive provides us with sorting and filtering capabilities without writing even a single line of code in the TypeScript class file.Sorting works automatically only with string-based content. If we want to sort by a different primitive type, we must use the clrDgColType directive and specify the particular type.
+- clr-dg-row: Defines a row of a table. It uses the clrDgItems directive to iterate over the issues and create one row for each issue.
+- clr-dg-cell: Each row contains a collection of clr-dg-cell components to display the value of each column using interpolation. In the last cell, we add the label-danger class when an issue has a high priority to indicate its importance.
+- clr-dg-footer: Defines the footer of a table. In this case, it displays the total number of issues.
 
 
 ## component lifecycle
@@ -375,15 +373,24 @@ Angular components of the Clarity library:
 A component's lifecycle is the sequence of steps that happen between the component's creation and its destruction. Each step represents a different part of Angular's process for rendering components and checking them for updates over time.
 
 In your components, you can implement lifecycle hooks to run code during these steps. Lifecycle hooks that relate to a specific component instance are implemented as methods on your component class. Lifecycle hooks that relate the Angular application as a whole are implemented as functions that accept a callback.
+Whenever a selector is encountered,it will instantiate the class calling the constructor of the Component class.When a constructor is called,by that time,none of its input properties are updated and available to use.
+When a constructor is called,by that time,the child components of that component are not yet constructed.Projected contents are also not available by the time the constructor of a component is called.Once the components is removed from the DOM,we can say component is destroyed.
 
-**Lifecycle hooks** - A component instance has a lifecycle that starts when Angular instantiates the component class and renders the component view along with its child views. The lifecycle continues with change detection, as Angular checks to see when data-bound properties change, and updates both the view and the component instance as needed. The lifecycle ends when Angular destroys the component instance and removes its rendered template from the DOM. Directives have a similar lifecycle, as Angular creates, updates, and destroys instances in the course of execution.
+When Angular app starts,it first creates and renders root component.Then it creates and renders its children and their children.In this way,it forms a tree of components.Once Angular loads the component,it starts the process of rendering view.To do that,it needs to check input properties,evaluate data bindings & expressions,render the projected content,etc..Angular then also removes the component from DOM when it is no longer needed.
+Angular lets us know when these events happen,using Angular lifecycle hooks.
+
+
+**Lifecycle hooks** - Are methods that angular invokes on a directive or a component, as it creates,changes and destroys them.
+A component instance has a lifecycle that starts when Angular instantiates the component class and renders the component view along with its child views. The lifecycle continues with change detection, as Angular checks to see when data-bound properties change, and updates both the view and the component instance as needed. The lifecycle ends when Angular destroys the component instance and removes its rendered template from the DOM. Directives have a similar lifecycle, as Angular creates, updates, and destroys instances in the course of execution.
 
 Your application can use lifecycle hook methods to tap into key events in the lifecycle of a component or directive to initialize new instances, initiate change detection when needed, respond to updates during change detection, and clean up before deletion of instances.
 
 Angular lifecycle hooks are methods provided by Angular that allow you to tap into different stages of a component's lifecycle, such as initialization, change detection,and destruction. Examples include ngOnInit, ngOnChanges, and ngOnDestroy.
-The following life cycle hooks of angular are :`OnChanges` , `OnInit` , `DoCheck` , `OnDestroy` , `AfterContentInit` , `AfterContentChecked` , `AfterViewInit` , `AfterViewChecked`
+The following life cycle hooks of angular are :`OnChanges` , `OnInit` , `DoCheck` , `OnDestroy` , `AfterContentInit` , `AfterContentChecked` , `AfterViewInit` , `AfterViewChecked`, `Destroy`.
 
-1. The `ngOnChanges` method is a lifecycle hook in Angular that is called when one or more input properties of a component change. It allows the component to respond to changes in input values.
+Change detection in Angular is a mechanism by which Angular keeps the view template in sync with component class.Agular runs chang detection in these scenarios:- Whenever @Input property of component changes,Whenever DOM event happens,Whenever a timer events happens using setTimeout()/setInterval(),Whenever HTTP request is made.
+
+1. The `ngOnChanges` method is a lifecycle hook in Angular that is called when one or more input properties of a component change. It allows the component to respond to changes in input values.It is executed at the start,when a new component is created and input bound is updated.Also gets executed when input bound properties of component changes.
 2. The `ngOnInit` method is a lifecycle hook in Angular that is called once, after the component has been initialized and its inputs have been bound. It is commonly used to perform initialization tasks.The "ngOnInit" method is a lifecycle hook in Angular that is called after the component has been initialized and its inputs have been bound. It is commonly used to perform initialization tasks such as retrieving data from a server or setting up subscriptions.
 The "ngOnInit" method is a lifecycle hook in Angular that is called after the component has been initialized and its inputs have been bound. It is commonly used to perform initialization tasks such as retrieving data from a server or setting up subscriptions.
 3. The `ngDoCheck` method is a lifecycle hook in Angular that is called during every change detection cycle. It is used to implement custom change detection logic and perform manual checks for changes.

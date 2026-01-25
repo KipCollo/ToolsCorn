@@ -1,5 +1,8 @@
 # Git
 
+
+[Git](https://git-scm.com/) is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+
 Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. Git’s purpose is to keep track of projects and files as they change over time with manipulations happening from different users. 
 Git stores information about the project’s progress on a repository. A repository has commits to the project or a set of references to the commits called heads. All this information is stored in the same folder as the project in a sub-folder called .git and will mostly be hidden by default in most systems.
 
