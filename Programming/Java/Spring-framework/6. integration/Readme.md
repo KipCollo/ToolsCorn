@@ -319,81 +319,53 @@ The JMX (Java Management Extensions) support in Spring provides features that le
 ## Mail
 
 JavaMail support for Spring's mail infrastructure. Provides an extended `JavaMailSender` interface and a `MimeMessageHelper` class for convenient population of a JavaMail MimeMessage.
-
 The Spring Framework provides a helpful utility library for sending email that shields you from the specifics of the underlying mailing system and is responsible for low-level resource handling on behalf of the client.
 
-The org.springframework.mail package is the root level package for the Spring Framework’s email support. The central interface for sending emails is the MailSender interface. A simple value object that encapsulates the properties of a simple mail such as from and to (plus many others) is the SimpleMailMessage class. This package also contains a hierarchy of checked exceptions that provide a higher level of abstraction over the lower level mail system exceptions, with the root exception being MailException. See the javadoc for more information on the rich mail exception hierarchy.
+The **org.springframework.mail** package is the root level package for the Spring Framework’s email support. The central interface for sending emails is the MailSender interface. A simple value object that encapsulates the properties of a simple mail such as from and to (plus many others) is the SimpleMailMessage class. This package also contains a hierarchy of checked exceptions that provide a higher level of abstraction over the lower level mail system exceptions, with the root exception being MailException.
 
-The org.springframework.mail.javamail.JavaMailSender interface adds specialized JavaMail features, such as MIME message support to the MailSender interface (from which it inherits). JavaMailSender also provides a callback interface called org.springframework.mail.javamail.MimeMessagePreparator for preparing a MimeMessage.
-
-**MailSender** - This interface defines a strategy for sending simple mails. Can be implemented for a variety of mailing systems due to the simple requirements. For richer functionality like MIME messages, consider JavaMailSender.
-
+- `MailSender` - This interface defines a strategy for sending simple mails. Can be implemented for a variety of mailing systems due to the simple requirements. For richer functionality like MIME messages, consider JavaMailSender.
 Allows for easy testing of clients, as it does not depend on JavaMail's infrastructure classes: no mocking of JavaMail Session or Transport necessary.
+    1. default voidsend(SimpleMailMessage simpleMessage) - Send the given simple mail message.
+    2. void send(SimpleMailMessage... simpleMessages) - Send the given array of simple mail messages in batch.
 
-Method Summary:-
-1. default voidsend(SimpleMailMessage simpleMessage) - Send the given simple mail message.
-2. void send(SimpleMailMessage... simpleMessages) - Send the given array of simple mail messages in batch.
-
-**MailMessage** - This is a common interface for mail messages, allowing a user to set key values required in assembling a mail message, without needing to know if the underlying message is a simple text message or a more sophisticated MIME message.
-
-Implemented by both `SimpleMailMessage` and `MimeMessageHelper`, to let message population code interact with a simple message or a MIME message through a common interface.
-
-**SimpleMailMessage** - Models a simple mail message, including data such as the from, to, cc, subject, and text fields.
-Consider JavaMailSender and JavaMail MimeMessages for creating more sophisticated messages, for example messages with attachments, special character encodings, or personal names that accompany mail addresses.
-
-1. SimpleMailMessage() - Create a new SimpleMailMessage.
-2. SimpleMailMessage(SimpleMailMessage original) - Copy constructor for creating a new SimpleMailMessage from the state of an existing SimpleMailMessage instance.
-
-
-**JavaMailSender**  - Extended MailSender interface for JavaMail, supporting MIME messages both as direct arguments and through preparation callbacks. Typically used in conjunction with the MimeMessageHelper class for convenient creation of JavaMail MimeMessages, including attachments etc.
-
+- `JavaMailSender`  - Extended MailSender interface for JavaMail, supporting MIME messages both as direct arguments and through preparation callbacks. Typically used in conjunction with the MimeMessageHelper class for convenient creation of JavaMail MimeMessages, including attachments etc.
+The org.springframework.mail.javamail.JavaMailSender interface adds specialized JavaMail features, such as MIME message support to the MailSender interface (from which it inherits). JavaMailSender also provides a callback interface called org.springframework.mail.javamail.MimeMessagePreparator for preparing a MimeMessage.
 Clients should talk to the mail sender through this interface if they need mail functionality beyond SimpleMailMessage. The production implementation is JavaMailSenderImpl; for testing, mocks can be created based on this interface. Clients will typically receive the JavaMailSender reference through dependency injection.
 
 The recommended way of using this interface is the MimeMessagePreparator mechanism, possibly using a MimeMessageHelper for populating the message.
 The entire JavaMail Session management is abstracted by the JavaMailSender. Client code should not deal with a Session in any way, rather leave the entire JavaMail configuration and resource handling to the JavaMailSender implementation. This also increases testability.
-
 A JavaMailSender client is not as easy to test as a plain MailSender client, but still straightforward compared to traditional JavaMail code: Just let createMimeMessage() return a plain MimeMessage created with a Session.getInstance(new Properties()) call, and check the passed-in messages in your mock implementations of the various send methods.
+    1. MimeMessage createMimeMessage() - Create a new JavaMail MimeMessage for the underlying JavaMail Session of this sender.
+    2. MimeMessage createMimeMessage(InputStream contentStream) - Create a new JavaMail MimeMessage for the underlying JavaMail Session of this sender, using the given input stream as the message source.
+    3. default void send(MimeMessage mimeMessage) - Send the given JavaMail MIME message.
+    4. void send(MimeMessage... mimeMessages) - Send the given array of JavaMail MIME messages in batch.
+    5. default void send(MimeMessagePreparator mimeMessagePreparator) - Send the JavaMail MIME message prepared by the given MimeMessagePreparator.
+    6. default void send(MimeMessagePreparator... mimeMessagePreparators) - Send the JavaMail MIME messages prepared by the given MimeMessagePreparator.
 
-Method Summary:-
-1. MimeMessage createMimeMessage() - Create a new JavaMail MimeMessage for the underlying JavaMail Session of this sender.
-2. MimeMessage createMimeMessage(InputStream contentStream) - Create a new JavaMail MimeMessage for the underlying JavaMail Session of this sender, using the given input stream as the message source.
-3. default void send(MimeMessage mimeMessage) - Send the given JavaMail MIME message.
-4. void send(MimeMessage... mimeMessages) - Send the given array of JavaMail MIME messages in batch.
-5. default void send(MimeMessagePreparator mimeMessagePreparator) - Send the JavaMail MIME message prepared by the given MimeMessagePreparator.
-6. default void send(MimeMessagePreparator... mimeMessagePreparators) - Send the JavaMail MIME messages prepared by the given MimeMessagePreparator
-
-**JavaMailSenderImpl** - Production implementation of the JavaMailSender interface, supporting both JavaMail MimeMessages and Spring SimpleMailMessages. Can also be used as a plain MailSender implementation.
+- `JavaMailSenderImpl` - Production implementation of the JavaMailSender interface, supporting both JavaMail MimeMessages and Spring SimpleMailMessages. Can also be used as a plain MailSender implementation.
 Allows for defining all settings locally as bean properties. Alternatively, a pre-configured JavaMail Session can be specified, possibly pulled from an application server's JNDI environment.
-
 Non-default properties in this object will always override the settings in the JavaMail Session. Note that if overriding all values locally, there is no added value in setting a pre-configured Session.
 
-**MimeMessage** - This class represents a MIME style email message. It implements the `Message` abstract class and the `MimePart` interface.
-Clients wanting to create new MIME style messages will instantiate an empty MimeMessage object and then fill it with appropriate attributes and content.
+- `MailMessage` - This is a common interface for mail messages, allowing a user to set key values required in assembling a mail message, without needing to know if the underlying message is a simple text message or a more sophisticated MIME message.
+Implemented by both `SimpleMailMessage` and `MimeMessageHelper`, to let message population code interact with a simple message or a MIME message through a common interface.
 
-Service providers that implement MIME compliant backend stores may want to subclass MimeMessage and override certain methods to provide specific implementations. The simplest case is probably a provider that generates a MIME style input stream and leaves the parsing of the stream to this class.
+- `SimpleMailMessage` - Models a simple mail message, including data such as the from, to, cc, subject, and text fields.
+Consider JavaMailSender and JavaMail MimeMessages for creating more sophisticated messages, for example messages with attachments, special character encodings, or personal names that accompany mail addresses.
+    1. SimpleMailMessage() - Create a new SimpleMailMessage.
+    2. SimpleMailMessage(SimpleMailMessage original) - Copy constructor for creating a new SimpleMailMessage from the state of an existing SimpleMailMessage instance.
 
-MimeMessage uses the InternetHeaders class to parse and store the top level RFC 822 headers of a message.
-
-The mail.mime.address.strict session property controls the parsing of address headers. By default, strict parsing of address headers is done. If this property is set to "false", strict parsing is not done and many illegal addresses that sometimes occur in real messages are allowed. See the InternetAddress class for details. 
-
-**MimeMailMessage** - Implementation of the MailMessage interface for a JavaMail MIME message, to let message population code interact with a simple message or a MIME message through a common interface.
-
+- `MimeMailMessage` - Implementation of the MailMessage interface for a JavaMail MIME message, to let message population code interact with a simple message or a MIME message through a common interface.
 Uses a MimeMessageHelper underneath. Can either be created with a MimeMessageHelper instance or with a JavaMail MimeMessage instance.
+    1. MimeMailMessage(MimeMessage mimeMessage) - Create a new MimeMailMessage based on the given JavaMail MimeMessage.
+    2. MimeMailMessage(MimeMessageHelper mimeMessageHelper) - Create a new MimeMailMessage based on the given MimeMessageHelper.
 
-1. MimeMailMessage(MimeMessage mimeMessage) - Create a new MimeMailMessage based on the given JavaMail MimeMessage.
-2. MimeMailMessage(MimeMessageHelper mimeMessageHelper) - Create a new MimeMailMessage based on the given MimeMessageHelper.
-
-**MimeMessagePreparator** - Callback interface for the preparation of JavaMail MIME messages.
+- `MimeMessagePreparator` - Callback interface for the preparation of JavaMail MIME messages.
 The corresponding send methods of JavaMailSender will take care of the actual creation of a MimeMessage instance, and of proper exception conversion.
-
 It is often convenient to use a MimeMessageHelper for populating the passed-in MimeMessage, in particular when working with attachments or special character encodings. See MimeMessageHelper's javadoc for an example.
+    1. void prepare(MimeMessage mimeMessage) - Prepare the given new MimeMessage instance.
 
-void prepare(MimeMessage mimeMessage) - Prepare the given new MimeMessage instance.
-
-
-**MimeMessageHelper** is a Helper class for populating a MimeMessage.
+- `MimeMessageHelper` is a Helper class for populating a MimeMessage.
 Mirrors the simple setters of SimpleMailMessage, directly applying the values to the underlying MimeMessage. Allows for defining a character encoding for the entire message, automatically applied by all methods of this helper class.
-
 Offers support for HTML text content, inline elements such as images, and typical mail attachments. Also supports personal names that accompany mail addresses. Note that advanced settings can still be applied directly to the underlying MimeMessage object.
 
 Typically used in `MimeMessagePreparator` implementations or `JavaMailSender` client code: simply instantiating it as a MimeMessage wrapper, invoking setters on the wrapper, using the underlying MimeMessage for mail sending. Also used internally by JavaMailSenderImpl.
@@ -530,9 +502,7 @@ public MailSender mailSender(Environment env) {
 }
 ```
 
-The host property is optional (it defaults to the host of the underlying JavaMail session), but you’ll probably want to set it. It specifies the hostname for the mail server
-that will be used to send the email. Here it’s configured by fetching the value from the injected Environment so that you can manage the mail-server configuration outside of
-Spring (for example, in a properties file).
+The host property is optional (it defaults to the host of the underlying JavaMail session), but you’ll probably want to set it. It specifies the hostname for the mail server that will be used to send the email. Here it’s configured by fetching the value from the injected Environment so that you can manage the mail-server configuration outside of Spring (for example, in a properties file).
 By default, JavaMailSenderImpl assumes that the mail server is listening on port 25 (the standard SMTP port). If your mail server is listening on a different port, specify the correct port number using the port property. For example,
 
 ```java
@@ -545,6 +515,30 @@ return mailSender;
 }
 ```
 
+Mail properties that are needed to specify, e.g the SMTP server may be defined using `JavaMailSenderImpl`.For gmail:-
+
+```java
+@Bean
+public JavaMailSender javaMailSender(){
+    JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+    mailSender.setHost("smtp.gmail.com");
+    mailSender.setPort(587);
+
+    mailSender.setUsername("my.gmail@gmail.com");
+    mailSender.setPassword("password");
+
+    Properties prop = mailSender.getJavaMailProperties();
+    props.put("mail.transport.protocol", "smtp");
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.starttls.enable", "true");
+    props.put("mail.debug", "true");
+
+    return mailSender;
+}
+```
+
+Spring
+
 `Wiring and using the mail sender`: With the mail sender configured, it’s time to wire it into the bean that will use it.
 
 ```java
@@ -555,6 +549,46 @@ JavaMailSender mailSender;
 
 `Generating email with templates`:
 
+**Sending Email**:- Both plain vanilla Spring Framework as well as SpingBoot handles composing and sending emails similar way.
+
+`Simple Email`:-
+
+```java
+@Autowired
+private JavaMailSender mailSender;
+
+public void sendSimpleEmail(String to, String subject, String body){
+    SimpleMailMessage message = new SimpleMailMessage();
+    message.setFrom("colins@gmail.com");
+    message.setTo(to);
+    message.setSubject(subject);
+    message.setText(body);
+
+    mailSender.send(message);
+}
+```
+
+`Emails with Attachments`:-
+
+```java
+@Autowired
+private JavaMailSender mailSender;
+
+public void sendSimpleEmail(String to, String subject, String body,String attachment){
+    SimpleMailMessage message = mailSender.createMimeMessage();
+    MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+    helper.setFrom("colins@gmail.com");
+    helper.setTo(to);
+    helper.setSubject(subject);
+    helper.setText(body);
+
+    FileSystemResource file = new FileSystemResource(new File(attachment));
+    helper.addAttachment("Invoice", file);
+
+    mailSender.send(message);
+}
+```
 
 ----------
 

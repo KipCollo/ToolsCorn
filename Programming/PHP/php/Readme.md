@@ -1,4 +1,4 @@
-# PHP(HyperTEXT )
+ # PHP(HyperTEXT )
 
 PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.
 PHP is a general-purpose programming language used mostly for web development. Created by Rasmus Lerdorf in 1994, it allows developers to create dynamic web pages with ease.PHP is used as a server-side language. This means that PHP code is not processed on the user’s computer (also known as a client)

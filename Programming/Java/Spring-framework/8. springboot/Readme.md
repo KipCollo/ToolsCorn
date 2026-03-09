@@ -39,6 +39,7 @@ CORE                     AOP,BATCH                                   BOOT
   2. Modern: Develop------>Deploy-----------Tomcat server within App(embedded server(source code + server config)): Used mostly in cloud
 You can also deploy Spring Boot applications to any Servlet 3.0+ compatible container.
 
+
 ## Dependency Management
 
 - **Dependency Management**:- Spring-boot introduced 2 types of dependencies:
@@ -1176,6 +1177,19 @@ spring.jpa.properties.hibernate.dialect=//org.hibernate.dialect.MySQL8Dialect
 
 ## Messaging
 
+### Mail
+
+We can specify mail server properties in application.properties file using the `spring.mail` namespace.
+For Gmail SMTP server:-
+
+```java
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=<login user to smtp server>
+spring.mail.password=<login password to smtp server>
+spring.mail.properties.smtp.auth=true
+spring.mail.properties.smtp.starttls.enable=true
+```
 
 ## IO
 

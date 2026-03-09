@@ -306,7 +306,6 @@ Both Java Persistence API (JPA) and Jakarta Persistence Layer (JPL) provide robu
 
 Jakarta Persistence is the API for the management for persistence and object/relational mapping.
 
-
 Challenges with JDBC:-
 
 1. Error Handling

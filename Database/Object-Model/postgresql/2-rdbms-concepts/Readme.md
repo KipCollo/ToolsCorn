@@ -2,8 +2,6 @@
 
 A **Database** is an essential part of PostgreSQL's object model, providing a way to organize and manage data efficiently. 
 
-## What is a Database?
-
 In PostgreSQL, a database is a named collection of tables, indexes, views, stored procedures, and other database objects. Each PostgreSQL server can manage multiple databases, enabling the separation and organization of data sets for various applications, projects, or users.
 
 ## Creating a Database

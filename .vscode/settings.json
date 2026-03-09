@@ -7,9 +7,9 @@
     "mainThreadWebview-markdown.preview": true
   },
   "zenMode.centerLayout": true,
-  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorTheme": "Default Dark Modern",
   "workbench.settings.editor": "json",
-  "workbench.iconTheme": "a-file-icon-vscode",
+  "workbench.iconTheme": "material-icon-theme",
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
   "C_Cpp_Runner.debuggerPath": "gdb",

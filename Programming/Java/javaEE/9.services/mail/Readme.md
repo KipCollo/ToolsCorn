@@ -9,7 +9,7 @@ activation.jar - Contains the Java classes for JavaBean Activation Framework.The
 
 ## How Mails work
 
-Mail client software such as Outlook or Eudora allows you to send and retrieve messages.This software communiactes with the mail server software that actually sends and retrieves your email.Mail server software is provided by your Internet Service Provider(ISP) or through your company.
+Mail client software such as Outlook or Eudora allows you to send and retrieve messages.This software communicates with the mail server software that actually sends and retrieves your email.Mail server software is provided by your Internet Service Provider(ISP) or through your company.
 
 The SMTP protocol is commonly used to send email messages.When you send an email message,the message is first sent from mail client software on your computer to your email server using SMTP protocol.Then, your mail server uses SMTP to send the mail to the recipient's mail server.Finally, the recipient's mail client uses the POP protocol or IMAP protocol to retrieve the mail from recipient's mail server.
 
@@ -176,19 +176,22 @@ After creating session object,you can use setDebug method of Session object to t
 
 Before you create a mail session,you need to create a `Properties` object that contains any properties that session needs to send or receive mail.A Properties object stores a list of properties where each property has a name,which is often referred to as a key, and a value.To specify properties for a mail session,you can use the put method of Properties class to define any of standard properties available in JavaMail API.
 
-
 ```java
 Session session = Session.getInstance(props, authenticator);//To create a Session using a static factory method:
 Session defaultSession =Session.getDefaultInstance(props, authenticator); //To create the default shared session, or to access the default shared session:
 ```
 
-
 The JavaMail API supports the following standard properties, which may be set in the Session object, or in the Properties object used to create the Session object. The properties are always set as strings; the Type column describes how the string is interpreted. For example, use to set the mail.debug property, which is of type boolean.
+
+The Properties object that initializes the Session contains default values and other configuration information. It is expected that clients using the APIs set the values for the listed properties, especially mail.host , mail.user , and mail.from , since the defaults are unlikely to work in all cases.
+
+`Environment Properties`:- Common environment properties that are used by the JavaMail APIs icludes:-
 
 ```java
 props.put("mail.debug", "true");
 ```
 
+The JavaMail API also supports several System properties; see the javax.mail.internet package documentation for details.
 
 1. mail.debug -	boolean - The initial debug mode. Default is false.
 2. mail.from - String -	The return email address of the current user, used by the InternetAddress method getLocalAddress.
@@ -201,18 +204,6 @@ props.put("mail.debug", "true");
 9. mail.protocol.host -	String -	The host name of the mail server for the specified protocol. Overrides the mail.host property.
 10. mail.protocol.port -	int -	The port number of the mail server for the specified protocol. If not specified the protocol's default port number is used.
 11. mail.protocol.user -	String -	The user name to use when connecting to mail servers using the specified protocol. Overrides the mail.user property.
-
-The following properties are supported by Sun's implementation of JavaMail, but are not currently a required part of the specification. The names, types, defaults, and semantics of these properties may change in future releases.
-
-1. mail.debug.auth 	boolean 	Include protocol authentication commands (including usernames and passwords) in the debug output. Default is false.
-2. mail.transport.protocol.address-type 	String 	Specifies the default message transport protocol for the specified address type. The Session method getTransport(Address) returns a Transport object that implements this protocol when the address is of the specified type (e.g., "rfc822" for standard internet addresses). By default the first Transport configured for that address type is used. This property can be used to override the behavior of the send method of the Transport class so that (for example) the "smtps" protocol is used instead of the "smtp" protocol by setting the property mail.transport.protocol.rfc822 to "smtps".
-
-The JavaMail API also supports several System properties; see the javax.mail.internet package documentation for details.
-
-The Properties object that initializes the Session contains default values and other configuration information. It is expected that clients using the APIs set the values for the listed properties, especially mail.host , mail.user , and mail.from , since the defaults are unlikely to work in all cases.
-
-`Environment Properties`:- Common environment properties that are used by the JavaMail APIs icludes:-
-
 1. mail.store.protocol - Specifies the default Message Access Protocol.The Session.getStore() method returns a Store object that implements this protocol.The client can override this property and explicitly specify the protocol with the Session.getStore(String protocol) method.Default Value is The first appropriate protocol in the config files.
 2. mail.transport.protocol - Specifies the default Transport Protocol. The Session.getTransport() method returns a Transport object that implements this protocol. The client can override this property and explicitly specify the protocol by using Session.getTransport(String protocol) method.
 3. mail.host - Specifies the default Mail server. The Store and Transport object’s connect methods use this property, if the protocol-specific host property is absent, to locate the target host.- The local machine.
@@ -223,6 +214,12 @@ The Properties object that initializes the Session contains default values and o
 8. mail.debug - Specifies the initial debug mode. Setting this property to true will turn on debug mode, while setting it to false turns debug mode off.
 9. mail.smtp.quitwait - Prevents an SSLException that sometimes occur when you use GMAIL SMTP server.
 10. mail.smtp.auth - Indicates that the user must be authenticated before session can connect to SMTP server.
+
+The following properties are supported by Sun's implementation of JavaMail, but are not currently a required part of the specification. The names, types, defaults, and semantics of these properties may change in future releases.
+
+1. mail.debug.auth 	boolean 	Include protocol authentication commands (including usernames and passwords) in the debug output. Default is false.
+2. mail.transport.protocol.address-type 	String 	Specifies the default message transport protocol for the specified address type. The Session method getTransport(Address) returns a Transport object that implements this protocol when the address is of the specified type (e.g., "rfc822" for standard internet addresses). By default the first Transport configured for that address type is used. This property can be used to override the behavior of the send method of the Transport class so that (for example) the "smtps" protocol is used instead of the "smtp" protocol by setting the property mail.transport.protocol.rfc822 to "smtps".
+
 
 ```java
 //Local SMTP server
@@ -315,7 +312,6 @@ A Message object can contain multiple parts, where each part contains its own se
 - Defines core abstraction of something that has content and headers - not necessarily an entire email message.
     1. Headers(e.g Content-Type, Content-Disposition).
     2. Body Content(plain text, binary data)
-
 It represents an email component(such as text or attachment).Both email messages and email attachments are considered "parts" in email system.Since emails have multiple sections,the `Part` interface provides methods to manage these sections.
 
 The Part interface defines a set of standard headers common to most mail systems, specifies the data-type assigned to data comprising a content block, and defines set and get methods for each of these members. It is the basic data component in the JavaMail API and provides a common interface for both the Message and BodyPart classes.
@@ -438,15 +434,16 @@ Flags.Flag[] sf = flags.getSystemFlags();
 }
 ```  
 
+
 ## Message Storage And Retrieval
 
-This section describes JavaMail message storage facilities supported by the Store and Folder classes.Messages are contained in Folders. New messages are usually delivered to folders by a transport protocol or a delivery agent. Clients retrieve messages from folders using an access protocol.
+This section describes JavaMail message storage facilities supported by the Store and Folder classes.
+Messages are contained in Folders. New messages are usually delivered to folders by a transport protocol or a delivery agent. Clients retrieve messages from folders using an access protocol.
 
 - `The Store Class`: The Store class defines a database that holds a Folder hierarchy and the messages within.The Store also defines the access protocol used to access folders and retrieve messages from folders. Store is an abstract class. Subclasses implement specific message databases and access protocols.
 
 Clients gain access to a Message Store by obtaining a Store object that implements the database access protocol. Most message stores require the user to be authenticated before they allow access. The connect method performs that authentication.
 
-      
 1. void addProvider(Provider provider) - Add a provider to the session.
 2. boolean getDebug() - Get the debug setting for this Session.
 3. PrintStream getDebugOut() - Returns the stream to be used for debugging output.
@@ -534,6 +531,12 @@ The JavaMail MimePart interface models an entity as defined in RFC2045, Section 
 The MimeMessage and MimeBodyPart classes implement the MimePart interface. The following figure shows the class hierarchy of these classes.
 
 - `The MimeMessage Class`:- The MimeMessage class extends Message and implements MimePart. This class implements an email message that conforms to the RFC822 and MIME standards.
+This class represents a MIME style email message. It implements the `Message` abstract class and the `MimePart` interface.
+Clients wanting to create new MIME style messages will instantiate an empty MimeMessage object and then fill it with appropriate attributes and content.
+Service providers that implement MIME compliant backend stores may want to subclass MimeMessage and override certain methods to provide specific implementations. The simplest case is probably a provider that generates a MIME style input stream and leaves the parsing of the stream to this class.
+MimeMessage uses the InternetHeaders class to parse and store the top level RFC 822 headers of a message.
+The mail.mime.address.strict session property controls the parsing of address headers. By default, strict parsing of address headers is done. If this property is set to "false", strict parsing is not done and many illegal addresses that sometimes occur in real messages are allowed. See the InternetAddress class for details. 
+
 It implements all of Part's behaviour for MIME content.i.e It can hold a single plain text body or it can hold a `MimeMultipart`(collection of other parts).
 - The Multipurpose Internet Mail Extensions(MIME) standard allows email to include different type of contents in a  structured way.This includes:-
   1. Plain text(simple text content)
@@ -558,8 +561,8 @@ The client can also use the default constructor to create new MimeMessage object
 
 ```java
 MimeMessage m = new MimeMessage(session);
-// Set FROM:
-m.setFrom(new InternetAddress("jmk@Sun.COM"));
+
+m.setFrom(new InternetAddress("jmk@Sun.COM"));// Set FROM:
 // Set TO:
 InternetAddress a[] = new InternetAddress[1];
 a[0] = new InternetAddress("javamail@Sun.COM");

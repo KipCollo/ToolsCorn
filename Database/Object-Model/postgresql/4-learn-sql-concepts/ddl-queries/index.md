@@ -1,6 +1,6 @@
 # DDL Queries
 
-DDL stands for Data Definition Language. DDL queries are a subset of SQL queries that are responsible for defining and managing the structure of your database, such as creating, altering, and deleting tables, constraints, and indexes. In this section, we will discuss the basic DDL statements: `CREATE`, `ALTER`, and `DROP`.
+DDL stands for Data Definition Language. DDL queries are a subset of SQL queries that are responsible for defining and managing the structure of your database, such as creating, altering, and deleting tables, constraints, and indexes.
 
 ## CREATE
 

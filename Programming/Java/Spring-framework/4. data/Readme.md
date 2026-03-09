@@ -259,8 +259,7 @@ data-source beans in your Spring application, including these:
 2. Data sources that are looked up by JNDI
 3. Data sources that pool connections
 
-For production-ready applications, I recommend using a data source that draws its connections from a connection pool. When possible, I prefer to retrieve the pooled
-data source from an application server via JNDI.
+For production-ready applications, I recommend using a data source that draws its connections from a connection pool. When possible, I prefer to retrieve the pooled data source from an application server via JNDI.
 
 `Using JNDI data sources`:- Spring applications are often deployed to run in a Java EE application server such as WebSphere or JBoss, or even a web container like Tomcat. These servers allow you to configure data sources to be retrieved via JNDI. The benefit of configuring data sources in this way is that they can be managed completely external to the application, allowing the application to ask for a data source when it’s ready to access the database.
 Moreover, data sources managed in an application server are often pooled for greater performance and can be hot-swapped by system administrators.
