@@ -855,11 +855,17 @@ Spring provides support for several persistence frameworks, including Hibernate,
 4. DAO support classes
 5. Resource management
 
+Spring supports following Object Relational Mapping (ORM) frameworks:
+1. Hibernate
+2. Java Persistence API (JPA)
+3. TopLink
+4. Java Data Objects (JDO)
+5. Apache Object Relational Bridge (ORB)
+
+
 Spring Data JPA in a traditional Spring application, without the auto-configuration features of Spring Boot. In this case, the setup requires some manual configuration, but you still get the power of Spring Data JPA for repository management.
 
-Spring Configuration (applicationContext.xml)
-
-For traditional Spring (non-Boot) projects, you will need to configure your data source, JPA entity manager factory, and transaction manager in your Spring XML configuration file (applicationContext.xml).
+Spring Configuration (applicationContext.xml) - For traditional Spring (non-Boot) projects, you will need to configure your data source, JPA entity manager factory, and transaction manager in your Spring XML configuration file (applicationContext.xml).
 
 ```xml
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -904,19 +910,6 @@ For traditional Spring (non-Boot) projects, you will need to configure your data
     transactionManager: Manages JPA transactions.
 
 
-Spring supports following Object Relational Mapping (ORM) frameworks:
-1. Hibernate
-2. Java Persistence API (JPA)
-3. TopLink
-4. Java Data Objects (JDO)
-5. Apache Object Relational Bridge (ORB)
-
-We can use following steps for integrating Spring and Hibernate:
-Add dependencies for Spring and Hibernate in pom.xml
-Implement DAO from HibernateDaoSupport
-Use Hibernate functions via getHibernateTemplate() method
-
-
 **HIBERNATE**:- Hibernate is an open source persistence framework.It provides not only basic object-relational mapping but also all the other sophisticated features you’d expect from a full-featured ORM tool, such as caching, lazy loading, eager fetching, and distributed caching.
 
 Natively, the main interface for working with Hibernate is org.hibernate.Session.The Session interface provides basic data-access functionality such as the ability to save, update, delete, and load objects from the database. Through the Hibernate Session, an application’s repository performs all of its persistence needs.
@@ -934,28 +927,28 @@ interceptor node to use Hibernate.
 We can also use HibernateTemplate and Callback to access
 Hibernate. This is based on Inversion of Control.
 
+We can use following steps for integrating Spring and Hibernate:
+Add dependencies for Spring and Hibernate in pom.xml
+Implement DAO from HibernateDaoSupport
+Use Hibernate functions via getHibernateTemplate() method
 
-**Spring and the Java Persistence API**:- The Java Persistence API (JPA) emerged out of the rubble of EJB 2’s entity beans as the next-generation Java persistence standard. JPA is a POJO-based persistence mechanism
-that draws ideas from both Hibernate and Java Data Objects (JDO) and mixes Java 5 annotations in for good measure.
-With the Spring 2.0 release came the premiere of Spring integration with JPA. The irony is that many blame (or credit) Spring with the demise of EJB. But now that
-Spring provides support for JPA, many developers are recommending JPA for persistence in Spring-based applications. In fact, some say that Spring-JPA is the dream team
-for POJO development.
+
+**Spring and the Java Persistence API**:- The Java Persistence API (JPA) emerged out of the rubble of EJB 2’s entity beans as the next-generation Java persistence standard. JPA is a POJO-based persistence mechanism that draws ideas from both Hibernate and Java Data Objects (JDO) and mixes Java 5 annotations in for good measure.
+With the Spring 2.0 release came the premiere of Spring integration with JPA.
 The first step toward using JPA with Spring is to configure an entity manager factory as a bean in the Spring application context.
 
 JPA-based applications use an implementation of EntityManagerFactory to get an instance of an EntityManager. The JPA specification defines two kinds of entity managers:
-1. Application-managed—Entity managers are created when an application directly requests one from an entity manager factory. With application-managed entity
-managers, the application is responsible for opening or closing entity managers and involving the entity manager in transactions. This type of entity manager is
-most appropriate for use in standalone applications that don’t run in a Java EE container.
-2. Container-managed—Entity managers are created and managed by a Java EE container. The application doesn’t interact with the entity manager factory at
-all. Instead, entity managers are obtained directly through injection or from JNDI. The container is responsible for configuring the entity manager factories.
-This type of entity manager is most appropriate for use by a Java EE container that wants to maintain so me control over JPA configuration beyond what’s specified in persistence.xml.
+1. Application-managed—Entity managers are created when an application directly requests one from an entity manager factory. With application-managed entity managers, the application is responsible for opening or closing entity managers and involving the entity manager in transactions. This type of entity manager is most appropriate for use in standalone applications that don’t run in a Java EE container.
+2. Container-managed—Entity managers are created and managed by a Java EE container. The application doesn’t interact with the entity manager factory at all. Instead, entity managers are obtained directly through injection or from JNDI. The container is responsible for configuring the entity manager factories.This type of entity manager is most appropriate for use by a Java EE container that wants to maintain so me control over JPA configuration beyond what’s specified in persistence.xml.
 
 Both kinds of entity manager implement the same EntityManager interface. The key difference isn’t in the EntityManager itself, but rather in how the EntityManager is created and managed. Application-managed EntityManagers are created by an EntityManagerFactory obtained by calling the createEntityManagerFactory() method of
 the PersistenceProvider. Meanwhile, container-managed EntityManagerFactorys are obtained through PersistenceProvider’s createContainerEntityManagerFactory() method.
 
 
 **Spring Data JPA**:- Spring Data JPA, part of the larger Spring Data family, makes it easy to easily implement JPA-based (Java Persistence API) repositories. It makes it easier to build Spring-powered applications that use data access technologies.
+JDBC/SQL provided a lot of capabilities to interface with the database, but with a significant amount of code required. JPA simplified the mapping, but as you observed with the JPA DAO implementation — there was still a modest amount of boilerplate code. Spring Data JPA Repository leverages the capabilities and power of JPA to map @Entity classes to the database but also further eliminates much of the boilerplate code remaining with JPA by leveraging Dynamic Interface Proxy techniques.
 Implementing a data access layer for an application can be quite cumbersome. Too much boilerplate code has to be written to execute the simplest queries. Add things like pagination, auditing, and other often-needed options, and you end up lost.
+Spring Data JPA provides repository support for JPA-based mappings.
 
 Spring Data JPA aims to significantly improve the implementation of data access layers by reducing the effort to the amount that’s actually needed. As a developer you write your repository interfaces using any number of techniques, and Spring will wire it up for you automatically. You can even use custom finders or query by example and Spring will write the query for you!.
 
@@ -965,12 +958,24 @@ The central interface in the Spring Data repository abstraction is Repository. I
 Spring Data JPA is an abstracton layer on top of JPA to reduce the amount of boilerplate code required to implement data eccess object(DAO).Spring Data JPA builds on JPA/Hibernate.The Spring-specific layer.
 
 `Repository abstraction`:- You do not write DAO classes. You define an interface. Spring generates the implementation at runtime.
-**Repository in Spring Data JPA** - A `repository` in Spring Data JPA is an abstraction for the data access layer(DAO). It provides an easy way to interact with the database using methods for standard CRUD operations (Create, Read, Update, Delete) and additional custom queries. Repositories in Spring Data JPA are part of the Repository abstraction in the Spring Data project, which simplifies database access.
+*Repository in Spring Data JPA* - A `repository` in Spring Data JPA is an abstraction for the data access layer(DAO). It provides an easy way to interact with the database using methods for standard CRUD operations (Create, Read, Update, Delete) and additional custom queries. Repositories in Spring Data JPA are part of the Repository abstraction in the Spring Data project, which simplifies database access.
 Repositories eliminate the need for boilerplate code like writing SQL queries or implementing DAO (Data Access Object) interfaces, letting developers focus on business logic.
 
 Spring Data repositories simplify database interactions by providing pre-implemented methods for CRUD operations, powerful query derivation capabilities, and extensibility through custom implementations. They are a key feature of Spring Data JPA, enabling developers to focus on business logic rather than writing boilerplate DAO code.
+The Spring Data JPA interfaces are layered — offering useful tools for interacting with the database. Our primary @Entity types will have a repository interface declared that inherit from JpaRepository and any custom interfaces we optionally define.
 
-Hierarchy of Repositories in Spring Data - Spring Data repositories are organized into a hierarchy:
+*Hierarchy of Repositories in Spring Data* - Spring Data repositories are organized into a hierarchy:-
+
+1. Repository<T, ID> - marker interface capturing the @Entity class and primary key type. Everything extends from this type.
+2. CrudRepository<T,ID> - depicts many of the CRUD capabilities.
+3. PagingAndSortingRepository<T,ID> - Spring Data provides some nice end-to-end support for sorting and paging. This interface adds some sorting and paging to the findAll() query method provided in CrudRepository.
+4. ListPagingAndSortingRepository<T,ID> - overrides the PagingAndSorting-based Iterable<T> return type to be a List<T>
+5. ListCrudRepository - overrides all CRUD-based Iterable<T> return types with List<T>
+6. QueryByExampleExecutor<T> - provides query-by-example methods that use prototype @Entity instances and configured matchers to locate matching results
+7. JpaRepository<T, ID> - brings together PagingAndSortingRepository,the and CrudRepository, QueryByExampleExecutor interfaces and adds several methods of its own. Unique to JPA,there are methods related to flush and working with JPA references.
+8. SongsRepositoryCustom/SongsRepositoryCustomImpl - we can write our own extensions for complex or compound — while taking advantage of an EntityManager and
+existing repository methods
+
 
 - `Repository<T, ID>`:- The base interface for Spring Data repositories.It's a marker interface (empty interface) and is not meant to be used directly.
 Central repository marker interface. Captures the domain type to manage as well as the domain type's id type. General purpose is to hold type information as well as being able to discover interfaces that extend this one during classpath scanning for easy Spring bean creation.
@@ -982,6 +987,16 @@ public interface Repository<T, ID> {}
 
 - `CrudRepository<T, ID>`:- Extends Repository.Provides basic CRUD operations (e.g., save(), findById(), delete()).
 Interface for generic CRUD operations on a repository for a specific type.
+Built-in CRUD Methods:-Repositories come with built-in methods for standard CRUD operations:
+
+1. save(T entity) - Saves or updates an entity.
+2. findById(ID id)- Retrieves an entity by its primary key.
+3. findAll() - Retrieves all entities.
+4. deleteById(ID id)- Deletes an entity by its primary key.
+5. delete(T entity) - Deletes a specific entity.
+6. count() - Returns the count of entities.
+7. existsById(ID id) - Checks if an entity exists by its primary key.
+
 
 ```java
 public interface CrudRepository<T, ID> extends Repository<T, ID> {
@@ -996,12 +1011,61 @@ public interface CrudRepository<T, ID> extends Repository<T, ID> {
 - `PagingAndSortingRepository<T, ID>`:- Extends CrudRepository.Adds methods for pagination and sorting.
 Repository fragment to provide methods to retrieve entities using the pagination and sorting abstraction. In many cases this will be combined with CrudRepository or similar or with manually added methods to provide CRUD functionality.
 
+Pagination: Use Pageable to define page size, page number, and sorting.
+Sorting: Use Sort to define sorting criteria. Determines the order which matching results are returned.
+
 ```java
-public interface PagingAndSortingRepository<T, ID> extends CrudRepository<T, ID> {
+public interface PagingAndSortingRepository<T, ID> extends Repository<T, ID> {
     Iterable<T> findAll(Sort sort);
     Page<T> findAll(Pageable pageable);
 }
+
+public interface ListPagingAndSortingRepository<T, ID> extends PagingAndSortingRepository<T, ID> {
+    List<T> findAll(Sort);
+}
 ```
+
+Use Paging and Sorting for Collection Queries - All queries that return a collection should seriously consider adding paging and sorting parameters. Small test databases can become significantly populated production databases over time and cause eventual failure if paging and sorting are not applied to unbounded collection query return methods.
+
+Sorting - Sorting can be performed on one or more properties and in ascending and descending order.
+
+```java
+List<Song> byReleased = songsRepository.findAll(Sort.by("released").descending().and(Sort.by("id").ascending()));
+```
+
+Sort.by() adds the extra SQL order by clause.
+
+```sql
+select ...
+from reposongs_song s1_0
+order by s1_0.released desc,s1_0.id
+```
+
+Paging - Paging permits the caller to designate how many instances are to be returned in a call and the offset to start that group (called a page or slice) of instances.
+
+Example:
+
+The snippet below shows an example of using one of the factory methods of Pageable to create a PageRequest definition using page size (limit), offset, and sorting criteria. If many pages are traversed — it is advised to sort by a property that will produce a stable sort over time during table modifications.
+
+```java
+Page<User> usersPage = userRepository.findAll(PageRequest.of(0, 10, Sort.by("name")));
+
+//given
+int offset = 0;
+int pageSize = 3;
+Pageable pageable = PageRequest.of(offset/pageSize, pageSize, Sort.by("released"));
+
+//when
+Page<Song> songPage = songsRepository.findAll(pageable);
+```
+
+Page Result:- The page result is represented by a container object of type Page<T>, which extends Slice<T>.
+The PagingAndSortingRepository<T,ID> interface always returns a Page<T>, which will provide:
+1. the sequential number of the page/slice
+2. the requested size of the page/slice
+3. the number of elements found
+4. the total number of elements available in the database
+
 
 - `JpaRepository<T, ID>`:- Extends PagingAndSortingRepository.Adds JPA-specific methods like flush() and saveAndFlush().All it's methods are transactional.
 JPA specific extension of org.springframework.data.repository.Repository.
@@ -1022,22 +1086,14 @@ public interface JpaRepository<T, ID> extends PagingAndSortingRepository<T, ID> 
 
 In most cases, developers use JpaRepository because it includes all the features of the other two.
 
-Features of Repositories - Built-in CRUD Methods:-Repositories come with built-in methods for standard CRUD operations:
 
-1. save(T entity) - Saves or updates an entity.
-2. findById(ID id)- Retrieves an entity by its primary key.
-3. findAll() - Retrieves all entities.
-4. deleteById(ID id)- Deletes an entity by its primary key.
-5. delete(T entity) - Deletes a specific entity.
-6. count() - Returns the count of entities.
-7. existsById(ID id) - Checks if an entity exists by its primary key.
-
-- Derived Query Methods:- Spring Data JPA can automatically generate query methods based on the naming conventions of methods in the repository interface.
+- *Derived Query Methods*:- Spring Data JPA can automatically generate query methods based on the naming conventions of methods in the repository interface.This provides a more self-documenting version of similar queries we could have formed with query-by-example.
 
 For example:
 
 ```java
 public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByEmail(String email);
     List<User> findByName(String name);
     List<User> findByEmailContaining(String emailSubstring);
     List<User> findByAgeGreaterThan(int age);
@@ -1049,6 +1105,37 @@ findByEmailContaining(String emailSubstring): Finds users whose email contains a
 findByAgeGreaterThan(int age): Finds users older than a certain age.
 
 Spring Data JPA parses the method names and translates them into appropriate JPQL or SQL queries.
+The resulting SQL is the same as if we implemented it using query-by-example or JPA query language.
+
+Query Keywords - Spring Data has several keywords, followed by By, that it looks for starting the interface method name. Those with multiple terms can be used interchangeably.
+1. Query - find,read,get,query,search,stream.
+2. Count - count.
+3. Exists - exists.
+4. Delete - delete, remove.
+5. Distinct
+6. Is,Equals
+7. Not
+8. IsNull,IsNotNull
+9. StartingWith,EndingWith,Containing
+10. LessThan,LessThanEqual,GreaterThan,GreaterThanEqual,Between
+11. Before,After
+12. In
+13. OrderBy
+
+- Multiple Fields - We can define queries using one or more fields using And and Or.
+
+```java
+List<Song> findByTitleNullAndReleasedAfter(LocalDate date);
+```
+
+The resulting SQL shows that a query is performed looking for null title and released after the LocalDate provided.
+
+```sql
+select ...
+from reposongs_song s1_0
+where s1_0.title is null and s1_0.released>?
+```
+
 
 - Custom Queries Using @Query:- If derived query methods are not sufficient, you can use the @Query annotation to write custom JPQL or native SQL queries.
 
@@ -1081,14 +1168,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 }
 ```
 
-Pagination: Use Pageable to define page size, page number, and sorting.
-Sorting: Use Sort to define sorting criteria.
-
-Example:
-
-```java
-Page<User> usersPage = userRepository.findAll(PageRequest.of(0, 10, Sort.by("name")));
-```
 
 - Custom Repository Implementations:- You can define custom methods and provide your own implementations by extending your repository interface.
 

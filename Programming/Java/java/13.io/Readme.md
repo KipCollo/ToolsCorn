@@ -11,11 +11,9 @@ NIO stands for non-­blocking input/output API and is sometimes referred to as n
 ## Conceptualizing the File System
 
 Data is stored on persistent storage devices, such as hard disk drives and memory cards. A `file` within the storage device holds data. Files are organized into hierarchies using directories. A `directory` is a location that can contain files as well as other directories.
-
 When working with directories in Java, we often treat them like files. We use many of the same classes and interfaces to operate on files and directories.For example, a file and directory both can be renamed with the same Java method.
 
 To interact with files, we need to connect to the file system. The `file system` is in charge of reading and writing data within a computer. Different operating systems use different file systems to manage their data. For example, Windows-­based systems use a different file system than Unix-­based ones.
-
 The JVM will automatically connect to the local file system, allowing you to perform the same operations across multiple platforms.
 
 The `root directory `is the topmost directory in the file system, from which all files and directories inherit. In Windows, it is denoted with a drive letter such as C:\, while on Linux, it is denoted with a single forward slash, /.
@@ -32,21 +30,20 @@ System.out.print(System.getProperty("file.separator"));
 - The relative path of a file or directory is the path from the current working directory to the file or directory.
 
 Absolute and relative paths can contain path symbols. A path symbol is one of a reserved series of characters with special meaning in some file systems.
-
-- . A reference to the current directory
-- .. A reference to the parent of the current directory
+1. . A reference to the current directory
+2. .. A reference to the parent of the current directory
 
 A symbolic link is a special file within a file system that serves as a reference or pointer to another file or directory.In general, symbolic links are transparent to the user, as the operating system takes care of resolving the reference to the actual file. While the I/O APIs do not support symbolic links, NIO.2 includes full support for creating, detecting, and navigating symbolic links within the file system.
+
 
 ## Creating a File or Path
 
 In order to do anything useful, you first need an object that represents the path to a particular file or directory on the file system. Using legacy I/O, this is the java.io.File class, whereas with NIO.2, it is the java.nio.file.Path interface.
-
 The File class and Path interface cannot read or write data within a file, although they are passed as a reference to other classes.
 
 A File or Path can represent a file or a directory.
 
-- Creating a File:- The File class is created by calling its constructor. This code shows three different constructors:
+- **Creating a File**:- The File class is created by calling its constructor. This code shows three different constructors:
 
 ```java
 File zooFile1 = new File("/home/tiger/data/stripes.txt");
@@ -57,8 +54,7 @@ File zooFile3 = new File(parent, "data/stripes.txt");
 
 All three create a File object that points to the same location on disk. If we passed null as the parent to the final constructor, it would be ignored, and the method would behave the same way as the single String constructor
 
-- Creating a Path:- Since Path is an interface, we can’t create an instance directly. After all, interfaces don’t have constructors! Java provides a number of classes and methods that you can use to obtain Path objects.
-
+- **Creating a Path**:- Since Path is an interface, we can’t create an instance directly. After all, interfaces don’t have constructors! Java provides a number of classes and methods that you can use to obtain Path objects.
 The simplest and most straightforward way to obtain a Path object is to use a static factory method defined on Path or Paths. All four of these examples point to the same reference on disk:
 
 ```java
@@ -84,18 +80,27 @@ File backToFile = nowPath.toFile();
 Many older libraries use File, making it convenient to be able to get a File from a Path and vice versa. When working with newer applications, you should rely on NIO.2’s
 Path interface, as it contains a lot more features. For example, only NIO.2 provides FileSystem support.
 
-NIO.2 makes extensive use of creating objects with factory classes. The FileSystems class creates instances of the abstract FileSystem class. The latter includes methods for working with the file system directly. Both Paths.get() and Path.of() are shortcuts for this FileSystem method. Let’s rewrite our earlier examples one more time to see how to obtain a Path instance the long way:
+- **Obtaining a Path from the FileSystems Class**:- NIO.2 makes extensive use of creating objects with factory classes. The FileSystems class creates instances of the abstract FileSystem class. The latter includes methods for working with the file system directly. Both Paths.get() and Path.of() are shortcuts for this FileSystem method. Let’s rewrite our earlier examples one more time to see how to obtain a Path instance the long way:
 
 ```java
 Path zooPath1 = FileSystems.getDefault().getPath("/home/tiger/data/stripes.txt");
 Path zooPath2 = FileSystems.getDefault().getPath("/home", "tiger", "data", "stripes.txt");
 ```
 
-The model for I/O is smaller, and you only need to understand the File class. In contrast,NIO.2 has more features and makes extensive use of the factory pattern. You should become comfortable with this approach. Many of your interactions with NIO.2 will require two types: an abstract class or interface and a factory or helper class.
 
-NOTE:- The java.io.File is the I/O class, while Files is an NIO.2 helper class.Files operates on Path instances, not java.io.File instances. We know this is confusing, but they are from completely different APIs!
+The model for I/O is smaller, and you only need to understand the File class. In contrast,NIO.2 has more features and makes extensive use of the factory pattern.Many of your interactions with NIO.2 will require two types: an abstract class or interface and a factory or helper class.Classes with plural names include methods to create or operate on class/interface instances with singular names.
+
+NOTE:- The java.io.File is the I/O class, while Files is an NIO.2 helper class.Files operates on Path instances, not java.io.File instances.
+
 
 ## Operating on File and Path
+
+Many operations can be done using both the I/O and NIO.2 libraries.
+
+- Common File and Path operations:-
+   1. Gets name of file/directory - I/O file -getName(), NIO - getFileName()
+   2. Retrieves parent directory or null if there is none - I/O - getParent(), NIO - getParent()
+   3. Checks if file/directory is absolute path - I/O - isAbsolute(), NIO -isAbsolute()
 
 ## Creating, Moving, and Deleting Files and Directories
 

@@ -349,9 +349,11 @@ Distribution zips are published to the Spring Maven Repository (this is just for
 
 To download a distribution zip open a web browser to http://repo.spring.io/release/org/springframework/spring and select the appropriate subfolder for the version that you want. Distribution files end -dist.zip, for example spring-framework-4.0.9.RELEASE-RELEASE-dist.zip. Distributions are also published for milestones and snapshots.
 
-Logging
+
+## Logging
 
 Logging is a very important dependency for Spring because:-
+
 1. It is the only mandatory external dependency.
 2. Everyone likes to see some output from the tools they are using.
 3. Spring integrates with lots of other tools all of which have also made a choice of logging dependency. One of the goals of an application developer is often to have unified logging configured in a central place for the whole application, including all external components. This is more difficult than it might have been since there are so many choices of logging framework.
@@ -365,8 +367,8 @@ Unfortunately, the runtime discovery algorithm in commons-logging, while conveni
 
 There are basically two ways to switch off commons-logging:
 
-Exclude the dependency from the spring-core module (as it is the only module that explicitly depends on commons-logging)
-Depend on a special commons-logging dependency that replaces the library with an empty jar (more details can be found in the SLF4J FAQ) 
+1. Exclude the dependency from the spring-core module (as it is the only module that explicitly depends on commons-logging)
+2. Depend on a special commons-logging dependency that replaces the library with an empty jar (more details can be found in the SLF4J FAQ) 
 
 To exclude commons-logging, add the following to your dependencyManagement section:
 
@@ -387,9 +389,8 @@ To exclude commons-logging, add the following to your dependencyManagement secti
 ```
 
 Now this application is probably broken because there is no implementation of the JCL API on the classpath, so to fix it a new one has to be provided. In the next section we show you how to provide an alternative implementation of JCL using SLF4J as an example.
-Using SLF4J
 
-SLF4J is a cleaner dependency and more efficient at runtime than commons-logging because it uses compile-time bindings instead of runtime discovery of the other logging frameworks it integrates. This also means that you have to be more explicit about what you want to happen at runtime, and declare it or configure it accordingly. SLF4J provides bindings to many common logging frameworks, so you can usually choose one that you already use, and bind to that for configuration and management.
+**Using SLF4J** - SLF4J is a cleaner dependency and more efficient at runtime than commons-logging because it uses compile-time bindings instead of runtime discovery of the other logging frameworks it integrates. This also means that you have to be more explicit about what you want to happen at runtime, and declare it or configure it accordingly. SLF4J provides bindings to many common logging frameworks, so you can usually choose one that you already use, and bind to that for configuration and management.
 
 SLF4J provides bindings to many common logging frameworks, including JCL, and it also does the reverse: bridges between other logging frameworks and itself. So to use SLF4J with Spring you need to replace the commons-logging dependency with the SLF4J-JCL bridge. Once you have done that then logging calls from within Spring will be translated into logging calls to the SLF4J API, so if other libraries in your application use that API, then you have a single place to configure and manage logging.
 
@@ -466,6 +467,7 @@ log4j.appender.stdout.layout.ConversionPattern=%d{ABSOLUTE} %5p %t %c{2}:%L - %m
 
 log4j.category.org.springframework.beans.factory=DEBUG
 ```
+
 
 ## Runtime Containers with Native JCL
 

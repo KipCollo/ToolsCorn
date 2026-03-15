@@ -509,15 +509,14 @@ Spring Boot uses Commons Logging for all internal logging but leaves the underly
 
 By default, if you use the starters, Logback is used for logging. Appropriate Logback routing is also included to ensure that dependent libraries that use Java Util Logging, Commons Logging, Log4J, or SLF4J all work correctly.
 
-
 When you deploy your application to a servlet container or application server, logging performed with the Java Util Logging API is not routed into your application’s logs. This prevents logging performed by the container or other applications that have been deployed to it from appearing in your application’s logs. 
 
 `Log Format`:- The default log output from Spring Boot resembles the following example:
 
 ```bash
-2025-11-20T16:37:12.913Z  INFO 127185 --- [myapp] [           main] o.s.b.d.f.logexample.MyApplication       : Starting MyApplication using Java 25.0.1 with PID 127185 (/opt/apps/myapp.jar started by myuser in /opt/apps/)
-2025-11-20T16:37:12.925Z  INFO 127185 --- [myapp] [           main] o.s.b.d.f.logexample.MyApplication       : No active profile set, falling back to 1 default profile: "default"
-2025-11-20T16:37:15.953Z  INFO 127185 --- [myapp] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2025-11-20T16:37:12.913Z  INFO 127185 --- [myapp] [   main] o.s.b.d.f.logexample.MyApplication       : Starting MyApplication using Java 25.0.1 with PID 127185 (/opt/apps/myapp.jar started by myuser in /opt/apps/)
+2025-11-20T16:37:12.925Z  INFO 127185 --- [myapp] [   main] o.s.b.d.f.logexample.MyApplication       : No active profile set, falling back to 1 default profile: "default"
+2025-11-20T16:37:15.953Z  INFO 127185 --- [myapp] [   main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
 ```
 
 The following items are output:
@@ -537,6 +536,18 @@ Logback does not have a FATAL level. It is mapped to ERROR.
 
 
 File Output - By default, Spring Boot logs only to the console and does not write log files. If you want to write log files in addition to the console output, you need to set a logging.file.name or logging.file.path property (for example, in your application.properties). If both properties are set, logging.file.path is ignored and only logging.file.name is used.
+
+```java
+logging.file.path=logs
+logging.file.name=${logging.file.path}/demo.log
+```
+
+Logging Data:-
+
+```java
+private static final Logger LOGGER = LoggerFactory.getLogger(Demo.class);
+LOGGER.info(..)
+```
 
 
 ------

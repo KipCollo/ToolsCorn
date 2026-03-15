@@ -586,6 +586,19 @@ public Collection<LineItem> getLineItems() {
 }
 ```
 
+```java
+@Override
+public void save(Owner owner){
+    try(EntityManager em = emf.createEntityManager()){
+        EntityTransaction et = em.getTransaction();
+        et.begin();
+        em.persist(owner);
+        et.commit();
+    }
+}
+```
+
+
 - Removing Entity Instances:- Managed entity instances are removed by invoking the remove method, or by a cascading remove operation invoked from related entities that have the cascade=REMOVE or cascade=ALL elements set in the relationship annotation. If the remove method is invoked on a new entity, the remove operation is ignored, although remove will cascade to related entities that have the cascade element set to REMOVE or ALL in the relationship annotation. If remove is invoked on a detached entity it will throw an IllegalArgumentException, or the transaction commit will fail. If remove is invoked on an already removed entity, it will be ignored. The entity’s data will be removed from the data store when the transaction is completed, or as a result of the flush operation.
 
 ```java
@@ -1262,7 +1275,6 @@ The use of the Basic annotation is optional for persistent fields and properties
 `EnumType`:- Defines mapping for enumerated types. The constants of this enumerated type specify how a persistent property or field of an enumerated type should be persisted.Includes:- ORDINAL,STRING.
 
 ```java
-
     public enum EmployeeStatus {FULL_TIME, PART_TIME, CONTRACT}
  
     public enum SalaryRate {JUNIOR, SENIOR, MANAGER, EXECUTIVE}

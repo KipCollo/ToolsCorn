@@ -37,11 +37,12 @@ The jar file will still need to be included in the classpath of any projects tha
     </repositories>
 ```
 
+
 ## Lombok Annotations
 
 There are a number of annotations in Project Lombok to allow for more fine grained control over the structure and behavior of a class.
 
-- @Getter and @Setter:- The @Getter and @Setter annotations generate a getter and setter for a field, respectively.
+- **@Getter and @Setter**:- The @Getter and @Setter annotations generate a getter and setter for a field, respectively.
 The getters generated correctly follow convention for boolean properties, resulting in an isFoo getter method name instead of getFoo for any boolean field foo. It should be noted that if the class to which the annotated field belongs contains a method of the same name as the getter or setter to be generated, regardless of parameter or return types, no corresponding method will be generated.
 
 Both the @Getter and @Setter annotations take an optional parameter to specify the access level for the generated method.
@@ -116,15 +117,16 @@ protected void setName(String name) {
 }
 ```
 
-- @NoArgsConstructor, @RequiredArgsConstructor,@AllArgsConstructor:-
 
-@NoArgsConstructor will generate a constructor with no parameters. If this is not possible (because of final fields), a compiler error will result instead, unless @NoArgsConstructor(force = true) is used, then all final fields are initialized with 0 / false / null . For �fields with constraints, such as @NonNull fields, no check is
+- **@NoArgsConstructor, @RequiredArgsConstructor,@AllArgsConstructor**:-
+
+`@NoArgsConstructor` will generate a constructor with no parameters. If this is not possible (because of final fields), a compiler error will result instead, unless @NoArgsConstructor(force = true) is used, then all final fields are initialized with 0 / false / null . For �fields with constraints, such as @NonNull fields, no check is
 generated,so be aware that these constraints will generally not be ful�lled until those �elds are properly initialized later. Certain java constructs, such as hibernate and the Service Provider Interface require a no-args constructor. This annotation is useful primarily in combination with either @Data or one of the other
 constructor generating annotations.
 
-@RequiredArgsConstructor generates a constructor with 1 parameter for each �eld that requires special handling. All non-initialized final �elds get a parameter, as well as any �elds that are marked as @NonNull that aren't initialized where they are declared. For those �elds marked with @NonNull , an explicit null check is also generated. The constructor will throw a NullPointerException if any of the parameters intended for the �elds marked with @NonNull contain null . The order of the parameters match the order in which the �elds appear in your class.
+`@RequiredArgsConstructor` generates a constructor with 1 parameter for each �eld that requires special handling. All non-initialized final �elds get a parameter, as well as any �elds that are marked as @NonNull that aren't initialized where they are declared. For those �elds marked with @NonNull , an explicit null check is also generated. The constructor will throw a NullPointerException if any of the parameters intended for the �elds marked with @NonNull contain null . The order of the parameters match the order in which the �elds appear in your class.
 
-@AllArgsConstructor generates a constructor with 1 parameter for each �eld in your class. Fields marked with @NonNull result in null checks on those parameters.
+`@AllArgsConstructor` generates a constructor with 1 parameter for each �eld in your class. Fields marked with @NonNull result in null checks on those parameters.
 
 Each of these annotations allows an alternate form, where the generated constructor is always private, and an additional static factory method that wraps around the private constructor is generated. This mode is enabled by supplying the staticName value for the annotation, like so:
 @RequiredArgsConstructor(staticName="of") . Such a static factory method will infer generics, unlike a normal constructor. This means your API users get write MapEntry.of("foo", 5) instead of the much longer new MapEntry<String, Integer>("foo", 5) .
@@ -176,7 +178,8 @@ public static class NoArgsExample {
 }
 ```
 
-- @NonNull:- The @NonNull annotation is used to indicate the need for a fast-fail null check on the corresponding member. When placed on a field for which Lombok is generating a setter method, a null check will be generated that will result in a NullPointerException, should a null value be provided.
+
+- **@NonNull**:- The @NonNull annotation is used to indicate the need for a fast-fail null check on the corresponding member. When placed on a field for which Lombok is generating a setter method, a null check will be generated that will result in a NullPointerException, should a null value be provided.
 
 Additionally, if Lombok is generating a constructor for the owning class, then the field will be added to the constructor signature and the null check will be included in the generated constructor code.
 
@@ -213,7 +216,8 @@ public void setMembers(@NonNull final List<Person> members) {
 }
 ```
 
-- @ToString:- This annotation generates an implementation of the toString method.
+
+- **@ToString**:- This annotation generates an implementation of the toString method.
 
 By default, any non-static fields will be included in the output of the method in name-value pairs. If desired, the inclusion of the property names in the output can be suppressed by setting the annotation parameter includeFieldNames to false.
 
@@ -251,7 +255,7 @@ public class Foo extends Bar {
 
 ```
 
-- @EqualsAndHashCode:- This class level annotation will cause Lombok to generate both equals and hashCode methods, as the two are tied together intrinsically by the hashCode contract.
+- **@EqualsAndHashCode**:- This class level annotation will cause Lombok to generate both equals and hashCode methods, as the two are tied together intrinsically by the hashCode contract.
 
 By default, any field in the class that is not static or transient will be considered by both methods. Much like @ToString, the exclude parameter is provided to prevent a field from being included in the generated logic. One can also use the of parameter to list only those fields that should be considered.
 
@@ -324,7 +328,8 @@ Equivalent Java source code:
     }
 ```
 
-- @Data:-  It combines the functionality of @ToString, @EqualsAndHashCode, @Getter, @Setter and @RequiredArgsConstructor.
+
+- **@Data**:-  It combines the functionality of @ToString, @EqualsAndHashCode, @Getter, @Setter and @RequiredArgsConstructor.
 
 Essentially, using @Data on a class is the same as annotating the class with a default @ToString and @EqualsAndHashCode, as well as annotating each field with both @Getter and @Setter. Annotating a class with @Data also triggers Lombok's constructor generation. This adds a public constructor that takes any @NonNull or final fields as parameters. This provides everything needed for a Plain Old Java Object (POJO).
 
@@ -408,9 +413,8 @@ public class Company {
 }
 ```
 
-- @Cleanup
 
-The @Cleanup annotation can be used to ensure that allocated resources are released. When a local variable is annotated with @Cleanup, any subsequent code is wrapped in a try/finally block that guarantees that the cleanup method is called at the end of the current scope.
+- **@Cleanup**:- The @Cleanup annotation can be used to ensure that allocated resources are released. When a local variable is annotated with @Cleanup, any subsequent code is wrapped in a try/finally block that guarantees that the cleanup method is called at the end of the current scope.
 
 By default @Cleanup assumes that the cleanup method is named "close," as with input and output streams. However, a different method name can be provided to the annotation's value parameter. Only cleanup methods that  take no parameters are able to be used with this annotation.
 
@@ -448,9 +452,7 @@ Equivalent Java source code:
     }
 ```
 
-- @Synchronized:-
-
-@Synchronized is a safer variant of the synchronized method modi�er. Like synchronized , the annotation
+- **@Synchronized**:- @Synchronized is a safer variant of the synchronized method modi�er. Like synchronized , the annotation
 can be used on static and instance methods only. It operates similarly to the synchronized keyword, but it
 locks on di�erent objects. The keyword locks on this , but the annotation locks on a �eld named $lock ,
 which is private.
@@ -519,9 +521,7 @@ public class SynchronizedExample {
 }
 ```
 
-- @SneakyThrows
-
-@SneakyThrows is probably the Project Lombok annotation with the most detractors, since it is a direct assault on checked exceptions. There is a lot of disagreement with regards to the use of checked exceptions, with a large number of developers holding that they are a failed experiment. These developers will love @SneakyThrows. Those developers on the other side of the checked/unchecked exception fence will most likely view this as hiding potential problems.
+- **@SneakyThrows**:- @SneakyThrows is probably the Project Lombok annotation with the most detractors, since it is a direct assault on checked exceptions. There is a lot of disagreement with regards to the use of checked exceptions, with a large number of developers holding that they are a failed experiment. These developers will love @SneakyThrows. Those developers on the other side of the checked/unchecked exception fence will most likely view this as hiding potential problems.
 
 Throwing IllegalAccessException would normally generate an "Unhandled exception" error if IllegalAccessException, or some parent class, is not listed in a throws clause:
 Unhandled Exception
@@ -1014,6 +1014,32 @@ public class BuilderExample {
   }
 }
 ```
+
+- **ExtensionMethod**:- Allows you to add extension methods to your class.It enables you to invoke utility methods as if they were part of the class itself.
+
+```java
+public class Example{
+public static void main(String[] args){
+    String str = "Hello";
+    if(Objects.isNull(str)){
+        Sytem.out.println("String is null")
+    }
+}
+}
+```
+
+```java
+@ExtensionMethod(Objects.class)
+public class Example{
+public static void main(String[] args){
+    String str = "Hello";
+    if(str.isNull()){
+        Sytem.out.println("String is null")
+    }
+}
+}
+```
+
 
 - @Slf4j: Adds a logger to the class without the need to manually create one
 

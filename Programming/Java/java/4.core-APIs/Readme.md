@@ -341,12 +341,16 @@ StringBuilder sb2 = new StringBuilder("animal");
 StringBuilder sb3 = new StringBuilder(10);
 ```
 
+-------
+
+
 ## Dates and Times
 
-Java provides a number of APIs for working with dates and times.You need an import a statement to work with modern date and time classes.To use it,add this import to your program.
+Java provides a number of APIs for working with dates and times.There’s also an old java.util.Date class.
+You need an import a statement to work with modern date and time classes.To use it,add this import to your program.
 
 ```java
-import java.time.*//import time classes
+import java.time.* //import time classes
 ```
 
 `Creating Dates and Times`:When working with dates and times, the first thing to do is to decide how much information you need.
@@ -364,6 +368,127 @@ System.out.println(LocalTime.now());
 System.out.println(LocalDateTime.now());
 System.out.println(ZonedDateTime.now());
 ```
+
+
+```java
+var date1 = LocalDate.of(2022, Month.JANUARY, 20);
+var date2 = LocalDate.of(2022, 1, 20);
+```
+
+Both pass in the year, month, and date. Although it is good to use the Month constants (to make the code easier to read), you can pass the int number of the month directly. Just use the number of the month the same way you would if you were writing the date in real life.
+
+The method signatures are as follows:
+
+```java
+public static LocalDate of(int year, int month, int dayOfMonth)
+public static LocalDate of(int year, Month month, int dayOfMonth)
+```
+
+
+When creating a time, you can choose how detailed you want to be. You can specify just the hour and minute, or you can include the number of seconds. You can even include nanoseconds if you want to be very precise. (A nanosecond is a billionth of a second, although you probably won’t need to be that specific.)
+
+```java
+var time1 = LocalTime.of(6, 15); // hour and minute
+var time2 = LocalTime.of(6, 15, 30); // + seconds
+var time3 = LocalTime.of(6, 15, 30, 200); // + nanoseconds
+```
+
+These three times are all different but within a minute of each other. The method signatures are as follows:
+
+```java
+public static LocalTime of(int hour, int minute)
+public static LocalTime of(int hour, int minute, int second)
+public static LocalTime of(int hour, int minute, int second, int nanos)
+```
+
+You can combine dates and times into one object:
+
+```java
+var dateTime1 = LocalDateTime.of(2022, Month.JANUARY, 20, 6, 15, 30);
+var dateTime2 = LocalDateTime.of(date1, time1);
+```
+
+There are a lot of method signatures since there are more combinations. The following method signatures use integer values:
+
+```java
+public static LocalDateTime of(int year, int month,int dayOfMonth, int hour, int minute)
+public static LocalDateTime of(int year, int month,int dayOfMonth, int hour, int minute, int second)
+public static LocalDateTime of(int year, int month,int dayOfMonth, int hour, int minute, int second, int nanos)
+```
+
+Others take a Month reference:
+
+```java
+public static LocalDateTime of(int year, Month month,int dayOfMonth, int hour, int minute)
+public static LocalDateTime of(int year, Month month,int dayOfMonth, int hour, int minute, int second)
+public static LocalDateTime of(int year, Month month,int dayOfMonth, int hour, int minute, int second, int nanos)
+```
+
+Finally, one takes an existing LocalDate and LocalTime:
+
+```java
+public static LocalDateTime of(LocalDate date, LocalTime time)
+```
+
+In order to create a ZonedDateTime, we first need to get the desired time zone. We will use US/Eastern in our examples:
+
+```java
+var zone = ZoneId.of("US/Eastern");
+var zoned1 = ZonedDateTime.of(2022, 1, 20,6, 15, 30, 200, zone);
+var zoned2 = ZonedDateTime.of(date1, time1, zone);
+var zoned3 = ZonedDateTime.of(dateTime1, zone);
+```
+
+Although there are other ways of creating a ZonedDateTime, you only need to know three:
+
+```java
+public static ZonedDateTime of(int year, int month,int dayOfMonth, int hour, int minute, int second,int nanos, ZoneId zone)
+public static ZonedDateTime of(LocalDate date, LocalTime time,ZoneId zone)
+public static ZonedDateTime of(LocalDateTime dateTime, ZoneId zone)
+```
+
+The date and time classes have private constructors along with static methods that return instances. This is known as the factory pattern.
+
+
+`Manipulating Dates and Times`:- Adding to a date is easy. The date and time classes are immutable.
+
+```java
+var date = LocalDate.of(2022, Month.JANUARY, 20);// 2022–01–20
+date = date.plusDays(2);// 2022–01–22
+date = date.plusWeeks(1);// 2022–01–29
+date = date.plusMonths(1);// 2022–02–28
+date = date.plusYears(5);// 2027–02–28
+```
+
+There are also nice, easy methods to go backward in time.
+
+```java
+var date = LocalDate.of(2024, Month.JANUARY, 20);
+var time = LocalTime.of(5, 15);
+var dateTime = LocalDateTime.of(date, time);// 2024–01–20T05:15
+dateTime = dateTime.minusDays(1);// 2024–01–19T05:15
+dateTime = dateTime.minusHours(10);// 2024–01–18T19:15
+dateTime = dateTime.minusSeconds(30);// 2024–01–18T19:14:30
+```
+
+It is common for date and time methods to be chained.
+
+```java
+var dateTime = LocalDateTime.of(date, time).minusDays(1).minusHours(10).minusSeconds(30);
+```
+
+`Periods`:- LocalDate and LocalDateTime have a method to convert themselves into long values, equivalent to the number of milliseconds that have passed since January 1, 1970, referred to as the epoch.
+
+There are five ways to create a Period class:
+
+```java
+var annually = Period.ofYears(1); // every 1 year
+var quarterly = Period.ofMonths(3); // every 3 months
+var everyThreeWeeks = Period.ofWeeks(3); // every 3 weeks
+var everyOtherDay = Period.ofDays(2);// every 2 days
+var everyYearAndAWeek = Period.of(1, 0, 7); // every year and 7 days
+```
+
 
 `Instants`:-The Instant class represents a specific moment in time in the GMT time zone.The Instant gets rid of the time zone and turns it into an Instant of
 time in GMT.You cannot convert a LocalDateTime to an Instant. Remember that an Instant is a point in time. A LocalDateTime does not contain a time zone, and it is therefore not universally recognized around the world as the same moment in time.

@@ -1,4 +1,4 @@
-# What is Cloud Computing?
+# Cloud Computing
 
 Cloud computing is a term used to describe the on-demand access to IT services that comprise compute, network, storage, and software services from third-party suppliers,usually via the public internet or some form of direct wide-area network (WAN) access.
 
@@ -12,10 +12,10 @@ IaaS, PaaS, and SaaS are three types of cloud service models. **IaaS** or Infras
 
 ## cloud deployment models
 
-There are three primary models of deployment, listed as follows:
-• Public cloud
-• Private cloud
-• Hybrid cloud
+There are three primary models of deployment:
+1. Public cloud
+2. Private cloud
+3. Hybrid cloud
 
 A `Public Cloud` is a model where the service provider offers resources, such as applications and storage, available to the general public over the internet. Resources may be free, or sold on a pay-per-usage model.also known as Cloud-Native or Cloud First.Most prominent examples are the top three providers - Amazon Web Services (AWS), Google Cloud Platform (GCP) and Microsoft Azure, who offer a comprehensive public cloud platform offering a myriad of services such as virtual machines, databases, and AI capabilities. Other notable players are Alibaba Cloud, IBM Cloud, Oracle Cloud Infrastructure (OCI), and DigitalOcean who offer similar features.
 

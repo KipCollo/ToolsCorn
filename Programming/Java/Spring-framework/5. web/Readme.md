@@ -830,10 +830,6 @@ Spring MVC Framework provides following mechanisms to help us achieve exception 
 
 The simplest way to handle an exception is to map it to the HTTP status code to be placed on the response.
 
-@ControllerAdvice - Specialization of @Component for classes that declare @ExceptionHandler, @InitBinder, or @ModelAttribute methods to be shared across multiple @Controller classes.
-@ExceptionHandler - Annotation for handling exceptions in specific handler classes and/or handler methods.
-@ResponseStatus - Marks a method or exception class with the status ResponseStatus.code() and ResponseStatus.reason() that should be returned.
-
 Spring offers a handful of ways to translate exceptions to responses:
 1. Certain Spring exceptions are automatically mapped to specific HTTP status codes.
 2. An exception can be annotated with @ResponseStatus to map it to an HTTP status code.
@@ -887,6 +883,8 @@ public class SpittleNotFoundException extends RuntimeException {
 }
 ```
 
+@ResponseStatus - Marks a method or exception class with the status ResponseStatus.code() and ResponseStatus.reason() that should be returned.
+
 After introducing this @ResponseStatus annotation, if a SpittleNotFoundException were to be thrown from a controller method, the response would have a status code of 404 and a reason of Spittle Not Found.
 
 `Exception-handling methods`:- Mapping exceptions to status codes is simple and sufficient for many cases. But what if you want the response to carry more than just a status code that represents the error that occurred, Rather than treat the exception generically as some HTTP error, maybe you’d like to handle the exception the same way you might handle the request itself.
@@ -913,6 +911,9 @@ public class AppWideExceptionHandler {
     return "error/duplicate";}
 }
 ```
+
+@ControllerAdvice - Specialization of @Component for classes that declare @ExceptionHandler, @InitBinder, or @ModelAttribute methods to be shared across multiple @Controller classes.
+@ExceptionHandler - Annotation for handling exceptions in specific handler classes and/or handler methods.
 
 Now, if a DuplicateSpittleException is thrown from any controller method, no matter which controller it’s in, this duplicateSpittleHandler() method will be called to handle the exception. The @ExceptionHandler-annotated method can be written much like an @RequestMapping-annotated method.
 
@@ -1280,7 +1281,7 @@ But everything is not fine. The client asks for a Spittle, but it gets nothing. 
 Spring offers a few options for dealing with such scenarios:
 1. Status codes can be specified with the @ResponseStatus annotation.
 2. Controller methods can return a ResponseEntity that carries more metadata concerning the response.
-3. An exception handler can deal with the error cases, leaving the handler methods to focus on the happy path.
+3. An exception handler can deal with the error cases, leaving the handler methods to focus on the path.
 
 ```java
 public User getUserById(Integer userId) {
@@ -1290,7 +1291,6 @@ public User getUserById(Integer userId) {
 
 ```java
 public class UsernotFoundException extends RuntimeException {
-
     public UsernotFoundException(String message) {
         super(message);
     }
@@ -1567,7 +1567,6 @@ By default, the request version is parsed into a semantic version with major, mi
 ```
 
 -------------------
-
 
 
 ## WebSockets
