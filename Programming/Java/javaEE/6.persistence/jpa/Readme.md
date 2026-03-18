@@ -9,7 +9,6 @@ JPA offers several features that make it easier to use than JDBC.
 3. JPA can automatically perform joins to satisfy relationships between objects.
 
 JPA runs on top of JDBC.As a result, it's compatible with any database that has a JDBC driver.
-
 There are several implementations of JPA.All of them follow the JPA specification.Full Java EE servers typically provide their own implementation of JPA.`Glassfish` uses `TopLink`, and `WildFly` uses `Hibernate`.When you use `Tomcat` you can choose the JPA implementation.Other implementation is `EcipseLink`.
 
 ## Entity
@@ -18,29 +17,19 @@ An entity is a lightweight persistence domain object.Entities support inheritanc
 Typically an entity represents a table in a relational database, and each entity instance corresponds to a row in that table. The primary programming artifact of an entity is the entity class, although entities can use helper classes or that are used to represent the state of the entity.
 
 When working with JPA, business objects are known as entities and are managed by an entity manager.In a full Java EE server such as Glassfish,the server provides a built-in entity manager that includes advanced features such as automatic transaction rollback.
+To turn a normal business class into an entity, you code annotations in the class.These annotations specify how the class should be stored in a database,and they specify how one class relates to another.Because these classes are just plain old java objects(POJOs) with annotations,you can still use these classes without JPA.In that case, the annotations are ignored..
 
+- **Entity Class**:- An entity class must follow these requirements:
+    1. The entity class must be annotated with the Entity annotation(javax.persistence.Entity) or declared as an entity in the XML descriptor.
+    2. The entity class must be a top-level class or a static inner class. An enum, record, or interface may not be designated as an entity.
+    3. The entity class must have a public or protected constructor with no parameters, which is called by the persistence provider runtime to instantiate the entity.The entity class may have additional constructors for use by the application.
+    4. The entity class must be non-final. Every method and persistent instance variable of the entity class must be non-final.
+    5. If an entity instance must be passed by value as a detached object, such as through a session bean’s remote business interface, the class must implement the Serializable interface.
+    6. An entity might be an abstract class, or it might be a concrete class. An entity may extend a non-entity class, or it may extend another entity class. A non-entity class may extend an entity class.
+    7. Persistent instance variables must be declared private, protected, or package-private, and can only be accessed directly by the entity class’s methods. Clients must access the entity’s state through accessor or business methods.
 
-- **Entity Class**:- The entity class must be annotated with the Entity annotation or declared as an entity in the XML descriptor.
-    1. The entity class must be a top-level class or a static inner class. An enum, record, or interface may not be designated as an entity.
-    2. The entity class must have a public or protected constructor with no parameters, which is called by the persistence provider runtime to instantiate the entity.The entity class may have additional constructors for use by the application.
-    3. The entity class must be non-final. Every method and persistent instance variable of the entity class must be non-final.
-
-An entity might be an abstract class, or it might be a concrete class. An entity may extend a non-entity class, or it may extend another entity class. A non-entity class may extend an entity class.
-
-The persistent state of an entity is represented by instance variables, which may correspond to JavaBeans properties.
+The persistent state of an entity is represented by instance variables, which may correspond to JavaBeans properties.The persistent state of an entity is represented either through persistent fields or persistent properties. These fields or properties use object/relational mapping annotations to map the entities and entity relationships to the relational data in the underlying data store.
 An instance variable may be directly accessed only within the methods of the entity, by the entity instance itself. An instance variable of an entity must not be directly accessed by a client of the entity. The state of the entity is available to clients only through the methods of the entity—that is, via accessor (getter/setter) methods, or via other business methods.
-
-To turn a normal business class into an entity, you code annotations in the class.These annotations specify how the class should be stored in a database,and they specify how one class relates to another.Because these classes are just plain old java objects(POJOs) with annotations,you can still use these classes without JPA.In that case, the annotations are ignored.
-
-The persistent state of an entity is represented either through persistent fields or persistent properties. These fields or properties use object/relational mapping annotations to map the entities and entity relationships to the relational data in the underlying data store.
-
-- An entity class must follow these requirements:
-  1. The class must be annotated with the javax.persistence.Entity annotation.
-  2. The class must have a public or protected, no-argument constructor. The class may have other constructors.
-  3. The class must not be declared final. No methods or persistent instance variables must be declared final.
-  4. If an entity instance be passed by value as a detached object, such as through a session bean’s remote business interface, the class must implement the Serializable interface.
-  5. Entities may extend both entity and non-entity classes, and non-entity classes may extend entity classes.
-  6. Persistent instance variables must be declared private, protected, or package-private, and can only be accessed directly by the entity class’s methods. Clients must access the entity’s state through accessor or business methods.
 
 - **Persistent Fields and Properties in Entity Classes**:- The persistent state of an entity is accessed by the persistence provider runtime via either:
     1. property access using JavaBeans-style property accessors.
@@ -48,46 +37,25 @@ The persistent state of an entity is represented either through persistent field
 
 The instance variables of a class must have private, protected, or package visibility, independent of whether field access or property access is used. When property access is used, the property accessor methods must be public or protected.
 
-The type of a persistent field or property of an entity class may be:
+- The type of a persistent field or property of an entity class may be:
+    1. any basic type listed below including any Java enum type.
+    2. an entity type or a collection of some entity type.
+    3. an embeddable class.
+    4. a collection of a basic type or embeddable type.
 
-- any basic type listed below including any Java enum type.
-- an entity type or a collection of some entity type.
-- an embeddable class.
-- a collection of a basic type or embeddable type.
-
-- The fields or properties must be of the following Java language types:
-  1. Java primitive types
-  2. java.lang.String
-  3. Wrappers of Java primitive types
-  4. java.math.BigInteger
-  5. java.math.BigDecimal
-  6. java.util.Date
-  7. java.util.Calendar
-  8. java.sql.Date
-  9. java.sql.Time
-  10. java.sql.TimeStamp
-  11. User-defined serializable types
-  12. byte[]
-  13. Byte[]
-  14. char[]
-  15. Character[]
-  16. Enumerated types
-  17. Other entities and/or collections of entities
-  18. Embeddable classes
-  19. Collection of bsic type or embaeddable type.
+The fields or properties must be of the following Java language types:- Java primitive types, java.lang.String, Wrappers of Java primitive types, java.math.BigInteger, java.math.BigDecimal, java.util.Date, java.util.Calendar, java.sql.Date, java.sql.Time, java.sql.TimeStamp, User-defined serializable types, byte[], Byte[], char[], Character[], Enumerated types, Other entities and/or collections of entities, Embeddable classes, Collection of basic type or embaeddable type.
 
 Object/relational mapping metadata may be specified to customize the object/relational mapping and the loading and storing of the entity state and relationships
 - The placement of object/relational mapping annotations depends on whether property access or field access is used:
     1. When field access is used, mapping annotations must be placed on instance variables, and the persistence provider runtime accesses instance variables directly. Every non-transient instance variable not annotated with the Transient annotation is persistent.
     2. When property-based access is used, mapping annotations must be placed on getter methods , and the persistence provider runtime accesses persistent state via the property accessor methods. Every property not annotated with the Transient annotation is persistent.
+
 Mapping annotations must not be applied to fields or properties marked transient or Transient, since those fields and properties are not persistent.
 
-Collection-valued persistent fields and properties must use the supported Java collection interfaces regardless of whether the entity uses persistent fields or properties. The following collection interfaces may be used:- java.util.Collection,java.util.Set,java.util.List,java.util.Map.
-Use of the generic variants of these collection types is strongly encouraged, for example, Set<Order> is preferred to the raw type Set.
+Collection-valued persistent fields and properties must use the supported Java collection interfaces regardless of whether the entity uses persistent fields or properties. The following collection interfaces may be used:- java.util.Collection,java.util.Set,java.util.List,java.util.Map. Use of the generic variants of these collection types is strongly encouraged, for example, Set<Order> is preferred to the raw type Set.
+A collection implementation type such as HashSet or ArrayList may be used by the application to initialize a collection-valued field or property before the entity is made persistent. Once the entity becomes managed (or detached),subsequent access to the collection must be through the interface type.
 
-A collection implementation type such as HashSet or ArrayList may be used by the application to initialize a collection-valued field or property before the entity is made persistent. Once the entity becomes managed (or detached),subsequent access to the collection must be through the interface type
-
-`Persistent Attribute Type`:- The enumeration jakarta.persistence.metamodel.Attribute.PersistentAttributeType defines a classification of persistent entity attributes: BASIC for basic attributes, EMBEDDED for embedded attributes, ELEMENT_COLLECTION for element collections,and MANY_TO_ONE, ONE_TO_ONE, ONE_TO_MANY, and MANY_TO_MANY for associations of the indicated multiplicity. Each persistent attribute of an entity belongs to exactly one of the listed types.
+<!-- `Persistent Attribute Type`:- The enumeration jakarta.persistence.metamodel.Attribute.PersistentAttributeType defines a classification of persistent entity attributes: BASIC for basic attributes, EMBEDDED for embedded attributes, ELEMENT_COLLECTION for element collections,and MANY_TO_ONE, ONE_TO_ONE, ONE_TO_MANY, and MANY_TO_MANY for associations of the indicated multiplicity. Each persistent attribute of an entity belongs to exactly one of the listed types.
 It is an error for an attribute of an entity to be annotated with mapping annotations indicating conflicting persistent attribute types. For example, an field may not be annotated @Basic @Embedded, @ManyToOne @ElementCollection, or @OneToOne @ManyToMany. The persistence provider must detect such contradictory combinations of mapping annotations and report the error
 
 
@@ -103,32 +71,25 @@ If the entity uses persistent properties, the entity must follow the method conv
 The method signature for single-valued persistent properties are as follows:
 
 Type getProperty()
-void setProperty(Type type)
+void setProperty(Type type) -->
 
 
 **Primary Keys and Entity Identity**:- Each entity has a unique object identifier. A customer entity, for example, might be identified by a customer number. The unique identifier, or primary key, enables clients to locate a particular entity instance.
-Every entity must have a primary key. An entity may have either a simple or a composite primary key.The value of its primary key uniquely identifies an entity instance within a persistence context and to operations of the EntityManager.
+Every entity must have a primary key. An entity may have either a `simple` or a `composite` primary key.The value of its primary key uniquely identifies an entity instance within a persistence context and to operations of the EntityManager.
 
-The primary key must be declared by:
-1. The entity class that is the root of the entity hierarchy, or
-2. A mapped superclass that is a (direct or indirect) superclass of all entity classes in the entity hierarchy.
+- The primary key must be declared by:
+    1. The entity class that is the root of the entity hierarchy, or
+    2. A mapped superclass that is a (direct or indirect) superclass of all entity classes in the entity hierarchy.
 
 A primary key must be defined exactly once in each entity hierarchy.
 
-1. A primary key comprises one or more fields or properties of the entity class.
-2. A simple `primary key` is a single persistent field or property of the entity class whose type is one of the legal simple primary key types listed below. The Id annotation or id XML element must be used to identify the simple primary key.
-3. A `composite primary key` must correspond to either a single persistent field or property, or to a set of fields or properties.A primary key class must be defined to represent the composite primary key.Composite primary keys must be defined in a primary key class. Composite primary keys are denoted using the javax.persistence.EmbeddedId and javax.persistence.IdClass annotations.
-    - If the composite primary key corresponds to a single field or property of the entity, the EmbeddedId annotation identifies the primary key, and the type of the annotated field or property is the primary key class.
-    - Otherwise, when the composite primary key corresponds to multiple fields or properties, the Id annotation identifies the fields and properties which comprise the composite key, and the IdClass annotation must specify the primary key class.Simple primary keys use the javax.persistence.Id annotation to denote the primary key property or field.
+- A primary key comprises one or more fields or properties of the entity class.
+    1. A `simple primary key` is a single persistent field or property of the entity class whose type is one of the legal simple primary key types listed below. The Id annotation or id XML element must be used to identify the simple primary key.
+    2. A `composite primary key` must correspond to either a single persistent field or property, or to a set of fields or properties.A primary key class must be defined to represent the composite primary key.Composite primary keys must be defined in a primary key class. Composite primary keys are denoted using the javax.persistence.EmbeddedId and javax.persistence.IdClass annotations.
+        - If the composite primary key corresponds to a single field or property of the entity, the EmbeddedId annotation identifies the primary key, and the type of the annotated field or property is the primary key class.
+        - Otherwise, when the composite primary key corresponds to multiple fields or properties, the Id annotation identifies the fields and properties which comprise the composite key, and the IdClass annotation must specify the primary key class.Simple primary keys use the javax.persistence.Id annotation to denote the primary key property or field.
 
-The primary key, or the property or field of a composite primary key, must be one of the following Java language types:
-- Java primitive types
-- Java primitive wrapper types
-- java.lang.String
-- java.util.UUID
-- java.util.Date (the temporal type should be DATE)
-- java.time.LocalDate
-- java.sql.Date
+The primary key, or the property or field of a composite primary key, must be one of the following Java language types:- Java primitive types, Java primitive wrapper types, java.lang.String, java.util.UUID, java.util.Date (the temporal type should be DATE), java.time.LocalDate, java.sql.Date.
 
 If a primary key field or property has type java.util.Date, the temporal type must be explicitly specified as DATE using the Temporal annotation or by equivalent XML.
 If the primary key is a composite primary key derived from the primary key of another entity, the primary key may contain an attribute whose type is that of the primary key of the referenced entity.
@@ -233,17 +194,16 @@ Bidirectional relationships must follow these rules:
 
 The relationship modeling annotation constrains the use of the cascade=REMOVE specification. The cascade=REMOVE specification should only be applied to associations that are specified as OneToOne or OneToMany. Applications that apply  cascade=REMOVE to other associations are not portable.
 
-
 Queries and Relationship Direction:- Java Persistence query language queries often navigate across relationships. The direction of a relationship determines whether a query can navigate from one entity to another. For example, a query can navigate from LineItem to Product but cannot navigate in the opposite direction. For Order and LineItem, a query could navigate in both directions, because these two entities have a bidirectional relationship.
 
 Cascade Deletes and Relationships:- Entities that use relationships often have dependencies on the existence of the other entity in the relationship. For example, a line item is part of an order, and if the order is deleted, then the line item should also be deleted. This is called a cascade delete relationship.
-
+<!-- 
 `CascadeType`:- Defines the set of cascadable operations that are propagated to the associated entity. The value cascade=ALL is equivalent to cascade={PERSIST, MERGE, REMOVE, REFRESH, DETACH}.
 
 Cascade delete relationships are specified using the cascade=REMOVE element specification for @OneToOne and @OneToMany relationships. For example:
 
 @OneToMany(cascade=REMOVE, mappedBy="customer")
-public Set<Order> getOrders() { return orders; }
+public Set<Order> getOrders() { return orders; } -->
 
 
 **Inheritance**:- Entities support class inheritance, polymorphic associations, and polymorphic queries. They can extend non-entity classes, and non-entity classes can extend entity classes. Entity classes can be both abstract and concrete.
@@ -324,8 +284,7 @@ public class ShoppingCart extends Cart {
 }
 ```
 
-
-`Entity Inheritance Mapping Strategies`:- The mapping of class hierarchies is specified through metadata.
+<!-- `Entity Inheritance Mapping Strategies`:- The mapping of class hierarchies is specified through metadata.
 You can configure how the Java Persistence provider maps inherited entities to the underlying datastore by decorating the root class of the hierarchy with the javax.persistence.Inheritance annotation. There are three mapping strategies that are used to map the entity data to the underlying database:
 
 There are three basic strategies that are used when mapping a class or class hierarchy to a relational database:
@@ -421,7 +380,7 @@ In this strategy, which corresponds to InheritanceType.JOINED, the root of the c
 
 This strategy provides good support for polymorphic relationships, but requires one or more join operations to be performed when instantiating entity subclasses. This may result in poor performance for extensive class hierarchies. Similarly, queries that cover the entire class hierarchy require join operations between the subclass tables, resulting in decreased performance.
 
-Some Java Persistence API providers, including the default provider in the Application Server, require a discriminator column in the table that corresponds to the root entity when using the joined subclass strategy. If you are not using automatic table creation in your application, make sure the database table is set up correctly for the discriminator column defaults, or use the @DiscriminatorColumn annotation to match your database schema. For information on discriminator columns, see The Single Table per Class Hierarchy Strategy.
+Some Java Persistence API providers, including the default provider in the Application Server, require a discriminator column in the table that corresponds to the root entity when using the joined subclass strategy. If you are not using automatic table creation in your application, make sure the database table is set up correctly for the discriminator column defaults, or use the @DiscriminatorColumn annotation to match your database schema. For information on discriminator columns, see The Single Table per Class Hierarchy Strategy. -->
 
 
 ## Managing Entities
@@ -1233,7 +1192,6 @@ These annotations and types are in the package jakarta.persistence.
 
 `@Transient`:- Specifies that the property or field is not persistent. It is used to annotate a property or field of an entity class, mapped superclass, or embeddable class.
 
-
 - `@Table`:- Specifies the primary table for the annotated entity. Additional tables may be specified using SecondaryTable or SecondaryTables annotation.If no Table annotation is specified for an entity class, the default values apply.
     1. name - (Optional) The name of the table.Defaults to the entity name.
     2. catalog - (Optional) The catalog of the table.Defaults to the default catalog.
@@ -1241,15 +1199,17 @@ These annotations and types are in the package jakarta.persistence.
     4. uniqueConstraints - (Optional) Unique constraints that are to be placed on the table. These are only used if table generation is in effect. These constraints apply in addition to any constraints specified by the Column and JoinColumn annotations and constraints entailed by primary key mappings.Defaults to no additional constraints.
     5. indexes - (Optional) Indexes for the table. These are only used if table generation is in effect. Note that it is not necessary to specify an index for a primary key, as the primary key index will be created automatically.
 
+```java
+@Table(name= "products", schema = "ecommerce", uniqueConstraints={@UniqueConstraint=(name="cln_unique",columnNames="email"),@UniqueConstraint=(name="cln_unique",columnNames="pass")})
+public class Product{}
+```
 
 ## Metadata for ORM
 
 The object/relational mapping metadata is part of the application domain model contract. It expresses requirements and expectations on the part of the application as to the mapping of the entities and relationships of the application domain to a database. Queries (and, in particular, SQL queries) written against the database schema that corresponds to the application domain model are dependent upon the mappings expressed by means of the object/relational mapping metadata. The implementation of this specification must assume this application dependency upon the object/relational mapping metadata and insure that the semantics and requirements expressed by that mapping are observed.
 The use of object/relational mapping metadata to control schema generation.
 
-
-**Annotations for Object/Relational Mapping**:- These annotations and types are in the package jakarta.persistence.
-XML metadata may be used as an alternative to these annotations, or to override or augment annotations.
+**Annotations for Object/Relational Mapping**:- These annotations and types are in the package jakarta.persistence.XML metadata may be used as an alternative to these annotations, or to override or augment annotations.
 
 - `Access Annotation`:- The Access annotation is used to specify an access type to be applied to an entity class, mapped superclass, or embeddable class, or to a specific attribute of such a class.
  - AccessType - value(Required) - The access type to be applied to the class or attribute
@@ -1258,6 +1218,11 @@ XML metadata may be used as an alternative to these annotations, or to override 
 - `@Basic`:- The simplest type of mapping to a database column. The Basic annotation can be applied to a persistent property or instance variable of any of the following types: Java primitive types, wrappers of the primitive types, String, java. math. BigInteger, java. math. BigDecimal, java. util. Date, java. util. Calendar, java. sql. Date, java. sql. Time, java. sql. Timestamp, byte[], Byte[], char[], Character[], enums, and any other type that implements java. io. Serializable.
 The use of the Basic annotation is optional for persistent fields and properties of these types. If the Basic annotation is not specified for such a field or property, the default values of the Basic annotation will apply.
 - fetch() - (Optional) Defines whether the value of the field or property should be lazily loaded or must be eagerly fetched. The EAGER strategy is a requirement on the persistence provider runtime that the value must be eagerly fetched. The LAZY strategy is a hint to the persistence provider runtime. If not specified, defaults to EAGER.
+
+```java
+@Basic(fetch=LAZY)
+protected String getName() { return name; }
+```
 
 
 - `@Column`:- Specifies the mapped column for a persistent property or field. If no Column annotation is specified, the default values apply.Can be annotated at field or method.The parameters can include:-
@@ -1270,13 +1235,19 @@ The use of the Basic annotation is optional for persistent fields and properties
     7. table - (Optional) The name of the table that contains the column. If absent the column is assumed to be in the primary table.
     8. length - (Optional) The column length. (Applies only if a string-valued column is used.)
 
+```java
+@Column(name="DESC", nullable=false, length=512)
+public String getDescription() { return description;}
+@Column(name="ORDER_COST", updatable=false, precision=12, scale=2)
+public BigDecimal getCost() {return cost;}
+```
+
 
 - `@Enumerated`:- Specifies that a persistent property or field should be persisted as a enumerated type. The Enumerated annotation may be used in conjunction with the Basic annotation, or in conjunction with the ElementCollection annotation when the element collection value is of basic type. If the enumerated type is not specified or the Enumerated annotation is not used, the EnumType value is assumed to be ORDINAL.
 `EnumType`:- Defines mapping for enumerated types. The constants of this enumerated type specify how a persistent property or field of an enumerated type should be persisted.Includes:- ORDINAL,STRING.
 
 ```java
     public enum EmployeeStatus {FULL_TIME, PART_TIME, CONTRACT}
- 
     public enum SalaryRate {JUNIOR, SENIOR, MANAGER, EXECUTIVE}
  
     @Entity public class Employee {
@@ -1305,12 +1276,10 @@ Generation strategy of key:-
   The @SequenceGenerator lets you define the name of generator and schema of db sequence and allocation size.
 4. GenerationType.TABLE - Rarely used nowadays
 
-
-- `@Id`:- Specifies the primary key of an entity. The field or property to which the Id annotation is applied should be one of the following types: any Java primitive type; any primitive wrapper type; String; java. util. Date; java. sql. Date; java. math. BigDecimal; java. math. BigInteger.
-The mapped column for the primary key of the entity is assumed to be the primary key of the primary table. If no Column annotation is specified, the primary key column name is assumed to be the name of the primary key property or field.
-Always use Wrapper classes over primitive type coz primitive has a default value while wrapper is null.
-
 ```java
+@GeneratedValue(strategy=SEQUENCE, generator="CUST_SEQ")
+@GeneratedValue(strategy=TABLE, generator="CUST_GEN")
+
 @GeneratedValue(strategy = GenerationType.SEQUENCE,generator ="product_generator")
 @SequenceGenerator(name ="product_generator",sequenceName="product_sequence_name",allocationSize=1)
 
@@ -1318,20 +1287,13 @@ Always use Wrapper classes over primitive type coz primitive has a default value
 @TableGenerator(name ="product_id_generator",table="product__name",allocationSize=1,pkColumnName="id_name",valueColumnName="id_value")
 ```
 
-Example:-
+- `@Id`:- Specifies the primary key of an entity. The field or property to which the Id annotation is applied should be one of the following types: any Java primitive type; any primitive wrapper type; String; java. util. Date; java. sql. Date; java. math. BigDecimal; java. math. BigInteger.
+The mapped column for the primary key of the entity is assumed to be the primary key of the primary table. If no Column annotation is specified, the primary key column name is assumed to be the name of the primary key property or field.
+Always use Wrapper classes over primitive type coz primitive has a default value while wrapper is null.
 
 ```java
-@Entity
-@Table(name= "products", schema = "ecommerce", uniqueConstraints={@UniqueConstraint=(name="cln_unique",columnNames="email"),@UniqueConstraint=(name="cln_unique",columnNames="pass")})
-public class Product{
-
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private int id;
-   private String email
-   @Column(name="pass", nullable = false)
-   private String password
-}
+@Id
+private Integer id;
 ```
 
 
@@ -1342,15 +1304,26 @@ Portable applications should use the Lob annotation when mapping to a database L
 @Lob @Basic(fetch=LAZY)
 @Column(name="REPORT")
 protected String report;
-```
 
-```java
 @Lob @Basic(fetch=LAZY)
 @Column(name="EMP_PIC", columnDefinition="BLOB NOT NULL")
 protected byte[] pic;
 ```
 
-- `@JoinColumn Annotation`:- The JoinColumn annotation is used to specify a column for joining an entity association or element collection.
+- `@JoinColumn Annotation`:- The JoinColumn annotation is used to specify a column for joining an entity association or element collection.The parameters include:-
+    1. name - The name of the foreign key column. The table in which it is found depends upon the context.
+        - If the join is for a OneToOne or ManyToOne mapping using a foreign key mapping strategy, the foreign key column is in the table of the source entity or embeddable.
+        - If the join is for a unidirectional OneToMany mapping using a foreign key mapping strategy, the foreign key is in the table of the target entity.
+        - If the join is for a ManyToMany mapping or for a OneToOne or bidirectional ManyToOne/OneToMany mapping using a join table, the foreign key is in a join table.
+        - If the join is for an element collection, the foreign key is in a collection table.
+        Default (only applies if a single join column is used): The concatenation of the following: the name of the referencing relationship property or field of the referencing entity or embeddable class; `_`; the name of the referenced primary key column. If there is no such referencing relationship property or field in the entity, or if the join is for an element collection, the join column name is formed as the concatenation of the following: the name of the entity; "_"; the name of the referenced primary key column.
+    2. referencedColumnName -  The name of the column referenced by this foreign key column.
+        - When used with entity relationship mappings other than the cases described here, the referenced column is in the table of the target entity.
+        - When used with a unidirectional OneToMany foreign key mapping, the referenced column is in the table of the source entity.
+        - When used inside a JoinTable annotation, the referenced key column is in the entity table of the owning entity, or inverse entity if the join is part of the inverse join definition.
+        - When used in a CollectionTable mapping, the referenced column is in the table of the entity containing the collection.
+        Default (only applies if single join column is being used): The same name as the primary key column of the referenced table.
+    3. unique - Whether the property is a unique key. This is a shortcut for the UniqueConstraint annotation at the table level and is useful for when the unique key constraint is only a single field. It is not necessary to explicitly specify this for a join column that corresponds to a primary key that is part of a foreign key.Default is false.
 If the JoinColumn annotation itself is defaulted, a single join column is assumed and the default values.
 The name annotation element defines the name of the foreign key column. The remaining annotation elements (other than referencedColumnName) refer to this column and have the same semantics as for the Column annotation.
 If the referencedColumnName element is missing, the foreign key is assumed to refer to the primary key of the referenced table.
@@ -1368,6 +1341,29 @@ public Set<Order> getOrders() { return orders; }
 ```
 
 
+- `@ManyToMany`:- A ManyToMany annotation defines a many-valued association with many-to-many multiplicity. If the collection is defined using generics to specify the element type, the associated target entity class does not need to be specified; otherwise it must be specified.
+Every many-to-many association has two sides, the owning side and the non-owning, or inverse, side. If the association is bidirectional, either side may be designated as the owning side. If the relationship is bidirectional, the non-owning side must use the mappedBy element of the ManyToMany annotation to specify the relationship field or property of the owning side.
+The join table for the relationship, if not defaulted, is specified on the owning side.
+The ManyToMany annotation may be used within an embeddable class contained within an entity class to specify a relationship to a collection of entities.If the relationship is bidirectional and the entity containing the embeddable class is the owner of the relationship, the non-owning side must use the mappedBy element of the ManyToMany annotation to specify the relationship field or property of the embeddable class. The dot ("." ) notation syntax must be used in the mappedBy element to indicate the relationship attribute within the embedded attribute. The value of each identifier used with the dot notation is the name of the respective embedded field or property.
+
+```java
+//Customer class
+@ManyToMany
+@JoinTable(name="CUST_PHONES")
+public Set<PhoneNumber> getPhones() { return phones; }
+
+//PhoneNumber class
+@ManyToMany(mappedBy="phones")
+public Set<Customer> getCustomers() { return customers; }
+
+@ManyToMany(targetEntity=com.acme.PhoneNumber.class)
+public Set getPhones() { return phones; }
+
+@ManyToMany(targetEntity=com.acme.Customer.class, mappedBy="phones")
+public Set getCustomers() { return customers; }
+```
+
+
 - `@OneToOne`:- Specifies a single-valued association to another entity that has one-to-one multiplicity. It is not normally necessary to specify the associated target entity explicitly since it can usually be inferred from the type of the object being referenced. If the relationship is bidirectional, the non-owning side must use the mappedBy element of the OneToOne annotation to specify the relationship field or property of the owning side.
     1. mappedBy - (Optional) The field that owns the relationship. This element is only specified on the inverse (non-owning) side of the association.
     2. cascade - (Optional) The operations that must be cascaded to the target of the association.By default no operations are cascaded.
@@ -1378,12 +1374,20 @@ The OneToOne annotation may be used within an embeddable class to specify a rela
 ```java
 // On Customer class:
 @OneToOne(optional=false)
-@JoinColumn(name="CUSTREC_ID", unique=true, nullable=false, updatable=false)
+@JoinColumn(name="CUSTREC_ID",referencedColumnName ="id", unique=true, nullable=false, updatable=false)
 public CustomerRecord getCustomerRecord() { return customerRecord; }
  
 // On CustomerRecord class:
- @OneToOne(optional=false, mappedBy="customerRecord")
+@OneToOne(optional=false, mappedBy="customerRecord")
 public Customer getCustomer() { return customer; }
+
+//Owner class
+@OneToOne(cascade = CascadeType.ALL)//when you fetch owner, the pet is also fetched.
+@JoinColumn(name="pet_id", referencedColumnName = "id", unique = true)
+private Pet pet
+
+//Pet class
+private Integer id;
 ```
 
 
@@ -1409,7 +1413,6 @@ public Customer getCustomer() { return customer; }
 ## XML ORM Descriptor
 
 The XML object/relational mapping descriptor serves as both an alternative to and an overriding mechanism for Java language metadata annotations.
-
 
 
 
