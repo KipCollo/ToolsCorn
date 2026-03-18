@@ -26,6 +26,22 @@ Both syntax return the Cartesian product of `table1` and `table2`.
 
 Let's consider two tables, `Employees` and `Departments`, where `Employees` has columns `EmpID, EmpName, DeptID` and `Departments` has columns `DeptID, DeptName`.
 
+**Table1: `Employees`**
+
+| EmpID | EmpName | DeptID |
+| ----- | ------- | ------ |
+| 1     | Alice   | 10     |
+| 2     | Bob     | 20     |
+
+**Table2: `Departments`**
+
+| DeptID | DeptName |
+| ------ | -------- |
+| 10     | HR       |
+| 20     | IT       |
+| 30     | Finance  |
+
+
 A cross join query would look like this:
 
 ```sql
@@ -33,5 +49,14 @@ SELECT Employees.EmpName, Departments.DeptName
 FROM Employees 
 CROSS JOIN Departments;
 ```
+
+| EmpName | DeptName |
+| ------- | -------- |
+| Alice   | HR       |
+| Alice   | IT       |
+| Alice   | Finance  |
+| Bob     | HR       |
+| Bob     | IT       |
+| Bob     | Finance  |
 
 This statement will return a result set which is the combination of each row from `Employees` with each row from `Departments`.

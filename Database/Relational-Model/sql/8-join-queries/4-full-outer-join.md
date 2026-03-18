@@ -40,8 +40,8 @@ Consider the following two tables:
 
 A `FULL OUTER JOIN` query would look like this:
 
-```
-SELECT Customers.Name, Orders.Product
+```sql
+SELECT *
 FROM Customers
 FULL OUTER JOIN Orders
 ON Customers.ID = Orders.CustomerID
@@ -50,14 +50,15 @@ ORDER BY Customers.Name;
 
 The result-set will look like this:
 
-| Name  | Product  |
-|-------|----------|
-| Tom   | Orange   |
-| Lucy  | Mango    |
-| Steve | Apple    |
-| Steve | Banana   |
-| NULL  | Blueberry|
-| Dave  | NULL     |
+| ID   | Name  | OrderID | CustomerID | Product   |
+| ---- | ----- | ------- | ---------- | --------- |
+| 4    | Dave  | NULL    | NULL       | NULL      |
+| 2    | Lucy  | 4       | 2          | Mango     |
+| 3    | Steve | 1       | 3          | Apple     |
+| 3    | Steve | 2       | 3          | Banana    |
+| 1    | Tom   | 3       | 1          | Orange    |
+| NULL | NULL  | 5       | 7          | Blueberry |
+
 
 This response includes all customers and all orders. If no matching orders exist for a customer, or if no matching customer exists for an order, the missing side will contain NULL.
 For example, Dave made no orders (his details in the product column are NULL) and the Blueberry order was made by a non-existing customer (the customer's details are NULL in the name column).

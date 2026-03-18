@@ -1,8 +1,16 @@
 # Relational Databases
 
 A **relational database** is a type of database that stores and organizes data in a structured way. It uses a structure that allows data to be identified and accessed in relation to other data in the database. Data in a relational database is stored in various data tables, each of which has a unique key identifying every row.
-
 Relational databases are a type of database management system (DBMS) that stores and organizes data in a structured format called tables. These tables are made up of rows, also known as records or tuples, and columns, which are also called attributes or fields. The term "relational" comes from the fact that these tables can be related to one another through keys and relationships.
+
+The relational model has three apects:
+
+1. Structural aspect - The data in database is perceived by the user as tables, and nothing but tables.
+2. Integrity aspect - Those tables satisfy certain integirity constraints.
+3. Manipulative aspects - The operators available to the user for manipulating those tables-e.g for purpose of data retrieval - are operators that derive tables from tables.Of those operators,3 particularly important ones are restrict,project and join.
+   - `restrict` operation extracts specified rows from a table.NB - Restrict is sometimes called `select`.Prefer restrict because the operator is not same as SELECt of SQL.
+   - `project` operation extracts specified columns from a table.
+   - `join` operatiom combines two tables into one on the basis of common values in a common column.
 
 Relational databases are made up of a set of tables with data that fits into a predefined category. Each table has at least one data category in a column, and each row contains a certain data instance for the categories defined in the columns.
 
@@ -16,6 +24,59 @@ For example, consider an 'Employees' table:
 
 In this table, 'EmployeeId', 'FirstName', 'LastName' and 'Email' are categories, and each row represents a specific employee.
 
+| OrderId | EmployeeId | Product  |
+|---------|------------|----------|
+| 1       | 3          | Apples   |
+| 2       | 1          | Bananas  |
+| 3       | 2          | Cherries |
+
+Restrict:
+
+Employee where LastName = Doe                   
+
+| EmployeeId | FirstName | LastName | Email                 |
+|------------|-----------|----------|-----------------------|
+| 1          | John      | Doe      | john.doe@example.com  |
+| 2          | Jane      | Doe      | jane.doe@example.com  |
+
+
+Project:
+
+Orders over EmployeeId, Product                 
+
+| EmployeeId | Product  |
+|------------|----------|
+| 3          | Apples   |
+| 1          | Bananas  |
+| 2          | Cherries |
+
+Join:
+
+Order and Employees over Employee
+
+| OrderId | EmployeeId | Product  | FirstName | LastName | Email                 |
+|---------|------------|----------|-----------|----------|-----------------------|
+| 1       | 3          | Apples   | Bob       | Smith    | bob.smith@example.com |
+| 2       | 1          | Bananas  | John      | Doe      | john.doe@example.com  |
+| 3       | 2          | Cherries | Jane      | Doe      | jane.doe@example.com  |                  
+
+
+
+NOTE:-
+
+1. Relational systems require only that the database be perceived by the user as tables.Tables are logical structure in a relational system,not physical structure.At physical level,in fact,the system is free to store the data any way it likes - using sequantial files,indexing,hashing,pointer chains,compression and so on - provided only that it can map stored representation to tables at logical level.
+2. Relational databases abide by principle, `Information Principle`: The entire information content of the database is represented in one and only one way - as explicit values in columns positions in row in tables.
+
+
+Relational model consists of following components:-
+
+1. An open-ended collection of scalar types(including in particular the type boolean or truth value).
+2. A relation type generator and an intended interpretation for relations of types generated thereby
+3. Facilitates for defining relation variables of such generated relation types.
+4. A relational assignment operation for assigning relation values to such relation variables.
+5. An open-ended collection of generic relational operators(the relational algebra) for deriving relation values from other relation values.
+
+
 ## Key Concepts
 
 - `Table`: A table is a collection of data organized into rows and columns. Each table has a unique name and represents a specific object or activity in the database.
@@ -23,6 +84,51 @@ In this table, 'EmployeeId', 'FirstName', 'LastName' and 'Email' are categories,
 - `Column`: A column is a data field in a table, representing a specific attribute of the data. Columns have a unique name and a specific data type.
 - `Primary Key`: A primary key is a column (or a set of columns) in a table that uniquely identifies each row. No two rows can have the same primary key value.
 - `Foreign Key`: A foreign key is a column (or a set of columns) in a table that refers to the primary key of another table. It is used to establish relationships between tables.
+
+
+## RDBMS Concepts
+
+Relational Database Management Systems (RDBMS) are a type of database management system which stores and organizes data in tables, making it easy to manipulate, query, and manage the information. They follow the relational model defined by E.F. Codd in 1970, which means that data is represented as tables with rows and columns.
+
+**Tables and Relations**:- 
+`Relation` is a mathematical term for a table.
+A `table` (also known as a relation) is a collection of rows (tuples) and columns (attributes). Each row represents a specific record, and each column represents an attribute of that record. The columns define the structure of the table and the type of data that can be stored in it.
+The number and order of the columns is fixed, and each column has a name. The number of rows is variable — it reflects how much data is stored at a given moment. SQL does not make any guarantees about the order of the rows in a table. When a table is read, the rows will appear in an unspecified order,unless sorting is explicitly requested.Furthermore, SQL does not assign unique identifiers to rows, so it is possible to have several completely identical rows in a table. This is a consequence of the mathematical model that underlies SQL but is usually not desirable.
+
+```markdown
+Example:
+
+| id | first_name | last_name |
+|----|------------|-----------|
+| 1  | John       | Doe       |
+| 2  | Jane       | Smith     |
+```
+
+**Keys**:-
+
+- Primary Key: A primary key is a unique identifier for each record in the table. It can be a single column or a combination of columns. No two rows can have the same primary key value.
+- Foreign Key: A foreign key is a column (or a set of columns) that references the primary key of another table, establishing a relationship between the two tables.
+
+**Data Types**:- RDBMS supports various data types for storing different types of data. Some of the common data types include:
+
+- Integer (int)
+- Floating-point (float, real)
+- Numeric (decimal, number)
+- DateTime (date, time, timestamp)
+- Character (char, varchar, text)
+- Boolean (bool)
+
+**Schema**:- The schema is the structure that defines tables, views, indexes, and their relationships in a database. It includes the definition of attributes, primary and foreign keys, and constraints that enforce data integrity.
+
+**Normalization**:- Normalization is the process of organizing data in a database to reduce redundancy, eliminate data anomalies, and ensure proper relationships between tables. There are multiple levels of normalization, referred to as normal forms (1NF, 2NF, 3NF, etc.).
+
+**ACID Properties**:- ACID (Atomicity, Consistency, Isolation, Durability) is a set of properties that ensure database transactions are reliable and maintain data integrity:
+
+- Atomicity: All operations in a transaction succeed or fail as a unit.
+- Consistency: The database remains in a consistent state before and after a transaction.
+- Isolation: Transactions are isolated from each other, ensuring that their execution does not interfere with one another.
+- Durability: Once a transaction is committed, its effects are permanently saved in the database.
+
 
 ## Relationships
 
@@ -79,108 +185,18 @@ Here are some of the limitations of using an RDBMS:
 - `Horizontal Scalability`: RDBMSs are not as easily horizontally scalable as NoSQL databases. Scaling horizontally, which involves adding more machines to the system, can be challenging in terms of cost and complexity.
 
 
-## RDBMS Concepts
-
-Relational Database Management Systems (RDBMS) are a type of database management system which stores and organizes data in tables, making it easy to manipulate, query, and manage the information. They follow the relational model defined by E.F. Codd in 1970, which means that data is represented as tables with rows and columns.
-
-**Tables and Relations**:- A table (also known as a relation) is a collection of rows (tuples) and columns (attributes). Each row represents a specific record, and each column represents an attribute of that record. The columns define the structure of the table and the type of data that can be stored in it.
-The number and order of the columns is fixed, and each column has a name. The number of rows is variable — it reflects how much data is stored at a given moment. SQL does not make any guarantees about the order of the rows in a table. When a table is read, the rows will appear in an unspecified order,unless sorting is explicitly requested.Furthermore, SQL does not assign unique identifiers to rows, so it is possible to have several completely identical rows in a table. This is a consequence of the mathematical model that underlies SQL but is usually not desirable.
-
-```markdown
-Example:
-
-| id | first_name | last_name |
-|----|------------|-----------|
-| 1  | John       | Doe       |
-| 2  | Jane       | Smith     |
-```
-
-**Keys**:-
-
-- Primary Key: A primary key is a unique identifier for each record in the table. It can be a single column or a combination of columns. No two rows can have the same primary key value.
-- Foreign Key: A foreign key is a column (or a set of columns) that references the primary key of another table, establishing a relationship between the two tables.
-
-**Data Types**:- RDBMS supports various data types for storing different types of data. Some of the common data types include:
-
-- Integer (int)
-- Floating-point (float, real)
-- Numeric (decimal, number)
-- DateTime (date, time, timestamp)
-- Character (char, varchar, text)
-- Boolean (bool)
-
-**Schema**:- The schema is the structure that defines tables, views, indexes, and their relationships in a database. It includes the definition of attributes, primary and foreign keys, and constraints that enforce data integrity.
-
-**Normalization**:- Normalization is the process of organizing data in a database to reduce redundancy, eliminate data anomalies, and ensure proper relationships between tables. There are multiple levels of normalization, referred to as normal forms (1NF, 2NF, 3NF, etc.).
-
-**ACID Properties**:- ACID (Atomicity, Consistency, Isolation, Durability) is a set of properties that ensure database transactions are reliable and maintain data integrity:
-
-- Atomicity: All operations in a transaction succeed or fail as a unit.
-- Consistency: The database remains in a consistent state before and after a transaction.
-- Isolation: Transactions are isolated from each other, ensuring that their execution does not interfere with one another.
-- Durability: Once a transaction is committed, its effects are permanently saved in the database.
-
-
 ## SQL [Structured Query Language]
 
-SQL stands for Structured Query Language and is a language used to manage data stored in a relational database.
+SQL is the standard language for relational systems.Was originally developed by IBM Research in early 1970s.Was first implemented on a large scale in IBM prototype called System R
 
+SQL stands for Structured Query Language and is a language used to manage data stored in a relational database.
 Structured Query Language (SQL) is the standard language used to communicate with a relational database. SQL is used to insert, update, delete, and retrieve data in the tables, as well as manage the database itself.
 
-In conclusion, understanding RDBMS concepts is essential for working with PostgreSQL and other relational databases. Familiarity with these concepts will allow you to design efficient database schemas, use SQL effectively, and maintain data integrity in your applications.
 
+## Relational Algebra
 
-## Roadmap
+The relational algebra is a collection of operators that take relations as their operands and return a relation as their result.The first version of the algebra was defined by Codd.
+The original algebra had 8 operators,two groups of four each:
 
-1. Introduction - Includes:-
-   - SQL definitions,Why learn It,Database and Types,SQL Commands,SQL Components, SQL Coding Style
-2. Query Data(SELECT) :- SELECT,FROM,WHERE,ORDER BY, GROUP BY,HAVING,DISTINCT,TOP, QUERY ORDER & EXECUTION.
-3. Data Definition(DDL):- CREATE,ALTER,DROP
-4. Data Manipulation(DML):- INSERT, UPDATE,DELETE
-5. Filtering Data:-
-   - Comparison Operators
-   - Logical Operators
-   - BETWEEN, IN,LIKE
-6. Combining Data:-
-   - Joining Data - Basic Joins(INNER,LEFT,RIGHT,FULL Join), Advanced Joins(LEFT,RIGHT,FULL Anti Join,Cross Join)
-   - SET Operators - UNION,UNION ALL,EXCEPT,INTERSECT
-7. Row-Level Functions:- String, Number, date & time,Null functions, Case Statements
-8. Aggregate & Analytical Functions:- aggregate Functions,Window basics,Window Aggregate func,Window Ranking Func, Window Value Func.
-9. Advanced SQL Techniques:- Subqueries, CTE, Views,CTAS table & Temp tables,Stored Procedure,Triggers
-10. Performance and Optimizations:- Indexes,Partitions.
-11. AI & SQL
-
-`Comments` - Comments are written to make our code more readable for other programmers. They are meant for humans only and are ignored by the DBMS
-To add comments to our program, 
-
-- we type two hyphens, followed by a space.
-- Alternatively, we can also use the # symbol as shown below:
-- Last, but not least, if we want to type multiple lines comments, we can use the /*...*/ symbols:
-
-
-```sql
--- Using SELECT to display messages
-
-# This is another way to add comment
-
-/* This is a comment
-This is also a comment
-This is the third comment */
-```
-
-Filtering Data- Insert,update,delete
-Sorting and Limiting Data - Order by,limit,distinct
-Aggregating data - count(),sum(),avg(),min(),max(),group by,having
-Set operations - Union,union all,intersect,except
-Views - create view,drop view,alter view,insert into view,update view
-Subqueries -  subqueries in SELECT,subqueries in WHERE,suqueries in FROM
-Transcations - Begin transaction,commit,rollback,savepoint,set transaction isolation level
-Window functions - row_number(),rank(),dense_rank(),ntile(),lead(),lag(),sum() over(),AVG() OVER(),PARTITION BY,ORDER BY
-Date and Time functions - getdate(),current_timestamp,dateadd(),datediff(),datepart(),date_format(),now(),extract(),timestampdiff()
-Triggers - create trigger,drop trigger,after insert/update/delete,before insert/update/delete
-Conditional logic - ifnull(),coalesce(),case when
-Date Modification - where,and ,or, not, in, between,like,is null,is not null,exists
-Common table expressions - with cte as,recursive cte,with temporary cte
-Indexing - Create index,drop index,unique index,full-text index,composite index
-Joins - Inner,left,right,full,cross,self join.
-
+1. The traditional set operators `union`, `intersection`, `difference` and the `Certesian product`(all of them modified somewhat to take account of the fact that their operands are specifically relations instead of arbitrary sets).
+2. The special trelational operators `restrict`(also known as `select`),`project`,`join` and `divide`.

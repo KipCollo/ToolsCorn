@@ -48,4 +48,11 @@ JOIN EMPLOYEES b
 ON a.ManagerID = b.EmployeeID
 ```
 
+| Employee | Manager |
+| -------- | ------- |
+| Alex     | Sam     |
+| John     | Sam     |
+| Sophia   | Alex    |
+| Emma     | Alex    |
+
 Both the queries will return the name of each employee along with the name of their respective manager.

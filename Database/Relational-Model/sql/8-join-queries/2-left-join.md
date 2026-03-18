@@ -20,11 +20,34 @@ The `LEFT JOIN` keyword returns all records from the left table (table1), and th
 
 Let's assume we have two tables: `Orders` and `Customers`.
 
+
+**Table1: `Orders`**
+
+|OrderID|CustomerID|OrderAmount|
+|-------|----------|-----------|
+|1      |100       |30         |
+|2      |101       |40         |
+|3      |102       |50         |
+
+**Table2: `Customers`**
+
+|CustomerID|Name    |Country  |
+|----------|--------|---------|
+|100       |Ana     |Germany  |
+|101       |Ben     |USA      |
+|103       |Charlie |Australia|
+
 ```sql
-SELECT Orders.OrderID, Customers.CustomerName
+SELECT *
 FROM Orders
 LEFT JOIN Customers
 ON Orders.CustomerID = Customers.CustomerID;
 ```
 
-This SQL statement would return all OrderID and the matching CustomerName. If there is no match, the result is `NULL`.
+This SQL statement would return all Orders and the matching Customers. If there is no match, the result is `NULL`.
+
+| OrderID | CustomerID | OrderAmount | CustomerID | Name | Country |
+| ------- | ---------- | ----------- | ---------- | ---- | ------- |
+| 1       | 100        | 30          | 100        | Ana  | Germany |
+| 2       | 101        | 40          | 101        | Ben  | USA     |
+| 3       | 102        | 50          | NULL       | NULL | NULL    |

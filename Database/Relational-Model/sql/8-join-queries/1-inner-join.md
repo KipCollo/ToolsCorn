@@ -44,7 +44,7 @@ Consider two tables:
 Now, if you want to select all orders, and any matching customer information:
 
 ```sql
-SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderAmount
+SELECT *
 FROM Orders
 INNER JOIN Customers
 ON Orders.CustomerID = Customers.CustomerID;
@@ -52,7 +52,7 @@ ON Orders.CustomerID = Customers.CustomerID;
 
 This would produce the following result:
 
-|OrderID|Name|OrderAmount|
-|-------|----|-----------|
-|1      |Ana |30         |
-|2      |Ben |40         |
+| OrderID | CustomerID | OrderAmount | CustomerID | Name | Country |
+| ------- | ---------- | ----------- | ---------- | ---- | ------- |
+| 1       | 100        | 30          | 100        | Ana  | Germany |
+| 2       | 101        | 40          | 101        | Ben  | USA     |
