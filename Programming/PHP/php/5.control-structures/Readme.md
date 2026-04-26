@@ -2,9 +2,7 @@
 
 Any PHP script is built out of a series of statements. A statement can be an assignment, a function call, a loop, a conditional statement or even a statement that does nothing (an empty statement). Statements usually end with a semicolon. In addition, statements can be grouped into a statement-group by encapsulating a group of statements with curly braces. A statement-group is a statement by itself as well.
 
-## if
-
-It allows for conditional execution of code fragments. PHP features an if structure that is similar to that of C:
+**if**:- It allows for conditional execution of code fragments. PHP features an if structure that is similar to that of C:
 
 if (expr)
   statement
@@ -40,9 +38,14 @@ $hasBeenRead = false;
 </h2>
 ```
 
-## foreach
+-----------
 
-The foreach construct provides an easy way to iterate over arrays and Traversable objects. foreach will issue an error when used with a variable containing a different data type or with an uninitialized variable.
+
+## Loops
+
+`Loops` provide the ability to execute the same code multiple times.
+
+**foreach**:- The foreach construct provides an easy way to iterate over arrays and Traversable objects. foreach will issue an error when used with a variable containing a different data type or with an uninitialized variable.
 foreach can optionally get the key of each element:
 
 foreach (iterable_expression as $value) {

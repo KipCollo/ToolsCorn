@@ -1,5 +1,19 @@
 # Composer
 
+Composer is a fundamental tool in modern PHP development. It simplifies the management of project dependencies, allowing you to declare what you need and automatically installing those resources in your project. For example, if your PHP project requires a certain library, Composer will fetch the appropriate version and make sure it's available for your project. Here's an example of how to add a dependency using Composer:
+
+```sh
+composer require vendor/package
+```
+    
+This command adds the `vendor/package` dependency to your project. The same goes for removing dependencies, updating them, and more.
+
+Visit the following resources to learn more:
+
+- [@official@Composer](https://getcomposer.org/)
+- [@official@Composer Documentation](https://getcomposer.org/doc/)
+
+
 Composer is a dependency manager for PHP that makes it possible to define third-party code packages used by a project that can then be easily installed and updated. It leverages the built-in class autoloading features of PHP, repositories of PHP packages such as » Packagist, and common project layout and coding conventions.
 Composer is a tool for dependency management in PHP. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you.
 
@@ -22,7 +36,7 @@ To use Composer in your project, all you need is a composer.json file. This file
 To initially install the defined dependencies for your project, you should run the update command.
 
 ```sh
-php composer.phar update
+php composer update
 ```
 
 This will make Composer do two things:
@@ -37,7 +51,7 @@ Either way, running install when a composer.lock file is present resolves and in
 So after fetching new changes from your VCS repository it is recommended to run a Composer install to make sure the vendor directory is up in sync with your composer.lock file.
 
 ``` bash
-php composer.phar install
+php composers install
 ```
 
 ## Command-line interface / Commands

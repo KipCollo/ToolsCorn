@@ -114,7 +114,24 @@ $newref =& returns_reference();
 ?>
 ```
 
-## Anonymous functions 
+## Anonymous Functions
+
+Anonymous functions in PHP, also known as closures, are functions that do not have a specified name. They are most frequently used as a value for callback parameters, but can be used in many other ways. When creating an anonymous function, you can also inherit variables from the parent scope. Here's a basic usage example:
+
+    $greet = function($name)
+    {
+        printf("Hello %s\r\n", $name);
+    };
+    
+    $greet('World');
+    $greet('PHP');
+    
+
+In this example, we're creating an anonymous function and assigning it to the variable `$greet`. We then call this anonymous function using $greet with 'World' and 'PHP' as arguments.
+
+Visit the following resources to learn more:
+
+- [@official@Anonymous Functions](https://www.php.net/manual/en/functions.anonymous.php)
 
 Anonymous functions, also known as closures, allow the creation of functions which have no specified name. They are most useful as the value of callable parameters, but they have many other uses. 
 
@@ -131,6 +148,11 @@ echo preg_replace_callback('~-([a-z])~', function ($match) {
 
 ## Arrow Functions
 
+Arrow functions provide a more concise syntax to create anonymous functions. The feature enthusiastically borrowed from modern Javascript significantly improves PHP's functional programming credibility. The primary difference between regular PHP closures and PHP Arrow functions is the automatic capturing of variables from the parent scope.
+
+Visit the following resources to learn more:
+
+- [@official@Arrow Functions](https://www.php.net/manual/en/functions.arrow.php)
 Arrow functions were introduced in PHP 7.4 as a more concise syntax for anonymous functions.Both anonymous functions and arrow functions are implemented using the Closure class.Arrow functions have the basic form fn (argument_list) => expr.
 
 Arrow functions support the same features as anonymous functions, except that using variables from the parent scope is always automatic.

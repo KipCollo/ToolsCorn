@@ -1,6 +1,51 @@
 # ROADMAP
 
-1. PHP Basics
-2. Data Types and Operators
-3. Control Structures
-4. Functions and Scopes
+- Introduction to PHP:-
+    - PHP Basics.
+    - PHP Versions and Features.
+- Fundamentals:-
+    - Local Server - WAMP,LAMP,MAMP,XAMPP
+    - Variables and scopes.
+    - Output and Debugging.
+    - Data Types and Operators.
+    - Constants.
+- Arrays:-
+    - Indexed Arrays.
+    - Associative Arrays.
+    - Multi-dimensional Arrays.
+- Control Structures:-
+    - Conditionals:- if/else,switch,match,null Safe Operator,Null Coalescing Operator.
+    - Loops.
+- Functions and Scopes:-
+    - Function Declarations, Parameters/ Return types,Named Arguments,Default/Optional params.
+    - Arrow Functions.
+    - Callback functions.
+    - Recursion.
+    - Anonymous Functions.
+    - Variadic Functions.
+- File Handling:-
+    - Include and Require Files:- require,require_once,include, include_once.
+    - File Operations:- Reading Files,Writing Files,File Permissions.
+        - CSV Processing.
+        - JSON Processing.
+        - XML Processing.
+- HTTP Methods:-
+    - Super Global Variables:- $_GET,$_POST,$_REQUEST,$_SERVER.
+- Form Processing.
+- File Uploads.
+- State Management:- Cookies, Sessions.
+- Basic Security:- Input Validation, SQL Injection,CSRF Protection,Password Hashing, XSS Prevention.
+- Databases:- 
+    - Database Connectivity:- PDO, MySQLi.
+    - Advanced Database Techniques:- ORM,Database Transactions,Connection Pooling,Performance Optimization,Database Migrations.
+- OOP Fundamentals
+- Framework and Tools:-
+    - Laravel,Symfony.
+    - Testing Tools - PHPUnit,Pest.
+- Style Tools:- PHPCodeSniffer, PHP CS Fixer.
+- Static Analysis:- PHPStan, Psalm,Phan.
+- External Integrations:- cURL, Guzzle.
+- PHP-FIG:- PSR Standards.
+- Performance Optimizations:- Profiling Techniques,Caching Strategies,Memory Management,Configuration Tuning,Opcode Caching, PHP-FPM.
+- System Interactions:- Executing System Commands, Process Control,Environment Variables,Configuration Files.
+- Debugging Tools:- Xdebug, Zend Debugger.

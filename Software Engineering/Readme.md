@@ -1,10 +1,46 @@
 # Software Engineering
 
 Software engineering is a branch of computer science, which uses well-defined engineering concepts required to produce efficient, durable, scalable, in-budget and on-time software products.
+Software engineering is an engineering discipline that is concerned with all aspects of software production.
 
 `software` - Computer programs and associated documentation.Software products may be developed for a particular customer or may be developed for a general market.
 
 The business environment relies heavily on software for many functions - from automated traffic control systems to complex manufacturing processes, and Software Engineers are crucial in the development of software that provides real solutions. A Software Engineer needs to address the entire software development lifecycle - to analyse the needs, and then design, test and develop software in order to meet those needs.
+
+
+- Introduction-Software & Software engineering:-
+    - Types of Software.
+    - Attributes of Good software.
+    - Professional software development.
+    - Software Engineering Ethics.
+- Software Process:-
+    - Software Process Models
+    - Process acxtivities.
+    - Coping with challenge.
+- Requirements analysis & specification:-
+    - Types of requirements
+    - Software Requiremnts Document.
+    - Requirements Engineering Process
+    - Use cases
+- Software Design:-
+    - Design with Context of Software Engineering,The Design Process,Design Concepts, The Design Model.
+    - Architectural Design: Software Architecture, Architecture Genres, Architecture Styles, Architectural Design, Assessing Alternative Architectural Designs, Architectural Mapping Using Data Flow.
+- Implementation & testing:-
+    - Development testing
+    - Test-driven development
+    - Release testing, User testing
+- Software Project Management:-
+    - Risk management, Managing people, Project planning, Software pricing, Project scheduling, Estimation techniques
+- Advanced Software Engineering:-
+    - Distributed Software Engineering
+    - Embedded Software
+    - Aspect-oriented software Engineering
+
+
+References:-
+
+1. Somerville I (2010) Software Engineering, 9th Edition  Addison Wesley 
+2. Pressman R.S (1997): Software Engineering: A Practical Approach  McGraw Hill 
 
 ## SOFTWARE DEVELOPMENT LIFE CYCLE (software process)
 
@@ -45,3 +81,32 @@ This phase has three steps:
 1. System construction.
 2. Deployment.
 3. Maintenance.
+
+
+
+## Distributed Software Engineering
+
+A distributed system is one involving several computers,in contrast with centralized systems where all of the system components execute on a single computer.
+Distributed SE is a collection of independent computers that appears to the user as a single coherent system.
+
+*Architectural patterns for distributed systems*:- Designers of distributed systems have to organize their system designs to find a balance between performance, dependability, security, and manageability of the system. There is no universal model of system organization that is appropriate for all circumstances so various distributed architectural styles have emerged. When designing a distributed application,you should choose an architectural style that supports the critical non-functional requirements of your system.
+
+- `Master-slave architectures`:- Master-slave architectures for distributed systems are commonly used in real-time systems where there may be separate processors associated with data acquisition from the system’s environment, data processing, and computation and actuator management.
+- `Two-tier client–server architectures`:- which is used for simple client–server systems, and in situations where it is important to centralize the system for security reasons.In such cases, communication between the client and server is normally encrypted.
+
+
+
+
+Fields:- Computer programming,DevOps,Empirical software engineering,Experimental software engineering,Formal methods,Requirements engineering,Search-based software engineering,Site reliability engineering,Social software engineering,Software deployment,Software design,Software maintenance,Software testing,Systems analysis.
+
+Concepts	
+AbstractionCI/CDCompatibility Backward compatibilityCompatibility layerCompatibility modeForward compatibilitySoftware incompatibilityComponent-based software engineeringData modelingEnterprise architectureFunctional specificationModeling languageProgramming paradigmSoftwareSoftware archaeologySoftware architectureSoftware configuration managementSoftware development process/methodologySoftware qualitySoftware quality assuranceSoftware systemSoftware verification and validationStructured analysis Essential analysis
+Orientations	
+AgileAspect-orientedObject orientationOntologySDLCService orientation
+Models	
+Developmental	
+AgileEUPExecutable UMLIncremental modelIterative modelPrototype modelRADScrumSpiral modelUPV-modelWaterfall modelXPModel-driven engineeringRound-trip engineering
+Other	
+CMMIData modelER modelFunction modelInformation modelMetamodelingObject modelSPICESystems modelView model
+Languages	
+IDEFSysMLUMLUSL

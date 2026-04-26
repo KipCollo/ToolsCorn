@@ -124,8 +124,7 @@ jobs: # Jobs
 - **Name** - The first element in a workflow file is typically the name of the workflow. The workflow can have a different name than the workflow file itself.The name is set using the name property:
 
 ```yaml
-name:
-  My workflow
+name: My workflow
 ```
 
 The name property is typically followed by the triggers that start the workflow. You also might want to add a comment on top of the workflow to document what the workflow does.
@@ -145,8 +144,7 @@ on: push
 on: [push, pull_request] # It can also be a pull request in the repo
 ```
 
-Most webhook triggers can be configured to only start the workflow on certain conditions. You can, for example, start a workflow only when pushing to certain branches
-or pushing when certain files in a path (paths) have been updated.
+Most webhook triggers can be configured to only start the workflow on certain conditions. You can, for example, start a workflow only when pushing to certain branches or pushing when certain files in a path (paths) have been updated.
 The following example will only trigger the workflow when files in the doc folder have changed, and the changes are pushed to the main branch or a branch starting with release/:
 
 ```yaml
@@ -165,8 +163,7 @@ There are many webhook triggers available—for example, you could run a workflo
 transferred, pinned, unpinned, closed, reopened, assigned, unassigned, labeled,unlabeled, locked, unlocked, milestoned, and demilestoned. Any of these events
 occurring in an issue will trigger the workflow to run.
 
-You can also run a workflow when your repository is starred (watch); a branch_protection_rule is created, edited, or deleted; or when your repository visibility is
-changed from private to public.
+You can also run a workflow when your repository is starred (watch); a branch_protection_rule is created, edited, or deleted; or when your repository visibility is changed from private to public.
 
 `Scheduled triggers`:- Schedule triggers allow you to start a workflow at a scheduled time—they use the same syntax as cron jobs. The syntax consists of five fields that represent the minute (0–59), hour (0–23), day of month (1–31), month (1–12 or JAN–DEC) and day of week (0–6 or SUN–SAT).
 
