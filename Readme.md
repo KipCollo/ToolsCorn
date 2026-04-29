@@ -227,6 +227,7 @@ Coding theory is the study of the properties of codes (systems for converting in
 - Computational geometry.
 - Randomized algorithms.
 
+
 `Programming language theory and formal methods`:- Programming language theory is a branch of computer science that deals with the design, implementation, analysis, characterization, and classification of programming languages and their individual features. It falls within the discipline of computer science, both depending on and affecting mathematics, software engineering, and linguistics. It is an active research area, with numerous dedicated academic journals.
 Formal methods are a particular kind of mathematically based technique for the specification, development and verification of software and hardware systems.The use of formal methods for software and hardware design is motivated by the expectation that, as in other engineering disciplines, performing appropriate mathematical analysis can contribute to the reliability and robustness of a design. They form an important theoretical underpinning for software engineering, especially where safety or security is involved. Formal methods are a useful adjunct to software testing since they help avoid errors and can also give a framework for testing. For industrial use, tool support is required. However, the high cost of using formal methods means that they are usually only used in the development of high-integrity and life-critical systems, where safety or security is of utmost importance. Formal methods are best described as the application of a fairly broad variety of theoretical computer science fundamentals, in particular logic calculi, formal languages, automata theory, and program semantics, but also type systems and algebraic data types to problems in software and hardware specification and verification.
 
@@ -324,7 +325,6 @@ Formal methods are a particular kind of mathematically based technique for the s
 
 
 `Computer security and cryptography`:- Computer security is a branch of computer technology with the objective of protecting information from unauthorized access, disruption, or modification while maintaining the accessibility and usability of the system for its intended users.
-
 Historical cryptography is the art of writing and deciphering secret messages. Modern cryptography is the scientific study of problems relating to distributed computations that can be attacked.Technologies studied in modern cryptography include symmetric and asymmetric encryption, digital signatures, cryptographic hash functions, key-agreement protocols, blockchain, zero-knowledge proofs, and garbled circuits.
 
 

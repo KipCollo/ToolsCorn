@@ -135,3 +135,16 @@ A cloud service provider can have hundreds of cloud services that are grouped in
 8. `IoT (Internet of Things) Services` - If your software involves connecting and managing IoT devices, IoT services are like the conductors of a digital orchestra. Platforms like AWS IoT or Azure IoT Hub help you connect, monitor, and manage IoT devices seamlessly. For edge computing, where processing happens closer to the data source, services like Google Cloud IoT Edge or Azure IoT Edge provide a distributed solution.
 9. `DevOps and CI/CD Services` - DevOps and CI/CD services act as the facilitators of a smooth and efficient software development lifecycle. Continuous Integration tools like Jenkins or GitLab CI automate the testing and integration of code changes. Container orchestration tools such as Kubernetes or Docker Swarm help manage and deploy containerized applications, ensuring consistency across different environments.
 10. `Analytics and Big Data Services` - Analytics and Big Data services are like having a data scientist on call. Platforms like AWS EMR or Azure HDInsight make it easy to process and analyze large datasets. For data warehousing, where you need to store and query massive amounts of data quickly, services like Google BigQuery or Snowflake provide scalable solutions.
+
+
+## Documenting cloud projects
+
+- Showcasing your projects on a personal portfolio website:- Helps build a personal brand and maximise your chances of getting hired.Portfolio website is a central place for you to store and link everything together i.e blog post,resume,cloud projects.
+What you've built,steps you took and services you used.Also include an architectural diagrams.
+Aditya Pratama, Marika Bergman.
+
+- Creating a github repository for your projects.Create a repo and place all projects in there.
+mo ROBLE.
+
+- Using social media platforms like medium and linkedin.
+Sachin Adi

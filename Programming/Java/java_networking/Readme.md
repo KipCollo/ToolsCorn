@@ -1787,3 +1787,109 @@ Session Tracking: It provides built-in mechanisms to remember users across multi
 - JDK 18:- JEP 408: Simple Web Server.
     - InetAddress resolution SPI
     - Removal of support for Pre JDK 1.4 DatagramSocketImpl implementations.
+
+
+
+
+## Sockets
+
+In order to support the inter-process communication, specific support has to be provided by both the operating system and the programming language used.Sockets,is one of the major solutions employed by network programming for the inter-process communications.
+`Sockets` provide the application developer with direct basic access to transport protocols, offering data packet transport services between a sender and a receiver host over the network, while hiding the complexity and implementation details of the protocol stack below.
+
+Sockets are network communication link end-points between two applications (i.e., server and client). They offer basic transport data communication support and hide lower layer implementation details. They provide a higher level of abstraction for the communication infrastructure beneath and enable support for fast and easy network- based applications development.
+
+- There are two type of sockets that can be used for application development:- transport layer sockets and application layer sockets.
+    - `Transport layer sockets` make use of transport-layer protocols such as the Transmission Control Protocol (TCP) and User Datagram Protocol (UDP). UDP is a connectionless non-reliable transmission of datagrams protocol, similar to the postal service. TCP is a connection-based reliable, orderly transmission of data packets, similar to the telephone service.
+    - `Application layer sockets` make use of application-layer protocols such as the Hypertext Transfer Protocol (HTTP) and Simple Mail Transfer Protocol (SMTP). HTTP is a TCP-based web page delivery service, while SMTP is a TCP-based e-mail delivery service.
+
+**Socket-Based Network Communications**:- The network communication using sockets involves several basic steps which have to be followed by the application developer in order to have a functional transport mechanism between the two communicating parties.
+- The first step involves creating and opening sockets. Each communicating party requires a separate socket. When creating/opening a socket, the important parameters to be provided include the IP address, port number, and communication protocol(TCP or UDP).
+- The second step involves establishing contact or associating the socket with another socket. In order to be able to communicate, the sockets have to use the same protocol. In general, the client knows the server’s IP address, port number, and the protocol used and contacts it using these details. Depending on the protocol, it can either request a service or establish a connection.
+- The third step consists of exchanging data between the two parties and represents the main stage of network application’s communication tasks. This step usually happens recursively. Information is sent and received by the two communicating sockets.
+- The last step involves closing and destroying the sockets which closes the communication end-point. After this step the socket cannot be used for communication any more.
+
+*UDP Sockets*:- When using UDP sockets the connection between the client and the server is not maintained throughout the communication session. Each datagram packet is sent as an isolated transmission when necessary. There are no guarantees that the packets arrive in order at the destination or that the packets arrive at the destination at all.
+
+`UDP Sockets—Server Side`:- Java UDP server communication steps include the following:
+1. Step 1—Create a datagram socket object.
+2. Step 2—Create a buffer to store the incoming datagrams
+3. Step 3—Create a datagram packet object for incoming datagrams
+4. Step 4—Accept an incoming datagram:
+5. Step 5—Get sender’s address and port number from the datagram:
+6. Step 6—Retrieve the data from the buffer
+
+```java
+DatagramSocket dgramSocket = new DatagramSocket(portno);/*1024 <= portno <= 65535*/
+byte[] buffer = new byte[256];/*-128 <= byte value <= 127*/
+DatagramPacket inPkt = new DatagramPacket(buffer, buffer.length);
+dgramSocket.receive(inPkt);
+InetAddress cliAddress = inPkt.getAddress();
+int cliPort = inPkt.getPort();
+String msgIn = new String(inPkt.getData(), 0, inPkt.getLength());
+```
+
+`UDP Sockets—Client Side`:- Java UDP client communication steps include:
+1. Step 1—Create a datagram socket object:
+2. Step 2—Create the outgoing datagram:
+3. Step 3—Send the response datagram:
+
+```java
+DatagramSocket dgramSocket = new DatagramSocket;/*a default port no will be selected*/
+BufferedReader userEntry = new BufferedReader(new InputStreamReader(System.in));
+System.out.print("Enter message: ");
+String msg = userEntry.readLine();
+DatagramPacket outPkt = new DatagramPacket(msg.getBytes(),msg.length(), host, portno);
+dgramSocket.send(outPkt);
+```
+
+*TCP Sockets*:- As TCP is a connection-oriented protocol, when TCP sockets are used, connections are established between client and server hosts. Client and server TCP sockets are created first and are bound for the duration of the data communication session.Following connection establishment, TCP packets are sent to the partner’s socket.
+These packets are guaranteed to arrive (if lost, retransmission occurs) and are received in order at the destination.
+Exchanging messages using TCP sockets involves a set of steps that must be followed by the application developer. Next these steps are presented, with the focus on server and client side, respectively.
+
+`TCP Sockets—Server Side`:- Java TCP server communication steps:
+1. Step 1—Create a TCP server socket object.
+2. Step 2—Set the server to wait (block) for clients to connect.
+3. Step 3—Set input and output streams.
+4. Step 4—Send and receive data.
+5. Step 5—Close the connection.
+
+```java
+ServerSocket servSock = new ServerSocket(portno);/*1024 <= portno <= 65535*/
+Socket sock = servSock.accept();/*sock is a socket object.*/
+BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+PrintWriter out = new PrintWriter(sock.getOutputStream(), true);
+out.println("Waiting...");
+String msg = in.readLine();
+sock.close();
+```
+
+`TCP Sockets—Client Side` Java TCP client communication steps:
+1. Step 1—Create a TCP client socket and establish a connection to the server.
+
+```java
+InetAddress srvIPAddr;
+int srvPortNo = 1234;
+Socket sock = new Socket(srvIPAddr.getLocalHost(),srvPortNo);/*sock is a socket object*/
+```
+
+
+**Socket-Based Client–Server Communication**:- Sockets offer the basic mechanisms for data communication between two processes, each running on a distinct machine.
+Client–server is a request–response remote communication model that involves processes requesting services from other processes which offer these services via the network.
+
+
+## Server-Side Network Programming
+
+Server-side network programming involves designing and implementing programs to be run on a server. Server-side applications run as processes on a dedicated physical machine, virtual machine, or cloud infrastructure. Server-side applications receive requests from the clients and perform tasks as requested by the clients. This chapter introduces various server-side methods and techniques used to generate and deliver web documents to requesting clients, including Java specific solutions such as Java Servlets and Java Servlet Pages.
+
+Server-side network programming involves designing and implementing programs to be run on the server.Server-side applications run as processes on a dedicated physical machine, virtual machine or Cloud infrastructure.
+Server-side applications perform tasks requested by the clients. The most popular server-side applications are Web server applications which deliver Web documents over the Internet to Web clients at their request.
+
+### Java Servlets
+
+Java Servlets are programs that run on the server side and generate content dynami- cally following client requests.
+Java API provides the basic functionality for implementing Java servlets.
+
+### Java Server Pages
+
+Java Server Pages (JSP) are web pages that have embedded Java code which runs on the server side and generates content dynamically.
+Generating HTML code using servlets is inconvenient as multiple out.println() calls are required, even for typical HTML content generation. Writing servlets requires Java programming expertise, whereas writing HTML content can be performed by a less skilled a person. However, Java code flexibility is still provided via HTML-like tags embedded in the HTML code.JSP represents a powerful development tool for web applications.
