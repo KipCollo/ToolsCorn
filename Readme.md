@@ -331,9 +331,6 @@ Historical cryptography is the art of writing and deciphering secret messages. M
 `Databases and data mining`:- A database is intended to organize, store, and retrieve large amounts of data easily. Digital databases are managed using database management systems to store, create, maintain, and search data, through database models and query languages. Data mining is a process of discovering patterns in large data sets.
 
 
-
-
-
 BCE 111    COMPUTATIONAL LOGIC    
 BCU 100    Communication Skills    
 BCU 101    Introduction To Computer Studies and Internet    
