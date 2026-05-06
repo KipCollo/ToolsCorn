@@ -1,5 +1,14 @@
-# Git
+# Version Control
 
+Version control systems allow you to track changes to your codebase/files over time. They allow you to go back to some previous version of the codebase without any issues. Also, they help in collaborating with people working on the same code – if you’ve ever collaborated with other people on a project, you might already know the frustration of copying and merging the changes from someone else into your codebase; version control systems allow you to get rid of this issue.
+
+Version control systems includes:- `Git`,`mercurial`,`Subversion`.
+Git Hosting tools includes:- `Gitea`,`GitHub`,`sourcehut`,`tangled.sh`,`forgejo`,`codeberg`,`Gitlab`,`radicle.`
+
+
+----------
+
+## Git
 
 [Git](https://git-scm.com/) is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 
@@ -199,3 +208,4 @@ Git is a command line tool,but there are soma visualizations such as:
 ```sh
 git --version
 ```
+

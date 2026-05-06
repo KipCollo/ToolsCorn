@@ -1,7 +1,6 @@
 # Continuous Integration/Continuous Delivery (CI/CD)
 
 `Continuous Integration` is the first part of the process and describes the permanent building and testing of the written code. High automation and usage of version control allows multiple developers and teams to work on the same code base.
-
 `Continuous Delivery` is the second part of the process and automates the deployment of the pre-built software. In cloud environments, you will often see that software is deployed to Development or Staging environments, before it gets released and delivered to a production system.
 Continuous Delivery (CD) is a software development practice that aims to automate the process of releasing software changes to production environments in a frequent and reliable manner. It builds upon the concept of Continuous Integration (CI) by extending the automated pipeline to include deployment and release processes. In continuous delivery, the goal is to have software in a state where it can be released to production at any given time.
 
@@ -21,6 +20,7 @@ Popular CI/CD tools include:
 6. ArgoCD
 7. Github Actions
 8. GoCD
+
 
 ## Continuous Integration
 
@@ -79,6 +79,7 @@ Continuous Delivery is a software development practice that extends the principl
 - Feature Toggles - Use feature toggles or feature flags to enable or disable specific features in production. This allows for the decoupling of deployment and release, enabling the gradual rollout of features.
 - Rollback Mechanisms - Implement mechanisms to quickly rollback releases in case of unexpected issues. This ensures a rapid response to problems without causing extended downtime.
 - Monitoring and Logging - Implement robust monitoring and logging to track the performance and behavior of the application in real-time. This facilitates rapid identification and resolution of issues in production.
+
 
 ## Understanding Release Strategies
 
