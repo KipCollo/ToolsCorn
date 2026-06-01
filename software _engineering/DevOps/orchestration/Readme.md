@@ -19,9 +19,9 @@ Managed Kubernetes service:
 
 Container Orc. can be used to perform a lot of tasks i.e:
 
-1. Provisioning and Deploying of containers
-2. Scaling or Load Balancing for containers
-3. Resource Management and Scheduling of Containers
+1. Provisioning and Deploying of containers.
+2. Scaling or Load Balancing for containers.
+3. Resource Management and Scheduling of Containers.
 4. Health Monitoring of Containers and Host machine.
 
 ## Why is Container Orchestration Essential

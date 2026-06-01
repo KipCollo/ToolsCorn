@@ -4,8 +4,7 @@
 
 Initially developed by Google, Kubernetes has become the de facto standard for container orchestration and is now maintained by the Cloud Native Computing Foundation (CNCF).
 
-NOTE:- Kubernetes is Greek for pilot or helmsman (the person holding the ship’s steering wheel). People pronounce Kubernetes in a few different ways.
-Many pronounce it as Koo-ber-nay-tace, while others pronounce it more like Koo-ber-netties.
+NOTE:- Kubernetes is Greek for pilot or helmsman (the person holding the ship’s steering wheel). People pronounce Kubernetes in a few different ways.Many pronounce it as Koo-ber-nay-tace, while others pronounce it more like Koo-ber-netties.
 
 Kubernetes abstracts away the hardware infrastructure and exposes your whole data-center as a single enormous computational resource. It allows you to deploy and run your software components without having to know about the actual servers underneath. When deploying a multi-component application through Kubernetes, it selects a server for each component, deploys it, and enables it to easily find and communicate with all the other components of your application
 

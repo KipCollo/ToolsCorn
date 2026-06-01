@@ -10,12 +10,10 @@ Git Hosting tools includes:- `Gitea`,`GitHub`,`sourcehut`,`tangled.sh`,`forgejo`
 
 ## Git
 
-[Git](https://git-scm.com/) is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
-
-Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. Git’s purpose is to keep track of projects and files as they change over time with manipulations happening from different users. 
+[Git](https://git-scm.com/) is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. Git’s purpose is to keep track of projects and files as they change over time with manipulations happening from different users. 
 Git stores information about the project’s progress on a repository. A repository has commits to the project or a set of references to the commits called heads. All this information is stored in the same folder as the project in a sub-folder called .git and will mostly be hidden by default in most systems.
 
-So basically. Git keeps track of the changes a couple of people make on a single project and then merges the code where people have worked on different parts into one project.This way, when someone introduces a bug, you can track down the code that introduced the bug by going through the commits. Commits must be made to a project to tell git that you’re satisfied with the changes you’ve made and want to commit the changes into the main branch called master by default.
+So basically,Git keeps track of the changes a couple of people make on a single project and then merges the code where people have worked on different parts into one project.This way, when someone introduces a bug, you can track down the code that introduced the bug by going through the commits. Commits must be made to a project to tell git that you’re satisfied with the changes you’ve made and want to commit the changes into the main branch called master by default.
 
 You can then upload the code to GitHub,Gitlab or BitBucket where authorised users can either view, pull the code or push changes.
 
@@ -26,14 +24,6 @@ Git is basically used for:-
 3. Open source - Git has concept of branching which helps in collaboration of open source.
 
 LOCAL FOLDER-------->STAGING AREA------->LOCAL REPOSITORY(.git)
-
-## Git cheatsheet
-
-Git is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development. Its goals include speed, data integrity, and support for distributed, non-linear workflows.
-
-As a coder, at some point in time, you will need Git, and once you start using it, you won't stop, even though it could get frustrating at times. So here is a cheat sheet you can use when you are revisiting Git after a long time, or want to learn more applications of Git, or if you need to time travel and get your older code back.
-
-Before we dive in, let me explain the structure of Git so that you can understand the commands better.
 
 [Repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories): They are a collection of files of various versions of a Project.
 
@@ -64,10 +54,7 @@ git config --global user.name "KipCollo"
 git config --global user.email "kipkosgei.tech@gmail.com"
 ```
 
-## Set up SSH
-
-If you are using Windows open Git Bash. If you are using Mac or Linux open your Terminal.
-
+**Setting up SSH**:- If you are using Windows open Git Bash. If you are using Mac or Linux open your Terminal.
 Before you generate an SSH key, you can check to see if you have any existing SSH keys.
 List the contents of your ~/.ssh directory:
 
@@ -209,3 +196,148 @@ Git is a command line tool,but there are soma visualizations such as:
 git --version
 ```
 
+**Staging**:- Add file to the staging area:- The `git add` command adds a change in the working directory to the staging area(This area contains a list of all the files you have recently changed). It tells Git that you want to include updates to a particular file in the next commit. However, git add doesn't really affect the repository in any significant way—changes are not actually recorded until you run git commit.
+To add a single file, we use the git add command followed by a file name
+
+```bash
+git add -A
+git add .  # Version ≥ 2.0
+git add /path-to-test-py/test.py
+```
+
+If you need to delete a file or folder, you can check out the [git rm](https://www.git-tower.com/learn/git/commands/git-rm) command.
+
+**Committing**:- After making changes to your source code, you should stage those changes with Git before you can commit them.Now that we have added or deleted the changes we need to inform Git about, we commit the changes. This, in a way, finalized the next version of our codebase. We can go back to all the past commits to see the version history. The command works as follows.
+
+```bash
+git commit -m "The message you want to write to describe this commit"
+```
+
+Alternately, if you have only modiﬁed existing ﬁles or deleted ﬁles, and have not created any new ones, you can combine the actions of git add and git commit in a single command:
+
+```bash
+git commit -am "Commit message here"
+```
+
+Note that this will stage all modiﬁed ﬁles in the same way as git add --all.
+
+ammend - changes to most recent commit | --amend -m "new message"
+
+**Pushing**:- Till now, whatever we were doing was happening to our local repository, but at some point, we needed to push it to the remote repository as well so that others could see and use our code. The git push command does this.
+
+```bash
+$ git push <remote> <local> 
+# <remote> is the name of the remote branch
+# <local> is the name of the local branch
+# Example
+$ git push origin master
+```
+
+**Cloning**:- If you want to use an already existing git repo(remote repo), you need to create a copy of it on your local device first(local repo). For that, we use the clone command. First, copy the cloning link of that repo(this is usually present where the remote repo is stored).
+
+```bash
+ git clone LINK
+ git clone https://github.com/KipCollo
+```
+
+- `git fetch` - The command git fetch downloads the remote repository details and changes on your device
+
+```bash
+$ git fetch 
+# fetch for just one branch
+$ git fetch <remote> <local> 
+# <remote> is the name of the remote branch
+# <local> is the name of the local branch
+# an example of it is 
+$ git fetch origin master
+```
+
+**Pulling**:- The pull command is used to access the changes (commits)from a remote repository to the local repository.
+Git pull is a mix of two commands git fetch + git merge. When we used Git fetch earlier, it downloaded the current state of the remote repository first to our local device. But our files are not changed yet. To bring the changes to our file, we need git merge, which updates our local files based on the remote version.
+
+```bash
+git pull <option> [<repository_URL><refspec>...]  
+```
+
+**Stashing**:- When working on a project, you might be half-way through a feature branch change when a bug is raised against master. You're not ready to commit your code, but you also don't want to lose your changes. This is where `git stash` comes in handy.
+Save the current state of working directory and the index (also known as the staging area) in a stack of stashes.
+
+```bash
+git stash
+```
+
+To include all untracked ﬁles in the stash use the --include-untracked or -u ﬂags.
+
+```bash
+git stash --include-untracked
+```
+
+To include a message with your stash to make it more easily identiﬁable later
+
+```bash
+git stash save "<whatever message>"
+```
+
+To leave the staging area in current state after stash use the --keep-index or -k ﬂags.
+
+```bash
+git stash --keep-index
+```
+
+### Branching
+
+- `git branch` - This command lets us create, list, rename, and delete branches. Let's look at a few examples.
+
+```bash
+# this lists the name of the branches present
+$ git branch 
+main 
+another_branch 
+feature_inprogress_branch
+# delete a branch safely
+$ git branch -d <branch>
+$ git branch -d another_branch
+```
+
+- `Git checkout` - The git checkout command lets you navigate between the branches created by git branch.
+
+```bash
+$ git checkout <branch_name>
+$ git checkout another_branch
+# create a new branch
+$ git checkout -b <new_branch_name>
+$ git checkout -b new_feature_branch
+```
+
+- `git diff` - There are times when we will need to compare the code between versions or between branches; that is when we use git diff.
+
+```bash
+# print any uncommitted changes since the last commit.
+$ git diff
+# compare code between two branches
+$ git diff branch1 branch2
+# print the uncommitted changes made in one file
+$ git diff /filepath/filename
+```
+
+- `git rebase` - Rebase is one of two Git utilities that specializes in integrating changes from one branch onto another. The other change integration utility is git merge. Merge is always a forward-moving change record. Alternatively, rebase has powerful history rewriting features.
+Let's see a visual of what git rebase does.
+
+```bash
+  B -- C (another_branch)
+   /      
+  A--------D (master)
+Rebasing another_branch onto master
+             
+             B -- C (another_branch)
+            /      
+  A--------D (master)
+```
+
+The corresponding code
+
+```bash
+git pull origin master
+git checkout another_branch
+git rebase master
+```

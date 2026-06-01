@@ -10,6 +10,7 @@ Docker runs Linux software on most systems. Docker for Mac and Docker for Window
 Docker is a tool that helps solve common problems such as installing, removing, upgrading, distributing, trusting, and running software. It’s open source Linux software.
 Docker doesn’t provide container technology; it hides the complexity of working directly with the container software and turns best practices into reasonable defaults.
 
+Docker is not a hardware virtualization technology. Instead, it helps you use the container technology already built into your operating system kernel.
 Docker provides tooling and a platform to manage the lifecycle of your containers:
 
 - Develop your application and its supporting components using containers.
@@ -23,8 +24,9 @@ Docker provides tooling and a platform to manage the lifecycle of your container
 3. Switching between projects should not cause clash.
 
 
-Running Docker means running two programs in user space. The first is the `Docker engine`. If installed properly, this process should always be running. The second is the `Docker CLI`. This is the Docker program that users interact with. If you want to start, stop, or install software, you’ll issue a command by using the Docker program.
+## Docker Architecture
 
+Running Docker means running two programs in user space. The first is the `Docker engine`. If installed properly, this process should always be running. The second is the `Docker CLI`. This is the Docker program that users interact with. If you want to start, stop, or install software, you’ll issue a command by using the Docker program.
 Each container is running as a child process of the Docker engine, wrapped with a container, and the delegate process is running in its own memory subspace of the user space. Programs running inside a container can access only their own memory and resources as scoped by the container.
 
 Docker builds containers using 10 major system features.The specific features are as follows:-
@@ -42,17 +44,13 @@ Docker builds containers using 10 major system features.The specific features ar
 
 Docker uses those to build containers at runtime, but it uses another set of technologies to package and ship containers.
 
-## Docker Engine
-
-Docker Engine, often simply referred to as Docker, is the heart of Docker technology, providing the necessary functionality to create and manage container lifecycle. Its architecture allows for seamless development, shipment, and running of applications in containers. Docker Engine is modular in nature and consists of many modules which help in container lifecycle management:
+**Docker Engine**:- Docker Engine, often simply referred to as Docker, is the heart of Docker technology, providing the necessary functionality to create and manage container lifecycle. Its architecture allows for seamless development, shipment, and running of applications in containers. Docker Engine is modular in nature and consists of many modules which help in container lifecycle management:
 
 1. Containerd - Docker uses containerd as its container runtime. Containerd is an industry-standard core container runtime that provides the basic functionality for container execution and management. It handles low-level container operations, such as container creation, execution, and deletion.
 2. runC - At the core of containerd is runC, which is the industry-standard container runtime. runC is responsible for spawning and running containers based on OCI (Open Container Initiative) specifications. It handles the container lifecycle, including creating and running containers from container images.
 3. libcontainer - Docker initially used libcontainer as its container execution library. However, with the development of containerd, libcontainer's functionality was incorporated into containerd.
 
-## Docker Client
-
-Docker client is a command-line tool that allows users to interact with the Docker daemon (Docker Engine). Users issue commands to the Docker client, which then communicates with the Docker daemon to perform actions like building, running, and managing containers.
+**Docker Client**:- Docker client is a command-line tool that allows users to interact with the Docker daemon (Docker Engine). Users issue commands to the Docker client, which then communicates with the Docker daemon to perform actions like building, running, and managing containers.
 
 Getting help with the Docker command line:-
 
@@ -60,9 +58,7 @@ Getting help with the Docker command line:-
 docke help
 ```
 
-`docker help` will display information about the basic syntax for using the docker command-line program as well as a complete list of commands for your version of the program.
-
-docker help gives you only high-level information about what commands are available. To get detailed information about a specific command, include the command in
+`docker help` will display information about the basic syntax for using the docker command-line program as well as a complete list of commands for your version of the program.docker help gives you only high-level information about what commands are available. To get detailed information about a specific command, include the command in
 the <COMMAND> argument. For example, you might enter the following command to find out how to copy files from a location inside a container to a location on the host
 machine:
 
@@ -71,29 +67,7 @@ docker help cp
 ```
 
 That will display a usage pattern for docker cp, a general description of what the command does, and a detailed breakdown of its arguments.
-## Steps
 
-- Step 02 - Your First Docker Use-case
-- Step 03 - Important Docker Concepts - Registry, Repository, Tag, Image and Container
-- Step 04 - Playing with Docker Images - Java, JavaScript and Python
-- Step 05 - Playing with Docker - Detached Mode and Logs
-- Step 07 - Understanding Docker Architecture - Docker Client, Docker Engine
-- Step 08 - Understanding Docker Popularity - My 3 Top Reasons
-- Step 11 - Learning Docker Commands - system and stats
-- Step 12 - Building Docker Images for Python Application
-- Step 13 - Understanding creation of Docker Images in Depth
-- Step 14 - Pushing Python App Docker Image to Docker Hub
-- Step 15 - Building and Pushing Docker Image for Node JavaScript App
-- Step 16 - Building and Pushing Docker Image for Java Application
-- Step 17 - Building Efficient Docker Images - Improving Layer Caching
-- Step 18 - Understanding ENTRYPOINT vs CMD
-- Step 19 - Docker and Microservices - Quick Start
-- Step 20 - Introduction to Microservices - CE and CC
-- Step 21 - Running Microservices as Docker Containers
-- Step 22 - Using Docker Link to Connect Microservices
-- Step 23 - Using Custom Networking to Connect Microservices
-- Step 24 - Using Docker Compose to Simplify Microservices Launch
-- Step 25 - Understanding Docker Compose further
 
 ## Docker and OCI
 
@@ -101,20 +75,18 @@ The [Open Container Initiative (OCI)](https://opencontainers.org/) is a Linux Fo
 
 [Docker](https://www.docker.com/) is one of the founding members of the OCI, and it has played a pivotal role in shaping the standards for container formats and runtimes. Docker initially developed the container runtime (Docker Engine) and image format (Docker Image) that serve as the basis for OCI specifications.
 
-## OCI Specifications
-
-OCI has three main specifications:
+*OCI Specifications*:- OCI has three main specifications:
    1. `Runtime Specification (runtime-spec)`: It defines the specification for executing a container via an isolation technology, like a container engine. The container runtime built by Docker, called 'containerd', has guided the development of the OCI runtime-spec.
    2. `Image Specification (image-spec)`: It defines the container image format, which describes the contents of a container and can be run by a compliant runtime. Docker's initial image format has led to the creation of the OCI image-spec.
    3. `Distribution Specification (distribution-spec)`:It defines an API protocol to facilitate and standardize the distribution of content. Docker's existing registry API served as a starting point and heavily influenced the design of the OCI Distro Spec.
 
-## Compatibility between Docker and OCI
 
-Docker remains committed to supporting the OCI specifications and, since its involvement in OCI, has continuously updated its software to be compliant with OCI standards. Docker's containerd runtime and image format are fully compatible with OCI specifications, enabling Docker containers to be run by other OCI-compliant container runtimes and vice versa.
+*Compatibility between Docker and OCI*:- Docker remains committed to supporting the OCI specifications and, since its involvement in OCI, has continuously updated its software to be compliant with OCI standards. Docker's containerd runtime and image format are fully compatible with OCI specifications, enabling Docker containers to be run by other OCI-compliant container runtimes and vice versa.
 
 In summary, Docker and the Open Container Initiative work together to maintain standardization and compatibility within the container industry. Docker has played a significant role in the development of the OCI specifications, ensuring that the container ecosystem remains healthy, interoperable, and accessible to a wide range of users and platforms across the industry.
 
-## Underlying Technologies
+
+## Docker Underlying Technologies
 
 Understanding the core technologies that power Docker will provide you with a deeper insight into how Docker works and will help you use the platform more effectively.
 
@@ -169,12 +141,14 @@ By leveraging namespaces, Docker ensures that containers are truly portable and 
 
 In summary, namespaces provide a level of resource isolation that enables running multiple containers with separate system resources within the same host, without them interfering with each other. This is a critical feature that forms the backbone of Docker's container technology.
 
+
 ## Docker Tools and Building blocks
 
 1. Docker Engine
 2. Docker Desktop - Includes Daemon,CLI
 3. Docker Hub
 4. Docker Compose
+
 
 ## Outline
 
@@ -361,6 +335,7 @@ Containers:
 1. Application containers - Includes your code and Environments
 2. Utility containers - contains only environments that can be used in conjuction with the app.
 
+
 ## Docker Desktop
 
 Docker Desktop on Linux runs a Virtual Machine (VM) which creates and uses a custom docker context, desktop-linux, on startup.This means images and containers deployed on the Linux Docker Engine (before installation) are not available in Docker Desktop for Linux.
@@ -382,8 +357,7 @@ Depending on your installation, the Docker Engine may be configured to automatic
 sudo systemctl disable docker docker.socket containerd
 ```
 
-Switching between Docker Desktop and Docker Engine
-The Docker CLI can be used to interact with multiple Docker Engines. For example, you can use the same Docker CLI to control a local Docker Engine and to control a remote Docker Engine instance running in the cloud. Docker Contexts allow you to switch between Docker Engines instances.
+**Switching between Docker Desktop and Docker Engine**:- The Docker CLI can be used to interact with multiple Docker Engines. For example, you can use the same Docker CLI to control a local Docker Engine and to control a remote Docker Engine instance running in the cloud. Docker Contexts allow you to switch between Docker Engines instances.
 
 When installing Docker Desktop, a dedicated "desktop-linux" context is created to interact with Docker Desktop. On startup, Docker Desktop automatically sets its own context (desktop-linux) as the current context. This means that subsequent Docker CLI commands target Docker Desktop. On shutdown, Docker Desktop resets the current context to the default context.
 

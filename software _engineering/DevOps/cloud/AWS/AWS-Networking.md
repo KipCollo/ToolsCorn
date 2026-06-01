@@ -16,6 +16,7 @@ AWS Networking services includes:-
 11. Route 53
 12. AWS Data Transfer Terminal.
 
+
 ## AWS Virtual Private Cloud (VPC)
 
 A VPC is a virtual network in the cloud. You choose the Region in which to create your VPC and define its network parameters such as the IP address range and any subnetworks within it, for resource isolation.
@@ -38,9 +39,7 @@ Allows users to use multiple layers of security to help control access to Amazon
 
 With Amazon Virtual Private Cloud (Amazon VPC), you can launch AWS resources in a logically isolated virtual network that you've defined. This virtual network closely resembles a traditional network that you'd operate in your own data center, with the benefits of using the scalable infrastructure of AWS.
 
-## Features
-
-The following features help you configure a VPC to provide the connectivity that your applications need:
+*Features*:- The following features help you configure a VPC to provide the connectivity that your applications need:
 
 - Virtual private clouds (VPC):- A VPC is a virtual network that closely resembles a traditional network that you'd operate in your own data center.It is logically isolated from other virtual networks in the AWS Cloud. You can specify an IP address range for the VPC, add subnets, add gateways, and associate security groups
 - Subnets:- A subnet is a range of IP addresses in your VPC. A subnet must reside in a single Availability Zone. After you add subnets, you can deploy AWS resources in your VPC.You can connect a subnet to the internet, other VPCs, and your own data centers, and route traffic to and from your subnets using route tables.
@@ -55,18 +54,14 @@ The following features help you configure a VPC to provide the connectivity that
 
 Your AWS account includes a default VPC in each AWS Region. Your default VPCs are configured such that you can immediately start launching and connecting to EC2 instances.You can choose to create additional VPCs with the subnets, IP addresses, gateways and routing that you need.
 
-## Working with Amazon VPC
-
-You can create and manage your VPCs using any of the following interfaces:
+*Working with Amazon VPC*:- You can create and manage your VPCs using any of the following interfaces:
 
 1. AWS Management Console — Provides a web interface that you can use to access your VPCs.
 2. AWS Command Line Interface (AWS CLI) — Provides commands for a broad set of AWS services, including Amazon VPC, and is supported on Windows, Mac, and Linux.
 3. AWS SDKs — Provides language-specific APIs and takes care of many of the connection details, such as calculating signatures, handling request retries, and error handling.
 4. Query API — Provides low-level API actions that you call using HTTPS requests. Using the Query API is the most direct way to access Amazon VPC, but it requires that your application handle low-level details such as generating the hash to sign the request, and error handling.
 
-## Pricing for Amazon VPC
-
-There's no additional charge for using a VPC. There are, however, charges for some VPC components, such as NAT gateways, IP Address Manager, traffic mirroring, Reachability Analyzer, and Network Access Analyzer.
+*Pricing for Amazon VPC*:- There's no additional charge for using a VPC. There are, however, charges for some VPC components, such as NAT gateways, IP Address Manager, traffic mirroring, Reachability Analyzer, and Network Access Analyzer.
 
 Nearly all resources that you launch in your virtual private cloud (VPC) provide you with an IP address for connectivity. The vast majority of resources in your VPC use private IPv4 addresses. Resources that require direct access to the internet over IPv4, however, use public IPv4 addresses.
 

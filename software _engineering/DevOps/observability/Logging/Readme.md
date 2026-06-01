@@ -1,3 +1,7 @@
-# Logging Tools
+# Logging
 
-Includes:- fluentd,Alibaba cloud log service,rizhiyi,scalyr,elastic,Grafana Loki,graylog,splunk,humio,sumo logic,logdna,Tencent zcloud,Loggly,Trink,Logiq,Logstash,pandora
+A `log` is an append-only data structure that records events occurring in a system. A log entry consists of a timestamp that denotes when something happened and a message to describe details about the event. However, coming up with a standardized log format is no easy task. One reason is that different types of software often convey different pieces of information. The logs of an HTTP web server are bound to look different from those of the kernel. But even for similar software, people often have different opinions on what good logs should look like.
+
+Apart from content, log formats also vary with their consumers. Initially, text-based formats catered to human readability. However, as software systems became more complex, the volume of logs soon became unmanageable. To combat this, we started encoding events as key/value pairs to make them machine-readable, which is commonly known as structured logging. Moreover, the distribution and ephemeral nature of containerized applications meant that it was no longer feasible to log onto individual machines and sift through logs. As a result, people started to build logging agents and protocols to forward logs to dedicated services. These logging systems allowed for efficient storage as well as the ability to search and filter logs in a central location.
+
+Logging Tools Includes:- fluentd,Alibaba cloud log service,rizhiyi,scalyr,elastic,Grafana Loki,graylog,splunk,humio,sumo logic,logdna,Tencent zcloud,Loggly,Trink,Logiq,Logstash,pandora

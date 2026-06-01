@@ -1,7 +1,6 @@
 # Java EE
 
-Java Platform, Enterprise Edition (Java EE) is the standard in community-driven enterprise software. Java EE is developed using the Java Community Process(JCP),which is responsible for all Java technologies, with contributions from industry experts, commercial and open source organizations, Java User Groups, and countless individuals.
-
+Java Platform, `Enterprise Edition (Java EE)` is the standard in community-driven enterprise software. Java EE is developed using the Java Community Process(JCP),which is responsible for all Java technologies, with contributions from industry experts, commercial and open source organizations, Java User Groups, and countless individuals.
 Expert groups composed of interested parties have created Java Specification Requests (JSRs) to define the various Java EE technologies. The work of the Java Community under the JCP program helps to ensure Java technology’s standards of stability and cross-platform compatibility.
 
 Java EE platform is designed to help developers create large-scale, multi-tiered, scalable, reliable, and secure network applications i.e `enterprise applications`, so called because these applications are designed to solve the problems encountered by large enterprises. Enterprise applications are not only useful for large corporations, agencies, and governments, however. The benefits of an enterprise application are helpful, even essential, for individual developers and small organizations in an increasingly networked world.
@@ -32,9 +31,7 @@ Jakarta EE is a platform:-
 
 Specifications lists compatible implementations on the respective specification pages.
 
-## Java EE Application Model
-
-The Java EE application model begins with the Java programming language and the Java virtual machine. The proven portability, security, and developer productivity they provide form the basis of the application model. Java EE is designed to support applications that implement enterprise services for customers, employees, suppliers,partners, and others who make demands on or contributions to the enterprise. Such applications are inherently complex, potentially accessing data from a variety of sources and distributing applications to a variety of clients.
+**Java EE Application Model** - The Java EE application model begins with the Java programming language and the Java virtual machine. The proven portability, security, and developer productivity they provide form the basis of the application model. Java EE is designed to support applications that implement enterprise services for customers, employees, suppliers,partners, and others who make demands on or contributions to the enterprise. Such applications are inherently complex, potentially accessing data from a variety of sources and distributing applications to a variety of clients.
 
 To better control and manage these applications, the business functions to support these various users are conducted in the middle tier. The middle tier represents an environment that is closely controlled by an enterprise's information technology department. The middle tier is typically run on dedicated server hardware and has access to the full services of the enterprise.
 
@@ -45,9 +42,8 @@ The Java EE application model defines an architecture for implementing services 
 
 The developer can rely on the platform to provide solutions for the hard systems-level problems of developing a multitier service.
 
-## Distributed Tiered Applications
 
-The Java EE platform uses a distributed multitiered application model for enterprise applications. Application logic is divided into components according to function, and the various application components that make up a Java EE application are installed on different machines depending on the tier in the multitiered Java EE environment to which the application component belongs.
+**Distributed Tiered Applications** - The Java EE platform uses a distributed multitiered application model for enterprise applications. Application logic is divided into components according to function, and the various application components that make up a Java EE application are installed on different machines depending on the tier in the multitiered Java EE environment to which the application component belongs.
 
 In a multi-tiered application, the functionality of the application is separated into isolated functional areas, called tiers. Typically, multi-tiered applications have a client tier, a middle tier, and a data tier (often called the enterprise information systems tier). The client tier consists of a client program that makes requests to the middle tier. The middle tier is divided into a web tier and a business tier, which handle client requests and process application data, storing it in a permanent data store in the data tier.
 
@@ -92,31 +88,50 @@ The following Java EE technologies are used to access the EIS tier in Java EE ap
   2. The Java Persistence API
   3. The Java EE Connector Architecture
   4. The Java Transaction API (JTA)
-  
 
-`Java EE Components`:- Java EE applications are made up of components. A Java EE component is a self-contained functional software unit that is assembled into a Java EE application with its related classes and files and that communicates with other components.
+*Security* - While other enterprise application models require platform-specific security measures in each application, the Java EE security environment enables security constraints to be defined at deployment time. The Java EE platform makes applications portable to a wide variety of security implementations by shielding application developers from the complexity of implementing security features.
+
+The Java EE platform provides standard declarative access control rules that are defined by the developer and interpreted when the application is deployed on the server. Java EE also provides standard login mechanisms so application developers do not have to implement these mechanisms in their applications. The same application works in a variety of different security environments without changing the source code.
+
+*Java EE Components*:- Java EE applications are made up of components. A Java EE component is a self-contained functional software unit that is assembled into a Java EE application with its related classes and files and that communicates with other components.
 
 The Java EE specification defines the following Java EE components:
 
-1. Application clients and applets are components that run on the client.
-2. Java Servlet, JavaServer Faces, and JavaServer Pages (JSP) technology components are web components that run on the server(Web Container).
-3. Enterprise JavaBeans (EJB) components (enterprise beans) are business components that run on the server(EJB Container).
+1. `Application clients` and `applets` are components that run on the client.
+2. `Java Servlet`, `JavaServer Faces`, and `JavaServer Pages (JSP)` technology components are web components that run on the server(Web Container).
+3. `Enterprise JavaBeans (EJB)` components (enterprise beans) are business components that run on the server(EJB Container).
 
 Java EE components are written in the Java programming language and are compiled in the same way as any program in the language. The difference between Java EE components and “standard” Java classes is that Java EE components are assembled into a Java EE application, are verified to be well formed and in compliance with the Java EE specification, and are deployed to production, where they are run and managed by the Java EE server.
 
-## Web Components
+*Java EE Clients*:- A Java EE client can be a web client or an application client.
 
-Java EE web components are either servlets or pages created using JSP technology (JSP pages) and/or JavaServer Faces technology. Servlets are Java programming language classes that dynamically process requests and construct responses. JSP pages are text-based documents that execute as servlets but allow a more natural approach to creating static content. JavaServer Faces technology builds on servlets and JSP technology and provides a user interface component framework for web applications.
+`Web Clients`:- A web client consists of two parts: (1) dynamic web pages containing various types of markup language (HTML, XML, and so on), which are generated by web components running in the web tier, and (2) a web browser, which renders the pages received from the server.
+
+A web client is sometimes called a thin client. Thin clients usually do not query databases, execute complex business rules, or connect to legacy applications. When you use a thin client, such heavyweight operations are off-loaded to enterprise beans executing on the Java EE server, where they can leverage the security, speed, services, and reliability of Java EE server-side technologies.
+
+Applets - A web page received from the web tier can include an embedded applet. An applet is a small client application written in the Java programming language that executes in the Java virtual machine installed in the web browser. However, client systems will likely need the Java Plug-in and possibly a security policy file for the applet to successfully execute in the web browser.
+
+Web components are the preferred API for creating a web client program because no plug-ins or security policy files are needed on the client systems. Also, web components enable cleaner and more modular application design because they provide a way to separate applications programming from web page design. Personnel involved in web page design thus do not need to understand Java programming language syntax to do their jobs.
+
+`Application Clients`:- An application client runs on a client machine and provides a way for users to handle tasks that require a richer user interface than can be provided by a markup language. It typically has a graphical user interface (GUI) created from the Swing or the Abstract Window Toolkit (AWT) API, but a command-line interface is certainly possible.
+
+Application clients directly access enterprise beans running in the business tier. However, if application requirements warrant it, an application client can open an HTTP connection to establish communication with a servlet running in the web tier. Application clients written in languages other than Java can interact with Java EE 5 servers, enabling the Java EE 5 platform to interoperate with legacy systems, clients, and non-Java languages.
+
+`The JavaBeans Component Architecture` - The server and client tiers might also include components based on the JavaBeans component architecture (JavaBeans components) to manage the data flow between an application client or applet and components running on the Java EE server, or between server components and a database. JavaBeans components are not considered Java EE components by the Java EE specification.
+
+JavaBeans components have properties and have get and set methods for accessing the properties. JavaBeans components used in this way are typically simple in design and implementation but should conform to the naming and design conventions outlined in the JavaBeans component architecture.
+
+`Java EE Server Communications` - The client communicates with the business tier running on the Java EE server either directly or, as in the case of a client running in a browser, by going through JSP pages or servlets running in the web tier.
+
+
+*Web Components* - Java EE web components are either servlets or pages created using JSP technology (JSP pages) and/or JavaServer Faces technology. Servlets are Java programming language classes that dynamically process requests and construct responses. JSP pages are text-based documents that execute as servlets but allow a more natural approach to creating static content. JavaServer Faces technology builds on servlets and JSP technology and provides a user interface component framework for web applications.
 
 Static HTML pages and applets are bundled with web components during application assembly but are not considered web components by the Java EE specification. Server-side utility classes can also be bundled with web components and, like HTML pages, are not considered web components.
 
-### Business Components
+*Business Components* - Business code, which is logic that solves or meets the needs of a particular business domain such as banking, retail, or finance, is handled by enterprise beans running in the business tier. An enterprise bean also retrieves data from storage, processes it (if necessary), and sends it back to the client program.
 
-Business code, which is logic that solves or meets the needs of a particular business domain such as banking, retail, or finance, is handled by enterprise beans running in the business tier. Figure 1-4 shows how an enterprise bean receives data from client programs, processes it (if necessary), and sends it to the enterprise information system tier for storage. An enterprise bean also retrieves data from storage, processes it (if necessary), and sends it back to the client program.
+*Enterprise Information System Tier* - The enterprise information system tier handles EIS software and includes enterprise infrastructure systems such as enterprise resource planning (ERP), mainframe transaction processing, database systems, and other legacy information systems. For example, Java EE application components might need access to enterprise information systems for database connectivity.
 
-## Enterprise Information System Tier
-
-The enterprise information system tier handles EIS software and includes enterprise infrastructure systems such as enterprise resource planning (ERP), mainframe transaction processing, database systems, and other legacy information systems. For example, Java EE application components might need access to enterprise information systems for database connectivity.
 
 The web-tier technology, “The Web Tier,” cover the components used in developing the presentation layer of a Java EE 5 or stand-alone web application:
 
@@ -161,47 +176,180 @@ In the Java EE platform, dependency injection can be applied to all resources th
 
 The Java Persistence API is new to the Java EE 5 platform. The Java Persistence API provides an object/relational mapping for managing relational data in enterprise beans, web components, and application clients. It can also be used in Java SE applications, outside of the Java EE environment.
 
-`Java EE Clients`:- A Java EE client can be a web client or an application client.
 
-**Web Clients**:- A web client consists of two parts: (1) dynamic web pages containing various types of markup language (HTML, XML, and so on), which are generated by web components running in the web tier, and (2) a web browser, which renders the pages received from the server.
+## Java EE Containers(Java EE Servers and Containers)
 
-A web client is sometimes called a thin client. Thin clients usually do not query databases, execute complex business rules, or connect to legacy applications. When you use a thin client, such heavyweight operations are off-loaded to enterprise beans executing on the Java EE server, where they can leverage the security, speed, services, and reliability of Java EE server-side technologies.
+Normally, thin-client multitiered applications are hard to write because they involve many lines of intricate code to handle transaction and state management, multithreading, resource pooling, and other complex low-level details. The component-based and platform-independent Java EE architecture makes applications easy to write because business logic is organized into reusable components.
+In addition, the Java EE server provides underlying services in the form of a container for every component type. Because you do not have to develop these services yourself,you are free to concentrate on solving the business problem at hand.
 
-`Applets` - A web page received from the web tier can include an embedded applet. An applet is a small client application written in the Java programming language that executes in the Java virtual machine installed in the web browser. However, client systems will likely need the Java Plug-in and possibly a security policy file for the applet to successfully execute in the web browser.
+**Container Services**:- `Containers` are the interface between a component and the low-level, platform-specific functionality that supports the component. Before it can be executed, a web, enterprise bean, or application client component must be assembled into a Java EE module and deployed into its container.
 
-Web components are the preferred API for creating a web client program because no plug-ins or security policy files are needed on the client systems. Also, web components enable cleaner and more modular application design because they provide a way to separate applications programming from web page design. Personnel involved in web page design thus do not need to understand Java programming language syntax to do their jobs.
+The assembly process involves specifying container settings for each component in the Java EE application and for the Java EE application itself. Container settings customize the underlying support provided by the Java EE server, including such services as security, transaction management, Java Naming and Directory Interface (JNDI) API lookups, and remote connectivity. Here are some of the highlights.
 
-**Application Clients**:- An application client runs on a client machine and provides a way for users to handle tasks that require a richer user interface than can be provided by a markup language. It typically has a graphical user interface (GUI) created from the Swing or the Abstract Window Toolkit (AWT) API, but a command-line interface is certainly possible.
+1. The Java EE security model lets you configure a web component or enterprise bean so that system resources are accessed only by authorized users.
+2. The Java EE transaction model lets you specify relationships among methods that make up a single transaction so that all methods in one transaction are treated as a single unit.
+3. JNDI lookup services provide a unified interface to multiple naming and directory services in the enterprise so that application components can access these services.
+4. The Java EE remote connectivity model manages low-level communications between clients and enterprise beans. After an enterprise bean is created, a client invokes methods on it as if it were in the same virtual machine.
 
-Application clients directly access enterprise beans running in the business tier. However, if application requirements warrant it, an application client can open an HTTP connection to establish communication with a servlet running in the web tier. Application clients written in languages other than Java can interact with Java EE 5 servers, enabling the Java EE 5 platform to interoperate with legacy systems, clients, and non-Java languages.
-The JavaBeans Component Architecture
+Because the Java EE architecture provides configurable services, components within the same application can behave differently based on where they are deployed. For example, an enterprise bean can have security settings that allow it a certain level of access to database data in one production environment and another level of database access in another production environment.
 
-The server and client tiers might also include components based on the JavaBeans component architecture (JavaBeans components) to manage the data flow between an application client or applet and components running on the Java EE server, or between server components and a database. JavaBeans components are not considered Java EE components by the Java EE specification.
+The container also manages nonconfigurable services, such as enterprise bean and servlet lifecycles, database connection resource pooling, data persistence, and access to the Java EE platform APIs.
 
-JavaBeans components have properties and have get and set methods for accessing the properties. JavaBeans components used in this way are typically simple in design and implementation but should conform to the naming and design conventions outlined in the JavaBeans component architecture.
-Java EE Server Communications
+*Container Types*- The deployment process installs Java EE application components in the Java EE containers
+The server and containers are as follows:
 
-Figure 1-2 shows the various elements that can make up the client tier. The client communicates with the business tier running on the Java EE server either directly or, as in the case of a client running in a browser, by going through JSP pages or servlets running in the web tier.
+1. Java EE server: The runtime portion of a Java EE product. A Java EE server provides EJB and web containers.
+2. EJB container: Manages the execution of enterprise beans for Java EE applications. Enterprise beans and their container run on the Java EE server.
+3. Web container: Manages the execution of web pages, servlets, and some EJB components for Java EE applications. Web components and their container run on the Java EE server.
+4. Application client container: Manages the execution of application client components. Application clients and their container run on the client.
+5. Applet container: Manages the execution of applets. Consists of a web browser and a Java Plug-in running on the client together.
 
-## Security
 
-While other enterprise application models require platform-specific security measures in each application, the Java EE security environment enables security constraints to be defined at deployment time. The Java EE platform makes applications portable to a wide variety of security implementations by shielding application developers from the complexity of implementing security features.
+`Java EE Containers(Jakarta EE containers)`:- Jakarta EE containers are runtime environments that provides standard services specified by the Jakarta EE specifications.Examples of such services are security,messaging,threads,data source,loggimg,Network.
+The Jakarta EE containers provide APIs that applications use to access these services.Java EE server provides underlying services in the form of a container for every component type. Because you do not have to develop these services yourself, you are free to concentrate on solving the business problem at hand.
 
-The Java EE platform provides standard declarative access control rules that are defined by the developer and interpreted when the application is deployed on the server. Java EE also provides standard login mechanisms so application developers do not have to implement these mechanisms in their applications. The same application works in a variety of different security environments without changing the source code.
+All Java EE code you write as a developer runs in runtime environment,`Java EE Container(Jakarta EE containers)`.It envelops your application code.The container can mediate or intercept calls to and from the application code, and insert other kinds of logic that qualify and modify the calls to and from the application code.
+
+The Java EE server container is itself made up of two other containers: the `web container` and the `Enterprise JavaBeans (EJB) container`. 
+
+The `web container` is the part of the Java EE environment devoted to running the web components in a Java EE application: the web pages,Java servlets, and other Java EE web components that can interact with clients connecting to the Java EE application with standard web protocols. 
+
+The `EJB container` is the part of the Java EE environment that is devoted to running the application logic part of the Java EE application.Enterprise JavaBeans are Java classes that contain and manipulate the core data structures of the Java EE application. Finally, the database tier of the Java EE platform holds all application data that the Java EE application needs to exist longer than the scope of a single session of the application,or simply between different steps in the application that are separated in time.
+
+In the Java EE platform, dependency injection can be applied to all resources a component needs, effectively hiding the creation and lookup of resources from application code. Dependency injection can be used in Enterprise JavaBeans (EJB) containers, web containers, and application clients. Dependency injection allows the Java EE container to automatically insert references to other required components or resources, using annotations.
+
+- Enterprise capabilities were initially built into JDK.With time,they were separated out:-
+  1. J2EE - Java 2 Platform Enterprise Edition
+  2. Java EE - Java Platform Enterprise Edition(Rebranding)
+  3. Jakarta EE(Oracle gave Java EE rights to Eclipse Foundation)
+
+J2EE: Servlet,JSP,RMI,EJB
+
+A `Java EE server` is a server application that implements the Java EE platform APIs and provides standard Java EE services. Java EE servers are sometimes called application servers, because they allow you to serve application data to clients, much as web servers serve web pages to web browsers.
+
+Java EE servers host several application component types that correspond to the tiers in a multitiered application. The Java EE server provides services to these components in the form of a container.
+
+Java EE containers are the interface between the component and the lower-level functionality provided by the platform to support that component. The functionality of the container is defined by the platform and is different for each component type. Nonetheless, the server allows the different component types to work together to provide functionality in an enterprise application.
+
+The Web Container-The web container is the interface between web components and the web server. A web component can be a servlet or a JavaServer Faces Facelets page. The container manages the component’s life cycle, dispatches requests to application components, and provides interfaces to context data, such as information about the current request.
+
+The EJB Container-The EJB container is the interface between enterprise beans, which provide the business logic in a Java EE application, and the Java EE server. The EJB container runs on the Java EE server and manages the execution of an application’s enterprise beans.
+
+The Application Client Container-The application client container is the interface between Java EE application clients (special Java SE applications that use Java EE server components) and the Java EE server. The application client container runs on the client machine and is the gateway between the client application and the Java EE server components that the client uses.
+
+Normally, thin-client multitiered applications are hard to write because they involve many lines of intricate code to handle transaction and state management, multithreading, resource pooling, and other complex low-level details. The component-based and platform-independent Java EE architecture makes applications easy to write because business logic is organized into reusable components. In addition, the 
+
+
+
+
+Jakarta EE specifications (modules) and their corresponding reference implementations (runtimes) as of the current Jakarta EE 10–11 ecosystem.
+
+- **Web & Presentation Layer**:-
+  1. Jakarta Servlet -	HTTP request/response handling	- Apache Tomcat(Catalina), Eclipse Jetty, Undertow
+  2. Jakarta Pages (JSP) -	Server-side page rendering	- Apache Jasper (Tomcat’s JSP engine)
+  3. Jakarta Expression Language (EL) -	Unified expression evaluation in JSP/JSF -	Eclipse EL, Apache EL
+  4. Jakarta Faces (JSF)	- Component-based web UI framework	- Mojarra (Eclipse), MyFaces (Apache)
+  5. Jakarta WebSocket	- Real-time bi-directional communication -	Tyrus (Eclipse), Undertow WebSocket
+  6. Jakarta Server Pages Tag Library (JSTL) -	Common JSP tags	Eclipse JSTL
+
+- **Business Logic / Application Layer**:-
+  1. Jakarta CDI (Contexts and Dependency Injection)	- Dependency injection, scopes, lifecycle -	Weld (Eclipse), OpenWebBeans (Apache)
+  2. Jakarta Interceptors	- Cross-cutting concerns like logging/transactions -	Included in Weld or OpenWebBeans
+  3. Jakarta Transactions (JTA) -	Declarative/Programmatic transactions -	Narayana (Red Hat), Atomikos, Bitronix
+  4. Jakarta Batch	- Batch job processing	- Eclipse Batch (JBeret)
+  5. Jakarta Enterprise Beans (EJB)	- Distributed business components	- OpenEJB (Apache TomEE), GlassFish EJB
+  6. Jakarta Contexts and Dependency Injection (CDI Lite)	- Lightweight dependency injection for SE	- Part of Weld Lite
+
+- **Persistence & Data Layer**:-
+  1. Jakarta Persistence (JPA) -	ORM and entity management -	EclipseLink, Hibernate ORM, Apache OpenJPA
+  2. Jakarta Data	- Repository-style data access (new spec) -	Eclipse Data (early implementation)
+  3. Jakarta NoSQL	- Access to NoSQL databases	- Eclipse JNoSQL
+  4. Jakarta Transactions (JTA)- 	Transaction management (shared with business layer)	- Narayana, Atomikos, Bitronix
+  5. Jakarta Validation (Bean Validation) -	Declarative validation	- Hibernate Validator, Eclipse Krazo Validation
+
+- **Web Services & Communication**:-
+  1. Jakarta RESTful Web Services (JAX-RS) -	REST API development	- Jersey (Eclipse), RESTEasy, Apache CXF
+  2. Jakarta XML Web Services (JAX-WS)	- SOAP web services	- Metro (Eclipse), Apache CXF
+  3. Jakarta JSON Processing (JSON-P)	- JSON streaming and object model APIs	- Eclipse Parsson
+  4. Jakarta JSON Binding (JSON-B)	- JSON ↔ POJO binding	- Eclipse Yasson
+  5. Jakarta Messaging (JMS)	- Messaging (e.g., ActiveMQ, RabbitMQ)	- Eclipse OpenMQ, Apache ActiveMQ Artemis
+  6. Jakarta Mail	- Email sending and receiving	- Eclipse Angus
+  7. Jakarta Activation	- MIME type and data handling	- Eclipse Angus Activation
+  8. Jakarta Connectors (JCA) - 	Resource adapter integration -	IronJacamar, GlassFish Connector
+  9. Jakarta WebSocket	- Bidirectional comms	- Tyrus, Undertow WebSocket
+
+- **Platform & Infrastructure**:-
+  1. Jakarta Annotations	- Common annotations used across specs	- Eclipse Annotations
+  2. Jakarta Dependency Injection -	Core dependency injection - SPI	Weld, OpenWebBeans
+  3. Jakarta Security	Authentication and authorization	- Soteria
+  4. Jakarta Authorization (JACC)	- Policy-based security	- GlassFish JACC, WildFly JACC
+  5. Jakarta Authentication (JASPIC)	- Pluggable authentication modules	- GlassFish Auth
+  6. Jakarta Concurrency	- Managed threads, executors	- Eclipse Concurrency
+  7. Jakarta EE Platform / Web Profile / Core Profile -	Bundled specifications -	Provided by application servers (GlassFish, Payara, WildFly, Open Liberty)
+
+- **Additional Modules**:-
+  1. Jakarta SOAP with Attachments (SAAJ)	- Attachments for SOAP	- Metro, Apache CXF
+  2. Jakarta XML Binding (JAXB) -	XML ↔ Java binding	- Eclipse MOXy, JAXB RI
+  3. Jakarta XML RPC -	Remote procedure calls (legacy)	- GlassFish RPC (deprecated)
+  4. Jakarta Faces Flow	- JSF navigation and flow control -	Mojarra, MyFaces
+  5. Jakarta Servlet Filters	- Request preprocessing	- Built into Servlet containers (Tomcat, Jetty, Undertow)
+
+- **Full Jakarta EE Runtime Servers**:-
+
+1. GlassFish / Eclipse GlassFish	- Official Jakarta EE reference implementation
+2. Payara Server	- Production-ready GlassFish derivative
+3. WildFly	- Red Hat’s Jakarta EE implementation
+4. Open Liberty	- IBM’s lightweight modular runtime
+5. Apache TomEE -	Tomcat + EJB + JPA + CDI + JAX-RS
+6. Helidon, Quarkus, Micronaut	- Lightweight, Jakarta-compatible microservice frameworks
+
+
+### Runtimes
+
+Below are the Jakarta modules and runtimes that can be executed standalone (outside a full Jakarta EE application server).
+Standalone means they can run in plain Java SE, with no servlet container or EE runtime required.
+
+1. Standalone-Capable Runtimes:- These work entirely on their own:
+
+- Eclipse Angus (Mail + Activation):- Full mail + attachment handling in any Java app - Sending emails, file attachments
+- Hibernate ORM (JPA) - ORM engine for relational databases - Data persistence, CRUD operations
+- EclipseLink (JPA) - Alternative standalone JPA provider - Database persistence
+- Hibernate Validator (Jakarta Validation) - Bean validation framework - Input validation
+- Eclipse Yasson (JSON-B) - JSON <-> POJO mapping - JSON serialization/deserialization
+- Eclipse Parsson (JSON-P) - JSON parsing/streaming - Read/write JSON
+- Eclipse MOXy (JAXB) - XML ↔ Java binding - XML serialization
+- Jersey / RESTEasy (JAX-RS) - REST API engine; can run embedded - REST API in embedded Jetty/Grizzly
+- Tyrus (WebSocket) - WebSocket client/server - Real-time communication
+- Weld SE (CDI) - CDI in standalone Java SE - Dependency injection in console apps
+- JBeret (Jakarta Batch) -	Batch jobs in Java SE	Job scheduling, processing
+- Narayana (JTA) -	Transaction manager	Manual transaction management.
+- Eclipse JNoSQL	- NoSQL database access	MongoDB, Cassandra, Redis, etc.
+
+2. Embedded / Semi-Standalone:- These can run standalone but often embed lightweight web servers:
+Embedded means the runtime (like Tomcat, Jetty, or Undertow) runs inside your own Java application, rather than your app being deployed into it.
+
+- Tomcat (Embedded)	- Can run inside any Java app using tomcat-embed-core.jar
+- Jetty (Embedded)	- Lightweight HTTP server embeddable in Java apps
+- Undertow (Embedded)	- Used in Quarkus and WildFly; can be run programmatically
+- Grizzly (Jersey integration)	- Used for running REST endpoints without full server
+
 
 ## Jakarta EE APIs
 
-**Jakarta EE APIs in the Web Container** shows the availability of the Jakarta EE APIs in the web container.
+*Jakarta EE APIs in the Web Container* shows the availability of the Jakarta EE APIs in the web container.
 Web Container - Servlet,Jakarta Server Faces - Jakarta Mail,JSP,ConnectorsJakarta Persistence,JMS,Management,WS Metadata,Web Services,JACC,JASPIC,JAX-RS,JAX-WS,JSTL,JTA
 CDI,Dependency Injection,WebSocket,Concurrency Utilities,Batch,JSON-P,Bean Validation,EJB Lite,EL.
 
-**Jakarta EE APIs in the enterprise bean Container** shows the availability of the Jakarta EE APIs in the enterprise bean container.
+*Jakarta EE APIs in the enterprise bean Container* shows the availability of the Jakarta EE APIs in the enterprise bean container.
 EJB Container - EJB - WS Metadata,Web Services,JACC,JASPIC,JAX-RS,JAX-WS,JTA,CDI,Dependency Injection,Concurrency Utilities,Batch,JSON-P,Bean Validation,Jakarta Mail,
 Connectors,Jakarta Persistence,JMS,Management,WS Metadata.
 
-**Jakarta EE APIs in the Application Client Container** shows the availability of the Jakarta EE APIs in the application client container.
+*Jakarta EE APIs in the Application Client Container* shows the availability of the Jakarta EE APIs in the application client container.
 Application Client Container - Application Client - Jakarta Persistence,Management,WS Metadata,Web Services,JSON-P,JMS,JAX-WS,Bean Validation,Jakarta Mail,CDI,
 Dependency Injection.
+
+*Applet container* - Applet.
+
 
 - `Enterprise JavaBeans Technology`:- An Enterprise JavaBeans (EJB) component, or enterprise bean, is a body of code that has fields and methods to implement modules of business logic. You can think of an enterprise bean as a building block that can be used alone or with other enterprise beans to execute business logic on the Java EE server.
 

@@ -22,7 +22,7 @@ A key element in every network router is its forwarding table. A router forwards
 Forwarding is the key function performed by the data-plane functionality of the network layer.
 
 
-**Router**:- Four router components can be identified:
+**Router**:- Four router components can be identified:-
 
 - `Input ports`. An input port performs several key functions. It performs the physical layer function of terminating an incoming physical link at a router.An input port also performs link-layer functions needed to interoperate with the link layer at the other side of the incoming link; this is represented by the middle boxes in the input and output ports. Perhaps most crucially, a lookup function is also performed at the input port.It is here that the forwarding table is consulted to determine the router output port to which an arriving packet will be forwarded via the switching fabric. Control packets (for example, packets carrying routing protocol information) are forwarded from an input port to the routing processor. Note that the term “port” here —referring to the physical input and output router interfaces—is distinctly different from the software ports associated with network applications and sockets.
 In practice,the number of ports supported by a router can range from a relatively small number in enterprise routers, to hundreds of 10 Gbps ports in a router at an ISP’s edge, where the number of incoming lines tends to be the greatest. The Juniper MX2020, edge router, for example, supports up to 960 10 Gbps Ethernet ports, with an overall router system capacity of 80 Tbps.
@@ -33,8 +33,7 @@ In practice,the number of ports supported by a router can range from a relativel
 A router’s input ports, output ports, and switching fabric are almost always implemented in hardware.
 
 
-**The Internet Protocol (IP): IPv4, Addressing, IPv6**
-
+**The Internet Protocol (IP): IPv4, Addressing, IPv6**:-
 
 *IPv4 Addressing*:- A host typically has only a single link into the network; when IP in the host wants to send a datagram, it does so over this link. The boundary between the host and the physical link is called an `interface`.Because a router’s job is to receive a datagram on one link and forward the datagram on some other link, a router necessarily has two or more links to which it is connected. The boundary between the router and any one of its links is also called an interface. A router thus has multiple interfaces, one for each of its links. Because every host and router is capable of sending and receiving IP datagrams, IP requires each host and router interface to have its own IP address. Thus, an IP address is technically associated with an interface,rather than with the host or router containing that interface.
 

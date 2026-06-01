@@ -2,9 +2,7 @@
 
 The `Spring framework` is a very popular and widely used Java framework for building web and enterprise applications originally created by Rod Johnson. Spring at its core is a dependency injection container that provides flexibility to configure beans in multiple ways, such as XML, Annotations, and JavaConfig.
 
-The Spring framework was created primarily as a dependency injection container, but it is much more than that.
-
-Spring was created to address the complexity of enterprise application development, and makes it possible to use plain-vanilla JavaBeans to achieve things that were previously only possible with EJBs. But Spring’s usefulness isn’t limited to server-side development. Any Java application can benefit from Spring in terms of simplicity, testability, and loose coupling.
+The Spring framework was created primarily as a dependency injection container, but it is much more than that.It was created to address the complexity of enterprise application development, and makes it possible to use plain-vanilla JavaBeans to achieve things that were previously only possible with EJBs. But Spring’s usefulness isn’t limited to server-side development. Any Java application can benefit from Spring in terms of simplicity, testability, and loose coupling.
 
 The Spring Framework is a lightweight solution for building your enterprise-ready applications.Spring is modular, allowing you to use only those parts that you need, without having to bring in the rest. You can use the IoC container, with any web framework on top, but you can also use only the Hibernate integration code or the JDBC abstraction layer. The Spring Framework supports declarative transaction management, remote access to your logic through RMI or web services, and various options for persisting your data. It offers a full-featured MVC framework, and enables you to integrate AOP transparently into your software.
 
@@ -36,7 +34,7 @@ Spring can be used to develop:
 3. Distributed Apps
 4. Reactive Programming
 5. Batch Apps
-6. Security
+6. Security apps.
 
 Features of Spring framework:-
 1. IoC
@@ -60,10 +58,8 @@ Spring is very popular for several reasons:
 
 Spring avoids (as much as possible) littering your application code with its API.Spring almost never forces you to implement a Spring-specific interface or extend a Spring-specific class. Instead, the classes in a Spring-based application often have no indication that they’re being used by Spring. At worst, a class may be annotated with one of Spring’s annotations, but is otherwise a POJO.
 
-Despite their simple form, POJOs can be powerful. One of the ways Spring empowers POJOs is by assembling them using dependency injection.
+Despite their simple form, POJOs can be powerful. One of the ways Spring empowers POJOs is by assembling them using dependency injection.With DI objects are given their dependencies at creation time by some third party that coordinates each object in the system. Objects aren’t expected to create or obtain their dependencies — dependencies are injected into the objects that need them.
 
-With DI objects are given their dependencies at creation time by some third party that coordinates each object in the system. Objects aren’t
-expected to create or obtain their dependencies—dependencies are injected into the objects that need them.
 
 ## History of Spring and the Spring Framework
 
@@ -267,7 +263,6 @@ projects to help reduce the size of your Spring project build files, whether you
 ## Maven "Bill Of Materials" Dependency
 
 It is possible to accidentally mix different versions of Spring JARs when using Maven. For example, you may find that a third-party library, or another Spring project, pulls in a transitive dependency to an older release. If you forget to explicitly declare a direct dependency yourself, all sorts of unexpected issues can arise.
-
 To overcome such problems Maven supports the concept of a "bill of materials" (BOM) dependency. You can import the spring-framework-bom in your dependencyManagement section to ensure that all spring dependencies (both direct and transitive) are at the same version.
 
 ```xml

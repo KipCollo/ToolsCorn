@@ -1,25 +1,11 @@
 # PHP(HyperTEXT )
 
-PHP, an acronym for Hypertext Preprocessor, is a popular server-side scripting language favored for web development. It's versatile, dynamic, and can be embedded seamlessly into HTML code. PHP scripts are executed on the server, and the result is sent back to the browser as plain HTML.
-
-Visit the following resources to learn more:
-
-- [@official@What is PHP?](https://www.php.net/manual/en/introduction.php)
-- [@article@Introduction to PHP](https://www.phptutorial.net/php-tutorial/what-is-php/)
+`PHP`, an acronym for Hypertext Preprocessor, is a popular server-side scripting language favored for web development. It's versatile, dynamic, and can be embedded seamlessly into HTML code. PHP scripts are executed on the server, and the result is sent back to the browser as plain HTML.
 
 PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.
 PHP is a general-purpose programming language used mostly for web development. Created by Rasmus Lerdorf in 1994, it allows developers to create dynamic web pages with ease.PHP is used as a server-side language. This means that PHP code is not processed on the user’s computer (also known as a client)
 
 PHP, also known as Hypertext Preprocessor, is a powerful scripting language used predominantly for creating dynamic web pages and applications. It provides seamless interaction with databases, easier control of content, session tracking, and cookies. Being an open-source language, it's favored by developers for its flexibility, speed, and security.
-
-Here's a simple PHP code to print a text:
-
-      <?php
-       echo "Hello, World!";
-      ?>
-    
-
-Here the "echo" command in PHP helps to output one or more strings.
 
 Visit the following resources to learn more:
 

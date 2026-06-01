@@ -172,6 +172,7 @@ Silences are configured in the web interface of the Alertmanager.
 
 It's important not to load balance traffic between Prometheus and its Alertmanagers, but instead, point Prometheus to a list of all Alertmanagers.
 
+
 ## Visualization
 
 `Expression browser` - The expression browser is available at /graph on the Prometheus server, allowing you to enter any expression and see its result either in a table or graphed over time.
@@ -221,6 +222,7 @@ The time controls allow changing of the duration and range of the graphs. Consol
 
 The main content is usually graphs. There is a configurable JavaScript graphing library provided that will handle requesting data from Prometheus, and rendering it via Rickshaw.
 
+
 ## Instrumenting
 
 `Client libraries` - Before you can monitor your services, you need to add instrumentation to their code via one of the Prometheus client libraries. These implement the Prometheus metric types.
@@ -232,6 +234,7 @@ When Prometheus scrapes your instance's HTTP endpoint, the client library sends 
 If no client library is available for your language, or you want to avoid dependencies, you may also implement one of the supported exposition formats yourself to expose metrics.
 
 `Exporters and integrations` - There are a number of libraries and servers which help in exporting existing metrics from third-party systems as Prometheus metrics. This is useful for cases where it is not feasible to instrument a given system with Prometheus metrics directly (for example, HAProxy or Linux system stats).
+
 
 ## Infrastructure Monitoring
 

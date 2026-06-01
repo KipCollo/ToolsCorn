@@ -1,0 +1,34 @@
+# software architecture and architectural design.
+
+Understand different concepts such as what is software architecture, software architect, different types of architects and so on.
+
+`Software Architecture` - Describes how an application is built including its components, how they interact with each other, environment in which they operate and so on.
+
+- [@article@What is Software Architecture in Software Engineering?](https://webcache.googleusercontent.com/search?q=cache:ya4xvYaEckQJ:https://www.future-processing.com/blog/what-is-software-architecture-in-software-engineering/\&cd=1\&hl=es-419\&ct=clnk\&gl=ar)
+- [@article@An Introduction to Software Architecture Patterns](https://www.freecodecamp.org/news/an-introduction-to-software-architecture-patterns/)
+- [@article@Software Architecture: It might not be what you think it is](https://www.infoq.com/articles/what-software-architecture/)
+- [@feed@Explore top posts about Architecture](https://app.daily.dev/tags/architecture?ref=roadmapsh)
+
+`Architectural design` is concerned with understanding how a software system should be organized and designing the overall structure of that system.In the model of the software development process architectural design is the first stage in the software design process. It is the critical link between design and requirements engineering, as it identifies the main structural components in a system and the relationships between them. The output of the architectural design process is an architectural model that describes how the system is organized as a set of c­ommunicating components.
+
+In agile processes, it is generally accepted that an early stage of an agile development process should focus on designing an overall `system architecture`. Incremental development of architectures is not usually successful.
+The architectural model shows these components and the links between them.
+
+As part of the requirements engineering process, you might propose an abstract system architecture where you associate groups of system functions or features with large-scale components or sub-systems. You then use this decomposition to discuss the requirements and more detailed features of the system with stakeholders.
+You can design software architectures at two levels of abstraction:
+1. Architecture in the small is concerned with the architecture of individual programs. At this level, we are concerned with the way that an individual program is decomposed into components.
+2. Architecture in the large is concerned with the architecture of complex enterprise systems that include other systems, programs, and program components.These enterprise systems may be distributed over different computers.
+
+System architectures are often modeled informally using simple block diagrams.Each box in the diagram represents a component. Boxes within boxes indicate that the component has been decomposed to subcomponents. Arrows mean that data and or control signals are passed from component to component in the direction of the arrows.
+
+`Software Architect` - An expert developer who design software solutions from the ground up, making high-level decisions about each stage of the process including technical standards, tools, design principles, platforms to be used, etc., leading a team of engineers to create the final product.
+
+**Architectural patterns**:- The idea of patterns as a way of presenting, sharing, and reusing knowledge about software systems has been adopted in a number of areas of software engineering. The trigger for this was the publication of a book on object-oriented design patterns (Gamma et al. 1995). This prompted the development of other types of patterns, such as patterns for organizational design (Coplien and Harrison 2004), usability patterns (Usability Group 1998), patterns of cooperative interaction (Martin and Sommerville 2004), and configuration management patterns (Berczuk and Appleton 2002).
+Architectural patterns were proposed in the 1990s under the name “architectural styles” (Shaw and Garlan 1996). A very detailed five-volume series of handbooks on pattern-oriented software architecture was published between 1996 and 2007 (Buschmann et al. 1996; Schmidt et al. 2000; Buschmann, Henney, and Schmidt 2007a, 2007b; Kircher and Jain 2004).
+Patterns may be described in a standard way using a mixture of narrative description and diagrams.
+You can think of an `Architectural pattern` as a stylized, abstract description of good practice, which has been tried and tested in different systems and environments. So,an Architectural pattern should describe a system organization that has been successful in previous systems. It should include information on when it is and is not appropriate to use that pattern, and details on the pattern’s strengths and weaknesses.
+
+- `Model-View-Controller pattern`.This pattern is the basis of interaction management in many web-based systems and is supported by most language frameworks. The stylized pattern description includes the pattern name, a brief description, a graphical model, and an example of the type of system where the pattern is used. You should also include information about when the ­pattern should be used and its advantages and disadvantages.
+Separates presentation and interaction from the system data. The system is structured into three logical components that interact with each other. The Model component manages the system data and associated operations on that data. The View component defines and manages how the data is presented to the user. The Controller compo­nent manages user interaction (e.g., key presses, mouse clicks, etc.) and passes these interactions to the View and the Model.
+
+- `Layered architecture`:- Organizes the system into layers, with related functionality associated with each layer. A layer provides services to the layer above it, so the lowest level layers represent core services that are likely to be used throughout the system.

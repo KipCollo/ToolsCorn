@@ -1,4 +1,4 @@
-# Compute
+# AWS Compute Services
 
 AWS offers a variety of compute services designed to meet different application needs, from virtual machines to serverless computing. Below are some key AWS compute services:
 
@@ -62,6 +62,15 @@ Amazon EC2 changes the economics of computing by allowing you to pay only for ca
 
 EC2 instances are Region-specific. More appropriately, EC2 instances are tied into the Availability Zone you launch them in.
 When you choose to launch a new EC2 instance, you must specify the subnet of a VPC in which to launch that EC2 instance. The subnet will be tied to a given Availability Zone
+
+Amazon Web Services (AWS) offers VMs in the cloud, which we call `Elastic Compute Cloud` or `EC2`. Core offering of the EC2 services allows us to host applications, websites, and other compute-intensive processing services on AWS. 
+Other forms of compute offerings includes a lightweight alternative to EC2, known as `Lightsail`, containers, and serverless offerings such as Lambda.
+
+Amazon EC2 is one of AWS's flagship offerings and allows you to launch and set up virtual servers in the cloud. These are very similar to setting up and configuring VMs in your on-premises environment, which you would configure on a hypervisor such as VMware or Hyper-V.
+A hypervisor is a piece of software that allows you to create virtual resources such as virtual servers. Depending on the capacity of the underlying hardware, you can then host multiple virtual servers on the same physical hardware. These virtual servers are granted access to actual physical hardware via the hypervisor, which carves out virtualized representations of the physical hardware components (CPU, memory, storage, and so on) into smaller virtual components, that are then presented to your virtual servers. You can access hypervisor software such as VMware and Hyper-V to create your virtual servers, selecting the virtual components and configuring them as required. Each virtual server, otherwise known as a VM, can then have an operating system installed and configured, along with any required applications.
+
+Amazon EC2, however, abstracts the underlying hypervisor layer from the customer, so you do not have direct access to the hypervisor itself. Using a self-service portal or API access, you can launch virtual servers, which we term as EC2 instances, in your AWS account and specifically, within your Virtual Private Cloud (VPC)
+
 
 ## Instance Types
 

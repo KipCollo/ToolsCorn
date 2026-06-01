@@ -1,8 +1,22 @@
 # Observability
 
-Observability is the ability to understand the internal state of a system based on its external outputs. This means being able to infer what is happening inside the system based on the information it produces, such as logs, metrics, and traces.
+`Observability` is the ability to understand the internal state of a system based on its external outputs. This means being able to infer what is happening inside the system based on the information it produces, such as logs, metrics, and traces.
 
 Observability is becoming increasingly important in the modern world of software development, where systems are becoming ever more complex and distributed. With traditional monitoring approaches, it can be difficult to understand what is happening inside a system and why it is behaving in a certain way. Observability provides a way to overcome this challenge by giving us a more holistic view of the system.
+
+
+`Telemetry` is the process of automatically collecting and transmitting data from remote or distributed systems to monitor, measure, and track the performance or status of those systems. Telemetry data provides real-time insights into how different parts of an application are performing. Telemetry provides the data for observability tooling to help developers and system administrators observe, troubleshoot, and optimize the system without needing to manually check each component.
+
+On the surface, logs, metrics, and traces share many similarities in their lifecycle and components. Everything starts with instrumentation that captures and emits data. The data has to have a specific structure defined by a format. Then, we need a mechanism to collect and forward a piece of telemetry. Often, there is some kind of agent to further enrich, process, and batch data before ingesting it in a backend. This process typically involves a database to efficiently store, index, and search large volumes of data. Finally, there is a frontend analysis to make the data accessible to the end-user. However, in practice, we develop dedicated systems for each type of telemetry, and for good reason: Each telemetry signal poses its own unique technical challenge. These challenges are mainly due to the different natures of the data.
+
+The design of data models, interchange formats, and transmission protocols, highly depends on whether you are dealing with unstructured or semi-structured textual information, compact numerical values inside a time series, or graph-like structures depicting causality between events. Even for a single signal, there is no consensus on these topics.
+Furthermore, how we work with and derive insights from telemetry varies dramatically. A system might need to perform full-text searches, inspect single events, analyze historical trends, visualize request flow, diagnose performance bottlenecks, and more. These requirements manifest themselves in the design and optimization of storage, access patterns, query capabilities, and more.
+
+Having dedicated systems for logs, metrics, and traces is why we commonly refer to them as the three pillars of observability. The notion of pillars provides a great mental framework because it emphasizes the following:-
+- There are different categories of telemetry.
+- Each pillar has its own unique strengths and stands on its own.
+- Pillars are complementary and must be combined to form a stable foundation for achieving observability.
+
 
 ## Pillars of Observability
 

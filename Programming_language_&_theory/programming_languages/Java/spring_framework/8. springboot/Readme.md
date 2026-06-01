@@ -32,7 +32,14 @@ CORE                     AOP,BATCH                                   BOOT
 6. `DevTools`: improve developer productivity
 7. `Embedded Servers`: Server inside the application.Provides built-in servers like Tomcat or Jetty, so you don't need to deploy WAR files.
 8. `Spring Initializer`:- This is a web application which can create an internal project structure for you.
+9. `Standalone Applications`: Allows the creation of Java applications that can run with java -jar.
 
+*Difference between Spring and Spring Boot* -
+`Spring`: A comprehensive framework for building Java applications. It requires extensive configuration and is used for creating a wide range of applications (web, microservices, batch, etc.).
+`Spring Boot`: A sub-project of Spring that simplifies application development by offering pre-configured setups and defaults, reducing the need for boilerplate code. It allows developers to start coding with minimal setup and is ideal for microservices.
+
+
+## Embedded server
 
 - **An embedded server** is a server that is packaged with your application,allowing it to run as a stand-alone Java application without needing to deploy WAR files to an external server. Spring Boot supports embedded servers like Tomcat, Jetty, and Undertow. This simplifies the deployment process and is especially useful for microservices and containerized applications.
   1. Traditional: Develop------>Deploy----------->External Tomcat server(Configuration(server.xml,catalina.properties))
@@ -43,8 +50,8 @@ You can also deploy Spring Boot applications to any Servlet 3.0+ compatible cont
 ## Dependency Management
 
 - **Dependency Management**:- Spring-boot introduced 2 types of dependencies:
-  1. spring-boot-starter-parent- For supporting open-source third party libraries.ie.(Jackson,validator,RedisCache,MongoDB..etc) Spring boot parent pom is used to declare and configure spring f/w and their 3rd party related version info.It provides info for all libraries.
-  2. spring-boot-starter-xxxx(Where xxxx can be web,jdbc,security,data..)i.e Spring web requires (spring core,MVc,web MVC,jdbv,jackson).The spring-boot-starter-web combines all the modules and their dependencies.
+  1. `spring-boot-starter-parent`- For supporting open-source third party libraries.ie.(Jackson,validator,RedisCache,MongoDB..etc) Spring boot parent pom is used to declare and configure spring f/w and their 3rd party related version info.It provides info for all libraries.
+  2. `spring-boot-starter-xxxx`(Where xxxx can be web,jdbc,security,data..)i.e Spring web requires (spring core,MVc,web MVC,jdbv,jackson).The spring-boot-starter-web combines all the modules and their dependencies.
 
 - Spring Version:
   1. Spring Boot 1.x--------->(Spring core,spring mvc,spring JDBC: 3.x)
@@ -54,7 +61,7 @@ You can also deploy Spring Boot applications to any Servlet 3.0+ compatible cont
   3. spring Boot 2.6.6-------->(Spring core,spring mvc,spring JDBC: 5.x)
                       --------->jackson: 2.5,validator 4.x,hibernate 5.x
 
-Spring Boot Starters are a set of convenient dependency descriptors that aggregate commonly used libraries for specific functionalities that you can include in your application.
+*Spring Boot Starters* are a set of convenient dependency descriptors that aggregate commonly used libraries for specific functionalities that you can include in your application.
 The starters contain a lot of the dependencies that you need to get a project up and running quickly and with a consistent, supported set of managed transitive dependencies.
 
 All official starters follow a similar naming pattern; `spring-boot-starter-*`, where * is a particular type of application. This naming structure is intended to help when you need to find a starter.Third party starters should not start with spring-boot as it is reserved for official Spring Boot artifacts. A third-party starter for acme will be typically named acme-spring-boot-starter.
@@ -127,11 +134,11 @@ If the class is not on the classpath, you can use the excludeName attribute of t
 
 Tip - You can define exclusions both at the annotation level and using the property.
 
-`@SpringBootApplication` annotation is responsible for enabling spring boot auto configurations.Consists of @ComponentScan,@EnableAutoConfiguration and @springBootConfiguration
+`@SpringBootApplication` annotation is responsible for enabling spring boot auto configurations.It is a convenience annotation that combines three crucial annotations: @ComponentScan,@EnableAutoConfiguration and @springBootConfiguration
 
-1. @SpringBootConfiguration - Its like spring configuration.Its just renamed from @Configuration to @SpringBootConfiguration
+1. @SpringBootConfiguration - Its like spring configuration.Its just renamed from @Configuration to @SpringBootConfiguration.Marks the class as a source of bean definitions.
 2. @ComponentScan - Scans the Component classes at packages and class levels.Default packagename is current package.
-3. @EnableAutoConfiguration - Provides framework related autoconfiguration.i.e enables autoconfiguration.Used to create framework\predefined classes with help of spring.factories file.
+3. @EnableAutoConfiguration - Provides framework related autoconfiguration.i.e enables autoconfiguration, which automatically configures beans based on the classpath settings.Used to create framework\predefined classes with help of spring.factories file.
 
 We configure beans using xml or java-config or @Autowire with components.Even though we use @Autowire,we still depend on manual configuration i.e we can't use @Component for all classes(We apply only to classes with source code)but can't apply for framework classes like DataSource,JDBCTemplate,RestTamplate,MongoTemplate..
 
@@ -315,7 +322,7 @@ Spring Boot can be used with “classic” Java development tools or installed a
 There are several ways:
 
 1. `Manually` - using IDEs(Eclipse,STS,IntelliJ):
-  - Create maven project
+  - Create maven project or Gradle project.
   - Add spring boot parent and required dependencies to pom.xml
 
  ```xml
@@ -332,7 +339,7 @@ There are several ways:
     </dependency>
  ```
 
-  - Write Spring boot entry class manually
+  - Write Spring boot entry class manually annotating the main class with @SpringBootApplication.
 
  ```java
 
@@ -397,7 +404,7 @@ In many situations,you can delegate to the static SpringApplication.run method,I
 - During above stages,it will publish various diff type of events and invokes listeners to perform operation.
 
 
-**Properties File** - The application.properties (or application.yml) file is used to define application-level configurations in a Spring Boot project.You cna configure custom properties also.
+**Properties File** - The application.properties (or application.yml) file is used to define application-level configurations in a Spring Boot project.You can configure custom properties also.
 
 *Externalized Configuration*:- Spring Boot lets you externalize your configuration so that you can work with the same application code in different environments. You can use a variety of external configuration sources including Java properties files, YAML files, environment variables, and command-line arguments.
 Property values can be injected directly into your beans by using the `@Value` annotation, accessed through Spring’s Environment abstraction, or be bound to structured objects through `@ConfigurationProperties`.
@@ -579,47 +586,6 @@ If several CommandLineRunner or ApplicationRunner beans are defined that must be
 
 
 ---------
-
-
-## Spring Boot Web
-
-Spring Boot is well suited for web application development. You can create a self-contained HTTP server by using embedded Tomcat, Jetty, Undertow, or Netty. Most web applications use the `spring-boot-starter-web` module to get up and running quickly. You can also choose to build reactive web applications by using the `spring-boot-starter-webflux` module.
-
-Initialization steps are typically as follows:
-1. Initializing the DispatcherServlet of Spring MVC.
-2. Setting up an encoding filter to ensure that client requests are encoded correctly.
-3. Setting up a view resolver to tell Spring where to find our views and in which dialect they are written (jsp, Thymeleaf templates, and so on).
-4. Configuring static resources locations (css, js).
-5. Configuring supported locales and resource bundles.
-6. Configuring a multipart resolver for file uploads to work.
-7. Including tomcat or jetty to run our application on a web server.
-8. Setting up the error pages (For example 404).
-However, Spring Boot handles all that work for us. Because this configuration is typically up to your application, you can come up with an unlimited amount of combinations.
-Spring boot, in a way, is an opinionated Spring project configurator. It is based on conventions and will enforce them on your project by default.
-
-**The “Spring Web MVC Framework”**:- The Spring Web MVC framework (often referred to as “Spring MVC”) is a rich “model view controller” web framework. Spring MVC lets you create special @Controller or @RestController beans to handle incoming HTTP requests. Methods in your controller are mapped to HTTP by using @RequestMapping annotations.
-
-`Spring MVC Auto-configuration`:- Spring Boot provides auto-configuration for Spring MVC that works well with most applications.
-The auto-configuration adds the following features on top of Spring’s defaults:
-
-1. Inclusion of ContentNegotiatingViewResolver and BeanNameViewResolver beans.
-2. Support for serving static resources, including support for WebJars.
-3. Automatic registration of Converter, GenericConverter, and Formatter beans.
-4. Support for HttpMessageConverters.
-5. Automatic registration of MessageCodesResolver.
-6. Static index.html support.
-7. Automatic use of a ConfigurableWebBindingInitializer bean.
-
-If you want to keep those Spring Boot MVC customizations and make more MVC customizations (interceptors, formatters, view controllers, and other features), you can add your own @Configuration class of type WebMvcConfigurer but without @EnableWebMvc.
-
-To make Spring web app:
-
-1. Create a maven project
-2. Add dependencies to pom.xml(spring core,MVC,jackson,validator)
-3. Configure required beans in configuration using xml or java-config(DispatcherServlet,Viewresolver,Controller)
-4. Write web.xml
-5. Write controller class
-6. configure annotations e,g(@requestBody)
 
 
 ## API Documentation

@@ -73,6 +73,7 @@ Another important feature of IMAP is that it has commands that permit a user age
     1. The well-known port 21 is used for the control connection.
     2. The well-known port 20 for the data connection.
 
+### Domain Name System (DNS)
 
 - **Domain Name System (DNS)** - Protocol used to map a name to an IP address or an address to a user friendly name. DNS client program sends a request to a DNS server to map the e-mail address to the corresponding IP address. People prefer to use names instead of numeric addresses.
 
@@ -147,9 +148,12 @@ TTL is the time to live of the resource record; it determines when a resource sh
 
 *DNS VULNERABILITIES*:- The first type of attack that comes to mind is a DDoS bandwidth-flooding attackagainst DNS servers. For example, an attacker could attempt to send to each DNS root server a deluge of packets, so many that the majority of legitimate DNS queries never get answered. Such a large-scale DDoS attack against DNS root servers actually took place on October 21, 2002. In this attack, the attackers leveraged a botnet to send truck loads of ICMP ping messages to each of the 13 DNS root IP addresses.
 
+Tools to identify DNS include- `nslookup`
 
 - **Simple Network Management Protocol (SNMP)**:- (SNMP) is a framework for managing devices in an internet using the TCP/IP protocol suite provides a set of fundamental operations for monitoring and maintaining an internet, controls and monitors a set of agents, usually routers SNMP frees management tasks from both the physical characteristics of the managed devices and the underlying networking technology. Used in a heterogeneous internet made of different LANs and WANs connected by routers made by different manufacturers. SNMP uses two other protocols Structure of Management Information (SMI) and Management Information Base(MIB).
 
+
+### Web and Hypertext Transfer Protocol (HTTP)
 
 - **Web and Hypertext Transfer Protocol (HTTP)** - Web’s application-layer protocol for client/server model: Client browser requests, receives, (using HTTP protocol) and “displays” Web objects and Web server sends (using HTTP protocol) objects in response to requests from clients.This protocol can be used to request a resource from a server, and it can be used to return a response from a server.
 HTTP is a protocol for fetching resources such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. A complete document is typically constructed from resources such as text content, layout instructions, images, videos, scripts, and more.
@@ -564,6 +568,29 @@ The general HTTP authentication framework - RFC 7235 defines the HTTP authentica
 
 NOTE:- HTTP vs App - Application Layer Protocol (HTTP): The set of rules for the conversation (e.g., "I will say GET, and you will give me a file").Your Software Application: The logic that decides what to say (e.g., "I need the user's profile picture").
 
+
+**HTTP caching**:- The HTTP cache stores a response associated with a request and reuses the stored response for subsequent requests.
+There are several advantages to reusability. First, since there is no need to deliver the request to the origin server, then the closer the client and cache are, the faster the response will be. The most typical example is when the browser itself stores a cache for browser requests.
+Also, when a response is reusable, the origin server does not need to process the request — so it does not need to parse and route the request, restore the session based on the cookie, query the DB for results, or render the template engine. That reduces the load on the server.
+
+
+**Using HTTP cookies**:- A cookie (also known as a web cookie or browser cookie) is a small piece of data a server sends to a user's web browser. The browser may store cookies, create new cookies, modify existing ones, and send them back to the same server with later requests. Cookies enable web applications to store limited amounts of data and remember state information; by default the HTTP protocol is stateless.
+
+Typically, the server will use the contents of HTTP cookies to determine whether different requests come from the same browser/user and then issue a personalized or generic response as appropriate. The following describes a basic user sign-in system:
+
+1. The user sends sign-in credentials to the server, for example via a form submission.
+2. If the credentials are correct, the server updates the UI to indicate that the user is signed in, and responds with a cookie containing a session ID that records their sign-in status on the browser.
+3. At a later time, the user moves to a different page on the same site. The browser sends the cookie containing the session ID along with the corresponding request to indicate that it still thinks the user is signed in.
+4. The server checks the session ID and, if it is still valid, sends the user a personalized version of the new page. If it is not valid, the session ID is deleted and the user is shown a generic version of the page (or perhaps shown an "access denied" message and asked to sign in again).
+
+Cookies are mainly used for three purposes:
+
+- Session management: User sign-in status, shopping cart contents, game scores, or any other user session-related details that the server needs to remember.
+- Personalization: User preferences such as display language and UI theme.
+- Tracking: Recording and analyzing user behavior.
+
+
+### WebSocket
 
 **WebSocket**:- is an application protocol that provides full-duplex communications between two peers over the TCP protocol.
 In a WebSocket application, the server publishes a WebSocket `endpoint`, and the client uses the endpoint's URI to connect to the server. The WebSocket protocol is symmetrical after the connection has been established; the client and the server can send messages to each other at any time while the connection is open, and they can close the connection at any time. Clients usually connect only to one server, and servers accept connections from multiple clients.

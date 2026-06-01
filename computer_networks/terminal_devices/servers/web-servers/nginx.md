@@ -1,14 +1,14 @@
-# Nginx
+# nGINX
 
 A piece of software on a server,that handles HTTP requests.
 A high performance web server and a reverse proxy server.
 NGINX is a powerful web server and uses a non-threaded, event-driven architecture that enables it to outperform Apache if configured correctly. It can also do other important things, such as load balancing, HTTP caching, or be used as a reverse proxy.
 
-**NGINX** is an open-source, high-performance web server that also functions as:
-- A reverse proxy
-- Load balancer
-- HTTP cache
-- Mail proxy
+- **NGINX** is an open-source, high-performance web server that also functions as:
+    - A reverse proxy
+    - Load balancer
+    - HTTP cache
+    - Mail proxy
 
 It is designed for high concurrency, performance, and low memory usage — making it ideal for modern DevOps and cloud environments.
 
@@ -26,16 +26,8 @@ NGINX Use Cases:-
 4. NGINX as Security - The proxy server acts as a single entry point that is publicly available, protecting all other web servers and minimizing their exposure. So one can focus on this one single entry point protecting. Nginx also handle SSL/TLS termination and encryption ensuring secure client and server communication. So when an encrypted data is sent to the proxy, even if attacker tries to intercept, they cannot read the message.
 5. NGINX as Compression - Nginx with its compression capabilities can optimize this scenario by reducing the size and ensure faster load times. It sends response in chunks instead of sending the entire file at once.
 
----
 
-## Reverse Proxy
-
-<img width="1536" height="1024" alt="nginx-reverse-proxy" src="https://github.com/user-attachments/assets/1c9fbec8-b7b6-4385-bf96-dd6598842b81" />
-
----
-
-
-## 📊 NGINX vs Apache (Why DevOps Prefer NGINX)
+**NGINX vs Apache (Why DevOps Prefer NGINX)**:-
 
 | Feature         | NGINX                          | Apache                      |
 |-----------------|--------------------------------|-----------------------------|
@@ -47,9 +39,9 @@ NGINX Use Cases:-
 | Use cases       | Web server, reverse proxy, LB  | Traditional web server      |
 
 
-## 🧰 Common DevOps Use Cases for NGINX
+**Common DevOps Use Cases for NGINX**:-
 
-| Use Case                              | Example                                                                 |
+| Use Case                             | Example                                                                 |
 |--------------------------------------|-------------------------------------------------------------------------|
 | Web server                           | Serving static React/Angular apps                                      |
 | Reverse proxy                        | Forwarding requests to backend apps (Node.js, Python, Java)            |
@@ -96,7 +88,6 @@ docker run --name nginx -p 8080:80 -d nginx
 nginx -v
 ```
 
-
 For each installation method, we have a set of generic locations and default paths.
 
 | File/Directory        | Purpose                                      |
@@ -133,8 +124,6 @@ The basic NGINX configuration file is set up in a number of sections. Each secti
 ```
 
 Each directive line ends with a semicolon (;). This marks the end-of-line. The curly braces ({}) actually denote a new configuration context(sections).
-
-
 
 
 **Variables**:- Variables are named objects that can be assigned a textual value. Variables can only appear inside the http section. A variable is referred to by its name, prefixed by the dollar ($) symbol. Alternatively, a variable reference can enclose a variable name in curly brackets to prevent merging with surrounding text.
@@ -315,12 +304,10 @@ The rest of a line after the # sign is considered a comment.
 
 ## NGINX as a Web Server
 
-A **web server** is software that serves static files (like `.html`, `.css`, `.js`, `.png`) over HTTP.  
-When users visit your website, the web server responds with these files.
-
+A *web server* is software that serves static files (like `.html`, `.css`, `.js`, `.png`) over HTTP.When users visit your website, the web server responds with these files.
 NGINX is one of the fastest and most popular web servers used for this purpose.
 
-📁 Default Web Root in Linux
+Default Web Root in Linux - 
 
 | Directory             | Purpose                          |
 |-----------------------|----------------------------------|
@@ -349,7 +336,8 @@ docker run --name web-nginx -v $PWD:/usr/share/nginx/html:ro -p 8080:80 -d nginx
 
 **Root vs Alias**:- These two directives behave differently inside `location` blocks.
 
-### `root` example:
+`root` example:-
+
 ```nginx
 location /static/ {
     root /data/www;
@@ -357,7 +345,8 @@ location /static/ {
 # /static/img.png → /data/www/static/img.png
 ```
 
-### `alias` example:
+`alias` example:-
+
 ```nginx
 location /static/ {
     alias /data/www/;
@@ -365,7 +354,7 @@ location /static/ {
 # /static/img.png → /data/www/img.png
 ```
 
-📌 Use `alias` when you want to replace the URI path.
+Use `alias` when you want to replace the URI path.
 
 Common Errors & Fixes
 
@@ -377,13 +366,12 @@ Common Errors & Fixes
 | Port already in use             | Use `sudo lsof -i :80` to identify process |
 
 
-## 🔁 Section 3: NGINX as a Reverse Proxy (Ubuntu/Linux)
+## NGINX as a Reverse Proxy (Ubuntu/Linux)
 
-A **reverse proxy** is a server that receives client requests and forwards them to backend servers, then sends the response back to the client.
-
+A *reverse proxy* is a server that receives client requests and forwards them to backend servers, then sends the response back to the client.
 NGINX is one of the most popular tools used as a reverse proxy in production.
 
-🔄 Reverse Proxy vs Forward Proxy
+Reverse Proxy vs Forward Proxy:-
 
 | Feature         | Forward Proxy                       | Reverse Proxy                           |
 |-----------------|--------------------------------------|------------------------------------------|
@@ -392,7 +380,7 @@ NGINX is one of the most popular tools used as a reverse proxy in production.
 | Use case         | Browsing anonymously, caching       | Load balancing, SSL termination, API gateway |
 | Example          | Proxy server for office users       | NGINX between frontend and backend apps  |\\
 
-Why Use NGINX as a Reverse Proxy?
+Why Use NGINX as a Reverse Proxy:-
 
 - Protect backend services from direct access
 - Centralized SSL termination
@@ -402,7 +390,7 @@ Why Use NGINX as a Reverse Proxy?
 
 Reverse Proxy Configuration (Ubuntu/Linux)
 
-### 🔧 File: `/etc/nginx/sites-available/default`
+File: `/etc/nginx/sites-available/default`
 
 Update the existing `server` block or create a new one:
 
@@ -419,25 +407,27 @@ server {
 }
 ```
 
-### Breakdown:
 - `proxy_pass` → forwards requests to your backend app
 - `proxy_set_header` → preserves original request metadata (like IP and host)
 
-🧪 Demo: Reverse Proxy to a Node.js App
 
-### Step 1: Install Node.js (optional if using your own backend)
+Reverse Proxy to a Node.js App
+Step 1: Install Node.js (optional if using your own backend)
+
 ```bash
 sudo apt update
 sudo apt install nodejs npm -y
 ```
 
-### Step 2: Create a simple backend app
+Step 2: Create a simple backend app
+
 ```bash
 mkdir ~/node-backend && cd ~/node-backend
 nano server.js
 ```
 
-**Paste this:**
+Paste this:
+
 ```js
 const http = require('http');
 http.createServer((req, res) => {
@@ -452,16 +442,15 @@ node server.js
 
 > Your app is now running at `http://localhost:3000`
 
----
-
-### Step 3: Configure NGINX as reverse proxy
-
+Step 3: Configure NGINX as reverse proxy
 Edit the NGINX default site:
+
 ```bash
 sudo nano /etc/nginx/sites-available/default
 ```
 
 Replace the `location / {}` block with:
+
 ```nginx
 location / {
     proxy_pass http://localhost:3000;
@@ -470,9 +459,8 @@ location / {
 }
 ```
 
-### Step 4: Test and reload NGINX
+Step 4: Test and reload NGINX - Check config for syntax errors:
 
-Check config for syntax errors:
 ```bash
 sudo nginx -t
 ```
@@ -482,14 +470,15 @@ Reload NGINX:
 sudo systemctl reload nginx
 ```
 
-### Step 5: Test in browser
+Step 5: Test in browser
 
 Visit:
+
 ```
 http://localhost
 ```
 
-✅ You should see: `Hello from Node.js backend!`
+You should see: `Hello from Node.js backend!`
 
 ---
 
@@ -502,9 +491,7 @@ http://localhost
 | `/var/www/html`                   | Not used in reverse proxy               |
 | `/var/log/nginx/access.log`       | Logs all requests                       |
 
----
 
-## ✅ Summary
 
 - NGINX can proxy traffic to backend apps using `proxy_pass`.
 - Config changes go in `/etc/nginx/sites-available/default` (on Ubuntu).
@@ -513,17 +500,10 @@ http://localhost
 
 
 
-# ⚖️ Section 4: Load Balancing with NGINX (Ubuntu/Linux)
-
-## 🎯 Goal
+## Load Balancing with NGINX (Ubuntu/Linux)
 
 Use NGINX to distribute traffic across multiple backend servers — improving availability, reliability, and scalability of your applications.
-
----
-
-## 🧠 What is Load Balancing?
-
-**Load balancing** is the process of distributing incoming network traffic across multiple backend servers.
+*Load balancing* is the process of distributing incoming network traffic across multiple backend servers.
 
 Benefits:
 - Prevents server overload
@@ -532,9 +512,7 @@ Benefits:
 
 NGINX supports multiple load balancing algorithms out of the box.
 
----
-
-## 🧮 Load Balancing Algorithms in NGINX
+**Load Balancing Algorithms in NGINX**:-
 
 | Algorithm         | Behavior                                                               |
 |-------------------|-------------------------------------------------------------------------|
@@ -542,9 +520,8 @@ NGINX supports multiple load balancing algorithms out of the box.
 | `least_conn`      | Sends traffic to the backend with the fewest active connections         |
 | `ip_hash`         | Uses client IP to consistently route requests to the same backend       |
 
----
 
-## 📝 Basic Load Balancer Configuration
+**Basic Load Balancer Configuration**:-
 
 Edit:
 ```bash
@@ -777,5 +754,21 @@ curl -k https://localhost
 - Always test your HTTPS setup with curl and browser.
 - In production, switch to Let’s Encrypt or trusted CAs.
 
----
+
+Think of Nginx (pronounced "Engine-X") as a Traffic Controller for your website or app.Right now, you have a bunch of small "shops" (microservices) like a cart service, an order service, and a search service. Instead of customers going directly to each shop's back door, they all go to one main entrance: Nginx.Here is a breakdown of what that configuration file is doing, step-by-step:1. The "Server Name" (The Address)Each server { ... } block is like a different building.When someone types api.yas.local, Nginx looks at the first block.When someone types grafana, it looks at a different block.It uses the URL to decide which rules to follow.2. The "Location" (The Department)Inside a building, you have different departments.location /cart/ tells Nginx: "If the user asks for anything starting with /cart, send them to the Cart service."location /order/ sends them to the Order service.3. "proxy_pass" (The Hand-off)The command proxy_pass http://cart; is the most important part. It tells Nginx:"I’m not going to handle this request myself. I’m going to pass it over to the 'Cart' computer running in the background."The user never sees the internal computer; they only see Nginx.4. The "Resolver" (The Map)You see the number 127.0.0.11 a lot. In Docker (where your services likely live), this is the Internal Phonebook.Nginx uses this to look up the name "cart" or "inventory" and find out which internal IP address that service is currently using.5. Customizing the "Headers" (The Sticky Notes)In the identity section, you see lines like proxy_set_header X-Real-IP $remote_addr;.This is like Nginx taking the customer's request and sticking a Post-it note on it before handing it to the service. The note says: "Hey, the person who actually asked for this is at this IP address, not me." This helps the service know who the real user is.SummaryYour file is basically a routing map. It says:Listen for specific web addresses.Look at which specific page or folder the user wants.Forward that request to the correct internal service so the user gets the right data.Does this "Traffic Controller" analogy make sense, or would you like to dive deeper into why we use Nginx instead of just connecting directly?yesMoving from a single website to a "traffic controller" (Nginx) setup is a big step, but it’s done for three very practical reasons:1. One "Front Door" (Security & Simplicity)Imagine you have 15 different services (Cart, Order, Search, etc.). Without Nginx, you would have to open 15 different "doors" (ports) on your server to the internet.Without Nginx: A hacker has 15 targets to attack.With Nginx: You lock all the back doors and only open one door (Nginx). Nginx checks the ID of anyone coming in before passing them to the services inside.2. Hiding the "Messy" Interior (Abstraction)Your internal services might be running on weird addresses like 172.18.0.5:8080. You don't want your customers to see that.Nginx acts as a mask. The user sees a nice, clean URL like api.yas.local/order, and Nginx does the hard work of finding where that order service is actually hiding.3. Efficiency (The "Speedy Secretary")Nginx is incredibly fast at doing "small" tasks so your main app doesn't have to:Static Files: If a user wants a simple image or a CSS file, Nginx can hand it to them directly without even bothering the main application.SSL (The Lock Icon): Nginx handles the heavy encryption math for HTTPS. This lets your microservices focus entirely on their jobs (like processing a payment) without worrying about security encryption.4. High Availability (The "Backup Plan")Even though it's not in your current file yet, Nginx can do Load Balancing. If your "Order" service gets too busy, you can run three copies of it. Nginx will automatically send the next customer to whichever one isn't busy. If one service crashes, Nginx simply stops sending people there until it's fixed.Analogy:Think of Nginx as the Receptionist at a large doctor's office.The patients (users) only talk to the receptionist.The receptionist checks their insurance (Security).The receptionist tells them which room to go to (Routing).The doctors (Microservices) never have to answer the phone; they just focus on treating the patients.Do you want to try making a small change to this file to see how it works, or should we look at one of the specific services (like identity) to see how it handles logins?I have built a web application in springboot on port 8080,It uses templating engine so no need of spa.How do i make it accessible using ec2 serverTo make your Spring Boot application (port 8080) accessible on an EC2 server, you need to follow these three main steps:1. Open the Security "Door" (AWS Console)By default, AWS blocks all traffic to your EC2 instance except for SSH. You must tell AWS to allow visitors to see your app.Go to the EC2 Dashboard and select your instance.Click the Security tab and click on your Security Group.Click Edit inbound rules and add a new rule:Type: Custom TCPPort Range: 8080Source: 0.0.0.0/0 (This means "anyone on the internet")2. Move your Code to EC2You need to get your .jar file from your computer onto the EC2 server.On your computer: Run ./mvnw clean package (or mvn clean package) to create your .jar file in the /target folder.Upload the file: Use the scp command from your terminal to send the file:bashscp -i your-key.pem target/your-app.jar ec2-user@your-ec2-ip:/home/ec2-user/
+Use code with caution.(Replace your-key.pem and your-ec2-ip with your actual file and IP address).3. Run the App in the BackgroundConnect to your EC2 via SSH (ssh -i your-key.pem ec2-user@your-ip) and install Java if you haven't yet. To keep your app running even after you close your laptop, use the nohup command:bashnohup java -jar your-app.jar > app.log 2>&1 &
+Use code with caution.nohup: Tells the server "don't stop this when I hang up".&: Tells it to run in the "background" so you can keep using your terminal.Success! You can now visit your app at http://your-ec2-ip:8080 in your browser.Pro Tip (The "Cleaner" Way):Since you are already learning about Nginx, most professionals set it up so users just type http://your-ip (Port 80) and Nginx "forwards" that request internally to your Spring Boot app on 8080. This keeps your app more secure and gives you a professional-looking URL.Would you like the Nginx configuration to hide that :8080 from your users?10 sitesDeploy Your Spring Boot JAR to Amazon EC2 - Medium5 Mar 2026 — What You'll Need. Before we start, make sure you have: * A Spring Boot JAR file (e.g., ********-0.0. 1-SNAPSHOT. jar ) * An AWS ac...Medium·Spring Boot SimplifiedStep-by-Step Guide to Deploying a Spring Boot Application on ...28 Dec 2024 — Launching an EC2 instance. 1. Access the AWS Management Console and search for EC2. 2. Click "Launch Instance" to configure the fo...AWS Builder CenterDeploying a Spring Boot Application to an Amazon EC2 ...15 Sept 2023 — Generate the JAR file of the spring boot application. ... Change the terminal current directory to your project's directory and ru...Medium·Priya SharmaShow allso to make an application that uses app server to web app you use a web serverSomething went wrong and the content wasn't generated.so to make an application that uses app server to web app you use a web serverExactly. You’ve got the concept perfectly.In a professional setup, you use a Web Server (like Nginx) as the "front man" and your App Server (Spring Boot) as the "worker" in the back.Here is why that "Web Server → App Server" combo is the standard:1. Port 80 vs. Port 8080Web Server: By default, the internet uses Port 80 (HTTP) or Port 443 (HTTPS). When you type google.com, your browser assumes Port 80.App Server: Spring Boot defaults to Port 8080.The Bridge: Nginx sits on Port 80, catches the visitors, and quietly hands them to Spring Boot on 8080. The user never has to type :8080 at the end of the URL.2. Handling the "Heavy Lifting"Spring Boot is great at logic (databases, users, math), but it's not the fastest at serving images or CSS files.Nginx is specialized for speed. It can hand out your images/styles instantly and only bother Spring Boot when there is actual "thinking" (logic) to do.3. What the Nginx config would look like for you:If you installed Nginx on that same EC2, your configuration would look very simple:nginxserver {
+    listen 80;
+    server_name your-ec2-public-ip;
+
+    location / {
+        proxy_pass http://localhost:8080;  # This sends Port 80 traffic to your App
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+Use code with caution.Summary of the "Chain":User → (Internet) → Nginx (Web Server) → (Internal) → Spring Boot (App Server)Does that help clarify why you see both "Web" and "App" servers used together?(Internal)When we say (Internal), we mean a conversation happening inside the same computer (the EC2 instance).Think of it like a restaurant:The Internet: The street outside.Nginx (Web Server): The Waiter standing at the front door.Spring Boot (App Server): The Chef in the kitchen.The "Internal" part is the waiter walking from the front door to the kitchen to hand over the order.Why is "Internal" better?It's Private: The Chef (Spring Boot) doesn't have to talk to anyone on the street. He only talks to the Waiter. In technical terms, you can close port 8080 to the public and only allow Nginx to talk to it.It's Fast: Because Nginx and Spring Boot are on the same "machine," they talk to each other almost instantly using a special address called localhost (which is like a computer talking to itself).Safety: If someone tries to "flood" your site with fake traffic, Nginx catches it at the door. Your Spring Boot app stays calm and protected in the back.The Result: To the person on the street, they just see a restaurant. They don't need to know how the kitchen is organized; they just get their food.Would you like to know how to set up Nginx on your EC2 so it can start talking to your Spring Boot app internally?what if i change the port to 80If you change your Spring Boot port to 80, you are essentially telling the Chef to stand at the Front Door.Technically, it works! Your app would be accessible at http://your-ec2-ip without any extra setup. However, there are three big reasons why most people still don't do this:1. The "Root" Problem (Security)On Linux (like your EC2), any port below 1024 is considered a "privileged port."To run your app on Port 80, you would have to run Spring Boot as the Root User (the "Super Admin").The Risk: If a hacker finds a tiny bug in your Java code, they suddenly have "Root" access to your entire server.The Nginx Way: Nginx is designed to start as Root, grab Port 80, and then immediately switch to a "safe" user. It acts as a protective shield.2. No "Shield" for TrafficIf your Spring Boot app is directly on Port 80:Crashing: If your Java app crashes or needs a 30-second restart, the website just dies with a "Connection Refused" error. Nginx, however, can stay up and show a nice "We'll be right back" page.Overload: Spring Boot is heavy. If 1,000 bots hit your site at once, they hit your App Logic immediately. Nginx is "lightweight" and can block those bots before they ever wake up your Java code.3. SSL (The Green Lock)Someday you'll want your site to be https:// (encrypted).Setting up SSL certificates inside Spring Boot is a bit of a headache.Setting up SSL in Nginx is incredibly easy and industry-standard.SummaryCan you do it? Yes. Just change server.port=80 in your application.properties and run it with sudo.Should you? For a quick school project, sure. For anything you want people to actually use, it's better to keep Spring Boot on 8080 and let Nginx handle the "Front Door" on 80.
+
+
+If you are using Namecheap's Shared Hosting (via cPanel), the reason your Next.js app is accessible on the internet despite running on port 3000 is that Namecheap's internal system is acting as an automatic proxy for you.Here is what is happening behind the scenes:1. The "Setup Node.js App" ToolWhen you use Namecheap's Setup Node.js App tool in cPanel, it uses a technology called Phusion Passenger.How it works: Passenger is a "manager" that sits between the outside world and your Next.js code.The Hand-off: Even if your code says listen(3000), Passenger ignores that physical port and intercepts the web traffic coming in from the main domain URL you selected in cPanel.2. Automatic Port ManagementOn shared hosting, many people are on the same server. If everyone tried to use port 3000, the server would crash.Namecheap's system assigns a random internal port or a Unix socket to your specific app.The "Frontend" (the main server address) knows exactly which internal port belongs to your domain and sends the traffic there automatically.3. Why This Is Different From Your EC2On EC2: You are the "Manager." You have to manually install Nginx and tell it to point Port 80 to Port 8080.On Namecheap Shared Hosting: Namecheap is the "Manager." Their pre-configured web server (usually Apache or LiteSpeed) is already set up to act as a reverse proxy for any Node.js app you create through their dashboard.How to Check Your Specific SetupIf you want to see how your app is actually connecting, look for a file called server.js or your package.json in the Namecheap File Manager. Often, developers use a custom server.js to ensure the app listens to the environment's assigned port rather than a hardcoded "3000".
 

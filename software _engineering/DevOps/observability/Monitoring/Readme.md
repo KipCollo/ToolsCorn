@@ -1,4 +1,9 @@
-# Monitoring
+# Metrics
+
+A metric is a single numerical value derived by applying a statistical measure to a group of events. In other words, metrics represent an aggregate. This is useful because their compact representation allows us to graph how a system changes over time. In response, the industry developed instruments to extract metrics, formats and protocols to represent and transmit data, specialized time-series databases to store them, and frontends to make this data accessible to end-users.
+The Four Common Types of Metrics: Counters, Gauges, Histograms, and Summaries.
+
+## Monitoring
 
 Monitoring tools include:
 

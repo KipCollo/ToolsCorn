@@ -1,14 +1,12 @@
 # Spring Security
 
-Spring Security is a powerful and highly customizable framework for authentication and access control.Spring Security is the primary choice for implementing application-level security in Spring applications. Generally, its purpose is to offer you a highly customizable way of implementing authentication, authorization, and protection against common attacks.
+`Spring Security` is a powerful and highly customizable framework for authentication and access control.Spring Security is the primary choice for implementing application-level security in Spring applications. Generally, its purpose is to offer you a highly customizable way of implementing authentication, authorization, and protection against common attacks.
 Spring Security is a security framework that provides declarative security for your Spring-based applications. Spring Security provides a comprehensive security solution, handling authentication and authorization at both the web request level and at the method invocation level. Based on the Spring Framework, Spring Security takes full advantage of dependency injection (DI) and aspect-oriented techniques.
 
-Spring Security is open source software released under the Apache 2.0 license.
-You can use Spring Security for both standard web servlets and reactive applications, as well as non-web apps.
+Spring Security is open source software released under the Apache 2.0 license.You can use Spring Security for both standard web servlets and reactive applications, as well as non-web apps.
 
-Spring Security got its start as Acegi Security. Acegi was a powerful security framework, but it had one big turn-off: it required a lot of XML configuration.
-With version 2.0, Acegi Security became Spring Security. But the 2.0 release brought more than just a superficial name change. Spring Security 2.0 introduced a
-new security-specific XML namespace for configuring security in Spring. The new namespace, along with annotations and reasonable defaults, slimmed typical security configuration from hundreds of lines to only a dozen or so lines of XML. Spring Security 3.0 added SpEL to the mix, simplifying security configuration even more.
+Spring Security got its start as `Acegi Security`. Acegi was a powerful security framework, but it had one big turn-off: it required a lot of XML configuration.
+With version 2.0, Acegi Security became Spring Security. But the 2.0 release brought more than just a superficial name change. Spring Security 2.0 introduced a new security-specific XML namespace for configuring security in Spring. The new namespace, along with annotations and reasonable defaults, slimmed typical security configuration from hundreds of lines to only a dozen or so lines of XML. Spring Security 3.0 added SpEL to the mix, simplifying security configuration even more.
 At version 3.2, Spring Security tackles security from two angles. To secure web requests and restrict access at the URL level, Spring Security uses servlet filters. Spring Security can also secure method invocations using Spring AOP, proxying objects and applying advice to ensure that the user has the proper authority to invoke secured methods.
 
 Security features of J2EE's Servlet Specification or EJB Specification lack the depth required for typical enterprise application scenarios. Whilst mentioning these standards, it's important to recognise that they are not portable at a WAR or EAR level. Therefore, if you switch server environments, it is typically a lot of work to reconfigure your application's security in the new target environment. Using Spring Security overcomes these problems, and also brings you dozens of other useful, customisable security features
@@ -23,8 +21,7 @@ Spring Security exists to fill a gap in the universe of Java third-party librari
 
 Additionally, Spring Security appeals to many because it offers out-of-the-box integration with many common enterprise authentication systems, so it’s adaptable to most situations with little effort (beyond configuration) on the part of the developer. It’s in wide use because there’s really no other mainstream framework quite like it!
 
-
-## Alternatives to Spring Security
+**Alternatives to Spring Security** - 
 
 `Apache Shiro` (https://shiro.apache.org). It offers flexibility in configuration and is easy to integrate with Spring and Spring Boot applications. Apache Shiro sometimes makes a good alternative to the Spring Security approach.It offers its own annotations and design for web applications based on HTTP filters.
 You can secure more than just web applications with Shiro, from smaller command-line and mobile applications to large-scale enterprise applications.
@@ -60,8 +57,9 @@ Web - Provides Spring Security’s filter-based web security support.
 
 At the least, you’ll want to include the Core and Configuration modules modules in your application’s classpath. Spring Security is often used to secure web applications.
 
+`Servlet Applications` - Spring Security integrates with the Servlet Container by using a standard Servlet Filter . This means it works with any application that runs in a Servlet Container. More concretely, you do not need to use Spring in your Servlet-based application to take advantage of Spring Security.
 
-- `Spring Security Web`:- The Spring Security Web module provides the integration of Spring Security with the web application layer. It includes components and features specifically designed for securing web-based applications by handling HTTP requests and responses. It builds upon the core Spring Security module to deliver web-specific functionality like filters, sessions, and URL-based security.
+- **Spring Security Web**:- The Spring Security Web module provides the integration of Spring Security with the web application layer. It includes components and features specifically designed for securing web-based applications by handling HTTP requests and responses. It builds upon the core Spring Security module to deliver web-specific functionality like filters, sessions, and URL-based security.
 - Features of Spring Security Web
   1. Secures HTTP Endpoints: Protects web resources using URL patterns and request types.
   2. Authentication and Authorization: Handles login, logout, and permission checks.
@@ -71,20 +69,16 @@ At the least, you’ll want to include the Core and Configuration modules module
   6. Customizable: Allows for custom login pages, filters, and access rules.
   7. CORS Integration: Configurable cross-origin resource sharing for web applications.
   8. OAuth2 Support: Integrates with third-party OAuth2 providers like Google and GitHub.
-<!-- 
 
-## Key Components of Spring Security Web
+Key Components of Spring Security Web:-
 
-- **Security Filter Chain**:- The security filter chain is central to Spring Security Web. It processes incoming HTTP requests and applies security logic before passing the request to the application.
+- `Security Filter Chain`:- The security filter chain is central to Spring Security Web. It processes incoming HTTP requests and applies security logic before passing the request to the application.Defines a filter chain which is capable of being matched against an HttpServletRequest.
 
-Defines a filter chain which is capable of being matched against an HttpServletRequest.
-
-It consists of multiple filters, including:
-
-- Authentication Filters: Handle login processes and validate credentials.
-- Authorization Filters: Check whether the user has permission to access the requested resource.
-- CSRF Filters: Protect against Cross-Site Request Forgery attacks.
-- Session Management Filters: Handle session fixation and other session-related security concerns.
+- It consists of multiple filters, including:
+  1. Authentication Filters: Handle login processes and validate credentials.
+  2. Authorization Filters: Check whether the user has permission to access the requested resource.
+  3. CSRF Filters: Protect against Cross-Site Request Forgery attacks.
+  4. Session Management Filters: Handle session fixation and other session-related security concerns.
 
 Example configuration of the filter chain:
 
@@ -93,12 +87,12 @@ Example configuration of the filter chain:
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
         .authorizeRequests()
-            .antMatchers("/public/**").permitAll()  // Public URLs
-            .antMatchers("/admin/**").hasRole("ADMIN")  // Admin-only URLs
-            .anyRequest().authenticated()  // All other URLs require authentication
+            .antMatchers("/public/**").permitAll()  
+            .antMatchers("/admin/**").hasRole("ADMIN")  
+            .anyRequest().authenticated()  
             .and()
         .formLogin()
-            .loginPage("/login")  // Custom login page
+            .loginPage("/login")  
             .permitAll()
             .and()
         .logout()
@@ -109,33 +103,31 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
 }
 ```
 
-- **HttpSecurity**:- HttpSecurity is a fluent API for configuring web-based security. It allows you to define:
-
-- URL access rules (e.g., public vs. protected URLs).
-- Authentication mechanisms (e.g., form-based login, HTTP Basic authentication).
-- CSRF protection.
-- Session management policies.
+- `HttpSecurity`:- HttpSecurity is a fluent API for configuring web-based security. It allows you to define:
+  1. URL access rules (e.g., public vs. protected URLs).
+  2. Authentication mechanisms (e.g., form-based login, HTTP Basic authentication).
+  3. CSRF protection.
+  4. Session management policies.
 
 Example:
 
 ```java
 http.authorizeRequests()
-    .antMatchers("/admin/**").hasRole("ADMIN")
+    .antMatchers("/admin/**").hasRole("ADMIN")// Admin-only URLs
     .antMatchers("/user/**").hasRole("USER")
-    .antMatchers("/public/**").permitAll()
-    .anyRequest().authenticated()
+    .antMatchers("/public/**").permitAll()// Public URLs
+    .anyRequest().authenticated()// All other URLs require authentication
     .and()
-    .formLogin();
+    .formLogin();// Custom login page
 ```
 
-- **Default Security Behavior**:- If no custom configuration is provided, Spring Security Web:
+- `Default Security Behavior`:- If no custom configuration is provided, Spring Security Web:
+  1. Protects all URLs by requiring authentication.
+  2. Provides a default login page.
+  3. Enables CSRF protection.
+  4. Includes basic security headers.
 
-- Protects all URLs by requiring authentication.
-- Provides a default login page.
-- Enables CSRF protection.
-- Includes basic security headers.
-
-- **WebSecurityConfigurerAdapter (Deprecated)**:- Before Spring Security 5.7.0, developers extended WebSecurityConfigurerAdapter to customize web security. This approach has been deprecated and replaced with a more modular bean-based configuration using SecurityFilterChain.
+- `WebSecurityConfigurerAdapter (Deprecated)`:- Before Spring Security 5.7.0, developers extended WebSecurityConfigurerAdapter to customize web security. This approach has been deprecated and replaced with a more modular bean-based configuration using SecurityFilterChain.
 
 Old style (deprecated):
 
@@ -173,11 +165,10 @@ public class SecurityConfig {
 }
 ```
 
-- **Session Management**:- Spring Security Web allows you to manage session behavior:
-
-- Session Fixation Protection: Replaces the session ID after successful login.
-- Concurrent Session Control: Restricts the number of active sessions per user.
-- Stateless Sessions: Ideal for REST APIs.
+- `Session Management`:- Spring Security Web allows you to manage session behavior:
+  1. Session Fixation Protection: Replaces the session ID after successful login.
+  2. Concurrent Session Control: Restricts the number of active sessions per user.
+  3. Stateless Sessions: Ideal for REST APIs.
 
 Example:
 
@@ -186,7 +177,7 @@ http.sessionManagement()
     .sessionCreationPolicy(SessionCreationPolicy.STATELESS);  // For REST APIs
 ```
 
-- **CSRF Protection**:-Cross-Site Request Forgery (CSRF) protection is enabled by default in Spring Security Web. It prevents malicious websites from performing actions on behalf of authenticated users.
+- `CSRF Protection`:-Cross-Site Request Forgery (CSRF) protection is enabled by default in Spring Security Web. It prevents malicious websites from performing actions on behalf of authenticated users.
 
 To disable CSRF (not recommended for production):
 
@@ -196,11 +187,7 @@ http.csrf().disable();
 
 For stateless REST APIs, CSRF is typically disabled as it's unnecessary in stateless contexts.
 
-- **Security Context**
-
-The SecurityContext holds the authentication details for the currently authenticated user.
-The SecurityContext is stored in a ThreadLocal and managed by the SecurityContextPersistenceFilter.
-
+- `Security Context` - The SecurityContext holds the authentication details for the currently authenticated user.The SecurityContext is stored in a ThreadLocal and managed by the SecurityContextPersistenceFilter.
 Example of accessing the SecurityContext:
 
 ```java
@@ -208,9 +195,7 @@ Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 System.out.println("Authenticated user: " + auth.getName());
 ```
 
-- **Authentication Entry Point**
-
-The authentication entry point is triggered when a user attempts to access a secured resource without being authenticated.
+- `Authentication Entry Point` - The authentication entry point is triggered when a user attempts to access a secured resource without being authenticated.
 
 For form-based login:
 
@@ -228,9 +213,7 @@ For stateless APIs (returning 401 Unauthorized):
         });
 ```
 
-- **Custom Filters**
-
-You can add custom filters to the filter chain to extend Spring Security Web's functionality.
+- `Custom Filters` - You can add custom filters to the filter chain to extend Spring Security Web's functionality.
 
 Example:
 
@@ -245,9 +228,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
 }
 ```
 
-- **Cross-Origin Resource Sharing (CORS)**
-
-Spring Security Web integrates with CORS to allow or restrict cross-origin requests.
+- `Cross-Origin Resource Sharing (CORS)` - Spring Security Web integrates with CORS to allow or restrict cross-origin requests.
 
 Example:
   
@@ -263,6 +244,7 @@ http.cors().configurationSource(request -> {
 
 Spring Security Web is a powerful and flexible module for securing web applications. It builds on Spring Security Core to provide comprehensive security features, such as filter chains, session management, CSRF protection, and CORS support. Its modular design allows developers to easily customize and extend security configurations for any type of web application.
 
+
 ## SERVER
 
 1. SecurityWebFilterChain - Defines a filter chain which is capable of being matched against a ServerWebExchange in order to decide whether it applies to that request.
@@ -272,7 +254,7 @@ Spring Security Web is a powerful and flexible module for securing web applicati
 5. WebFilterChainProxy.DefaultWebFilterChainDecorator - A WebFilterChainProxy.WebFilterChainDecorator that uses the DefaultWebFilterChain
 6. WebFilterChainProxy.WebFilterChainDecorator - A strategy for decorating the provided filter chain with one that accounts for the SecurityFilterChain for a given request.
 7. WebFilterExchange - A composite of the ServerWebExchange and the WebFilterChain.
- -->
+
 
 -----------------
 
