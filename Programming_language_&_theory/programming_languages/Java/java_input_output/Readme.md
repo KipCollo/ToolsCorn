@@ -5,8 +5,6 @@ We use I/O (input/output) and NIO.2 (non-­blocking I/O) APIs to interact with f
 `package java.io`: Provides for system input and output through data streams, serialization and the file system. Unless otherwise noted, passing a null argument to a constructor or method in any class or interface in this package will cause a NullPointerException to be thrown. A pathname string passed as a String argument to a constructor or method in any class or interface in this package will be interpreted as described in the class specification of File.
 Java IO is an API that comes with java which is targeted at reading and writing data(input and output).The java.io package contains all classes required for input and output opertations.Most apps need to process some input and produce some output based on input.Eg read data from file or internet,and write to a file or write response back over the internet.
 
-Provides for system input and output through data streams, serialization and the file system. Unless otherwise noted, passing a null argument to a constructor or method in any class or interface in this package will cause a NullPointerException to be thrown.
-
 Java uses the concept of a stream to make I/O operation fast.The stream in the java.io package supports many data such as primitives, Object, localized characters, etc.A stream can be defined as a sequence of data. The InputStream is used to read data from a source and the OutputStream is used for writing data to a destination.
 
 Java performs I/O through streams.A stream is linked to a physical layer by java I/O system to make input and output operation in java.A stream is a sequence of data.In java stream is composed of bytes.Streams support of diff kinds of data including simple bytes,primitive data types,localized characters and objects.
@@ -109,10 +107,12 @@ Many operations can be done using both the I/O and NIO.2 libraries.
 
 ## Creating, Moving, and Deleting Files and Directories
 
+
+
 ## NIO
 
 `FileSystem`:- Provides an interface to a file system and is the factory for objects to access files and other objects in the file system.
-The default file system, obtained by invoking the FileSystems. getDefault method, provides access to the file system that is accessible to the Java virtual machine. The FileSystems class defines methods to create file systems that provide access to other types of (custom) file systems.
+The default file system, obtained by invoking the `FileSystems.getDefault` method, provides access to the file system that is accessible to the Java virtual machine. The `FileSystems` class defines methods to create file systems that provide access to other types of (custom) file systems.
 
 A FileSystem can provide read-only or read-write access to the file system. Whether or not a file system provides read-only access is established when the FileSystem is created and can be tested by invoking its isReadOnly method. Attempts to write to file stores by means of an object associated with a read-only file system throws ReadOnlyFileSystemException.
 

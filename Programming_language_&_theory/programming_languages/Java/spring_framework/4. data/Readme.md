@@ -24,6 +24,7 @@ Key Components:
 
 Use Case: Spring Data eliminates boilerplate code in Spring applications, making it easier to implement complex persistence logic.
 
+
 **Spring Data**:- Spring Data eliminates boilerplate code in Spring applications, making it easier to implement complex persistence logic.
 Spring Data’s mission is to provide a familiar and consistent, Spring-based programming model for data access while still retaining the special traits of the underlying data store.
 

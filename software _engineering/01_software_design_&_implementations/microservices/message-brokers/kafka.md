@@ -3,93 +3,69 @@
 Apache Kafka is an open-source distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications.
 
 Apache Kafka is an open source, distributed, partitioned, and replicated commit-log-based publish-subscribe messaging system, mainly designed with the following characteristics:
-1. Persistent messaging: To derive the real value from big data, any kind of information loss cannot be afforded. Apache Kafka is designed with O(1) disk
-structures that provide constant-time performance even with very large volumes of stored messages that are in the order of TBs. With Kafka, messages are persisted on
-disk as well as replicated within the cluster to prevent data loss.
-2. High throughput: Keeping big data in mind, Kafka is designed to work on commodity hardware and to handle hundreds of MBs of reads and writes per second
-from large number of clients.
-3. Distributed: Apache Kafka with its cluster-centric design explicitly supports message partitioning over Kafka servers and distributing consumption over a cluster
-of consumer machines while maintaining per-partition ordering semantics. Kafka cluster can grow elastically and transparently without any downtime.
+1. Persistent messaging: To derive the real value from big data, any kind of information loss cannot be afforded. Apache Kafka is designed with O(1) disk structures that provide constant-time performance even with very large volumes of stored messages that are in the order of TBs. With Kafka, messages are persisted on disk as well as replicated within the cluster to prevent data loss.
+2. High throughput: Keeping big data in mind, Kafka is designed to work on commodity hardware and to handle hundreds of MBs of reads and writes per second from large number of clients.
+3. Distributed: Apache Kafka with its cluster-centric design explicitly supports message partitioning over Kafka servers and distributing consumption over a cluster of consumer machines while maintaining per-partition ordering semantics. Kafka cluster can grow elastically and transparently without any downtime.
 4. Multiple client support: The Apache Kafka system supports easy integration of clients from different platforms such as Java, .NET, PHP, Ruby, and Python.
-5. Real time: Messages produced by the producer threads should be immediately visible to consumer threads; this feature is critical to event-based systems such as
-Complex Event Processing (CEP) systems.
+5. Real time: Messages produced by the producer threads should be immediately visible to consumer threads; this feature is critical to event-based systems such as Complex Event Processing (CEP) systems.
 
-Kafka provides a real-time publish-subscribe solution that overcomes the challenges of consuming the real-time and batch data volumes that may grow in order of magnitude to
-be larger than the real data. Kafka also supports parallel data loading in the Hadoop systems.
+Kafka provides a real-time publish-subscribe solution that overcomes the challenges of consuming the real-time and batch data volumes that may grow in order of magnitude to be larger than the real data. Kafka also supports parallel data loading in the Hadoop systems.
 
 `Producers and Consumers` - Kafka clients are users of the system, and there are two basic types: producers and consumers. There are also advanced client APIs—Kafka Connect API for data integration and Kafka Streams for stream processing. The advanced clients use producers and consumers as building blocks and provide higher-level functionality on top.
 
-Producers create new messages. In other publish/subscribe systems, these may be called publishers or writers. In general, a message will be produced to a specific topic.
-By default, the producer does not care what partition a specific message is written to and will balance messages over all partitions of a topic evenly. In some cases, the producer will direct messages to specific partitions. This is typically done using the message key and a partitioner that will generate a hash of the key and map it to a specific partition. This assures that all messages produced with a given key will get written to the same partition. The producer could also use a custom partitioner that follows other business rules for mapping messages to partitions.
+Producers create new messages. In other publish/subscribe systems, these may be called publishers or writers. In general, a message will be produced to a specific topic.By default, the producer does not care what partition a specific message is written to and will balance messages over all partitions of a topic evenly. In some cases, the producer will direct messages to specific partitions. This is typically done using the message key and a partitioner that will generate a hash of the key and map it to a specific partition. This assures that all messages produced with a given key will get written to the same partition. The producer could also use a custom partitioner that follows other business rules for mapping messages to partitions.
 
 Consumers read messages. In other publish/subscribe systems, these clients may be called subscribers or readers. The consumer subscribes to one or more topics and reads the messages in the order in which they were produced. The consumer keeps track of which messages it has already consumed by keeping track of the offset of messages. The offset is another bit of metadata—an integer value that continually increases—that Kafka adds to each message as it is produced. Each message in a given partition has a unique offset. By storing the offset of the last consumed message for each partition, either in Zookeeper or in Kafka itself, a consumer can stop and restart without losing its place.
-
 Consumers work as part of a consumer group, which is one or more consumers that work together to consume a topic. The group assures that each partition is only consumed by one member.
 
 `Brokers and Clusters` - A single Kafka server is called a broker. The broker receives messages from producers,assigns offsets to them, and commits the messages to storage on disk. It also services consumers, responding to fetch requests for partitions and responding with the mes‐sages that have been committed to disk. Depending on the specific hardware and its performance characteristics, a single broker can easily handle thousands of partitions and millions of messages per second.
-
-Kafka brokers are designed to operate as part of a cluster. Within a cluster of brokers, one broker will also function as the cluster controller (elected automatically from the
-live members of the cluster). The controller is responsible for administrative operations, including assigning partitions to brokers and monitoring for broker failures. A
-partition is owned by a single broker in the cluster, and that broker is called the leader of the partition. A partition may be assigned to multiple brokers, which will result in the partition being replicated
-This provides redundancy of messages in the partition, such that another broker can take over leadership if there is a broker failure. However, all consumers and producers operating on that partition must connect to the leader.
-
-A key feature of Apache Kafka is that of retention, which is the durable storage of messages for some period of time. Kafka brokers are configured with a default retention setting for topics, either retaining messages for some period of time (e.g., 7 days) or until the topic reaches a certain size in bytes (e.g., 1 GB). Once these limits are reached, messages are expired and deleted so that the retention configuration is a minimum amount of data available at any time. Individual topics can also be configured with their own retention settings so that messages are stored for only as long as they are useful. For example, a tracking topic might be retained for several days,
-whereas application metrics might be retained for only a few hours. Topics can also be configured as log compacted, which means that Kafka will retain only the last message produced with a specific key.
+Kafka brokers are servers with special jobs to do: managing the load balancing,replication and stream decoupling within kafka cluster.In order to start a kafka cluster,the developer authenticates to a bootsrap server.These are the fisrt servers in the cluster.Then, the brokers also balance the load and handle replication.
 
 Within the context of Kafka,a cluster is a group of brokers/servers working together for three reasons: speed(low lwtency),durability and scalability.Several data streams can be processed by separate servers,which decreases the latency of data delivery.Data is replicated across multiple servers,so if one fails, another server has the data backed up,ensuring stability.Kafka also load balances across multiple servers to provide scalability.
 
-Kafka brokers are servers with special jobs to do: managing the load balancing,replication and stream decoupling within kafka cluster.In order to start a kafka cluster,the developer authenticates to a bootsrap server.These are the fisrt servers in the cluster.Then, the brokers also balance the load and handle replication.
+Kafka brokers are designed to operate as part of a cluster. Within a cluster of brokers, one broker will also function as the cluster controller (elected automatically from the live members of the cluster). The controller is responsible for administrative operations, including assigning partitions to brokers and monitoring for broker failures. A partition is owned by a single broker in the cluster, and that broker is called the leader of the partition. A partition may be assigned to multiple brokers, which will result in the partition being replicated. This provides redundancy of messages in the partition, such that another broker can take over leadership if there is a broker failure. However, all consumers and producers operating on that partition must connect to the leader.
+
+A key feature of Apache Kafka is that of retention, which is the durable storage of messages for some period of time. Kafka brokers are configured with a default retention setting for topics, either retaining messages for some period of time (e.g., 7 days) or until the topic reaches a certain size in bytes (e.g., 1 GB). Once these limits are reached, messages are expired and deleted so that the retention configuration is a minimum amount of data available at any time. Individual topics can also be configured with their own retention settings so that messages are stored for only as long as they are useful. For example, a tracking topic might be retained for several days, whereas application metrics might be retained for only a few hours. Topics can also be configured as log compacted, which means that Kafka will retain only the last message produced with a specific key.
 
 `Multiple Clusters` - As Kafka deployments grow, it is often advantageous to have multiple clusters. There are several reasons why this can be useful:
-• Segregation of types of data
-• Isolation for security requirements
-• Multiple datacenters (disaster recovery)
+1. Segregation of types of data
+2. Isolation for security requirements
+3. Multiple datacenters (disaster recovery)
 
-When working with multiple datacenters in particular, it is often required that messages be copied between them. In this way, online applications can have access to user
-activity at both sites. For example, if a user changes public information in their profile, that change will need to be visible regardless of the datacenter in which search
-results are displayed. Or, monitoring data can be collected from many sites into a single central location where the analysis and alerting systems are hosted. The replication mechanisms within the Kafka clusters are designed only to work within a single cluster, not between multiple clusters.
+When working with multiple datacenters in particular, it is often required that messages be copied between them. In this way, online applications can have access to user activity at both sites. For example, if a user changes public information in their profile, that change will need to be visible regardless of the datacenter in which search results are displayed. Or, monitoring data can be collected from many sites into a single central location where the analysis and alerting systems are hosted. The replication mechanisms within the Kafka clusters are designed only to work within a single cluster, not between multiple clusters.
 The Kafka project includes a tool called MirrorMaker, used for this purpose. At its core, MirrorMaker is simply a Kafka consumer and producer, linked together with a queue. Messages are consumed from one Kafka cluster and produced for another.
+
 
 ## Kafka Cluster
 
 With Kafka, we can create multiple types of clusters, such as the following:
 
-1. A single node—single broker cluster
-2. A single node—multiple broker clusters
-3. Multiple nodes—multiple broker clusters
+1. A single node — single broker cluster.
+2. A single node — multiple broker clusters.
+3. Multiple nodes — multiple broker clusters.
 
 A Kafka cluster primarily has five main components:
 
-`Topic`: A topic is a category or feed name to which messages are published by the message producers and from which records are consumed by consumers. In Kafka, topics are partitioned and each partition is represented by the ordered immutable sequence of messages. A Kafka cluster maintains the partitioned log for each topic. Each message in the partition is assigned a unique sequential ID called the offset.They serve as a way to organize and categorize the streams of messages within kafka messaging system.
+- `Topic`: A topic is a category or feed name to which messages are published by the message producers and from which records are consumed by consumers. In Kafka, topics are partitioned and each partition is represented by the ordered immutable sequence of messages. A Kafka cluster maintains the partitioned log for each topic. Each message in the partition is assigned a unique sequential ID called the offset.They serve as a way to organize and categorize the streams of messages within kafka messaging system.
+- `Broker`: A Kafka cluster consists of one or more servers where each one may have one or more server processes running and is called the broker. Topics are created within the context of broker processes.
+- `Producers`: Producers publish data to the topics by choosing the appropriate partition within the topic. For load balancing, the allocation of messages to the topic partition can be done in a round-robin fashion or using a custom defined function.
+- `Consumer`: Consumers are the applications or processes that subscribe to topics and process the feed of published messages.
+- `Zookeeper`: ZooKeeper serves as the coordination interface between the Kafka broker and consumers.
+- `partition`:- A partition is a basic unit of parallelism and scalability.It is a way of horizontally dividing a topic into multiple independently managed units.Each partition is a strictly ordered,immutable sequence of records,and it plays a major role in the distribution,parallel processing and fault tolerance of data within a cluster.
+- `offset`: It is a sequence of ids given to messages as they arrive at a partition.Once the offset is assigned,it will never be changed.The first message gets an offset zero(0).The next offset one(1) and so on..
 
-`Broker`: A Kafka cluster consists of one or more servers where each one may have one or more server processes running and is called the broker. Topics are created
-within the context of broker processes.
-
-`Producers`: Producers publish data to the topics by choosing the appropriate partition within the topic. For load balancing, the allocation of messages to the topic partition can be done in a round-robin fashion or using a custom defined function.
-
-`Consumer`: Consumers are the applications or processes that subscribe to topics and process the feed of published messages.
-
-`Zookeeper`: ZooKeeper serves as the coordination interface between the Kafka broker and consumers.
-
-`partition`:- A partition is a basic unit of parallelism and scalability.It is a way of horizontally dividing a topic into multiple independently managed units.Each partition is a strictly ordered,immutable sequence of records,and it plays a major role in the distribution,parallel processing and fault tolerance of data within a cluster.
-
-`offset`: It is a sequence of ids given to messages as they arrive at a partition.Once the offset is assigned,it will never be changed.The first message gets an offset zero(0).The next offset one(1) and so on..
 
 ## Kafka Producers: Writing Messages to Kafka
 
-Whether you use Kafka as a queue, message bus, or data storage platform, you will always use Kafka by writing a producer that writes data to Kafka, a consumer that
-reads data from Kafka, or an application that serves both roles.
-Apache Kafka ships with built-in client APIs that developers can use when developing applications that interact with Kafka.
+Whether you use Kafka as a queue, message bus, or data storage platform, you will always use Kafka by writing a producer that writes data to Kafka, a consumer that reads data from Kafka, or an application that serves both roles.
 
-Third-Party Clients - In addition to the built-in clients, Kafka has a binary wire protocol.This means that it is possible for applications to read messages
-from Kafka or write messages to Kafka simply by sending the correct byte sequences to Kafka’s network port. There are multiple clients that implement Kafka’s wire protocol in different programming languages, giving simple ways to use Kafka not just in Java applications but also in languages like C++, Python, Go, and many more. Those clients are not part of Apache Kafka project, but a list of non-Java clients is maintained in the project wiki.
+Apache Kafka ships with built-in client APIs that developers can use when developing applications that interact with Kafka.
+Third-Party Clients - In addition to the built-in clients, Kafka has a binary wire protocol.This means that it is possible for applications to read messages from Kafka or write messages to Kafka simply by sending the correct byte sequences to Kafka’s network port. There are multiple clients that implement Kafka’s wire protocol in different programming languages, giving simple ways to use Kafka not just in Java applications but also in languages like C++, Python, Go, and many more. Those clients are not part of Apache Kafka project, but a list of non-Java clients is maintained in the project wiki.
 
 There are many reasons an application might need to write messages to Kafka:- recording user activities for auditing or analysis, recording metrics, storing log messages, recording information from smart appliances, communicating asynchronously with other applications, buffering information before writing to a database, and much more.
 
 1. We start producing messages to Kafka by creating a `ProducerRecord`, which must include the `topic` we want to send the record to and a value. Optionally, we can also specify a key and/or a partition. Once we send the ProducerRecord, the first thing the producer will do is serialize the key and value objects to ByteArrays so they can be sent over the network.
-2. Next, the data is sent to a partitioner. If we specified a partition in the ProducerRecord, the partitioner doesn’t do anything and simply returns the partition
-we specified. If we didn’t, the partitioner will choose a partition for us, usually based on the ProducerRecord key. Once a partition is selected, the producer knows which
-topic and partition the record will go to. It then adds the record to a batch of records that will also be sent to the same topic and partition. A separate thread is responsible for sending those batches of records to the appropriate Kafka brokers.
+2. Next, the data is sent to a partitioner. If we specified a partition in the ProducerRecord, the partitioner doesn’t do anything and simply returns the partition we specified. If we didn’t, the partitioner will choose a partition for us, usually based on the ProducerRecord key. Once a partition is selected, the producer knows which topic and partition the record will go to. It then adds the record to a batch of records that will also be sent to the same topic and partition. A separate thread is responsible for sending those batches of records to the appropriate Kafka brokers.
 3. When the broker receives the messages, it sends back a response. If the messages were successfully written to Kafka, it will return a RecordMetadata object with the topic, partition, and the offset of the record within the partition. If the broker failed to write the messages, it will return an error. When the producer receives an error, it may retry sending the message a few more times before giving up and returning an error.
 
 `Constructing a Kafka Producer`:- The first step in writing messages to Kafka is to create a producer object with the properties you want to pass to the producer. A Kafka producer has three mandatory properties:

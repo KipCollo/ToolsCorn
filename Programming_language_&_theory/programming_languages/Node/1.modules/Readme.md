@@ -4,6 +4,9 @@ We split our code into different files to maintain, organize and reuse code when
 
 A module in Node.js is a collection of independent and reusable code that can be imported into any Node.js application. The Node.js runtime software comes with the V8 JavaScript engine, bundled with a number of core modules, that perform important server-side tasks, such as managing event loop, perform file IO and operating system-specific functions etc.
 
+
+*Nodejs common modules* - These are the common modules that come with `Node.js` out of the box. This module provides tools or APIs for performing out certain standard `Node.js` operations. like interacting with the file system, url parsing, or logging information to the console.Built-in modules are already installed with `Node.js`, so you don't need to install them with any package manager (yarn, npm, etc.).
+
 command that lists all the built-in modules:
 
 ```js
@@ -34,14 +37,6 @@ console.log(builtinModules);
 ```
 
 
-# Nodejs common modules
-
-These are the common modules that come with `Node.js` out of the box. This module provides tools or APIs for performing out certain standard `Node.js` operations. like interacting with the file system, url parsing, or logging information to the console.
-
-# Builtin modules
-
-Built-in modules are already installed with `Node.js`, so you don't need to install them with any package manager (yarn, npm, etc.).
-
 - **fs**: dealing with the system files.Provides functions for working with files and directories.
 - **os**: provides information about the operation system.
 - **net**: to build clients and servers.Provides low-level networking functionality.
@@ -65,6 +60,155 @@ Built-in modules are already installed with `Node.js`, so you don't need to inst
 - **string_decoder**: provides an API for decoding Buffer objects into strings.
 - **tls**: provides an implementation of the Transport Layer Security (TLS) and Secure Socket Layer (SSL) protocols.
 - **stream**: Provides a basic framework for working with streams of data.
+
+
+## Working with Files
+
+You can programmatically manipulate files in Node.js with the built-in `fs` module. The name is short for “file system,” and the module contains all the functions you need to read, write, and delete files on the local machine.
+
+`Fs module` - File System or fs module is a built in module in Node that enables interacting with the file system using JavaScript. All file system operations have synchronous, callback, and promise-based forms, and are accessible using both CommonJS syntax and ES6 Modules.
+`path module` - The `path` module provides utilities for working with file and directory paths. It's built-in to Node.js core and can simply be used by requiring it.
+
+process.cwd() - The `process.cwd()` method returns the current working directory of the Node.js process.
+
+
+*Glob* - The glob pattern is most commonly used to specify filenames, called wildcard characters, and strings, called wildcard matching.
+- \_\_dirname - The `__dirname` in a node script returns the path of the folder where the current JavaScript file resides. `__filename` and `__dirname` are used to get the filename and directory name of the currently executing file.
+- \_\_filename - The `__filename` in Node.js returns the filename of the executed code. It gives the absolute path of the code file. The following approach covers implementing `__filename` in the Node.js project.
+
+```js
+const os = require('node:fs')
+
+var cpu = os.readdirSync('../')
+console.log(cpu)
+
+var cpu = os.readdir('../',function(err,files)){
+   if(err) console.log('Error', err);
+   else console.log('Result', files);
+}
+console.log(cpu)
+```
+
+
+## Http module
+
+Used when creating network applications i.e creating server eg web server.On a web server, the HTTP server is responsible for processing and answering incoming requests. Upon receiving a request, an HTTP server checks if the requested URL matches an existing file. If so, the web server sends the file content back to the browser.
+
+Most of the web servers support server-side scripts, using scripting languages or redirecting the task to an application server which retrieves data from a database and performs complex logic and then sends a result to the HTTP client through the Web server.
+
+CLIENT---->WEB SERVER------->APP SERVER(communicate by FILE SYSTEM)------>DATABASE(or EXTERNAL SYSTEM)
+
+1. Client - This layer consists of web browsers, mobile browsers or applications which can make HTTP requests to the web server.
+2. Server - This layer has the Web server which can intercept the requests made by the clients and pass them the response.
+3. Business - This layer contains the application server which is utilized by the web server to do the required processing. This layer interacts with the data layer via
+the database or some external programs.
+4. Data - This layer contains the databases or any other source of data.
+
+*Creating WEB SERVER* - 
+
+1. Loading the module -const http = require('http');
+2. CREATE A SERVER- We use http instance created and call createServer() method. **http.createServer()**.
+3. We then bind it to port using listen() method
+
+```js
+const http = require('http');
+const server =  http.createServer();
+server.listen(3000);
+
+//Shorthand way:
+http.createServer().listen(3000)
+
+//ROUTING
+if(requestAnimationFrame.url==='/some/path'){
+  //response
+}
+```
+
+```js
+const http = require('http')
+
+http.createServer((req,res)=>{
+
+    if (req.url==='/api/home') {
+        res.writeHead(200,{'content-type':'text/html'})
+        res.write("This is homepage..")
+        res.end()
+    }
+
+    if(req.url ==='/api'){
+      res.write(JSON.stringify([1,2,3]))
+      res.end()
+    }
+}).listen(3000)
+```
+
+
+## OS module
+
+The node:os module provides operating system-related utility methods and properties. It can be accessed using:
+
+```js
+const os = require('node:os');
+```
+
+```js
+const os = require('node:os')
+
+var cpu = os.networkInterfaces()
+console.log(cpu)
+
+var cpu = os.machine()
+console.log(cpu)
+
+var cpu = os.cpus()
+console.log(cpu)
+```
+
+
+## Path module
+
+The `node:path` module provides utilities for working with file and directory paths. It can be accessed using:
+
+```js
+const path = require('node:path');
+```
+
+*Methods* - The path.dirname() method returns the directory name of a path, similar to the Unix dirname command. Trailing directory separators are ignored, see path.sep.
+The path.extname() method returns the extension of the path, from the last occurrence of the . (period) character to end of string in the last portion of the path. If there is no . in the last portion of the path, or if there are no . characters other than the first character of the basename of path (see path.basename()) , an empty string is returned.
+
+
+## Events
+
+```js
+const EventEmitter = require("events");
+const eventEmitter = new EventEmitter();
+
+eventEmitter.on('tutorial',(num1,num2)=>{
+   console.log("Tutorial event occurred..")
+   console.log(num1 + num2);
+})
+
+eventEmitter.emit('tutorial',1,2);
+
+class Person extends EventEmitter{
+   constructor(name){
+      super();
+      this._name = name;
+   }
+
+   get name(){
+      return this._name
+   }
+}
+
+let collo = new Person('Collo')
+collo.on('name',()=>{
+   console.log(`My name is ${collo.name}`)
+})
+
+collo.emit('name')
+```
+
 
 ## global keyword
 
@@ -132,3 +276,68 @@ handle events. Several built-in classes in Node derive from EventEmitter.
 - To create a class with the ability to raise events, we should extend EventEmitter:
 class Logger extends EventEmitter {
 }
+
+
+---
+
+## Custom modules
+
+Modules are the collection of JavaScript codes in a separate logical file that can be used in external applications based on their related functionality. There are two ways to create modules in Node.js i.e. either via CommonJS or ESM.
+
+```js
+//sum.js
+const add = (num1,num2)=> num1 + num2;
+
+module.exports = add
+```
+
+```js
+//cust.js
+const add = (num1,num2)=> num1 + num2;
+const PI  =3.14;
+class MathsObj{
+  constructor(){
+    console.log("Math obj")
+  }
+}
+module.exports.add = add;
+module.exports.PI= PI;
+module.exports.MathsObj = MathsObj;
+
+//Alternative to export
+module.exports ={ sum: sum, PI : PI, MathsObj: MathsObj}
+```
+
+```js
+
+const sum = require('./sum');
+const cust =require('./cust');
+sum(1,3)
+cust.add(2,9)
+cust.PI;
+new cust.MathsObj();
+```
+
+
+```js
+const sub =(num1,num2)=> num1 - num2
+const PI= 3.14;
+class Calculate{
+   constructor(){
+      console.log("Calculate obj....")
+   }
+}
+
+module.exports.sub =sub;
+module.exports.PI=PI
+module.exports.Calculate = Calculate;
+```
+
+```js
+const mats = require("./mats")
+const cust =require("./cust")
+console.log(mats(1,3))
+console.log(cust.PI)
+console.log(cust.sub(5,3))
+new cust.Calculate()
+```

@@ -1,8 +1,8 @@
 # Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. A web framework provides a structure and starting point for creating your application, allowing you to focus on creating something amazing while we sweat the details.
-
 Laravel strives to provide an amazing developer experience while providing powerful features such as thorough dependency injection, an expressive database abstraction layer, queues and scheduled jobs, unit and integration testing, and more.
+
 
 ## Installation
 
@@ -27,7 +27,7 @@ npm install && npm run build
 composer run dev
 ```
 
-**Herd** is a blazing fast, native Laravel and PHP development environment for macOS and Windows. It provides everything that you need to get started with Laravel development. It ships with PHP, nginx, dnsmasq and Node.js.
+*Laravel Herd* is a blazing fast, native Laravel and PHP development environment for macOS and Windows. It provides everything that you need to get started with Laravel development. It ships with PHP, nginx, dnsmasq and Node.js.
 Herd uses native binaries for PHP, nginx, and other services, making it faster than other PHP development environments.Herd includes binaries for Composer, the Laravel installer, and Expose, making them available to your CLI automatically.
 Herd provides everything that you need to get started with Laravel development for free but it offers great capabilities with Herd Pro.
 Herd comes with PHP 7.4 - 8.4, and you can switch between these versions in seconds. Herd even lets you pin sites to specific PHP versions.Herd keeps all of your PHP installations up to date and notifies you about new updates in time.
@@ -36,9 +36,14 @@ Laravel Herd is a blazing fast, native Laravel and PHP development environment f
 Once you install Herd, you're ready to start developing with Laravel. Herd includes command line tools for php, composer, laravel, expose, node, npm, and nvm.
 Herd Pro augments Herd with additional powerful features, such as the ability to create and manage local MySQL, Postgres, and Redis databases, as well as local mail viewing and log monitoring.
 
+- *laragon*
+- *XAMPP*
+
+
 **IDE Support**:- You are free to use any code editor you wish when developing Laravel applications; however, PhpStorm offers extensive support for Laravel and its ecosystem, including Laravel Pint.
 In addition, the community maintained Laravel Idea PhpStorm plugin offers a variety of helpful IDE augmentations, including code generation, Eloquent syntax completion, validation rule completion, and more.
 If you develop in Visual Studio Code (VS Code), the official Laravel VS Code Extension is now available. This extension brings Laravel-specific tools directly into your VS Code environment, enhancing productivity.
+
 
 ## Starter Kits
 
@@ -56,7 +61,7 @@ Jetstream provides a beautifully designed application scaffolding for Laravel an
 
 The default Laravel application structure is intended to provide a great starting point for both large and small applications. But you are free to organize your application however you like. Laravel imposes almost no restrictions on where any given class is located - as long as Composer can autoload the class.
 
-* The Root Directory
+*The Root Directory* -
 
 1. The app Directory-The app directory contains the core code of your application,almost all of the classes in your application will be in this directory.
 2. The bootstrap Directory-The bootstrap directory contains the app.php file which bootstraps the framework. This directory also houses a cache directory which contains framework generated files for performance optimization such as the route and services cache files.
@@ -69,7 +74,7 @@ The default Laravel application structure is intended to provide a great startin
 9. The tests Directory-The tests directory contains your automated tests. Example Pest or PHPUnit unit tests and feature tests are provided out of the box. Each test class should be suffixed with the word Test. You may run your tests using the /vendor/bin/pest or /vendor/bin/phpunit commands. Or, if you would like a more detailed and beautiful representation of your test results, you may run your tests using the php artisan test Artisan command.
 10. The vendor Directory-The vendor directory contains your Composer dependencies.
 
-The App Directory-The majority of your application is housed in the app directory. By default, this directory is namespaced under App and is autoloaded by Composer using the PSR-4 autoloading standard.
+*The App Directory*-The majority of your application is housed in the app directory. By default, this directory is namespaced under App and is autoloaded by Composer using the PSR-4 autoloading standard.
 
 1. The Broadcasting Directory-The Broadcasting directory contains all of the broadcast channel classes for your application. These classes are generated using the make:channel command. This directory does not exist by default, but will be created for you when you create your first channel.
 2. The Console Directory-The Console directory contains all of the custom Artisan commands for your application. These commands may be generated using the make:command command.

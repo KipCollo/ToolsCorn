@@ -151,7 +151,6 @@ System.out.println(myString.equals("Snake")); // false
 ## Functional interfaces
 
 Functional interfaces is an interface with single abstract method(SAM).It is used to invoke Lambda Expressions.
-
 It can have any no. of default methods and static methods.
 
 Example

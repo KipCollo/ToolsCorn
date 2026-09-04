@@ -1,12 +1,11 @@
 # Terraform
 
-`Terraform` is a powerful tool designed by HashiCorp that helps you set up, manage, and update infrastructure safely and efficiently across various cloud providers. Think of it as a way to define your cloud resources—like servers, storage, and networks—using a simple code format. This makes it easier to automate, share, and manage your infrastructure, ensuring that everything is consistent and can be quickly reproduced or modified as needed.
+`Terraform` is a powerful open source IaC tool designed by HashiCorp that helps you set up, manage, and update infrastructure safely and efficiently in both cloud and on-prem resources in human-readable configuration files. Think of it as a way to define your cloud resources—like servers, storage, and networks—using a simple code format. This makes it easier to automate, share, and manage your infrastructure, ensuring that everything is consistent and can be quickly reproduced or modified as needed.
 
 Terraform is an infrastructure automation tool developed by HashiCorp and it is written in the Go programming language. It is the first multi-cloud infrastructure tool that allows the user to automate and set up infrastructure elements from several cloud vendors simultaneously, as well as custom in-house solutions.
+It lets you build, change, and version infrastructure safely and efficiently This includes low-level components like compute instances, storage, and networking; and high-level components like DNS entries and SaaS features.
 
-Terraform is an infrastructure as code tool that lets you build, change, and version infrastructure safely and efficiently. This includes low-level components like compute instances, storage, and networking; and high-level components like DNS entries and SaaS features.
-
-Terraform is a powerful open source IaC tool that lets you define your infrastructure in human-readable configuration files. Instead of manually clicking through clunky web interfaces, you write code that describes the infrastructure you need. This code essentially becomes a blueprint for your infrastructure, allowing you to:
+Instead of manually clicking through clunky web interfaces, you write code that describes the infrastructure you need. This code essentially becomes a blueprint for your infrastructure, allowing you to:
 
 1. Provision and manage infrastructure across multiple cloud providers like AWS, Azure, GCP, and even on-premises data centers.
 2. Automate infrastructure changes in a safe and reliable way. No more manual errors or configuration drift.
@@ -21,31 +20,21 @@ By leveraging the power of Terraform, you can:
 - Achieve consistency - With Terraform, your infrastructure is defined as code, ensuring consistency and repeatability across different environments.
 - Embrace reusability - Terraform modules allow you to build reusable infrastructure components, saving you time and effort in the long run.
 
-Real-world examples of using Terraform:
-
-1. A startup wants to launch a new web application with a database and load balancer. Using Terraform, they can define the entire infrastructure in a single configuration file, provision it automatically, and easily scale it up as needed.
-2. A large organization needs to manage a complex infrastructure across multiple cloud providers. Terraform can help them manage all their infrastructure from a single platform, ensuring consistency and compliance.
-3. A team of developers wants to deploy a new microservice architecture. They can use Terraform to define the infrastructure for each microservice as a Terraform module, simplifying deployment and management.
-
-Terraform describes the infrastructure through the configuration files which are written in its own developed domain-specific language called Hashicorp Configuration Language (HCL). These files are compatible to JSON and are used to deploy the requested resources. These files can be easily shared and reused to create the same environment elsewhere.
+Terraform describes the infrastructure through the configuration files which are written in its own developed domain-specific language called `Hashicorp Configuration Language (HCL)`.It’s a language invented by HashiCorp as a substitute for more verbose configuration languages like JSON and XML. HCL attempts to strike a balance between human and machine readability and was influenced by earlier attempts in the field, such as libucl and Nginx configuration. HCL is fully compatible with JSON, which means HCL can be converted 1:1 to JSON and vice versa. This makes it easy to interoperate with systems outside of Terraform or generate configuration code on the fly. These files are compatible to JSON and are used to deploy the requested resources. These files can be easily shared and reused to create the same environment elsewhere.You can then use a consistent workflow to provision and manage all of your infrastructure throughout its lifecycle
 
 Terraform also provides execution plans, which describe the procedure that is followed in order to reach the desired state of the infrastructure. The execution plan first gives an overview of that happens by the time it is called and then Terraform actually sets up the infrastructure by executing this plan. In addition, Terraform is able to create a graph of the infrastructure resources by parallelizing the creation and modification of any non-dependent resource. The use of the execution plan combined with the produced resource graph provides more automation towards changes with less human involvement, as the user has more insight on the Terraform’s functionality, avoiding possible human errors.
 
 Terraform stores the state of the managed infrastructure in a local file called `terraform.tfstate`. This file can also be stored remotely which is useful when working in a remotely distributed team. This local state is used to create the execution plans and make the necessary infrastructure changes. After each performed operation, Terraform refreshes the state in order to match the actual real time infrastructure.
 
 Terraform is an infrastructure provisioning tool, not a CM tool. Provisioning tools deploy and manage infrastructure, whereas CM tools like Ansible, Puppet, SaltStack, and Chef deploy software onto existing servers. Some CM tools can also perform a degree of infrastructure provisioning, but not as well as Terraform, because this isn’t the task they were originally designed to do.
-The difference between CM and provisioning tools is a matter of philosophy. CM tools favor mutable infrastructure, whereas Terraform and other provisioning tools
-favor immutable infrastructure.
-Mutable infrastructure means you perform software updates on existing servers.Immutable infrastructure, by contrast, doesn’t care about existing servers—it treats infrastructure as a disposable commodity. The difference between the two paradigms can be summarized as a reusable versus disposable mentality.
-
-The main reason Terraform is so easy to use is that the code is written in a domain-specific configuration language called HashiCorp Configuration Language (HCL). It’s a language invented by HashiCorp as a substitute for more verbose configuration languages like JSON and XML. HCL attempts to strike a balance between human and machine readability and was influenced by earlier attempts in the field, such as libucl and Nginx configuration. HCL is fully compatible with JSON, which means HCL can be converted 1:1 to JSON and vice versa. This makes it easy to interoperate with systems outside of Terraform or generate configuration code on the fly.
-
-Terraform allows us to automate and manage infrastructure,platform and services that run on that platform.
-
-HashiCorp Terraform is an infrastructure as code tool that lets you define both cloud and on-prem resources in human-readable configuration files that you can version, reuse, and share. You can then use a consistent workflow to provision and manage all of your infrastructure throughout its lifecycle. Terraform can manage low-level components like compute, storage, and networking resources, as well as high-level components like DNS entries and SaaS features
+The difference between CM and provisioning tools is a matter of philosophy. CM tools favor mutable infrastructure, whereas Terraform and other provisioning tools favor immutable infrastructure.Mutable infrastructure means you perform software updates on existing servers.Immutable infrastructure, by contrast, doesn’t care about existing servers—it treats infrastructure as a disposable commodity. The difference between the two paradigms can be summarized as a reusable versus disposable mentality.
 
 
 ## Installation
+
+There are two ways to install terraform:-
+1. Binary Package(Manual).
+2. Pakage Managers(automatic).
 
 Using tfenv
 
@@ -68,6 +57,12 @@ terraform
 terraform --help
 terraform --version
 terraform version
+```
+
+*Autocomplete feature*:-
+
+```sh
+terraform -install install-autocomplete
 ```
 
 
@@ -240,71 +235,16 @@ The configuration of a cluster in Terraform is shown in Figure 14 and it include
 5. Keypair: Used for the secure communication between the cluster nodes (e.g., ssh key pair).
 
 
-## Files
-
-1. terraform.tf - Terraform provider configurations. i.e dependencies.
-2. main.tf - Resource definitions.
-3. variables.tf - Defines terraform variables we are using.
-
-```terraform.tf
-terraform {
-   required_providers {
-      aws = {
-         source = "hashicorp/aws"
-         version = "~> 4.66.0"
-      }
-      random = {
-         source = "hashicorp/random"
-         version = "~ 3.5.0"
-      }
-      archive = {
-         resource = "hashicorp/archive"
-         version = "~ 2.3.0"
-      }
-   }
-
-   required_version = "~> 1.4"
-}
-```
-
-```variable.tf
-variable "aws_region" {
-   description = "AWS region for all resources."
-
-   type = string
-   default = "us-east-1"
-}
-```
-
-```main.tf
-provider "aws" {
-   region = var.aws_region
-}
-
-data "aws_caller_identity" "current" {}
-
-resource "random_pot" "lambda_bucket_name" {
-   prefix = "dreamsofcode"
-   lenght = 4
-}
-
-resource "aws_s3_bucket" "resource_name"{
-   bucket = random_pet.lambda_bucket_name.id
-}
-```
-
-
 ## Terraform Registry
 
 The Terraform Registry is a centralized repository for discovering, sharing, and using Terraform modules and providers. It allows users to browse and download pre-built configurations, enabling quick integration of best practices. The registry supports versioning, ensuring consistent deployments, and includes detailed documentation for each module and provider. Users can also publish their own modules to the registry, facilitating community collaboration and reuse.
 
-`Terraform Registry` - It stores providers of publicly available.
+`Terraform Registry` - It stores providers that are publicly available.
 
 
 ## Terraform syntax
 
-Terraform configurations can be either in the native Terraform Language syntax(.tf) or in JSON compatible format(.tf.json).Both are defined in terms of a specification called HCL(Hashicorp Configuration Language).
-
+Terraform configurations can be either in the native `Terraform Language syntax(.tf)` or in `JSON compatible format(.tf.json)`.Both are defined in terms of a specification called HCL(Hashicorp Configuration Language).
 HashiCorp Configuration Language (HCL) is a configuration language built by HashiCorp that is used for configuring products in the HashiCorp ecosystem. With its human-readable style, HCL is designed to strike a balance between a generic configuration language like JSON or YAML and a high-level scripting language. In relation to the Terraform Roadmap, HCL is the primary language used for writing Terraform configuration files, thus making it a fundamental part of defining and providing data center infrastructure in a descriptive manner.
 
 `HCL, or HashiCorp Configuration Language`, is a human-readable language for DevOps tools. It is used to code infrastructure management and service orchestration in a clear and manageable way. Several HashiCorp products, including Terraform, use HCL as their primary configuration language. Terraform uses HCL to provision and manage cloud resources efficiently. Its clear syntax and structure are instrumental in creating resource modules and configurations that align with the Terraform Roadmap's goals for providing a seamless, user-friendly platform for infrastructure as code.
@@ -321,26 +261,6 @@ Terraform syntax comments includes:-
 `/*--*/`:- Multiline comment.
 
 
-## Project Initialization
-
-Project initialization in Terraform involves setting up the necessary configuration files and directory structure for managing infrastructure as code. The `terraform init` command is crucial in this process, as it initializes the working directory, downloads the required provider plugins, and sets up the backend configuration for storing state files. This command ensures that the project is correctly configured and ready for subsequent Terraform commands, laying the foundation for efficient and organized infrastructure management.
-
-
-The terraform workflow has 3 core steps:-
-
-1. Writing configurations.
-2. Plan/preview the changes before applying changes.
-3. Apply to provision resources.
-
-## Writing Configurations
-
-Terraform uses a modular approach.
-A terraform module is a directory that contains one or more config files(.tf).This module can call other modules and connect them together.
-
-Terraform reads from configuration files to deploy infrastructure. To tell Terraform we want it to deploy an EC2 instance, we need to declare an EC2 instance as code.
-Start by creating a new file named main.tf with the contents from the following listing. The .tf extension signifies that it’s a Terraform configuration file. When Terraform runs, it will read all files in the working directory that have a .tf extension and concatenate them together.
-
-
 **Providers** - Terraform Providers are plugins that enable interaction with various external APIs. They manage the lifecycle of resources by defining resource types and data sources. Each provider requires configuration, typically including authentication details and endpoint URLs. Providers are specified in the `provider` block, and multiple providers can be used in a single Terraform project to manage resources across different platforms.
 
 `Terraform Providers`:- They are logical abstraction of an upstream API.They are responsible for understanding API interactions and exposing resources.They are plugins that terraform uses to create and manage resources on a specific infrastructure.They usually provides resources to manage a single cloud or infrasturucture platform.
@@ -354,15 +274,21 @@ Provider configurations belong to the root module of a Terraform project,Therefo
 Configuring providers in Terraform involves specifying the required provider in the `provider` block within your Terraform configuration files. This block includes settings such as authentication credentials, region, and other provider-specific parameters. Providers must be initialized using `terraform init` to download and install the necessary plugins. Multiple configurations can be managed by aliasing providers, enabling resource management across different environments or accounts within the same provider.
 
 ```main.tf
-provider "provider-name" {
-
-}
+provider "provider-name" {}
 ```
 
-You place the name of the provider in the provider-name part.i.e aws.The provider should already be included in the `required_provider` blocks.
-The body of the block contains the argument of the providers.Most arguments are defined by the provider itself.
-Meta-arguments in Terraform resources provide additional control over how resources are managed and interact within the configuration.
+You place the name of the provider in the provider-name part.i.e aws.The provider should already be included in the `required_provider` blocks.The body of the block contains the argument of the providers.Most arguments are defined by the provider itself.Meta-arguments in Terraform resources provide additional control over how resources are managed and interact within the configuration.
 
+```tf
+terraform{
+   required_providers {
+      aws = {
+         source = "hashicorp/aws"
+         version = "~>3.0"
+      }
+   }
+}
+```
 
 **Terraform Resources** - Resources represent components of your infrastructure such as Virtual Machines, Storage Buckets, Databases or Virtual Private Clouds. Access to provider resources comes after successful project initalization after declaring your desired providers.
 
@@ -383,7 +309,7 @@ resource "<PROVIDER>_<RESOURCE_TYPE>" "<RESOURCE_NAME>" {
 - <CONFIGURATION>:- A set of arguments that specify how the resource should be configured.
 
 
-**Variables in Terraform** - Variables in Terraform allow you to parameterize your configuration files. Instead of hardcoding values, you can define variables and use them throughout your configuration. This makes your code more modular and reusable, especially when working across different environments such as development, staging, and production.
+**Variables** - Variables in Terraform allow you to parameterize your configuration files. Instead of hardcoding values, you can define variables and use them throughout your configuration. This makes your code more modular and reusable, especially when working across different environments such as development, staging, and production.
 
 Terraform input variables are parameters for modules, declared using variable blocks. They support multiple data types, default values, and descriptions. Users provide values when invoking modules or running Terraform. Accessed via `var.<name>` syntax, input variables enable flexible, reusable infrastructure templates adaptable to various deployment scenarios. They can be marked sensitive for security and are typically defined in a `variables.tf` file.
 
@@ -430,8 +356,7 @@ terraform apply -var-file="terraform.tfvars" # Not compulsory to add the file,te
 
 
 **Data Sources** - Data sources allow you to query and reference existing infrastructure outside of Terraform. This is useful for situations where you need to use resources that are managed by another team, project, or process but still want to integrate them into your Terraform configuration.
-Data Sources Allow data to be fetched dynamically for use in Terraform configuration.
-Data source let's you query existing resources from provider.
+Data Sources Allow data to be fetched dynamically for use in Terraform configuration.It let's you query existing resources from provider.
 A data source in Terraform allows you to read information about existing infrastructure components.Data sources do not create new resources; instead, they retrieve data about resources that already exist.
 
 
@@ -459,15 +384,25 @@ To view a specific output, you can run: `terraform output instance_public_ip`
 
 ## CLI Commands
 
-**Initialize Terraform configuration**:- Initializes and Downloads providers.When you initialize a Terraform workspace, Terraform configures the backend, installs all providers and modules referred to in your configuration, and creates a version lock file if one doesn't already exist. In addition, you can use the terraform init command to change your workspace's backend and upgrade your workspace's providers and modules.
+The terraform workflow has 3 core steps:-
+
+1. Writing configurations.
+2. Plan/preview the changes before applying changes.
+3. Apply to provision resources.
+
+
+**Writing Configurations** - Terraform uses a modular approach.A terraform module is a directory that contains one or more config files(.tf).This module can call other modules and connect them together.
+Terraform reads from configuration files to deploy infrastructure. To tell Terraform we want it to deploy an EC2 instance, we need to declare an EC2 instance as code.Start by creating a new file named main.tf with the contents from the following listing. The .tf extension signifies that it’s a Terraform configuration file. When Terraform runs, it will read all files in the working directory that have a .tf extension and concatenate them together.
+
+**Initialize Terraform configuration**:- Project initialization in Terraform involves setting up the necessary configuration files and directory structure for managing infrastructure as code. The `terraform init` command is crucial in this process, as it initializes the working directory, downloads the required provider plugins, and sets up the backend configuration for storing state files. This command ensures that the project is correctly configured and ready for subsequent Terraform commands, laying the foundation for efficient and organized infrastructure management.
+Initializes and Downloads providers.When you initialize a Terraform workspace, Terraform configures the backend, installs all providers and modules referred to in your configuration, and creates a version lock file if one doesn't already exist. In addition, you can use the terraform init command to change your workspace's backend and upgrade your workspace's providers and modules.
 
 terraform init - The output describes the steps Terraform executes when you initialize your workspace.
 
 1. First, Terraform initializes the backend.Since the terraform block does not include a cloud or backend block, Terraform defaults to the local backend.
 2. Next, Terraform downloads the modules required by your configuration.Terraform recognizes that the module "ec2-instance" block uses the local modules/aws-ec2-instance module. Next, Terraform determines that the module "hello" block references a remote module, so it downloads it from the public Terraform Registry.
 3. Next, Terraform downloads the providers required by your configuration.Since the configuration does not yet have a lock file, Terraform downloaded the aws and random providers specified in the required_providers block found in terraform.tf. When you initialize a workspace, Terraform will attempt to download the provider versions specified by the workspace's lock file. If the lock file does not exist, Terraform will use the required_providers block to determine the provider version and create a new lock file. If neither exists, Terraform will search for a matching provider and download the latest version.
-4. Next, Terraform creates the lock file if it does not already exist, or updates it if necessary.Terraform's lock file, .terraform.lock.hcl, records the versions and hashes of the providers used in this run. This ensures consistent Terraform runs in different environments, since Terraform will download the versions recorded in the lock file for future runs by default.
-When you manage Terraform configuration in a source control repository, commit the .terraform.lock.hcl file along with your configuration files.
+4. Next, Terraform creates the lock file if it does not already exist, or updates it if necessary.Terraform's lock file, `.terraform.lock.hcl`, records the versions and hashes of the providers used in this run. This ensures consistent Terraform runs in different environments, since Terraform will download the versions recorded in the lock file for future runs by default.When you manage Terraform configuration in a source control repository, commit the .terraform.lock.hcl file along with your configuration files.
 5. Finally, Terraform prints out a success message and reminds you how to plan your configuration, and to re-run terraform init if you change your modules or backend configuration.
 
 
@@ -677,7 +612,63 @@ Sensitive information, such as passwords or access keys, may also be stored in t
 
 ## Terraform modules
 
+A terraform module is a collection of configuration files that manage a set of related resources as a single unit.It is essentially a reusable package of Terraform configuration that can be used to simplify complex infrastructure setups and promote best practises.
 Modules are self-contained packages of code that allow you to create reusable components by grouping related resources together.Modules are useful tools for promoting software abstraction and code reuse.
+
+`Files` - A typical Terraform module consists of following files:-
+
+1. terraform.tf/provider.tf - Terraform provider configurations. i.e dependencies.Specifies providers the module uses(optional but often included for completeness)
+2. main.tf - Contains primary set of resource definitions.
+3. variables.tf - Defines terraform input variables that the module can accept to customize behaviour.
+4. outputs.tf - Defines the values that the module will output after execution, which can be used by other modules or configurations.
+
+```terraform.tf
+terraform {
+   required_providers {
+      aws = {
+         source = "hashicorp/aws"
+         version = "~> 4.66.0"
+      }
+      random = {
+         source = "hashicorp/random"
+         version = "~ 3.5.0"
+      }
+      archive = {
+         resource = "hashicorp/archive"
+         version = "~ 2.3.0"
+      }
+   }
+
+   required_version = "~> 1.4"
+}
+```
+
+```variable.tf
+variable "aws_region" {
+   description = "AWS region for all resources."
+
+   type = string
+   default = "us-east-1"
+}
+```
+
+```main.tf
+provider "aws" {
+   region = var.aws_region
+}
+
+data "aws_caller_identity" "current" {}
+
+resource "random_pot" "lambda_bucket_name" {
+   prefix = "dreamsofcode"
+   lenght = 4
+}
+
+resource "aws_s3_bucket" "resource_name"{
+   bucket = random_pet.lambda_bucket_name.id
+}
+```
+
 
 The syntax for module declarations is:-
 

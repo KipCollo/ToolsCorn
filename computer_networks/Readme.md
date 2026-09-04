@@ -90,3 +90,13 @@ The seven layers of the OSI reference model are: application layer,presentation 
 The role of the presentation layer is to provide services that allow communicating applications to interpret the meaning of data exchanged. These services include data compression and data encryption (which are self-explanatory) as well as data description (which frees the applications from having to worry about the internal format in which data are represented/stored—formats that may differ from one computer to another). The session layer provides for delimiting and synchronization of data exchange, including the means to build a checkpointing and recovery scheme.
 
 The Open Systems Interconnection model (OSI) is a conceptual model that characterizes and standardizes the internal functions of a communication system by partitioning it into abstraction layers.The model groups communication functions into seven logical layers. A layer serves the layer above it and is served by the layer below it.
+
+
+## Virtual Network
+
+A virtual network is a software-based network that abstracts hardware, allowing devices and servers to communicate as if they were physically connected, regardless of their actual location. It relies on virtualization software to create logical overlays, reducing the need for physical routers and switches.
+
+Key Types of Virtual Networks:-
+1. VLANs (Virtual Local Area Networks): Logical partitions of physical networks that isolate traffic and improve security on the same physical switch.
+2. VPNs (Virtual Private Networks): Secure, encrypted tunnels over the internet that allow remote users or branch offices to safely access a private corporate network.
+3. Cloud Virtual Networks: Provided by cloud platforms like Microsoft Azure Virtual Network,VPC or Oracle Virtual Cloud Network, these allow organizations to build isolated, scalable cloud infrastructures

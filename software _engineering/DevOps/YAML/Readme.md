@@ -1,7 +1,6 @@
 # YAML(YML)
 
-YAML, which stands for `YAML Ain’t Markup Language`, is a data-serialization language optimized to be directly writable and readable by humans. It is a strict superset of
-JSON but with syntactically relevant newlines and indentation instead of braces.
+YAML, which stands for `YAML Ain’t Markup Language`, is a data-serialization language optimized to be directly writable and readable by humans. It is a strict superset of JSON but with syntactically relevant newlines and indentation instead of braces.
 
 YAML files are text files with a .yml or .yaml extension. Because YAML uses indentation instead of braces, these text files can be versioned very well with Git, as changes are always made per line.
 YAML files can have different encodings, but GitHub uses UTF-8 for the workflows.
@@ -36,17 +35,14 @@ null value: null
 datetime: 1999-12-31T23:59:43.1Z
 ```
 
-Note that keys and values can contain spaces and do not need quotation! You can quote keys and values with single or double quotes, but you only have to do so if they
-contain special characters or if the characters would indicate an incorrect data type to YAML. Double quotes use the backslash as the escape pattern; single quotes use an
-additional single quote for this:
+Note that keys and values can contain spaces and do not need quotation. You can quote keys and values with single or double quotes, but you only have to do so if they contain special characters or if the characters would indicate an incorrect data type to YAML. Double quotes use the backslash as the escape pattern; single quotes use an additional single quote for this:
 
 ```yaml
 'single quotes': 'have ''one quote'' as the escape pattern'
 "double quotes": "have the \"backslash \" escape pattern"
 ```
 
-String variables can also span multiple lines using the pipe operator and a four spaces indentation. The multiline text block can also contain line breaks and empty lines and
-continues until the next element:
+String variables can also span multiple lines using the pipe operator and a four spaces indentation. The multiline text block can also contain line breaks and empty lines and continues until the next element:
 
 ```yaml
 literal_block: |

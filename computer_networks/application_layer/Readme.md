@@ -150,6 +150,17 @@ TTL is the time to live of the resource record; it determines when a resource sh
 
 Tools to identify DNS include- `nslookup`
 
+Common DNS attacks -
+1. DNS Spoofing/Cache Poisoning
+2. DNS Tunnelling.
+3. Domain Look-up attack
+4. DNS Hijacking
+5. Phantom Domain Attack.
+6. Botnet-Based CPE Attack.
+7. NXDOMAIN Attack.
+8. Random Subdomain Atack.
+
+
 - **Simple Network Management Protocol (SNMP)**:- (SNMP) is a framework for managing devices in an internet using the TCP/IP protocol suite provides a set of fundamental operations for monitoring and maintaining an internet, controls and monitors a set of agents, usually routers SNMP frees management tasks from both the physical characteristics of the managed devices and the underlying networking technology. Used in a heterogeneous internet made of different LANs and WANs connected by routers made by different manufacturers. SNMP uses two other protocols Structure of Management Information (SMI) and Management Information Base(MIB).
 
 

@@ -28,9 +28,9 @@ Logs play a pivotal role in observability strategies by offering insights into t
 
 Logs can be categorized into several types, each serving specific purposes within an organization:
 
-1. Application Logs record the events happening within the application layer, such as user actions, system errors, or transactions. These logs are crucial for understanding how applications behave in real-world scenarios and for identifying application-level issues.
-2. System Logs document events at the operating system level, including system calls, scheduled tasks, and messages from the kernel. These logs help in diagnosing hardware and software issues not directly related to the application but affecting its performance.
-3. Audit Logs focus on security-related events, tracking user activities and changes to the system configurations. They are essential for compliance, security monitoring, and forensic analysis.
+1. Application Logs - record the events happening within the application layer, such as user actions, system errors, or transactions. These logs are crucial for understanding how applications behave in real-world scenarios and for identifying application-level issues.
+2. System Logs - document events at the operating system level, including system calls, scheduled tasks, and messages from the kernel. These logs help in diagnosing hardware and software issues not directly related to the application but affecting its performance.
+3. Audit Logs - focus on security-related events, tracking user activities and changes to the system configurations. They are essential for compliance, security monitoring, and forensic analysis.
 
 `Metrics` - Among the three pillars, metrics stand as the quantitative heartbeat, offering measurable insights into system behavior. Metrics in observability are defined as numerical values that represent the characteristics of a system at a given point in time. These can range from simple measurements, like CPU utilization and memory usage, to more complex aggregations, such as request rates, error counts, or transaction durations. Unlike logs, which provide detailed, event-driven records, or traces, which map the journey of requests through a system, metrics offer a high-level, aggregated view of system behavior and performance. This quantifiable data is crucial for setting benchmarks, identifying trends, and triggering alerts when predefined thresholds are exceeded.
 
@@ -59,6 +59,7 @@ Tracing can be categorized into several types, each serving different monitoring
 - Synthetic Monitoring uses simulated requests to monitor system performance and availability in a controlled manner, complementing real user data with consistent, baseline measurements.
 
 By collecting and analyzing these three types of data, we can gain a deep understanding of how a system is working and identify any problems that may be occurring.
+
 
 ## Components of an Observability Stack
 

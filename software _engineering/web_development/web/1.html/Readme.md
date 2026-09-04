@@ -80,6 +80,8 @@ such as stylesheets, and a <body> section, where your page content should go.
 
 ## HTML5 semantic elements
 
+Semantic element re elemnts with some meaning.Semantic elements increase accessibility,improve SEO,improve code structure and makes code more readable for both humans and machines.
+
 Metadata content - for example <link>,<meta>,<style>
 Flow content - <a>,<p>,<strong>
 Sectioning content - <header>,<aside>

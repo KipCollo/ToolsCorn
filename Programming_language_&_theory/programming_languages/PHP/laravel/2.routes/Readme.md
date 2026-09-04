@@ -5,12 +5,10 @@
 The most basic Laravel routes accept a URI and a closure, providing a very simple and expressive method of defining routes and behavior without complicated routing configuration files:
 
 ```php
-use Illuminate\Support\Facades\Route;
-
-Route::get('/greeting', function () {
+Route::get('/', function () {
     return view('home');
 });
- 
+
 Route::get('/greeting', function () {
     return 'Hello World';
 });
@@ -20,10 +18,9 @@ Route::get('/greeting', function () {
 });
 ```
 
-**The Default Route Files** - All Laravel routes are defined in your route files, which are located in the routes directory. These files are automatically loaded by Laravel using the configuration specified in your application's bootstrap/app.php file. The routes/web.php file defines routes that are for your web interface. These routes are assigned the web middleware group, which provides features like session state and CSRF protection.
+**The Default Route Files** - All Laravel routes are defined in your route files, which are located in the routes directory. These files are automatically loaded by Laravel using the configuration specified in your application's bootstrap/app.php file. The `routes/web.php` file defines routes that are for your web interface. These routes are assigned the web middleware group, which provides features like session state and CSRF protection.
 
 ```php
-use App\Http\Controllers\UserController;
 Route::get('/user', [UserController::class, 'index']);
 ```
 
@@ -51,18 +48,6 @@ The routes in routes/api.php are stateless and are assigned to the api middlewar
 )
 ```
 
-Sometimes you may need to register a route that responds to multiple HTTP verbs. You may do so using the match method. Or, you may even register a route that responds to all HTTP verbs using the any method:
-
-```php
-Route::match(['get', 'post'], '/', function () {
-    // ...
-});
- 
-Route::any('/', function () {
-    // ...
-});
-```
-
 **Routes Methods**:- The router allows you to register routes that respond to any HTTP verb:
 
 ```php
@@ -74,7 +59,7 @@ Route::delete($uri, $callback);
 Route::options($uri, $callback);
 ```
 
-Sometimes you may need to register a route that responds to multiple HTTP verbs. You may do so using the match method. Or, you may even register a route that responds to all HTTP verbs using the any method:
+Sometimes you may need to register a route that responds to multiple HTTP verbs. You may do so using the `match` method. Or, you may even register a route that responds to all HTTP verbs using the `any` method:
 
 ```php
 Route::match(['get', 'post'], '/', function () {
@@ -140,6 +125,7 @@ You may also instruct Laravel to only show routes that begin with a given URI:
 ```sh
 php artisan route:list --path=api
 ```
+
 
 ## Route Parameters
 

@@ -1,11 +1,9 @@
 # Introduction
 
 SQL, which stands for Structured Query Language, is a programming language that is used to communicate with and manage databases. SQL is a standard language for manipulating data held in relational database management systems (RDBMS), or for stream processing in a relational data stream management system (RDSMS). It was first developed in the 1970s by IBM.
-
 SQL uses a combination of relational-algebra and relational-calculus constructs.
 
 SQL consists of several components, each serving their own unique purpose in database communication:
-
 - `Queries:` This is the component that allows you to retrieve data from a database. The SELECT statement is most commonly used for this purpose.
 - `Data Definition Language (DDL):` It lets you to create, alter, or delete databases and their related objects like tables, views, etc. Commands include CREATE, ALTER, DROP, and TRUNCATE.
 - `Data Manipulation Language (DML):` It lets you manage data within database objects. These commands include SELECT, INSERT, UPDATE, and DELETE.
@@ -34,18 +32,16 @@ SQL databases come in a number of forms, such as Oracle Database, Microsoft SQL 
 10. Performance and Optimizations:- Indexes,Partitions.
 11. AI & SQL
 
-`Comments` - Comments are written to make our code more readable for other programmers. They are meant for humans only and are ignored by the DBMS
-To add comments to our program, 
 
+`Comments` - Comments are written to make our code more readable for other programmers. They are meant for humans only and are ignored by the DBMS. To add comments to our program, 
 - we type two hyphens, followed by a space.
 - Alternatively, we can also use the # symbol as shown below:
 - Last, but not least, if we want to type multiple lines comments, we can use the /*...*/ symbols:
 
-
 ```sql
 -- Using SELECT to display messages
 
-# This is another way to add comment
+#This is another way to add comment
 
 /* This is a comment
 This is also a comment

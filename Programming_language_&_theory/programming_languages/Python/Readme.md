@@ -63,3 +63,12 @@ Python has two versions:
 
 1. Python 2 - Legacy version.
 2. Python 3
+
+
+Python frameworks - 
+1. Django
+2. Flask
+3. CherryPy
+4. Pyramid
+5. Tornado
+6. FastAPI.

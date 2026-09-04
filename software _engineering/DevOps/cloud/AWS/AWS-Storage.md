@@ -2,8 +2,7 @@
 
 AWS offers different storage options.Amazon Simple Storage Service (Amazon S3). Amazon S3 is an object storage solution and offers very high levels of availability, durability, and scalability. AWS also offers other types of storage options.
 
-A storage service provides the necessary infrastructure to enable you to store and access data. However, different use cases require varied storage architectures to ensure
-performance, reliability, durability, and the right type of access to the data. There are three primary storage options available, and AWS offers services to cater to each of these.
+A storage service provides the necessary infrastructure to enable you to store and access data. However, different use cases require varied storage architectures to ensure performance, reliability, durability, and the right type of access to the data. There are three primary storage options available, and AWS offers services to cater to each of these.
 
 Storage services includes:-
 1. S3
@@ -35,14 +34,13 @@ file system such as the industry-standard Server Message Block (SMB) protocol.Ty
 
 **Object storage**:- object storage involves storing complete files as individual objects. Object storage presents a flat file structure—you create some form of container and place your objects within this container without using any folder or file-level hierarchy. This is also known as unstructured data. Object storage metadata (information about the object—such as its name, and so on), along with other attributes, is then used to create a unique identifier to easily locate that data in your storage pool. Due to the nature of object storage, the metadata can contain a vast array of information, enabling you to use object storage for data analytics far more easily than a file-based storage solution.
 
-Typical use cases for object storage include storing digital assets for your websites and applications (documents, images, video), the ability to perform analytics on your
-objects, and offering storage solutions to cutting-edge technologies such as Internet of Things (IoT).
+Typical use cases for object storage include storing digital assets for your websites and applications (documents, images, video), the ability to perform analytics on your objects, and offering storage solutions to cutting-edge technologies such as Internet of Things (IoT).
+
 
 ## Amazon S3
 
+`Amazon S3 (Simple Storage Service)` is an object storage service offered by Amazon Web Services (AWS). It provides scalable, secure and durable storage on the internet. Designed for storing and retrieving any amount of data from anywhere on the web, it is a key tool for many companies in the field of data storage, including mobile applications, websites, backup and restore, archive, enterprise applications, IoT devices, and big data analytics.
 Customers can use Amazon S3 to store any amount of data for a wide range of use cases, including digital media content for websites, data lakes, mobile applications, IoT device data, and big data analytics.
-
-Amazon S3 (Simple Storage Service) is an object storage service offered by Amazon Web Services (AWS). It provides scalable, secure and durable storage on the internet. Designed for storing and retrieving any amount of data from anywhere on the web, it is a key tool for many companies in the field of data storage, including mobile applications, websites, backup and restore, archive, enterprise applications, IoT devices, and big data analytics.
 
 Buckets / Objects:- In AWS S3, a "bucket" is a container for data. It is used to store objects. The objects include files or, more technically, any type of data that can be stored in the form of files. In terms of hierarchy, buckets are at the top level in AWS S3. Inside these buckets, you can store any number of objects. An object consists of a file and optionally any metadata that describes that file. It's important to note that you can also store folders within these buckets and inside these folders, you can again store objects. Object keys are unique within a bucket and they help in identifying and retrieving the object.
 

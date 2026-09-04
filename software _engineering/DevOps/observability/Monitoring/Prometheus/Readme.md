@@ -1,9 +1,11 @@
 # Prometheus
 
 Is an open source system monitoring and alerting toolkit originally built at soundcloud. It collects and stores its metrics as time series data from configured targets,stores them in time-series database and provides powerful query features.
+Prometheus is primarily written in Go and licensed under the Apache 2.0 license.
 
 Prometheus collects and stores its metrics as time series data, i.e. metrics information is stored with the timestamp at which it was recorded, alongside optional key-value pairs called labels.
 In 2016 the Prometheus project became the second member1 of the Cloud Native Computing Foundation (CNCF).
+
 - It can monitor:
     1. Linux/ Windows servers
     2. Http Servers(Apache, Nginx)
@@ -52,6 +54,30 @@ Prometheus scrapes metrics from instrumented jobs, either directly or via an int
 Prometheus works well for recording any purely numeric time series. It �ts both machine-centric monitoring as well as monitoring of highly dynamic service-oriented architectures.
 In a world of microservices, its support for multi-dimensional data collection and querying is a particular strength.
 Prometheus is designed for reliability, to be the system you go to during an outage to allow you to quickly diagnose problems. Each Prometheus server is standalone, not depending on network storage or other remote services. You can rely on it when other parts of your infrastructure are broken, and you do not need to setup extensive infrastructure to use it.
+
+
+## The Prometheus architecture
+
+Prometheus discovers targets to scrape from service discovery. These can be your own instrumented applications or third-party applications you can scrape via an exporter. The scraped data is stored, and you can use it in dashboards using PromQL or send alerts to the Alertmanager, which will convert them into pages, emails, and other notifications.
+
+
+`Client Libraries` - Metrics do not typically magically spring forth from applications; someone has to add the instrumentation that produces them. This is where client libraries come in. With usually only two or three lines of code, you can both define a metric and add your desired instrumentation inline in code you control. This is referred to as direct instrumentation.
+Client libraries are available for all the major languages and runtimes. The Prometheus project provides official client libraries in Go, Python, Java/JVM, and Ruby.There are also a variety of third-party client libraries, such as for C#/.Net, Node.js,Haskell, Erlang, and Rust.
+
+`Exporters` - Not all code you run is code that you can control or even have access to, and thus adding direct instrumentation isn’t really an option. For example, it is unlikely that operating system kernels will start outputting Prometheus-formatted metrics over HTTP anytime soon.
+Such software often has some interface through which you can access metrics. This might be an ad hoc format requiring custom parsing and handling, such as is required for many Linux metrics, or a well-established standard such as SNMP.
+An exporter is a piece of software that you deploy right beside the application you want to obtain metrics from. It takes in requests from Prometheus, gathers the required data from the application, transforms them into the correct format, and finally returns them in a response to Prometheus. You can think of an exporter as a small one-to-one proxy, converting data between the metrics interface of an application and the Prometheus exposition format.
+Unlike the direct instrumentation you would use for code you control, exporters use a different style of instrumentation known as custom collectors or ConstMetrics.
+
+`Service Discovery` - Once you have all your applications instrumented and your exporters running,Prometheus needs to know where they are. This is so Prometheus will know what is meant to monitor, and be able to notice if something it is meant to be monitoring is not responding. With dynamic environments you cannot simply provide a list of applications and exporters once, as it will get out of date. This is where service discovery comes in.
+Prometheus has integrations with many common service discovery mechanisms, such as Kubernetes, EC2, and Consul.
+
+`Scraping` - Service discovery and relabelling give us a list of targets to be monitored. Now Prometheus needs to fetch the metrics. Prometheus does this by sending a HTTP request called a scrape. The response to the scrape is parsed and ingested into storage. Several useful metrics are also added in, such as if the scrape succeeded and how long it took. Scrapes happen regularly; usually you would configure it to happen every 10 to 60 seconds for each target.
+
+`Storage` - Prometheus stores data locally in a custom database. Distributed systems are challenging to make reliable, so Prometheus does not attempt to do any form of clustering. In addition to reliability, this makes Prometheus easier to run.
+
+`Dashboards` - Prometheus has a number of HTTP APIs that allow you to both request raw data and evaluate PromQL queries. These can be used to produce graphs and dashboards. Out of the box, Prometheus provides the expression browser. It uses these APIs and is suitable for ad hoc querying and data exploration, but it is not a general dashboard system.
+
 
 ## Features
 
@@ -247,3 +273,7 @@ The Node exporter is intended only to monitor the machine itself, not individual
 In the case of Linux, there are thousands of metrics on offer. Some are well documented and understood, such as CPU usage; others, like memory usage, have varied from kernel version to kernel version as the implementation has changed. You will even find metrics that are completely undocumented, where you would have to read the kernel source code to try and figure out what they do.
 
 The Node exporter is designed to be run as a nonroot user, and should be run directly on the machine in the same way you run a system daemon like sshd or cron.
+
+
+
+By default Prometheus runs on TCP port 9090.You can run the Prometheus binary with `./prometheus`.Prometheus logs various useful information at startup, including its exact version and details of the machine it is running on.

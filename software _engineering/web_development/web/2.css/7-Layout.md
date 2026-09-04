@@ -220,6 +220,7 @@ space. A 2 fr column would be twice as wide as a 1 fr column.
 - grid-row-start
 - grid-row-end
 - grid-template-ares
+- place-items
 
 If you want to count grid lines from the right instead of the left, you can give grid-column-start and grid-column-end negative values. For example, you can set it to -1 to specify the first grid line from the right.
 

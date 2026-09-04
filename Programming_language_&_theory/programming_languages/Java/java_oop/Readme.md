@@ -199,6 +199,7 @@ Object-Oriented Programming
 - A constructor can perform other tasks instead of initialization like object creation, starting a thread, calling method etc.
 - You can perform any operation in the constructor as you perform in the method.
 
+
 ## Class
 
 The class is at the core of Java. It is the logical construct upon which the entire Java language is built because it defines the shape and nature of an object. As such, the class forms the basis for object-oriented programming in Java.
@@ -847,9 +848,7 @@ e.g,
  }
 ```
 
-## implements keyword:-
-
-To implement an interface, we use the keyword **implements**.
+**implements keyword**:-To implement an interface, we use the keyword `implements`.
 
 - If you use the implements keyword with class, then it is compulsory to give an implementation of all the methods that are defined in an interface.
 - If you do not give an implementation of all methods then it will make your class an abstract class by default.
@@ -877,15 +876,16 @@ e.g., A.area;    (here, area is a variable initialized in an interface)
 
 -Interface does not have its own memory in the heap.
 
-## Types of Interface:-
+Types of Interface:-
 
 1. Normal interface - an interface having two or more methods
 2. Functional interface (SAM)- SAM => Single Abstract Method interface
 3. Marker interface - an interface that as no methods (blank interface)
 
-## Methods
 
-`Default Methods`:- They are concrete methods.They are used to replace implementation classes.default keyword is used to define the default methods in an interface.
+**Methods In Interfaces**:-
+
+`Default Methods`:- They are concrete methods.They are used to replace implementation classes.default keyword is used to define the default methods in an interface.Introduced in Java 8.
 
 ```java
 
@@ -900,7 +900,7 @@ public interface MyInterface
 }
 ```
 
-- Default methods in multiple inheritance:
+- Default methods in multiple inheritance:- If multiple interaces provide same default method,The class must override the method to resolve the conflict.
 
 ```java
 public interface A{
@@ -912,7 +912,7 @@ public default void myDefaultMethod()
 ```
 
 ```java
-public interfce B{
+public interface B{
  public default void myDefaultMethod() 
     {
         System.out.println("Default Method B");

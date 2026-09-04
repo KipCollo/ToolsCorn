@@ -17,11 +17,21 @@ Docker provides tooling and a platform to manage the lifecycle of your container
 - The container becomes the unit for distributing and testing your application.
 - When you're ready, deploy your application into your production environment, as a container or an orchestrated service. This works the same whether your production environment is a local data center, a cloud provider, or a hybrid of the two.
 
+Docker is a container technology: A tool for creating and managing containers.
+
 ## Docker importance
 
 1. Build and test in exactly same environment.
 2. Same development environments with employees working on same project
 3. Switching between projects should not cause clash.
+
+
+## Docker concepts
+
+`Image` - A read-only template used to create container. For example,an image can contain an Ubuntu Operation system with a python environment.
+`Container`: Arunnable instance of an image.
+`Docker file`: A script that contains instructions for building docker image.
+`Registry`: A storage for Docker images,like docker hub.
 
 
 ## Docker Architecture
@@ -84,6 +94,30 @@ The [Open Container Initiative (OCI)](https://opencontainers.org/) is a Linux Fo
 *Compatibility between Docker and OCI*:- Docker remains committed to supporting the OCI specifications and, since its involvement in OCI, has continuously updated its software to be compliant with OCI standards. Docker's containerd runtime and image format are fully compatible with OCI specifications, enabling Docker containers to be run by other OCI-compliant container runtimes and vice versa.
 
 In summary, Docker and the Open Container Initiative work together to maintain standardization and compatibility within the container industry. Docker has played a significant role in the development of the OCI specifications, ensuring that the container ecosystem remains healthy, interoperable, and accessible to a wide range of users and platforms across the industry.
+
+
+## History of virtualization
+
+Here is a quick overview of the differences between bare metal, virtual machines, and containers.
+
+*Bare Metal* - Before virtualization was invented, all programs ran directly on the host system. The terminology many people use for this is "bare metal". While that sounds fancy and scary, you are almost certainly familiar with running on bare metal because that is what you do whenever you install a program onto your laptop/desktop computer
+Bare metal is a term used to describe a computer that is running directly on the hardware without any virtualization. This is the most performant way to run an application, but it is also the least flexible. You can only run one application per server, and you cannot easily move the application to another server.
+
+With a bare metal system, the operating system, binaries/libraries, and applications are installed and run directly onto the physical hardware.
+
+This is simple to understand and direct access to the hardware can be useful for specific configuration, but can lead to:
+- Hellish dependency conflicts
+- Low utilization efficiency
+- Large blast radius
+- Slow start up & shut down speed (minutes)
+- Very slow provisioning & decommissioning (hours to days)
+
+
+`Virtual Machines`:- Virtual machines (VMs) are a way to run multiple applications on a single server. Each VM runs on top of a hypervisor, which is a piece of software that emulates the hardware of a computer. The hypervisor allows you to run multiple operating systems on a single server, and it also provides isolation between applications running on different VMs.
+
+`Containers`:- Containers are a way to run multiple applications on a single server without the overhead of a hypervisor. Each container runs on top of a container engine, which is a piece of software that emulates the operating system of a computer. The container engine allows you to run multiple applications on a single server, and it also provides isolation between applications running on different containers.
+
+Containers are created with doker run IMAGE and can be configured with various options/flags.
 
 
 ## Docker Underlying Technologies
@@ -165,6 +199,9 @@ In summary, namespaces provide a level of resource isolation that enables runnin
 ```bash
 # Check the version of Docker installed
 docker --version
+docker version
+
+docker info # Provides detailed information about the Docker installation.
 
 # Getting help in Docker commands
 docker --help
@@ -179,7 +216,7 @@ docker system df
 # Show detailed Docker system information
 docker system info
 
-# Remove all unused Docker resources
+# Remove all unused Docker resources(stopped containers,unused images, dangling images)
 docker system prune -a
 
 # Display the top resource-consuming processes of a Docker container with a given container ID or name
@@ -196,9 +233,6 @@ docker container run -p 5000:5000 -d -m 512m --cpu-quota=50000 in28min/hello-wor
 
 # Show Docker system events
 docker system events
-
-
-
 
 # Show live resource usage statistics of a Docker container with a given container ID or name
 docker container stats 4faca1ea914e3e4587d1d790948ec6cb8fa34f26e900c12632fd64d4722fd59a
@@ -232,14 +266,8 @@ cd ../hello-world-java/
 # Push a Docker image to a registry
 docker push in28min/hello-world-java:0.0.2.RELEASE
 
-
-
-
 # Run a Docker container with a Node.js hello world application, mapped to port 5001 and ping google.com
 docker run -d -p 5001:5000 in28min/hello-world-nodejs:0.0.3.RELEASE ping google.com
-
-
-
 
 # Run a Docker container with a currency exchange service
 docker run -d -p 8000:8000 --name=currency-exchange in28min/currency-exchange:0.0.1-RELEASE
@@ -248,31 +276,8 @@ docker run -d -p 8000:8000 --name=currency-exchange in28min/currency-exchange:0.
 docker run -d -p 8100:8100 --name=currency-conversion in28min/currency-conversion:0.0.1-RELEASE
 
 
-
-
-# List Docker networks
-docker network ls
-
-# Inspect a Docker network with a given network name
-docker network inspect bridge
-
-
-
-
 # Run a Docker container with a currency conversion service, linked to the currency exchange service and environment variable set
 docker run -d -p 8100:8100 --env CURRENCY_EXCHANGE_SERVICE_HOST=http://currency-exchange --name=currency-conversion --link currency-exchange in28min/currency-conversion:0.0.1-RELEASE
-
-
-
-
-# Create a Docker network with a given network name
-docker network create currency-network
-
-# Stop a running container with a given container ID or name
-docker container stop currency-exchange
-
-# Stop a running container with a given container ID or name
-docker container stop currency-conversion
 
 # Run a Docker container with a currency exchange service, connected to the currency-network
 docker run -d -p 8000:8000 --name=currency-exchange --network=currency-network in28min/currency-exchange:0.0.1-RELEASE
@@ -280,21 +285,12 @@ docker run -d -p 8000:8000 --name=currency-exchange --network=currency-network i
 # Run a Docker container with a currency conversion service, connected to the currency-network and environment variable set
 docker run -d -p 8100:8100 --env CURRENCY_EXCHANGE_SERVICE_HOST=http://currency-exchange --name=currency-conversion --network=currency-network in28min/currency-conversion:0.0.1-RELEASE
 
-
-# List running containers
-docker container ls
-
-# List Docker networks
-docker network ls
-
-# Inspect a Docker network with a given network name
-docker network inspect microservices_currency-compose-network
-
 # List all containers, including stopped ones
 docker container ls -a
 
 # Remove all unused Docker resources
 docker system prune -a
+docker system df #for check container space
 
 ```
 
@@ -318,6 +314,8 @@ docker build -t in28min/hello-world-nodejs:0.0.1.RELEASE .
 # Push the Docker image with the specified tag to a registry
 docker push in28min/hello-world-nodejs:0.0.1.RELEASE
 
+docker commit <container> <image> # Creates a new image from container's changes
+docker import <file> #imports a tarball to create an image
 ```
 
 ### Host Networking in Docker for Mac and Windows
@@ -328,13 +326,19 @@ docker push in28min/hello-world-nodejs:0.0.1.RELEASE
 
 ## Ignoring dockerfiles
 
-Create a .dockerignore files.It igonres the files.
+Create a .dockerignore files.It ignores the files and folders.
 
-Containers:
 
-1. Application containers - Includes your code and Environments
-2. Utility containers - contains only environments that can be used in conjuction with the app.
+## Installation
 
+In windows /mac you can download Docker Desktop from the official Docker website.
+
+On ubuntu you can run:
+
+```sh
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
 
 ## Docker Desktop
 
@@ -388,3 +392,17 @@ docker context use desktop-linux
 desktop-linux
 Current context is now "desktop-linux"
 ```
+
+
+## Deploy Docker containers
+
+Bind mounts shouldn't be used for production.
+Containerized apps might need step(e.g react apps).
+Multi-Container projects might need to be split(or should be split) across multiple host machines.
+
+`Basic/Manual Deployment approach` - Install Docker on a remote host(e.g via SSH), push and pull image,run container based on the image on remote host.
+Yu need to create containers,manage the,keep them updated,monitor and scale them.
+
+Development machine-----> Container registry------->Remote machine(host)
+
+`Managed/Automated approach` - E.g AWS ECS. Creation,management,updating is handled automatically,monitoring and scaling is simplified.

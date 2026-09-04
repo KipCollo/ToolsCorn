@@ -14,14 +14,14 @@ column2 data_type(size),
  )
 ```
 
-2. `DROP`: This command is used to delete an existing database or table.
+- `DROP`: This command is used to delete an existing database or table.
 
     ```sql
     DROP DATABASE IF NOT EXISTS database_name;
     DROP TABLE table_name;
     ```
 
-3. `ALTER`: This is used to alter the structure of the database. It is used to add, delete/drop or modify columns in an existing table. 
+- `ALTER`: This is used to alter the structure of the database. It is used to add, delete/drop or modify columns in an existing table. 
 
      ```sql
      ALTER TABLE table_name ADD column_name datatype;
@@ -29,13 +29,13 @@ column2 data_type(size),
      ALTER TABLE table_name MODIFY COLUMN column_name datatype(size);
     ```
 
-4. `TRUNCATE`: This is used to remove all records from a table, including all spaces allocated for the records which are removed.
+- `TRUNCATE`: This is used to remove all records from a table, including all spaces allocated for the records which are removed.
 
     ```sql
     TRUNCATE TABLE table_name;
     ```
 
-5. `RENAME`: This is used to rename an object in the database.
+- `RENAME`: This is used to rename an object in the database.
 
     ```sql
     -- To rename a table

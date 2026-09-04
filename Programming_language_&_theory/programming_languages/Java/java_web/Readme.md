@@ -1,4 +1,4 @@
-# Web Applications
+# Web Applications and Service
 
 A `web applications` is a set of web pages generated in response to user requests.The internet has many different types of web applications,such as search engines,online stores,auctions,news sites,games.
 
@@ -12,7 +12,11 @@ A web application is a dynamic extension of a web or application server.There ar
    2. Dynamic web pages/Active web pages - Generate dynamic web pages.The content of web pages will change based on the input values of request or based pn time of requests generation.E.g Gmail inbox,stock values page.
    3. Helper web components:- These components or files do not generate any web pages directly but they help other web comps in the generation of web pages.E.g image files,video files,javascript,css files.
 
-**Java Web applications**:- In the Java 2 platform, web components provide the dynamic extension capabilities for a web server. Web components are either Java servlets, JSP pages, or web service endpoints.
+
+## Web Applications
+
+**Java Web applications**:- The Java language was originally intended for use in small, embedded devices. It was first hyped as a language for developing elaborate client-side web content in the form of applets.But until the last few years, Java's potential as a server-side development platform had been sadly overlooked. Now, Java has come to be recognized as a language ideally suited for server-side development.
+In the Java 2 platform, web components provide the dynamic extension capabilities for a web server. Web components are either Java servlets, JSP pages, or web service endpoints.
 
 Client(Browser)<------>[Web Server<---->Servlet/JSP Engine(JDK)<----->Database Server]
 
@@ -31,18 +35,13 @@ Java Servlet technology is the foundation of all the web application technologie
 
 There are many ways to develop java web applications.When developing Java web applications,you typically use parts of `Java Enterprise Edition(Java EE)` specification.This specification describes how web servers can interact with all Java web technologies including servlets,JavaServer Pages(JSP),JavaServer Pages(JSF),Enterprise JavaBeans(EJB),JPA and many more.
 
-*Servlet/JSP*:- In a well-structured servlet/JSP application,`servlets` stores Java code that does server-side processing, and `JavaServer Pages`(JSPs) store HTML that defines user interface.This HTML typically contains CSS and Javascript files.To run web applications that uses servlets and JSPs,you only need to work with servlet/JSP part of Java EE specification.
-Since servlet/JSP API is relatively low level API,it doesn't do much work for dev.However,the Servlet/JSP API gives dev a high degree of control over HTML,CSS and Javascript returned to browser.In addition, the servlet/JSP API is foundation for any other Java Web approach.
+1. *Servlet/JSP*:- In a well-structured servlet/JSP application,`servlets` stores Java code that does server-side processing, and `JavaServer Pages`(JSPs) store HTML that defines user interface.This HTML typically contains CSS and Javascript files.To run web applications that uses servlets and JSPs,you only need to work with servlet/JSP part of Java EE specification.Since servlet/JSP API is relatively low level API,it doesn't do much work for dev.However,the Servlet/JSP API gives dev a high degree of control over HTML,CSS and Javascript returned to browser.In addition, the servlet/JSP API is foundation for any other Java Web approach.
+2. *JSF*:- JavaServer Faces(JSF) is designed to replace both servlets and JSPs.Provides a higher level API that does more work for programmer.When you use JSF you typically use more Java EE features than in Sevlet/JSP approach.You can use Enterprise JavaBeans(EJBs) to define server-side components.
+3. *Spring Framework*:- It is also a higher-level API that does more work for programmer than Servlet/JSP API.However, due to the way it's structured,the Spring Framework still gives developer a higher degree of control over HTML,CSS and Javascript returned to browser.
 
-*JSF*:- JavaServer Faces(JSF) is designed to replace both servlets and JSPs.Provides a higher level API that does more work for programmer.When you use JSF you typically use more Java EE features than in Sevlet/JSP approach.You can use Enterprise JavaBeans(EJBs) to define server-side components.
-
-*Spring Framework*:- It is also a higher-level API that does more work for programmer than Servlet/JSP API.However, due to the way it's structured,the Spring Framework still gives developer a higher degree of control over HTML,CSS and Javascript returned to browser.
-
-Framework is a special software that is built on the top technologies having ability to generate common logics dynamically to simplify application development.If we use technologies to develop apps to,we need to write both common logics and app specifics logics e.g servlet,jsp based web app development gives burden to programmer coz he has to take care both common logics and app specific logics.
-If we use framework to develop the Apps,programmers just need only App sepcifics logics coz the common logics will be genefrated dynamicallly.E.g Spring MVC,JSF,Struts internally uses Servlet,JSP technologies.
+Framework is a special software that is built on the top technologies having ability to generate common logics dynamically to simplify application development.If we use technologies to develop apps to,we need to write both common logics and app specifics logics e.g servlet,jsp based web app development gives burden to programmer coz he has to take care both common logics and app specific logics.If we use framework to develop the Apps,programmers just need only App sepcifics logics coz the common logics will be genefrated dynamicallly.E.g Spring MVC,JSF,Struts internally uses Servlet,JSP technologies.
 
 NB:- Develop small scale website using Servlet,JSP technologies and medium scale and large scale web sites using frameworks like Spring MVC,JSF.
-
 
 `Web Application Lifecycle` - A web application consists of web components; static resource files, such as images and cascading style sheets (CSS); and helper classes and libraries. The web container provides many supporting services that enhance the capabilities of web components and make them easier to develop. However, because a web application must take these services into account, the process for creating and running a web application is different from that of traditional stand-alone Java classes.
 
@@ -96,6 +95,8 @@ After you get a web host, you need to transfer your files to web server.To do th
 6. World Wide Web Consortium's Jigsaw Server, open source and written entirely in Java
 7. Sun's Java Web Server, the server that started it all. This server was the first server to implement servlets and acted as the effective reference implementation for Servlet API 2.0. It's written entirely in Java (except for two native code libraries that enhance its functionality but are not needed). Sun has discontinued development on the server, concentrating now on iPlanet/Netscape products as part of the Sun-Netscape Alliance.
 
+A Servlet container is capable of running multiple web applications at the same time, each having multiple servlets running inside.
+
 `Application servers` are a growing area of development. An application server offers server-side support for developing enterprise-based applications. Most Java-based application support servlets and the rest of the Java 2, Enterprise Edition, (J2EE) specification. These servers include:
 
 1. BEA System's WebLogic Application Server, one of the first and most famous Java-based application servers.
@@ -131,7 +132,7 @@ Based on the place where the web components execute there are two types of web c
 With respect to web application,HTML,servlet,JSP,ajax,jquery,Spring MVC are called frontend technologies.
 
 
-## Tomcat
+### Tomcat
 
 The Apache Tomcat® software is an open source implementation of the Jakarta Servlet, Jakarta Pages, Jakarta Expression Language, Jakarta WebSocket, Jakarta Annotations and Jakarta Authentication specifications. These specifications are part of the Jakarta EE platform.
 
@@ -187,19 +188,6 @@ Once you start the Web Application Manager,it will display all of the web applic
 When you write servlets and JSPs,the classes and methods of servlet API shelter you from having to work directly with HTTP.
 
 
-## Service-Oriented (Web Services)
-
-`JAX-WS` stands for Java API for XML Web Services. JAX-WS is a technology for building web services and clients that communicate using XML. JAX-WS allows developers to write message-oriented as well as RPC-oriented web services.
-
-In JAX-WS, a web service operation invocation is represented by an XML-based protocol such as SOAP. The SOAP specification defines the envelope structure, encoding rules, and conventions for representing web service invocations and responses. These calls and responses are transmitted as SOAP messages (XML files) over HTTP.
-
-Although SOAP messages are complex, the JAX-WS API hides this complexity from the application developer. On the server side, the developer specifies the web service operations by defining methods in an interface written in the Java programming language. The developer also codes one or more classes that implement those methods. Client programs are also easy to code. A client creates a proxy (a local object representing the service) and then simply invokes methods on the proxy. With JAX-WS, the developer does not generate or parse SOAP messages. It is the JAX-WS runtime system that converts the API calls and responses to and from SOAP messages.
-
-With JAX-WS, clients and web services have a big advantage: the platform independence of the Java programming language. In addition, JAX-WS is not restrictive: a JAX-WS client can access a web service that is not running on the Java platform, and vice versa. This flexibility is possible because JAX-WS uses technologies defined by the World Wide Web Consortium (W3C): HTTP, SOAP, and the Web Service Description Language (WSDL). WSDL specifies an XML format for describing a service as a set of endpoints operating on messages.
-
-`Setting the Port`:- Several files in the JAX-WS examples depend on the port that you specified when you installed the Application Server. The tutorial examples assume that the server runs on the default port, 8080. If you have changed the port, you must update the port number in the following file before building and running the JAX-WS examples:
-
-
 ## Servlet/JSP Web Development
 
 Web components are supported by the services of a runtime platform called a web container. A web container provides services such as request dispatching, security, concurrency, and life-cycle management. It also gives web components access to APIs such as naming, transactions, and email.Certain aspects of web application behavior can be configured when the application is installed, or deployed, to the web container. The configuration information is maintained in a text file in XML format called a web application deployment descriptor (DD).
@@ -229,7 +217,7 @@ The JSPs uses regular Java classes to store data of the application and do busin
 Model 1 works for application with limited processing requirements,but not recommended for most applications.The JSPs become cluttered with scriplets and code becomes difficult to maintain.
 
 - `Model 2 architecture (Model-View-Controller (MVC) pattern)`:- A pattern is standard approach used by programmers to solve common programming problems.One of the pattern is Model-View-Controller. Has three layers:- model,view and controller.
-   1. Models defines the business layer of the application.Usually implemented by *JavaBeans*. Classes in these layer the data for business objects and provides methods that do business processing.
+   1. Models defines the business layer of the application.Usually implemented by *JavaBeans*. Classes in these layer contains the data for business objects and provides methods that do business processing.
    2. View defines presentation layer of the application.MVC apps uses HTML documents or JSPs to present view to the browser.
    3. The Controller manages flow of the application,and this work is done by the servlets.
 
@@ -256,31 +244,143 @@ Two of the most popular IDEs for developing Java web applications are NetBeans a
 Other IDEs are JBuilder,Intellij IDEA.
 
 
-### Servlet
+**Servlet Container**:- `Servlet/JSP Containers`, sometimes called `servlet/JSP engines`, are Web server extensions that provide servlet functionality.
+A servlet container is the connection between a web server and the servlets. It provides the runtime environment for all the servlets on the server as defined by the servlet specification and is responsible for loading and invoking those servlets when the time is right. The container typically loads a servlet class when it receives the first request for the servlet, gives it a chance to initialize itself, and then asks it to process the request. Subsequent requests use the same, initialized servlet until the server is shut down. The container then gives the servlet a chance to release resources and save its state (for instance, information accumulated during its lifetime).
+There are many different types of servlet containers. Some containers are called add-ons, or plug-ins, and are used to add servlet support to web servers without native servlet support (such as Apache and IIS). They can run in the same operating-system process as the web server or in a separate process. Other containers are standalone servers. A standalone server includes web server functionality to provide full support for HTTP in addition to the servlet runtime environment. Containers can also be embedded in other servers, such as a climate-control system, to offer a web-based interface to the system. A container bundled as part of an application server can distribute the execution of servlets over multiple hosts. The server can balance the load evenly over all containers, and some servers can even provide fail-over capabilities in case a host crashes.
 
-The Java language was originally intended for use in small, embedded devices. It was first hyped as a language for developing elaborate client-side web content in the form of applets.But until the last few years, Java's potential as a server-side development platform had been sadly overlooked. Now, Java has come to be recognized as a language ideally suited for server-side development.
+No matter what type it is, the servlet container is responsible for mapping an incoming request to a servlet registered to handle the resource identified by the URI and passing the request message to that servlet. After the request is processed, it's the container's responsibility to convert the response created by the servlet into an HTTP response message and send it back to the client.
+
+Servlets interact with Web clients via a request/response paradigm implemented by the servlet container.The server must run web server software.In addition,to work with servlets and JSPs,the server must also run a servlet/JSP engines.For a servlet/JSP engine to work properly,the engine must be able to access the JDK that comes as part of Java SE.The JDK contains the Java compiler and core classes for working with Java and JRE for running compiled classes.
+The container manages the lifecycle of a servlet.JVM cannot automate the process of object creation,management,method calls so we cannot execute Servlet and JSP directly through JVM.Containers can do this automation process.
+
+The servlet container is a part of a Web server or application server that provides the network services over which requests and responses are sent, decodes MIME-based requests, and formats MIME-based responses. A servlet container also contains and manages servlets through their lifecycle.It can be built into a host Web server, or installed as an add-on component to a Web Server via that server’s native extension API. Servlet containers can also be built into or possibly installed into Web-enabled application servers.Servers like Weblogic will get built-in JDK/JRE during installation whereas Servers like Tomcat will use JDK/JRE installed on the computer.
+
+All servlet containers must support HTTP as a protocol for requests and responses, but additional request/response-based protocols such as HTTPS (HTTP over SSL) may be supported. The required versions of the HTTP specification that a container must implement are HTTP/1.1 and HTTP/2. When supporting HTTP/2, servlet containers must support the h2 and h2c protocol identifiers. This implies all servlet containers must support ALPN. Because the container may have a caching mechanism described in RFC 7234 (HTTP/1.1 Caching), it may modify requests from the clients before delivering them to the servlet, may modify responses produced by servlets before sending them to the clients, or may respond to requests without delivering them to the servlet under the compliance with RFC 7234.
+
+A servlet container may place security restrictions on the environment in which a servlet executes. In a Java Platform, Standard Edition (J2SE, v.1.3 or above) or Java Platform, Enterprise Edition (Java EE, v.1.3 or above) environment, these restrictions should be placed using the permission architecture defined by the Java platform. For example some application servers may limit the creation of a Thread object to insure that other components of the container are not negatively impacted.
+
+Java SE 8 is the minimum version of the underlying Java platform with which servlet containers must be built.
+
+Every server has built-in middleware services.This includes:- Security, Transaction, Logging, Auditing.
+
+
+
+	1.	usually we can said Tomcat Container or Tomcat Servlet Container.
+	2. 	Servlet Container (e.g suppose Tomcat Container).
+		when we start the Container then Container will read all WAR file, mean it will extract WAR file into 
+		webapp folder. that is called deployement.
+	3.	After deployement, Container will read web.xml file after read it will create 2 OBJECT i.e
+			i. ServletContext 
+			ii. ServletConfig
+
+	4. our one specific project Container create 2 Object after deployement.
+		
+	5. if i have to to share the my some Object to all Servlet class then that object are stored in ServletContext.
+		it is an public area or public scope, 
+		example: like our Database Connection configurtion object.
+
+	6. for each Application Container create the separate ServletContext object.
+
+	7. for each user define Servlet class, Container will create a PRIVATE area that area is called ServletConfig
+			Object
+	8. for each Servlet class container will create the separate ServletConfig object.
+		suppose we have 10-Servlet class then container will create 10- ServletConfig object.
+
+	Example:
+
+	<web-app>
+
+		<servlet>
+			<servlet-name>employee</servlet-name>
+			<servlet-class>EmployeeController</servlet-class>
+
+			<init-param>
+				<param-name>data1</param-name>
+				<param-value>500000</param-value>
+			</init-param>
+		</servlet>
+
+
+		<servlet>
+			<servlet-name>department</servlet-name>
+			<servlet-class>DpartmentController</servlet-class>
+			<init-param>
+				<param-name>data2</param-name>
+				<param-value>456</param-value>
+			</init-param>
+		</servlet>
+
+
+		<context-param>
+			<param-name>data3</param-name>
+			<param-value>6895</param-value>
+		</context-param>
+
+	</web-app>
+
+	we can see the above example the data1 and data2 is created inside ServletConfig because it is only available to
+	specified Servlet Controller, hence we can say that the init() methods are use to create object inside ServletConfig.
+
+	But in "context-param" we can easily say that this is available to all servelet inside the specific Application,
+	hence we can say that this object is created inside the ServletContext.
+
+	+---------------------------------------------------------------------------+-----------------+
+	|			MyApplication.war							Tomcat Container    |				  |							
+	|																			|				  |	
+	|																			|				  |
+	|				MyApplication												|				  |					
+	|					|														|				  |
+	|					|---------> src 										|				  |
+	|					|---------> src 										|				  |
+	|					|---------> src 										|				  |
+	|					|														|				  |
+	|					|---------> WEB-INF										|				  |
+	|					|			   |										|				  |	
+	|					|			   |------> classes 						|				  |
+	|					|			   |			|							|ServletContext	  |
+	|					|			   |			|--->A.class ServletConfigA |				  |
+	|					|			   |			|			 	 			|	Object		  |
+	|					|			   |			|--->B.class ServletConfigB	|				  |
+	|	 				|			   |            |							|				  |
+	|					|			   |			|--->C.class ServletConfigC	|				  |
+	|					|			   |										|				  |
+	|					|			   |-------> lib							|				  |
+	|					|														|				  |
+	|					|														|				  |		
+	|					|---------->html										|				  |
+	|					|---------->jsp											|				  |
+	|					|---------->css 										|				  |
+	|					|---------->js 											|				  |
+	|																			|				  |
+	|																			|				  |
+	|																			|				  |
+	+---------------------------------------------------------------------------+-----------------+
+
+	Garbage are responsible for Object, but not any resources, like FileOpen, Connection etc.
+
+### Servlet
 
 A `servlet` is a Java™ technology-based Web component, managed by a container, that generates dynamic content(web pages) for a web application. Like other Java technology-based components, servlets are platform-independent Java classes that are compiled to platform-neutral byte code that can be loaded dynamically into and run by a Java technology-enabled Web server.
 A servlet is a small, pluggable extension to a server that enhances the server's functionality. Servlets allow developers to extend and customize any Java-enabled web or application server with a hitherto unknown degree of portability, flexibility, and ease.
-A servlet is a small Java program that runs within a Web server.
+A servlet is a small Java program that runs within a Web server(servlet container), it responds to HTTP requests.
 
-Jakarta Servlet is a corner stone web framework that can act as a presentation-oriented as well as a service-oriented web application.
-Jakarta Servlet intends to reduce the boilerplate code needed to convert the HTTP request into a Java object and to offer a Java object as an HTTP response, and to manage all the lifecycle around them.It is a key component of server-side Java development.Servlets receive and respond to requests from Web clients, usually across HTTP, the HyperText Transfer Protocol.
+A Servlet is part of a Java web application.A Java Servlet is a Java object that responds to HTTP requests.It runs inside a Servlet Container.
+A Servlet container is capable to run multiple web applications at the same time,each having multiple servlets running inside.
+
+Jakarta Servlet is a corner stone web framework that can act as a presentation-oriented as well as a service-oriented web application.It intends to reduce the boilerplate code needed to convert the HTTP request into a Java object and to offer a Java object as an HTTP response, and to manage all the lifecycle around them.It is a key component of server-side Java development.Servlets receive and respond to requests from Web clients, usually across HTTP, the HyperText Transfer Protocol.
 
 Since all Servlet/JSP engines must implement the Servlet/JSP part of Java EE specification, all servlet/JSP engine should work similarly.This makes servlet/JSP code portable between servlet/JSP engines and application servers.
 
-Initially, Common Gateway Interface (CGI) scripts were the main technology used to generate dynamic content. Although widely used, CGI scripting technology has a number of shortcomings, including platform dependence and lack of scalability. To address these limitations, Java Servlet technology was created as a portable way to provide dynamic, user-oriented content.
+An `HTTP servlet` is a special type of servlet that handles an HTTP request and provides an HTTP response, usually in the form of an HTML page. The most common use of WebLogic HTTP servlets is to create interactive applications using standard Web browsers for the client-side presentation while WebLogic Server handles the business logic as a server-side process. WebLogic HTTP servlets can access databases, Enterprise JavaBeans,messaging APIs, HTTP sessions, and other facilities of WebLogic Server
 
+`Common Gateway Interface (CGI)` scripts were the main technology used to generate dynamic content. Although widely used, CGI scripting technology has a number of shortcomings, including platform dependence and lack of scalability. To address these limitations, Java Servlet technology was created as a portable way to provide dynamic, user-oriented content.
+Allows the web server to call an external program and pass HTTP request to the external program to process the request.
 A servlet is a generic server extension—a Java class that can be loaded dynamically to expand the functionality of a server. Servlets are commonly used with web servers, where they can take the place of CGI scripts. A servlet is similar to a proprietary server extension, except that it runs inside a Java Virtual Machine (JVM) on the server , so it is safe and portable. Servlets operate solely within the domain of the server: unlike applets, they do not require support for Java in the web browser.
 
 Unlike CGI and FastCGI, which must use multiple processes to handle separate programs and/or separate requests, servlets can all be handled by separate threads within the same process or by threads within multiple processes spread across a number of backend servers. This means that servlets are also efficient and scalable. Because servlets run with bidirectional communication to the web server, they can interact very closely with the server to do things that are not possible with CGI scripts.
 Another advantage of servlets is that they are portable: both across operating systems as we are used to with Java and also across web servers.
 
-An `HTTP servlet` is a special type of servlet that handles an HTTP request and provides an HTTP response, usually in the form of an HTML page. The most common use of WebLogic HTTP servlets is to create interactive applications using standard Web browsers for the client-side presentation while WebLogic Server handles the business logic as a server-side process. WebLogic HTTP servlets can access databases, Enterprise JavaBeans,messaging APIs, HTTP sessions, and other facilities of WebLogic Server
-
-
-Comparing Servlets with Other Technologies:- In functionality, servlets provide a higher level abstraction than Common Gateway Interface (CGI) programs but a lower level of abstraction than that provided by web frameworks such as JavaServer Faces.
-
+In functionality, servlets provide a higher level abstraction than Common Gateway Interface (CGI) programs but a lower level of abstraction than that provided by web frameworks such as JavaServer Faces.
 Servlets have the following advantages over other server extension mechanisms:
 
 1. They are generally much faster than CGI scripts because a different process model is used.
@@ -295,42 +395,22 @@ Servlets have the following advantages over other server extension mechanisms:
 3. `Efficiency and Endurance`:- Servlet invocation is highly efficient. Once a servlet is loaded, it remains in the server's memory as a single object instance.Thereafter, the server invokes the servlet to handle a request using a simple, lightweight method invocation. Unlike with CGI, there's no process to spawn or interpreter to invoke, so the servlet can begin handling the request almost immediately. Multiple, concurrent requests are handled by separate threads, so servlets are highly scalable.
 
 
-**Servlet Container**:- `Servlet/JSP Containers`, sometimes called `servlet/JSP engines`, are Web server extensions that provide servlet functionality. Servlets interact with Web clients via a request/response paradigm implemented by the servlet container.The server must run web server software.In addition,to work with servlets and JSPs,the server must also run a servlet/JSP engines.For a servlet/JSP engine to work properly,the engine must be able to access the JDK that comes as part of Java SE.The JDK contains the Java compiler and core classes for working with Java and JRE for running compiled classes.
-The container manages the lifecycle of a servlet.JVM cannot automate the process of object creation,management,method calls so we cannot execute Servlet and JSP directly through JVM.Containers can do this automation process.
-
-The servlet container is a part of a Web server or application server that provides the network services over which requests and responses are sent, decodes MIME-based requests, and formats MIME-based responses. A servlet container also contains and manages servlets through their lifecycle.
-
-A servlet container can be built into a host Web server, or installed as an add-on component to a Web Server via that server’s native extension API. Servlet containers can also be built into or possibly installed into Web-enabled application servers.Servers like Weblogic will get built-in JDK/JRE during installation whereas Servers like Tomcat will use JDK/JRE installed on the computer.
-
-All servlet containers must support HTTP as a protocol for requests and responses, but additional request/response-based protocols such as HTTPS (HTTP over SSL) may be supported. The required versions of the HTTP specification that a container must implement are HTTP/1.1 and HTTP/2. When supporting HTTP/2, servlet containers must support the “h2” and “h2c” protocol identifiers. This implies all servlet containers must support ALPN. Because the container may have a caching mechanism described in RFC 7234 (HTTP/1.1 Caching), it may modify requests from the clients before delivering them to the servlet, may modify responses produced by servlets before sending them to the clients, or may respond to requests without delivering them to the servlet under the compliance with RFC 7234.
-
-A servlet container may place security restrictions on the environment in which a servlet executes. In a Java Platform, Standard Edition (J2SE, v.1.3 or above) or Java Platform, Enterprise Edition (Java EE, v.1.3 or above) environment, these restrictions should be placed using the permission architecture defined by the Java platform. For example some application servers may limit the creation of a Thread object to insure that other components of the container are not negatively impacted.
-
-Java SE 8 is the minimum version of the underlying Java platform with which servlet containers must be built.
-
-Every server has built-in middleware services.This includes:- Security, Transaction, Logging, Auditing.
-
-
-A **servlet** is a Java programming language class that directly or indirectly implements the jakarta.servlet.Servlet interface. The jakarta.servlet and jakarta.servlet.http packages provide interfaces and classes for writing servlets. All servlets must implement the jakarta.servlet.Servlet interface, which defines lifecycle methods such as init, service, and destroy.A servlet is a java class that extends HttpServlet class and runs on server within a servlet container.
+A **servlet** is a Java programming language class that directly or indirectly implements the jakarta.servlet.Servlet interface. The jakarta.servlet and jakarta.servlet.http packages provide interfaces and classes for writing servlets. All servlets must implement the jakarta.servlet.Servlet interface, which defines lifecycle methods such as init, service, and destroy.A servlet is a java class that extends HttpServlet class and runs on server within a servlet container.It is used to extend the capabilities of servers that host applications accessed by means of a request-response programming model. Although servlets can respond to any type of request, they are commonly used to extend the applications hosted by web servers. For such applications, Java Servlet technology defines HTTP-specific servlet classes.
 
 Unlike a regular Java program, and just like an applet, a servlet does not have a main( ) method. Instead, certain methods of a servlet are invoked by the server in the process of handling requests. Each time the server dispatches a request to a servlet, it invokes the servlet's service( ) method.
-
-A servlet is a Java programming language class that is used to extend the capabilities of servers that host applications accessed by means of a request-response programming model. Although servlets can respond to any type of request, they are commonly used to extend the applications hosted by web servers. For such applications, Java Servlet technology defines HTTP-specific servlet classes.
 
 The following is a typical sequence of events:-
 
 1. A client (e.g., a Web browser) accesses a Web server and makes an HTTP request.
-2. The request is received by the Web server and handed off to the servlet container.The servlet container can be running in the same process as the host Web server,
-in a different process on the same host, or on a different host from the Web server for which it processes requests.
+2. The request is received by the Web server and handed off to the servlet container.The servlet container can be running in the same process as the host Web server,in a different process on the same host, or on a different host from the Web server for which it processes requests.
 3. The servlet container determines which servlet to invoke based on the configuration of its servlets, and calls it with objects representing the request and response.
 4. The servlet uses the request object to find out who the remote user is, what HTTP POST parameters may have been sent as part of this request, and other relevant data. The servlet performs whatever logic it was programmed with, and generates data to send back to the client. It sends this data back to the client via the response object.
 5. Once the servlet has finished processing the request, the servlet container ensures that the response is properly flushed, and returns control back to the host Web server.
 
-
 Servlets use classes and interfaces from two packages: `javax.servlet` and `javax.servlet.http`.The javax.servlet package contains classes and interfaces to support generic, protocol-independent servlets. These classes are extended by the classes in the javax.servlet.http package to add HTTP-specific functionality. The top-level package name is javax instead of the familiar java, to indicate that the Servlet API is an Optional Package (formerly called a Standard Extension).
 
 
-**Creating a Servlet**:- The `javax.servlet` and `javax.servlet.http` packages provide interfaces and classes for writing servlets. All servlets must implement the `Servlet interface`, which defines life-cycle methods. When implementing a generic service, you can use or extend the `GenericServlet` class provided with the Java Servlet API. The `HttpServlet class` provides methods, such as doGet and doPost, for handling HTTP-specific services.
+**Creating a Servlet**:- All servlets must implement the `Servlet interface`, which defines life-cycle methods. When implementing a generic service, you can use or extend the `GenericServlet` class provided with the Java Servlet API. The `HttpServlet class` provides methods, such as doGet and doPost, for handling HTTP-specific services.
 
 The *Servlet interface* is the central abstraction of the Java Servlet API. Defines methods that all servlets must implement.This interface defines methods to initialize a servlet, to service requests, and to remove a servlet from the server. These are known as life-cycle methods and are called in the following sequence:
 1. The servlet is constructed, then initialized with the init method.
@@ -339,15 +419,17 @@ The *Servlet interface* is the central abstraction of the Java Servlet API. Defi
 
 All servlets implement this interface either directly, or more commonly, by extending a class that implements the interface. The two classes in the Java Servlet API that implement the Servlet interface are `GenericServlet` and `HttpServlet`.A protocol-independent servlet should subclass GenericServlet, while an HTTP servlet should subclass HttpServlet, which is itself a subclass of GenericServlet with added HTTP-specific functionality. For most purposes, Developers will extend HttpServlet to implement their servlets.
 
-*GenericServlet class* defines a generic, protocol-independent implementation of the Servlet interface. GenericServlet implements the `Servlet` and `ServletConfig interfaces`(It handles the internal storage of the ServletConfig object during initialization and also lets you call methods like getServletContext() and getInitParameter() directly without calling getServletConfig()).
+In addition to the life-cycle methods, the Servlet interface provides the `getServletConfig method`, which the servlet can use to get any startup information(Returns a `ServletConfig object` that contains information about a single servlet's configuration), and the `getServletInfo method`, which allows the servlet to return basic information about itself, such as author, version, and copyright.
+
+*GenericServlet class* defines a generic, protocol-independent implementation of the Servlet interface.GenericServlet implements the `Servlet` and `ServletConfig interfaces`(It handles the internal storage of the ServletConfig object during initialization and also lets you call methods like getServletContext() and getInitParameter() directly without calling getServletConfig()).
 GenericServlet makes writing servlets easier. It provides simple versions of the lifecycle methods init and destroy and of the methods in the ServletConfig interface( provides the empty, no-argument init() method you can easily override without managing super.init(config)). GenericServlet also implements the log method, declared in the `ServletContext interface`.
-It leaves the service(ServletRequest, ServletResponse) method abstract.You (or a subclass like HttpServlet) must implement this method to handle incoming traffic.
-A generic servlet should override its service( ) method to handle requests as appropriate for the servlet. The service( ) method accepts two parameters: a request object and a response object. The request object tells the servlet about the request, while the response object is used to return a response.
+
+It leaves the service(ServletRequest, ServletResponse) method abstract.You (or a subclass like HttpServlet) must implement this method to handle incoming traffic.A generic servlet should override its service( ) method to handle requests as appropriate for the servlet. The service( ) method accepts two parameters: a request object and a response object. The request object tells the servlet about the request, while the response object is used to return a response.
 It is necessary when, for example, RMI or CORBA objects act as servlets.
+GenericServlet Servlet handle only 1 Form data at a time, to handle multiple Form data then we shuld have multiple GenericServlet class.
 
 *HttpServlet class* provides an abstract class to be subclassed to create an HTTP servlet suitable for a Web site. A subclass of HttpServlet must override at least one method, usually one of these:- doGet(if the servlet supports HTTP GET requests), doPost(for HTTP POST requests), doPut(for HTTP PUT requests), doDelete(for HTTP DELETE requests), init and destroy(to manage resources that are held for the life of the servlet), getServletInfo (hich the servlet uses to provide information about itself).However, HTTP servlets generally don't touch doTrace( ) or doOptions( ). For these, the default implementations are almost always sufficient.
-There's almost no reason to override the service method. service handles standard HTTP requests by dispatching them to the handler methods for each HTTP request type (the doXXX methods listed above).
-HTTP servlet usually does not override the service( ) method. Instead, it overrides doGet( ) to handle GET requests and doPost( ) to handle POST requests. An HTTP servlet can override either or both of these methods, depending on the type of requests it needs to handle. The service( ) method of HttpServlet handles the setup and dispatching to all the doXXX( ) methods, which is why it usually should not be overridden.
+There's almost no reason to override the service method.Instead, it handles standard HTTP requests by setting up and dispatching them to the handler methods for each HTTP request type (the doXXX methods listed above), which is why it usually should not be overridden.
 
 The remainder in the javax.servlet and javax.servlet.http packages are largely support classes. For example, the ServletRequest and ServletResponse classes in javax.servlet provide access to generic server requests and responses,while HttpServletRequest and HttpServletResponse in javax.servlet.http provide access to HTTP requests and responses. The javax.servlet.http package also contains an HttpSession interface that provides built-in session tracking functionality and a Cookie class that allows you to quickly set up and process HTTP cookies.
 
@@ -367,29 +449,49 @@ public class StudentServlet extends HttpServlet{
 Servlets typically run on multithreaded servers, so be aware that a servlet must handle concurrent requests and be careful to synchronize access to shared resources. Shared resources include in-memory data such as instance or class variables and external objects such as files, database connections, and network connections.
 
 
-**Servlet Life Cycle**:- A servlet is managed through a well defined life cycle that defines how it is loaded and instantiated, is initialized, handles requests from clients, and is taken out of service. This life cycle is expressed in the API by the init, service, and destroy methods of the javax.servlet.Servlet interface that all servlets must implement directly or indirectly through the GenericServlet or HttpServlet abstract classes.
-
-When the server loads this servlet, the server creates a single instance to handle every request made of the servlet.
-
+**Servlet Life Cycle**:- A servlet is managed through a well defined life cycle that defines how it is loaded and instantiated, is initialized, handles requests from clients, and is taken out of service. This life cycle is expressed in the API by the init, service, and destroy methods of the `Servlet interface` that all servlets must implement directly or indirectly through the GenericServlet or HttpServlet abstract classes.
 The servlet lifecycle allows servlet containers to address both the performance and resource problems of CGI and the security concerns of low-level server API programming. A common way to execute servlets is for the servlet container to run all its servlets in a single Java Virtual Machine ( JVM). By placing all the servlets into the same JVM, the servlets can efficiently share data with one another, yet they are prevented by the Java language from accessing one another's private data. Servlets can persist between requests inside the JVM as object instances. This takes up far less memory than full-fledged processes, yet servlets still are able to efficiently maintain references to external resources.
 
-The life cycle of a servlet is controlled by the container in which the servlet has been deployed. When a request is mapped to a servlet, the container performs the following steps.
-1. If an instance of the servlet does not exist, the web container
-    a. Loads the servlet class.
-    b. Creates an instance of the servlet class.
-    c. Initializes the servlet instance by calling the init method.
-2. Invokes the service method, passing request and response objects.
-3. If the container needs to remove the servlet, it finalizes the servlet by calling the servlet’s destroy method.
-
-It's perfectly legal for a servlet to be loaded, created, and instantiated in its own JVM, only to be destroyed and garbage collected without handling any client requests or after handling just one request. Any servlet container that makes this a habit, however,probably won't last long on the open market.
 At the time the code for a servlet is loaded, the server creates a single instance. That single instance handles every request made of the servlet. This improves performance in three ways:
 1. It keeps the memory footprint small.
 2. It eliminates the object creation overhead that would otherwise be necessary to create a new servlet object. A servlet can already be loaded in a virtual machine when a request comes in, letting it begin executing right away.
 3. It enables persistence. A servlet can have already loaded anything it's likely to need during the handling of a request. For example, a database connection can be opened once and used repeatedly thereafter. The connection can even be used by a group of servlets. Another example is a shopping cart servlet that loads in memory the price list along with information about its recently connected clients. Yet another servlet may choose to cache entire pages of output to save time if it receives the same request again.
 
-From the servlet developer's perspective, each client is another thread that calls the servlet via the service( ), doGet( ), or doPost( ) methods.
+Java servlet life cycle involves following throughout its lifecycle:-
+- We initialize servlet by calling `init()` method.
+- The servlet calls `service()` for processing client's request.
+- We terminate servlet by calling `destroy()` method.
+- At the end, servlet is dumped by garbage collector. 
 
-- `Init and Destroy` - servlets can define init( ) and destroy( ) methods. The server calls a servlet's init( ) method after the server constructs the servlet instance and before the servlet handles any requests. The server calls the destroy( ) method after the servlet has been taken out of service and all pending requests to the servlet have completed or timed out.
+When the server loads this servlet, the server creates a single instance to handle every request made of the servlet.Only a single instance of each servlet gets created, with each user request resulting in a new thread that is handed off to doGet or doPost as appropriate.From the servlet developer's perspective, each client is another thread that calls the servlet via the service( ), doGet( ), or doPost( ) methods.
+
+When the servlet is first created, its init method is invoked, so init is where you put one-time setup code. After this, each user request results in a thread that calls the service method of the previously created instance. Multiple concurrent requests normally result in multiple threads calling service simultaneously, although your servlet can implement a special interface (SingleThreadModel) that stipulates that only a single thread is permitted to run at any one time. The service method then calls doGet, doPost, or another doXxx method, depending on the type of HTTP request it received. Finally, if the server decides to unload a servlet, it first calls the servlet’s destroy method.
+
+The life cycle of a servlet is controlled by the container in which the servlet has been deployed. When a request is mapped to a servlet, the container performs the following steps.
+1. If an instance of the servlet does not exist, the web container
+    - Loads the servlet class.
+    - Creates an instance of the servlet class.
+    - Initializes the servlet instance by calling the init method.
+2. Invokes the service method, passing request and response objects.
+3. If the container needs to remove the servlet, it finalizes the servlet by calling the servlet’s destroy method.
+
+It's perfectly legal for a servlet to be loaded, created, and instantiated in its own JVM, only to be destroyed and garbage collected without handling any client requests or after handling just one request. Any servlet container that makes this a habit, however,probably won't last long on the open market.
+
+- `Init` - The server calls a servlet's init( ) method after the server constructs the servlet instance and before the servlet handles any requests.The init() method is called only once in the entire process.It is called only when the servlet is created.It perform complex setup tasks when the servlet is first loaded, but not repeat those tasks for each request.It is called when the servlet is first created, and not called again for each user request. So, it is used for one-time initializations.The servlet is normally created when a user first invokes a URL corresponding to the servlet, but you can also specify that the servlet be loaded when the server is first started.
+
+The init method definition looks like this:
+
+```java
+public void init() throws ServletException {
+// Initialization code...
+}
+```
+
+The init method performs two varieties of initializations: general initializations and initializations controlled by initialization parameters.
+
+General Initializations - With the first type of initialization, init simply creates or loads some data that will be used throughout the life of the servlet, or it performs some one-time computation.Servlet examples include setting up a database connection pool for requests that the servlet will handle or loading a data file into a HashMap.
+Since the output of the servlet does not change except when the server is rebooted, init also stores a page modification date that is used by the getLastModified method. This method should return a modification time expressed in milliseconds since 1970, as is standard with Java dates. The time is automatically converted to a date in GMT appropriate for the Last-Modified header. More importantly, if the server receives a conditional GET request (one specifying that the client only wants pages marked If-Modified-Since a particular date), the system compares the specified date to that returned by getLastModified, returning the page only if it has been changed after the specified date. Browsers frequently make these conditional requests for pages stored in their caches, so supporting conditional requests helps your users (they get faster results) and reduces server load (you send fewer complete documents). Since the Last-Modified and If-Modified-Since headers use only whole seconds, the getLastModified method should round times down to the nearest second.
+
 Depending on the server and the web application configuration, the init( ) method may be called at any of these times:
 1. When the server starts.
 2. When the servlet is first requested, just before the service( ) method is invoked.
@@ -398,75 +500,9 @@ Depending on the server and the web application configuration, the init( ) metho
 In any case, init( ) is guaranteed to be called and completed before the servlet handles its first request.
 The init( ) method is typically used to perform servlet initialization — creating or loading objects that are used by the servlet in the handling of its requests. During the init( ) method a servlet may want to read its initialization (init) parameters. These parameters are given to the servlet itself and are not associated with any single request. They can specify initial values, like where a counter should begin counting, or default values, perhaps a template to use when not specified by the request. Init parameters for a servlet are set in the web.xml deployment descriptor, although some servers have graphical interfaces for modifying this file.
 init(ServletConfig config): This runs exactly once when the servlet is first loaded. It’s typically used for heavy lifting like opening a database connection or reading configuration parameters.
-destroy(): Like init, this runs only once at the very end of the servlet's life. It gives the servlet a chance to clean up resources (closing those database connections or threads) before the JVM reclaims the memory.
 
 
-```xml
-<init-param>
-    <param-name> initial </param-name>
-    <param-value> 1000 </param-value>
-    <description> The initial value for the counter </description>
-</init-param>
-```
-
-```java
-@Override
-public void init() throws ServletException {
-    String init = getInitParameter("initial");
-
-    if(init != null) {
-        counter = Integer.parseInt(init);
-    } else
-        counter = 0;
-    }
-```
-
-`service(ServletRequest req, ServletResponse res)`: This is the engine room. It’s called for every client request. In a standard HttpServlet, this method automatically dispatches the request to the appropriate handler, like doGet() or doPost().
-
-You can monitor and react to events in a servlet’s life cycle by defining listener objects whose methods get invoked when life-cycle events occur. To use these listener objects you must define and specify the listener class.
-
-
-In addition to the life-cycle methods, the Servlet interface provides the `getServletConfig method`, which the servlet can use to get any startup information(Returns a `ServletConfig object` that contains information about a single servlet's configuration), and the `getServletInfo method`, which allows the servlet to return basic information about itself, such as author, version, and copyright.
-
-
-*ServletConfig*:-A servlet configuration object used by a servlet container to pass information to a servlet during initialization.
-
-- String getServletName() - Returns the name of this servlet instance. The name may be provided via server administration, assigned in the web application deployment descriptor, or for an unregistered (and thus unnamed) servlet instance it will be the servlet's class name.
-- ServletContext getServletContext() - Returns a reference to the ServletContext in which the caller is executing.
-- String getInitParameter(String name) - Gets the value of the initialization parameter with the given name
-- Enumeration<String> getInitParameterNames() - Returns the names of the servlet's initialization parameters as an Enumeration of String objects, or an empty Enumeration if the servlet has no initialization parameters.
-
-
-`Request Handling Methods`:- The basic Servlet interface defines a service method for handling client requests.This method is called for each request that the servlet container routes to an instance of a servlet.
-The handling of concurrent requests to a Web application generally requires that the Web Developer design servlets that can deal with multiple threads executing within the service method at a particular time.Generally the Web container handles concurrent requests to the same servlet by concurrent execution of the service method on different threads.
-
-- `HTTP Specific Request Handling Methods`:- The HttpServlet abstract subclass adds additional methods beyond the basic Servlet interface that are automatically called by the service method in the HttpServlet class to aid in processing HTTP-based requests. These methods are:
-    1. doGet for handling HTTP GET requests
-    2. doPost for handling HTTP POST requests
-    3. doPut for handling HTTP PUT requests
-    4. doDelete for handling HTTP DELETE requests
-    5. doHead for handling HTTP HEAD requests
-    6. doOptions for handling HTTP OPTIONS requests
-    7. doTrace for handling HTTP TRACE requests
-
-Typically when developing HTTP-based servlets, a Servlet Developer will only concern himself with the doGet and doPost methods. The other methods are considered to be methods for use by programmers very familiar with HTTP programming.
-
-`Number of Instances`:- The servlet declaration which is either via the annotation-“Annotations and pluggability” or part of the deployment descriptor of the Web
-application containing the servlet “Deployment Descriptor”, controls how the servlet container provides instances of the servlet.
-For a servlet not hosted in a distributed environment (the default), the servlet container must use only one instance per servlet declaration. However, for a servlet
-implementing the SingleThreadModel interface, the servlet container may instantiate multiple instances to handle a heavy request load and serialize requests to a particular instance.
-In the case where a servlet was deployed as part of an application marked in the deployment descriptor as distributable, a container may have only one instance per
-servlet declaration per Java Virtual Machine (JVM™)1. However, if the servlet in a distributable application implements the SingleThreadModel interface, the container
-may instantiate multiple instances of that servlet in each JVM of the container.
-
-The use of the SingleThreadModel interface guarantees that only one thread at a time will execute in a given servlet instance’s service method. It is important to
-note that this guarantee only applies to each servlet instance, since the container may choose to pool such objects. Objects that are accessible to more than one servlet
-instance at a time, such as instances of HttpSession, may be available at any particular time to multiple servlets, including those that implement SingleThreadModel.
-It is recommended that a developer take other means to resolve those issues instead of implementing this interface, such as avoiding the usage of an instance variable or
-synchronizing the block of the code accessing those resources. The SingleThreadModel Interface is deprecated in this version of the specification.
-
-
-`Service Method`:- The service provided by a servlet is implemented in the service method of a GenericServlet, in the doMethod methods (where Method can take the value Get, Delete, Options, Post, Put, or Trace) of an HttpServlet object, or in any other protocol-specific methods defined by a class that implements the Servlet interface. The term service method is used for any method in a servlet class that provides a service to a client.
+- `Service`: This is the engine room. It’s called for every client request. In a standard HttpServlet, this method automatically dispatches the request to the appropriate handler, like doGet() or doPost().Each time the server receives a request for a servlet, the server spawns a new thread and calls service. The service method checks the HTTP request type ( GET,POST, PUT, DELETE, etc.) and calls doGet, doPost, doPut , doDelete , etc., as appropriate. A GET request results from a normal request for a URL or from an HTML form that has no METHOD specified. A POST request results from an HTML form that specifically lists POST as the METHOD. Other HTTP requests are generated only by custom clients.
 
 The general pattern for a service method is to extract information from the request, access external resources, and then populate the response, based on that information. For HTTP servlets, the correct procedure for populating the response is to do the following:
 
@@ -476,8 +512,71 @@ The general pattern for a service method is to extract information from the requ
 
 Response headers must always be set before the response has been committed. The web container will ignore any attempt to set or add headers after the response has been committed.
 
+The service() method is the main method defined to perform actual task required.
 
-**Servlet Context**:- The ServletContext interface defines a servlet’s view of the Web application within which the servlet is running. The Container Provider is responsible for providing an implementation of the ServletContext interface in the servlet container. Using the ServletContext object, a servlet can log events, obtain URL references to resources,and set and store attributes that other servlets in the context can access.
+```java
+public void service(ServletRequest req,ServletResponse res) throws ServletException, IOException{
+    //statements
+}
+```
+
+- `Destroy` - The server calls the destroy( ) method after the servlet has been taken out of service and all pending requests to the servlet have completed or timed out.destroy() - The destroy() method is called only once in the end of entire process.It is called only when servlet is terminated.
+destroy(): Like init, this runs only once at the very end of the servlet's life. It gives the servlet a chance to clean up resources (closing those database connections or threads) before the JVM reclaims the memory.
+
+```java
+public void destroy(){
+    //Destroy statements
+}
+```
+
+You can monitor and react to events in a servlet’s life cycle by defining listener objects whose methods get invoked when life-cycle events occur. To use these listener objects you must define and specify the listener class.
+
+
+**Servlet Config**:- ServletConfig object is created by web container for each servlet to pass information to a servlet during initialization.This object can be used to get configuration information from web.xml file.
+Used if any specific content is modified from time to time. You can manage the Web application easily without modifing servlet through editing the value in web.xml
+A servlet configuration object used by a servlet container to pass information to a servlet during initialization.
+- Method includes:-
+    - String getServletName() - Returns the name of this servlet instance. The name may be provided via server administration, assigned in the web application deployment descriptor, or for an unregistered (and thus unnamed) servlet instance it will be the servlet's class name.This method proves useful when writing to logs and when storing a servlet instance's state information into a shared resource such as a database or the servlet's SessionContext.
+    - ServletContext getServletContext() - Returns a reference to the ServletContext in which the caller is executing.
+    - String getInitParameter(String name) - Gets the value of the initialization parameter with the given name.This method returns the value of the named init parameter or null if it does not exist. The return value is always a single String. It is up to the servlet to interpret the value.The GenericServlet class implements the ServletConfig interface and thus provides direct access to the getInitParameter ( ) method.
+    - Enumeration<String> getInitParameterNames() - Returns the names of the servlet's initialization parameters as an Enumeration of String objects, or an empty Enumeration if the servlet has no initialization parameters.This method returns the names of all the servlet's init parameters as an Enumeration of String objects or an empty Enumeration if no parameters exist. It's most often used for debugging.The GenericServlet class additionally makes this method directly available to servlets.
+
+To define a servlet initialization parameter that will be available to a specific servlet,you can code an init-param element within a servlet element.This element follows the servlet-name and servlet-class elements.Within the init-param element,you must code the param-name and param-value elements to define the name and value of the parameter.To define multiple initialization parameters for a servlet,you can code additional init-param elements after the first one.
+
+```xml
+<web-app>  
+	<servlet>  
+	    ......     
+		<init-param>  
+		<!--here we specify the parameter name and value -->
+		    <param-name>paramName</param-name>  
+		    <param-value>paramValue</param-value>  
+		</init-param> 
+		......  
+	</servlet>  
+</web-app>
+```
+
+To retrieve initialization parameters available to current servlet,you begin by calling getServletConfig method from anywhere in the servlet to get a SerletConfig object.Then,you call the getInitParameter method from ServletConfig object.
+
+```java
+ServletConfig config = getServletConfig();
+Sting initial = config.getInitParameter("paramName");.
+```
+
+
+`Number of Instances`:- The servlet declaration which is either via the annotation or part of the deployment descriptor of the Web application containing the servlet “Deployment Descriptor”, controls how the servlet container provides instances of the servlet.
+For a servlet not hosted in a distributed environment (the default), the servlet container must use only one instance per servlet declaration. However, for a servlet implementing the SingleThreadModel interface, the servlet container may instantiate multiple instances to handle a heavy request load and serialize requests to a particular instance.
+In the case where a servlet was deployed as part of an application marked in the deployment descriptor as distributable, a container may have only one instance per servlet declaration per Java Virtual Machine (JVM™)1. However, if the servlet in a distributable application implements the SingleThreadModel interface, the container may instantiate multiple instances of that servlet in each JVM of the container.
+
+The use of the SingleThreadModel interface guarantees that only one thread at a time will execute in a given servlet instance’s service method. It is important to
+note that this guarantee only applies to each servlet instance, since the container may choose to pool such objects. Objects that are accessible to more than one servlet
+instance at a time, such as instances of HttpSession, may be available at any particular time to multiple servlets, including those that implement SingleThreadModel.
+It is recommended that a developer take other means to resolve those issues instead of implementing this interface, such as avoiding the usage of an instance variable or
+synchronizing the block of the code accessing those resources. The SingleThreadModel Interface is deprecated in this version of the specification.
+
+
+**Servlet Context**:- Defines a set of methods that a servlet uses to communicate with its servlet container, for example, to get the MIME type of a file, dispatch requests, or write to a log file.The ServletContext interface defines a servlet’s view of the Web application within which the servlet is running. The ServletContext also allows a servlet to access resources available to it. Using the ServletContext object, a servlet can log events, obtain URL references to resources,and set and store attributes that other servlets in the context can access.The Container Provider is responsible for providing an implementation of the ServletContext interface in the servlet container.
 
 Defines a set of methods that a servlet uses to communicate with its servlet container, for example, to get the MIME type of a file, dispatch requests, or write to a log file.
 There is one context per "web application" per Java Virtual Machine. (A "web application" is a collection of servlets and content installed under a specific subset of the server's URL namespace such as / catalog and possibly installed via a .war file.)
@@ -486,15 +585,44 @@ The ServletContext object is contained within the ServletConfig object, which th
 
 A ServletContext is rooted at a known path within a Web server. For example, a servlet context could be located at http://example.com/catalog. All requests that begin with the /catalog request path, known as the context path, are routed to the Web application associated with the ServletContext.
 
-- `Initialization Parameters`:-  The following methods of the ServletContext interface allow the servlet access to context initialization parameters associated with a Web application as specified by the Application Developer in the deployment descriptor:
+*Scope of a ServletContext* - There is one instance of the ServletContext interface associated with each web application deployed into a container. In cases where the container is distributed over many virtual machines, there is one instance per web application per VM.
+Servlets that exist in a container that were not deployed as part of a web application are implicitly part of a “default” web application and are contained by a default ServletContext. In a distributed container,the default ServletContext is non-distributable and must only exist on one VM.
+
+- *Initialization Parameters*:- A set of context initialization parameters can be associated with a web application and are made available by the following methods of the ServletContext interface: The following methods of the ServletContext interface allow the servlet access to context initialization parameters associated with a Web application as specified by the Application Developer in the deployment descriptor:
     1. getInitParameter(String name) -Returns a String object that contains value of the specified initialization parameter.If parameter doesn't exist,this method returns a null value.
     2. getInitParameterNames - Initialization parameters are used by an Application Developer to convey setupminformation. Typical examples are a Webmaster’s e-mail address, or the name of a system that holds critical data.
+Initialization parameters can be used by an application developer to convey setup information, such as a webmaster’s e-mail address or the name of a system that holds critical data.
 
-- `Configuration methods`:-  The following methods are added to ServletContext since Servlet 3.0 to enable programmatic definition of servlets, filters and the url pattern that they map to.
-These methods can only be called during the initialization of the application either from the contexInitialized method of a ServletContextListener implementation or from the onStartup method of a ServletContainerInitializer implementation. In addition to adding Servlets and Filters, one can also look up an instance of a Registration object corresponding to a Servlet or Filter or a map of all the Registration objects for the Servlets or Filters. If the ServletContext passed to the ServletContextListener’s contextInitialized method where the ServletContextListener was neither
-declared in web.xml or web-fragment.xml nor annotated with @WebListener then an UnsupportedOperationException MUST be thrown for all the methods defined in ServletContext for programmatic configuration of servlets, filters and listeners.
+Each registered servlet name can have specific initialization (init) parameters associated with it. Init parameters are available to the servlet at any time; they are set in the web.xml deployment descriptor and generally used in init( ) to set initial or default values for a servlet or to customize the servlet's behavior in some way.
 
-- `Context Attributes`:- A servlet can bind an object attribute into the context by name. Any attribute bound into a context is available to any other servlet that is part of the same Web application. The following methods of ServletContext interface allow access to this functionality:
+If you want to store some initialization parameters for an application in a central location(called a context initialization parameter),you can add them to the web.xml.You code param-name and param-value elements within context-param element.
+- <context-param> - Defines a parameter that's available to all servlets within an application.
+- <param-value> - Defines name of a parameter.
+- <param-value> - Defines the value of parameter.
+
+web container create one ServletContext object per web Application. This object is used to get information from web.xml. Used if you want to share information to all sevlet, it a better way to make it available for all servlet.
+
+```xml
+<web-app>  
+	......  
+	<context-param>  
+		<param-name>paramName</param-name>  
+		<param-value>paramValue</param-value>  
+	</context-param>  
+	......  
+</web-app>
+```
+
+This way you can get value in servlet:-
+
+```java
+//creating ServletContext object  
+ServletContext context=getServletContext();  
+//Getting the value of the initialization parameter
+String paramName=context.getInitParameter("paramName"); 
+```
+
+- *Context Attributes*:- A servlet can bind an object attribute into the context by name. Any attribute bound into a context is available to any other servlet that is part of the same Web application. The following methods of ServletContext interface allow access to this functionality:
     1. setAttribute
     2. getAttribute
     3. getAttributeNames
@@ -502,158 +630,92 @@ declared in web.xml or web-fragment.xml nor annotated with @WebListener then an 
 
 NOTE:- To get initialization parameter that's available to all servlets,you use the getInitParameter method of ServletContext objects, to get an initialization parameter for a specific servlet,you use the getInitParameter method of ServletConfig object.
 
+- *Resources* - The ServletContext interface allows direct access to the static document hierarchy of content documents, such as HTML, GIF, and JPEG files, that are part of the web application via the following methods of the ServletContext interface:
+    1. getResource
+    2. getResourceAsStream
+Both the getResource and getResourceAsStream methods take a String argument giving the path of the resource relative to the root of the context.
 
-**ServletContainerInitializer**:- Interface which allows a library/ runtime to be notified of a web application's startup phase and perform any required programmatic registration of servlets, filters, and listeners in response to it.
+*Temporary Working Directories* - It is often useful for Application Developers to have a temporary working area on the local filesystem. All servlet containers must provide a private temporary directory per servlet context and make it available via the context attribute of javax.servlet.context.tempdir. The object associated with the attribute must be of type java.io.File.
+
+*Configuration methods*:-  The following methods are added to ServletContext since Servlet 3.0 to enable programmatic definition of servlets, filters and the url pattern that they map to.These methods can only be called during the initialization of the application either from the contexInitialized method of a ServletContextListener implementation or from the onStartup method of a ServletContainerInitializer implementation. In addition to adding Servlets and Filters, one can also look up an instance of a Registration object corresponding to a Servlet or Filter or a map of all the Registration objects for the Servlets or Filters. If the ServletContext passed to the ServletContextListener’s contextInitialized method where the ServletContextListener was neither
+declared in web.xml or web-fragment.xml nor annotated with @WebListener then an UnsupportedOperationException MUST be thrown for all the methods defined in ServletContext for programmatic configuration of servlets, filters and listeners.
+
+`ServletContainerInitializer`:- Interface which allows a library/ runtime to be notified of a web application's startup phase and perform any required programmatic registration of servlets, filters, and listeners in response to it.
 Implementations of this interface may be annotated with HandlesTypes, in order to receive (at their onStartup method) the Set of application classes that implement, extend, or have been annotated with the class types specified by the annotation.
 If an implementation of this interface does not use HandlesTypes annotation, or none of the application classes match the ones specified by the annotation, the container must pass a null Set of classes to onStartup.
 Implementations of this interface must be declared by a JAR file resource located inside the META-INF/ services directory and named for the fully qualified class name of this interface, and will be discovered using the runtime's service provider lookup mechanism or a container specific mechanism that is semantically equivalent to it. In either case, ServletContainerInitializer services from web fragment JAR files excluded from an absolute ordering must be ignored, and the order in which these services are discovered must follow the application's classloading delegation model.
 
+- `Programmatically adding and configuring Servlets` - The ability to programmatically add a servlet to a context is useful for framework developers. For example a framework could declare a controller servlet using this method. The return value of this method is a ServletRegistration or a ServletRegistration.Dynamic object which further allows you to setup the other parameters of the servlet like init-params, url-mappings etc. There are three overloaded versions of the method as described below.
+    1. addServlet(String servletName, String className) - This method allows the application to declare a servlet programmatically. It adds the servlet with the given name, and class name to the servlet context.
+    2. addServlet(String servletName, Servlet servlet) - This method allows the application to declare a servlet programmatically. It adds the servlet with the given name, and servlet instance to the servlet context.
+    3. addServlet(String servletName, Class <? extends Servlet> servletClass) - This method allows the application to declare a servlet programmatically. It adds the servlet with the given name, and an instance of the servlet class to the servlet context.
+    4. addJspFile(String servletName, String jspfile) - This method allows the application to declare a jsp programmatically. It adds the jsp with the given name, and an instance of the servlet class corresponding to the jsp file to the servlet context.
+    5. <T extends Servlet> T createServlet(Class<T> clazz) - This method instantiates the given Servlet class. The method must support all the annotations applicable to Servlets except @WebServlet. The returned Servlet instance may be further customized before it is registered with the ServletContext via a call to addServlet(String, Servlet) as defined above.
 
-**Retrieving Information**:- To build a successful web application, you often need to know a lot about the environment in which it is running. You may need to find out about the server that is executing your servlets or the specifics of the client that is sending requests. And no matter what kind of environment the application is running in, you most certainly need information about the requests that the application is handling.
 
-A number of methods provide servlets access to this information. For the most part, each method returns one specific result.
+ServletContext context is global for entire application, where as ServletConfig is the local par servlet that means each servlet having one ServletConfig object,one servlet having one ServletConfig object, where as ServletContext is entire application created only one object created
 
-- *The Servlet*:- Each registered servlet name can have specific initialization (init) parameters associated with it. Init parameters are available to the servlet at any time; they are set in the web.xml deployment descriptor and generally used in init( ) to set initial or default values for a servlet or to customize the servlet's behavior in some way.
+**Servlet Debugging**:- Debugging servlets can be tricky because you don’t execute them directly. Instead, you trigger their execution by means of an HTTP request, and they are executed by the Web server. This remote execution makes it difficult to insert break points or to read debugging messages and stack traces. So, approaches to servlet debugging differ somewhat from those used in general development.
 
-`Getting a Servlet Init Parameter`:- A servlet uses the getInitParameter( ) method for access to its init parameters:
+1. `Use print statements` - 
+    - `Print debugging Data to console`:- You can print debugging messages to the console for servlet engine.To do that,you can use the println method of System.out or System.err objects.You can use these messages to help track the methods that are executed or to view value of variables.When you use println statements to check value of variable,you'll often want to include the name of the class and name of variable.When you use println statements to print debugging data to the console,this data may be printed to different locations depending on your development environment.If you're using IDE,the data will be printed to the Tomcat tab of output window.If you're using Tomcat in stand-alone environment,data will be printed inside a Tomcat console.
+    - `Print debugging data to log file`:- If you want to keep a permanent history of some key debugging data,you can print debugging data to a log file.Although each servlet engine uses log files a little different,you should be able to use log methods with any servlet engine.The HttpServlet class has a method called log that lets you write information into a logging file on the server.To write data to a log file,you can use two log methods of HttpServlet class.
+        1. log(String message) - Writes specified message to server's log file.
+        2. log(String message,Throwable t) - Writes specified message to server's log file,followed by stack trace for the exception.Stack trace is a series of messages that presents the chain of method calls that precede current method.Tomcat stores its log file in its logs directory.Within this directory,Tomcat stores several types of log files with one file of each type for each date(tomcat/localhost.year-month-date.log).
 
 ```java
-public String ServletConfig.getInitParameter(String name)
-```
+log("email" + email);
 
-This method returns the value of the named init parameter or null if it does not exist. The return value is always a single String. It is up to the servlet to interpret the value.
-The GenericServlet class implements the ServletConfig interface and thus provides direct access to the getInitParameter ( ) method. This means the method can be called like this:
-
-```java
-public void init() throws ServletException {
- String greeting = getInitParameter("greeting");
+try{
+    UserIO.add(user,path);
+} catch(IOException e){
+    log("Exception occurred.", e)
 }
 ```
 
-A servlet that needs to establish a connection to a database can use its init parameters to define the details of the connection. We can assume a custom establishConnection( ) method to abstract away the details of JDBC.
-
-```java
-java.sql.Connection con = null;
-
-public void init() throws ServletException {
-    String host = getInitParameter("host");
-    int port = Integer.parseInt(getInitParameter("port"));
-    String db = getInitParameter("db");
-    String user = getInitParameter("user");
-    String password = getInitParameter("password");
-    String proxy = getInitParameter("proxy");
-
-    con = establishConnection(host, port, db, user, password, proxy);
-}
-```
-
-`Getting Servlet Init Parameter Names`:- A servlet can examine all its init parameters using getInitParameterNames( ):
-
-```java
-public Enumeration ServletConfig.getInitParameterNames()
-```
-
-This method returns the names of all the servlet's init parameters as an Enumeration of String objects or an empty Enumeration if no parameters exist. It's most often used for debugging.
-The GenericServlet class additionally makes this method directly available to servlets.
-
-```java
-Enumeration enum = getInitParameterNames();
-    while (enum.hasMoreElements()) {
-        String name = (String) enum.nextElement();
-        out.println(name + ": " + getInitParameter(name));
-}
-```
-
-`Getting a Servlet's Name`:-Also in the ServletConfig interface there's a method that returns the servlet's registered name:
-
-```java
-public String ServletConfig.getServletName()
-```
-
-If the servlet is unregistered, the method returns the servlet's class name. This method proves useful when writing to logs and when storing a servlet instance's state information into a shared resource such as a database or the servlet's SessionContext
-
-```java
-String name = getServletName();
-ServletContext context = getServletContext();
-Object value = context.getAttribute(name + ".state");
-```
-
-Using the servlet name in the key, each servlet instance can easily keep a separate attribute value within the shared context.
+2. `Use an integrated debugger in your IDE` - Many integrated development environments (IDEs) have sophisticated debugging tools that can be integrated with your servlet and JSP container.
 
 
-- *The Server*:- A servlet can find out much about the server in which it is executing. It can learn the hostname, listening port, and server software, among other things. A servlet can display this information to a client, use it to customize its behavior based on a particular server package, or even use it to explicitly restrict the machines on which the servlet will run.
+**The Request** - One of the main motivations for building Web pages dynamically is so that the result can be based upon user input.The request object encapsulates all information from the client request. In the HTTP protocol, this information is transmitted from the client to the server in the HTTP headers and the message body of the request.
+A request contains data passed between a client and the servlet. All requests implement the ServletRequest interface. This interface defines methods for accessing the following information:
 
-`Getting Information About the Server`:- A servlet gains most of its access to server information through the ServletContext object in which it executes. Before API 2.2, the ServletContext was generally thought of as a reference to the server itself. Since API 2.2 the rules have changed and there now must be a different ServletContext for each web application on the server. The ServletContext has become a reference to the web application, not a reference to the server. For simple server queries, there's not much difference.
+1. Parameters, which are typically used to convey information between clients and servlets
+2. Object-valued attributes, which are typically used to pass information between the web container and a servlet or between collaborating servlets
+3. Information about the protocol used to communicate the request and about the client and server involved in the request
+4. Information relevant to localization
 
-There are five methods that a servlet can use to learn about its server: two that are called using the ServletRequest object passed to the servlet and three that are called from the ServletContext object in which the servlet is executing.
+You can also retrieve an input stream from the request and manually parse the data. To read character data, use the BufferedReader object returned by the request’s getReader method. To read binary data, use the ServletInputStream returned by getInputStream.
 
-A servlet can get the name of the server and the port number for a particular request with getServerName( ) and getServerPort( ), respectively:
+ServletRequest defines an object to provide client request information to a servlet. The servlet container creates a ServletRequest object and passes it as an argument to the servlet's service method.A ServletRequest object provides data including parameter name and values, attributes, and an input stream. Interfaces that extend ServletRequest can provide additional protocol-specific data (for example, HTTP data is provided by HttpServletRequest.)
 
-```java
-public String ServletRequest.getServerName()
-public int ServletRequest.getServerPort()
-```
-
-These methods are attributes of ServletRequest because the values can change for different requests if the server has more than one name (a technique called virtual hosting). The returned name might be something like www.servlets.com while the returned port might be something like 8080.
-
-
-The getServerInfo( ) and getAttribute( ) methods of ServletContext provide information about the server software and its attributes:
-
-```java
-public String ServletContext.getServerInfo()
-public Object ServletContext.getAttribute(String name)
-```
-
-getServerInfo( ) - returns the name and version of the server software, separated by a slash. The string returned might be something like Tomcat Web Server/3.2. Some servers add extra information at the end describing the server operating environment.
-getAttribute( ) - returns the value of the named server attribute as an Object or null if the attribute does not exist. Servers have the option to place hardcoded attributes in the context for use by servlets. You can think of this method as a back door through which a servlet can get extra information about its server.The only mandatory attribute a server must make available is an attribute named javax.servlet.context.tempdir, which provides a java.io.File reference to a directory private to this context.
-
-Servlets can also add their own attributes to the context using the setAttribute( ) method.Attribute names should follow the same convention as package names. The package names java.* and javax.* are reserved for use by the Java Software division of Sun Microsystems, and com.sun.* is reserved for use by Sun Microsystems. You can see your
-server's documentation for a list of its attributes. A listing of all current attributes stored by the server and other servlets can be obtained using getAttributeNames( ) :
-
-```java
-public Enumeration ServletContext.getAttributeNames()
-```
-
-Because these methods are attributes of the ServletContext in which the servlet is executing, you have to call them through that object:
-
-```java
-String serverInfo = getServletContext().getServerInfo();
-```
+HttpServletRequest extends the ServletRequest interface to provide request information for HTTP servlets.It is used to represent the HTTP request to a browser that user sends to web application.Thus,anything browser sends,is accessible through the object. The servlet container creates an HttpServletRequest object and passes it as an argument to the servlet's service methods (doGet, doPost, etc).
 
 
-- *The Client*:- For each request, a servlet has the ability to find out about the client machine and, for pages requiring authentication, about the actual user. This information can be used for logging access data, associating information with individual users, or restricting access to certain clients.
+*FORM DATA* - Form data can be attached to the end of the URL after a question mark for GET requests; form data can also be sent to the server on a separate line for POST requests.
+HTML forms gives details on how to build forms that collect and transmit data of this sort.
+
+- `Use the FORM element to create an HTML form`. Use the ACTION attribute to designate the address of the servlet or JSP page that will process the results; you can use an absolute or relative URL.For example:
+
+<FORM ACTION="...">...</FORM>
+
+If ACTION is omitted, the data is submitted to the URL of the current page.
+
+- `Use input elements to collect user data`. Place the elements between the start and end tags of the FORM element and give each input element a NAME. Textfields are the most common input element;they are created with the following.
+
+<INPUT TYPE="TEXT" NAME="...">
+
+- `Place a submit button near the bottom of the form`. For example:
+
+<INPUT TYPE="SUBMIT">
+
+When the button is pressed, the URL designated by the form’s ACTION is invoked. With GET requests, a question mark and name/value pairs are attached to the end of the URL, where the names come from the NAME attributes in the HTML input elements and the values come from the end user. With POST requests, the same data is sent, but on a separate request line instead of attached to the URL.
 
 
-`Getting Information About the Client Machine`:- A servlet can use getRemoteAddr( ) and getRemoteHost( ) to retrieve the IP address and hostname of the client machine, respectively:
+*Reading Form Data from Servlets (Request Parameter)*:- One of the nice features of servlets is that all of this form parsing is handled automatically. You call request.getParameter to get the value of a form parameter. You can also call request.getParameterValues if the parameter appears more than once, or you can call request.getParameterNames if you want a complete list of all parameters in the current request. In the rare cases in which you need to read the raw request data and parse it yourself, call getReader or getInputStream.
 
-```java
-public String ServletRequest.getRemoteAddr()
-public String ServletRequest.getRemoteHost()
-```
+Request parameters are parameters that are sent from the browser along with the request.Request parameters are typically sent as part of the URL,or as part of the body of an HTTP request.
 
-Both values are returned as String objects. The information comes from the socket that connects the server to the client, so the remote address and hostname may be that of a proxy server. An example remote address might be 192.26.80.118 while an example remote host might be dist.engr.sgi.com.
-The IP address or remote hostname can be converted to a java.net.InetAddress object using InetAddress.getByName ( ):
-
-```java
-InetAddress remoteInetAddress = InetAddress.getByName(req.getRemoteAddr());
-```
-
-
-**The Request object**:- The request object encapsulates all information from the client request. In the HTTP protocol, this information is transmitted from the client to the server in the HTTP headers and the message body of the request.
-
-`ServletRequest`- Defines an object to provide client request information to a servlet. The servlet container creates a ServletRequest object and passes it as an argument to the servlet's service method.A ServletRequest object provides data including parameter name and values, attributes, and an input stream. Interfaces that extend ServletRequest can provide additional protocol-specific data (for example, HTTP data is provided by HttpServletRequest.)
-
-1. String getParameter(String name) -Returns the value of a request parameter as a String, or null if the parameter does not exist.
-2. void setAttribute(String name, Object o)- Stores an attribute in this request
-3. Object getAttribute(String name)- Returns the value of the named attribute as an Object, or null if no attribute of the given name exists.
-
-`HttpServletRequest`-Extends the ServletRequest interface to provide request information for HTTP servlets.The servlet container creates an HttpServletRequest object and passes it as an argument to the servlet's service methods (doGet, doPost, etc).
-
-1. Cookie[] getCookies()- Returns an array containing all of the Cookie objects the client sent with this request.
-2. HttpSession getSession()-Returns the current session associated with this request, or if the request does not have a session, creates one.
-3. HttpSession getSession(boolean create)-Returns the current HttpSession associated with this request or, if there is no current session and create is true, returns a new session.
-
-*Request Parameters method*:- Each access to a servlet can have any number of request parameters associated with it. These parameters are typically name/value pairs that tell the servlet any extra information it needs to handle the request.Request parameters for the servlet are the strings sent by the client to a servlet container as part of its request.They are name of values sent when user clicks submit button.
+Each access to a servlet can have any number of request parameters associated with it. These parameters are typically name/value pairs that tell the servlet any extra information it needs to handle the request.Request parameters for the servlet are the strings sent by the client to a servlet container as part of its request.They are name of values sent when user clicks submit button.
 HTTP Protocol Parameters:- When the request is an HttpServletRequest object,and conditions set out in ”When Parameters Are Available” are met, the container populates the parameters from the URI query string and POST-ed data.An HTTP servlet gets its request parameters as part of its query string (for GET requests) or as encoded POST data (for POST requests), or sometimes both. Fortunately, every servlet retrieves its parameters the same way, using `getParameter( )` and `getParameterValues( )`.
 
 - The following are the conditions that must be met before post form data will be populated to the parameter set:
@@ -666,49 +728,41 @@ If the conditions are not met and the post form data is not included in the para
 
 The parameters are stored as a set of name-value pairs. Multiple parameter values can exist for any given parameter name. The following methods of the ServletRequest interface are available to access parameters.
 
-The `getParameter(String param) method` returns value of the specified parameter as a string if it exists or null if it doesn't.Often,this value is defined in Value attribute of the control in HTML pages or JSP.For textbox,that's usually value entered by user.For a group of radio radio buttons or a combo box,that's value of the button or item selected by user.For checkboxes or independent radio buttons that have Value attribute,the method returns that value if or button is selected and null if not.For checkboxes or independent radio buttons that don't have value attribute,though the method returns "on" value if checkbox or button is selected and null if not.
-The `getParameterValues(String param) method` retrieves multiple values for one parameter name.It returns an array of String objects containing all the parameter values associated with a parameter name. The value returned from the getParameter method must be the first value in the array of String objects returned by getParameterValues.Useful for controls like controls like list boxes that allow multiple selections.After returning array of the String Objects,you can use a loop to get values.
-The `getParameterMap method` returns a java.util.Map of the parameter of the request, which contains names as keys and parameter values as map values.Data from the query string and the post body are aggregated into the request parameter set. Query string data is presented before post body data. For example, if a request is made with a query string of a=hello and a post body of a=goodbye&a=world, the resulting parameter set would be ordered a=(hello, goodbye, world).Path parameters that are part of a GET request (as defined by HTTP 1.1) are not exposed by these APIs. They must be parsed from the String values returned by the getRequestURI method or the getPathInfo method.
-`getPrameterNames() method` returns an Enumeration object that contains names of all parameters contained in request.If request has no parameters,the method returns an empty Enumeration object.You can search through Enumeration object to get parameter names,and you can use the getParameter method to return value of each parameter name.Enumeration object is a collection that can be searched element by element.To determine if more element exist in the collection,you can use hasMoreElements method,which returns a Boolean value.And to get next element in the collection,you can use nextElement method
+- `Reading Single Values - getParameter(String param) method` returns value of the specified parameter as a string if it exists or null if it doesn't.Often,this value is defined in Value attribute of the control in HTML pages or JSP.For textbox,that's usually value entered by user.For a group of radio radio buttons or a combo box,that's value of the button or item selected by user.For checkboxes or independent radio buttons that have Value attribute,the method returns that value if or button is selected and null if not.For checkboxes or independent radio buttons that don't have value attribute,though the method returns "on" value if checkbox or button is selected and null if not.
 
-Finally, a servlet can retrieve the raw query string of the request with `getQueryString( )`.This method returns the raw query string (encoded GET parameter information) of the request or null if there was no query string.This low-level information is rarely useful for handling form data. It's best for handling a single unnamed value, as in /servlet/Sqrt?576, where the returned query string is 576.
+```java
+String username = request.getParameter("username");
+int id = Integer.parseInt(request.getParameter("id"));
+```
 
-- `Attributes`:- Attributes are objects associated with a request. Attributes may be set by the container to express information that otherwise could not be expressed via the API,or may be set by a servlet to communicate information to another servlet (via the RequestDispatcher). Attributes are accessed with the following methods of the ServletRequest interface:
+- `Reading Multiple Values - getParameterValues(String param) method` retrieves multiple values for one parameter name.It returns an array of String objects containing all the parameter values associated with a parameter name. The value returned from the getParameter method must be the first value in the array of String objects returned by getParameterValues.Useful for controls like controls like list boxes that allow multiple selections.After returning array of the String Objects,you can use a loop to get values.
+
+```java
+String countries = request.getParameterValues("country");
+```
+
+- `Looking Up Parameter Names:- getParameterNames and getParameterMap` - 
+    - The `getParameterMap method` returns a java.util.Map of the parameter of the request, which contains names as keys and parameter values as map values.Data from the query string and the post body are aggregated into the request parameter set. Query string data is presented before post body data. For example, if a request is made with a query string of a=hello and a post body of a=goodbye&a=world, the resulting parameter set would be ordered a=(hello, goodbye, world).Path parameters that are part of a GET request (as defined by HTTP 1.1) are not exposed by these APIs. They must be parsed from the String values returned by the getRequestURI method or the getPathInfo method.
+    - The `getPrameterNames() method` returns an Enumeration object that contains names of all parameters contained in request.If request has no parameters,the method returns an empty Enumeration object.You can search through Enumeration object to get parameter names,and you can use the getParameter method to return value of each parameter name.Enumeration object is a collection that can be searched element by element.To determine if more element exist in the collection,you can use hasMoreElements method,which returns a Boolean value.And to get next element in the collection,you can use nextElement method
+
+```java
+Enumeration parameterNames = request.getParameterNames();
+while(parameterNames.hasMoreElements){
+    ...
+}
+```
+
+- *Attributes*:- Attributes are objects associated with a request. Attributes may be set by the container to express information that otherwise could not be expressed via the API,or may be set by a servlet to communicate information to another servlet (via the RequestDispatcher). Attributes are accessed with the following methods of the ServletRequest interface:
     1. getAttribute(String name) Returns the value of specified attribute as an Object type.If no attribute exists for specified name,this method returns a null value.
     2. getAttributeNames
     3. setAttribute(String name,Object o) Stores any objject in the request as an attribute and specifies a name of the attribute.Attributes are reset between requests.
 
-Only one attribute value may be associated with an attribute name.Attribute names beginning with the prefixes of java. and javax. are reserved for definition by this specification. Similarly, attribute names beginning with the prefixes of sun., com.sun., oracle and com.oracle are reserved for definition by Oracle Corporation. It is suggested that all attributes placed in the attribute set be named in accordance with the reverse domain name convention suggested by the Java Programming Language Specification1 for package naming.
+Only one attribute value may be associated with an attribute name. Attribute names beginning with the prefixes of java. and javax. are reserved for definition by this specification. Similarly, attribute names beginning with the prefixes of sun., com.sun., oracle and com.oracle are reserved for definition by Oracle Corporation. It is suggested that all attributes placed in the attribute set be named in accordance with the reverse domain name convention suggested by the Java Programming Language Specification1 for package naming.
 
 When you use MVC pattern, your servlets often need to forward a request object to a JSP or another servlet.First you need to store any object in request object, you use the `setAttribute` method.Once you store an object in request object,you can use the `getAttribute` method to retrieve the object.The request attributes are reset between requests.As a result if you store an Object as request attribute and forward that request to a JSP,that object will only be available to that JSP and won't be available in later sessions.These methods are often used in conjuction with a RequestDispatcher object that's used to forward a request.
 
 
-`Getting Information from Requests`:- A request contains data passed between a client and the servlet. All requests implement the ServletRequest interface. This interface defines methods for accessing the following information:
-
-1. Parameters, which are typically used to convey information between clients and servlets
-2. Object-valued attributes, which are typically used to pass information between the web container and a servlet or between collaborating servlets
-3. Information about the protocol used to communicate the request and about the client and server involved in the request
-4. Information relevant to localization
-
-You can also retrieve an input stream from the request and manually parse the data. To read character data, use the BufferedReader object returned by the request’s getReader method. To read binary data, use the ServletInputStream returned by getInputStream.
-
-HTTP servlets are passed an HTTP request object, HttpServletRequest, which contains the request URL, HTTP headers, query string, and so on. An HTTP request URL contains the following parts: `http://[host]:[port][request-path]?[query-string]`
-
-The request path is further composed of the following elements:
-
-1. Context path: A concatenation of a forward slash (/) with the context root of the servlet’s web application.
-2. Servlet path: The path section that corresponds to the component alias that activated this request. This path starts with a forward slash (/).
-3. Path info: The part of the request path that is not part of the context path or the servlet path.
-
-You can use the getContextPath, getServletPath, and getPathInfo methods of the HttpServletRequest interface to access this information. Except for URL encoding differences between the request URI and the path parts, the request URI is always comprised of the context path plus the servlet path plus the path info.
-
-Query strings are composed of a set of parameters and values. Individual parameters are retrieved from a request by using the getParameter method. There are two ways to generate query strings.
-
-1. A query string can explicitly appear in a web page.
-2. A query string is appended to a URL when a form with a GET HTTP method is submitted.
-
-
-- **File upload** - Servlet container allows files to be uploaded when data is sent as multipart/form-data.In prior versions of the Servlet specification, implementing file upload required the use of external libraries or complex input processing. The Java Servlet specification now helps to provide a viable solution to the problem in a generic and portable way. Java Servlet technology now supports file upload out of the box, so any web container that implements the specification can parse multipart requests and make mime attachments available through the HttpServletRequest object.
+*File upload* - Servlet container allows files to be uploaded when data is sent as multipart/form-data.In prior versions of the Servlet specification, implementing file upload required the use of external libraries or complex input processing. The Java Servlet specification now helps to provide a viable solution to the problem in a generic and portable way. Java Servlet technology now supports file upload out of the box, so any web container that implements the specification can parse multipart requests and make mime attachments available through the HttpServletRequest object.
 A new annotation, `javax.servlet.annotation.MultipartConfig`, is used to indicate that the servlet on which it is declared expects requests to be made using the multipart/form-data MIME type. Servlets that are annotated with `@MultipartConfig` can retrieve the Part components of a given multipart/form-data request by calling the request.getPart(String name) or request.getParts() method.
 
 The servlet container provides multipart/form-data processing if any one of the following conditions is met.
@@ -744,224 +798,223 @@ Instead of using the @MultipartConfig annotation to hard-code these attributes i
 </multipart-config>
 ```
 
-
-Request Path Elements
-The request path that leads to a servlet servicing a request is composed of many important sections. The following elements are obtained from the request URI path and exposed via the request object:
-
-Context Path: The path prefix associated with the ServletContext that this servlet is a part of. If this context is the “default” context rooted at the base of the Web server’s URL name space, this path will be an empty string. Otherwise, if the context is not rooted at the root of the server’s name space, the path starts with a / character but does not end with a / character.
-Servlet Path: The path section that directly corresponds to the mapping which activated this request. This path starts with a ’/’ character except in the case where the request is matched with the ‘/*’ or ““ pattern, in which case it is an empty string.
-PathInfo: The part of the request path that is not part of the Context Path or the Servlet Path. It is either null if there is no extra path, or is a string with a leading ‘/’.
-
-The following methods exist in the HttpServletRequest interface to access this information:
-
-getContextPath
-getServletPath
-getPathInfo
-It is important to note that, except for URL encoding differences between the request URI and the path parts, the following equation is always true:
-requestURI = contextPath + servletPath + pathInfo
-
-
-**Response**:-
-
-- *The Structure of a Response*:- An HTTP servlet can return three kinds of things to the client: a single status code, any number of HTTP headers, and a response body. A status code is an integer value that describes, as you would expect, the status of the response. The status code can indicate success or failure, or it can tell the client software to take further action to finish the request. The numerical status code is often accompanied by a reason phrase that describes the status in prose better understood by a human. Usually, a status code works behind the scenes and is interpreted by the browser software. Sometimes, especially when things go wrong, a browser may show the status code to the user. The most famous status code is probably the 404 Not Found code, sent by a web server when it cannot locate a requested URL.
-
-The response body is the main content of the response. For an HTML page, the response body is the HTML itself. For a graphic, the response body contains the bytes that make up the image. A response body can be of any type and of any length; the client knows what to expect by reading and interpreting the HTTP headers in the response.
-
-A servlet can buffer its response body to give it some extra flexibility, but once any response body has been sent the response is considered committed and the status code and headers cannot be altered.
-The response object encapsulates all information to be returned from the server to the client. In the HTTP protocol, this information is transmitted from the server to
-the client either by HTTP headers or the message body of the request.
-
-`ServletResponse`-Defines an object to assist a servlet in sending a response to the client. The servlet container creates a ServletResponse object and passes it as an argument to the servlet's service method.
-
-`HttpServletResponse`-Extends the ServletResponse interface to provide HTTP-specific functionality in sending a response. For example, it has methods to access HTTP headers and cookies.The servlet container creates an HttpServletResponse object and passes it as an argument to the servlet's service methods (doGet, doPost, etc).
-HTTP response objects, javax.servlet.http.HttpServletResponse, have fields representing HTTP headers, such as the following:
-
-1. Status codes, which are used to indicate the reason a request is not satisfied or that a request has been redirected.
-2. Cookies, which are used to store application-specific information at the client. Sometimes, cookies are used to maintain an identifier for tracking a user’s session (see Session Tracking).
-
-A generic servlet is much simpler than an HTTP servlet—it returns only a response body to its client. It's possible, however, for a subclass of GenericServlet to present an API that divides this single response body into a more elaborate structure, giving the appearance of returning multiple items. In fact, this is exactly what HTTP servlets do. At the lowest level, a web server sends its entire response as a stream of bytes to the client. Any methods that set status codes or headers are abstractions above that.
-
-*Constructing Responses*:- A response contains data passed between a server and the client. All responses implement the ServletResponse interface. This interface defines methods that allow you to operate on.
-
-`Retrieve an output stream to use to send data to the client.` - To send character data, use the `PrintWriter` returned by the response’s `getWriter method`. To send binary data in a Multipurpose Internet Mail Extensions (MIME) body response, use the `ServletOutputStream` returned by `getOutputStream`. To mix binary and text data, as in a multipart response, use a `ServletOutputStream` and manage the character sections manually.
-
-The charset for the MIME body response can be specified explicitly using any of the following techniques: per request, per web-app (using ServletContext.setRequestCharacterEncoding(java.lang.String), deployment descriptor), and per container (for all web applications deployed in that container, using vendor specific configuration). If multiple of the preceding techniques have been employed, the priority is the order listed. For per request, the charset for the response can be specified explicitly using the `setCharacterEncoding(String)`, `setCharacterEncoding(Charset)` and `setContentType(java.lang.String)` methods, or implicitly using the `setLocale(java.util.Locale)` method. Explicit specifications take precedence over implicit specifications. If no charset is explicitly specified, ISO-8859-1 will be used.
-The setCharacterEncoding, setContentType, or setLocale method must be called before getWriter and before committing the response for the character encoding to be used. This allows the methods to return an object that uses the proper content type.
-A registry of content type names is kept by the Internet Assigned Numbers Authority (IANA) at http://www.iana.org/assignments/media-types/.
-
-Indicate whether to buffer output with the `setBufferSize(int)` method. By default, any content written to the output stream is immediately sent to the client.
-Buffering allows content to be written before anything is sent back to the client, thus providing the servlet with more time to set appropriate status codes and headers or forward to another web resource. The method must be called before any content is written or before the response is committed.These methods are provided on the ServletResponse interface to allow buffering operations to be performed whether the servlet is using a ServletOutputStream or a Writer.
-
-The `getBufferSize` method returns the size of the underlying buffer being used. If no buffering is being used, this method must return the int value of 0 (zero).The servlet can request a preferred buffer size by using the `setBufferSize` method.The buffer assigned is not required to be the size requested by the servlet, but must be at least as large as the size requested. This allows the container to reuse a set of fixed size buffers, providing a larger buffer than requested if appropriate. The method must be called before any content is written using a ServletOutputStream or Writer. If any content has been written or the response object has been committed, this method must throw an IllegalStateException.
-
-The `isCommitted` method returns a boolean value indicating whether any response bytes have been returned to the client. The `flushBuffer` method forces content in the buffer to be written to the client.The `reset` method clears data in the buffer when the response is not committed.Headers, status codes and the state of calling getWriter or getOutputStream set by the servlet prior to the reset call must be cleared as well. The `resetBuffer` method clears content in the buffer if the response is not committed without clearing the headers and status code.
-If the response is committed and the reset or resetBuffer method is called, an IllegalStateException must be thrown. The response and its associated buffer will be unchanged.
-When using a buffer, the container must immediately flush the contents of a filled buffer to the client. If this is the first data that is sent to the client, the response is considered to be committed.
-
-Set localization information, such as locale and character encoding.
+```jsp
+<form method="post" action="fileUpload" enctype="multipart/form-data">
+    <div class="form-group">
+		<label for="Profile Photo">Profile Photo:</label> 
+        <input type="file" name="photo" size="50" />
+	</div>
+</form>
+```
 
 ```java
-public class HelloWorld extends HttpServlet {
-    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        res.setContentType("text/html");
-        PrintWriter out = res.getWriter();
+@WebServlet("/fileUpload")
+@MultipartConfig(maxFileSize = 16177215) // upload file's size up to 16MB
+public class FileUpload extends HttpServlet{
+    public void doPost(req,res){
+        InputStream inputStream = null; // input stream of the upload file
+        Part filePart = request.getPart("photo");
 
-        out.println("<HTML>");
-        out.println("<HEAD><TITLE>Hello World</TITLE></HEAD>");
-        out.println("<BODY>");
-        out.println("<BIG>Hello World</BIG>");
-        out.println("</BODY></HTML>");
+        inputStream = filePart.getInputStream();
+        int row = fileUploadDao.uploadFile(firstName, lastName, inputStream);
     }
 }
 ```
 
-- `Convenience Methods`:- The following convenience methods exist in the HttpServletResponse interface:
-
-1. sendRedirect -The sendRedirect method will set the appropriate headers and content body to redirect the client to a different URL. It is legal to call this method with a relative URL path, however the underlying container must translate the relative path to a fully qualified URL for transmission back to the client. If a partial URL is given and, for whatever reason, cannot be converted into a valid URL, then this method must throw an IllegalArgumentException.
-2. sendError - The sendError method will set the appropriate headers and content body for an error message to return to the client. An optional String argument can be provided to the sendError method which can be used in the content body of the error.
-
-These methods will have the side effect of committing the response, if it has not already been committed, and terminating it. No further output to the client should
-be made by the servlet after these methods are called. If data is written to the response after these methods are called, the data is ignored.
-If data has been written to the response buffer, but not returned to the client (i.e. the response is not committed), the data in the response buffer must be cleared and
-replaced with the data set by these methods. If the response is committed, these methods must throw an IllegalStateException.
-
 ```java
-// How to redirect a response relative to the current directory
-response.sendRedirect("join_email_list.html");
-// How to redirect a response relative to the servlet engine
-response.sendRedirect("/musicStore/email/join_email_list.jsp");
-// How to redirect a response to a different web server
-response.sendRedirect("http://www.murach.com/email/");
-```
-
-**Mapping Servlets** - Before you can request a servlet, you must use the `web.xml` file or `@WebServlet` annotations to map the servlets in an application.If you use both techniques to map a servlet name to the same URL,the mapping in web.xml overrides the mapping in the annotation.
-
-`Using xml`:-
-
-<servlet-class> - Specifies class for servlet.Note that this element includes the packages and name for the class but not .class extension.
-<servlet-name> - Specifies a unique name for the servlet that's used to identify servley within web.xml. This element is required for both servlet element and servlet-mapping element and maps each servlet-mapping element to servlet element.
-<url-pattern> - Specifies the URL or URLs that are mapped to specified servlet.This pattern must begin with a front slash,but URL pattern can specify a virtual directory or file that doesn't exist.
-
-```xml
- <!-- Servlet Mapping -->
-    <servlet>
-        <servlet-name>name</servlet-name>
-        <servlet-class>com.kipcollo.ExampleServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>name</servlet-name>
-        <url-pattern>/home</url-pattern>
-    </servlet-mapping>
-```
-
-`@WebServlet` annotation is used to declare a Servlet. This annotation is processed by the container at deployment time and the corresponding servlet made available at the specified URL patterns.
-Use the @WebServlet annotation to define a servlet component in a web application. This annotation is specified on a class and contains metadata about the servlet being declared. The annotated servlet must specify at least one URL pattern. This is done by using the urlPatterns or value attribute on the annotation. All other attributes are optional, with default settings. Use the value attribute when the only attribute on the annotation is the URL pattern; otherwise, use the urlPatterns attribute when other attributes are also used.
-
-Classes annotated with @WebServlet must extend the jakarta.servlet.http.HttpServlet class.
-
-```java
-@WebServlet("/home")
-public class HomeServlet extends Httpservlet{
-    .....
-}
-```
-
-If you want to map a servlet to multiple URLs,you can use the urlPatterns attribute of the @WebServlet annotation
-
-```java
-@WebServlet(urlPatterns ={"/example","/email"})
-public class ExampleServlet extends HttpServlet {
-    ...
-}
-```
-
-By default,the internal name that's used for the servlet is the same as the name of the servlet.If this leads to a naming conflict,you can use the name attribute to specify a unique internal name of servlet.
-
-```java
-@WebServlet(name = "NewServletName", urlPatterns ={"/example"})
-public class ExampleServlet extends HttpServlet {
-    ...
+if (file != null) {
+    // fetches input stream of the upload file for the blob column
+    preparedStatement.setBlob(1 , file);
 }
 ```
 
 
-**Debugging**:-
+*HTTP Request Headers* - Are name, value pairs sent by the browser along with the HTTP request.The request headers contain information about what browser software is being used,what files types the browser can receive.
 
-`Print debugging Data to console`:- You can print debugging messages to the console for servlet engine.To do that,you can use the println method of System.out or System.err objects.You can use these messages to help track the methods that are executed or to view value of variables.
-When you use println statements to check value of variable,you'll often want to include the name of the class and name of variable.
-When you use println statements to print debugging data to the console,this data may be printed to different locations depending on your development environment.If you're using IDE,the data will be printed to the Tomcat tab of output window.If you're using Tomcat in stand-alone environment,data will be printed inside a Tomcat console.
+HTTP request headers are distinct from the form (query) data.Form data results directly from user input and is sent as part of the URL for GET requests and on a separate line for POST requests. Request headers, on the other hand, are indirectly set by the browser and are sent immediately following the initial GET or POST request line. For instance, the following example shows an HTTP request that might result from a user submitting a book-search request to a servlet at http://www.somebookstore.com/servlet/Search. The request includes the headers Accept, Accept-Encoding, Connection, Cookie, Host, Referer, and User-Agent, all of which might be important to the operation of the servlet, but none of which can be derived from the form data or deduced automatically: the servlet needs to explicitly read the request headers to make use of this information.
 
+GET /servlet/Search?keywords=servlets+jsp HTTP/1.1
+Accept: image/gif, image/jpg, */*
+Accept-Encoding: gzip
+Connection: Keep-Alive
+Cookie: userID=id456578
+Host: www.somebookstore.com
+Referer: http://www.somebookstore.com/findbooks.html
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)
+
+`Reading Request Headers` - Reading headers is straightforward; just call the `getHeader method` of HttpServletRequest with the name of the header. This call returns a String if the specified header was supplied in the current request, null otherwise. In HTTP 1.0,all request headers are optional; in HTTP 1.1, only Host is required. So, always check for null before using a request header.
+
+NOTE - Always check that the result of request.getHeader is non-null before using it.
+
+Header names are not case sensitive. So, for example, request.getHeader("Connection") is interchangeable with request.getHeader("connection").Although getHeader is the general-purpose way to read incoming headers, a few headers are so commonly used that they have special access methods in HttpServletRequest.
+
+- `getCookies` - The getCookies method returns the contents of the Cookie header, parsed and stored in an array of Cookie objects.
+- `getAuthType and getRemoteUser` - The getAuthType and getRemoteUser methods break the Authorization header into its component pieces.
+- `getContentLength` - The getContentLength method returns the value of the Content-Length header (as an int).
+- `getContentType` - The getContentType method returns the value of the Content-Type header (as a String).
+- `getDateHeader and getIntHeader` - The getDateHeader and getIntHeader methods read the specified headers and then convert them to Date and int values, respectively.
+- `getHeaderNames` - Rather than looking up one particular header, you can use the getHeaderNames method to get an Enumeration of all header names received on this particular request.Returns an Enumeration object that contains the names of all headers for the request.
+- `getHeaders` - In most cases, each header name appears only once in the request.Occasionally, however, a header can appear multiple times, with each occurrence listing a separate value. Accept-Language is one such example. You can use getHeaders to obtain an Enumeration of the values of all occurrences of the header.The getHeaders method allows access to all the header values associated with a particular header name, returning an Enumeration of String objects.
+- `getHeader(String headerName)` - The getHeader method returns a header given the name of the header. There can be multiple headers with the same name, e.g. Cache-Control headers, in an HTTP request. If there are multiple headers with the same name, the getHeader method returns the first header in the request.
+
+Finally, in addition to looking up the request headers, you can get information on the main request line itself (i.e., the first line in the example request just shown), also by means of methods in HttpServletRequest.
+
+- `getMethod` - The getMethod method returns the main request method (normally, GET or POST, but methods like HEAD, PUT, and DELETE are possible).
+- `getRequestURI` - The getRequestURI method returns the part of the URL that comes after the host and port but before the form data. For example, for a URL of http://randomhost.com/servlet/search.BookSearch?subject=jsp,getRequestURI would return "/servlet/search.BookSearch".
+- `getQueryString` - The getQueryString method returns the form data. For example, with http://randomhost.com/servlet/search.BookSearch?subject=jsp, getQueryString would return "subject=jsp".
+- `getProtocol` - The getProtocol method returns the third part of the request line, which is generally HTTP/1.0 or HTTP/1.1. Servlets should usually check getProtocol before specifying response headers that are specific to HTTP 1.1. 
+
+
+*Retrieving Information*:- To build a successful web application, you often need to know a lot about the environment in which it is running. You may need to find out about the server that is executing your servlets or the specifics of the client that is sending requests. And no matter what kind of environment the application is running in, you most certainly need information about the requests that the application is handling.
+
+A number of methods provide servlets access to this information. For the most part, each method returns one specific result.
+
+- `The Server`:- A servlet can find out much about the server in which it is executing. It can learn the hostname, listening port, and server software, among other things. A servlet can display this information to a client, use it to customize its behavior based on a particular server package, or even use it to explicitly restrict the machines on which the servlet will run.
+
+Getting Information About the Server:- A servlet gains most of its access to server information through the ServletContext object in which it executes. Before API 2.2, the ServletContext was generally thought of as a reference to the server itself. Since API 2.2 the rules have changed and there now must be a different ServletContext for each web application on the server. The ServletContext has become a reference to the web application, not a reference to the server. For simple server queries, there's not much difference.
+
+There are five methods that a servlet can use to learn about its server: two that are called using the ServletRequest object passed to the servlet and three that are called from the ServletContext object in which the servlet is executing.
+
+A servlet can get the name of the server and the port number for a particular request with getServerName( ) and getServerPort( ), respectively:
 
 ```java
-String email = request.getParameter("email");
-System.out.println("AddToEmailServlet email: " + email);
+public String ServletRequest.getServerName()
+public int ServletRequest.getServerPort()
 ```
 
-`Print debugging data to log file`:- If you want to keep a permanent history of some key debugging data,you can print debugging data to a log file.Although each servlet engine uses log files a little different,you should be able to use log methods with any servlet engine.
-To write data to a log file,you can use two log methodss of HttpServlet class.
+These methods are attributes of ServletRequest because the values can change for different requests if the server has more than one name (a technique called virtual hosting). The returned name might be something like www.servlets.com while the returned port might be something like 8080.
 
-log(String message) - Writes specified message to server's log file.
-log(String message,Throwable t) - Writes specified message to server's log file,followed by stack trace for the exception.
-stack trace is a series of messages that presents the chain of method calls that precede current method.
-
-Tomcat stores its log file in its logs directory.Within this directory,Tomcat stores several types of log files with one file of each type for each date(tomcat/localhost.year-month-date.log).
+The getServerInfo( ) and getAttribute( ) methods of ServletContext provide information about the server software and its attributes:
 
 ```java
-log("email" + email);
+public String ServletContext.getServerInfo()
+public Object ServletContext.getAttribute(String name)
+```
 
-try{
-    UserIO.add(user,path);
-} catch(IOException e){
-    log("Exception occurred.", e)
+getServerInfo( ) - returns the name and version of the server software, separated by a slash. The string returned might be something like Tomcat Web Server/3.2. Some servers add extra information at the end describing the server operating environment.
+getAttribute( ) - returns the value of the named server attribute as an Object or null if the attribute does not exist. Servers have the option to place hardcoded attributes in the context for use by servlets. You can think of this method as a back door through which a servlet can get extra information about its server.The only mandatory attribute a server must make available is an attribute named javax.servlet.context.tempdir, which provides a java.io.File reference to a directory private to this context.
+
+Servlets can also add their own attributes to the context using the setAttribute( ) method.Attribute names should follow the same convention as package names. The package names java.* and javax.* are reserved for use by the Java Software division of Sun Microsystems, and com.sun.* is reserved for use by Sun Microsystems. You can see your
+server's documentation for a list of its attributes. A listing of all current attributes stored by the server and other servlets can be obtained using getAttributeNames( ) :
+
+```java
+public Enumeration ServletContext.getAttributeNames()
+```
+
+Because these methods are attributes of the ServletContext in which the servlet is executing, you have to call them through that object:
+
+```java
+String serverInfo = getServletContext().getServerInfo();
+```
+
+- `The Client`:- For each request, a servlet has the ability to find out about the client machine and, for pages requiring authentication, about the actual user. This information can be used for logging access data, associating information with individual users, or restricting access to certain clients.
+
+Getting Information About the Client Machine:- A servlet can use getRemoteAddr( ) and getRemoteHost( ) to retrieve the IP address and hostname of the client machine, respectively:
+
+```java
+public String ServletRequest.getRemoteAddr()
+public String ServletRequest.getRemoteHost()
+```
+
+Both values are returned as String objects. The information comes from the socket that connects the server to the client, so the remote address and hostname may be that of a proxy server. An example remote address might be 192.26.80.118 while an example remote host might be dist.engr.sgi.com.
+The IP address or remote hostname can be converted to a java.net.InetAddress object using InetAddress.getByName ( ):
+
+```java
+InetAddress remoteInetAddress = InetAddress.getByName(req.getRemoteAddr());
+```
+
+*Request Path Elements* - HTTP servlets are passed an HTTP request object, HttpServletRequest, which contains the request URL, HTTP headers, query string, and so on. An HTTP request URL contains the following parts: `http://[host]:[port]/[request-path]?[query-string]`.
+The request path that leads to a servlet servicing a request is composed of many important sections. The following elements are obtained from the request URI path and exposed via the request object:
+
+- `Context Path`: The path prefix associated with the ServletContext that this servlet is a part of. If this context is the “default” context rooted at the base of the Web server’s URL name space, this path will be an empty string. Otherwise, if the context is not rooted at the root of the server’s name space, the path starts with a / character but does not end with a / character.
+- `Servlet Path`: The path section that directly corresponds to the mapping which activated this request. This path starts with a ’/’ character except in the case where the request is matched with the ‘/*’ or ““ pattern, in which case it is an empty string.
+- `PathInfo`: The part of the request path that is not part of the Context Path or the Servlet Path. It is either null if there is no extra path, or is a string with a leading ‘/’.
+
+You can use the `getContextPath`, `getServletPath`, and `getPathInfo` methods of the HttpServletRequest interface to access this information. Except for URL encoding differences between the request URI and the path parts, the request URI is always comprised of the context path plus the servlet path plus the path info.
+
+It is important to note that, except for URL encoding differences between the request URI and the path parts, the following equation is always true: `requestURI = contextPath + servletPath + pathInfo`
+
+/catalog/lawn/index.html:- ContextPath: /catalog
+                           ServletPath: /lawn
+                           PathInfo: /index.html
+
+```java
+String action = request.getServletPath();
+switch (action) {
+	case "/new":
+		showNewForm(request, response);
+		break;
+	case "/insert":
+		insertTodo(request, response);
+		break;
+}
+private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	RequestDispatcher dispatcher = request.getRequestDispatcher("todo/todo-form.jsp");
+	dispatcher.forward(request, response);
 }
 ```
 
+Query strings are composed of a set of parameters and values. Individual parameters are retrieved from a request by using the getParameter method. There are two ways to generate query strings.
 
-**Internationalization**:- Clients may optionally indicate to a Web server what language they would prefer the response be given in. This information can be communicated from the client using the Accept-Language header along with other mechanisms described in the HTTP/1.1 specification. The following methods are provided in the ServletRequest interface to determine the preferred locale of the sender:
+1. A query string can explicitly appear in a web page.
+2. A query string is appended to a URL when a form with a GET HTTP method is submitted.
 
-getLocale - The getLocale method will return the preferred locale for which the client wants to accept content. See section 14.4 of RFC 7231 (HTTP/1.1) for more information about how the Accept-Language header must be interpreted to determine the preferred language of the client.
-getLocales - The getLocales method will return an Enumeration of Locale objects indicating, in decreasing order starting with the preferred locale, the locales that are acceptable to the client.
+A servlet can retrieve the raw query string of the request with `getQueryString( )`.This method returns the raw query string (encoded GET parameter information) of the request or null if there was no query string.This low-level information is rarely useful for handling form data. It's best for handling a single unnamed value, as in /servlet/Sqrt?576, where the returned query string is 576.
 
-If no preferred locale is specified by the client, the locale returned by the getLocale,method must be the default locale for the servlet container and the getLocales
-method must contain an enumeration of a single Locale element of the default locale.
+
+*Path Translation Methods* - There are two convenience methods in the API which allow the Developer to obtain the file system path equivalent to a particular path. These methods are:- ServletContext.getRealPath and HttpServletRequest.getPathTranslated.
+The `getRealPath` method takes a String argument and returns a String representation of a file on the local file system to which a path corresponds. The `getPathTranslated` method computes the real path of the pathInfo of the request.
+
+In situations where the servlet container cannot determine a valid file path for these methods, such as when the Web application is executed from an archive, on a remote file system not accessible locally, or in a database, these methods must return null.Resources inside the META-INF/resources directory of JAR file must be considered only if the container has unpacked them from their containing JAR file when a call to getRealPath() is made, and in this case MUST return the unpacked location.
+
+
+*InputStream* - If a browser sends an HTTP POST request,request parameters and other potential data is sent to the server in the HTTP request body.It doesn't have to be request parameters that is sent in HTTP request body. It could be pretty much any data, like a file or a SOAP request.
+
+
+*Request Session* - The session object can hold information about a given user,between requets.So, if you set an object into the session object during one request,it will be available for you to read during subsequent requests within same session time scope.
+
+
+*ServletContext* - Contains the metadata related to the application.
+
+
+*Cookies* - The HttpServletRequest interface provides the getCookies method to obtain an array of cookies that are present in the request. These cookies are data sent from the client to the server on every request that the client makes. Typically, the only information that the client sends back as part of a cookie is the cookie name and the cookie value. Other cookie attributes that can be set when the cookie is sent to the browser, such as comments, are not typically returned. The specification also allows for the cookies to be HttpOnly cookies. HttpOnly cookies indicate to the client that they should not be exposed to client-side scripting code (It’s not filtered out unless the client knows to look for this attribute). The use of HttpOnly cookies helps mitigate certain kinds of cross-site scripting attacks.
+
+
+*Internationalization*:- Clients may optionally indicate to a Web server what language they would prefer the response be given in. This information can be communicated from the client using the Accept-Language header along with other mechanisms described in the HTTP/1.1 specification. The following methods are provided in the ServletRequest interface to determine the preferred locale of the sender:
+1. `getLocale` - The getLocale method will return the preferred locale for which the client wants to accept content. See section 14.4 of RFC 7231 (HTTP/1.1) for more information about how the Accept-Language header must be interpreted to determine the preferred language of the client.
+2. `getLocales` - The getLocales method will return an Enumeration of Locale objects indicating, in decreasing order starting with the preferred locale, the locales that are acceptable to the client.
+
+If no preferred locale is specified by the client, the locale returned by the getLocale method must be the default locale for the servlet container and the getLocales method must contain an enumeration of a single Locale element of the default locale.
 
 Internationalization in HTTP is primarily defined through content negotiation mechanisms that allow a client to request a specific language or a server to indicate the language of the content. These are detailed in the HTTP/1.1 specification (RFC 7231, which obsoleted RFC 2616) and relevant W3C guidelines.Key HTTP headers for internationalization (i18n) include:Accept-Language (Request Header): Used by the client to indicate which languages the client understands (e.g., Accept-Language: fr-CH, fr;q=0.9, en;q=0.8).Content-Language (Entity Header): Used by the server to describe the natural language(s) of the intended audience for the enclosed entity (e.g., Content-Language: de-DE).Core Principles Defined in HTTP/Web Standards:Language Negotiation: The process of matching a user's preferences to available localized resources, as described in W3C Web Services Internationalization Usage Scenarios.Character Encoding: HTTP supports UTF-8, which is central to internationalization to allow characters from different languages to be displayed correctly, as noted in W3C's About Internationalization.Location: While the core headers are in the HTTP spec, broader architectural guidance is maintained by the W3C Internationalization Activity.
 
 
-**Dispatching Requests**:- When building a Web application, it is often useful to forward processing of a request to another servlet, or to include the output of another servlet in the response.
-The RequestDispatcher interface provides a mechanism to accomplish this.
-When asynchronous processing is enabled on the request, the AsyncContext allows a user to dispatch the request back to the servlet container.
+*SSL Attributes* - If a request has been transmitted over a secure protocol, such as HTTPS, this information must be exposed via the isSecure method of the ServletRequest interface. The Web container must expose the following attributes to the servlet programmer:
 
-`RequestDispatcher` defines an object that receives requests from the client and sends them to any resource (such as a servlet, HTML file, or JSP file) on the server. The servlet container creates the RequestDispatcher object, which is used as a wrapper around a server resource located at a particular path or given by a particular name.
-This interface is intended to wrap servlets, but a servlet container can create RequestDispatcher objects to wrap any type of resource.
+- cipher - suitejavax.servlet.request.cipher_suite - String
+- bit size of the algorithm - javax.servlet.request.key_size - Integer
+- SSL session id - javax.servlet.request.ssl_session_id - String
 
-- Obtaining a RequestDispatcher:- An object implementing the RequestDispatcher interface may be obtained from the ServletContext via the following methods:
-    1. The getRequestDispatcher method takes a String argument describing a path within the scope of the ServletContext. This path must be relative to the root of the ServletContext and begin with a ‘/’, or be empty. The method uses the path to look up a servlet, using the servlet path matching rules in Chapter 12, “Mapping Requests to Servlets”, wraps it with a RequestDispatcher object, and returns the resulting object. If no servlet can be resolved based on the given path, a RequestDispatcher is provided that returns the content for that path.
-    2. The getNamedDispatcher method takes a String argument indicating the name of a servlet known to the ServletContext. If a servlet is found, it is wrapped with a RequestDispatcher object and the object is returned. If no servlet is associated with the given name, the method must return null.
+If there is an SSL certificate associated with the request, it must be exposed by the servlet container to the servlet programmer as an array of objects of type java.security.cert.X509Certificate and accessible via a ServletRequest attribute of javax.servlet.request.X509Certificate.
+The order of this array is defined as being in ascending order of trust. The first certificate in the chain is the one set by the client, the next is the one used to authenticate the first, and so on.
 
 
-**Servlet Collaboration**:- Servlets running together in the same server have several ways to communicate with one another. There are two main styles of servlet collaboration:
+**Dispatching Requests**:- When building a Web application, it is often useful to forward processing of a request to another servlet, or to include the output of another servlet in the response.The RequestDispatcher interface provides a mechanism to accomplish this.When asynchronous processing is enabled on the request, the AsyncContext allows a user to dispatch the request back to the servlet container.
+Servlets running together in the same server have several ways to communicate with one another. There are two main styles of servlet collaboration:
 
-`Sharing information`:- This involves two or more servlets sharing state or resources. For example, a set of servlets managing an online store could share the store's product inventory count or share a database connection. Session tracking is a special case of sharing information.
-`Sharing Control`:- This involves two or more servlets sharing control of the request. For example, one servlet could receive the request but let another servlet handle some or all of the request-handling responsibilities.
+1. `Sharing information`:- This involves two or more servlets sharing state or resources. For example, a set of servlets managing an online store could share the store's product inventory count or share a database connection. Session tracking is a special case of sharing information.
+2. `Sharing Control`:- This involves two or more servlets sharing control of the request. For example, one servlet could receive the request but let another servlet handle some or all of the request-handling responsibilities.
 
 In the past (before Servlet API 2.1) we would have listed another style of collaboration: `direct manipulation`.With this style of collaboration, a servlet could obtain a direct reference to another through the getServlet( ) method and invoke methods on the other servlet. This style of collaboration is no longer supported; the getServlet( ) method has been deprecated and defined to return null for API 2.1 and later.The reason: a servlet may be destroyed by the web server at any time, so nothing but the server should hold a direct reference to a servlet. Everything that could be done with getServlet( ) can be accomplished better and safer using the alternatives.
 
-*Sharing Information*:- Oftentimes servlets cooperate by sharing some information. The information may be state information, a shared resource, a resource factory, or anything. In Servlet API 2.0 and earlier there were no built-in mechanisms by which servlets could share information.
+*Sharing Information*:- Often times servlets cooperate by sharing some information. The information may be state information, a shared resource, a resource factory, or anything. In Servlet API 2.0 and earlier there were no built-in mechanisms by which servlets could share information.
 
 `Sharing with the ServletContext`:- A servlet retrieves the ServletContext for its web application using the getServletContext( ) call. A servlet may use the context as if it were a Hashtable or Map, with the following methods.
 
-```java
-public void ServletContext.setAttribute(String name, Object o)
-public Object ServletContext.getAttribute(String name)
-public Enumeration ServletContext.getAttributeNames()
-public void ServletContext.removeAttribute(String name)
-```
-
-The setAttribute( ) method binds an object under a given name. Any existing binding with the same name is replaced. Attribute names should follow the same convention as package names to avoid overwriting one another.
-The getAttribute( ) method retrieves the object bound under the given name or null if the attribute does not exist. The call may also retrieve server-specific hard-coded attributes (for example, javax.servlet.context.tempdir)
-The getAttributeNames( ) method returns an Enumeration, which contains the names of all the bound attributes or an empty Enumeration if there are no bindings.
-The removeAttribute( ) method removes the object bound under the given name or does nothing if the attribute does not exist. It's a good idea to remove attributes that are no longer needed to reduce memory bloat.
+1. The void ServletContext.setAttribute(String name, Object o) method binds an object under a given name. Any existing binding with the same name is replaced. Attribute names should follow the same convention as package names to avoid overwriting one another.
+2. The Object ServletContext.getAttribute(String name) method retrieves the object bound under the given name or null if the attribute does not exist. The call may also retrieve server-specific hard-coded attributes (for example, javax.servlet.context.tempdir)
+3. The Enumeration ServletContext.getAttributeNames() method returns an Enumeration, which contains the names of all the bound attributes or an empty Enumeration if there are no bindings.
+4. The void ServletContext.removeAttribute(String name) method removes the object bound under the given name or does nothing if the attribute does not exist. It's a good idea to remove attributes that are no longer needed to reduce memory bloat.
 
 ```java
 ServletContext context = getServletContext();
@@ -997,6 +1050,13 @@ Date day = (Date)otherContext.getAttribute("com.costena.special.day");
 *Sharing Control*:- For more dynamic collaboration, servlets can share control of the request. First, a servlet can forward an entire request, doing some preliminary processing and then passing off the request to another component. Second, a servlet can include in its response a bit of content generated by another component, essentially creating a programmatic server-side include. Conceptually, if you think of the resulting page like a screen, a forward gives another servlet full control of the screen, while an include injects only a section of content into the screen at some point.
 This delegation ability gives servlets more flexibility and allows for better abstraction. Using delegation, a servlet can construct its response as a collection of content generated by various web server components. This functionality is especially important to JavaServer Pages, where it often happens that one servlet preprocesses a request, then hands off the request to a JSP page for completion.
 
+`RequestDispatcher` defines an object that receives requests from the client and sends them to any resource (such as a servlet, HTML file, or JSP file) on the server. The servlet container creates the RequestDispatcher object, which is used as a wrapper around a server resource located at a particular path or given by a particular name.This interface is intended to wrap servlets, but a servlet container can create RequestDispatcher objects to wrap any type of resource.
+
+- Obtaining a RequestDispatcher:- An object implementing the RequestDispatcher interface may be obtained from the ServletContext via the following methods:
+    1. The getRequestDispatcher method takes a String argument describing a path within the scope of the ServletContext. This path must be relative to the root of the ServletContext and begin with a ‘/’, or be empty. The method uses the path to look up a servlet, using the servlet path matching rules, wraps it with a RequestDispatcher object, and returns the resulting object. If no servlet can be resolved based on the given path, a RequestDispatcher is provided that returns the content for that path.
+    2. The getNamedDispatcher method takes a String argument indicating the name of a servlet known to the ServletContext. If a servlet is found, it is wrapped with a RequestDispatcher object and the object is returned. If no servlet is associated with the given name, the method must return null.
+
+
 `Getting a Request Dispatcher`:- To support request delegation, Servlet API 2.1 introduced the javax.servlet.RequestDispatcher interface. A servlet gets a RequestDispatcher instance using the getRequestDispatcher( ) method on its request object. This method returns a RequestDispatcher that can dispatch to the component (servlet, JSP, static file, etc.) found at the given URI path:
 
 ```java
@@ -1017,7 +1077,7 @@ It's also possible to get a RequestDispatcher for a resource specified by name i
 public RequestDispatcher ServletContext.getNamedDispatcher(String name)
 ```
 
-This allows dispatching to resources that are not necessarily publicly available. Servlets (and JSP paes also) may be given names via the web application deployment descriptor The method returns null if the context cannot return a dispatcher for any reason.
+This allows dispatching to resources that are not necessarily publicly available. Servlets (and JSP pages also) may be given names via the web application deployment descriptor The method returns null if the context cannot return a dispatcher for any reason.
 RequestDispatcher has two methods, forward( ) and include( ). The forward( ) method hands off the entire request to the delegate. The include( ) method adds the delegate's output to the calling servlet's response but leaves the calling servlet in control.
 - To call a servlet you either:-
     1. Forward the Request and Response.
@@ -1057,7 +1117,219 @@ dispatcher.forward(request, response);
 String url = "/cart/displayInvoice";
 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
 dispatcher.forward(request, response);
+
+RequestDispatcher dispatcher = request.getRequestDispatcher("todo/todo-list.jsp");
+dispatcher.forward(request, response);
 ```
+
+
+**The Server Response**:- When a Web server responds to a request, the response typically consists of a status line, some response headers, a blank line, and the document.
+The status line consists of the HTTP version (HTTP/1.1 in the preceding example), a status code (an integer; 200 in the example), and a very short message corresponding to the status code (OK in the example). In most cases, the headers are optional except for Content-Type, which specifies the MIME type of the document that follows. Although most responses contain a document, some don’t. For example, responses to HEAD requests should never include a document, and various status codes essentially indicate failure or redirection (and thus either don’t include a document or include only a short error-message document).
+
+Servlets can perform a variety of important tasks by manipulating the status line and the response headers. For example, they can forward the user to other sites; indicate that the attached document is an image, Adobe Acrobat file, or HTML file; tell the user that a password is required to access the document; and so forth.
+
+- *The Structure of a Response*:- An HTTP servlet can return three kinds of things to the client: a single status code, any number of HTTP headers, and a response body. A status code is an integer value that describes, as you would expect, the status of the response. The status code can indicate success or failure, or it can tell the client software to take further action to finish the request. The numerical status code is often accompanied by a reason phrase that describes the status in prose better understood by a human. Usually, a status code works behind the scenes and is interpreted by the browser software. Sometimes, especially when things go wrong, a browser may show the status code to the user. The most famous status code is probably the 404 Not Found code, sent by a web server when it cannot locate a requested URL.
+
+The response body is the main content of the response. For an HTML page, the response body is the HTML itself. For a graphic, the response body contains the bytes that make up the image. A response body can be of any type and of any length; the client knows what to expect by reading and interpreting the HTTP headers in the response.
+
+A servlet can buffer its response body to give it some extra flexibility, but once any response body has been sent the response is considered committed and the status code and headers cannot be altered.
+The response object encapsulates all information to be returned from the server to the client. In the HTTP protocol, this information is transmitted from the server to
+the client either by HTTP headers or the message body of the request.
+
+`ServletResponse`-Defines an object to assist a servlet in sending a response to the client. The servlet container creates a ServletResponse object and passes it as an argument to the servlet's service method.
+
+`HttpServletResponse`-Extends the ServletResponse interface to provide HTTP-specific functionality in sending a response. For example, it has methods to access HTTP headers and cookies.The servlet container creates an HttpServletResponse object and passes it as an argument to the servlet's service methods (doGet, doPost, etc).
+HTTP response objects, javax.servlet.http.HttpServletResponse, have fields representing HTTP headers, such as the following:
+
+1. Status codes, which are used to indicate the reason a request is not satisfied or that a request has been redirected.
+2. Cookies, which are used to store application-specific information at the client. Sometimes, cookies are used to maintain an identifier for tracking a user’s session (see Session Tracking).
+
+It is used to represent the HTTP response to your request. A web application sends back a response page to the user as response to the HTTP request from the browser sent to your application.
+
+A generic servlet is much simpler than an HTTP servlet—it returns only a response body to its client. It's possible, however, for a subclass of GenericServlet to present an API that divides this single response body into a more elaborate structure, giving the appearance of returning multiple items. In fact, this is exactly what HTTP servlets do. At the lowest level, a web server sends its entire response as a stream of bytes to the client. Any methods that set status codes or headers are abstractions above that.
+
+*Constructing Responses*:- A response contains data passed between a server and the client. All responses implement the ServletResponse interface. This interface defines methods that allow you to operate on.
+
+`Retrieve an output stream to use to send data to the client.` - To send character data, use the `PrintWriter` returned by the response’s `getWriter method`. To send binary data in a Multipurpose Internet Mail Extensions (MIME) body response, use the `ServletOutputStream` returned by `getOutputStream`. To mix binary and text data, as in a multipart response, use a `ServletOutputStream` and manage the character sections manually.
+
+The charset for the MIME body response can be specified explicitly using any of the following techniques: per request, per web-app (using ServletContext.setRequestCharacterEncoding(java.lang.String), deployment descriptor), and per container (for all web applications deployed in that container, using vendor specific configuration). If multiple of the preceding techniques have been employed, the priority is the order listed. For per request, the charset for the response can be specified explicitly using the `setCharacterEncoding(String)`, `setCharacterEncoding(Charset)` and `setContentType(java.lang.String)` methods, or implicitly using the `setLocale(java.util.Locale)` method. Explicit specifications take precedence over implicit specifications. If no charset is explicitly specified, ISO-8859-1 will be used.
+The setCharacterEncoding, setContentType, or setLocale method must be called before getWriter and before committing the response for the character encoding to be used. This allows the methods to return an object that uses the proper content type.
+A registry of content type names is kept by the Internet Assigned Numbers Authority (IANA) at http://www.iana.org/assignments/media-types/.
+
+Indicate whether to buffer output with the `setBufferSize(int)` method. By default, any content written to the output stream is immediately sent to the client.
+Buffering allows content to be written before anything is sent back to the client, thus providing the servlet with more time to set appropriate status codes and headers or forward to another web resource. The method must be called before any content is written or before the response is committed.These methods are provided on the ServletResponse interface to allow buffering operations to be performed whether the servlet is using a ServletOutputStream or a Writer.
+
+The `getBufferSize` method returns the size of the underlying buffer being used. If no buffering is being used, this method must return the int value of 0 (zero).The servlet can request a preferred buffer size by using the `setBufferSize` method.The buffer assigned is not required to be the size requested by the servlet, but must be at least as large as the size requested. This allows the container to reuse a set of fixed size buffers, providing a larger buffer than requested if appropriate. The method must be called before any content is written using a ServletOutputStream or Writer. If any content has been written or the response object has been committed, this method must throw an IllegalStateException.
+
+The `isCommitted` method returns a boolean value indicating whether any response bytes have been returned to the client. The `flushBuffer` method forces content in the buffer to be written to the client.The `reset` method clears data in the buffer when the response is not committed.Headers, status codes and the state of calling getWriter or getOutputStream set by the servlet prior to the reset call must be cleared as well. The `resetBuffer` method clears content in the buffer if the response is not committed without clearing the headers and status code.
+If the response is committed and the reset or resetBuffer method is called, an IllegalStateException must be thrown. The response and its associated buffer will be unchanged.
+When using a buffer, the container must immediately flush the contents of a filled buffer to the client. If this is the first data that is sent to the client, the response is considered to be committed.
+
+Set localization information, such as locale and character encoding.
+
+```java
+public class HelloWorld extends HttpServlet {
+    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        res.setContentType("text/html");
+        PrintWriter out = res.getWriter();
+
+        out.println("<HTML>");
+        out.println("<HEAD><TITLE>Hello World</TITLE></HEAD>");
+        out.println("<BODY>");
+        out.println("<BIG>Hello World</BIG>");
+        out.println("</BODY></HTML>");
+    }
+}
+```
+
+
+*A Servlet That Generates Plain Text*:-
+
+```java
+public class HelloWorld extends HttpServlet {
+    public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+        out.println("Hello World");
+    }
+}
+```
+
+*A Servlet That Generates HTML* - Most servlets generate HTML.To generate HTML, you add three steps to the process just shown:
+1. Tell the browser that you’re sending it HTML.
+2. Modify the println statements to build a legal Web page.
+3. Check your HTML with a formal syntax validator.
+
+You accomplish the first step by setting the HTTP Content-Type response header to text/html. In general, headers are set by the setHeader method of HttpServletResponse, but setting the content type is such a common task that there is also a special setContentType method just for this purpose. The way to designate HTML is with a type of text/html, so the code would look like this:
+
+```java
+response.setContentType("text/html");
+```
+
+However, you should note now that you need to set response headers before actually returning any of the content with the PrintWriter.That’s because an HTTP response consists of the status line, one or more headers, a blank line, and the actual document, in that order. The headers can appear in any order, and servlets buffer the headers and send them all at once, so it is legal to set the status code (part of the first line returned) even after setting headers. But servlets do not necessarily buffer the document itself, since users might want to see partial results for long pages. Servlet engines are permitted to partially buffer the output, but the size of the buffer is left unspecified. You can use the getBufferSize method of HttpServletResponse to determine the size, or you can use setBufferSize to specify it. You can set headers until the buffer fills up and is actually sent to the client.
+If you aren’t sure whether the buffer has been sent, you can use the isCommitted method to check. Even so, the best approach is to simply put the setContentType line before any of the lines that use the PrintWriter.
+
+```java
+public class HelloServlet extends HttpServlet {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        String docType = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 " +
+                        "Transitional//EN\">\n";
+        out.println(docType +
+                    "<HTML>\n" +
+                    "<HEAD><TITLE>Hello</TITLE></HEAD>\n" +
+                    "<BODY BGCOLOR=\"#FDF5E6\">\n" +
+                    "<H1>Hello</H1>\n" +
+                    "</BODY></HTML>");
+    }
+}
+```
+
+
+*HTTP STATUS CODES* - HTTP response status line consists of an HTTP version, a status code, and an associated message.Since the message is directly associated with the status code and the HTTP version is determined by the server, all a servlet needs to do is to set the status code. A code of 200 is set automatically, so servlets don’t usually need to specify a status code at all. When they do want to, they use `response.setStatus`, `response.sendRedirect`, or `response.sendError`.
+
+`Setting Arbitrary Status Codes: setStatus` - Most of the time,the web server automatically sets the status code for an HTTP response.When you want to set an arbitrary status code, do so with the setStatus method of HttpServletResponse.To specify the value for this code,you can use either an integer value or one of the fields of the *response* objet. If your response includes a special status code and a document, be sure to call setStatus before actually returning any of the content with the PrintWriter. The reason is that an HTTP response consists of the status line,one or more headers, a blank line, and the actual document, in that order. Servlets do not necessarily buffer the document, so you have to either set the status code before using the PrintWriter or carefully check that the buffer hasn’t been flushed and content actually sent to the browser.
+The setStatus method takes an int (the status code) as an argument, but instead of using explicit numbers, for readability and to avoid typos, use the constants defined in HttpServletResponse. The name of each constant is derived from the standard HTTP 1.1 message for each constant, all upper case with a prefix of SC (for Status Code) and spaces changed to underscores. Thus, since the message for 404 is Not Found, the equivalent constant in HttpServletResponse is SC_NOT_FOUND. There is one minor exception, however: the constant for code 302 is derived from the message defined by HTTP 1.0 (Moved Temporarily), not the HTTP 1.1 message (Found).The constant representing 302 is SC_MOVED_TEMPORARILY, not SC_FOUND.
+
+```java
+response.setStatus(404);
+response.setStatus(response.SC_NOT_FOUND)
+```
+
+- `Setting 302 and 404 Status Codes: sendRedirect and sendError` - Although the general method of setting status codes is simply to call response.setStatus(int), there are two common cases for which a shortcut method in HttpServletResponse is provided. Just be aware that both of these methods throw IOException, whereas setStatus does not. Since the doGet and doPost methods already throw IOException, this difference only matters if you pass the response object to another method.
+    1. public void sendRedirect(String url) - The sendRedirect method generates a 302 response along with a Location header giving the URL of the new document. Either an absolute or a relative URL is permitted; the system automatically translates relative URLs into absolute ones before putting them in the Location header.The sendRedirect method will set the appropriate headers and content body to redirect the client to a different URL. It is legal to call this method with a relative URL path, however the underlying container must translate the relative path to a fully qualified URL for transmission back to the client. If a partial URL is given and, for whatever reason, cannot be converted into a valid URL, then this method must throw an IllegalArgumentException.
+    2. public void sendError(int code, String message) - The 404 status code is used when no document is found on the server.The sendError method sends a status code (usually 404) along with a short message that is automatically formatted inside an HTML document and sent to the client. - The sendError method will set the appropriate headers and content body for an error message to return to the client. An optional String argument can be provided to the sendError method which can be used in the content body of the error.
+
+These methods will have the side effect of committing the response, if it has not already been committed, and terminating it. No further output to the client should
+be made by the servlet after these methods are called. If data is written to the response after these methods are called, the data is ignored.
+If data has been written to the response buffer, but not returned to the client (i.e. the response is not committed), the data in the response buffer must be cleared and
+replaced with the data set by these methods. If the response is committed, these methods must throw an IllegalStateException.
+
+Setting a status code does not necessarily mean that you omit the document. For example, although most servers automatically generate a small File Not Found message for 404 responses, a servlet might want to customize this response. Again, remember that if you do send output, you have to call setStatus or sendError first.
+
+```java
+// How to redirect a response relative to the current directory
+response.sendRedirect("join_email_list.html");
+// How to redirect a response relative to the servlet engine
+response.sendRedirect("/musicStore/email/join_email_list.jsp");
+// How to redirect a response to a different web server
+response.sendRedirect("http://www.murach.com/email/");
+```
+
+*WriteHTML* - To initiate the process of sending HTML back to the browser, you need to retrieve the PrintWriter from the HttpResponse object.
+
+*Response Header* - Are responsible for all the data written in the response.The web server usually sets headers of an HTTP response.However,if you need to set a response header you can use the following methods of the HttpServletResponse interface:- A servlet can set headers of an HTTP response via the following methods of the HttpServletResponse interface:- setHeader,addHeader.
+The `setHeader(String name, String value)` method sets a header with a given name and value. A previous header is replaced by the new header. Where a set of header values exist for the name, the values are cleared and replaced with the new value.The `addHeader` method adds a header value to the set with a given name. If there are no headers already associated with the name, a new set is created.
+Headers may contain data that represents an int or a Date object. The following convenience methods of the HttpServletResponse interface allow a servlet to set a header using the correct formatting for the appropriate data type:- `setIntHeader(String name, int value)`,`setDateHeader(String name, long value)`,`addIntHeader`,`addDateHeader`.
+
+To be successfully transmitted back to the client, headers (not trailer) must be set before the response is committed. Headers (not trailer) set after the response is committed will be ignored by the servlet container. If HTTP trailer, as specified in RFC 7230, are to be sent in the response, they must be provided using the setTrailerFields() method on HttpServletResponse. This method must have been called before the last chunk in the chunked response has been written.To be successfully transmitted back to the client, headers (not trailer) must be set before the response is committed. Headers (not trailer) set after the response is committed will be ignored by the servlet container. If HTTP trailer, as specified in RFC 7230, are to be sent in the response, they must be provided using the setTrailerFields() method on HttpServletResponse. This method must have been called before the last chunk in the chunked response has been written.
+
+*Content-Type* - The Content-Type header is responsible to tell the browser about the type of content you are sending in return.`setContentType(String mimeType)`.
+
+*Content-Length* - The Content-Length header is responsible for telling you about te number of bytes your servlet is sending in return.
+
+*Redirection* - Redirecting will help you to redirect yourself to a different webpage from current one.
+
+*cookie* - addCookie(Cookie cookie)
+
+
+**Configuring/Mapping Servlets** - Configuring or mapping servlet is making underlying Servlet container recognize our servlet class to manage its lifecycle and to map/link one or more requests urls.Prior to servlet 3.0 specification(Tomcat 7.0), you had to use the web.xml to map a servlet to a URL.With servlet 3.0 specification and later,you can use the @Webservlet annotation to map a servlet to one or more URL patterns.The advantage of this approach is that it requires less code.
+Before you can request a servlet, you must use the `web.xml` file or `@WebServlet` annotations to map the servlets in an application.If you use both techniques to map a servlet name to the same URL,the mapping in web.xml overrides the mapping in the annotation.
+
+
+`Using xml(Deployment Descriptor)`:-
+
+<servlet-class> - Specifies class for servlet.Note that this element includes the packages and name for the class but not .class extension.
+<servlet-name> - Specifies a unique name for the servlet that's used to identify servley within web.xml. This element is required for both servlet element and servlet-mapping element and maps each servlet-mapping element to servlet element.
+<url-pattern> - Specifies the URL or URLs that are mapped to specified servlet.This pattern must begin with a front slash,but URL pattern can specify a virtual directory or file that doesn't exist.
+
+```xml
+ <!-- Servlet Mapping -->
+    <servlet>
+        <servlet-name>name</servlet-name>
+        <servlet-class>com.kipcollo.ExampleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>name</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+```
+
+
+`@WebServlet` annotation is used to declare a Servlet.Servlet Annotations are introduced in Servlet API 3.0 (JEE 5.0, JSE 5.0)(Tomcat 7.0). These annotations are used to avoid writing the web.xml file.Use if the servlet component is user-defined class. This annotation is processed by the container at deployment time and the corresponding servlet made available at the specified URL patterns.
+Use the @WebServlet annotation to define a servlet component in a web application. This annotation is specified on a class and contains metadata about the servlet being declared. The annotated servlet must specify at least one URL pattern. This is done by using the urlPatterns or value attribute on the annotation. All other attributes are optional, with default settings. Use the value attribute when the only attribute on the annotation is the URL pattern; otherwise, use the urlPatterns attribute when other attributes are also used.
+
+The web container initializes a servlet after loading and instantiating the servlet class and before delivering requests from clients. To customize this process to allow the servlet to read persistent configuration data, initialize resources, and perform any other one-time activities, you can either override the init method of the Servlet interface or specify the initParams attribute of the @WebServlet annotation. The initParams attribute contains a `@WebInitParam` annotation. If it cannot complete its initialization process, a servlet throws an UnavailableException.
+
+Classes annotated with @WebServlet must extend the jakarta.servlet.http.HttpServlet class.
+
+```java
+@WebServlet("/home")
+public class HomeServlet extends Httpservlet{
+    .....
+}
+```
+
+If you want to map a servlet to multiple URLs,you can use the urlPatterns attribute of the @WebServlet annotation
+
+```java
+@WebServlet(urlPatterns ={"/example","/email"})
+public class ExampleServlet extends HttpServlet {
+    ...
+}
+```
+
+By default,the internal name that's used for the servlet is the same as the name of the servlet.If this leads to a naming conflict,you can use the name attribute to specify a unique internal name of servlet.
+
+```java
+@WebServlet(name = "NewServletName", urlPatterns ={"/example"})
+public class ExampleServlet extends HttpServlet {
+    ...
+}
+```
+
+
+`Using Programmatic Approach(100% Java code approach)`- Use servletContext.addServlet() method.Use this for pre-defined Servlet component class like DispatcherServlet and you want to avoid xml driven configurations from application development.
 
 
 **Sessions & Cookies**:- The Hypertext Transfer Protocol (HTTP) is by design a stateless protocol. To build effective Web applications, it is imperative that requests from a particular client be associated with each other. Many strategies for session tracking have evolved over time, but all are difficult or troublesome for the programmer to use directly.
@@ -1099,9 +1371,29 @@ session.removeAttribute("cart");
 
 The session object is a built-in JSP object.As a result, you don't need to create the session object when working with JSPs.
 
-*Session Tracking Mechanisms* - The following sections describe approaches to tracking a user’s sessions:-
+```java
+session.invalidate();
+```
 
-`Cookies`:- Session tracking through HTTP cookies is the most used session tracking mechanism and is required to be supported by all servlet containers.The container sends a cookie to the client. The client will then return the cookie on each subsequent request to the server, unambiguously associating the request with a session. The standard name of the session tracking cookie must be JSESSIONID.
+`Accessing the Session Object Associated with the Current Request` - Session objects are of type HttpSession, but they are basically just hash tables that can store arbitrary user objects (each associated with a key). You look up the HttpSession object by calling the getSession method of HttpServletRequest.
+
+HttpSession session = request.getSession();
+
+Behind the scenes, the system extracts a user ID from a cookie or attached URL data, then uses that ID as a key into a table of previously created HttpSession objects. But this is all done transparently to the programmer: you just call getSession.If no session ID is found in an incoming cookie or attached URL information, the system creates a new, empty session. And, if cookies are being used (the default situation), the system also creates an outgoing cookie named JSESSIONID with a unique value representing the session ID. So, although you call getSession on the request, the call can affect the response. Consequently, you are permitted to call request.getSession only when it would be legal to set HTTP response headers: before any document content has been sent (i.e., flushed or committed) to the client.
+
+Now, if you plan to add data to the session regardless of whether data was there already, getSession() (or, equivalently, getSession(true)) is the appropriate method call because it creates a new session if no session already exists. However, suppose that you merely want to print out information on what is already in the session, as you might at a “View Cart” page at an e-commerce site. In such a case, it is wasteful to create a new session when no session exists already. So, you can use getSession(false), which returns null if no session already exists for the current client.
+
+`Looking Up Information Associated with a Session` - HttpSession objects live on the server; they don’t go back and forth over the network; they’re just automatically associated with the client by a behind-the-scenes mechanism like cookies or URL rewriting. These session objects have a built-in data structure (a hash table) in which you can store any number of keys and associated values. You use session.getAttribute("key") to look up a previously stored value. The return type is Object, so you must do a typecast to whatever more specific type of data was associated with that attribute name in the session. The return value is null if there is no such attribute, so you need to check for null before calling methods on objects associated with sessions.
+
+- `Discarding Session Data` - When you are done with a user’s session data, you have three options.
+    1. Remove only the data your servlet created. You can call removeAttribute("key") to discard the value associated with the specified key. This is the most common approach.
+    2. Delete the whole session (in the current Web application). You can call invalidate to discard an entire session. Just remember that doing so causes all of that user’s session data to be lost, not just the session data that your servlet or JSP page created. So, all the servlets and JSP pages in a Web application have to agree on the cases for which invalidate may be called.
+    3. Log the user out and delete all sessions belonging to him or her. Finally, in servers that support servlets 2.4 and JSP 2.0, you can call logout to log the client out of the Web server and invalidate all sessions (at most one per Web application) associated with that user. Again, since this action affects servlets other than your own, be sure to coordinate use of the logout command with the other developers at your site.
+
+
+`Session Tracking Mechanisms` - The following sections describe approaches to tracking a user’s sessions:-
+
+*Cookies*:- Session tracking through HTTP cookies is the most used session tracking mechanism and is required to be supported by all servlet containers.The container sends a cookie to the client. The client will then return the cookie on each subsequent request to the server, unambiguously associating the request with a session. The standard name of the session tracking cookie must be JSESSIONID.
 Containers may allow the name of the session tracking cookie to be customized through container specific configuration.
 
 ```xml
@@ -1113,11 +1405,15 @@ Containers may allow the name of the session tracking cookie to be customized th
 </session-config>
 ```
 
-All servlet containers MUST provide an ability to configure whether or not the container marks the session tracking cookie as HttpOnly. The established configuration must apply to all contexts for which a context specific configuration has not been established.
-If a web application configures a custom name for its session tracking cookies, the same custom name will also be used as the name of the URI parameter if the session id is encoded in the URL (provided that URL rewriting has been enabled).
+Benefits of Cookies - 
+1. Identifying a user during an e-commerce session.
+2. Remembering usernames and passwords. Cookies let a user log in to a site automatically, providing a significant convenience for users of unshared computers.
+3. Customizing sites. Sites can use cookies to remember user preferences.
+4. Focusing advertising. Cookies let the site remember which topics interest certain users and show advertisements relevant to those interests.
 
-You can create cookies to store any type of string data.Once you create a cookie,you include it in the server's response to the browser.Then,the browser will store the cookie on the client machine,and it will send it back to the server with all subsequent requests.
-Once you have stored a cookie on a browser's PC,you can use it to make your web application work for the user.You can use it to allow users to skip login and registration forms that gather data like user name,password,address, or credit card data.Also to customize page that display information like weather reports,sports scores and stock quotations.You can also focus advertising like banner ads that target user's interests.
+All servlet containers MUST provide an ability to configure whether or not the container marks the session tracking cookie as HttpOnly. The established configuration must apply to all contexts for which a context specific configuration has not been established.If a web application configures a custom name for its session tracking cookies, the same custom name will also be used as the name of the URI parameter if the session id is encoded in the URL (provided that URL rewriting has been enabled).
+
+You can create cookies to store any type of string data.Once you create a cookie,you include it in the server's response to the browser.Then,the browser will store the cookie on the client machine,and it will send it back to the server with all subsequent requests.Once you have stored a cookie on a browser's PC,you can use it to make your web application work for the user.You can use it to allow users to skip login and registration forms that gather data like user name,password,address, or credit card data.Also to customize page that display information like weather reports,sports scores and stock quotations.You can also focus advertising like banner ads that target user's interests.
 
 A per-session cookie that holds the session ID is automatically created for each session.That cookie is used to relate the browser to session obect.
 You can also create and send other cookies to user's browser.You can use these cookies to access user-specific data that's stored in a file or database.
@@ -1127,6 +1423,9 @@ To create and use cookies,you use the constructors and methods.Afetr you use the
 There are two types of cookies:- per-session cookie and persistent cookie.
 per-session cookie - Is stored on the browser until user closes the browser,persistent cookie can be stored on user's hard disk up to 3 years.
 
+`Sending and Receiving Cookies` - To send cookies to the client, a servlet should use the Cookie constructor to create one or more cookies with designated names and values, set any optional attributes with cookie.setXxx (readable later by cookie.getXxx), and insert the cookies into the HTTP response headers with response.addCookie.
+To read incoming cookies, a servlet should call request.getCookies, which returns an array of Cookie objects corresponding to the cookies the browser has associated with your site (null if there are no cookies in the request). In most cases, the servlet should then loop down this array calling getName on each cookie until it finds the one whose name matches the name it was searching for, then call getValue on that Cookie to see the value associated with the name.
+
 Cookie(String name, String value) - Creates a cookie with the specified name and value.
 
 The methods of the Cookie class:-
@@ -1135,6 +1434,13 @@ The methods of the Cookie class:-
 3. getName() - Returns a string for the name of the cookie.
 4. getValue()- Returns a string that contains the value of the cookie.
 
+`Sending Cookies to the Client` - Sending cookies to the client involves three steps.
+1. Creating a Cookie object. You call the Cookie constructor with a cookie name and a cookie value, both of which are strings.
+2. Setting the maximum age. If you want the browser to store the cookie on disk instead of just keeping it in memory, you use setMaxAge to specify how long (in seconds) the cookie should be valid.
+3. Placing the Cookie into the HTTP response headers. You use response.addCookie to accomplish this. If you forget this step, no cookie is sent to the browser.
+
+If you create a cookie and send it to the browser, by default it is a session-level cookie: a cookie that is stored in the browser’s memory and deleted when the user quits the browser. If you want the browser to store the cookie on disk, use setMax- Age with a time in seconds.
+Since you could use the session-tracking API to simplify most tasks for which you use session-level cookies, you almost always use the setMaxAge method when using the Cookie API.Setting the maximum age to 0 instructs the browser to delete the cookie.
 
 ```java
 Cokie userId = new Cookie("userId", userId);
@@ -1152,12 +1458,11 @@ for(int i=0;i <cookies.length;i++){
 }
 ```
 
-
-`SSL Sessions` - Secure Sockets Layer, the encryption technology used in the HTTPS protocol, has a built-in mechanism allowing multiple requests from a client to be unambiguously identified as being part of a session. A servlet container can easily use this data to define a session.
+*SSL Sessions* - Secure Sockets Layer, the encryption technology used in the HTTPS protocol, has a built-in mechanism allowing multiple requests from a client to be unambiguously identified as being part of a session. A servlet container can easily use this data to define a session.
 
 The HttpServletRequest interface provides the getCookies method to obtain an array of cookies that are present in the request. These cookies are data sent from the client to the server on every request that the client makes. Typically, the only information that the client sends back as part of a cookie is the cookie name and the cookie value. Other cookie attributes that can be set when the cookie is sent to the browser, such as comments, are not typically returned. The specification also allows for the cookies to be HttpOnly cookies. HttpOnly cookies indicate to the client that they should not be exposed to client-side scripting code (It’s not filtered out unless the client knows to look for this attribute). The use of HttpOnly cookies helps mitigate certain kinds of cross-site scripting attacks.
 
-- `URL Rewriting`:- URL rewriting is the lowest common denominator of session tracking. When a client will not accept a cookie, URL rewriting may be used by the server as the basis for session tracking. URL rewriting involves adding data, a session ID, to the URL path that is interpreted by the container to associate the request with a session.
+- *URL Rewriting*:- URL rewriting is the lowest common denominator of session tracking. When a client will not accept a cookie, URL rewriting may be used by the server as the basis for session tracking. URL rewriting involves adding data, a session ID, to the URL path that is interpreted by the container to associate the request with a session.
 
 ```java
 public void doGet(HttpServletRequest req,HttpServletResponse res){
@@ -1210,108 +1515,6 @@ Web containers must be able to support the HTTP session while servicing HTTP req
 ```
 
 
-**Configuring Servlets**:- Configuring or mapping servlet is making underlying Servlet container recognize our servlet class to manage its lifecycle and to map/link one or more requests urls.
-Prior to servlet 3.0 specification(Tomcat 7.0), you had to use the web.xml to map a servlet to a URL.With servlet 3.0 specification and later,you can use the @Webservlet annotation to map a servlet to one or more URL patterns.The advantage of this approach is that it requires less code.
-
-
-*Web.xml*:- You define servlets as a part of a Web application in several entries in the J2EE standard Web Application deployment descriptor, web.xml. The web.xml file is located in the WEB-INF directory of your Web application.Use it if the servlet component class are pre-defined class like ActionServlets(struts),DispatcherServlet(Spring mvc),FacesServlet(jsf).
-
-The web.xml file in the WEB-INF directory is known as a `deployment descriptor`. This file contains configuration information. about the web app in which it resides. It's an XML file with a standardized DTD. The DTD contains more than 50 tags, allowing full control over the web app's behavior. The deployment descriptor file controls servlet registration, URL mappings, welcome files,and MIME types, as well as advanced features like page-level security constraints and how a servlet should behave in a distributed environment.
-
-`XML and DTDs`:- XML stands for Extensible Markup Language.[] It's a universal syntax for structuring data, created as an activity of the World Wide Web Consortium (W3C) beginning in 1996. Since its standardization early in 1998 it has taken the Web by storm.
-XML is similar to HTML in that both take content and "mark it up" using tags that begin and end with angle brackets, such as <title> and </title>. XML serves a different purpose than HTML, however. The tags in an XML document don't define how the text should be displayed but rather explain the meaning of the text. It's an "extensible" markup language because new tags can be created with their own meaning, as appropriate for the document being written. XML works especially well as a flat file format because it's a standard, well-defined, platform-independent technique for describing hierarchical data, and there are numerous tools to support the reading, writing, and manipulation of XML files.The rules for writing XML are more strict than for HTML. 
-1. First, XML tags are case sensitive. <servlet> and <SERVLET> are not the same. 
-2. Second, all tags that begin must end. If there's a begin tag <servlet> there must be an end tag </servlet>—although for convenience the empty tag syntax <servlet/> may be substituted as a synonym for an immediate begin and end tag pairing <servlet></servlet>. 
-3. Third, nested elements must not overlap. So it's legal to have <outside><inside>data</inside></outside> while it's illegal to have <outside><inside>data</outside></inside>. Fourth and finally, all attribute values must be surrounded by quotes, either single or double. This means <servlet id="0"/> is fine while <servlet id=0/> is not. 
-
-Documents that follow these rules are called well-formed and will be successfully parsed by automated tools.
-Beyond these rules, there are ways to explicitly declare a structure for the tags within an XML file. A specification of this sort is called a Document Type Definition, or DTD. A DTD explicitly states what tags are allowed in a compliant XML file, what type of data those tags are to contain, as well as where in the hierarchy the tags can (or must) be placed. Each XML file can be declared to follow a certain DTD. Files that perfectly conform to their declared DTD are called valid. XML is used with servlets as the storage format for configuration files. XML also can be used by servlets to help with content creation
-
-The structure of the web.xml file is not in itself important at this point; what's important is the fact that having a deployment descriptor file allows configuration information to be specified in a server-independent manner, greatly simplifying the deployment process. Because of deployment descriptors, not only are simple servlets portable, but you can now transfer whole self-contained subsections of your site between servers.
-Over time it's likely that a commercial market for WAR files will develop. WAR files will become pluggable web components, capable of being downloaded and installed and put to work right away—no matter what your operating system or web server.
-Deployment descriptors also provide web-hosting companies with a convenient way to support multiple customers on the same server. Customers can be given control over their individual domains. They can individually manage servlet registration.
-
-Various URL mapping rules can be specified in the deployment descriptor. There are four types of mappings, searched in the following order:
-
-Explicit mappings, like /hello.html or /images/chart.gif, containing no wildcards. This mapping style is useful when replacing an existing page.
-Path prefix mappings, such as /lite/*, /dbfile/*, or /catalog/item/*. These mappings begin with a /, end with a /*, and handle all requests beginning with that prefix (not counting the context path). This mapping style allows a servlet to control an entire virtual hierarchy. For example, the servlet handling /dbfile/*may serve files from a database, while the servlet handling /lite/* may serve files from the filesystem automatically gzipped.
-Extension mappings, such as *.wm or*.jsp. These mappings begin with a * and handle all requests ending with that suffix. This mapping style lets a servlet operate on all files of a given extension. For example, a servlet can be assigned to handle files ending in *.jsp to support JavaServer Pages. (In fact, this is an implicit mapping mandated by the servlet specification.)
-The default mapping, /. This mapping specifies the default servlet for the web app, to be used if no other matches occur. It's identical to the reduced path prefix mapping (/*) except this mapping matches after extension mappings. This gives control over how basic files are served—a powerful ability, but one that should not be used lightly.
-
-When there's a collision between mappings, exact matches take precedence over path prefix matches, and path prefix matches take precedence over extension matches. The default mapping is invoked only if no other matches occur. Longer string matches within a category take precedence over shorter matches within a category.
-
-All the files under server_root/webapps/ROOT belong to a single web application (the root one). To simplify deployment, these files can be bundled into a single archive file and deployed to another server merely by placing the archive file into a specific directory. These archive files have the extension .war, which stands for web application archive. WAR files are actually JAR files (created using the jar utility) saved with an alternate extension. Using the JAR format allows WAR files to be stored in compressed form and have their contents digitally signed. The .war file extension was chosen over .jar to let people and tools know to treat them differently.
-
-The deployment descriptor (the web.xml file) includes the following configurations:
-1. A display-name element that specifies the name that tools use to identify the application.
-2. A set of filter elements that identify servlet filters contained in the application.
-3. A set of filter-mapping elements that identify which servlets will have their requests or responses filtered by the filters identified by the filter elements. A filter-mapping element can define more than one servlet mapping and more than one URL pattern for a particular filter.
-4. A set of servlet elements that identify all the servlet instances of the application.
-5. A set of servlet-mapping elements that map the servlets to URL patterns. More than oneURL pattern can be defined for a particular servlet.
-6. A set of error-page mappings that map exception types to an HTML page, so that the HTML page opens when an exception of that type is thrown by the application.
-
-- The first line should be an XML declaration that indicates the version of XML and the character of the document.Then, the web-app element specifies the version of Java EE specification being used.These elements are same from one web application to another, and they are usually generated by your IDE.
-- After web-app element, the servlet element declares the servlet.Here,the servlet-name element specifies an internal name that's used to uniquely identify the servlet within web.xml file.then, the the servlet-class element specifies the package and name of the class for the servlet.
-- After servlet element, the servlet-mapping element maps the servlet to a URL.Here,the servlet-name element identifies the servlet by specifying the name that's used in servlet element.Then, the url-pattern element maps the servlet to the URL in root directory.
-- Finally, this web.xml sets a couple of other configuration settings for the application.First, session-config element sets the session timeout.As a result, any resources that are associated with a user will be released if the user hasn't ccessed the session within classidied time.Seond, there is welcome-file-list which when a user requests the root directory of the application,The HTML page will be displayed.
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
-                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
-
-   
-
-
-
-    <display-name>helloWorld</display-name>
-    <!-- Welcome file -->
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-
-     <!-- Character Encoding Filter (optional but recommended) -->
-    <filter>
-        <filter-name>encodingFilter</filter-name>
-        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-        <init-param>
-            <param-name>encoding</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
-        <init-param>
-            <param-name>forceEncoding</param-name>
-            <param-value>true</param-value>
-        </init-param>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>encodingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-    <!-- Context parameters (optional) -->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring-config.xml</param-value>
-    </context-param>
-
-</web-app>
-```
-
-With the Tomcat server, server_root/webapps/ROOT is the default context mapped to the root path "/ ". This means that servlets placed under server_root/webapps/ROOT/WEB-INF/classes can be accessed, as we saw earlier, using thepath /servlet/HelloWorld. With Tomcat, this default context mapping can be changed and new mappings can be added by editing the server_root/conf/server.xml serverwide configuration file. Other servers configure mappings in different ways; see your server's documentation for details.
-
-
-*Annotation based configurations*-Servlet Annotations are introduced in Servlet API 3.0 (JEE 5.0, JSE 5.0)(Tomcat 7.0). These annotations are used to avoid writing the web.xml file.Use if the servlet component is user-defined class.
-
-The web container initializes a servlet after loading and instantiating the servlet class and before delivering requests from clients. To customize this process to allow the servlet to read persistent configuration data, initialize resources, and perform any other one-time activities, you can either override the init method of the Servlet interface or specify the initParams attribute of the @WebServlet annotation. The initParams attribute contains a @WebInitParam annotation. If it cannot complete its initialization process, a servlet throws an UnavailableException.
-
-
-*Using Programmatic Approach(100% Java code approach)*- Use servletContext.addServlet() method.Use this for pre-defined Servlet component class like DispatcherServlet and you want to avoid xml driven configurations from application development.
-
-
 **Requesting a Servlet**:-
 
 After you create and map servlet,you can request the servlet.
@@ -1328,42 +1531,6 @@ http://localhost:8080/user/add?action=add&firstName=Collins
 
 <a href="add?action=add">Add User</a>
 ```
-
-**Annotations and pluggability**:- In a web application, classes using annotations will have their annotations processed only if they are located in the WEB-INF/classes directory, or if they are packaged in a jar file located in WEB-INF/lib within the application.
-
-The web application deployment descriptor contains a metadata-complete attribute on the web-app element. This attribute defines whether this deployment descriptor and any web fragments, if any, are complete, or whether the class files available to this module and packaged with this application should be examined for annotations that specify deployment information. Deployment information, in this sense, refers to any information that could have been specified by the deployment descriptor or fragments, but instead is specified as annotations on classes.
-If the value of the metadata-complete attribute is specified as true, the deployment tool must ignore any annotations that specify such deployment information in the class files packaged in the web application.
-
-If the metadata-complete attribute is not specified, or its value is false, the deployment tool must examine the class files of the application for such annotations.
-Note that a true value for metadata-complete does not preempt the processing of all annotations.
-
-Annotations that do not have equivalents in the deployment XSD include javax.servlet.annotation.HandlesTypes and all of the CDI-related annotations. These annotations must be processed during annotation scanning, regardless of the value of “metadata-complete”.
-
-When EJBs are packaged in a .war file, and the .war file contains an ejb-jar.xml file, the metadata-complete attribute of the ejb-jar.xml file determines the processing of the annotations for enterprise beans. If there is no ejb-jar.xml file, and the web.xml specifies the metadata-complete attribute as “true”, these annotations are processed as though there were an ejb-jar.xml file whose metadata-complete attribute was specified as “true”. See the Enterprise
-JavaBeans™ specification for requirements pertaining to annotations for EJBs.
-
-The following are the annotations in javax.servlet. All of these have corresponding deployment descriptor metadata covered by the Web xsd.From javax.servlet.annotation:
-
-1. HandlesTypes -This annotation is used to declare the class types that a ServletContainerInitializer can handle.
-2. HttpConstraint -This annotation is used within the ServletSecurity annotation to represent the security constraints to be applied to all HTTP protocol methods for which a corresponding HttpMethodConstraint element does NOT occur within the ServletSecurity annotation.
-3. HttpMethodConstraint -This annotation is used within the ServletSecurity annotation to represent security constraints on specific HTTP protocol messages.
-4. MultipartConfig -Annotation that may be specified on a Servlet class, indicating that instances of the Servlet expect requests that conform to the multipart/form-data MIME type.
-5. ServletSecurity -This annotation is used on a Servlet implementation class to specify security constraints to be enforced by a Servlet container on HTTP protocol messages.
-6. WebFilter -Annotation used to declare a servlet filter.
-7. WebInitParam -This annotation is used on a Servlet or Filter implementation class to specify an initialization parameter.
-8. WebListener -This annotation is used to declare a WebListener.
-9. WebServlet -Annotation used to declare a servlet.
-
-The following annotations from related packages are also covered by the web.xml and associated fragments.
-
-From javax.annotation:- PostConstruct, PreDestroy, Resource, Resources
-From javax.annotation.security:- DeclareRoles,RunAs
-From javax.annotation.sql:- DataSourceDefinition,DataSourceDefinitions
-From javax.ejb:- EJB, EJBs
-From javax.jms:- JMSConnectionFactoryDefinition,JMSConnectionFactoryDefinitions,JMSDestinationDefinition,JMSDestinationDefinitions
-From javax.mail:- MailSessionDefinition,MailSessionDefinitions
-From javax.persistence:- PersistenceContext,PersistenceContexts,PersistenceUnit,PersistenceUnits
-From javax.resource:- AdministeredObjectDefinition,AdministeredObjectDefinitions,ConnectionFactoryDefinition,ConnectionFactoryDefinitions
 
 
 **Security**:- Security is the science of keeping sensitive information in the hands of authorized users. On the Web, this boils down to four important issues:
@@ -1464,50 +1631,7 @@ With a regular HTTP connection,all data is sent as unencrypted plain text.As a r
 
 Due to the time it takes to encrypt and decrypt the data that's sent across a secure connection,secure connections are noticeably slower than regular HTTP connections.As a result,you usually use secure connections only when your application passes sensitive data between client & server.
 
-**Working with Request & Response**:-
-
-`Getting request header`:- A servlet can access the headers of an HTTP request through the following methods of the HttpServletRequest interface:
-
-1. getHeader(String headerName) - The getHeader method returns a header given the name of the header. There can be multiple headers with the same name, e.g. Cache-Control headers, in an HTTP request. If there are multiple headers with the same name, the getHeader method returns the first header in the request.
-2. getHeaders - The getHeaders method allows access to all the header values associated with a particular header name, returning an Enumeration of String objects.
-3. getHeaderNames - Returns an Enumeration object that contains the names of all headers for the request.
- 
-Headers may contain String representations of int or Date data. The following convenience methods of the HttpServletRequest interface provide access to header data in a one of these formats:
-
-1. getIntHeader(String headerName) - If the getIntHeader method cannot translate the header value to an int, a NumberFormatException is thrown. 
-2. getDateHeader(String headerName) - If the getDateHeader method cannot translate the header to a Date object, an IllegalArgumentException is thrown.
-
-`Convenience methods for working with request headers`:-
-
-getContentType() - 
-
-
-`Setting status code`:- Most of the time,the web server automatically sets the status code for an HTTP response.However,if you need to set the status code,you can use the *setStatus* method.To specify the value for this code,you can use either an integer value or one of the fields of the *response* objet.
-
-```java
-response.setStatus(404);
-response.setStatus(response.SC_NOT_FOUND)
-```
-
-
-`Setting response headers`:- The web server usually sets headers of an HTTP response.However,if you need to set a response header you can use the following methods of the HttpServletResponse interface:
-
-1. setHeader(String name, String value) - The setHeader method sets a header with a given name and value. A previous header is replaced by the new header. Where a set of header values exist for the name, the values are cleared and replaced with the new value.
-2. addHeader - The addHeader method adds a header value to the set with a given name. If there are no headers already associated with the name, a new set is created.
-
-Headers may contain data that represents an int or a Date object. The following convenience methods of the HttpServletResponse interface allow a servlet to set a
-header using the correct formatting for the appropriate data type:
-
-1. setIntHeader(String name, int value)
-2. setDateHeader(String name, long value) - Accepts a long value that represents date in milliseconds since January 1, 1970 00:00:00 GMT.
-3. addIntHeader
-4. addDateHeader
-
-`Convenience methods for working with response headers`:-
-
-setContentType(String mimeType)
-addCookie(Cookie cookie)
-
+----
 
 **Listeners**:- Starting with servlet 2.3 Specification,you can add a listenr to a web application.For example,you can create a listener class that contains code that's executed when your web app starts or you can create a listener class that contains code that's executed every time a user starts a new session.
 
@@ -1515,14 +1639,14 @@ A `listener` is a class that listens for various events that can occur during th
 Used in configuring profiles e.g dev,prod.
 
 
-**Filters**:- Starting with servlet 2.3 specification, you can add a filter to your web application.Filters are Java components that allow on the fly transformations of payload and header information in both the request into a resource and the response from a resource.
+----
 
+**Filters**:- Starting with servlet 2.3 specification, you can add a filter to your web application.Filters are Java components that allow on the fly transformations of payload and header information in both the request into a resource and the response from a resource.
 A filter is a Java class that is invoked in response to a request for a resource in a Web application. Resources include Java Servlets, JavaServer pages (JSP), and static resources such as HTML pages or images. A filter intercepts the request and can examine and modify the response and request objects or execute other tasks.
 
 A filter can intercept an HTTP request and execute code before or after the requested servlet or JSP is executed.As a result, filters are ideal for handling cross-cutting concerns,which are aspects of an application that cut across different parts of an application.
 
-The Java Servlet API classes and methods that provide a lightweight framework for filtering active and static content. It describes how filters are configured in a Web
-application, and conventions and semantics for their implementation.You can chain two or more filters together.
+The Java Servlet API classes and methods that provide a lightweight framework for filtering active and static content. It describes how filters are configured in a Web application, and conventions and semantics for their implementation.You can chain two or more filters together.
 
 `Filter`:- A filter is a reusable piece of code that can transform the content of HTTP requests, responses, and header information. Filters do not generally create a response or respond to a request as servlets do, rather they modify or adapt the requests for a resource, and modify or adapt responses from a resource.
 Filters can act on dynamic or static content. For the purposes of this chapter,dynamic and static content are referred to as Web resources.
@@ -1620,7 +1744,7 @@ Configuring a Chain of Filters - WebLogic Server creates a chain of filters by c
 3. The last item in the chain is always the originally requested resource.In your filter class, use the FilterChain.doFilter() method to invoke the next item in the chain
 
 
-**Wrappers**:- The HttpServletRequestWrapper and HttpServletResponseWrapper classes implement a design pattern known as `wrapper pattern` or `decorator pattern`.The classes contains methods that call all of the methods of underlying interface or class.As a result,when you extend these classes,you only need to add new methods or override existing methods.
+*Wrappers*:- The HttpServletRequestWrapper and HttpServletResponseWrapper classes implement a design pattern known as `wrapper pattern` or `decorator pattern`.The classes contains methods that call all of the methods of underlying interface or class.As a result,when you extend these classes,you only need to add new methods or override existing methods.
 
 The `HttpServletRequestWrapper` class implements the HttpServletRequest interface by providing methods that call the methods of underlying HttpServletRequest interface.As a result,if you code a class that extends the HttpServletRequestWrapper class, all of existing methods already work.Then,to add new functionality,you can add a method that dosn't exist in HttpServletRequest interface.Or,to modify the existing functionality,you can override one of methods of the HttpServletRequest class.
 When you extend the HttpServletResponseWrapper class,you can use the getResponse method to return the underlying HttpServletResponse object.
@@ -1652,18 +1776,46 @@ and unloaded in reverse order. Context listeners are loaded in the following ord
 ### JSP
 
 JSPs are Web pages coded with an extended HTML that makes it possible to embed Java code in a Web page. JSPs can call custom Java classes, called taglibs, using HTML-like tags.
-`JavaServer Pages (JSPs)` are a Sun Microsystems specification for combining Java with HTML to provide dynamic content for Web pages. When you create dynamic content, JSPs are more convenient to write than HTTP servlets because they allow you to embed Java code directly into your HTML pages, in contrast with HTTP servlets, in which you embed HTML inside Java code.
-
-JavaServer Pages are built on top of servlets.When a JSP is first requested,the JSp engine translates it into a servlet and compiles it.Then,the servlet is run by servlet engine.For subsequent requests,the JSP engine runs the servlet that corresponds to the JSP.
-
-The WebLogic appc compiler `weblogic.appc` generates JSPs and validates descriptors. You can also precompile JSPs into the WEB-INF/classes/ directory or as a JAR file under WEB-INF/lib/ and package the servlet class in the Web archive to avoid compiling in the server. Servlets and JSPs may require additional helper classes to be deployed with the Web application.
+`JavaServer Pages (JSPs)` are a Sun Microsystems specification for combining Java with HTML to provide dynamic content for Web pages.Unlike a plain HTML page, which contains static content that always remains the same, a JSP page can change its content based on any number of variable items, including the identity of the user, the user's browser type, information provided by the user, and selections made by the user. When you create dynamic content, JSPs are more convenient to write than HTTP servlets because they allow you to embed Java code directly into your HTML pages, in contrast with HTTP servlets, in which you embed HTML inside Java code.
 
 Because JSP is part of the J2EE standard, you can deploy JSPs on a variety of platforms,including WebLogic Server. In addition, third-party vendors and application developers can provide JavaBean components and define custom JSP tags that can be referenced from a JSP page to provide dynamic content.
 
 JSPs enable you to separate the dynamic content of a Web page from its presentation. It caters to two different types of developers: HTML developers, who are responsible for the graphical design of the page, and Java developers, who handle the development of software to create the dynamic content
 JSP code runs on web server in JSP servlet engines.JSP servlet engine dynamically generates HTML and sends HTML output to client's browser.
 
-When you code a JSP,you can use the methods of the `request object` in your scriplet or expressions.Since you don't have to explicitly create this object when you code JSPs,this object is sometimes referred to as `imlicit request object`.
+A JSP page contains standard markup language elements, such as HTML tags, just like a regular web page. However, a JSP page also contains special JSP elements that allow the server to insert dynamic content in the page. JSP elements can be used for a variety of purposes, such as retrieving information from a database or registering user preferences.When a user asks for a JSP page, the server executes the JSP elements, merges the results with the static parts of the page, and sends the dynamically composed page back to the browser.
+JSP defines a number of standard elements that are useful for any web application, such as accessing JavaBeans components, passing control between pages and sharing information between requests, pages, and users. Programmers can also extend the JSP syntax by implementing application-specific elements that perform tasks such as accessing databases and Enterprise JavaBeans, sending email, and generating HTML to present application-specific data. One such set of commonly needed custom elements is defined by a specification related to the JSP specification: the JSP Standard Tag Library (JSTL) specification. The combination of standard elements and custom elements allows for the creation of powerful web applications.
+
+*Anatomy of a JSP Page* - A JSP page is simply a regular web page with JSP elements for generating the parts that differ for each request.Everything in the page that isn't a JSP element is called `template text`. Template text can be any text: HTML, WML, XML, or even plain text.Template text is always passed straight through to the browser.
+When a JSP page request is processed, the template text and dynamic content generated by the JSP elements are merged, and the result is sent as the response to the browser.
+
+
+*JSP Processing* - Just as a web server needs a servlet container to provide an interface to servlets, the server needs a JSP container to process JSP pages. The JSP container is responsible for intercepting requests for JSP pages. To process all JSP elements in the page, the container first turns the JSP page into a servlet (known as the [JSP page implementation class]). The conversion is pretty straightforward; all template text is converted to println( ) statements similar to the ones in the handcoded servlet and all JSP elements are converted to Java code that implements the corresponding dynamic behavior. The container then compiles the servlet class.
+Converting the JSP page to a servlet and compiling the servlet form the `translation phase`.The JSP container initiates the translation phase for a page automatically when it receives the first request for the page. Since the translation phase takes a bit of time, the first user to request a JSP page notices a slight delay. The translation phase can also be initiated explicitly; this is referred to as precompilation of a JSP page. Precompiling a JSP page is a way to avoid hitting the first user with this delay.
+The JSP container is also responsible for invoking the JSP page implementation class (the generated servlet) to process each request and generate the response. This is called the request processing phase.
+
+As long as the JSP page remains unchanged, any subsequent request goes straight to the request processing phase (i.e., the container simply executes the class file). When the JSP page is modified, it goes through the translation phase again before entering the request processing phase.
+The JSP container is often implemented as a servlet configured to handle all requests for JSP pages. In fact, these two containers -- a servlet container and a JSP container -- are often combined in one package under the name `web container`.
+
+JavaServer Pages are built on top of servlets.When a JSP is first requested,the JSp engine translates it into a servlet and compiles it.Then,the servlet is run by servlet engine.For subsequent requests,the JSP engine runs the servlet that corresponds to the JSP.
+The WebLogic appc compiler `weblogic.appc` generates JSPs and validates descriptors. You can also precompile JSPs into the WEB-INF/classes/ directory or as a JAR file under WEB-INF/lib/ and package the servlet class in the Web archive to avoid compiling in the server. Servlets and JSPs may require additional helper classes to be deployed with the Web application.
+
+
+When you code a JSP,you can use the methods of the `request object` in your scriplet or expressions.Since you don't have to explicitly create this object when you code JSPs,this object is sometimes referred to as `imlicit request object`.Others include:-
+- request(HttpServletRequest)
+- response(HttpServletResponse)
+- pageContext(PageContext)
+- out(JspWriter) - PrintWriter object
+- session(HttpSession)
+- application(ServletContext)
+- config(ServletConfig)
+
+- `PageContext` - Is class in jsp, its implicit object pageContext is used to set , get or remove attribute from following scope:
+	1. page
+	2. request
+	3. session
+	4. application
+
 
 **JSP Tags**- JSP Tags includes:-
 
@@ -1674,7 +1826,7 @@ When you code a JSP,you can use the methods of the `request object` in your scri
 5. Directive
 
 
-`Scriplet`:- Used to code one or more Java statements that end with senmicolon.
+*Scriplet*:- Used to code one or more Java statements that end with senmicolon.
 To code a scriptlet that contains one or more Java statements, you use the <% and %> tags.Once the scriplet is executed,the values for parameters are available as variables to the rest of the page.
 To get the values of the parameters that are passed to the JSP, you can use the getParameter method of implicit request object named request.
 
@@ -1685,7 +1837,7 @@ string firstName= request.getParameter("lastName");
 %>
 ```
 
-`JSP Expressions`: To code an expression that can be converted to a string, you use the <%= and %> tags.If an expression evaluates to a primitive type like an int value or a double value,the JSP will automatically convert the primitive type to a string that represents the value.
+*JSP Expressions*: To code an expression that can be converted to a string, you use the <%= and %> tags.If an expression evaluates to a primitive type like an int value or a double value,the JSP will automatically convert the primitive type to a string that represents the value.
 If the expression evaluates to an object,the JSP will call the object's toString method to get a string that represents the object.As a result,if you code an expression that evaluates to an object, you  need to make sure that the object has a toString method that returns a String that represents the value.Otherwise,the object will use the toString method of the Object class,which includes the class name and hash code for the object.
 
 ```jsp
@@ -1695,7 +1847,7 @@ If the expression evaluates to an object,the JSP will call the object's toString
 
 NOTE:- When coding a scriplet or an expression,you can use any of the methods of the implicit request object.
 
-`Comments`:- Tells JSP Engine to ignore code.When you code JSP comments,they are not compiled or executed.When you code HTML comments,they are compiled and executed but browser won't display them.When you code Java comments within sciplets,they are not compiled or executed.
+*Comments*:- Tells JSP Engine to ignore code.When you code JSP comments,they are not compiled or executed.When you code HTML comments,they are compiled and executed but browser won't display them.When you code Java comments within sciplets,they are not compiled or executed.
 
 ```jsp
 <!--HTML Comment -->
@@ -1703,26 +1855,41 @@ NOTE:- When coding a scriplet or an expression,you can use any of the methods of
 <% // User user = new User()%>
 ```
 
-`JSP Declarations`:- Used to declare instance variables and methods.When a JSP is requested for the first time,one instance of the JSP is created and loaded into memory,and a thread is started that executes Java code in the JSP.For each subsequent request request for JSP,another thread is started that access the one instance of the JSP.When you code variables in scriplets,they are known as local variables, and each thread gets its own copy of each local variable.However,you can also declare instance variables that can be shared between all of threads that are accessing a JSP.To do that,you use JSP declarations.
+*JSP Declarations*:- Used to declare instance variables and methods.When a JSP is requested for the first time,one instance of the JSP is created and loaded into memory,and a thread is started that executes Java code in the JSP.For each subsequent request request for JSP,another thread is started that access the one instance of the JSP.When you code variables in scriplets,they are known as local variables, and each thread gets its own copy of each local variable.However,you can also declare instance variables that can be shared between all of threads that are accessing a JSP.To do that,you use JSP declarations.
 
 ```jsp
 <%! int globalCount = 0; %>
 ```
 
-`JSP Directive`:- Used for setting conditions that apply to entire JSP.
-You can use directive to import classes in a JSP,you use the import attribute of page directive.To code a page directive for importing classes,you code the starting tag and the word page followed by the Import attribute.Within the quotation marks after the equals sign for this attribute,you code the names of the Java classes that you want to import.
+*JSP Directive*:- Used for setting conditions that apply to entire JSP.Directive elements specify attributes of the page itself, such as the type of content produced by the page, page buffering requirements, declaration of other resources used by the page, and how possible runtime errors should be handled. Hence, a directive doesn't directly affect the content of the response sent to the browser. There are three different JSP directives:- page, include, and taglib.
+
+`@page` - Defines page-dependent attributes, such as session tracking, error page, and buffering requirements.
+You can use directive to import classes in a JSP,you use the import attribute of page directive.To code a page directive for importing classes,you code the starting tag and the word page followed by the Import attribute..Within the quotation marks after the equals sign for this attribute,you code the names of the Java classes that you want to import.
 You can also use page directive to define other conditions like error handling and content type conditions.
+
+Attribute includes: 
+- language = "scripting language" - java
+- extends = "className"
+- import ="importList"
+- session = "true|false"
+- autoFlush = "true|false"
+- contentType = "ctinfo"
+- errorPage = "error_url"
+- isErrorPage = "true|false"
+- info = "information"
+- isELIgnored = "true|false"
+- isThreadSafe = "true|false"
 
 ```jsp
 <%@ page import="java.util.Date"%>
-<%@ page contentType="text/html; charset=UTF-8" page Encoding="UTF-8" %>
+<%@ page contentType="text/html; charset="UTF-8" pageEncoding="UTF-8" %>
 ```
 
-If you want to include the same block of code in several JSPs, you can store the code in a separate file.Then,you can include the code in that file in a JSP.Files like this are often referred to as *includes*.
+`@include` - Includes a file during the translation phase. If you want to include the same block of code in several JSPs, you can store the code in a separate file.Then,you can include the code in that file in a JSP.Files like this are often referred to as *includes*.
 
 ```jsp
 <%@ include file="/icludes/header.html"%>
---
+    ...
 <%@ include file="/icludes/footer.html"%>
 ```
 
@@ -1736,10 +1903,16 @@ When you include a file at compile-time,the code within the file becomes part of
 
 If you are certain that the include files won't change often,you use the include directive.If yu want to display information that may change regularly,and you need to guarantee that these cahnges be displayed immediately,you should use include action.
 
+`@Taglib` - Declares a tag library, containing custom actions, that is used in the page.The uri attribute contains a unique string that identifies the library and the prefix attribute defines the name prefix used for the library on this page.
 
-**JSP Tags for JavaBeans**:-
+```jsp
+<%@ taglib uri="uri" prefix="fx" %>
 
-Standard JSP tags for working with JavaBean class reduces amount of Java code in your JSPs.
+<fx:collins> //belongs to fx
+```
+
+
+**JSP Tags for JavaBeans**:- Standard JSP tags for working with JavaBean class reduces amount of Java code in your JSPs.
 The standard JSP tags for working with JavaBeans are an older technology that was widely used before JSP 2.0 specification.
 
 All of the JSP tags for working with JavaBeans use XML syntax.
@@ -1773,6 +1946,9 @@ To code special characters within an attribute,you can use escape sequences.Howe
 2. Debugging
 3. How often WebLogic Server checks for updated JSPs that need to be recompiled
 4. Character encoding
+
+
+-----
 
 
 **JSP Expression Language(EL)**:- SExpression Language(EL) was inroduced with JSP 2.0 to reduce the amount of scripting in your applications.
@@ -1869,11 +2045,92 @@ ${scope.attribute.property}
 ${attribute["propertyKeyOrIndex"]}
 ```
 
+--------
+
+
 **JSP Standard Tag Library**:- The JSP Standard Tag Library(JSTL) provides tags for common tasks that need to be performed in JSPs.
 Before you can use JSTL tags within JSP,you must code a taglib directive to specify the URI and prefix for the JSTL library.
 
+- While the name of the standard contains the word "library" (singular), it's in fact a set of libraries that group related actions:
+    1. `Core` - Conditional processing and looping, importing data from external sources, etc.
+    2. `XML processing` - Processing of XML data, such as transforming and accessing individual elements.
+    3. `Internationalization (I18N) and formatting` - Format and parse localized information, insert localized information in a page.
+    4. `Relational database access (SQL)` - Read and write relational database data.
+
+
 ```jsp
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:import url="http://ww.kipcollo.com"></c:import>
+<c:out value="${value}" />
+```
+
+*Accessing Parameter Values with JSTL Actions* - param is an implicit EL variable that represents a collection (a java.util.Map) of all request parameters sent to the page. To get the value of a specific variable, you simply specify the name of the parameter, separated from the collection name with a dot.
+
+```jsp
+Name: <c:out value="${param.userName}" /><br>
+```
+
+`JSTL <c:forEach>` -The <c:forEach> action is a powerful action that repeatedly processes its body a number of times, as defined by its attributes.The items attribute accepts all standard Java collection types, an array, or a string with a list of comma-separated values. In other words, if a variable represents a collection of values in some form, chances are <c:forEach> can handle it. The var attribute specifies the name of a variable to hold the current element of the collection. The variable is available only within the body of the action element.
+
+```jsp
+Favorite Food:
+<c:forEach items="${paramValues.food}" var="current">
+<c:out value="${current}" />&nbsp;
+</c:forEach>
+```
+
+The <c:forEach> action iterates over the array values, and the nested <c:out> action adds each value to the response. If no choice was made (the EL expression doesn't return anything), the <c:forEach> action simply does nothing.<c:forEach> also lets you define where in the collection to start and stop the iteration (begin and end) and if all or just some elements should be processed (step). These attributes can also be used without a collection to process the body a fixed number of times:
+
+```jsp
+<c:forEach begin="1" end="4">
+...
+</forEach>
+```
+
+The varStatus attribute can be used to name a variable that holds a bean with iteration status details. You can use it when something needs to be done only on the first or last pass through the body, or for even and odd indexes, etc.
+
+
+*Conditional Actions: core tag library* - The output of a Jakarta Server Pages page is often conditional on the value of dynamic application data. A simple scriptlet with an if statement can be used in such situations, but this forces a page author to use a scripting language whose syntax may be troublesome (e.g. one may forget the curly braces).
+The Jakarta Standard Tag Library conditional actions make it easy to do conditional processing in a Jakarta Server Pages page.
+
+The Jakarta Standard Tag Library conditional actions are designed to support the two most common usage patterns associated with conditional processing: simple conditional execution and mutually exclusive conditional execution.
+
+A simple conditional execution action evaluates its body content only if the test condition associated with it is true.
+
+```jsp
+<c:if test="${user.visitCount == 1}">
+    This is your first visit. Welcome to the site!
+</c:if>
+```
+
+With mutually exclusive conditional execution, only one among a number of possible alternative actions gets its body content evaluated.
+
+```jsp
+<c:choose>
+    <c:when test="${user.category == 'trial'}">
+        ...
+    </c:when>
+    <c:when test="${user.category == 'member'}">
+        ...
+    </c:when>
+    <c:otherwise>
+        ...
+    </c:otherwise>
+</c:choose>
+```
+
+*Iterator Actions: core tag library* - Iterating over a collection of objects is a common occurrence in a Jakarta Server Pages page. Just as with conditional processing, a simple scriptlet can be used in such situations. However, this once again forces a page author to be knowledgeable in many aspects of the Java programming language (how to iterate on various collection types, having to cast the returned object into the proper type, proper use of the curly braces, etc.).
+The Jakarta Standard Tag Library iterator actions simplify iterating over a wide variety of collections of objects.
+
+The <c:forEach> action repeats its nested body content over the collection of objects specified by the items attribute.
+
+```jsp
+<table>
+    <c:forEach var="customer" items="${customers}">
+        <tr><td>${customer}</td></tr>
+    </c:forEach>
+</table>
 ```
 
 
@@ -1908,6 +2165,224 @@ There are two common errors that you will encounter when working with JSPs.HTTP 
 HTTP Status 500 means that server received request and ound resource but couldn't fill the request.This usually means that JSP engine wasn't able to compile JSP due to coding error in JSP.
 
 
+*JSP Exception Handling*:- There aare two ways:-
+
+- You cna use try catch block to handle exceptions.
+
+```jsp
+<%@ page errorPage="error.jsp" %>
+<!DOCTYPE html>
+<%
+    try{
+        int num = 9/0
+    }
+    catch(Exception e){
+        out.println("Error" + e.getMessage());
+    }
+%>
+</html>
+```
+
+- You can create a JSP page for errors, i.e error.jsp
+
+```jsp
+<%@ page isErrorPage="true" %>
+<!DOCTYPE html>
+<body>
+    Error <%= exception.getMessage() %>
+</body>
+</html>
+```
+
+
+**Working with Database in JSP** - 
+
+```jsp
+<%@ page import=<"java.sql.*" %>
+
+<%
+    Class.forName("org.postgresql.Driver");
+    Connection conn = DriverManager.getConnection("url","user","password");
+    Statement st = conn.createStatement();
+
+    ResultSet rs = st.executeQuery(sql)
+    rs.next(;)
+%>
+
+Rollno: <%= rs.getString(1) %> </br>
+Name: <%= rs.getString(2) %> </br>
+```
+
+
+Preventing back button from displaying contents of protected files after logout..
+
+```jsp
+<%
+    response.setHeader("cache-control","no-cache,no-store,must-revalidate");//Works on HTTP 1.1 only
+    response.setHeader("pragma","no-cache");//older version of HTTP
+    response.setHeader("Expires","0");//proxy servers
+    if(session.getAttribute("username")==null){
+        response.sendRedirect("login.jsp");
+    }
+%>
+Welcome ${username}
+```
+
+
+### Deployment Descriptor
+
+*Web.xml*:- You define servlets as a part of a Web application in several entries in the J2EE standard Web Application deployment descriptor, web.xml. The web.xml file is located in the WEB-INF directory of your Web application.Use it if the servlet component class are pre-defined class like ActionServlets(struts),DispatcherServlet(Spring mvc),FacesServlet(jsf).
+
+The web.xml file in the WEB-INF directory is known as a `deployment descriptor`. This file contains configuration information. about the web app in which it resides. It's an XML file with a standardized DTD. The DTD contains more than 50 tags, allowing full control over the web app's behavior. The deployment descriptor file controls servlet registration, URL mappings, welcome files,and MIME types, as well as advanced features like page-level security constraints and how a servlet should behave in a distributed environment.
+
+The following sections describe the deployment descriptor elements defined in the web.xml file under the root element <web-app>:
+
+context-param
+description
+display-name
+distributable
+ejb-ref
+ejb-local-ref
+env-entry
+error-page
+filter
+filter-mapping
+icon
+listener
+login-config
+mime-mapping
+resource-env-ref
+resource-ref
+security-constraint
+security-role
+servlet
+servlet-mapping
+session-config
+taglib
+welcome-file-list
+
+`XML and DTDs`:- XML stands for Extensible Markup Language.[] It's a universal syntax for structuring data, created as an activity of the World Wide Web Consortium (W3C) beginning in 1996. Since its standardization early in 1998 it has taken the Web by storm.
+XML is similar to HTML in that both take content and "mark it up" using tags that begin and end with angle brackets, such as <title> and </title>. XML serves a different purpose than HTML, however. The tags in an XML document don't define how the text should be displayed but rather explain the meaning of the text. It's an "extensible" markup language because new tags can be created with their own meaning, as appropriate for the document being written. XML works especially well as a flat file format because it's a standard, well-defined, platform-independent technique for describing hierarchical data, and there are numerous tools to support the reading, writing, and manipulation of XML files.The rules for writing XML are more strict than for HTML. 
+1. First, XML tags are case sensitive. <servlet> and <SERVLET> are not the same. 
+2. Second, all tags that begin must end. If there's a begin tag <servlet> there must be an end tag </servlet>—although for convenience the empty tag syntax <servlet/> may be substituted as a synonym for an immediate begin and end tag pairing <servlet></servlet>. 
+3. Third, nested elements must not overlap. So it's legal to have <outside><inside>data</inside></outside> while it's illegal to have <outside><inside>data</outside></inside>. Fourth and finally, all attribute values must be surrounded by quotes, either single or double. This means <servlet id="0"/> is fine while <servlet id=0/> is not. 
+
+Documents that follow these rules are called well-formed and will be successfully parsed by automated tools.
+Beyond these rules, there are ways to explicitly declare a structure for the tags within an XML file. A specification of this sort is called a Document Type Definition, or DTD. A DTD explicitly states what tags are allowed in a compliant XML file, what type of data those tags are to contain, as well as where in the hierarchy the tags can (or must) be placed. Each XML file can be declared to follow a certain DTD. Files that perfectly conform to their declared DTD are called valid. XML is used with servlets as the storage format for configuration files. XML also can be used by servlets to help with content creation
+
+The structure of the web.xml file is not in itself important at this point; what's important is the fact that having a deployment descriptor file allows configuration information to be specified in a server-independent manner, greatly simplifying the deployment process. Because of deployment descriptors, not only are simple servlets portable, but you can now transfer whole self-contained subsections of your site between servers.
+Over time it's likely that a commercial market for WAR files will develop. WAR files will become pluggable web components, capable of being downloaded and installed and put to work right away—no matter what your operating system or web server.
+Deployment descriptors also provide web-hosting companies with a convenient way to support multiple customers on the same server. Customers can be given control over their individual domains. They can individually manage servlet registration.
+
+Various URL mapping rules can be specified in the deployment descriptor. There are four types of mappings, searched in the following order:
+
+Explicit mappings, like /hello.html or /images/chart.gif, containing no wildcards. This mapping style is useful when replacing an existing page.
+Path prefix mappings, such as /lite/*, /dbfile/*, or /catalog/item/*. These mappings begin with a /, end with a /*, and handle all requests beginning with that prefix (not counting the context path). This mapping style allows a servlet to control an entire virtual hierarchy. For example, the servlet handling /dbfile/*may serve files from a database, while the servlet handling /lite/* may serve files from the filesystem automatically gzipped.
+Extension mappings, such as *.wm or*.jsp. These mappings begin with a * and handle all requests ending with that suffix. This mapping style lets a servlet operate on all files of a given extension. For example, a servlet can be assigned to handle files ending in *.jsp to support JavaServer Pages. (In fact, this is an implicit mapping mandated by the servlet specification.)
+The default mapping, /. This mapping specifies the default servlet for the web app, to be used if no other matches occur. It's identical to the reduced path prefix mapping (/*) except this mapping matches after extension mappings. This gives control over how basic files are served—a powerful ability, but one that should not be used lightly.
+
+When there's a collision between mappings, exact matches take precedence over path prefix matches, and path prefix matches take precedence over extension matches. The default mapping is invoked only if no other matches occur. Longer string matches within a category take precedence over shorter matches within a category.
+
+All the files under server_root/webapps/ROOT belong to a single web application (the root one). To simplify deployment, these files can be bundled into a single archive file and deployed to another server merely by placing the archive file into a specific directory. These archive files have the extension .war, which stands for web application archive. WAR files are actually JAR files (created using the jar utility) saved with an alternate extension. Using the JAR format allows WAR files to be stored in compressed form and have their contents digitally signed. The .war file extension was chosen over .jar to let people and tools know to treat them differently.
+
+The deployment descriptor (the web.xml file) includes the following configurations:
+1. A display-name element that specifies the name that tools use to identify the application.
+2. A set of filter elements that identify servlet filters contained in the application.
+3. A set of filter-mapping elements that identify which servlets will have their requests or responses filtered by the filters identified by the filter elements. A filter-mapping element can define more than one servlet mapping and more than one URL pattern for a particular filter.
+4. A set of servlet elements that identify all the servlet instances of the application.
+5. A set of servlet-mapping elements that map the servlets to URL patterns. More than oneURL pattern can be defined for a particular servlet.
+6. A set of error-page mappings that map exception types to an HTML page, so that the HTML page opens when an exception of that type is thrown by the application.
+
+- The first line should be an XML declaration that indicates the version of XML and the character of the document.Then, the web-app element specifies the version of Java EE specification being used.These elements are same from one web application to another, and they are usually generated by your IDE.
+- After web-app element, the servlet element declares the servlet.Here,the servlet-name element specifies an internal name that's used to uniquely identify the servlet within web.xml file.then, the the servlet-class element specifies the package and name of the class for the servlet.
+- After servlet element, the servlet-mapping element maps the servlet to a URL.Here,the servlet-name element identifies the servlet by specifying the name that's used in servlet element.Then, the url-pattern element maps the servlet to the URL in root directory.
+- Finally, this web.xml sets a couple of other configuration settings for the application.First, session-config element sets the session timeout.As a result, any resources that are associated with a user will be released if the user hasn't ccessed the session within classidied time.Seond, there is welcome-file-list which when a user requests the root directory of the application,The HTML page will be displayed.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+
+   
+
+
+
+    <display-name>helloWorld</display-name>
+    <!-- Welcome file -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+     <!-- Character Encoding Filter (optional but recommended) -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Context parameters (optional) -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/spring-config.xml</param-value>
+    </context-param>
+
+</web-app>
+```
+
+With the Tomcat server, server_root/webapps/ROOT is the default context mapped to the root path "/ ". This means that servlets placed under server_root/webapps/ROOT/WEB-INF/classes can be accessed, as we saw earlier, using thepath /servlet/HelloWorld. With Tomcat, this default context mapping can be changed and new mappings can be added by editing the server_root/conf/server.xml serverwide configuration file. Other servers configure mappings in different ways; see your server's documentation for details.
+
+
+**Annotations and pluggability**:- In a web application, classes using annotations will have their annotations processed only if they are located in the WEB-INF/classes directory, or if they are packaged in a jar file located in WEB-INF/lib within the application.
+
+The web application deployment descriptor contains a metadata-complete attribute on the web-app element. This attribute defines whether this deployment descriptor and any web fragments, if any, are complete, or whether the class files available to this module and packaged with this application should be examined for annotations that specify deployment information. Deployment information, in this sense, refers to any information that could have been specified by the deployment descriptor or fragments, but instead is specified as annotations on classes.
+If the value of the metadata-complete attribute is specified as true, the deployment tool must ignore any annotations that specify such deployment information in the class files packaged in the web application.
+
+If the metadata-complete attribute is not specified, or its value is false, the deployment tool must examine the class files of the application for such annotations.
+Note that a true value for metadata-complete does not preempt the processing of all annotations.
+
+Annotations that do not have equivalents in the deployment XSD include javax.servlet.annotation.HandlesTypes and all of the CDI-related annotations. These annotations must be processed during annotation scanning, regardless of the value of “metadata-complete”.
+
+When EJBs are packaged in a .war file, and the .war file contains an ejb-jar.xml file, the metadata-complete attribute of the ejb-jar.xml file determines the processing of the annotations for enterprise beans. If there is no ejb-jar.xml file, and the web.xml specifies the metadata-complete attribute as “true”, these annotations are processed as though there were an ejb-jar.xml file whose metadata-complete attribute was specified as “true”. See the Enterprise
+JavaBeans™ specification for requirements pertaining to annotations for EJBs.
+
+The following are the annotations in javax.servlet. All of these have corresponding deployment descriptor metadata covered by the Web xsd.From javax.servlet.annotation:
+
+1. HandlesTypes -This annotation is used to declare the class types that a ServletContainerInitializer can handle.
+2. HttpConstraint -This annotation is used within the ServletSecurity annotation to represent the security constraints to be applied to all HTTP protocol methods for which a corresponding HttpMethodConstraint element does NOT occur within the ServletSecurity annotation.
+3. HttpMethodConstraint -This annotation is used within the ServletSecurity annotation to represent security constraints on specific HTTP protocol messages.
+4. MultipartConfig -Annotation that may be specified on a Servlet class, indicating that instances of the Servlet expect requests that conform to the multipart/form-data MIME type.
+5. ServletSecurity -This annotation is used on a Servlet implementation class to specify security constraints to be enforced by a Servlet container on HTTP protocol messages.
+6. WebFilter -Annotation used to declare a servlet filter.
+7. WebInitParam -This annotation is used on a Servlet or Filter implementation class to specify an initialization parameter.
+8. WebListener -This annotation is used to declare a WebListener.
+9. WebServlet -Annotation used to declare a servlet.
+
+The following annotations from related packages are also covered by the web.xml and associated fragments.
+
+From javax.annotation:- PostConstruct, PreDestroy, Resource, Resources
+From javax.annotation.security:- DeclareRoles,RunAs
+From javax.annotation.sql:- DataSourceDefinition,DataSourceDefinitions
+From javax.ejb:- EJB, EJBs
+From javax.jms:- JMSConnectionFactoryDefinition,JMSConnectionFactoryDefinitions,JMSDestinationDefinition,JMSDestinationDefinitions
+From javax.mail:- MailSessionDefinition,MailSessionDefinitions
+From javax.persistence:- PersistenceContext,PersistenceContexts,PersistenceUnit,PersistenceUnits
+From javax.resource:- AdministeredObjectDefinition,AdministeredObjectDefinitions,ConnectionFactoryDefinition,ConnectionFactoryDefinitions
+
 
 --------------------
 
@@ -1915,31 +2390,114 @@ HTTP Status 500 means that server received request and ound resource but couldn'
 ## JSF
 
 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	version="4.0">
+	<display-name>helloWorld</display-name>
+	<welcome-file-list>
+		<welcome-file>index.xhtml</welcome-file>
+	</welcome-file-list>
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+</web-app>
+```
+
+
+```java
+@ManagedBean(name="user")
+@RequestScoped
+public class User {
+
+    private String name;
+    private String password;
+
+    public String getName() {
+        System.out.println("getName: " + name);
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+}
+```
+
+```xhtml
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>JSF and HTTP GET</title>
+</h:head>
+<h:body>
+	<h:form id="user-form">
+		<h:outputLabel for="username">User Name</h:outputLabel>
+		<h:inputText id="username" value="#{user.name}" required="true"
+			requiredMessage="Username is required" />
+		<br />
+		<h:commandButton id="submit-button" value="Submit"
+			action="response.xhtml" />
+	</h:form>
+</h:body>
+</html>
+```
+
+```xhtml
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>JSF and HTTP GET</title>
+</h:head>
+<h:body>
+	<h:outputLabel>User: #{user.name}</h:outputLabel>
+</h:body>
+</html>
+```
+
 
 -------------------
 
 
+## Web on servlet stack(Spring MVC)
 
-## Webservlet and Spring MVC
+Servlet-stack applications are built on Servlet API and deployed to Servlet Containers.The Web-Servlet module contains Spring’s model-view-controller (MVC) implementation for web applications.
 
-The Web-Servlet module contains Spring’s model-view-controller (MVC) implementation for web applications. Spring’s MVC framework provides a clean separation between domain model code and web forms, and integrates with all the other features of the Spring Framework.
-Used to develop `web applications` and `distributed applications`.
-
-Spring Web MVC is the original web framework built on the Servlet API and has been included in the Spring Framework from the very beginning.Servlets and JSP can develop web apps but has alot of boilerplate code and mixing of business logic and presentation logic.
+**Spring Web MVC** is the original web framework built on the Servlet API and has been included in the Spring Framework from the very beginning.Servlets and JSP can develop web apps but has alot of boilerplate code and mixing of business logic and presentation logic.The formal name, “Spring Web MVC,” comes from the name of its source module (spring-webmvc), but it is more commonly known as “Spring MVC”.
+Spring’s MVC framework is a powerful web framework that is part of Spring ecosystem.It provides a clean separation between domain model code and web forms, and integrates with all the other features of the Spring Framework.Used to develop `web applications` and `distributed applications`.
 
 Spring MVC simplifies web development with its separation of concern and robust and scalable capabilities.It provides a variety of annotations that simplify the development of web applications by allowing developers to define behavior and configurations directly in their code.
 
-Parallel to Spring Web MVC, Spring Framework 5.0 introduced a reactive-stack web framework, `Spring WebFlux`,which is also based on its source module (spring-webflux).
-
-The `Spring Web model-view-controller (MVC)` framework is designed around a `DispatcherServlet` that dispatches requests to handlers, with configurable handler mappings, view resolution, locale, timezone and theme resolution as well as support for uploading files. The default handler is based on the @Controller and @RequestMapping annotations, offering a wide range of flexible handling methods.With the introduction of Spring 3.0, the @Controller mechanism also allows you to create RESTful Web sites and applications, through the @PathVariable annotation and other features.
-
-Spring’s view resolution is extremely flexible. A `Controller` is typically responsible for preparing a model `Map` with data and selecting a view name but it can also write directly to the response stream and complete the request. View name resolution is highly configurable through file extension or Accept header content type negotiation, through bean names, a properties file, or even a custom `ViewResolver` implementation. The model (the M in MVC) is a Map interface, which allows for the complete abstraction of the view technology. You can integrate directly with template based rendering technologies such as JSP, Velocity and Freemarker, or directly generate XML, JSON, Atom, and many other types of content. The model Map is simply transformed into an appropriate format, such as JSP request attributes, a Velocity template model.
-
-`Spring Web Flow` - Spring Web Flow (SWF) aims to be the best solution for the management of web application page flow.SWF integrates with existing frameworks like Spring MVC and JSF, in both Servlet and Portlet environments. If you have a business process (or processes) that would benefit from a conversational model as opposed to a purely request model, then SWF may be the solution.
-SWF allows you to capture logical page flows as self-contained modules that are reusable in different situations, and as such is ideal for building web application modules that guide the user through controlled navigations that drive business processes.
-
-**Features of Spring Web MVC**:- Spring’s web module includes many unique web support features:
-
+*Features of Spring Web MVC*:- Spring’s web module includes many unique web support features:
 1. Clear separation of role: In Spring MVC, each role like- controller, validator, command object, form object, model object, DispatcherServlet, handler mapping, view resolver etc. is fulfilled by a specialized object.
 2. Reusability: Spring MVC promotes reusable business code that reduces the need for duplication. We can use existing business objects as command or form objects instead of copying them to extend a particular framework base class.
 3. Flexible Model Transfer: Spring MVC Model transfer supports easy integration with other view technologies as well.
@@ -1948,19 +2506,7 @@ SWF allows you to capture logical page flows as self-contained modules that are 
 6. Customizable locale, time zone and theme resolution:Spring MVC supports customization in locale, timezone etc.
 7. Powerful and straightforward configuration of both framework and application classes as JavaBeans.This configuration capability includes easy referencing across contexts, such as from web controllers to business objects and validators.
 
-
-**The Benefits of Spring MVC**:-
-
-When writing a Model 2 application without a framework, it is your responsibility to write a dispatcher servlet and controller classes. Your dispatcher servlet must be capable of doing these things:
-
-1. Determine from the URI what action to invoke.
-2. Instantiate the correct controller class.
-3. Populate a form bean with request parameter values.
-4. Call the correct method in the controller object.
-5. Forward control to a view (JSP page).
-
-Spring MVC is an MVC framework that employs a dispatcher servlet that invokes methods in controllers and forwards control to a view. This is the first benefit of using Spring MVC: You don’t need to write your own dispatcher servlet. Here is the list of features that Spring MVC is equipped with to make development more rapid.
-
+*The Benefits of Spring MVC*:- Spring MVC is an MVC framework that employs a dispatcher servlet that invokes methods in controllers and forwards control to a view. This is the first benefit of using Spring MVC: You don’t need to write your own dispatcher servlet. Here is the list of features that Spring MVC is equipped with to make development more rapid.
 1. Spring MVC provides a dispatcher servlet, saving your writing one.
 2. Spring MVC employs an XML-based configuration file that you can edit without recompiling the application.
 3. Spring MVC instantiates controller classes and populates beans with user inputs.
@@ -1970,12 +2516,9 @@ Spring MVC is an MVC framework that employs a dispatcher servlet that invokes me
 7. Spring MVC supports internationalization and localization. This means, you can display messages in multiple languages depending on the user locale.
 8. Spring MVC supports multiple view technologies. Most of the time you’ll be using JSP, but other technologies are supported, including Velocity and FreeMarker.
 
-
-### Web Applications
-
 Using servlets and JSPs we can develop web apps but dev has to write lots of boiler-plate codes.Boiler-plate code is code common for all apps,i.e
 
-1. converting HTTP request params into java bean.i.e getting email = req.getParameter("email") from HttpRequest ,then converting it into Java Object i.e ,setting fields with req params customer.setMail("email").Suppose in a project there is 100 servlets then we'll need to prepare 100 java Beans.
+1. Converting HTTP request params into java bean.i.e getting email = req.getParameter("email") from HttpRequest ,then converting it into Java Object i.e ,setting fields with req params customer.setMail("email").Suppose in a project there is 100 servlets then we'll need to prepare 100 java Beans.
 2. There's mixing of business logic and presentation logics.In servlet class you write both business and presentation logics,hence changing business or presentation logic is difficult.
 
 To overcome those problems,Spring MVC was introduced.
@@ -1983,7 +2526,11 @@ To overcome those problems,Spring MVC was introduced.
 - It separates business logic from presentation logics.
 - Its one of Gang of Four design Pattern.It includes 3 design patterns: trategy,Observer and Composite.
 
-The entry point of every Spring web application is the DispatcherServlet.
+
+The `Spring Web model-view-controller (MVC)` framework is designed around a `DispatcherServlet` that dispatches requests to handlers, with configurable handler mappings, view resolution, locale, timezone and theme resolution as well as support for uploading files. The default handler is based on the @Controller and @RequestMapping annotations, offering a wide range of flexible handling methods.With the introduction of Spring 3.0, the @Controller mechanism also allows you to create RESTful Web sites and applications, through the @PathVariable annotation and other features.
+
+Spring’s view resolution is extremely flexible. A `Controller` is typically responsible for preparing a model `Map` with data and selecting a view name but it can also write directly to the response stream and complete the request. View name resolution is highly configurable through file extension or Accept header content type negotiation, through bean names, a properties file, or even a custom `ViewResolver` implementation. The model (the M in MVC) is a Map interface, which allows for the complete abstraction of the view technology. You can integrate directly with template based rendering technologies such as JSP, Velocity and Freemarker, or directly generate XML, JSON, Atom, and many other types of content. The model Map is simply transformed into an appropriate format, such as JSP request attributes, a Velocity template model.
+
 
 - **MVC Architecture**:- Has 5 components - 
     1. `FrontController(DispatcherServlet)`-Spring MVC is designed around the front controller pattern where a central Servlet, the DispatcherServlet, provides a shared algorithm for request processing, while actual work is performed by configurable delegate components. This model is flexible and supports diverse workflows.
@@ -2005,7 +2552,6 @@ The entry point of every Spring web application is the DispatcherServlet.
   -------<-------------VIEW
 ```
 
-
 The first stop in the request’s travels is at Spring’s DispatcherServlet. Like most Java-based web frameworks, Spring MVC funnels requests through a single front controller servlet. A front controller is a common web application pattern where a single servlet delegates responsibility for a request to other components of an application to perform actual processing. In the case of Spring MVC, DispatcherServlet is the front controller.
 
 The DispatcherServlet’s job is to send the request on to a Spring MVC controller.A controller is a Spring component that processes the request. But a typical application may have several controllers, and DispatcherServlet needs some help deciding which controller to send the request to. So the DispatcherServlet consults one or more handler mappings to figure out where the request’s next stop will be. The handler mapping pays particular attention to the URL carried by the request when making its decision.
@@ -2018,10 +2564,35 @@ So that the controller doesn’t get coupled to a particular view, the view name
 Now that DispatcherServlet knows which view will render the result, the request’s job is almost over. Its final stop is at the view implementation, typically a JSP, where it delivers the model data. The request’s job is finally done. The view will use the model data to render output that will be carried back to the client by the response object.
 
 
-**DISPATCHERSERVLET**: Spring’s web MVC framework is, like many other web MVC frameworks, request-driven, designed around a central Servlet that dispatches requests to controllers and offers other functionality that facilitates the development of web applications. Spring’s `DispatcherServlet` however, does more than just that. It is completely integrated with the Spring IoC container and as such allows you to use every other feature that Spring has.
-DispatcherServlet is the centerpiece of Spring MVC. It’s where the request first hits the framework, and it’s responsible for routing the request through all the other components.
+**Dispatcher Servlet**: Spring’s web MVC framework is, like many other web MVC frameworks, request-driven, designed around a central Servlet that dispatches requests to controllers and offers other functionality that facilitates the development of web applications.
+Spring’s `DispatcherServlet` however, does more than just that. It is completely integrated with the Spring IoC container and as such allows you to use every other feature that Spring has.DispatcherServlet is the centerpiece of Spring MVC. It’s where the request first hits the framework, and it’s responsible for routing the request through all the other components.In turn, the DispatcherServlet uses Spring configuration to discover the delegate components it needs for request mapping, view resolution,exception handling, and more.
+Its fully qualified name is org.springframework.web.servlet.DispatcherServlet.
 
-The `DispatcherServlet` is an actual Servlet (it inherits from the HttpServlet base class), and as such is declared in the web.xml of your web application. You need to map requests that you want the DispatcherServlet to handle, by using a URL mapping in the same web.xml file. This is standard Java EE Servlet configuration; the following example shows such a DispatcherServlet declaration and mapping:
+- When writing a Model 2 application without a framework, it is your responsibility to write a dispatcher servlet and controller classes. Your dispatcher servlet must be capable of doing these things:
+    1. Determine from the URI what action to invoke.
+    2. Instantiate the correct controller class.
+    3. Populate a form bean with request parameter values.
+    4. Call the correct method in the controller object.
+    5. Forward control to a view (JSP page).
+
+The `DispatcherServlet` is an actual Servlet (it inherits from the HttpServlet base class), and as such is declared in the web.xml of your web application.Central dispatcher for HTTP request handlers/controllers, for example, for web UI controllers or HTTP-based remote service exporters. Dispatches to registered handlers for processing a web request, providing convenient mapping and exception handling facilities.
+
+- This servlet is very flexible: It can be used with just about any workflow, with the installation of the appropriate adapter classes. It offers the following functionality that distinguishes it from other request-driven web MVC frameworks:
+    - It is based around a JavaBeans configuration mechanism.
+    - It can use any HandlerMapping implementation - pre-built or provided as part of an application - to control the routing of requests to handler objects. Default is BeanNameUrlHandlerMapping and RequestMappingHandlerMapping. HandlerMapping objects can be defined as beans in the servlet's application context, implementing the HandlerMapping interface, overriding the default HandlerMapping if present. HandlerMappings can be given any bean name (they are tested by type).
+    - It can use any HandlerAdapter; this allows for using any handler interface. Default adapters are HttpRequestHandlerAdapter, SimpleControllerHandlerAdapter, for Spring's HttpRequestHandler and Controller interfaces, respectively. A default RequestMappingHandlerAdapter will be registered as well. HandlerAdapter objects can be added as beans in the application context, overriding the default HandlerAdapters. Like HandlerMappings, HandlerAdapters can be given any bean name (they are tested by type).
+    - The dispatcher's exception resolution strategy can be specified via a HandlerExceptionResolver, for example mapping certain exceptions to error pages. Default are ExceptionHandlerExceptionResolver, ResponseStatusExceptionResolver, and DefaultHandlerExceptionResolver. These HandlerExceptionResolvers can be overridden through the application context. HandlerExceptionResolver can be given any bean name (they are tested by type).
+    - Its view resolution strategy can be specified via a ViewResolver implementation, resolving symbolic view names into View objects. Default is InternalResourceViewResolver. ViewResolver objects can be added as beans in the application context, overriding the default ViewResolver. ViewResolvers can be given any bean name (they are tested by type).
+    - If a View or view name is not supplied by the user, then the configured RequestToViewNameTranslator will translate the current request into a view name. The corresponding bean name is "viewNameTranslator"; the default is DefaultRequestToViewNameTranslator.
+    - The dispatcher's strategy for resolving multipart requests is determined by a MultipartResolver implementation. An implementation for standard Servlet multipart processing is included. The MultipartResolver bean name is "multipartResolver"; default is none.
+    - Its locale resolution strategy is determined by a LocaleResolver. Out-of-the-box implementations work via HTTP accept header, cookie, or session. The LocaleResolver bean name is "localeResolver"; default is AcceptHeaderLocaleResolver.
+
+NOTE: The @RequestMapping annotation will only be processed if a corresponding HandlerMapping (for type-level annotations) and/or HandlerAdapter (for method-level annotations) is present in the dispatcher. This is the case by default. However, if you are defining custom HandlerMappings or HandlerAdapters, then you need to make sure that a corresponding custom RequestMappingHandlerMapping and/or RequestMappingHandlerAdapter is defined as well - provided that you intend to use @RequestMapping.
+A web application can define any number of DispatcherServlets. Each servlet will operate in its own namespace, loading its own application context with mappings, handlers, etc. Only the root application context as loaded by ContextLoaderListener, if any, will be shared.
+
+DispatcherServlet may be injected with a web application context, rather than creating its own internally. This is useful in Servlet 3.0+ environments, which support programmatic registration of servlet instances. See the DispatcherServlet(WebApplicationContext) javadoc for details.
+
+You need to map requests that you want the DispatcherServlet to handle, by using a URL mapping in the same web.xml file. This is standard Java EE Servlet configuration; the following example shows such a DispatcherServlet declaration and mapping:
 
 ```xml
 <web-app>
@@ -2034,74 +2605,6 @@ The `DispatcherServlet` is an actual Servlet (it inherits from the HttpServlet b
         <servlet-name>example</servlet-name>
         <url-pattern>/example/*</url-pattern>
     </servlet-mapping>
-</web-app>
-```
-
-In turn, the DispatcherServlet uses Spring configuration to discover the delegate components it needs for request mapping, view resolution,exception handling, and more.
-
-In a Servlet 3.0+ environment, you also have the option of configuring the Servlet container programmatically. Below is the code based equivalent of the above web.xml example:
-
-```java
-public class MyWebApplicationInitializer implements WebApplicationInitializer {
-    @Override
-    public void onStartup(ServletContext container) {
-        ServletRegistration.Dynamic registration = container.addServlet("dispatcher", new DispatcherServlet());
-        registration.setLoadOnStartup(1);
-        registration.addMapping("/example/*");
-    }
-}
-```
-
-`WebApplicationInitializer` is an interface provided by Spring MVC that ensures your code-based configuration is detected and automatically used to initialize any Servlet 3 container. An abstract base class implementation of this interace named `AbstractDispatcherServletInitializer` makes it even easier to register the DispatcherServlet by simply specifying its servlet mapping.
-
-The above is only the first step in setting up Spring Web MVC. You now need to configure the various beans used by the Spring Web MVC framework (over and above the DispatcherServlet itself).
-In the Web MVC framework, each DispatcherServlet has its own WebApplicationContext, which inherits all the beans already defined in the root WebApplicationContext. These inherited beans can be overridden in the servlet-specific scope, and you can define new scope-specific beans local to a given Servlet instance.
-
-DispatcherServlet   <-------------------------------->WebApplicationContext   <-------------------------------------------------------->WebApplicationContext(s)
-(awaiting incoming HttpServletRequests)       (contains controllers,view resolvers,locale resolvers and other web-related beans)         (contains middle-tier services,datasources)
-
-Upon initialization of a DispatcherServlet, Spring MVC looks for a file named `[servlet-name]-servlet.xml` in the WEB-INF directory of your web application and creates the beans defined there, overriding the definitions of any beans defined with the same name in the global scope.
-
-The WebApplicationContext is an extension of the plain ApplicationContext that has some extra features necessary for web applications. It differs from a normal ApplicationContext in that it is capable of resolving themes and that it knows which Servlet it is associated with (by having a link to the ServletContext). The WebApplicationContext is bound in the ServletContext, and by using static methods on the RequestContextUtils class you can always look up the WebApplicationContext if you need access to it.
-
-
-
-
-
-Spring MVC web application can have more than one DispatcherServlets.Each DispatcherServlet has to operate in its own namespace. It has to load its own ApplicationContext with mappings, handlers, etc.Only the root application context will be shared among these Servlets.
-
-`Spring MVC DispatcherServlet` - Spring MVC comes with a dispatcher servlet that you can instantly use. Its fully qualified name is org.springframework.web.servlet.DispatcherServlet.
-Configuration essentials:
-- web.xml registers DispatcherServlet in legacy setups.
-- Java-based config uses @EnableWebMvc and a WebMvcConfigurer implementation.
-
-To use this servlet, you need to configure it in your deployment descriptor (web.xml file) using the servlet and servlet-mapping elements, like this.
-
-```xml
-<web-app>
- <listener>
-  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
- </listener>
- <context-param>
-  <param-name>contextConfigLocation</param-name>
-  <!--<param-value>/WEB-INF/applicationContext.xml</param-value> -->
-  <param-value>classpath:/applicationContext.xml</param-value> 
- </context-param>
-
- <servlet>
-  <servlet-name>dispatcher</servlet-name>
-  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  <load-on-startup>1</load-on-startup>
- </servlet>
-
- <servlet-mapping>
-  <servlet-name>app</servlet-name>
-   <!-- map htm,mvc,do requests to the DispatcherServlet --> 
-  <url-pattern>/app/*.htm,*.mvc,*.do</url-pattern>
-
-  <!-- map all requests to the DispatcherServlet -->
-   <url-pattern>/</url-pattern>
- </servlet-mapping>
 </web-app>
 ```
 
@@ -2123,7 +2626,750 @@ However, you can place your Spring MVC configuration file anywhere within your a
 </servlet>
 ```
 
+In the preceding example, all requests starting with /example will be handled by the DispatcherServlet instance named example. In a Servlet 3.0+ environment, you also have the option of configuring the Servlet container programmatically.
+
+```java
+public class MyWebApplicationInitializer implements WebApplicationInitializer {
+    @Override
+    public void onStartup(ServletContext container) {
+        ServletRegistration.Dynamic registration = container.addServlet("dispatcher", new DispatcherServlet());
+        registration.setLoadOnStartup(1);
+        registration.addMapping("/example/*");
+    }
+}
+```
+
+`WebApplicationInitializer` is an interface provided by Spring MVC that ensures your code-based configuration is detected and automatically used to initialize any Servlet 3 container. An abstract base class implementation of this interace named `AbstractDispatcherServletInitializer` makes it even easier to register the DispatcherServlet by simply specifying its servlet mapping.The above is only the first step in setting up Spring Web MVC. You now need to configure the various beans used by the Spring Web MVC framework (over and above the DispatcherServlet itself).
+
+In the Web MVC framework, each DispatcherServlet has its own WebApplicationContext, which inherits all the beans already defined in the root WebApplicationContext. These inherited beans can be overridden in the servlet-specific scope, and you can define new scope-specific beans local to a given Servlet instance.The WebApplicationContext is an extension of the plain ApplicationContext that has some extra features necessary for web applications. It differs from a normal ApplicationContext in that it is capable of resolving themes and that it knows which Servlet it is associated with (by having a link to the ServletContext). The WebApplicationContext is bound in the ServletContext, and by using static methods on the RequestContextUtils class you can always look up the WebApplicationContext if you need access to it.
+
+DispatcherServlet   <--------------------------------------->WebApplicationContext   <-------------------------------------------------------->WebApplicationContext(s)
+(awaiting incoming HttpServletRequests)       (contains controllers,view resolvers,locale resolvers and other web-related beans)         (contains middle-tier services,datasources)
+
+Upon initialization of a DispatcherServlet, Spring MVC looks for a file named `[servlet-name]-servlet.xml` in the WEB-INF directory of your web application and creates the beans defined there, overriding the definitions of any beans defined with the same name in the global scope.
+
+Spring MVC web application can have more than one DispatcherServlets.Each DispatcherServlet has to operate in its own namespace. It has to load its own ApplicationContext with mappings, handlers, etc.Only the root application context will be shared among these Servlets.
+
+*Special Bean Types*:- The Spring DispatcherServlet uses special beans to process requests and render the appropriate views/responses. These beans are part of Spring MVC. You can choose which special beans to use by simply configuring one or more of them in the WebApplicationContext. However, you don’t need to do that initially since Spring MVC maintains a list of default beans to use if you don’t configure any.
+By special beans we mean Spring-managed Object instances that implement framework contracts. Those usually come with built-in contracts, but you can customize their properties and extend or replace them.
+
+1. HandlerMapping - Map a request to a handler along with a list of interceptors for pre- and post-processing. The mapping is based on some criteria, the details of which vary by HandlerMapping implementation.The two main HandlerMapping implementations are RequestMappingHandlerMapping (which supports @RequestMapping annotated methods) and SimpleUrlHandlerMapping (which maintains explicit registrations of URI path patterns to handlers).
+2. HandlerAdapter - Help the DispatcherServlet to invoke a handler mapped to a request, regardless of how the handler is actually invoked. For example, invoking an annotated controller requires resolving annotations. The main purpose of a HandlerAdapter is to shield the DispatcherServlet from such details.
+3. HandlerExceptionResolver- Strategy to resolve exceptions, possibly mapping them to handlers, to HTML error views, or other targets.
+4. ViewResolver - Resolve logical String-based view names returned from a handler to an actual View with which to render to the response.
+5. LocaleResolver, LocaleContextResolver - Resolve the Locale a client is using and possibly their time zone, in order to be able to offer internationalized views.
+6. ThemeResolver - Resolve themes your web application can use — for example, to offer personalized layouts. See Themes.
+7. MultipartResolver - Abstraction for parsing a multi-part request (for example, browser form file upload) with the help of some multipart parsing library.
+8. FlashMapManager - Store and retrieve the input and the output FlashMap that can be used to pass attributes from one request to another, usually across a redirect.
+
+
+`Default DispatcherServlet Configuration` - For each special bean the DispatcherServlet maintains a list of implementations to use by default. This information is kept in the file DispatcherServlet.properties in the package org.springframework.web.servlet.
+All special beans have some reasonable defaults of their own. Sooner or later though you’ll need to customize one or more of the properties these beans provide. For example it’s quite common to configure an InternalResourceViewResolver settings its prefix property to the parent location of view files.Once you configure a special bean such as an InternalResourceViewResolver in your WebApplicationContext, you effectively override the list of default implementations that would have been used otherwise for that special bean type. For example if you configure an InternalResourceViewResolver, the default list of ViewResolver implementations is ignored.
+
+*DispatcherServlet Processing Sequence* - After you set up a DispatcherServlet, and a request comes in for that specific DispatcherServlet, the DispatcherServlet starts processing the request as follows:
+1. The WebApplicationContext is searched for and bound in the request as an attribute that the controller and other elements in the process can use. It is bound by default under the key DispatcherServlet.WEB_APPLICATION_CONTEXT_ATTRIBUTE.
+2. The locale resolver is bound to the request to enable elements in the process to resolve the locale to use when processing the request (rendering the view, preparing data, and so on). If you do not need locale resolving, you do not need it.
+3. The theme resolver is bound to the request to let elements such as views determine which theme to use. If you do not use themes, you can ignore it.
+4. If you specify a multipart file resolver, the request is inspected for multiparts; if multiparts are found, the request is wrapped in a MultipartHttpServletRequest for further processing by other elements in the process.
+5. An appropriate handler is searched for. If a handler is found, the execution chain associated with the handler (preprocessors, postprocessors, and controllers) is executed in order to prepare a model or rendering.
+6. If a model is returned, the view is rendered. If no model is returned, (may be due to a preprocessor or postprocessor intercepting the request, perhaps for security reasons), no view is rendered, because the request could already have been fulfilled.
+
+Handler exception resolvers that are declared in the WebApplicationContext pick up exceptions that are thrown during processing of the request. Using these exception resolvers allows you to define custom behaviors to address exceptions.
+The Spring DispatcherServlet also supports the return of the last-modification-date, as specified by the Servlet API. The process of determining the last modification date for a specific request is straightforward: the DispatcherServlet looks up an appropriate handler mapping and tests whether the handler that is found implements the LastModified interface. If so, the value of the long getLastModified(request) method of the LastModified interface is returned to the client.
+
+You can customize individual DispatcherServlet instances by adding Servlet initialization parameters ( init-param elements) to the Servlet declaration in the web.xml file.
+
+
+**Controllers**:- Controllers provide access to the application behavior that you typically define through a service interface. Controllers interpret user input and transform it into a model that is represented to the user by the view. Spring implements a controller in a very abstract way, which enables you to create a wide variety of controllers.
+In Spring MVC, controllers are just classes with methods that are annotated with `@Controller` or extends `Controller interface` to declare the kind of requests they’ll handle.A component that handles incoming requests.
+
+`Legacy Controller (implements Controller interface)`:- Used before annotations. Mapping was defined in XML, not on the controller class.Controller is an interface in Spring MVC. It receives HttpServletRequest and HttpServletResponse in web app just like an HttpServlet, but it is able to participate in an MVC flow.Controllers are similar to a Struts Action in a Struts based Web application.
+Spring recommends that the implementation of Controller interface should be a reusable, thread-safe class, capable of handling multiple HTTP requests throughout the lifecycle of an application.It is preferable to implement Controller by using a JavaBean.Controller interprets user input and transforms it into a model. The model is represented to the user by a view.
+Spring implements a controller in a very generic way. This enables us to create a wide variety of controllers.
+
+After a DispatcherServlet has received a request and has done its work to resolve locales, and suchlike, it then tries to resolve a Controller, using a HandlerMapping. When a Controller has been found to handle the request, the handleRequest method of the located Controller will be invoked; the located Controller is then responsible for handling the actual request and — if applicable — returning an appropriate ModelAndView. So actually, this method is the main entry point for the DispatcherServlet which delegates requests to controllers.
+So basically any direct implementation of the Controller interface just handles HttpServletRequests and should return a ModelAndView, to be further interpreted by the DispatcherServlet. Any additional functionality such as optional validation, form handling, etc. should be obtained through extending AbstractController or one of its subclasses.
+
+```java
+public interface Controller{
+    ModelandView handleRequest(HttpServletRequest req,HttpServletResponse res)
+}
+```
+
+```java
+public class HomeController implements Controller{
+
+   @Override
+   ModelandView handleRequest(HttpServletRequest req,HttpServletResponse res){
+   ModelandView mav= new ModelandView();
+   mav.setViewName("/home")
+
+   return mav;
+ }
+}
+
+public class UserController extends MultiActionController {
+
+    public ModelAndView list(HttpServletRequest req, HttpServletResponse res) {
+        return new ModelAndView("user-list");
+    }
+
+    public ModelAndView add(HttpServletRequest req, HttpServletResponse res) {
+        return new ModelAndView("user-add");
+    }
+}
+```
+
+`Defining a controller with @Controller`:- Spring 2.5 introduced an annotation-based programming model for MVC controllers that uses annotations such as @RequestMapping, @RequestParam, @ModelAttribute, and so on. This annotation support is available for both Servlet MVC and Portlet MVC. Controllers implemented in this style do not have to extend specific base classes or implement specific interfaces. Furthermore, they do not usually have direct dependencies on Servlet or Portlet APIs, although you can easily configure access to Servlet or Portlet facilities.
+The @Controller annotation indicates that a particular class serves the role of a controller. Spring does not require you to extend any controller base class or reference the Servlet API. However, you can still reference Servlet-specific features if you need to.
+
+The @Controller annotation acts as a stereotype for the annotated class, indicating its role. The dispatcher scans such annotated classes for mapped methods and detects @RequestMapping annotations.Classes annotated with the @Controller, handle HTTP requests and return responses. They can contain methods that process input and return view names with model data through ModelAndView objects or String view names.
+
+```java
+@Controller
+public class HelloWorldController {
+
+}
+```
+
+You can define annotated controller beans explicitly, using a standard Spring bean definition in the dispatcher’s context. However, the @Controller stereotype also allows for autodetection, aligned with Spring general support for detecting component classes in the classpath and auto-registering bean definitions for them.
+To enable autodetection of such annotated controllers, you add component scanning to your configuration.Add the controller in the controller subpackage so that it is picked up by the @ComponentScan annotation: Use the spring-context schema as shown in the following XML snippet:
+
+```xml
+<context:component-scan base-package="com.kipcollo.conroller"/>
+```
+
+One of the advantages of using the Controller annotation type is that a controller class can contain multiple request-handling methods.
+The spring-test module offers first class support for testing annotated controllers.
+
+
+**Handler Mapping**:- The mechanism that decides which controller method handles which URL.It maps incoming HTTP requests to specific handler classes or handler methods within a controller.
+In previous versions of Spring, users were required to define one or more HandlerMapping beans in the web application context to map incoming web requests to appropriate handlers.With the introduction of annotated controllers, you generally don’t need to do that because the RequestMappingHandlerMapping automatically looks for `@RequestMapping` annotations on all `@Controller` beans.
+
+`Using xml`:-
+
+```xml
+<bean id="userController" class="com.example.UserController"/>
+<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+    <property name="mappings">
+        <props>
+            <prop key="/user/list">userController</prop>
+            <prop key="/user/add">userController</prop>
+        </props>
+    </property>
+</bean>
+```
+
+`Using Annotations`:- In Spring MVC, we use @RequestMapping annotation to map a web request to either a class or a handler method.In @RequestMapping we can specify the path of URL as well as HTTP method like- GET, PUT, POST etc.@RequestMapping also supports specifying HTTP Headers as attributes.We can also map different media types produced by a controller in @RequestMapping. We use HTTP Header Accepts for this purpose.
+You can use the @RequestMapping annotation to map requests to controllers methods. It has various attributes to match by URL, HTTP method, request parameters, headers, and media types. You can use it at the class level to express shared mappings or at the method level to narrow down to a specific endpoint mapping.
+A @RequestMapping on the class level is not required. Without it, all paths are simply absolute, and not relative.
+
+All modern annotations:
+1. @RequestMapping
+2. @GetMapping
+3. @PostMapping
+4. @PutMapping
+5. @DeleteMapping
+6. @PatchMapping
+
+- @RequestMapping - Annotation for mapping web requests onto methods in request-handling classes with flexible method signatures.Both Spring MVC and Spring WebFlux support this annotation.Can be used both at the class and at the method level.Cannot be used in conjunction with other @RequestMapping annotations that are declared on the same element (class, interface, or method)
+    1. String[] consumes- Narrows the primary mapping by media types that can be consumed by the mapped handler.
+    2. String[] headers - The headers of the mapped request, narrowing the primary mapping.
+    3. RequestMethod[] method - The HTTP request methods to map to, narrowing the primary mapping: GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE.
+    4. String name - Assign a name to this mapping.
+    5. String[] params - The parameters of the mapped request, narrowing the primary mapping.
+    6. String[] path - The path mapping URIs — for example, "/profile".
+    7. String[] produces - Narrows the primary mapping by media types that can be produced by the mapped handler.
+    8. String[] value - The path mapping URIs — for example, "/profile".
+
+```java
+@Controller
+@RequestMapping("/api")//class level
+public class Customer {
+
+    @RequestMapping("/home")// Method level
+    public String hello(){
+        return "home";
+    }
+
+    @RequestMapping(value={"/student","/teacher"},//Multiple URI
+         method=RequestMethod.GET//HTTP Methods
+         produces={MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE},
+         consumes=MediaType.APPLICATION_XML_VALUE)
+    public Student getStudent(){
+        Student student = new Student(1, "Collins", "Finalist");
+        return student;
+    }
+}
+```
+
+```java
+@RequestMapping(value = "/home", method = RequestMethod.GET)
+
+@PostMapping(value="/save", consumes="application/json", produces="application/json")
+public User save(@RequestBody User user) { }
+
+@RequestMapping(value="/info", method={RequestMethod.GET, RequestMethod.POST},headers = "Accept=application/json")
+public String info() { }
+```
+
+- @PostMapping - Annotation for mapping HTTP POST requests onto specific handler methods.Is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.POST).It maps HTTP POST requests to specific handler methods and is ideally used to create new resources and form submissions.
+- @PutMapping - Annotation for mapping HTTP PUT requests onto specific handler methods.Is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.PUT).It maps HTTP PUT requests to specific handler methods and is ideally used to update existing resources.
+- @RequestAttribute - Annotation to bind a method parameter to a request attribute.
+- @GetMapping - Annotation for mapping HTTPET requests onto specific handler methods. Is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET).It maps HTTP GET requests to specific handler methods and is ideally used for read/retrieve operations.Supports all @RequestMapping attributes.
+- @DeleteMapping - Annotation for mapping HTTP DELETE requests onto specific handler methods.IIs a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.DELETE).It maps HTTP DELETE requests to specific handler methods and is ideally used to remove resources.
+- @PatchMapping - Annotation for mapping HTTP PATCH requests onto specific handler methods.IIs a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.PATCH).It maps HTTP PATCH requests to specific handler methods and is ideally used to update and process resources partially.
+
+
+*URI Template Patterns* - URI templates can be used for convenient access to selected parts of a URL in a @RequestMapping method.
+A URI Template is a URI-like string, containing one or more variable names. When you substitute values for these variables, the template becomes a URI. The proposed RFC for URI Templates defines how a URI is parameterized.
+
+In Spring MVC you can use the `@PathVariable annotation` on a method argument to bind it to the value of a URI template variable:
+
+```java
+@RequestMapping(value="/owners/{ownerId}", method=RequestMethod.GET)
+public String findOwner(@PathVariable String ownerId, Model model) {}
+```
+
+To process the @PathVariable annotation, Spring MVC needs to find the matching URI template variable by name. You can specify it in the annotation:
+
+```java
+public String findOwner(@PathVariable("ownerId") String theOwner, Model model) {}
+```
+
+A method can have any number of @PathVariable annotations:
+
+```java
+@RequestMapping(value="/owners/{ownerId}/pets/{petId}", method=RequestMethod.GET)
+public String findPet(@PathVariable String ownerId, @PathVariable String petId, Model model) {}
+```
+
+When a @PathVariable annotation is used on a Map<String, String> argument, the map is populated with all URI template variables.
+
+
+*Defining @RequestMapping handler methods*:- An @RequestMapping handler method can have a very flexible signatures.Most arguments can be used in arbitrary order with the only exception of `BindingResult` arguments.
+
+Note:- Spring 3.1 introduced a new set of support classes for @RequestMapping methods called `RequestMappingHandlerMapping` and `RequestMappingHandlerAdapter` respectively.They are recommended for use and even required to take advantage of new features in Spring MVC 3.1 and going forward. The new support classes are enabled by default from the MVC namespace and with use of the MVC Java config but must be configured explicitly if using neither.
+
+Supported method argument types - The following are the supported method arguments:
+1. Request or response objects (Servlet API). Choose any specific request or response type, for example ServletRequest or HttpServletRequest.
+2. Session object (Servlet API): of type HttpSession. An argument of this type enforces the presence of a corresponding session. As a consequence, such an argument is never null.
+3. java.util.Locale for the current request locale, determined by the most specific locale resolver available, in effect, the configured LocaleResolver in a Servlet environment.
+4. @PathVariable annotated parameters for access to URI template variables.
+5. org.springframework.http.HttpMethod for the HTTP request method.
+6. java.io.OutputStream / java.io.Writer for generating the response’s content. This value is the raw OutputStream/Writer as exposed by the Servlet API.
+7. java.security.Principal containing the currently authenticated user.
+8. @MatrixVariable annotated parameters for access to name-value pairs located in URI path segments.
+9. @RequestParam annotated parameters for access to specific Servlet request parameters. Parameter values are converted to the declared method argument type.
+
+- A request-handling method can return one of these objects:-
+    1. A ModelAndView object
+    2. A Model object
+    3. A Map containing the attributes of the model
+    4. A View object
+    5. A String representing the logical view name
+    6. void
+    7. An HttpEntity or ResponseEntity object to provide access to the Servlet response HTTP headers and contents
+    8. A Callable
+    9. A DeferredResult
+    10. Any other return type. In this case, the return value will be considered a model attribute to be exposed to the view
+
+
+Spring MVC creates a `Model instance` every time a request-handling method is invoked, whether or not you’ll use the instance in your method. The main purpose of having a Model is for adding attributes that will be displayed in the view.
+
+```java
+model.addAttribute("product", product);
+```
+
+
+The `Errors` or `BindingResult` parameters have to follow the model object that is being bound immediately as the method signature might have more that one model object and Spring will create a separate BindingResult instance for each of them so the following sample won’t work:
+
+```java
+@RequestMapping(method = RequestMethod.POST)
+public String processSubmit(@ModelAttribute("pet") Pet pet, Model model, BindingResult result) { ... }
+```
+
+Note, that there is a Model parameter in between Pet and BindingResult. To get this working you have to reorder the parameters as follows:
+
+```java
+@RequestMapping(method = RequestMethod.POST)
+public String processSubmit(@ModelAttribute("pet") Pet pet, BindingResult result, Model model) { ... }
+```
+
+
+`@ModelAttribute on a method`:- The @ModelAttribute annotation can be used on methods or on method arguments.Binds a method parameter or method return value to a named model attribute and automatically populates the object with data from the form submissions.
+An @ModelAttribute on a method indicates the purpose of that method is to add one or more model attributes. Such methods support the same argument types as @RequestMapping methods but cannot be mapped directly to requests. Instead @ModelAttribute methods in a controller are invoked before @RequestMapping methods, within the same controller.
+
+```java
+// Add one attribute
+// The return value of the method is added to the model under the name "account"
+// You can customize the name via @ModelAttribute("myAccount")
+@ModelAttribute
+public Account addAccount(@RequestParam String number) {
+    return accountManager.findAccount(number);
+}
+
+// Add multiple attributes
+@ModelAttribute
+public void populateModel(@RequestParam String number, Model model) {
+    model.addAttribute(accountManager.findAccount(number));
+    // add more ...
+}
+```
+
+@ModelAttribute methods are used to populate the model with commonly needed attributes for example to fill a drop-down with states or with pet types, or to retrieve a command object like Account in order to use it to represent the data on an HTML form.
+
+A controller can have any number of @ModelAttribute methods. All such methods are invoked before @RequestMapping methods of the same controller.@ModelAttribute methods can also be defined in an @ControllerAdvice-annotated class and such methods apply to many controllers.
+The @ModelAttribute annotation can be used on @RequestMapping methods as well. In that case the return value of the @RequestMapping method is interpreted as a model attribute rather than as a view name. The view name is derived from view name conventions instead much like for methods returning void.
+
+
+- `Passing model data to the view`: The method is given a `Model` as a parameter so that it can populate the model with the data list it retrieves.
+The Model is essentially a map (that is, a collection of key-value pairs) that will be handed off to the view so that the data can be rendered to the client. When addAttribute() is called without specifying a key, the key is inferred from the type of object being set as the value.
+
+```java
+@Controller
+@RequestMapping("/students")
+public class HomeController{
+
+   @RequestMapping(method=GET)
+   public String students(Model model){
+      model.addAttribute("key",value)
+      return "students";
+ }
+}
+```
+
+Likewise, if you’d prefer to work with a non-Spring type, you can ask for a java.util.Map instead of Model.
+
+```java
+public String students(Map model)
+```
+
+Now that there’s data in the model,when the view is a JSP, the model data is copied into the request as request attributes.
+Therefore, the .jsp file can use JavaServer Pages Standard Tag Library’s (JSTL) <c:forEach> tag to render the list.
+
+
+
+- *Accepting request input*: Spring MVC provides several ways that a client can pass data into a controller’s handler method. These include
+    1. Query parameters
+    2. Form parameters
+    3. Path variables
+
+Taking query parameters - Query parameters are a common way to pass information to a controller in a request.Query strings are used to extract the query string data from uri.In query string data is optional,if you will not send then default value will be used.
+
+- `@PathVariable Annotation` which indicates that a method parameter should be bound to a URI template variable.Extracts values from URL template variables, and binds them to the method parameters.It can be used to make dynamic URLs.
+Here’s a handler method that uses placeholders to accept a Spittle ID as part of the path:
+
+```java
+@RequestMapping(value="/{spittleId}", method=RequestMethod.GET)
+public String spittle(@PathVariable("spittleId") long spittleId,Model model) {
+   model.addAttribute(spittleRepository.findOne(spittleId));
+   return "spittle";
+}
+```
+
+Taking input via path parameters:- Used to etract uri path data from uri.Data is mandatory,if you will not send data 404 error is thrown.
+To accommodate path variables, Spring MVC allows for placeholders in an @RequestMapping path. The placeholders are names surrounded by curly braces ({ and }). Although all the other parts of the path need to match exactly for the request to be handled, the placeholder can carry any value.
+
+- `@RequestParam Annotation` indicates that a method parameter should be bound to a web request parameter.Binds request parameters to the method parameters and extracts query parameters from the URL. It can handle multiple parameter types. It supports the following attributes:-
+    1. required: Specifies if the parameter is mandatory
+    2. defaultValue: Default value if the parameter is missing
+    3. value/name: Parameter name
+
+```java
+@RequestMapping(method=RequestMethod.GET)
+public List<Spittle> spittles(
+      @RequestParam(name="max",required=false,default="10") long max,
+      @RequestParam("count") int count) {
+   return spittleRepository.findSpittles(max, count);
+}
+```
+
+Query parameters and path parameters are fine for passing small amounts of data on a request. But often you need to pass a lot of data (perhaps data coming from a form submission), and query parameters are too awkward and limited for that.
+
+- Processing forms: Web applications typically do more than just push content out to the user. Most also let users participate in the conversation by filling out forms and submitting data back into the application. Spring MVC controllers are well-suited for form processing as well as serving content.
+There are two sides to working with forms: displaying the form and processing the data the user submits from the form.
+
+```java
+@RequestMapping(value="/register", method=GET)
+public String showRegistrationForm() {
+   return "registerForm";
+}
+```
+
+Because the view name is registerForm, you’ll need a JSP named registerForm.jsp. This JSP must include an HTML <form> where the user will enter information to sign up with the application.
+
+- Writing a form-handling controller: When processing the POST request from the registration form, the controller needs to accept the form data and save the form data. Finally, in order to prevent a duplicate submission (such as might happen if the user clicked their browser’s Refresh button), it should redirect the browser.
+As part of that POST request, user information is passed as parameters on the request to simulate a form being submitted.
+
+When handling a POST request, it’s usually a good idea to send a redirect after the POST has completed processing so that a browser refresh won’t accidentally submit the form a second time.
+
+
+`@RequestHeader`binds HTTP request header to method parameter and is useful when extracting specific headers.Request headers can be marked as required or optional and support default values.
+
+```java
+@GetMapping
+public String getHeaders(@RequestHeader("user-agent") String userAgent){
+    return "User-agent: " + userAgent;
+}
+```
+
+*SessionAttributes* specifies attributes that are stored in the session,which enables maintaining the sate between requests.It is used for multi-step forms and session-bound tasks.
+
+```java
+@Controller
+@SessionAttribute
+public class UserController{}
+```
+
+
+*CookieValue* binds cookie values to handler method parameters.It supports following attributes:-
+- required - specifies if cookie is mandatory.
+- defaultValue - Default value if cookie is missing.
+- name/value - Cookie name.
+
+
+
+`Validation, Data Binding, and Type Conversion` - There are pros and cons for considering validation as business logic, and Spring offers a design for validation and data binding that does not exclude either one of them. Specifically, validation should not be tied to the web tier and should be easy to localize, and it should be possible to plug in any available validator. Considering these concerns, Spring provides a Validator contract that is both basic and eminently usable in every layer of an application.
+
+Data binding is useful for letting user input be dynamically bound to the domain model of an application (or whatever objects you use to process user input). Spring provides the aptly named DataBinder to do exactly that. The Validator and the DataBinder make up the validation package, which is primarily used in but not limited to the web layer.
+
+The BeanWrapper is a fundamental concept in the Spring Framework and is used in a lot of places. However, you probably do not need to use the BeanWrapper directly. Because this is reference documentation, however, we feel that some explanation might be in order. We explain the BeanWrapper in this chapter, since, if you are going to use it at all, you are most likely do so when trying to bind data to objects.
+
+Spring’s DataBinder and the lower-level BeanWrapper both use PropertyEditorSupport implementations to parse and format property values. The PropertyEditor and PropertyEditorSupport types are part of the JavaBeans specification and are also explained in this chapter. Spring’s core.convert package provides a general type conversion facility, as well as a higher-level format package for formatting UI field values. You can use these packages as simpler alternatives to PropertyEditorSupport implementations. They are also discussed in this chapter.
+
+Spring supports Java Bean Validation through setup infrastructure and an adaptor to Spring’s own Validator contract. Applications can enable Bean Validation once globally, as described in Java Bean Validation, and use it exclusively for all validation needs. In the web layer, applications can further register controller-local Spring Validator instances per DataBinder, as described in Configuring a DataBinder, which can be useful for plugging in custom validation logic.
+Resources
+
+
+- Validating forms: You can take advantage of Spring’s support for the Java Validation API (a.k.a. JSR-303). Starting with Spring 3.0, Spring supports the Java Validation API in Spring MVC. No extra configuration is required to make Java Validation work in Spring MVC. You just need to make sure an implementation of the Java API, such as Hibernate Validator, is in the project’s classpath.
+The Java Validation API defines several annotations that you can put on properties to place constraints on the values of those properties. All of these annotations are in the javax.validation.constraints package.
+The controller is annotated with @Valid to indicate to Spring that the command object has validation constraints that should be enforced.
+@ModelAttribute - Annotation that binds a method parameter or method return value to a named model attribute, exposed to a web view.Binds a method parameter or method return value to a named model attribute and automatically populates the object with data from the form submissions.
+
+Validation ensures:
+
+1. Data integrity in your APIs.
+2. Better user experience with meaningful error messages.
+3. Reduced bugs in the business logic.
+
+
+Handle Errors with @ExceptionHandler:- Customize error responses for invalid data.
+
+```java
+@ControllerAdvice
+public class GlobalExceptionHandler{
+   @ExceptionHandler(MethodArgumentNotValidException.class)
+   public ResponseEntity<Map<String,String>> handleValidationExceptions(@MethodArgumentNotValidException ex){
+      Map<String,String> errors = new HashMap<>();
+      ex.getBindingResult().getFieldErrors().forEach(error -> errors.put(
+         error.getField(), error.getDefaultMessage()
+      ));
+      return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
+   }
+}
+```
+
+Extracts validation errors and returns them as a structured JSON response.
+
+- Best Practices for Validation
+   1. Validate at the DTO level using annotations.
+   2. Use custom constraints for specific requirements.
+   3. Handle exceptions globally with @ControllerAdvice.
+   4. Avoid mixing validation logic with business logic.
+
+Bean Validation:-  Bean Validation provides a common way of validation through constraint declaration and metadata for Java applications. To use it, you annotate domain model properties with declarative validation constraints which are then enforced by the runtime. There are built-in constraints, and you can also define your own custom constraints.
+
+
+```java
+public class User{
+    @NotNull
+    private String username;
+    @NotNull
+    private String password
+}
+---
+@RequestMapping("/user")
+public String login(@Valid @ModelAttribute User user,BindingResult result,Model model){
+    if(result.hasErrors()){
+        model.addAttrribute("status","false");
+        return user;
+    }
+
+    model.addAttribute("status","true");
+    return user;
+}
+
+```
+
+```jsp
+<form action="<%=contextPath%>/sample/form" method="post">
+    <c:if test="${status== false}">
+        <p>Error</p>
+    <c:if test="${status== true}">
+        <p>Successful</p>        
+```
+
+In Spring MVC framework we can use MultipartResolver interface to upload a file. We need to make configuration changes to make it work. After uploading the file, we have to create Controller handler method to process the uploaded file in application.
+
+- *Reading Data from Request Body*:- Generally,HTTP request body will send data in from of POST method.ModelAttribute will take care of reading form data and bind to JavaBean,during binding,if any errors are found then `BindingResult` will be executed which will hold all errors details.
+
 When a request hits i.e <http://localhost:8080/login.htm>,a new Servlet container is created and creates an object of DispatcherSevlet class.DispatcherServlet always looks for <servlet-name>-servlet.xml file e.g dispatcher-servlet.xml and creates a spring container.In spring container there is controllers,viewresolver,handlermapping beans.
+
+
+**VIEW RESOLVER(Rendering web views)**:- All MVC frameworks for web applications provide a way to address views. Spring provides view resolvers, which enable you to render models in a browser without tying you to a specific view technology. Out of the box, Spring enables you to use JSPs, Velocity templates and XSLT views, for example. See Chapter 18, View technologies for a discussion of how to integrate and use a number of disparate view technologies.
+The two interfaces that are important to the way Spring handles views are ViewResolver and View. The ViewResolver provides a mapping between view names and actual views. The View interface
+addresses the preparation of the request and hands the request over to one of the view technologies.Controllers populate the model with some data and then pass the model off to a view for rendering.
+Decoupling request-handling logic in the controller from the view-rendering of a view is an important feature of Spring MVC. If the controller methods were directly responsible for producing HTML, it would be difficult to maintain and update the view without getting your hands dirty in request-handling logic. At most, the controller methods and view implementations should agree on the contents of the model; apart from that, they should keep an arms-length distance from each other.
+
+Spring’s view resolvers helps Spring determine which actual view implementation it should use to render the model.
+Spring MVC defines an interface named `ViewResolver` that looks a little something like this:
+
+```java
+public interface ViewResolver {
+   View resolveViewName(String viewName, Locale locale)
+      throws Exception;
+}
+```
+
+The resolveViewName() method, when given a view name and a Locale, returns a View instance. View is another interface that looks like this:
+
+```java
+public interface View {
+   String getContentType();
+   void render(Map<String, ?> model,
+      HttpServletRequest request,
+      HttpServletResponse response) throws Exception;
+}
+```
+
+The View interface’s job is to take the model, as well as the servlet request and response objects, and render output into the response.
+
+Although you can write your own custom implementations of ViewResolver and View, and although there are some special cases where that’s necessary, typically you needn’t worry yourself with these interfaces.
+Spring comes with 13 view resolvers to translate logical view names into physical view implementations:-
+1. BeanNameViewResolver - Resolves views as beans in the Spring application context whose ID is the same as the view name.
+2. ContentNegotiatingViewResolver - Resolves views by considering the content type desired by the client and delegating to another view resolver that can produce that type.
+3. FreeMarkerViewResolver - Resolves views as FreeMarker templates.
+4. InternalResourceViewResolver - Resolves views as resources internal to the web application (typically JSPs).
+5. JasperReportsViewResolver - Resolves views as JasperReports definitions.
+6. ResourceBundleViewResolver - Resolves views from a resource bundle (typically a properties file).
+7. TilesViewResolver - Resolves views as Apache Tile definitions, where the tile ID is the same as the view name. Note that there are two different TilesViewResolver implementations, one each for Tiles 2.0 and Tiles 3.0.
+8. UrlBasedViewResolver - Resolves views directly from the view name, where the view name matches the name of a physical view definition.
+9. VelocityLayoutViewResolver - Resolves views as Velocity layouts to compose pages from different Velocity templates.
+10. VelocityViewResolver - Resolves views as Velocity templates.
+11. XmlViewResolver - Resolves views as bean definitions from a specified XML file. Similar to BeanNameViewResolver.
+12. XsltViewResolver - Resolves views to be rendered as the result of an XSLT transformation.
+
+
+**Handling exceptions**:- No matter what happens, good or bad, the outcome of a servlet request is a servlet response. If an exception occurs during request processing, the outcome is still a servlet response. Somehow, the exception must be translated into a response.
+
+*HandlerExceptionResolver* - Spring HandlerExceptionResolver implementations deal with unexpected exceptions that occur during controller execution. A HandlerExceptionResolver somewhat resembles the exception mappings you can define in the web application descriptor web.xml. However, they provide a more flexible way to do so. For example they provide information about which handler was executing when the exception was thrown. Furthermore, a programmatic way of handling exceptions gives you more options for responding appropriately before the request is forwarded to another URL (the same end result as when you use the Servlet specific exception mappings).
+Besides implementing the `HandlerExceptionResolver interface`, which is only a matter of implementing the resolveException(Exception,Handler) method and returning a ModelAndView, you may also use the provided `SimpleMappingExceptionResolver` or create `@ExceptionHandler methods`. The SimpleMappingExceptionResolver enables you to take the class name of any exception that might be thrown and map it to a view name. This is functionally equivalent to the exception mapping feature from the Servlet API, but it is also possible to implement more finely grained mappings of exceptions from different handlers. The @ExceptionHandler annotation on the other hand can be used on methods that should be invoked to handle an exception.Such methods may be defined locally within an @Controller or may apply to many @Controller classes when defined within an @ControllerAdvice class.
+
+
+Spring MVC Framework provides following mechanisms to help us achieve exception handling:
+1. Controller Based: A developer can define exception handler methods in a Controller class. To do so, they have to annotate the methods with @ExceptionHandler annotation.
+2. Global Exception Handler: Spring provides @ControllerAdvice annotation for exception handling as cross-cutting concern. We can mark any class as global exception handler by using this annotation.
+3. HandlerExceptionResolver implementation: Spring Framework provides HandlerExceptionResolver interface that can be implemented to create a global exception handler.
+
+The simplest way to handle an exception is to map it to the HTTP status code to be placed on the response.
+
+Spring offers a handful of ways to translate exceptions to responses:
+1. Certain Spring exceptions are automatically mapped to specific HTTP status codes.
+2. An exception can be annotated with @ResponseStatus to map it to an HTTP status code.
+3. A method can be annotated with @ExceptionHandler to handle the exception.
+
+The simplest way to handle an exception is to map it to the HTTP status code to be placed on the response.
+
+- `Mapping exceptions to HTTP status codes`:- Out of the box, Spring automatically maps a dozen of its own exceptions to appropriate status codes.
+    1. BindException - 400 - Bad Request
+    2. ConversionNotSupportedException -500 - Internal Server Error
+    3. HttpMediaTypeNotAcceptableException - 406 - Not Acceptable
+    4. HttpMediaTypeNotSupportedException - 415 - Unsupported Media Type
+    5. HttpMessageNotReadableException - 400 - Bad Request
+    6. HttpMessageNotWritableException - 500 - Internal Server Error
+    7. HttpRequestMethodNotSupportedException - 405 - Method Not Allowed
+    8. MethodArgumentNotValidException - 400 - Bad Request
+    9. MissingServletRequestParameterException - 400 - Bad Request
+    10. MissingServletRequestPartException - 400 - Bad Request
+    11. NoSuchRequestHandlingMethodException - 404 - Not Found
+    12. TypeMismatchException - 400 - Bad Request
+
+The exceptions are usually thrown by Spring itself as the result of something going wrong in DispatcherServlet or while performing validation. For example, if DispatcherServlet can’t find a controller method suitable to handle a request, a NoSuchRequestHandlingMethodException will be thrown, resulting in a response with a status code of 404 (Not Found).
+Although these built-in mappings are helpful, they do no good for any application exceptions that may be thrown. Fortunately, Spring offers a way to map exceptions to HTTP status codes via the @ResponseStatus annotation.
+
+```java
+@RequestMapping(value="/{spittleId}", method=RequestMethod.GET)
+public String spittle( @PathVariable("spittleId") long spittleId,Model model) {
+    Spittle spittle = spittleRepository.findOne(spittleId);
+    if (spittle == null) { throw new SpittleNotFoundException();}
+    model.addAttribute(spittle);
+    return "spittle";
+}
+```
+
+Here, a Spittle is retrieved by its ID from the SpittleRepository. If findOne() returns a Spittle object, that Spittle is put into the model, and the view whose name is spittle is tasked with rendering it in the response. But if findOne() returns null, then a SpittleNotFoundException is thrown. For now, SpittleNotFoundException is a simple unchecked exception that looks like this:
+
+```java
+public class SpittleNotFoundException extends RuntimeException {
+    public SpittleNotFoundException(String message){
+        super(message);
+    }
+}
+```
+
+If the spittle() method is called on to handle a request, and the given ID comes up empty, the SpittleNotFoundException will (by default) result in a response with a 500 (Internal Server Error) status code. In fact, in the event of any exception that isn’t otherwise mapped, the response will always have a 500 status code. But you can change that by mapping SpittleNotFoundException otherwise.
+When SpittleNotFoundException is thrown, it’s a situation where a requested resource isn’t found. The HTTP status code of 404 is precisely the appropriate response status code when a resource isn’t found. So, let’s use @ResponseStatus to map SpittleNotFoundException to HTTP status code 404.
+
+```java
+@ResponseStatus(value=HttpStatus.NOT_FOUND,reason="Spittle Not Found")
+public class SpittleNotFoundException extends RuntimeException {
+}
+```
+
+@ResponseStatus - Marks a method or exception class with the status ResponseStatus.code() and ResponseStatus.reason() that should be returned.
+
+After introducing this @ResponseStatus annotation, if a SpittleNotFoundException were to be thrown from a controller method, the response would have a status code of 404 and a reason of Spittle Not Found.
+
+`Exception-handling methods`:- Mapping exceptions to status codes is simple and sufficient for many cases. But what if you want the response to carry more than just a status code that represents the error that occurred, Rather than treat the exception generically as some HTTP error, maybe you’d like to handle the exception the same way you might handle the request itself.
+
+If @ExceptionHandler methods can handle exceptions thrown from any handler method in the same controller class, you might be wondering if there’s a way they can handle exceptions thrown from handler methods in any controller. As of Spring 3.2 they certainly can, but only if they’re defined in a controller advice class.
+
+
+**Advising controllers**:- Certain aspects of controller classes might be handier if they could be applied broadly across all controllers in a given application. @ExceptionHandler methods, for instance, could prove useful in handling exceptions across multiple controllers. If a particular exception is thrown from multiple controller classes, you might find yourself duplicating the same @ExceptionHandler method in all of those controllers. Or, to avoid the duplication, you might create a base controller class that all of your controllers could extend to inherit the common @ExceptionHandler method.
+Spring 3.2 brings another option to the table: controller advice. A controller advice is any class that’s annotated with @ControllerAdvice and has one or more of the following kinds of methods:
+1. @ExceptionHandler-annotated
+2. @InitBinder-annotated
+3. @ModelAttribute-annotated
+
+Those methods in an @ControllerAdvice-annotated class are applied globally across all @RequestMapping-annotated methods on all controllers in an application.
+The @ControllerAdvice annotation is itself annotated with @Component. Therefore,an @ControllerAdvice-annotated class will be picked up by component-scanning, just like an @Controller-annotated class.
+
+One of the most practical uses for @ControllerAdvice is to gather all @ExceptionHandler methods in a single class so that exceptions from all controllers are handled consistently in one place.
+
+```java
+@ControllerAdvice
+public class AppWideExceptionHandler {
+    @ExceptionHandler(DuplicateSpittleException.class)
+    public String duplicateSpittleHandler() {
+    return "error/duplicate";}
+}
+```
+
+`@ControllerAdvice` - Specialization of @Component for classes that declare @ExceptionHandler, @InitBinder, or @ModelAttribute methods to be shared across multiple @Controller classes.
+`@ExceptionHandler` - Annotation for handling exceptions in specific handler classes and/or handler methods.Can be configured to handle specific exceptions and custom error responses.
+
+Now, if a DuplicateSpittleException is thrown from any controller method, no matter which controller it’s in, this duplicateSpittleHandler() method will be called to handle the exception. The @ExceptionHandler-annotated method can be written much like an @RequestMapping-annotated method.
+
+
+`@InitBinder` registers custom edotors for data binding, validation,type conversions, and pre-processing during binding.
+
+Spring MVC is not used in developing web applications commonly nowadays coz:-
+1. Web container is required.
+2. Takes more processing time.
+3. Not lightweight.
+
+Market is using Javascript MVC frameworks to develop web applications instead of Java MVC e.g Angular,React,Vue.
+
+
+**Locales**:- Most parts of Spring’s architecture support internationalization, just as the Spring web MVC framework does. `DispatcherServlet` enables you to automatically resolve messages using the client’s locale.This is done with `LocaleResolver` objects.
+When a request comes in, the DispatcherServlet looks for a locale resolver, and if it finds one it tries to use it to set the locale. Using the `RequestContext.getLocale()` method, you can always retrieve the locale that was resolved by the locale resolver.
+
+In addition to automatic locale resolution, you can also attach an interceptor to the handler mapping to change the locale under specific circumstances, for example, based on a parameter in the request.
+
+Locale resolvers and interceptors are defined in the `org.springframework.web.servlet.i18n` package and are configured in your application context in the normal way.
+
+
+**Spring’s multipart (file upload) support8**:- Spring’s built-in multipart support handles file uploads in web applications. You enable this multipart support with pluggable `MultipartResolver` objects, defined in the `org.springframework.web.multipart package`. Spring provides one MultipartResolver implementation for use with Commons FileUpload and another for use with Servlet 3.0 multipart request parsing.
+By default, Spring does no multipart handling, because some developers want to handle multiparts themselves. You enable Spring multipart handling by adding a multipart resolver to the web application’s context. Each request is inspected to see if it contains a multipart. If no multipart is found, the request continues as expected. If a multipart is found in the request, the MultipartResolver that has been declared in your context is used. After that, the multipart attribute in your request is treated like any other attribute.
+
+
+**CORS** - Spring MVC lets you handle CORS (Cross-Origin Resource Sharing).
+For security reasons, browsers prohibit AJAX calls to resources outside the current origin. For example, you could have your bank account in one tab and evil.com in another. Scripts from evil.com should not be able to make AJAX requests to your bank API with your credentials — for example withdrawing money from your account.
+Cross-Origin Resource Sharing (CORS) is a W3C specification implemented by most browsers that lets you specify what kind of cross-domain requests are authorized, rather than using less secure and less powerful workarounds based on IFRAME or JSONP.
+
+
+**Models** - 
+
+
+
+**Configuring Spring MVC** - The MVC Java config and the MVC namespace provide similar default configuration that overrides the DispatcherServlet defaults. The goal is to spare most applications from having to having to create the same configuration and also to provide higher-level constructs for configuring Spring MVC that serve as a simple starting point and require little or no prior knowledge of the underlying configuration.
+You can choose either the MVC Java config or the MVC namespace depending on your preference.
+
+*MVC Java Config* - To enable MVC Java config add the annotation @EnableWebMvc to one of your @Configuration classes:
+
+```java
+@Configuration
+@EnableWebMvc
+public class WebConfig {}
+```
+
+To achieve the same in XML use the mvc:annotation-driven element in your DispatcherServlet context (or in your root context if you have no DispatcherServlet context defined):
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <mvc:annotation-driven />
+
+</beans>
+```
+
+The above registers a RequestMappingHandlerMapping, a RequestMappingHandlerAdapter, and an ExceptionHandlerExceptionResolver (among others) in support of processing requests with annotated controller methods using annotations such as @RequestMapping,@ExceptionHandler, and others.
+It also enables the following:
+1. Spring 3 style type conversion through a ConversionService instance in addition to the JavaBeans PropertyEditors used for Data Binding.
+2. Support for formatting Number fields using the @NumberFormat annotation through the ConversionService.
+3. Support for formatting Date, Calendar, Long, and Joda Time fields using the @DateTimeFormat annotation.
+4. Support for validating @Controller inputs with @Valid, if a JSR-303 Provider is present on the classpath.
+5. HttpMessageConverter support for @RequestBody method parameters and @ResponseBody method return values from @RequestMapping or @ExceptionHandler methods.This is the complete list of HttpMessageConverters set up by mvc:annotation-driven:
+    - ByteArrayHttpMessageConverter converts byte arrays.
+    - StringHttpMessageConverter converts strings.
+    - ResourceHttpMessageConverter converts org.springframework.core.io.Resource for all media types. to/from
+    - SourceHttpMessageConverter converts to/from a javax.xml.transform.Source.
+    - FormHttpMessageConverter converts form data to/from a MultiValueMap<String,String>.
+    - Jaxb2RootElementHttpMessageConverter converts Java objects to/from XML — added if JAXB2 is present and Jackson 2 XML extension is not present on the classpath.
+    - MappingJackson2HttpMessageConverter converts to/from JSON — added if Jackson 2 is present on the classpath.
+    - MappingJackson2XmlHttpMessageConverter converts to/from XML — added if Jackson 2 XML extension is present on the classpath.
+    - AtomFeedHttpMessageConverter converts Atom feeds — added if Rome is present on the classpath.
+    - RssChannelHttpMessageConverter converts RSS feeds — added if Rome is present on the classpath.
+
+
+*Customizing the Provided Configuration* - To customize the default configuration in Java you simply implement the WebMvcConfigurer interface or more likely extend the class WebMvcConfigurerAdapter and override the methods you need.
+
+```java
+@Configuration
+@EnableWebMvc
+public class WebConfig extends WebMvcConfigurerAdapter {
+    @Override
+    protected void addFormatters(FormatterRegistry registry) {
+        // Add formatters and/or converters
+    }
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        // Configure the list of HttpMessageConverters to use
+    }
+}
+```
+
+To customize the default configuration of <mvc:annotation-driven /> check what attributes and sub-elements it supports.
+
+```xml
+<mvc:annotation-driven conversion-service="conversionService">
+    <mvc:message-converters>
+        <bean class="org.example.MyHttpMessageConverter"/>
+        <bean class="org.example.MyOtherHttpMessageConverter"/>
+    </mvc:message-converters>
+</mvc:annotation-driven>
+```
+
+`View Resolvers` - The MVC config simplifies the registration of view resolvers.
 
 `Java Config`:- When web container starts,it will look for web.xml,if not found it looks for ServletContainerInitializer.This will internally call SpringServletContainerInitializer which internally calls WebApplicationInitializer then AbstractContextLoaderListener then AbstractDispatcherServletInitializer then AbstractAnnotationConfigDispatcherServletInitializer.
 
@@ -2176,12 +3422,6 @@ In this case, your root configuration is defined in RootConfig, whereas Dispatch
 </beans>
 ```
 
-```java
-@Configuration
-@EnableWebMvc
-public class WebConfig {
-}
-```
 
 This will work, and it will enable Spring MVC. But it leaves a lot to be desired:
 1. No view resolver is configured. As such, Spring will default to using BeanNameViewResolver, a view resolver that resolves views by looking for beans whose
@@ -2300,439 +3540,9 @@ public class RootConfig {
 ```
 
 
-`Special Bean Types`:- The DispatcherServlet delegates to special beans to process requests and render the appropriate responses. By “special beans” we mean Spring-managed Object instances that implement framework contracts. Those usually come with built-in contracts, but you can customize their properties and extend or replace them.
+**VIEWS**:- One of the areas in which Spring excels is in the separation of view technologies from the rest of the MVC framework. For example, deciding to use Velocity or XSLT in place of an existing JSP is primarily a matter of configuration.
 
-1. HandlerMapping - Map a request to a handler along with a list of interceptors for pre- and post-processing. The mapping is based on some criteria, the details of which vary by HandlerMapping implementation.The two main HandlerMapping implementations are RequestMappingHandlerMapping (which supports @RequestMapping annotated methods) and SimpleUrlHandlerMapping (which maintains explicit registrations of URI path patterns to handlers).
-2. HandlerAdapter - Help the DispatcherServlet to invoke a handler mapped to a request, regardless of how the handler is actually invoked. For example, invoking an annotated controller requires resolving annotations. The main purpose of a HandlerAdapter is to shield the DispatcherServlet from such details.
-3. HandlerExceptionResolver- Strategy to resolve exceptions, possibly mapping them to handlers, to HTML error views, or other targets. See Exceptions.
-4. ViewResolver - Resolve logical String-based view names returned from a handler to an actual View with which to render to the response. See View Resolution and View Technologies.
-5. LocaleResolver, LocaleContextResolver - Resolve the Locale a client is using and possibly their time zone, in order to be able to offer internationalized views. See Locale.
-6. ThemeResolver - Resolve themes your web application can use — for example, to offer personalized layouts. See Themes.
-7. MultipartResolver - Abstraction for parsing a multi-part request (for example, browser form file upload) with the help of some multipart parsing library. See Multipart Resolver.
-8. FlashMapManager - Store and retrieve the “input” and the “output” FlashMap that can be used to pass attributes from one request to another, usually across a redirect.
-
-
-**HANDLER MAPPING**:- The mechanism that decides which controller method handles which URL.
-In previous versions of Spring, users were required to define one or more HandlerMapping beans in the web application context to map incoming web requests to appropriate handlers.With the introduction of annotated controllers, you generally don’t need to do that because the RequestMappingHandlerMapping automatically looks for `@RequestMapping` annotations on all `@Controller` beans.
-
-
-`Using xml`
-
-```xml
-<bean id="userController" class="com.example.UserController"/>
-
-<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-    <property name="mappings">
-        <props>
-            <prop key="/user/list">userController</prop>
-            <prop key="/user/add">userController</prop>
-        </props>
-    </property>
-</bean>
-```
-
-`Using Annotatins`:- In Spring MVC, we use @RequestMapping annotation to map a web request to either a class or a handler method.
-In @RequestMapping we can specify the path of URL as well as HTTP method like- GET, PUT, POST etc.@RequestMapping also supports specifying HTTP Headers as attributes.We can also map different media types produced by a controller in @RequestMapping. We use HTTP Header Accepts for this purpose.
-You can use the @RequestMapping annotation to map requests to controllers methods. It has various attributes to match by URL, HTTP method, request parameters, headers, and media types. You can use it at the class level to express shared mappings or at the method level to narrow down to a specific endpoint mapping.
-
-All modern annotations:
-1. @RequestMapping
-2. @GetMapping
-3. @PostMapping
-4. @PutMapping
-5. @DeleteMapping
-6. @PatchMapping
-
-- @RequestMapping - Annotation for mapping web requests onto methods in request-handling classes with flexible method signatures.Both Spring MVC and Spring WebFlux support this annotation.Can be used both at the class and at the method level.Cannot be used in conjunction with other @RequestMapping annotations that are declared on the same element (class, interface, or method)
-    1. String[] consumes- Narrows the primary mapping by media types that can be consumed by the mapped handler.
-    2. String[] headers - The headers of the mapped request, narrowing the primary mapping.
-    3. RequestMethod[] method - The HTTP request methods to map to, narrowing the primary mapping: GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE, TRACE.
-    4. String name - Assign a name to this mapping.
-    5. String[] params - The parameters of the mapped request, narrowing the primary mapping.
-    6. String[] path - The path mapping URIs — for example, "/profile".
-    7. String[] produces - Narrows the primary mapping by media types that can be produced by the mapped handler.
-    8. String[] value - The path mapping URIs — for example, "/profile".
-
-```java
-@Controller
-@RequestMapping("/api")//class level
-public class Customer {
-
-    @RequestMapping("/home")// Method level
-    public String hello(){
-        return "home";
-    }
-
-    @RequestMapping(value={"/student","/teacher"},//Multiple URI
-         method=RequestMethod.GET//HTTP Methods
-         produces={MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE},
-         consumes=MediaType.APPLICATION_XML_VALUE)
-    public Student getStudent(){
-        Student student = new Student(1, "Collins", "Finalist");
-        return student;
-    }
-}
-```
-
-```java
-@RequestMapping(value = "/home", method = RequestMethod.GET)
-
-@PostMapping(value="/save", consumes="application/json", produces="application/json")
-public User save(@RequestBody User user) { }
-
-@RequestMapping(value="/info", method={RequestMethod.GET, RequestMethod.POST},headers = "Accept=application/json")
-public String info() { }
-```
-
-- @PostMapping - Annotation for mapping HTTP POST requests onto specific handler methods.
-- @PutMapping - Annotation for mapping HTTP PUT requests onto specific handler methods.
-- @RequestAttribute - Annotation to bind a method parameter to a request attribute.
-- @GetMapping - Annotation for mapping HTTP GET requests onto specific handler methods.is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET).
-- @DeleteMapping - Annotation for mapping HTTP DELETE requests onto specific handler methods.
-- @PatchMapping - Annotation for mapping HTTP PATCH requests onto specific handler methods.
-
-
-**CONTROLLERS**:- Controllers provide access to the application behavior that you typically define through a service interface. Controllers interpret user input and transform it into a model that is represented to the user by the view. Spring implements a controller in a very abstract way, which enables you to create a wide variety of controllers.
-Spring 2.5 introduced an annotation-based programming model for MVC controllers that uses annotations such as @RequestMapping, @RequestParam, @ModelAttribute, and so on. This annotation support is available for both Servlet MVC and Portlet MVC. Controllers implemented in this style do not have to extend specific base classes or implement specific interfaces. Furthermore, they do not usually have direct dependencies on Servlet or Portlet APIs, although you can easily configure access to Servlet or Portlet facilities.
-
-In Spring MVC, controllers are just classes with methods that are annotated with `@Controller` or extends `Controller interface` to declare the kind of requests they’ll handle.A component that handles incoming requests.
-There are two ways to write controllers: Either by implementing Controller interface or using annotations.
-
-
-`Legacy Controller (implements Controller interface)`:- Used before annotations. Mapping was defined in XML, not on the controller class.Controller is an interface in Spring MVC. It receives HttpServletRequest and HttpServletResponse in web app just like an HttpServlet, but it is able to participate in an MVC flow.Controllers are similar to a Struts Action in a Struts based Web application.
-Spring recommends that the implementation of Controller interface should be a reusable, thread-safe class, capable of handling multiple HTTP requests throughout the lifecycle of an application.It is preferable to implement Controller by using a JavaBean.Controller interprets user input and transforms it into a model. The model is represented to the user by a view.
-Spring implements a controller in a very generic way. This enables us to create a wide variety of controllers.
-
-```java
-public interface Controller{
- ModelandView handleRequest(HandleServletRequest req,HandleServletResponse res)
-}
-```
-
-```java
-public class HomeController implements Controller{
-
-   @Override
-   ModelandView handleRequest(HandleServletRequest req,HandleServletResponse res){
-   ModelandView mav= new ModelandView();
-   mav.setViewName("/home")
-
-   return mav;
- }
-}
-
-public class UserController extends MultiActionController {
-
-    public ModelAndView list(HttpServletRequest req, HttpServletResponse res) {
-        return new ModelAndView("user-list");
-    }
-
-    public ModelAndView add(HttpServletRequest req, HttpServletResponse res) {
-        return new ModelAndView("user-add");
-    }
-}
-```
-
-
-`Defining a controller with @Controller`:- The @Controller annotation indicates that a particular class serves the role of a controller. Spring does not require you to extend any controller base class or reference the Servlet API. However, you can still reference Servlet-specific features if you need to.
-
-The @Controller annotation acts as a stereotype for the annotated class, indicating its role. The dispatcher scans such annotated classes for mapped methods and detects @RequestMapping annotations
-
-Classes annotated with the @Controller, handle HTTP requests and return responses. They can contain methods that process input and return view names with model data through ModelAndView objects or String view names.
-
-
-```java
-@Controller
-public class HelloWorldController {
-    @RequestMapping("/helloWorld")
-    public String helloWorld(Model model) {
-        model.addAttribute("message", "Hello World!");
-        return "helloWorld";
-    }
-}
-```
-
-You can define annotated controller beans explicitly, using a standard Spring bean definition in the dispatcher’s context. However, the @Controller stereotype also allows for autodetection, aligned with Spring general support for detecting component classes in the classpath and auto-registering bean definitions for them.
-
-To enable autodetection of such annotated controllers, you add component scanning to your configuration.Add the controller in the controller subpackage so that it is picked up by the @ComponentScan annotation: Use the spring-context schema as shown in the following XML snippet:
-
-```xml
-<context:component-scan base-package="org.springframework.samples.petclinic.web"/>
-```
-
-
-
-*Defining @RequestMapping handler methods*:- An @RequestMapping handler method can have a very flexible signatures.Most arguments can be used in arbitrary order with the only exception of `BindingResult` arguments.
-
-Note:- Spring 3.1 introduced a new set of support classes for @RequestMapping methods called `RequestMappingHandlerMapping` and `RequestMappingHandlerAdapter` respectively.They are recommended for use and even required to take advantage of new features in Spring MVC 3.1 and going forward. The new support classes are enabled by default from the MVC namespace and with use of the MVC Java config but must be configured explicitly if using neither.
-
-Supported method argument types - The following are the supported method arguments:
-1. Request or response objects (Servlet API). Choose any specific request or response type, for example ServletRequest or HttpServletRequest.
-2. Session object (Servlet API): of type HttpSession. An argument of this type enforces the presence of a corresponding session. As a consequence, such an argument is never null.
-3. java.util.Locale for the current request locale, determined by the most specific locale resolver available, in effect, the configured LocaleResolver in a Servlet environment.
-4. @PathVariable annotated parameters for access to URI template variables.
-5. org.springframework.http.HttpMethod for the HTTP request method.
-6. java.io.OutputStream / java.io.Writer for generating the response’s content. This value is the raw OutputStream/Writer as exposed by the Servlet API.
-7. java.security.Principal containing the currently authenticated user.
-8. @MatrixVariable annotated parameters for access to name-value pairs located in URI path segments.
-9. @RequestParam annotated parameters for access to specific Servlet request parameters. Parameter values are converted to the declared method argument type.
-
-
-
-
-The `Errors` or `BindingResult` parameters have to follow the model object that is being bound immediately as the method signature might have more that one model object and Spring will create a separate BindingResult instance for each of them so the following sample won’t work:
-
-```java
-@RequestMapping(method = RequestMethod.POST)
-public String processSubmit(@ModelAttribute("pet") Pet pet, Model model, BindingResult result) { ... }
-```
-
-Note, that there is a Model parameter in between Pet and BindingResult. To get this working you have to reorder the parameters as follows:
-
-```java
-@RequestMapping(method = RequestMethod.POST)
-public String processSubmit(@ModelAttribute("pet") Pet pet, BindingResult result, Model model) { ... }
-```
-
-
-`Using @ModelAttribute on a method`:- The @ModelAttribute annotation can be used on methods or on method arguments.
-An @ModelAttribute on a method indicates the purpose of that method is to add one or more model attributes. Such methods support the same argument types as @RequestMapping methods but cannot be mapped directly to requests. Instead @ModelAttribute methods in a controller are invoked before @RequestMapping methods, within the same controller.
-
-```java
-// Add one attribute
-// The return value of the method is added to the model under the name "account"
-// You can customize the name via @ModelAttribute("myAccount")
-@ModelAttribute
-public Account addAccount(@RequestParam String number) {
-    return accountManager.findAccount(number);
-}
-
-// Add multiple attributes
-@ModelAttribute
-public void populateModel(@RequestParam String number, Model model) {
-    model.addAttribute(accountManager.findAccount(number));
-    // add more ...
-}
-```
-
-@ModelAttribute methods are used to populate the model with commonly needed attributes for example to fill a drop-down with states or with pet types, or to retrieve a command object like Account in order to use it to represent the data on an HTML form.
-
-A controller can have any number of @ModelAttribute methods. All such methods are invoked before @RequestMapping methods of the same controller.@ModelAttribute methods can also be defined in an @ControllerAdvice-annotated class and such methods apply to many controllers.
-The @ModelAttribute annotation can be used on @RequestMapping methods as well. In that case the return value of the @RequestMapping method is interpreted as a model attribute rather than as a view name. The view name is derived from view name conventions instead much like for methods returning void.
-
-
-- *Passing model data to the view*: The method is given a `Model` as a parameter so that it can populate the model with the data list it retrieves.
-The Model is essentially a map (that is, a collection of key-value pairs) that will be handed off to the view so that the data can be rendered to the client. When addAttribute() is called without specifying a key, the key is inferred from the type of object being set as the value.
-
-```java
-@Controller
-@RequestMapping("/students")
-public class HomeController{
-
-   @RequestMapping(method=GET)
-   public String students(Model model){
-      model.addAttribute("key",value)
-      return "students";
- }
-}
-```
-
-Likewise, if you’d prefer to work with a non-Spring type, you can ask for a java.util.Map instead of Model.
-
-```java
-public String students(Map model)
-```
-
-Now that there’s data in the model,when the view is a JSP, the model data is copied into the request as request attributes.
-Therefore, the .jsp file can use JavaServer Pages Standard Tag Library’s (JSTL) <c:forEach> tag to render the list.
-
-
-- *Accepting request input*: Spring MVC provides several ways that a client can pass data into a controller’s handler method. These include
-    1. Query parameters
-    2. Form parameters
-    3. Path variables
-
-Taking query parameters - Query parameters are a common way to pass information to a controller in a request.Query strings are used to extract the query string data from uri.In query string data is optional,if you will not send then default value will be used.
-
-- @PathVariable - Annotation which indicates that a method parameter should be bound to a URI template variable.Binds request parameters to the method parameters and extracts query parameters from the URL. It can handle multiple parameter types. It supports the following attributes:-
-    1. required: Specifies if the parameter is mandatory
-    2. defaultValue: Default value if the parameter is missing
-    3. value/name: Parameter name
-
-```java
-@RequestMapping(method=RequestMethod.GET)
-public List<Spittle> spittles(
-      @RequestParam(name="max",required=false,default="10") long max,
-      @RequestParam("count") int count) {
-   return spittleRepository.findSpittles(max, count);
-}
-```
-
-Taking input via path parameters:- Used to etract uri path data from uri.Data is mandatory,if you will not send data 404 error is thrown.
-To accommodate path variables, Spring MVC allows for placeholders in an @RequestMapping path. The placeholders are names surrounded by curly braces ({ and }). Although all the other parts of the path need to match exactly for the request to be handled, the placeholder can carry any value.
-
-- @RequestParam - Annotation which indicates that a method parameter should be bound to a web request parameter.
-
-Here’s a handler method that uses placeholders to accept a Spittle ID as part of the path:
-
-```java
-@RequestMapping(value="/{spittleId}", method=RequestMethod.GET)
-public String spittle(@PathVariable("spittleId") long spittleId,Model model) {
-   model.addAttribute(spittleRepository.findOne(spittleId));
-   return "spittle";
-}
-```
-
-Query parameters and path parameters are fine for passing small amounts of data on a request. But often you need to pass a lot of data (perhaps data coming from a form submission), and query parameters are too awkward and limited for that.
-
-- Processing forms: Web applications typically do more than just push content out to the user. Most also let users participate in the conversation by filling out forms and submitting data back into the application. Spring MVC controllers are well-suited for form processing as well as serving content.
-There are two sides to working with forms: displaying the form and processing the data the user submits from the form.
-
-```java
-@RequestMapping(value="/register", method=GET)
-public String showRegistrationForm() {
-   return "registerForm";
-}
-```
-
-Because the view name is registerForm, you’ll need a JSP named registerForm.jsp. This JSP must include an HTML <form> where the user will enter information to sign up with the application.
-
-- Writing a form-handling controller: When processing the POST request from the registration form, the controller needs to accept the form data and save the form data. Finally, in order to prevent a duplicate submission (such as might happen if the user clicked their browser’s Refresh button), it should redirect the browser.
-As part of that POST request, user information is passed as parameters on the request to simulate a form being submitted.
-
-When handling a POST request, it’s usually a good idea to send a redirect after the POST has completed processing so that a browser refresh won’t accidentally submit the
-form a second time.
-
-
-`Validation, Data Binding, and Type Conversion` - There are pros and cons for considering validation as business logic, and Spring offers a design for validation and data binding that does not exclude either one of them. Specifically, validation should not be tied to the web tier and should be easy to localize, and it should be possible to plug in any available validator. Considering these concerns, Spring provides a Validator contract that is both basic and eminently usable in every layer of an application.
-
-Data binding is useful for letting user input be dynamically bound to the domain model of an application (or whatever objects you use to process user input). Spring provides the aptly named DataBinder to do exactly that. The Validator and the DataBinder make up the validation package, which is primarily used in but not limited to the web layer.
-
-The BeanWrapper is a fundamental concept in the Spring Framework and is used in a lot of places. However, you probably do not need to use the BeanWrapper directly. Because this is reference documentation, however, we feel that some explanation might be in order. We explain the BeanWrapper in this chapter, since, if you are going to use it at all, you are most likely do so when trying to bind data to objects.
-
-Spring’s DataBinder and the lower-level BeanWrapper both use PropertyEditorSupport implementations to parse and format property values. The PropertyEditor and PropertyEditorSupport types are part of the JavaBeans specification and are also explained in this chapter. Spring’s core.convert package provides a general type conversion facility, as well as a higher-level format package for formatting UI field values. You can use these packages as simpler alternatives to PropertyEditorSupport implementations. They are also discussed in this chapter.
-
-Spring supports Java Bean Validation through setup infrastructure and an adaptor to Spring’s own Validator contract. Applications can enable Bean Validation once globally, as described in Java Bean Validation, and use it exclusively for all validation needs. In the web layer, applications can further register controller-local Spring Validator instances per DataBinder, as described in Configuring a DataBinder, which can be useful for plugging in custom validation logic.
-Resources
-
-
-- Validating forms: You can take advantage of Spring’s support for the Java Validation API (a.k.a. JSR-303). Starting with Spring 3.0, Spring supports the Java Validation API in Spring MVC. No extra configuration is required to make Java Validation work in Spring MVC. You just need to make sure an implementation of the Java API, such as Hibernate Validator, is in the project’s classpath.
-The Java Validation API defines several annotations that you can put on properties to place constraints on the values of those properties. All of these annotations are in the javax.validation.constraints package.
-The controller is annotated with @Valid to indicate to Spring that the command object has validation constraints that should be enforced.
-@ModelAttribute - Annotation that binds a method parameter or method return value to a named model attribute, exposed to a web view.Binds a method parameter or method return value to a named model attribute and automatically populates the object with data from the form submissions.
-
-Validation ensures:
-
-1. Data integrity in your APIs.
-2. Better user experience with meaningful error messages.
-3. Reduced bugs in the business logic.
-
-
-Handle Errors with @ExceptionHandler:- Customize error responses for invalid data.
-
-```java
-@ControllerAdvice
-public class GlobalExceptionHandler{
-   @ExceptionHandler(MethodArgumentNotValidException.class)
-   public ResponseEntity<Map<String,String>> handleValidationExceptions(@MethodArgumentNotValidException ex){
-      Map<String,String> errors = new HashMap<>();
-      ex.getBindingResult().getFieldErrors().forEach(error -> errors.put(
-         error.getField(), error.getDefaultMessage()
-      ));
-      return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
-   }
-}
-```
-
-Extracts validation errors and returns them as a structured JSON response.
-
-- Best Practices for Validation
-   1. Validate at the DTO level using annotations.
-   2. Use custom constraints for specific requirements.
-   3. Handle exceptions globally with @ControllerAdvice.
-   4. Avoid mixing validation logic with business logic.
-
-Bean Validation:-  Bean Validation provides a common way of validation through constraint declaration and metadata for Java applications. To use it, you annotate domain model properties with declarative validation constraints which are then enforced by the runtime. There are built-in constraints, and you can also define your own custom constraints.
-
-
-```java
-public class User{
-    @NotNull
-    private String username;
-    @NotNull
-    private String password
-}
----
-@RequestMapping("/user")
-public String login(@Valid @ModelAttribute User user,BindingResult result,Model model){
-    if(result.hasErrors()){
-        model.addAttrribute("status","false");
-        return user;
-    }
-
-    model.addAttribute("status","true");
-    return user;
-}
-
-```
-
-```jsp
-<form action="<%=contextPath%>/sample/form" method="post">
-    <c:if test="${status== false}">
-        <p>Error</p>
-    <c:if test="${status== true}">
-        <p>Successful</p>        
-```
-
-In Spring MVC framework we can use MultipartResolver interface to upload a file. We need to make configuration changes to make it work. After uploading the file, we have to create Controller handler method to process the uploaded file in application.
-
-
-- *Reading Data from Request Body*:- Generally,HTTP request body will send data in from of POST method.ModelAttribute will take care of reading form data and bind to JavaBean,during binding,if any errors are found then `BindingResult` will be executed which will hold all errors details.
-
-
-**VIEW RESOLVER(Rendering web views)**:- Controllers populate the model with some data and then pass the model off to a view for rendering.
-Decoupling request-handling logic in the controller from the view-rendering of a view is an important feature of Spring MVC. If the controller methods were directly responsible for producing HTML, it would be difficult to maintain and update the view without getting your hands dirty in request-handling logic. At most, the controller methods and view implementations should agree on the contents of the model; apart from that, they should keep an arms-length distance from each other.
-
-Spring’s view resolvers helps Spring determine which actual view implementation it should use to render the model.
-Spring MVC defines an interface named `ViewResolver` that looks a little something like this:
-
-```java
-public interface ViewResolver {
-   View resolveViewName(String viewName, Locale locale)
-      throws Exception;
-}
-```
-
-The resolveViewName() method, when given a view name and a Locale, returns a View instance. View is another interface that looks like this:
-
-```java
-public interface View {
-   String getContentType();
-   void render(Map<String, ?> model,
-      HttpServletRequest request,
-      HttpServletResponse response) throws Exception;
-}
-```
-
-The View interface’s job is to take the model, as well as the servlet request and response objects, and render output into the response.
-
-Although you can write your own custom implementations of ViewResolver and View, and although there are some special cases where that’s necessary, typically you needn’t worry yourself with these interfaces.
-Spring comes with 13 view resolvers to translate logical view names into physical view implementations:-
-1. BeanNameViewResolver - Resolves views as beans in the Spring application context whose ID is the same as the view name.
-2. ContentNegotiatingViewResolver - Resolves views by considering the content type desired by the client and delegating to another view resolver that can produce that type.
-3. FreeMarkerViewResolver - Resolves views as FreeMarker templates.
-4. InternalResourceViewResolver - Resolves views as resources internal to the web application (typically JSPs).
-5. JasperReportsViewResolver - Resolves views as JasperReports definitions.
-6. ResourceBundleViewResolver - Resolves views from a resource bundle (typically a properties file).
-7. TilesViewResolver - Resolves views as Apache Tile definitions, where the tile ID is the same as the view name. Note that there are two different TilesViewResolver implementations, one each for Tiles 2.0 and Tiles 3.0.
-8. UrlBasedViewResolver - Resolves views directly from the view name, where the view name matches the name of a physical view definition.
-9. VelocityLayoutViewResolver - Resolves views as Velocity layouts to compose pages from different Velocity templates.
-10. VelocityViewResolver - Resolves views as Velocity templates.
-11. XmlViewResolver - Resolves views as bean definitions from a specified XML file. Similar to BeanNameViewResolver.
-12. XsltViewResolver - Resolves views to be rendered as the result of an XSLT transformation.
-
-
-**VIEWS**:-
+*JSP & JSTL* - Spring provides a couple of out-of-the-box solutions for JSP and JSTL views. Using JSP or JSTL is done using a normal view resolver defined in the WebApplicationContext. Furthermore, of course you need to write some JSPs that will actually render the view.
 
 `Creating JSP views`:- Spring supports JSP views in two ways:
 - InternalResourceViewResolver can be used to resolve view names into JSP files. Moreover, if you’re using JavaServer Pages Standard Tag Library (JSTL)
@@ -2774,131 +3584,69 @@ With this configuration of InternalResourceViewResolver in place, you can expect
 - productList resolves to /WEB-INF/views/productList.jsp
 - books/detail resolves to /WEB-INF/views/books/detail.jsp
 
+*Tiles* - It is possible to integrate Tiles - just as any other view technology - in web applications using Spring.
 
-**Handling exceptions**:- No matter what happens, good or bad, the outcome of a servlet request is a servlet response. If an exception occurs during request processing, the outcome is still a servlet response. Somehow, the exception must be translated into a response.
+*Velocity & FreeMarker* - Velocity and FreeMarker are two templating languages that can be used as view technologies within Spring MVC applications.The languages are quite similar and serve similar needs.
 
-Spring MVC Framework provides following mechanisms to help us achieve exception handling:
-1. Controller Based: A developer can define exception handler methods in a Controller class. To do so, they have to annotate the methods with @ExceptionHandler annotation.
-2. Global Exception Handler: Spring provides @ControllerAdvice annotation for exception handling as cross-cutting concern. We can mark any class as global exception handler by using this annotation.
-3. HandlerExceptionResolver implementation: Spring Framework provides HandlerExceptionResolver interface that can be implemented to create a global exception handler.
+*XSLT* - XSLT is a transformation language for XML and is popular as a view technology within web applications. XSLT can be a good choice as a view technology if your application naturally deals with XML, or if your model can easily be converted to XML.
 
-The simplest way to handle an exception is to map it to the HTTP status code to be placed on the response.
+*Document views (PDF/Excel)* - Returning an HTML page isn’t always the best way for the user to view the model output, and Spring makes it simple to generate a PDF document or an Excel spreadsheet dynamically from the model data. The document is the view and will be streamed from the server with the correct content type to (hopefully) enable the client PC to run their spreadsheet or PDF viewer application in response.
+In order to use Excel views, you need to add the poi library to your classpath, and for PDF generation, the iText library.
 
-Spring offers a handful of ways to translate exceptions to responses:
-1. Certain Spring exceptions are automatically mapped to specific HTTP status codes.
-2. An exception can be annotated with @ResponseStatus to map it to an HTTP status code.
-3. A method can be annotated with @ExceptionHandler to handle the exception.
-
-The simplest way to handle an exception is to map it to the HTTP status code to be placed on the response.
-
-- `Mapping exceptions to HTTP status codes`:- Out of the box, Spring automatically maps a dozen of its own exceptions to appropriate status codes.
-    1. BindException - 400 - Bad Request
-    2. ConversionNotSupportedException -500 - Internal Server Error
-    3. HttpMediaTypeNotAcceptableException - 406 - Not Acceptable
-    4. HttpMediaTypeNotSupportedException - 415 - Unsupported Media Type
-    5. HttpMessageNotReadableException - 400 - Bad Request
-    6. HttpMessageNotWritableException - 500 - Internal Server Error
-    7. HttpRequestMethodNotSupportedException - 405 - Method Not Allowed
-    8. MethodArgumentNotValidException - 400 - Bad Request
-    9. MissingServletRequestParameterException - 400 - Bad Request
-    10. MissingServletRequestPartException - 400 - Bad Request
-    11. NoSuchRequestHandlingMethodException - 404 - Not Found
-    12. TypeMismatchException - 400 - Bad Request
-
-The exceptions are usually thrown by Spring itself as the result of something going wrong in DispatcherServlet or while performing validation. For example, if DispatcherServlet can’t find a controller method suitable to handle a request, a NoSuchRequestHandlingMethodException will be thrown, resulting in a response with a status code of 404 (Not Found).
-Although these built-in mappings are helpful, they do no good for any application exceptions that may be thrown. Fortunately, Spring offers a way to map exceptions to HTTP status codes via the @ResponseStatus annotation.
-
-```java
-@RequestMapping(value="/{spittleId}", method=RequestMethod.GET)
-public String spittle( @PathVariable("spittleId") long spittleId,Model model) {
-    Spittle spittle = spittleRepository.findOne(spittleId);
-    if (spittle == null) { throw new SpittleNotFoundException();}
-    model.addAttribute(spittle);
-    return "spittle";
-}
-```
-
-Here, a Spittle is retrieved by its ID from the SpittleRepository. If findOne() returns a Spittle object, that Spittle is put into the model, and the view whose name is spittle is tasked with rendering it in the response. But if findOne() returns null, then a SpittleNotFoundException is thrown. For now, SpittleNotFoundException is a simple unchecked exception that looks like this:
-
-```java
-public class SpittleNotFoundException extends RuntimeException {
-    public SpittleNotFoundException(String message){
-        super(message);
-    }
-}
-```
-
-If the spittle() method is called on to handle a request, and the given ID comes up empty, the SpittleNotFoundException will (by default) result in a response with a 500 (Internal Server Error) status code. In fact, in the event of any exception that isn’t otherwise mapped, the response will always have a 500 status code. But you can change that by mapping SpittleNotFoundException otherwise.
-When SpittleNotFoundException is thrown, it’s a situation where a requested resource isn’t found. The HTTP status code of 404 is precisely the appropriate response status code when a resource isn’t found. So, let’s use @ResponseStatus to map SpittleNotFoundException to HTTP status code 404.
-
-```java
-@ResponseStatus(value=HttpStatus.NOT_FOUND,reason="Spittle Not Found")
-public class SpittleNotFoundException extends RuntimeException {
-}
-```
-
-@ResponseStatus - Marks a method or exception class with the status ResponseStatus.code() and ResponseStatus.reason() that should be returned.
-
-After introducing this @ResponseStatus annotation, if a SpittleNotFoundException were to be thrown from a controller method, the response would have a status code of 404 and a reason of Spittle Not Found.
-
-`Exception-handling methods`:- Mapping exceptions to status codes is simple and sufficient for many cases. But what if you want the response to carry more than just a status code that represents the error that occurred, Rather than treat the exception generically as some HTTP error, maybe you’d like to handle the exception the same way you might handle the request itself.
-
-If @ExceptionHandler methods can handle exceptions thrown from any handler method in the same controller class, you might be wondering if there’s a way they can handle exceptions thrown from handler methods in any controller. As of Spring 3.2 they certainly can, but only if they’re defined in a controller advice class.
+*JasperReports* - JasperReports ( http://jasperreports.sourceforge.net) is a powerful open-source reporting engine that supports the creation of report designs using an easily understood XML file format. JasperReports is capable of rendering reports in four different formats: CSV, Excel, HTML and PDF.
 
 
-**Advising controllers**:- Certain aspects of controller classes might be handier if they could be applied broadly across all controllers in a given application. @ExceptionHandler methods, for instance, could prove useful in handling exceptions across multiple controllers. If a particular exception is thrown from multiple controller classes, you might find yourself duplicating the same @ExceptionHandler method in all of those controllers. Or, to avoid the duplication, you might create a base controller class that all of your controllers could extend to inherit the common @ExceptionHandler method.
-Spring 3.2 brings another option to the table: controller advice. A controller advice is any class that’s annotated with @ControllerAdvice and has one or more of the following kinds of methods:
-1. @ExceptionHandler-annotated
-2. @InitBinder-annotated
-3. @ModelAttribute-annotated
+*Thymeleaf* - Thymeleaf is a modern server-side Java template engine for both web and standalone environments, capable of processing HTML, XML, JavaScript, CSS and even plain text.The main goal of Thymeleaf is to provide an elegant and highly-maintainable way of creating templates. To achieve this, it builds on the concept of Natural Templates to inject its logic into template files in a way that doesn’t affect the template from being used as a design prototype. This improves communication of design and bridges the gap between design and development teams.
+Thymeleaf has also been designed from the beginning with Web Standards in mind – especially HTML5 – allowing you to create fully validating templates if that is a need for you.
 
-Those methods in an @ControllerAdvice-annotated class are applied globally across all @RequestMapping-annotated methods on all controllers in an application.
-The @ControllerAdvice annotation is itself annotated with @Component. Therefore,an @ControllerAdvice-annotated class will be picked up by component-scanning, just like an @Controller-annotated class.
-
-One of the most practical uses for @ControllerAdvice is to gather all @ExceptionHandler methods in a single class so that exceptions from all controllers are handled consistently in one place.
-
-```java
-@ControllerAdvice
-public class AppWideExceptionHandler {
-    @ExceptionHandler(DuplicateSpittleException.class)
-    public String duplicateSpittleHandler() {
-    return "error/duplicate";}
-}
-```
-
-@ControllerAdvice - Specialization of @Component for classes that declare @ExceptionHandler, @InitBinder, or @ModelAttribute methods to be shared across multiple @Controller classes.
-@ExceptionHandler - Annotation for handling exceptions in specific handler classes and/or handler methods.
-
-Now, if a DuplicateSpittleException is thrown from any controller method, no matter which controller it’s in, this duplicateSpittleHandler() method will be called to handle the exception. The @ExceptionHandler-annotated method can be written much like an @RequestMapping-annotated method.
+Out-of-the-box, Thymeleaf allows you to process six kinds of templates, each of which is called a Template Mode:- HTML,XML,TEXT,JAVASCRIPT,CSS,RAW.
+There are two `markup template modes ( HTML and XML )`, three `textual template modes ( TEXT , JAVASCRIPT and CSS )` and a `no-op template mode ( RAW )`.
+The HTML template mode will allow any kind of HTML input, including HTML5, HTML 4 and XHTML. No validation or well-formedness check will be performed, and template code/structure will be respected to the biggest possible extent in output.The XML template mode will allow XML input. In this case, code is expected to be well-formed – no unclosed tags, no unquoted attributes, etc – and the parser will throw exceptions if well-formedness violations are found. Note that no validation (against a DTD or XML Schema) will be performed.
 
 
-Spring MVC is not used in developing web applications commonly nowadays coz:-
-1. Web container is required.
-2. Takes more processing time.
-3. Not lightweight.
+`Standard Expression Syntax` -
 
-Market is using Javascript MVC frameworks to develop web applications instead of Java MVC e.g Angular,React,Vue.
-
-
-**Locales**:- Most parts of Spring’s architecture support internationalization, just as the Spring web MVC framework does. `DispatcherServlet` enables you to automatically resolve messages using the client’s locale.This is done with `LocaleResolver` objects.
-When a request comes in, the DispatcherServlet looks for a locale resolver, and if it finds one it tries to use it to set the locale. Using the `RequestContext.getLocale()` method, you can always retrieve the locale that was resolved by the locale resolver.
-
-In addition to automatic locale resolution, you can also attach an interceptor to the handler mapping to change the locale under specific circumstances, for example, based on a parameter in the request.
-
-Locale resolvers and interceptors are defined in the `org.springframework.web.servlet.i18n` package and are configured in your application context in the normal way.
+- Simple expressions:
+    1. Variable Expressions: ${...}
+    2. Selection Variable Expressions: *{...}
+    3. Message Expressions: #{...}
+    4. Link URL Expressions: @{...}
+    5. Fragment Expressions: ~{...}
 
 
-**Spring’s multipart (file upload) support8**:- Spring’s built-in multipart support handles file uploads in web applications. You enable this multipart support with pluggable `MultipartResolver` objects, defined in the `org.springframework.web.multipart package`. Spring provides one MultipartResolver implementation for use with Commons FileUpload and another for use with Servlet 3.0 multipart request parsing.
-By default, Spring does no multipart handling, because some developers want to handle multiparts themselves. You enable Spring multipart handling by adding a multipart resolver to the web application’s context. Each request is inspected to see if it contains a multipart. If no multipart is found, the request continues as expected. If a multipart is found in the request, the MultipartResolver that has been declared in your context is used. After that, the multipart attribute in your request is treated like any other attribute.
+
+----------
+
+## Service-Oriented (Web Services)
+
+`JAX-WS` stands for Java API for XML Web Services. JAX-WS is a technology for building web services and clients that communicate using XML. JAX-WS allows developers to write message-oriented as well as RPC-oriented web services.
+
+In JAX-WS, a web service operation invocation is represented by an XML-based protocol such as SOAP. The SOAP specification defines the envelope structure, encoding rules, and conventions for representing web service invocations and responses. These calls and responses are transmitted as SOAP messages (XML files) over HTTP.
+
+Although SOAP messages are complex, the JAX-WS API hides this complexity from the application developer. On the server side, the developer specifies the web service operations by defining methods in an interface written in the Java programming language. The developer also codes one or more classes that implement those methods. Client programs are also easy to code. A client creates a proxy (a local object representing the service) and then simply invokes methods on the proxy. With JAX-WS, the developer does not generate or parse SOAP messages. It is the JAX-WS runtime system that converts the API calls and responses to and from SOAP messages.
+
+With JAX-WS, clients and web services have a big advantage: the platform independence of the Java programming language. In addition, JAX-WS is not restrictive: a JAX-WS client can access a web service that is not running on the Java platform, and vice versa. This flexibility is possible because JAX-WS uses technologies defined by the World Wide Web Consortium (W3C): HTTP, SOAP, and the Web Service Description Language (WSDL). WSDL specifies an XML format for describing a service as a set of endpoints operating on messages.
+
+`Setting the Port`:- Several files in the JAX-WS examples depend on the port that you specified when you installed the Application Server. The tutorial examples assume that the server runs on the default port, 8080. If you have changed the port, you must update the port number in the following file before building and running the JAX-WS examples:
 
 
----
+## (Distributed Applications)Web Services
 
-### (Distributed Applications)Web Services
+`Web services` are client and server applications that communicate over the World Wide Web's (WWW) HyperText Transfer Protocol (HTTP).Web services provide a standard means of interoperating between software applications running on a variety of platforms and frameworks.Web services are characterized by their great interoperability and extensibility as well as their machine-processable descriptions.
+On the conceptual level, a service is a software component provided through a network-accessible endpoint. The service consumer and provider use messages to exchange invocation request and response information in the form of self-containing documents that make very few assumptions about the technological capabilities of the
+receiver.
+On a technical level, web services can be implemented in various ways. The two types of web services discussed in this section can be distinguished as "big" web services and `RESTful` web services.
 
-Starting with Spring 3.0, Spring introduced first-class support for creating REST APIs. And Spring’s REST implementation has continued to evolve through Spring.
-Spring’s REST support builds on Spring MVC.
-The REST capabilities are provided by the Spring MVC module (same module that provides model-view-controller capabilities). It is not a JAX-RS implementation and can be seen as a Spring alternative to the JAX-RS standard.
+*RESTful Web Services* - Java has options for implementing and publishing RESTful web services. On the publishing side, the choices range from very basic, command-line servers that are well suited for development, testing, and even low-volume production; through lightweight, Java-centric web servers such as Tomcat and Jetty; and up to full-blown Java Application Servers (JAS) such as GlassFish, JBoss, Oracle WebLogic, and WebSphere.
+There is also variety among the APIs and their implementations for RESTful services:-
+1. The HttpServlet and JSP APIs.
+2. The JAX-RS (Java API for XML-RESTful Services) API.
+3. The third-party Restlet API, which is very similar to JAX-RS.
+4. The JAX-WS (Java API for XML-Web Services) API.
+5. Spring REST.
+
+API used to implement the web service does not constrain how this service can be published. The exception is the servlet API, as servlets need to be deployed in a servlet container such as Tomcat’s Catalina or Jetty. (Jetty is the name of both the web server and its servlet container.) There are shortcuts for publishing JAX-RS and JAX-WS services but these, too, can be published with Tomcat or Jetty; the same goes for Restlet services.
+The decision about how to publish a service depends on many factors. For example, if service deployment requires wire-level security in the form of HTTPS together with user authentication/authorization, then a web server such as Tomcat or Jetty is the obvious starting point. If the published web services are to interact with EJBs, which are deployed in an EJB container, then a souped-up web server such as TomEE (Tomcat with EE support) or a full JAS is a better choice. In development, simpler commandline options such as Endpoint
 
 
 **The fundamentals of REST**:-
@@ -2908,6 +3656,72 @@ The REST capabilities are provided by the Spring MVC module (same module that pr
 - `Transfer` — REST involves transferring resource data, in some representational form, from one application to another.
 
 Resources in REST are identified and located with URLs. There are no strict rules regarding RESTful URL structure, but the URL should identify a resource, not bark a command to the server. Again, the focus is on things, not actions.
+
+
+### JAX-RS
+
+JAX-RS is a Java programming language API designed to make it easy to develop applications that use the REST architecture.The JAX-RS API uses Java programming language annotations to simplify the  development of RESTful web services. Developers decorate Java programming language class files with JAX-RS annotations to define resources and the actions that can be performed on those resources. JAX-RS annotations are runtime annotations; therefore, runtime reflection will generate the helper classes and artifacts for the resource. A Java EE application archive containing JAX-RS resource classes will have the resources configured, the helper classes and artifacts generated, and the resource exposed to clients by deploying the archive to a Java EE server.
+
+
+**Applications** - A JAX-RS application consists of one or more resources and zero or more providers.
+The resources and providers that make up a JAX-RS application are configured via an application supplied subclass of Application. An implementation MAY provide alternate mechanisms for locating resource classes and providers (e.g. runtime class scanning) but use of Application is the only portable means of configuration.
+
+```java
+@ApplicationPath("/api")
+public class HelloApplication extends Application {
+    ...
+}
+```
+
+**Resources** - Using JAX-RS a Web resource is implemented as a resource class and requests are handled by resource methods.
+A resource class is a Java class that uses JAX-RS annotations to implement a corresponding Web resource. Resource classes are POJOs that have at least one method annotated with @Path or a request method designator.
+By default a new resource class instance is created for each request to that resource. First the constructor is called, then any requested dependencies are injected,then the appropriate method is invoked and finally the object is made available for garbage collection.
+
+```java
+@Path("/hello-world")
+public class HelloResource {
+    @GET
+    @Produces("text/plain")
+    public String hello() {
+        return "Hello, World!";
+    }
+}
+```
+
+`Constructors` - Root resource classes are instantiated by the JAX-RS runtime and MUST have a public constructor for which the JAX-RS runtime can provide all parameter values. Note that a zero argument constructor is permissible under this rule.
+
+*URI Templates* - A root resource class is anchored in URI space using the `@Path annotation`. The value of the annotation is a relative URI path template whose base URI is provided by the combination of the deployment context and the application path.
+A URI path template is a string with zero or more embedded parameters that, when values are substituted for all the parameters, is a valid URI path.
+
+```java
+@Path("widgets/{id}")
+public class Widget {
+    ...
+}
+```
+
+*Media Type Capabilities* - Application classes can declare the supported request and response media types using the `@Consumes` and `@Produces` annotations respectively. These annotations MAY be applied to a resource method, a resource class, or to an entity provider.
+Use of these annotations on a resource method overrides any on the resource class or on an entity provider for a method argument or return type. In the absence of either of these annotations,support for any media type (/*) is assumed.
+
+```java
+@Path("widgets")
+@Produces("application/widgets+xml")
+public class WidgetsResource {
+    @GET
+    public Widgets getAsXML() {...}
+
+    @GET
+    @Produces("text/html")
+    String getAsHtml() {...}
+}
+```
+
+
+### Spring REST
+
+Starting with Spring 3.0, Spring introduced first-class support for creating REST APIs. And Spring’s REST implementation has continued to evolve through Spring.
+Spring’s REST support builds on Spring MVC.
+The REST capabilities are provided by the Spring MVC module (same module that provides model-view-controller capabilities). It is not a JAX-RS implementation and can be seen as a Spring alternative to the JAX-RS standard.
 
 Spring has long had some of the ingredients needed for exposing REST resources.Starting with version 3.0, however, Spring began adding enhancements to Spring MVC to provide first-class REST support.Spring supports the creation of REST resources in the following ways:
 1. Controllers can handle requests for all HTTP methods, including the four primary REST methods: GET, PUT, DELETE, and POST. Spring 3.2 and higher also supports the PATCH method.
@@ -2991,8 +3805,9 @@ Note that all but five of the HTTP message converters are registered by default,
 public @ResponseBody List<Spittle> spittles(){}
 ```
 
-The @ResponseBody annotation tells Spring that you want to send the returned object as a resource to the client, converted into some representational form that the client can accept. More specifically, DispatcherServlet considers the request’s Accept header and looks for a message converter that can give the client the representation it wants.
+The `@ResponseBody annotation` tells Spring that you want to send the returned object as a resource to the client, converted into some representational form that the client can accept by bypassing the view resolution. More specifically, DispatcherServlet considers the request’s Accept header and looks for a message converter that can give the client the representation it wants.
 For illustration’s sake, if the client’s Accept header specifies that the client will accept application/json, and if the Jackson JSON library is in the application’s classpath, then either MappingJacksonHttpMessageConverter or MappingJackson2HttpMessageConverter will be chosen (depending on which version of Jackson is in the classpath). The message converter will convert the Spittle list returned from the controller into a JSON document that will be written to the body of the response.
+@ResponseBody - Annotation that indicates a method return value should be bound to the web response body.Indicates that the method returns the data directly to the HTTP response body,bypassing the view resolution. This is used in RESTful APIs and can automatically serialize objects to JSON/XML.
 
 
 `RECEIVING RESOURCE STATE IN THE REQUEST BODY`:- A REST API can also receive resource representations from the client. It’d be inconvenient if your controller had to convert a JSON or XML representation sent from a client into an object it can use.
@@ -3004,7 +3819,6 @@ public @ResponseBody Spittle saveSpittle(@RequestBody Spittle spittle) {}
 ```
 
 @RequestBody - Annotation indicating a method parameter should be bound to the body of the web request.Spring treats result of method as response.Converts response to JSON.Binds HTTP request body to method parameter and automatically deserialize JSON/XML. It is used in POST or PUT requests to read data sent by the client and supports content negotiations.
-@ResponseBody - Annotation that indicates a method return value should be bound to the web response body.Indicates that the method returns the data directly to the HTTP response body,bypassing the view resolution. This is used in RESTful APIs and can automatically serialize objects to JSON/XML.
 
 
 `DEFAULTING CONTROLLERS FOR MESSAGE CONVERSION`:- The @ResponseBody and @RequestBody annotations are succinct yet powerful ways to engage Spring’s message converters when handling requests. But if you’re writing a controller that has several methods, all of which should use message conversion, then those annotations get somewhat repetitive.
@@ -3028,9 +3842,20 @@ public class SpittleController {
 Neither of the handler methods are annotated with @ResponseBody. But because the controller is annotated with @RestController, the objects returned from those methods will still go through message conversion to produce a resource representation for the client.
 
 
-**Validation**:- Use @Valid to validate incoming request data automatically.
-@Validated - Variant of JSR-303's jakarta. validation. Valid, supporting the specification of validation groups. Designed for convenient use with Spring's JSR-303 support but not JSR-303 specific.
-Can be used, for example, with Spring MVC handler methods arguments. Supported through org. springframework. validation. SmartValidator's validation hint concept, with validation group classes acting as hint objects.
+**Validation**:- 
+
+Use `@Valid` to validate incoming request data automatically.Triggers validation of an object on the method level.It is used with BindingResult interface to capture valoidation errors.
+
+```java
+public String addUser(@Valid @RequestBody User user, BindingResult result){
+    if(result.hasErrors()){
+        return "Validation errors: " + result.getAllErrors();
+    }
+    return "User added" + user.getName();
+}
+```
+
+`@Validated` - Variant of JSR-303's jakarta.validation.Valid, supporting the specification of validation groups. Designed for convenient use with Spring's JSR-303 support but not JSR-303 specific.Can be used, for example, with Spring MVC handler methods arguments. Supported through org.springframework.validation.SmartValidator's validation hint concept, with validation group classes acting as hint objects.
 
 ```java
 @RestController
@@ -3075,6 +3900,11 @@ min_user_id_value="User Id must be greater than 1"
 start_date=
 end_date=
 ```
+
+Defines a global exception handler for all contollers.It is used for centralized exception handling.It supports:-
+- basePackages - Limits scanning to specific packages.
+- annotations - Limits to controllers with specific annotations.
+- assignableTypes - Limits to specific controller types.
 
 When a method returns more than one error,e.g getUserBetween can return two errors at once.
 
@@ -3231,6 +4061,14 @@ public record CreateUserRecord(
     }
 }
 ```
+
+
+`@CrossOrigin` enables cross-origin requests and can be applied at the class or method level;.It supports following attributes.
+- origins- Allowed origins.
+- methods - Allowed methods.
+- allowedHeaders - Allowed headers.
+- exposedHeaders - Axposed Headers.
+- allowedCredentials - Allowed credentials.
 
 
 **Serving more than resources**:- The @ResponseBody annotation is helpful in transforming a Java object returned from a controller to a resource representation to send to the client.A good REST API does more than transfer resources between the client and server. It also gives the client additional metadata to help the client understand the resource or know what has just taken place in the request.
@@ -3428,6 +4266,15 @@ public @ResponseBody Error spittleNotFound(SpittleNotFoundException e) {
 
 @ResponseStatus - Marks method or exception class with HTTP status code and reason. It is possible to provide a custom reason message.
 
+```java
+@ResponseStatus(httpStatus.NOT_FOUND)
+public class ResourceNotFound extends RuntimeException{
+    public ResourceNotFoundException(String message){
+        super(message);
+    }
+}
+```
+
 
 ```java
 @GetMapping("/{userId}")
@@ -3448,7 +4295,7 @@ public class ErrorDTO {
 }
 ```
 
-@RestControllerAdvice - A convenience annotation that is itself annotated with @ControllerAdvice and @ResponseBody.
+@RestControllerAdvice - A convenience annotation that is itself annotated with @ControllerAdvice and @ResponseBody.Used for global RESTful exception handling.
 
 ```java
 @RestControllerAdvice
@@ -3560,6 +4407,18 @@ By default, the request version is parsed into a semantic version with major, mi
 -------------------
 
 
+## Web on Reative Stack
+
+Parallel to Spring Web MVC, Spring Framework 5.0 introduced a reactive-stack web framework, `Spring WebFlux`,which is also based on its source module (spring-webflux).
+
+`Spring Web Flow` - Spring Web Flow (SWF) aims to be the best solution for the management of web application page flow.SWF integrates with existing frameworks like Spring MVC and JSF, in both Servlet and Portlet environments. If you have a business process (or processes) that would benefit from a conversational model as opposed to a purely request model, then SWF may be the solution.
+SWF allows you to capture logical page flows as self-contained modules that are reusable in different situations, and as such is ideal for building web application modules that guide the user through controlled navigations that drive business processes.
+
+
+
+----------------
+
+
 ## Spring Boot Web
 
 Spring Boot is well suited for web application development. You can create a self-contained HTTP server by using embedded Tomcat, Jetty, Undertow, or Netty. Most web applications use the `spring-boot-starter-web` module to get up and running quickly. You can also choose to build reactive web applications by using the `spring-boot-starter-webflux` module.
@@ -3597,4 +4456,5 @@ To make Spring web app:
 3. Configure required beans in configuration using xml or java-config(DispatcherServlet,Viewresolver,Controller)
 4. Write web.xml
 5. Write controller class
-6. configure annotations e,g(@requestBody)
+6. configure annotations e,g(@RequestBody)
+

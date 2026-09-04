@@ -17,7 +17,7 @@ Java Editions includes:
 Before writing Java program,you have to install JDK.There are two versions of JDKs:-
 
 1. Proprietary JDK of Oracle.Every six months, Oracle releases a new version of Java.
-2. JDK open version
+2. JDK open version.
 
 ## Java Development Kit(JDK)
 
@@ -462,8 +462,7 @@ In December 2008, Java FX 1.0 SDK was released. JavaFX is used to create graphic
    2. Swing components, which are called lightweight because they do not require allocation of native resources in the operating system’s windowing toolkit. The Swing API is a complimentary extension of AWT.
 In the first versions, it was never really clear if JavaFX would actually have a future and grow up to replace Swing.
 
-- `Java SE 7 (2011)`:- codename **Dolphin**, was the first Java version released by Oracle.It was the result of an extensive collaboration between Oracle engineers and
-members of the worldwide Java communities, like the OpenJDK Community and the Java Community Process (JCP).Features:-
+- `Java SE 7 (2011)`:- codename **Dolphin**, was the first Java version released by Oracle.It was the result of an extensive collaboration between Oracle engineers and members of the worldwide Java communities, like the OpenJDK Community and the Java Community Process (JCP).Features:-
    1. JVM support for dynamic languages with the new invokedynamic bytecode (basically, Java code can use code implemented in non-Java languages, such as C).
    2. Compressed 64-bit pointers (internal optimization of the JVM, so less memory is consumed).
    3. Small language changes grouped under project Coin:-
@@ -477,11 +476,15 @@ members of the worldwide Java communities, like the OpenJDK Community and the Ja
    6. Timsort to sort collections and arrays of objects instead of merge sort (Sets of data that are ordered need to be sorted using an algorithm, basically, in this version, the algorithm was replaced with one that has better performance. Better performance usually means reducing of consumed resources: memory and/or CPU, or reducing the time needed for execution.)
    JavaFX 2.0 was released with Java 7. This confirmed that the JavaFX project had a future with Oracle. As a major change, JavaFX stopped being a scripting language and became a Java API.JavaFX started gaining ground over Swing because of its hardware-accelerated graphical engine called Prism that did a better job at rendering.
 
-- `Java SE 8 (2014)`:- codename **Spider**.Included features that were initially intended to be part of Java 7.JDK8 was created to simplify programming i.e way of writing code in less no. of lines.It's also influenced by the hardware influence i.e CPU became multicore, majority of java programs used only one core.JDK8 enabled parallel programming/procesing so that Java programs can run in multi-processors.Features:-
+- `Java SE 8 (2014)`:- codename **Spider**.Included features that were initially intended to be part of Java 7.JDK8 was created to simplify programming i.e way of writing code in less no. of lines.It's also influenced by the hardware i.e CPU became multicore, majority of java programs used only one core.JDK8 enabled parallel programming/procesing so that Java programs can run in multi-processors.Features:-
    1. Language syntax changes:-
       - Language-level support for lambda expressions (functional programming features).
       - Support for default methods in interfaces.
+      - Stream API.
+      - Optionals.
+      - Functionl Interfaces.
       - New date and time API.
+      - Method References.
       - New way to do parallel processing by using streams.
       - CompletableFuture
    2. Improvements of the garbage collection process.
@@ -509,6 +512,19 @@ members of the worldwide Java communities, like the OpenJDK Community and the Ja
    5. Heap allocation on alternative memory devices (The memory needed by JVM to run a Java program—called heap memory—can be allocated on an alternative memory device, so the heap can also be split between volatile and non-volatile RAM).
    6. JIT compiler.
    7. Local variable type inference(var).
+   1. JShell
+2. JPMS (Java Platform Modulen System)
+3. JLink (Java Linker)
+4. HTTP/2 Client
+5. Process API Update
+6. Private method inside Interface
+7. Try with Resources Enhancement
+8. Factory Methods to create unmodifiable colections
+9. <> Operator Enhancement  (Dimond Operator)
+10. Stream API Enhancement
+11. Safe Varargs Arguments
+12. G1GC (Garbage Fiest Garbage Collector)
+
 
 - `Java SE 11 (2018)`:-
    1. LTS release with HTTP client/flight recorder.
@@ -580,6 +596,58 @@ members of the worldwide Java communities, like the OpenJDK Community and the Ja
    1. Compact Object Headers.
    2. Enhanced Pattern Matching by allowing primitive types in all pattern contexts, and extend instanceof and switch to work with all primitive types.Align type patterns with instance of, and align instanceof with safe casting.
    3. Improved Foreign Function & Memory API.
+
+
+
+1. Whta is JPMS (Java Platform Module System). ?
+
+A.Definition:
+	Jpms is an Module Programming insted of Jar File.
+	We are uysing Traditional Jar file Aproach before Java9, but with Jar File Aproach
+	there are some problems are there those problems are called Jar Hell
+	to over come this proble this JPMS concept comes in Java9.
+
+Advantages:
+	1.In the moduler programming JVM is going to check at the begining only
+	all the dependentabl thing are available are not. 
+	(there for there no chance of NoClassDefFoundError)
+
+	2. if i want to export only 1-package so then other package will never touch by other.
+
+	3. JRE, rt.jar are divided into Module, which module are required only that module 
+		my Jre will use now the size of JRE is by default become decresed
+
+Problems with before Java-9
+	
+	fig: Jar Hell or Class Path Hell
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	|(ClassFile, Interface, Enum) --into--> Packages ---into--> Jar Filers		|
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+		Problems  
+		1. ClassNotFoundException
+		2. Version Conflict
+		3. Security Problems
+		4. Jdk|Jre having Monolithic Structure and Bigger in size.
+
+B.Histry
+
+
++++++++++++++++++++++
+HTTP/2 Client
++++++++++++++++++++++
+
+before Java 9 to communicate in Network for Request and Response we use HttpUrl, which is very dificult
+HttpUrlConnection (in 1997)
+	Difficult to use
+	At a time onle onew Request (i.e Synchronized)
+	Tex oriented
+	Blocking Mode
+
+Then we are use 3rt party api i.e  Apache HttpClient Or GoogleHttpClient
+
+But in Java9 the new features HttP/2 Client
+all problems are solved
 
 
 ## Reflection API

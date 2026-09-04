@@ -5,18 +5,17 @@ It was created by Brendan in 10 days.It was earlier called LiveScript.The micros
 
 Javascript can be run in the Browser(contains Javascript Engine) e.g FireFox(SpiderMonkey), Chrome(v8) and also can be run in Node.  
 JavaScript allows you to add interactivity to your pages. Common examples that you may have seen on the websites are sliders, click interactions, popups and so on.
-It enables real-time features like drop-down menus,live content updates,form validation and animations.
 
 JavaScript is a scripting language of the web. As the web evolves from a static to a dynamic environment, technology focus is shifting from static markup and styling—frequently handled by content management systems or automated scripts—to dynamic interfaces and advanced interaction.
 
 "Strict mode" ('use strict') is a way to enforce stricter parsing and error handling in your JavaScript code. It helps in catching common coding bugs and preventing the use of certain JavaScript features.
 
-Disabling Javascript enables ads free web sites. 
+Disabling Javascript enables adds free web sites. 
 
 It can be used to build: Web/Mobile Apps,Real-Time Networking apps,Command-line tools and games.
 JavaScript is an object orient programming language designed to make web development easier and more attractive. In most cases, JavaScript is used to create responsive, interactive elements for web pages, enhancing the user experience. Things like menus, animations, video players, interactive maps, and even simple in-browser games can be created quickly and easily with JavaScript.
 
-ECMAScript is a specification while JavaScript is a programming language that follows ECMAScript.
+* ECMAScript is a specification while JavaScript is a programming language that follows ECMAScript.
 
 ## JavaScript evolution
 
@@ -73,7 +72,7 @@ The web server for Node is **http-server**
 sudo npm i -g http-server
 ```
 
-## Javascript EcosysteBlock & Inline elements.m
+## Javascript Ecosystem
 
 `Javascript`:- The core language; sometimes referred to as vanilla Javascript or Vanilla JS.
 `ECMAScript`:- The browser specification of the Javascript language.
@@ -226,37 +225,4 @@ export default back;
 import back from './back.js';
 --
 ```
-
-- Hoisting, Event Bubbling, Scope, Protoype, Shadow DOM, strict.
-- Closures
-- Execution context
-- objects
-- classes
-- promise
-- Timeout & interval
-- this keyword
-- Template strings
-- De-structuring
-- Rest & spread
-- callbacks
-- Async Await
-- Prototypes
-- Modules
-- Sets & Weaksets
-- Maps & Weakmaps
-- Regular Expressions
-- Symbols
-- Proxy & Reflect
-- Iterators & Generators
-- Dates & intl
-- Typed Arrays
-- ES Next features
-
-
-`Browser APIs` are built into your web browser, and are able to expose data from the surrounding computer environment, or do useful complex things. For example:
-
-- The DOM (Document Object Model) API allows you to manipulate HTML and CSS, creating, removing and changing HTML, dynamically applying new styles to your page, etc. Every time you see a popup window appear on a page, or some new content displayed for example, that's the DOM in action.
-- The Geolocation API retrieves geographical information. This is how Google Maps is able to find your location and plot it on a map.
-- The Canvas and WebGL APIs allow you to create animated 2D and 3D graphics. People are doing some amazing things using these web technologies.
-- Audio and Video APIs like HTMLMediaElement and WebRTC allow you to do really interesting things with multimedia, such as play audio and video right in a web page, or grab video from your web camera and display it on someone else's computer (try our simple Snapshot demo to get the idea).
 

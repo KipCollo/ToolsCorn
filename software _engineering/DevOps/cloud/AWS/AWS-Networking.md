@@ -19,14 +19,10 @@ AWS Networking services includes:-
 
 ## AWS Virtual Private Cloud (VPC)
 
+The `Amazon Virtual Private Cloud (VPC)` service provides the network backbone for many AWS services. A virtual private cloud is a virtual network in the AWS cloud that’s logically isolated from other networks. The most well-­known use of VPCs is connecting EC2 instances together and to other AWS services and networks, including the Internet.
 A VPC is a virtual network in the cloud. You choose the Region in which to create your VPC and define its network parameters such as the IP address range and any subnetworks within it, for resource isolation.
-Resources deployed in your VPC can then access services on the internet or can grant inbound access from the internet, for example, if you are hosting an e-commerce web
-server.
+Resources deployed in your VPC can then access services on the internet or can grant inbound access from the internet, for example, if you are hosting an e-commerce web server.
 
-AWS already provides you with a default VPC in each Region. These default VPCs are designed to get you up and running with the ability to deploy EC2 instances so that they can access the internet and, where necessary, be configured to allow direct inbound access from the internet.
-You can also configure custom VPCs to suit your business requirements. When configuring a new VPC, you need to define an IP address block from one of the private
-IP ranges. Your VPC spans the entire Region in which you deploy it. This means that you can place workloads in different Availability Zones within the VPC to design for
-high availability.
 
 - A service that lets users to launch AWS resources in a logically isolated virtual network that they define.Users have complete control over their virtual networking environment, including:-
    1. A selection of user’s own IP address range (possible to use both IPv4 and IPv6 for most resources)
@@ -39,20 +35,26 @@ Allows users to use multiple layers of security to help control access to Amazon
 
 With Amazon Virtual Private Cloud (Amazon VPC), you can launch AWS resources in a logically isolated virtual network that you've defined. This virtual network closely resembles a traditional network that you'd operate in your own data center, with the benefits of using the scalable infrastructure of AWS.
 
-*Features*:- The following features help you configure a VPC to provide the connectivity that your applications need:
-
-- Virtual private clouds (VPC):- A VPC is a virtual network that closely resembles a traditional network that you'd operate in your own data center.It is logically isolated from other virtual networks in the AWS Cloud. You can specify an IP address range for the VPC, add subnets, add gateways, and associate security groups
-- Subnets:- A subnet is a range of IP addresses in your VPC. A subnet must reside in a single Availability Zone. After you add subnets, you can deploy AWS resources in your VPC.You can connect a subnet to the internet, other VPCs, and your own data centers, and route traffic to and from your subnets using route tables.
-- IP addressing:- You can assign IP addresses, both IPv4 and IPv6, to your VPCs and subnets. You can also bring your public IPv4 addresses and IPv6 GUA addresses to AWS and allocate them to resources in your VPC, such as EC2 instances, NAT gateways, and Network Load Balancers.
-- Routing:- Use route tables to determine where network traffic from your subnet or gateway is directed.
-- Gateways and endpoints:- A gateway connects your VPC to another network. For example, use an internet gateway to connect your VPC to the internet. Use a VPC endpoint to connect to AWS services privately, without the use of an internet gateway or NAT device.
-- Peering connections:- Use a VPC peering connection to route traffic between the resources in two VPCs.
-- Traffic Mirroring:- Copy network traffic from network interfaces and send it to security and monitoring appliances for deep packet inspection.
-- Transit gateways:- Use a transit gateway, which acts as a central hub, to route traffic between your VPCs, VPN connections, and AWS Direct Connect connections.
-- VPC Flow Logs:- A flow log captures information about the IP traffic going to and from network interfaces in your VPC.
-- VPN connections:-  Connect your VPCs to your on-premises networks using AWS Virtual Private Network (AWS VPN).
+- *Features*:- The following features help you configure a VPC to provide the connectivity that your applications need:
+   - `Virtual private clouds (VPC)`:- A VPC is a virtual network that closely resembles a traditional network that you'd operate in your own data center.It is logically isolated from other virtual networks in the AWS Cloud. You can specify an IP address range for the VPC, add subnets, add gateways, and associate security groups
+   - `Subnets`:- A subnet is a range of IP addresses in your VPC. A subnet must reside in a single Availability Zone. After you add subnets, you can deploy AWS resources in your VPC.You can connect a subnet to the internet, other VPCs, and your own data centers, and route traffic to and from your subnets using route tables.
+   - `IP addressing`:- You can assign IP addresses, both IPv4 and IPv6, to your VPCs and subnets. You can also bring your public IPv4 addresses and IPv6 GUA addresses to AWS and allocate them to resources in your VPC, such as EC2 instances, NAT gateways, and Network Load Balancers.
+   - `Routing`:- Use route tables to determine where network traffic from your subnet or gateway is directed.
+   - `Gateways and endpoints`:- A gateway connects your VPC to another network. For example, use an internet gateway to connect your VPC to the internet. Use a VPC endpoint to connect to AWS services privately, without the use of an internet gateway or NAT device.
+   - `Peering connections`:- Use a VPC peering connection to route traffic between the resources in two VPCs.
+   - `Traffic Mirroring`:- Copy network traffic from network interfaces and send it to security and monitoring appliances for deep packet inspection.
+   - `Transit gateways`:- Use a transit gateway, which acts as a central hub, to route traffic between your VPCs, VPN connections, and AWS Direct Connect connections.
+   - `VPC Flow Logs`:- A flow log captures information about the IP traffic going to and from network interfaces in your VPC.
+   - `VPN connections`:-  Connect your VPCs to your on-premises networks using AWS Virtual Private Network (AWS VPN).
 
 Your AWS account includes a default VPC in each AWS Region. Your default VPCs are configured such that you can immediately start launching and connecting to EC2 instances.You can choose to create additional VPCs with the subnets, IP addresses, gateways and routing that you need.
+
+When you create an AWS account, Amazon automatically creates a default VPC in each region. The default VPC is configured to allow instances within the VPC to access the Internet. This way you don’t have to create and configure your own VPC just to use EC2.You can create your own nondefault VPCs. Nondefault VPCs are fully isolated from every other network and AWS resource, including other VPCs. This means you’ll have to configure them explicitly if you want them to have access to other networks and AWS resources outside of the VPC.
+
+AWS already provides you with a default VPC in each Region. These default VPCs are designed to get you up and running with the ability to deploy EC2 instances so that they can access the internet and, where necessary, be configured to allow direct inbound access from the internet.
+You can also configure custom VPCs to suit your business requirements. When configuring a new VPC, you need to define an IP address block from one of the private
+IP ranges. Your VPC spans the entire Region in which you deploy it. This means that you can place workloads in different Availability Zones within the VPC to design for
+high availability.
 
 *Working with Amazon VPC*:- You can create and manage your VPCs using any of the following interfaces:
 
@@ -103,11 +105,27 @@ The following list shows the most common AWS services that can use public IPv4 a
 - Amazon WorkSpaces
 - Elastic Load Balancing
 
-## Concepts
 
-**Default and nondefault VPCs**:- If your account was created after December 4, 2013, it comes with a default VPC in each Region. A default VPC is configured and ready for you to use. For example, it has a default subnet in each Availability Zone in the Region, an attached internet gateway, a route in the main route table that sends all traffic to the internet gateway, and DNS settings that automatically assign public DNS hostnames to instances with public IP addresses and enable DNS resolution through the Amazon-provided DNS server (see DNS attributes in your VPC). Therefore, an EC2 instance that is launched in a default subnet automatically has access to the internet. If you have a default VPC in a Region and you don't specify a subnet when you launch an EC2 instance into that Region, we choose one of the default subnets and launch the instance into that subnet.
+A virtual private cloud (VPC) is a virtual network dedicated to your AWS account. It is logically isolated from other virtual networks in the AWS Cloud. You can specify an IP address range for the VPC, add subnets, add gateways, and associate security groups.
+A subnet is a range of IP addresses in your VPC. You launch AWS resources, such as Amazon EC2 instances, into your subnets. You can connect a subnet to the internet, other VPCs, and your own data centers, and route traﬃc to and from your subnets using route tables.
 
-You can also create your own VPC, and configure it as you need. This is known as a nondefault VPC. Subnets that you create in your nondefault VPC and additional subnets that you create in your default VPC are called nondefault subnets.
+**Default and nondefault VPCs**:- 
+
+*Default VPC* - If your account was created after December 4, 2013, it comes with a default VPC in each Region. A default VPC is configured and ready for you to use. For example, it has a default subnet in each Availability Zone in the Region, an attached internet gateway, a route in the main route table that sends all traffic to the internet gateway, and DNS settings that automatically assign public DNS hostnames to instances with public IP addresses and enable DNS resolution through the Amazon-provided DNS server (see DNS attributes in your VPC). Therefore, an EC2 instance that is launched in a default subnet automatically has access to the internet. If you have a default VPC in a Region and you don't specify a subnet when you launch an EC2 instance into that Region, we choose one of the default subnets and launch the instance into that subnet.
+
+A default VPC comes with a public subnet in each Availability Zone, an internet gateway, and settings to enable DNS resolution. Therefore, you can immediately start launching Amazon EC2 instances into a default VPC.
+When we create a default VPC, we do the following to set it up for you:
+1. Create a VPC with a size /16 IPv4 CIDR block (172.31.0.0/16). This provides up to 65,536 private IPv4 addresses.
+2. Create a size /20 default subnet in each Availability Zone. This provides up to 4,096 addresses per subnet, a few of which are reserved for our use.
+3. Create an internet gateway and connect it to your default VPC.
+4. Add a route to the main route table that points all traﬃc (0.0.0.0/0) to the internet gateway.
+5. Create a default security group and associate it with your default VPC.
+6. Create a default network access control list (ACL) and associate it with your default VPC.
+7. Associate the default DHCP options set for your AWS account with your default VPC.
+
+
+*Non-Default* - You can also create your own VPC, and configure it as you need. This is known as a nondefault VPC. Subnets that you create in your nondefault VPC and additional subnets that you create in your default VPC are called nondefault subnets.
+
 
 **Route tables**:- A route table contains a set of rules, called routes, that are used to determine where network traffic from your VPC is directed. You can explicitly associate a subnet with a particular route table. Otherwise, the subnet is implicitly associated with the main route table.
 
@@ -133,13 +151,39 @@ Alternatively, to allow an instance in your VPC to initiate outbound connections
 
 If you associate an IPv6 CIDR block with your VPC and assign IPv6 addresses to your instances, instances can connect to the internet over IPv6 through an internet gateway. Alternatively, instances can initiate outbound connections to the internet over IPv6 using an egress-only internet gateway. IPv6 traffic is separate from IPv4 traffic; your route tables must include separate routes for IPv6 traffic.
 
-## Build Your VPC and Launch a Web Server
+
+A VPC spans all of the Availability Zones in a Region. After you create a VPC, you can add one or more subnets in each Availability Zone.
+When you create a VPC, you specify its IP addresses as follows:
+1. IPv4 only – The VPC has an IPv4 CIDR block but does not have an IPv6 CIDR block.
+2. Dual stack – The VPC has both an IPv4 CIDR block and an IPv6 CIDR block.
+
+
+**VPC Resources**
+
+Each VPC automatically comes with the following resources:- Default DHCP option set, Default network ACL, Default security group, Main route table.
+You can create the following resources for your VPC:- Network ACLs, Custom route tables, Security groups, Internet gateway, NAT gateways.
+
+
+**VPC conﬁguration options** - You can specify the following conﬁguration options when you create a VPC.
+
+`Availability Zones` - Discrete data centers with redundant power, networking, and connectivity in an AWS Region.You can use multiple AZs to operate production applications and databases that are more highly available, fault tolerant, and scalable than would be possible from a single data center. If you partition your applications running in subnets across AZs, you are better isolated and protected from issues such as power outages, lightning strikes, tornadoes, and earthquakes.
+`CIDR blocks` - You must specify IP address ranges for your VPC and subnets.
+`Internet gateway` - Connects your VPC to the internet. The instances in a public subnet can access the internet because the subnet route table contains a route that sends traﬃc bound for the internet to the internet gateway. If a server doesn't need to be directly reachable from the internet, you should not deploy it into a public subnet.
+`DNS options` - If you need public IPv4 DNS hostnames for the EC2 instances launched into your subnets, you must enable both of the DNS options.
+- Enable DNS hostnames: EC2 instances launched in the VPC receive public DNS hostnames that correspond to their public IPv4 addresses.
+- Enable DNS resolution: DNS resolution for private DNS hostnames is provided for the VPC by the Amazon DNS server, called the Route 53 Resolver.
+`Name` - The names that you specify for the VPC and the other VPC resources are used to create Name tags. If you use the name tag auto-generation feature in the console, the tag values have the format name-resource.
+`NAT gateways` - Enables instances in a private subnet to send outbound traﬃc to the internet, but prevents resources on the internet from connecting to the instances. In production, we recommend that you deploy a NAT gateway in each active AZ.
+`Route tables` - Contains a set of rules, called routes, that determine where network traﬃc from your subnet or gateway is directed.
+
+
+**Build Your VPC and Launch a Web Server** - 
 
 Scenario
 
 In this lab, you use Amazon Virtual Private Cloud (VPC) to create your own VPC and add additional components to produce a customized network for a Fortune 100 customer. You also create security groups for your EC2 instance. You then configure and customize an EC2 instance to run a web server and launch it into the VPC that looks like the following customer diagram:
 
-## Create your VPC
+Create your VPC:-
 
 In this task, you use the VPC Wizard to create a VPC, an internet gateway, and two subnets in a single Availability Zone. An internet gateway is a VPC component that allows communication between instances in your VPC and the internet.
 
@@ -178,7 +222,7 @@ The wizard also creates a NAT gateway, which is used to provide internet connect
 8. Choose View VPC.
 Lab VPC details are displayed as per configuration.
 
-## Create additional subnets
+*Create additional subnets* - 
 
 In this task, you create two additional subnets in a second Availability Zone. This option is useful for creating resources in multiple Availability Zones to provide high availability.
 
@@ -198,7 +242,7 @@ In this task, you create two additional subnets in a second Availability Zone. T
 5. Choose Create subnet.
  The subnet will have all IP addresses starting with 10.0.3.x.
 
-## Associate the subnets and add routes
+*Associate the subnets and add routes* - 
 
 1. In the left navigation pane, choose Route Tables.
 2. Choose Public Route Table
@@ -214,7 +258,7 @@ You now configure the route table that is used by the private subnets.
 11. Choose Save associations.
  Your VPC now has public and private subnets configured in two Availability Zones:
 
-## Create a VPC security group
+*Create a VPC security group* - 
 
 In this task, you create a VPC security group, which acts as a virtual firewall for your instance. When you launch an instance, you associate one or more security groups with the instance. You can add rules to each security group that allow traffic to or from its associated instances.
 
@@ -233,7 +277,7 @@ In this task, you create a VPC security group, which acts as a virtual firewall 
 
 You use this security group in the next task when launching an EC2 instance.
 
-## Launch a web server instance
+*Launch a web server instance* - 
 
 In this task, you launch an EC2 instance into the new VPC. You configure the instance to act as a web server.
 
@@ -278,3 +322,75 @@ unzip lab-app.zip -d /var/www/html/
 chkconfig httpd on
 service httpd start
 ```
+
+
+
+**VPC CIDR Blocks** - Each VPC requires a Classless Inter-­Domain Routing (CIDR) block to define the range of IP version 4 (IPv4) addresses that resources within the VPC can use. Default VPCs have a CIDR of 172.31.0.0/16, which includes all addresses from 172.31.0.0 to 172.31.255.255. The /16 refers to the size of the CIDR. You must choose a CIDR size between /16 and /28, but otherwise, any CIDR you could assign to a traditional network can also be assigned to a VPC. The smaller the CIDR size, the greater the number of IP addresses available to the VPC. The following are a few examples of CIDR blocks that you could assign to a VPC:
+
+
+**Create a VPC using the AWS CLI** - The following procedure contains example AWS CLI commands to create a VPC plus the additional VPC resources needed to run an application.
+*Tagging* - You can add tags to a resource after you create it by using the create-tags command. Alternatively,you can add the --tag-specification option to the creation command for the resource as follows.
+
+```sh
+--tag-specifications ResourceType=vpc,Tags=[{Key=Name,Value=my-project}]
+```
+
+You use the aws ec2 command prefix to create a VPC because Amazon VPC was originally released as a feature tightly integrated into the Amazon Elastic Compute Cloud (EC2) subsystem, and AWS maintains this command structure to ensure backward compatibility for its API.
+Create an internet gateway by using the following create-internet-gateway command. The command returns the ID of the new internet gateway.
+
+```sh
+aws ec2 create-internet-gateway --query InternetGateway.InternetGatewayId -- output text
+```
+
+
+*To check your existing VPCs, use the aws ec2 describe-vpcs command.*
+The default command outputs a massive JSON payload. You can use the --query parameter to clean up the output and display only the most important details (like VPC ID, CIDR block, and State) in a clean table format:
+
+```sh
+aws ec2 describe-vpcs --query "Vpcs[*].{ID:VpcId,CIDR:CidrBlock,State:State,Default:IsDefault}" --output table
+```
+
+To view your VPC along with all of its connected subnets, internet gateways, route tables, and security groups, you will need to run a series of describe commands.Because the AWS CLI returns isolated data for each resource type, you can use the --filters flag to isolate only the components belonging to your specific VPC.
+
+1. List Subnets - To see all subnets inside your specific VPC, filter by the vpc-id:
+
+```sh
+aws ec2 describe-subnets --filters "Name=vpc-id,Values=vpc-your_vpc_id_here" --query "Subnets[*].{ID:SubnetId,CIDR:CidrBlock,AZ:AvailabilityZone,Name:Tags[?Key=='Name'].Value | [0]}" --output table
+```
+
+2. List Internet Gateways - Internet gateways are detached resources that get logically "attached" to a VPC. To find the gateway hooked up to your VPC:
+
+```bash
+aws ec2 describe-internet-gateways --filters "Name=attachment.vpc-id,Values=vpc-your_vpc_id_here" --query "InternetGateways[*].{ID:InternetGatewayId,State:Attachments[0].State}" --output table
+```
+
+3. List Route Tables - To see how traffic moves between your subnets and gateways within that VPC:
+
+```bash
+aws ec2 describe-route-tables --filters "Name=vpc-id,Values=vpc-your_vpc_id_here" --query "RouteTables[*].{ID:RouteTableId,Main:Associations[?Main==`true`].Main | [0]}" --output table
+```
+
+4. List Security Groups - To view the built-in firewalls safeguarding resources inside that VPC:
+
+```bash
+aws ec2 describe-security-groups --filters "Name=vpc-id,Values=vpc-your_vpc_id_here" --query "SecurityGroups[*].{ID:GroupId,Name:GroupName,Description:Description}" --output table
+```
+
+
+## Subnets for your VPC
+
+A subnet is a range of IP addresses in your VPC. You can create AWS resources, such as EC2 instances, in speciﬁc subnets.
+
+Each subnet must reside entirely within one Availability Zone and cannot span zones. By launching AWS resources in separate Availability Zones, you can protect your applications from the failure of a single Availability Zone.
+
+
+## Connect your VPC to other networks
+
+You can connect your virtual private cloud (VPC) to other networks, such as other VPCs, the internet, or your on-premises network.
+
+AWS provides a range of tools and features to enable these VPC connections, including internet gateways, NAT gateways, VPC peering, transit gateways, and AWS Direct Connect. By leveraging these capabilities, organizations can create secure and integrated cloud environments that seamlessly integrate with their existing IT infrastructure.
+
+*Enable VPC internet access using internet gateways* - An internet gateway is a horizontally scaled, redundant, and highly available VPC component that allows communication between your VPC and the internet. It supports IPv4 and IPv6 traﬃc. It does not cause availability risks or bandwidth constraints on your network traﬃc.
+An internet gateway enables resources in your public subnets (such as EC2 instances) to connect to the internet if the resource has a public IPv4 address or an IPv6 address. Similarly, resources on the internet can initiate a connection to resources in your subnet using the public IPv4 address or IPv6 address. For example, an internet gateway enables you to connect to an EC2 instance in AWS using your local computer.
+
+An internet gateway provides a target in your VPC route tables for internet-routable traﬃc. For communication using IPv4, the internet gateway also performs network address translation (NAT).

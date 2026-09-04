@@ -14,6 +14,7 @@ Spring Cloud provides tools for developers to quickly build some of the common p
 8. Short lived microservices (tasks)
 9. Consumer-driven and producer-driven contract testing
 
+
 ## Spring cloud and Microservice
 
 Pre-requisitives:
@@ -58,12 +59,12 @@ Every micro-service should have its database and have backward compatibilIty(i.e
 
 Later, Spring framework slowly started developing their own third-party tools rather than depending on Netflix,it includes:
 
- 1. Eureka Server Integration
- 2. Spring cloud config server and config client
- 3. Spring cloud breaker(replacing Hystrix)
- 4. Spring API gateway(Replacing ZUUL)
- 5. Spring load balancer(Replacing Ribbon)
- 6. feign client API
+1. Eureka Server Integration
+2. Spring cloud config server and config client
+3. Spring cloud breaker(replacing Hystrix)
+4. Spring API gateway(Replacing ZUUL)
+5. Spring load balancer(Replacing Ribbon)
+6. feign client API
 
 Spring Boot is used to develop microservices and uses features like auto-configuration,embedded servers while spring cloud is used to integrate tools like cloud config server,eureka server,..etc.
 
@@ -76,10 +77,10 @@ You can't put more than one parent tag in pom.xml
   <dependencies>
    <dependency>
     <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-dependencies</artifactId>
-    <version>${spring-cloud.version}</version>
-    <type>pom</type>
-    <scope>import</scope>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
    </dependency>
   </dependencies>
  </dependencyManagement>

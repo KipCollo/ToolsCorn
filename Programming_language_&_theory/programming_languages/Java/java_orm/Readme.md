@@ -46,7 +46,10 @@ The persistent state of an entity is represented by instance variables, which ma
 An instance variable may be directly accessed only within the methods of the entity, by the entity instance itself. An instance variable of an entity must not be directly accessed by a client of the entity. The state of the entity is available to clients only through the methods of the entity—that is, via accessor (getter/setter) methods, or via other business methods.
 
 On the other hand, the entity class may be either concrete or abstract, and it may have any number of additional constructors.An entity class may be a static inner class.
-Every entity class must be annotated @Entity.
+
+
+- `@Entity`:- Specifies that the class is an entity. This annotation is applied to the entity class.
+    - name - (Optional) The entity name. Defaults to the unqualified name of the entity class. This name is used to refer to the entity in queries(context). The name must not be a reserved literal in the Jakarta Persistence query language.
 
 ```java
 @Entity
@@ -58,7 +61,7 @@ class Book {
 
 Alternatively, the class may be identified as an entity type by providing an XML-based mapping for the class.
 
-Mapping entities using XML - When XML-based mappings are used, the <entity> element is used to declare an entity class:/home/collins/Documents/02_Computer_Science/01_Programming/Java/Projects/java_databases
+Mapping entities using XML - When XML-based mappings are used, the <entity> element is used to declare an entity class:
 
 ```xml
 <entity-mappings>
@@ -70,9 +73,6 @@ Mapping entities using XML - When XML-based mappings are used, the <entity> elem
 
 </entity-mappings>
 ```
-
-- `@Entity`:- Specifies that the class is an entity. This annotation is applied to the entity class.
-    - name - (Optional) The entity name. Defaults to the unqualified name of the entity class. This name is used to refer to the entity in queries(context). The name must not be a reserved literal in the Jakarta Persistence query language.
 
 - `@Table`:- Specifies the primary table for the annotated entity. Additional tables may be specified using SecondaryTable or SecondaryTables annotation.If no Table annotation is specified for an entity class, the default values apply.
     1. name - (Optional) The name of the table.Defaults to the entity name.
@@ -443,40 +443,62 @@ Set<Book> books;
 To modify a bidirectional association, we must change the owning side.
 Changes made to the unowned side of an association are never synchronized to the database. If we desire to change an association in the database, we must change it from the owning side. Here, we must set Book.publisher.
 
+owner_table(owning side)
 
-`Many-to-many`:- A unidirectional many-to-many association is represented as a collection-valued attribute. It always maps to a separate association table in the database.
-A many-to-many association must be annotated @ManyToMany:
+|   id    | First_name | last_name   | gender     | mobile_number   |
+| ------- | ---------- | ----------- | -----------| ----------------|
+| 1       | John       | Doe         | Male       | 0712345678      |
+| 2       | Collins    | medo        | Male       | 0989325533      |
+
+
+
+pet_table(non-owning side)
+
+|   PetID | name       | gender      | dob        | birth_place         | category    | owner_id  |
+| ------- | ---------- | ----------- | -----------| ------------ -------|-------------|-----------|
+| 1       | Tommy      | Male        | 09-09-2020 | NULL                | Domestic    |  1        |
+| 2       | Muffin     | Female      | NULL       | Colo National Park  | Wild        |  2        |
+| 3       | Zuffin     | Female      | 10-02-2027 | Colo National Park  | Wild        |  1        |
+| 4       | Ffin       | Male        | NULL       | Colo National Park  | Wild        |  2        |
+
+
+`@OneToMany`:- Specifies a many-valued association with one-to-many multiplicity.
+If the collection is defined using generics to specify the element type, the associated target entity type need not be specified; otherwise the target entity class must be specified. If the relationship is bidirectional, the mappedBy element must be used to specify the relationship field or property of the entity that is the owner of the relationship.
+The OneToMany annotation may be used within an embeddable class contained within an entity class to specify a relationship to a collection of entities. If the relationship is bidirectional, the mappedBy element must be used to specify the relationship field or property of the entity that is the owner of the relationship. When the collection is a java. util. Map, the cascade element and the orphanRemoval element apply to the map value.
 
 ```java
-@Entity
-class Book {
-    @Id @GeneratedValue
-    Long id;
-
-    @ManyToMany
-    Set<Author> authors;
-
-    ...
-}
+// In Customer class:
+@OneToMany(cascade=ALL, mappedBy="customer")
+public Set<Order> getOrders() { return orders; }
+ 
+// In Order class:
+@ManyToOne
+@JoinColumn(name="CUST_ID", nullable=false)
+public Customer getCustomer() { return customer; }
 ```
 
-If the association is bidirectional, we add a very similar-looking attribute to Book, but this time we must specify mappedBy to indicate that this is the unowned side of the association:
+owner_table(owning side)
 
-```java
-@Entity
-class Book {
-    @Id
-    @GeneratedValue
-    Long id;
+|   id    | First_name | last_name   | gender     | mobile_number   |
+| ------- | ---------- | ----------- | -----------| ----------------|
+| 1       | John       | Doe         | Male       | 0712345678      |
 
-    @ManyToMany(mappedBy=Author_.BOOKS)
-    Set<Author> authors;
-    ...
-}
-```
+
+pet_table(non-owning side)
+
+|   PetID | name       | gender      | dob        | birth_place         | category    | owner_id |
+| ------- | ---------- | ----------- | -----------| ------------ -------|-------------|----------|
+| 1       | Tommy      | Male        | 09-09-2020 | NULL                | Domestic    |  1       |
+| 2       | Muffin     | Female      | NULL       | Colo National Park  | Wild        |  1       |
+
+
 
 - `@ManyToMany`:- A ManyToMany annotation defines a many-valued association with many-to-many multiplicity. If the collection is defined using generics to specify the element type, the associated target entity class does not need to be specified; otherwise it must be specified.
 Every many-to-many association has two sides, the owning side and the non-owning, or inverse, side. If the association is bidirectional, either side may be designated as the owning side. If the relationship is bidirectional, the non-owning side must use the mappedBy element of the ManyToMany annotation to specify the relationship field or property of the owning side.
+
+A unidirectional many-to-many association is represented as a collection-valued attribute. It always maps to a separate association table in the database.
+A many-to-many association must be annotated @ManyToMany:
+
 The join table for the relationship, if not defaulted, is specified on the owning side.
 The ManyToMany annotation may be used within an embeddable class contained within an entity class to specify a relationship to a collection of entities.If the relationship is bidirectional and the entity containing the embeddable class is the owner of the relationship, the non-owning side must use the mappedBy element of the ManyToMany annotation to specify the relationship field or property of the embeddable class. The dot ("." ) notation syntax must be used in the mappedBy element to indicate the relationship attribute within the embedded attribute. The value of each identifier used with the dot notation is the name of the respective embedded field or property.
 
@@ -506,13 +528,86 @@ public Set getPhones() { return phones; }
 public Set getCustomers() { return customers; }
 ```
 
+```java
+@Entity
+class Book {
+    @Id @GeneratedValue
+    Long id;
+
+    @ManyToMany
+    Set<Author> authors;
+
+    ...
+}
+```
+
+If the association is bidirectional, we add a very similar-looking attribute to Book, but this time we must specify mappedBy to indicate that this is the unowned side of the association:
+
+```java
+@Entity
+class Book {
+    @Id
+    @GeneratedValue
+    Long id;
+
+    @ManyToMany(mappedBy=Author_.BOOKS)
+    Set<Author> authors;
+    ...
+}
+```
+
+owner_table(owning side)
+
+|   id    | First_name | last_name   | gender     | mobile_number   |
+| ------- | ---------- | ----------- | -----------| ----------------|
+| 1       | John       | Doe         | Male       | 0712345678      |
+| 2       | Collins    | medo        | Male       | 0989325533      |
+
+
+pet_table(non-owning side)
+
+|   PetID | name       | gender      | dob        | birth_place         | category    |
+| ------- | ---------- | ----------- | -----------| ------------ -------|-------------|
+| 1       | Tommy      | Male        | 09-09-2020 | NULL                | Domestic    |
+| 2       | Muffin     | Female      | NULL       | Colo National Park  | Wild        |
+| 3       | Zuffin     | Female      | 10-02-2027 | Colo National Park  | Wild        |
+| 4       | Ffin       | Male        | NULL       | Colo National Park  | Wild        |
+
+owner_pet table
+|   owner_id |  pet_id  |
+| -----------| ---------|
+| 1          | 1        |
+| 1          | 2        |
+| 1          | 3        |
+| 2          | 2        |
+| 2          | 3        |
+| 2          | 4        |
+
+
 - `@OneToOne`:- Specifies a single-valued association to another entity that has one-to-one multiplicity. It is not normally necessary to specify the associated target entity explicitly since it can usually be inferred from the type of the object being referenced. If the relationship is bidirectional, the non-owning side must use the mappedBy element of the OneToOne annotation to specify the relationship field or property of the owning side.
     1. mappedBy - (Optional) The field that owns the relationship. This element is only specified on the inverse (non-owning) side of the association.
     2. cascade - (Optional) The operations that must be cascaded to the target of the association.By default no operations are cascaded.
     3. fetch - (Optional) Whether the association should be lazily loaded or must be eagerly fetched. The EAGER strategy is a requirement on the persistence provider runtime that the associated entity must be eagerly fetched. The LAZY strategy is a hint to the persistence provider runtime.
     4. orphanRemoval - (Optional) Whether to apply the remove operation to entities that have been removed from the relationship and to cascade the remove operation to those entities.
 The OneToOne annotation may be used within an embeddable class to specify a relationship from the embeddable class to an entity class. If the relationship is bidirectional and the entity containing the embeddable class is on the owning side of the relationship, the non-owning side must use the mappedBy element of the OneToOne annotation to specify the relationship field or property of the embeddable class. The dot (".") notation syntax must be used in the mappedBy element to indicate the relationship attribute within the embedded attribute. The value of each identifier used with the dot notation is the name of the respective embedded field or property.
- 
+
+owner_table(owning side)
+
+|   id    | First_name | last_name   | gender     | mobile_number   | pet_id |
+| ------- | ---------- | ----------- | -----------| ----------------|--------|
+| 1       | John       | Doe         | Male       | 0712345678      | 1      |
+| 2       | Collins    | medo        | Male       | 0989325533      | 2      |
+
+
+
+pet_table(non-owning side)
+
+|   PetID | name       | gender      | dob        | birth_place         | category    |
+| ------- | ---------- | ----------- | -----------| ------------ -------|-------------|
+| 1       | Tommy      | Male        | 09-09-2020 | NULL                | Domestic    |
+| 2       | Muffin     | Female      | NULL       | Colo National Park  | Wild        |
+
+
 ```java
 // On Customer class:
 @OneToOne(optional=false)
@@ -582,21 +677,6 @@ class Author {
 Notice that, compared with the previous mapping,the @Id attribute is no longer a @GeneratedValue and, instead, the author association is annotated @MapsId.This lets Hibernate know that the association to Person is the source of primary key values for Author.
 Here, there’s no extra foreign key column in the Author table, since the id column holds the identifier of Person. That is, the primary key of the Author table does double duty as the foreign key referring to the Person table.
 
-
-`@OneToMany`:- Specifies a many-valued association with one-to-many multiplicity.
-If the collection is defined using generics to specify the element type, the associated target entity type need not be specified; otherwise the target entity class must be specified. If the relationship is bidirectional, the mappedBy element must be used to specify the relationship field or property of the entity that is the owner of the relationship.
-The OneToMany annotation may be used within an embeddable class contained within an entity class to specify a relationship to a collection of entities. If the relationship is bidirectional, the mappedBy element must be used to specify the relationship field or property of the entity that is the owner of the relationship. When the collection is a java. util. Map, the cascade element and the orphanRemoval element apply to the map value.
-
-```java
-// In Customer class:
-@OneToMany(cascade=ALL, mappedBy="customer")
-public Set<Order> getOrders() { return orders; }
- 
-// In Order class:
-@ManyToOne
-@JoinColumn(name="CUST_ID", nullable=false)
-public Customer getCustomer() { return customer; }
-```
 
 - `@JoinColumn Annotation`:- The JoinColumn annotation is used to specify a column for joining an entity association or element collection.The parameters include:-
     1. name - The name of the foreign key column. The table in which it is found depends upon the context.

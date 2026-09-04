@@ -11,7 +11,7 @@ There are two main ways to access a relational database from Java:
 1. Java Database Connectivity (JDBC): Accesses data as rows and columns.
 2. Java Persistence API (JPA): Accesses data through Java objects using a concept called object-­relational mapping (ORM). The idea is that you don’t have to write as much code, and you get your data in Java objects.
 
-The relationship among java.sql, javax.sql, JPA, Hibernate, and Spring Data revolves around managing databases in Java applications. Each provides specific capabilities, often working together to simplify database interactions.
+The relationship among `java.sql`, `javax.sql`, `JPA`, `Hibernate`, and `Spring Data` revolves around managing databases in Java applications. Each provides specific capabilities, often working together to simplify database interactions.
 
 java.sql - Low-level database connectivity using JDBC.Direct database access.
 javax.sql- Extends java.sql with advanced JDBC features like connection pooling.Builds on java.sql.
@@ -23,7 +23,6 @@ Spring Data- Simplifies working with JPA (or other databases) in Spring applicat
 When it comes to connecting to datasources and accessing data using the JDK there are 2 packages that you will want to look into: 
 
 - [Package `javax.sql`](https://docs.oracle.com/en/java/javase/21/docs/api/java.sql/javax/sql/package-summary.html)
-- [Package `java.sql`](https://docs.oracle.com/en/java/javase/21/docs/api/java.sql/java/sql/package-summary.html)
 
 
 -----------------
@@ -37,8 +36,7 @@ Limitation:-
 1. Low-Level API: Requires writing SQL manually and managing resources (connections, statements) explicitly.
 2. No object-relational mapping (ORM) capabilities.
 
-
-- https://docs.oracle.com/en/java/javase/21/docs/api/java.sql/java/sql/package-summary.html
+- [Package `java.sql`](https://docs.oracle.com/en/java/javase/21/docs/api/java.sql/java/sql/package-summary.html)
 
 1. Making a connection with a database via the DriverManager facility
     - DriverManager class -- makes a connection with a driver.Manages database connections.
@@ -80,7 +78,7 @@ Limitation:-
     - DataTruncation -- thrown to indicate that data may have been truncated
     - BatchUpdateException -- thrown to indicate that not all commands in a batch update executed successfully
 
-A JDBC application loads an appropriate driver using the Driver interface, connects to the database using the Connection interface, creates and executes SQL statements using the Statement interface, and processes the result using the ResultSet interface if the statements return results. Note that some statements, such as SQL data definition statements and SQL data modification statements, do not return results.Methods like getInt(), getString(), etc., are used to extract column values.
+A JDBC application loads an appropriate driver using the `Driver interface`, connects to the database using the `Connection interface`, creates and executes SQL statements using the `Statement interface`, and processes the result using the `ResultSet interface` if the statements return results. Note that some statements, such as SQL data definition statements and SQL data modification statements, do not return results.Methods like getInt(), getString(), etc., are used to extract column values.
 
 **Database Drivers**:- Before you can connect to database,you must make a database driver avalable to your application.There are 4 JDBC database drivers you can use:-
 
@@ -89,9 +87,7 @@ A JDBC application loads an appropriate driver using the Driver interface, conne
 3. Type 3 - A `net protocol all Java driver` converts JDBC calls into a net protocol that's independent of any native DBMS protocol.Then,middleware software running on a server converts the net protocol to the native DBMS protocol.Since this conversion takes place on server side,no installation is required on client machine.
 4. Type 4 - A `native protocol all Java driver` converts JDBC calls into a native DBMS protocol.Since this conversion takes place on server side,no installation is required on client machine.
 
-To use the JDBC API with a particular database management system, you need a JDBC technology-based driver to mediate between JDBC technology and the database. 
-
-If you want to connect to a MYSQL database,you use the type-4 driver named Connector/J.To install the database driver,you must add the JAR file that contains the database driver to the classpath.
+To use the JDBC API with a particular database management system, you need a JDBC technology-based driver to mediate between JDBC technology and the database. If you want to connect to a MYSQL database,you use the type-4 driver named Connector/J.To install the database driver,you must add the JAR file that contains the database driver to the classpath.
 Do not use a semicolon (;) to end the Oracle SQL command in a Java program. The semicolon may not work with the Oracle JDBC drivers. It does work, however, with the other drivers.
 
 If you are working with older version of Java,though,you need to use the `forName` method of Class to explicitly load the driver before you call getConnection method.
@@ -103,9 +99,7 @@ Class.forName("com.mysql.jdbc.Driver")
 
 **Connecting to Database**:- The first step in doing anything with a database is connecting to it.
 
-`Building a JDBC URL`:- To access a website, you need to know its URL. To access your email, you need to know your username and password. JDBC is no different. To access a database, you need to know this information about it.
-Unlike web URLs, JDBC URLs have a variety of formats. They have three parts in common. The first piece is always the same. It is the protocol jdbc.The second part is the subprotocol, which is the name of the database, such as hsqldb, mysql, or postgres. The third part is the subname, which is a database-­specific format. Colons (:) separate the three parts.
-The subname typically contains information about the database such as its location and/or name. The syntax varies. You need to know about the three main parts. You don’t need to memorize the subname formats.
+*Building a JDBC URL*:- To access a website, you need to know its URL. To access your email, you need to know your username and password. JDBC is no different. To access a database, you need to know this information about it.Unlike web URLs, JDBC URLs have a variety of formats. They have three parts in common. The first piece is always the same. It is the protocol `jdbc`.The second part is the subprotocol, which is the `name of the database`, such as hsqldb, mysql, or postgres. The third part is the subname, which is a database-­specific format. Colons (:) separate the three parts.The subname typically contains `information about the database` such as its location and/or name. The syntax varies. You need to know about the three main parts. You don’t need to memorize the subname formats.
 
 ```java
 jdbc:postgresql://localhost/zoo
@@ -116,30 +110,25 @@ jdbc:mysql://localhost:3306/zoo?profileSQL=true
 
 NOTE:- Port is optional when using the default location.
 
-`Getting a Database Connection`:- To connect to a database, use the static method getConnection(databaseURL) in the DriverManager class, as follows:
+*Getting a Database Connection*:- To connect to a database, use the static method getConnection(databaseURL) in the DriverManager class, as follows:
 
 ```java
 Connection connection = DriverManager.getConnection(databaseURL);//where databaseURL is the unique identifier of the database on the Internet.
 ```
 
-three parameters that are passed to getConnection(). The first is the JDBC URL.The second is the username for accessing the database, and the third is the password for accessing the database.
-`DriverManager` class:- It is the basic service for managing a set of JDBC drivers.Before you can access or modify the data in database,you must connect to the database.To get a connection to the database,you use the *getConnection()* method of the *DriverManager* class to return a Connection object.This method requires three arguements:- URL of the database, username, Password.
-The DriverManager class uses the factory pattern, which means that you call a static method to get a Connection rather than calling a constructor.The factory pattern means that you can get any implementation of the interface when calling the method.The nice thing about the factory pattern is that it takes care of the logic of creating a class for you. You don’t need to know the name of the class that implements Connection, and you don’t need to know how it is created. You are probably a bit curious, though.
+There are three parameters that are passed to getConnection(). The first is the JDBC URL.The second is the username for accessing the database, and the third is the password for accessing the database.
+`DriverManager class`:- It is the basic service for managing a set of JDBC drivers.Before you can access or modify the data in database,you must connect to the database.To get a connection to the database,you use the `getConnection()` method of the DriverManager class to return a Connection object.This method requires three arguements:- URL of the database, username, Password.
+The DriverManager class uses the factory pattern, which means that you call a static method to get a Connection rather than calling a constructor.The factory pattern means that you can get any implementation of the interface when calling the method.The nice thing about the factory pattern is that it takes care of the logic of creating a class for you. You don’t need to know the name of the class that implements Connection, and you don’t need to know how it is created.
 
-DriverManager looks through any drivers it can find to see whether they can handle the JDBC URL. If so, it creates a Connection using that Driver. If not, it gives up and throws a SQLException.
+DriverManager looks through any drivers it can find to see whether they can handle the JDBC URL. If so, it creates a Connection using that Driver. If not, it gives up and throws a SQLException.Since getConnection method of DriverManager class throws an SQLException, you need to handle this exception whenever you connect to database.With JDBC 4.0 you can use an enhanced for statement to loop through any exceptions that are nested within SQLException object.
 
-Since getConnection method of DriverManager class throws an SQLException, you need to handle this exception whenever you connect to database.With JDBC 4.0 you can use an enhanced for statement to loop through any exceptions that are nested within SQLException object.
-
-`Connection Interface`: A connection (session) with a specific database. SQL statements are executed and results are returned within the context of a connection.
-A Connection object's database is able to provide information describing its tables, its supported SQL grammar, its stored procedures, the capabilities of this connection, and so on. This information is obtained with the `getMetaData` method.
-The Connection interface handles transactions and specifies how they are processed.
-
+`Connection Interface`: A connection (session) with a specific database. SQL statements are executed and results are returned within the context of a connection.A Connection object's database is able to provide information describing its tables, its supported SQL grammar, its stored procedures, the capabilities of this connection, and so on. This information is obtained with the `getMetaData` method.The Connection interface handles transactions and specifies how they are processed.
 By default, a new connection is in autocommit mode, and all its SQL statements are executed and committed as individual transactions. The commit occurs when the statement completes or the next execute occurs, whichever comes first. In the case of statements returning a result set, the statement completes when the last row of the result set has been retrieved or the result set has been closed. If a single statement returns multiple results, the commit occurs when all the results have been retrieved. You can use the setAutoCommit(false) method to disable autocommit, so that all SQL statements are grouped into one transaction that is terminated by a call to either the commit() or the rollback() method. The rollback() method undoes all the changes made by the transaction.
 
 Note: When configuring a Connection, JDBC applications should use the appropriate Connection method such as setAutoCommit or setTransactionIsolation. Applications should not invoke SQL commands directly to change the connection's configuration when there is a JDBC method available. By default a Connection object is in auto-commit mode, which means that it automatically commits changes after executing each statement. If auto-commit mode has been disabled, the method commit must be called explicitly in order to commit changes; otherwise, database changes will not be saved.
 
 
-**STATEMENTS**:- If a Connection object can be envisioned as a cable linking your program to a database, an object of Statement can be viewed as a cart that delivers SQL statements for execution by the database and brings the result back to the program.
+**Statements**:- If a Connection object can be envisioned as a cable linking your program to a database, an object of Statement can be viewed as a cart that delivers SQL statements for execution by the database and brings the result back to the program.
 Once a connection to a particular database is established, it can be used to send SQL statements from your program to the database. The `Statement interface` is used to execute static SQL statements that don’t contain any parameters. The `PreparedStatement interface`, extending Statement, is used to execute a precompiled SQL statement with or without parameters.Since the SQL statements are precompiled, they are efficient for repeated executions.A PreparedStatement object is created using the prepareStatement method in the Connection interface.
 Once a Connection object is created,you can create statements for executing SQL statements as follows:
 
@@ -164,36 +153,31 @@ Note: This method is optimized for handling stored procedure call statements. So
 
 `String nativeSQL(String sql)`: Converts the given SQL statement into the system's native SQL grammar. A driver may convert the JDBC SQL grammar into its system's native SQL grammar prior to sending it. This method returns the native form of the statement that the driver would have sent.
 
-SQL data definition language (DDL) and update statements can be executed using executeUpdate(String sql), and an SQL query statement can be executed using executeQuery(String sql). The result of the query is returned in ResultSet.
 The object used for executing a static SQL statement to db server for execution and returning the results it produces.By default, only one ResultSet object per Statement object can be open at the same time. Therefore, if the reading of one ResultSet object is interleaved with the reading of another, each must have been generated by different Statement objects. All execution methods in the Statement interface implicitly close a current ResultSet object of the statement if an open one exists.
 
 
-**Modifying Data**:- `Update, Insert and Delete Data`:- To modify data in database,you use the *executeUpdate* method of Statement object to execute SQL statements that add,update and delete data.Since this method has been part of Java since 1.0 of JDBC,it should work for all JDBC drivers.The method takes the SQL statement to run as a parameter. It returns the number of rows that were inserted, deleted, or changed.
-The `executeUpdate` method is older method that works with most JDBC Drivers.Although there are some newer methods that require less SQL code,they may not work properly with all JDBC drivers.The executeUpdate returns an int value that identifies the number of records affected by SQL statement.When you work with the executeUpdate method, you just pass an SQL statement to the database.
-
+**Modifying Data**:- SQL data definition language (DDL) and update statements can be executed using executeUpdate(String sql), and an SQL query statement can be executed using executeQuery(String sql). The result of the query is returned in ResultSet.
+`Update, Insert and Delete Data`:- To modify data in database,you use the *executeUpdate* method of Statement object to execute SQL statements that add,update and delete data.Since this method has been part of Java since 1.0 of JDBC,it should work for all JDBC drivers.The method takes the SQL statement to run as a parameter. It returns the number of rows that were inserted, deleted, or changed.Although there are some newer methods that require less SQL code,they may not work properly with all JDBC drivers.The executeUpdate returns an int value that identifies the number of records affected by SQL statement.When you work with the executeUpdate method, you just pass an SQL statement to the database.
 
 ```java
+Statement statement = connection.createStatement();
+
 //Adding a Record
 String query = "INSERT INTO Product (ProductCode, ProductDescription, ProductPrice) " +
                "VALUES (' " + product.getCode() + " ', " + " ' " product.getDescription() + " ', " +  " ' " product.getPrice() + " ')";
-Statement statement = connection.createStatement();
 int rowCount = statement.executeUpdate(query);
 
 // Update a record
 String query = "UPDATE Product SET " + "ProductCode = '" + product.getCode() + "', " + "ProductDescription = '" + product.getDescription() + " ', " + 
-        "ProductPrice = '" + product.getPrice() + " '" +
-        "WHERE ProductCode = '" + product.getCode() + "'";
-Statement statement = connection.createStatement();
+        "ProductPrice = '" + product.getPrice() + " '" + "WHERE ProductCode = '" + product.getCode() + "'";
 int rowCount = statement.executeUpdate(query);
 
 // Delete a record
 String query = "DELETE FROM Product " + "WHERE ProductCode = ' " + productCode +  "'";
-Statement statement = connection.createStatement();
 int rowCount = statement.executeUpdate(query);
 ```
 
-- `Executing a PreparedStatement`:- Now that we have a PreparedStatement, we can run the SQL statement. The method for running SQL varies depending on what kind of SQL statement it is. Remember that you aren’t expected to be able to read SQL, but you do need to know what the first keyword means.
-Result of prepared statememt is the same each time the query is executed,even though the product code changes each time based on parameter value sent to SQL statement.In contrast, if you don't use a prepared statement,the database server treats each statement as new statement,which degrades database performance.
+- `Executing a PreparedStatement`:- Now that we have a PreparedStatement, we can run the SQL statement. The method for running SQL varies depending on what kind of SQL statement it is. Remember that you aren’t expected to be able to read SQL, but you do need to know what the first keyword means.Result of prepared statememt is the same each time the query is executed,even though the product code changes each time based on parameter value sent to SQL statement.In contrast, if you don't use a prepared statement,the database server treats each statement as new statement,which degrades database performance.
 
 ```java
 //Adding a Record
@@ -219,7 +203,6 @@ PreparedStatement ps = connection.prepareStatement(query);
 ps.setString(1 ,productCode)
 ps.executeUpdate();
 ```
-
 
 `Generated Keys and Batch Operations`:- In production code, inserts often need generated primary keys. Use `RETURN_GENERATED_KEYS` and read with `getGeneratedKeys()`. For high-volume writes, use `addBatch()` and `executeBatch()` to reduce round trips.
 
@@ -259,8 +242,7 @@ ps.setString(1 ,productCode)
 ResultSet product = ps.executeQuery();
 ```
 
-`ResultSet`: A table of data representing a database result set, which is usually generated by executing a statement that queries the database.When working with a ResultSet, most of the time, you will write a loop to look at each row.
-A ResultSet object maintains a cursor pointing to its current row of data. Initially the cursor is positioned before the first row. Then, you can use the methods of ResultSet object to move the cursor.The next method moves the cursor to the next row, and because it returns false when there are no more rows in the ResultSet object, it can be used in a while loop to iterate through the result set.
+`ResultSet`: A table of data representing a database result set, which is usually generated by executing a statement that queries the database.When working with a ResultSet, most of the time, you will write a loop to look at each row.A ResultSet object maintains a cursor pointing to its current row of data. Initially the cursor is positioned before the first row. Then, you can use the methods of ResultSet object to move the cursor.The next method moves the cursor to the next row, and because it returns false when there are no more rows in the ResultSet object, it can be used in a while loop to iterate through the result set.
 A default ResultSet object is not updatable and has a cursor that moves forward only. Thus, you can iterate through it only once and only from the first row to the last row. It is possible to produce ResultSet objects that are scrollable and/ or updatable.
 
 1. next() - Moves the cursor to the next row in result set.
@@ -329,7 +311,6 @@ Cancellation can be triggered with `Statement.cancel()` (typically from another 
 
 **Database Metadata**:- The database metadata such as database URL, username, JDBC driver name can be obtained using the DatabaseMetaData interface and result set metadata such as table
 column count and column names can be obtained using the ResultSetMetaData interface.
-BSAQWZS XC 
 JDBC provides the DatabaseMetaData interface for obtaining database-wide information,and the ResultSetMetaData interface for obtaining information on a specific ResultSet.
 
 
@@ -389,7 +370,6 @@ While it is a good habit to close all three resources, it isn’t strictly neces
 2. Closing a PreparedStatement (or CallableStatement) also closes the ResultSet.
 
 It is important to close resources in the right order. This avoids both resource leaks and exceptions.
-
 
 
 Transaction pattern with rollback safety:-
@@ -731,6 +711,9 @@ public int deleteProduct(DataSource dataSource, String productCode) throws SQLEx
 ```
 
 
+------------
+
+
 ## Spring Database
 
 `DAO Support`:- The Data Access Object (DAO) support in Spring is aimed at making it easy to work with data access technologies (such as JDBC, Hibernate, or JPA) in a consistent way. This lets you switch between the aforementioned persistence technologies fairly easily, and it also lets you code without worrying about catching exceptions that are specific to each technology.
@@ -809,7 +792,7 @@ public class JdbcMovieFinder implements MovieFinder {
 
 ### Spring JDBC
 
-Introduced in the early Spring Framework days. It handles the "ceremony"—opening/closing connections and translating SQL exceptions into Spring’s Hierarchy.
+Introduced in the early Spring Framework days. It handles the opening/closing connections and translating SQL exceptions into Spring’s Hierarchy.
 You only provide the SQL and a RowMapper. It’s still very much "SQL-first."
 Spring Boot 3.2 introduced the JdbcClient, a modern, fluent API that makes JdbcTemplate even more readable.
 
@@ -920,7 +903,6 @@ private static final class ActorMapper implements RowMapper<Actor> {
     }
 }
 ```
-
 
 In addition to the single result query methods, several methods return a list with an entry for each row that the query returned.The most generic method is queryForList(..) which returns a List where each entry is a Map with each entry in the map representing the column value for that row. If you add a method to the above example to retrieve a list of all the rows.
 
@@ -1538,7 +1520,7 @@ public class JdbcClientPostService implements PostService {
 ```
 
 
-### Refactored: Exception handling helper for SQLState-aware retries
+Refactored: Exception handling helper for SQLState-aware retries
 
 ```java
 public boolean isRetryable(SQLException ex) {
@@ -1592,7 +1574,6 @@ You can let Spring auto-discover your JdbcDialect by registering a class that im
 - Implement your own JdbcDialect.
 - Implement a JdbcDialectProvider returning the JdbcDialect.
 - Register the provider by creating a spring.factories resource under META-INF and perform the registration by adding a line org.springframework.data.jdbc.core.dialect.DialectResolver$JdbcDialectProvider=<fully qualified name of your JdbcDialectProvider>`.
-
 
 **Repository Abstraction**:-
 

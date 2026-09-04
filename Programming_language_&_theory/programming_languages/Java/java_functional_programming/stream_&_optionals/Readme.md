@@ -1,9 +1,12 @@
 # Stream and Optionals
 
+Introduced in Java 8.
+
 ## Java Streams
 
-Introduced in Java 8.
-`Stream API` is used to process collections of objects. A `stream` in Java is a sequence of objects that supports various methods that can be pipelined to produce the desired result.It was introduced in Java 8.It supports functional-style operations on collections and other data sources, making code concise, readable, and efficient.
+`Stream API` is used to process collections of objects.
+A `stream` in Java is a sequence of objects/elemnts that supports various methods that can be pipelined to produce the desired result.It was introduced in Java 8.It supports functional-style operations on collections and other data sources, making code concise, readable, and efficient.
+
 Stream is an interface, containing stream() method.Stream method returns an object of type stream.Any operation can be performed inside stream method.Any changes done inside stream can be reflected on actual list.Once we work with stream we can't reuse.
 Stream is not a data structure,it is an abstraction of functions.
 Bucket - List/Sets
@@ -42,6 +45,10 @@ Characteristics:-
 2. Lazy Evaluation:- Intermediate operations are not executed until a terminal operation is invoked.
 3. Single-Use:- Streams cannot be reused once operated on. A new stream must be created for additional operations.
 
+
+**Types of stream**:-
+- `Sequantial Stream` - Processes elements sequantially in a single thread.
+- `Parallel Stream` - Processes elements in multiple threads for faster computation.
 
 - **Creating Streams**:- Streams can be created from:-
       1. From collections
@@ -104,8 +111,7 @@ The iterate() method takes a seed or starting value as the first parameter. This
       1. Intermediate Operations -Are operations in which multiple methods are chained in a row.
       2. Terminate Operations
 
-- *Intermediate*:- An intermediate operation produces a stream as its result. An intermediate operation can also deal with an infinite stream simply by returning another
-infinite stream.
+- *Intermediate*:- An intermediate operation produces a stream as its result. An intermediate operation can also deal with an infinite stream simply by returning another infinite stream.
 
 `map()` - The map method is used to return a stream consisting of the results of applying the given function to the elements of this stream.Syntax:-
 
@@ -146,12 +152,21 @@ list.stream()
 
 ```Java
 <R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper)
+
+List<List<Integer>> nestedList = Arrays.asList(
+      Arrays.List(1,2,3),
+      Arrays.asList(4,5,6),
+      Arrays.asList(7,8,9));
+List<Integer> flatList = nestedList.stream().flatMap(List::stream).collect(Collectors.toList());
+//[1,2,3,4,5,6,7,8,9]
 ```
 
 `distinct ()`:- Removes duplicate elements. It returns a stream consisting of the distinct elements (according to Object.equals(Object)).
 
 ```Java
 Stream<T> distinct()
+
+List<Integer> distinctNumbers = numbers.stream().distinct().collect(Collectors.toList())
 ```
 
 `peek()` - Performs an action on each element without modifying the stream. It returns a stream consisting of the elements of this stream, additionally performing the provided action on each element as elements are consumed from the resulting stream.
@@ -163,6 +178,12 @@ Stream<T> peek(Consumer<? super T> action)
 The program prints the intermediate results stored in the intermediateResults set. Finally, it prints the result list, which contains the fully processed strings after all stream operations.
 
 This example showcases how Java Streams can be used to process and manipulate collections of data in a functional and declarative manner, applying transformations and filters in a sequence of operations.
+
+`max` -
+
+```java
+int max = numbers.stream().max(Interger::compare).orElse(0);
+```
 
 - *Terminal Operations*:- Terminal Operations are the type of Operations that return the result. These Operations are not processed further just return a final result value.
 
@@ -209,7 +230,7 @@ System.out.println(s.count());// 3
 ```
 
 Finding a Value - `findFirst() & findAny()` - Returns the first element of the stream, if present.If the stream is empty, they return an empty Optional.
-findany() - can terminate with an infinite stream. Since Java generates only the amount of stream you need, the infinite stream needs to generate only one element.
+findany() - can terminate with an infinite stream. Since Java generates only the amount of stream you need, the infinite stream needs to generate only one element.Suitable for parallel Streams where order doesn't matter.
 These methods are terminal operations but not reductions. The reason is that they sometimes return without processing all of the elements. This means that they return a value
 based on the stream but do not reduce the entire stream into one value.
 The method signatures are as follows:
@@ -252,9 +273,25 @@ Notice that the code returns an Optional rather than the value. This allows the 
 Note: Intermediate Operations are running based on the concept of Lazy Evaluation, which ensures that every method returns a fixed value(Terminal operation) before moving to the next method.
 
 
+**Collectors** - Collectors is a utility for reducing streams.
+Common collectors:
+
+- toList(), toSet(): Convert to a list or set.
+- joining(): Concatenate strings.
+- groupingBy(): Group elements by a key.
+- partitioningBy(): Partition elements into two groups.
+
+```java
+Map<Integer,List<String>> grouped = names.stream().collect(Collectors.groupingBy(String::length))
+//{3=[Bob], 5=[Alice],7=[Charlie]}
+
+String sentence = words.stream().collect(Collectors.joining(" "));
+```
+
+
 ## Parallel Streams
 
-Java streams can be parallelized for performance improvement. This divides the work across multiple threads:
+Java streams can be parallelized for performance improvement.Processes elements in parallel for better performance in large datasets. This divides the work across multiple threads:
 
 ```java
 list.parallelStream()
@@ -303,15 +340,23 @@ source.stream()
 ----------
 
 
-## OPTIONALS
+## Optionals
 
 `Optional<T>` is a generic class that belongs to java.util package.It is a value based class.
 Instance of an Optional class is a container object which may or may not contain a non-null value.Empty Optional represents absence of value.
 Optional class offer a way to handle situation in which value may or may not be present.
 
-Prior to Optionals, you would use value null to indicate that no value is present. However, this can lead to NullPointerException if an attempt is made to dereference
-a null reference.
-To avoid frequent null checks, Optional classes offer better way of handling such situations.
+Prior to Optionals, you would use value null to indicate that no value is present. However, this can lead to NullPointerException if an attempt is made to dereference a null reference.
+To avoid frequent null checks or NullPointerException, Optional classes offer better way of handling such situations.
+
+Optional is primarily intended for use as a method return type where there is a clear need to represent "no result," and where using null is likely to cause errors. A variable whose type is Optional should never itself be null; it should always point to an Optional instance.
+
+A container object which may or may not contain a non-null value. If a value is present, isPresent() returns true. If no value is present, the object is considered empty and isPresent() returns false.
+
+Additional methods that depend on the presence or absence of a contained value are provided, such as orElse() (returns a default value if no value is present) and ifPresent() (performs an action if a value is present).
+This is a value-based class; programmers should treat instances that are equal as interchangeable and should not use instances for synchronization, or unpredictable behavior may occur. For example, in a future release, synchronization may fail.
+
+**Creating Optional**:-
 
 An Optional is created using a factory. You can either request an empty Optional or pass a value for the Optional to wrap. Think of an Optional as a box that might have something in it or might instead be empty.
 
@@ -319,16 +364,6 @@ An Optional is created using a factory. You can either request an empty Optional
 Optional.empty()//empty
 Optional.of(90)//value passed
 ```
-
-Optional is primarily intended for use as a method return type where there is a clear need to represent "no result," and where using null is likely to cause errors. A variable whose type is Optional should never itself be null; it should always point to an Optional instance.
-
-A container object which may or may not contain a non-null value. If a value is present, isPresent() returns true. If no value is present, the object is considered empty and isPresent() returns false.
-
-Additional methods that depend on the presence or absence of a contained value are provided, such as orElse() (returns a default value if no value is present) and ifPresent() (performs an action if a value is present).
-
-This is a value-based class; programmers should treat instances that are equal as interchangeable and should not use instances for synchronization, or unpredictable behavior may occur. For example, in a future release, synchronization may fail.
-
-**Creating Optional**:-
 
 Optional class has a private constructor.It provides three factory methods (empty, of and ofNullable) to create Optional class instance.
 

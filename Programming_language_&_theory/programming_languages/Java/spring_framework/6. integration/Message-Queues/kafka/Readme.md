@@ -18,6 +18,7 @@ If you are not using Spring Boot, declare the spring-kafka jar as a dependency i
 
 When using Spring Boot, (and you haven’t used start.spring.io to create your project), omit the version and Boot will automatically bring in the correct version that is compatible with your Boot version.
 
+
 ## Topics
 
 - `Configuring Topics[SPRING]`:-If you define a KafkaAdmin bean in your application context, it can automatically add topics to the broker. To do so, you can add a NewTopic @Bean for each topic to the application context.TopicBuilder class to make creation of such beans more convenient.

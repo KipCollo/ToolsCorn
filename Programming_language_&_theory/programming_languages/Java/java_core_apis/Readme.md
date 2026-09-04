@@ -357,7 +357,10 @@ StringBuilder sb3 = new StringBuilder(10);
 
 ## Dates and Times
 
-Java provides a number of APIs for working with dates and times.There’s also an old java.util.Date class.
+Java provides a number of APIs for working with dates and times.There’s also an old java.util.Date class and Date & Time API.
+
+**Date & Time API**:- Immutable and thread-safe classes: LocalDate,LocalTime,LocalDateTime. DateTimeFormatter for parsing and formatting.Zone-aware classes like ZonedDateTime.
+
 You need an import a statement to work with modern date and time classes.To use it,add this import to your program.
 
 ```java

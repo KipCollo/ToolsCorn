@@ -3,12 +3,8 @@
 ## Liquibase
 
 Liquibase is a database schema change management solution that enables you to revise and release database changes faster and safer from development to production.
-
-`Changelog`:- With Liquibase, you use a text-based changelog file to sequentially list all changes made to your database. This ledger helps Liquibase audit your database and execute any changes that are not yet applied. You can store and version your changelog in any source control tool.
-A `changeset` is the basic unit of change in Liquibase. You store all your changesets in your Changelog. Your changesets contain Change Types that specify what each change does, like creating a new table or adding a column to an existing table.
-
 Liquibase is a Java-based application that runs on minimal hardware. To use Liquibase, Java must be installed on your host machine.
-Liquibase is a database schema change management solution that enables you to revise and release database changes faster and safer from development to production.
+
 To start using Liquibase quickly and easily, you can write your migration scripts in SQL.
 
 To take advantage of database abstraction abilities that allow you to write changes once and deploy to different database platforms, you can specify database-agnostic changes in XML, JSON, or YAML.
@@ -18,12 +14,16 @@ To take advantage of database abstraction abilities that allow you to write chan
 - update - Run command to deploy database changes.
 - DATABASECHANGELOG and DATABASECHANGELOGLOK - Track and version database changes.
 
+`Changelog`:- With Liquibase, you use a text-based changelog file to sequentially list all changes made to your database. This ledger helps Liquibase audit your database and execute any changes that are not yet applied. You can store and version your changelog in any source control tool.
+A `changeset` is the basic unit of change in Liquibase. You store all your changesets in your Changelog. Your changesets contain Change Types that specify what each change does, like creating a new table or adding a column to an existing table.
+
 `Changelog organization`:- Liquibase uses SQL, XML, JSON, and YAML changelog files to list database changes sequentially. Database changes have the format of changesets. Changesets contain Change Types, which are types of operations to apply to the database, such as adding a column or primary key. Context, Label, and Precondition changelog tags help precisely control when a database change is made and to which database environment it is deployed.
 
 `Liquibase properties file`:- To set the connection between Liquibase with your database, you need the database connection information and parameters. Liquibase includes a properties file to store database connection information and parameters that rarely change. Setting the parameters as environment variables to handle sensitive database information or running them at the command prompt is an alternative option.
 
 Liquibase runs six basic types of commands: update, rollback, snapshot, diff, status, and utility commands. When you use the update command to deploy your first changes, Liquibase checks the database connection information, including credentials, database URL, and JDBC driver.
 When you deploy your changes, Liquibase creates two tables in your database: DATABASECHANGELOG and DATABASECHANGELOGLOCK. The DATABASECHANGELOG table tracks deployed changes so that you have a record. Liquibase compares the changesets in the changelog file with the DATABASECHANGELOG tracking table and deploys only new changesets.DATABASECHANGELOGLOCK prevents multiple instances of Liquibase from updating the database simultaneously. The table manages access to the DATABASECHANGELOG table during deployment and ensures that only one instance of Liquibase updates the database.
+
 Liquibase offers many ways to manage your database changes:
 1. Run the command-line client (CLI).
 2. Use the Liquibase Java API and integrate Liquibase into your application to deploy database changes on application startup.
@@ -82,17 +82,13 @@ liquibase changelog-sync --changelog-file=dbchangelog.xml
 This command updates the tracking table so Liquibase knows your database is up to date with the changelog. It won’t make any schema changes.
 
 
-**Embed Liquibase in Your Application**:- The Java API allows Liquibase to be embedded directly into an application. This allows you to do things such as run Liquibase automatically within an application startup process.
-
-This can be particularly helpful in environments where you have less control over the deployment process or want a simpler deployment process, such as:
-
-- For web applications that use continuous delivery and have an automated release process from code check-in through live production which gets executed multiple times per day.
-- In packaged applications that are shipped to make the database management portion transparent.
+- **Embed Liquibase in Your Application**:- The Java API allows Liquibase to be embedded directly into an application. This allows you to do things such as run Liquibase automatically within an application startup process.This can be particularly helpful in environments where you have less control over the deployment process or want a simpler deployment process, such as:
+    - For web applications that use continuous delivery and have an automated release process from code check-in through live production which gets executed multiple times per day.
+    - In packaged applications that are shipped to make the database management portion transparent.
 
 Depending on how your application is written, you can use existing integrations such as Spring Boot or the Servlet Listener. However, you can also create a custom integration using the Liquibase APIs directly.
 
 This guide covers running an "update" operation against a changelog packaged in your application, but the same approach can be used to perform any Liquibase logic from your custom integration including rolling back changes, generating SQL, or snapshotting the schema.
-
 
 1. Create a changelog file within your application's source code to be packaged with your application.The location of the changelog in your source repository file will depend on your application's build process.
 2. Create a class to run Liquibase.Where you put this class and how you run it will depend on your application's architecture.For example, if you are using Spring, you would add the @Service annotation. Or, if you are running a standalone application, you may add a call to that class from within the main method.
@@ -181,9 +177,6 @@ public class MyLiquibaseRunner {
     }
 }
 ```
-
-
-
 
 
 ## Flyway

@@ -2560,50 +2560,7 @@ Note that unless the Authentication has the authenticated property set to true, 
 
 In most cases, the framework transparently takes care of managing the security context and authentication objects for you.
 
-### OAuth2
 
-Spring Security’s OAuth 2.0 support consists of two primary feature sets:
-
-   1. OAuth2 Resource Server
-   2. OAuth2 Client
-
-- OAuth2 Resource Server
-
-Protect Access with an OAuth2 Access Token
-It is very common to protect access to an API using OAuth2 access tokens. In most cases, Spring Security requires only minimal configuration to secure an application
-with OAuth2
-
-There are two types of Bearer tokens supported by Spring Security which each use a different component for validation:
-• JWT support uses a JwtDecoder bean to validate signatures and decode tokens
-• Opaque token support uses an OpaqueTokenIntrospector bean to introspect tokens
-
-JWT Support
-The following example configures a JwtDecoder bean using Spring Boot configuration properties:
-
-```yaml
-spring:
- security:
-  oauth2:
-  resourceserver:
-   jwt:
-    issuer-uri: https://my-auth-server.com
-```
-
-Opaque Token Support
-The following example configures an OpaqueTokenIntrospector bean using Spring Boot configuration properties:
-
-```yaml
-spring:
- security:
-  oauth2:
-  resourceserver:
-   opaquetoken:
-    introspection-uri: https://my-auth-server.com/oauth2/introspect
-    client-id: my-client-id
-    client-secret: my-client-secret
-```
-
-You can add trace leve of logging to check the logs
 
 ## CSRF(cross-site request forgery)
 
@@ -2735,17 +2692,119 @@ c.configurationSource(source);
 The cors() method that we call from the HttpSecurity object receives as a parameter a Customizer<CorsConfigurer> object. For this object, we set a Cors­ConfigurationSource, which returns CorsConfiguration for an HTTP request. CorsConfiguration is the object that states which are the allowed origins, methods, and headers. If you use this approach, you must at least specify the origins and the methods. If you only specify the origins, your application won’t allow the requests. This behavior happens because a CorsConfiguration object doesn’t define any methods by default.
 
 
-## OAuth 2 and OpenID Connect
+
+## OAuth2 and OpenID Connect
 
 `OAuth 2` is a specification that tells one how to separate the authentication responsibilities in a system. This way, multiple apps can use one other app that implements the authentication, helping the users to authenticate faster, keeping their details more secure, and minimizing the costs of implementation in the apps.
 
 With an OAuth 2 system, you’ll find the following actors:
-1. The user—The person who uses the application. The users usually work with a frontend application, which we call a client. Users don’t always exist in an OAuth 2 system.
-2. The client—The application that calls a backend and needs authentication and authorization. The client can be a web app, a mobile app, or even a desktop app or a separate backend service. The system usually doesn’t have a user when the client is a backend service.
-3. The resource server—A backend application that authorizes and serves calls sent by one or more client applications.
-4. The authorization server—An app that implements authentication and safe storage of credentials.
+1. `The user` —The person who uses the application. The users usually work with a frontend application, which we call a client. Users don’t always exist in an OAuth 2 system.
+2. `The client` —The application that calls a backend and needs authentication and authorization. The client can be a web app, a mobile app, or even a desktop app or a separate backend service. The system usually doesn’t have a user when the client is a backend service.
+3. `The resource server` —A backend application that authorizes and serves calls sent by one or more client applications.
+4. `The authorization server` —An app that implements authentication and safe storage of credentials.
 
-The participants in an OAuth 2 framework. Users interact through a client that requires authorization for certain operations on the backend service, known as a resource server. For backend authorization, the client’s initial step is authentication by the authorization server.
+
+The steps:
+
+1. The user tries to use the client application to execute a particular use case.
+2. The client application knows it can’t call its backend without first having a token that will allow it to get authorized. The client requests such an access token from the authorization server.
+3. Following the client app’s request, the authorization server issues a token and sends it to the client app.
+4. The client uses the token to send requests to its backend (the resource server).
+5. The resource server authorizes the client’s request. If authorized successfully, the resource server executes the client’s request and replies back.
+6. The client shows the result to the user.
+
+
+A *token* can be any piece of data (usually a string of characters) that allows the client to prove they (and/or the user) have been identified by the authorization server. The token is also a way to get more details about both user and client if needed. Because the authorization server now manages all the user and client details, the backend sometimes needs to get part of these details from the authorization server and use them. The backend will get such details by means of the token.
+Sometimes, the token itself contains the needed details (such tokens are called non-opaque tokens); otherwise, the backend needs to call the authorization server to get the data about the client and the user (i.e., opaque tokens). In addition, unlike a physical key, an access token doesn’t have a large lifespan. It expires after a short period (in most cases minutes), after which the client needs to ask the authorization server again for another token. This way, a lost token (such as a lost key) can’t be misused.
+OAuth 2 describes multiple flows in which a client might get a token. We call these flows grant types.
+
+*Using various token implementations* - Tokens are the access cards a client uses to get authorized when sending requests to the backend (the resource server). Tokens are an essential part of the OAuth 2 authentication and authorization process because they’re the ones used to prove the authenticity of a client and user authentication, but they are also the way a backend gets more details about the client and the user.
+
+We classify tokens based on the way they provide the resource server with the data for authorization:
+- `Opaque`—Tokens which don’t store data. To implement the authorization, the resource server usually needs to call the authorization server, provide the opaque token, and get the details. This call is known as the introspection call.
+- `Non-opaque`—Tokens that store data, making it immediately possible for the backend to implement the authorization. The JSON Web Token (JWT) is the most used non-opaque token implementation.
+
+- Spring Security’s OAuth 2.0 support consists of two primary feature sets:
+  1. OAuth2 Resource Server
+  2. OAuth2 Client
+
+
+**OAuth2 Resource Server**:- Its role is to authenticate a user and the app they use (the client), as well as issue tokens that serve as proof of authentication to access resources protected by a backend. Sometimes, the client does that on behalf of a user.
+The Spring ecosystem offers a fully customizable way to implement an OAuth2/OpenID Connect authorization server. The Spring Security authorization server is the de facto way to implement an authorization server.
+
+The default configuration implies that the authorization server will issue non-opaque tokens.
+
+In real-world scenarios, you might or might not implement a custom authorization server.Your organization might use a third-party implementation instead of creating custom software. You can find many alternatives out there, ranging from open-source solutions such as Keycloak to enterprise products such as Okta, Cognito, or Azure AD.
+
+
+
+Protect Access with an OAuth2 Access Token - It is very common to protect access to an API using OAuth2 access tokens. In most cases, Spring Security requires only minimal configuration to secure an application with OAuth2
+
+There are two types of Bearer tokens supported by Spring Security which each use a different component for validation:
+• JWT support uses a JwtDecoder bean to validate signatures and decode tokens
+• Opaque token support uses an OpaqueTokenIntrospector bean to introspect tokens
+
+JWT Support - The following example configures a JwtDecoder bean using Spring Boot configuration properties:
+
+```yaml
+spring:
+ security:
+  oauth2:
+  resourceserver:
+   jwt:
+    issuer-uri: https://my-auth-server.com
+```
+
+Opaque Token Support - The following example configures an OpaqueTokenIntrospector bean using Spring Boot configuration properties:
+
+```yaml
+spring:
+ security:
+  oauth2:
+  resourceserver:
+   opaquetoken:
+    introspection-uri: https://my-auth-server.com/oauth2/introspect
+    client-id: my-client-id
+    client-secret: my-client-secret
+```
+
+You can add trace leve of logging to check the logs.
+
+
+**OAuth2 resource Server** - A resource server in OAuth 2 terminology is simply a backend service.
+While you have options to configure an authorization server without needing to implement your own, you’ll have to implement the authentication and authorization on your backend properly.
+
+*Configuring JWT validation* - To use JWTs, the resource server will need to prove they are authentic, meaning that the expected authorization server has indeed issued them as a proof of authentication of a user and/or a client. Second, the resource server will need to read the data in the token and use it to implement authorization rules.
+
+The following listing presents the needed dependencies. Aside from the web and Spring Security dependencies, we’ll also add the resource server starter.
+
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+</dependency>
+```
+
+
+OpenID Connect authorization server exposes a URL you can use to get its configuration (including the URL for authorization, token, public key set, and others). The next snippet presents the so-called well-known URL: http://localhost:8080/.well-known/openid-configuration
+You need this link to get information about the URL that the authorization server exposes to provide the public key set that the resource server can use to validate tokens.The resource server needs to call this endpoint and get the set of public keys. Then the resource server uses one of these keys to validate the access token’s signature
+
+To configure the public key set URI, we’ll first declare it in the project’s application .properties file. The configuration class can inject it into an attribute field and then use it to configure the resource server authentication:- keySetURI=http://localhost:8080/oauth2/jwks
+
+To configure the authentication, we’ll use the `oauth2ResourceServer()` method of the HttpSecurity object.You need to provide an implementation of the Customizer interface to configure the authentication.
+
+```java
+@Bean
+public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+  return http
+            .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
+            .build();
+    }
+```
+
+
+**OAuth2 Client**
+
 
 
 ## Filtering web requests

@@ -1,10 +1,8 @@
 # RESTful Services
 
-REST stands for REpresentational State Transfer. REST is a web standard based architecture that uses HTTP Protocol. It revolves around resources where every component
-is a resource and a resource is accessed by a common interface using HTTP standard methods.
+REST stands for REpresentational State Transfer. REST is a web standard based architecture that uses HTTP Protocol. It revolves around resources where every component is a resource and a resource is accessed by a common interface using HTTP standard methods.
 
-A REST Server simply provides access to resources and a REST client accesses and modifies the resources using HTTP protocol. Here each resource is identified by URIs/
-global IDs. REST uses various representation to represent a resource, for example, text, JSON, XML, but JSON is the most popular one.
+A REST Server simply provides access to resources and a REST client accesses and modifies the resources using HTTP protocol. Here each resource is identified by URIs/global IDs. REST uses various representation to represent a resource, for example, text, JSON, XML, but JSON is the most popular one.
 
 ## RESTful Web Services
 

@@ -2,10 +2,11 @@
 
 Spring Cloud Circuit breaker provides an abstraction across different circuit breaker implementations. It provides a consistent API to use in your applications allowing you the developer to choose the circuit breaker implementation that best fits your needs for your app.
 
-Supported Implementations:-
+Spring Cloud supports the following circuit-breaker implementations:
 
 1. Resilience4J
 2. Spring Retry
+3. Sentinel
 
 - `Starters` - There are two starters for the Resilience4J implementations, one for reactive applications and one for non-reactive applications.
    1. org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j - non-reactive applications
