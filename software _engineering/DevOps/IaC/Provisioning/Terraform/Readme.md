@@ -331,16 +331,53 @@ There are several ways to pass values to variables in Terraform:
 1. Default Values: If no value is provided, Terraform will use the default value defined in the variable block.
 2. Command Line Flags: You can pass variables directly through the terraform apply or terraform plan command using the -var flag.
 3. Environment Variables: Variables can be set using environment variables. For example, to pass the AWS region, you can use:
-4. Terraform .tfvars Files: Variables can be defined in a separate .tfvars file and passed to Terraform during runtime. Example of a terraform.tfvars file:
+4. Terraform .tfvars Files: Variables can be defined in a separate .tfvars file and passed to Terraform during runtime.
+5. Prompting user on the command line.
+
+- `Prompting`:-
+
+```tf
+# Create a VPC
+resource "aws_vpc" "main" {
+  cidr_block = var.vpc_cidr_block  # using variables
+  tags = {
+    "Name" = "Main VPC"
+  }
+}
+
+variable "vpc_cidr_block" {
+}
+```
+
+When you apply config, it will prompt you for the values.
+
+```sh
+terraform apply
+```
+
+- `Default values`:-
+
+```tf
+# Create a VPC
+resource "aws_vpc" "main" {
+  cidr_block = var.vpc_cidr_block  # using variables
+  tags = {
+    "Name" = "Main VPC"
+  }
+}
+
+variable "vpc_cidr_block" {
+    default = "10.0.0.0/16"
+    description = "CIDR Block for the VPC"
+    type = string
+}
+```
+
+- `Commandline flag`:-
 
 ```sh
 terraform apply -var="aws_region=us-east-1"
 
-export TF_VAR_aws_region=us-east-1
-export AWS_SECRET_ACCESS_KEY=
-export AWS_ACCESS_KEY_ID=
-
-terraform apply
 ```
 
 ```terraform.tfvars
@@ -354,6 +391,10 @@ terraform apply -var-file="terraform.tfvars" # Not compulsory to add the file,te
 
 `Environment variables`:-
 
+```sh
+export TF_VAR_aws_region=us-east-1
+terraform apply
+```
 
 **Data Sources** - Data sources allow you to query and reference existing infrastructure outside of Terraform. This is useful for situations where you need to use resources that are managed by another team, project, or process but still want to integrate them into your Terraform configuration.
 Data Sources Allow data to be fetched dynamically for use in Terraform configuration.It let's you query existing resources from provider.
@@ -438,12 +479,6 @@ commands will detect it and remind you to do so if necessary.
 Validate your configuration
 ```
 
-*Validate your configuration.* - Now that you have initialized your workspace and downloaded the required modules and providers, Terraform can verify whether your configuration syntax is valid and internally consistent. This includes checking if your resources blocks have invalid or missing arguments. You must initialize your workspace before you can validate your configuration.
-
-```sh
-terraform validate
-Success! The configuration is valid.
-```
 
 Ater running the command `terraform init`,it creates `.terraform` directory and a file called .`terraform.lock.hcl`.
 - .terraform.lock.hcl - A dependency lock file that is created or updated after running init.Contains all versions of providers.It is part of terraform strategy for defence against attacks(checksums in providers).The lock file ensures that Terraform uses the same provider versions across your team and in remote execution environments. During initialization, Terraform will download the provider versions specified by this file rather than the latest versions.
@@ -460,6 +495,14 @@ Initialize your Terraform workspace with terraform init when:
 - You add, remove, or change the version of a module or provider in an existing workspace.
 - You add, remove, or change the backend or cloud blocks within the terraform block of an existing workspace.
 
+*Validate your configuration.* - Now that you have initialized your workspace and downloaded the required modules and providers, Terraform can verify whether your configuration syntax is valid and internally consistent. This includes checking if your resources blocks have invalid or missing arguments. You must initialize your workspace before you can validate your configuration.
+
+```sh
+terraform validate
+Success! The configuration is valid.
+```
+
+
 **Terraform plan**:- When you provision infrastructure, Terraform creates an execution plan before it applies any changes. Terraform creates the plan by comparing your Terraform configuration to the state of your infrastructure. The execution plan consists of a set of changes that create, update, or destroy resources. You can use the terraform plan command to compare your configuration to your resource's state, review changes before you apply them, or to refresh your workspace's state. Terraform plan supports automation workflows in CI/CD pipelines by guaranteeing that the infrastructure changes Terraform applies match the ones you or your team approve, even if the deploy process completes across different machines or at different times.
 
 There are three commands that tell Terraform to generate an execution plan:
@@ -474,6 +517,7 @@ You can also save a plan with the -out flag. Later, you can apply the saved plan
 
 ```sh
 terraform plan -out "tfplan"
+
 data.aws_ami.ubuntu: Reading...
 data.aws_ami.ubuntu: Read complete after 0s [id=ami-055744c75048d8296]
 
@@ -514,12 +558,7 @@ Convert the saved plan into JSON, pass it to jq to format it, and save the outpu
 terraform show "tfplan"
 terraform show -json "tfplan" | jq > tfplan.json
 
-terraform apply -auto-approve
-terraform apply -refresh=false
 terraform plan -out iam.tfplan
-terraform apply "iam.tfplan"
-terraform apply -target="aws_iam_user.my_iam_user"
-terraform apply -replace="aws_instance.server"
 ```
 
 
@@ -550,6 +589,13 @@ terraform apply -target=aws_default_vpc.default
 terraform apply -target=data.aws_subnet_ids.default_subnets
 terraform apply -target=data.aws_ami_ids.aws_linux_2_latest_ids
 terraform apply -target=data.aws_ami.aws_linux_2_latest
+
+terraform apply -auto-approve
+terraform apply -refresh=false
+
+terraform apply "iam.tfplan"
+terraform apply -target="aws_iam_user.my_iam_user"
+terraform apply -replace="aws_instance.server"
 ```
 
 
@@ -557,9 +603,6 @@ terraform apply -target=data.aws_ami.aws_linux_2_latest
 export AWS_ACCESS_KEY_ID=*******
 export AWS_SECRET_ACCESS_KEY=*********
 terraform console
-
-terraform destroy # Destroy previously-created infrastructure
-terraform destroy -target="aws_vpc.dev_subnet"
 
 terraform fmt
 terraform fmt --diff
@@ -576,6 +619,15 @@ terraform workspace list
 terraform workspace select prod-env
 terraform state show <name> # shows the random generated values.
 
+```
+
+**Destroy Resources** - There are two ways of destroying resources:-
+- Run terraform destroy
+- Remove resources from config and run terraform apply
+
+```sh
+terraform destroy # Destroy previously-created infrastructure
+terraform destroy -target="aws_vpc.dev_subnet"
 ```
 
 

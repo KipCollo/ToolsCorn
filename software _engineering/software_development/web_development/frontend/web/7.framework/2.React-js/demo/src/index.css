@@ -1,0 +1,16 @@
+*{
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+
+.cont{
+   background-color: black;
+   padding:44px;
+   height: 30vh;
+   
+}
+
+.cont > h3{
+   color: blue;
+}

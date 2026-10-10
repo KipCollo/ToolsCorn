@@ -1,0 +1,10 @@
+- Critical Rendering Path
+- Time To Interact(TTI)
+- First Contentful Paint(FCP)
+- Lazy Loading
+- Code Splitting
+- Tree Shaking
+- Minification and Bunling
+- Debouncing and Throttling
+- Reflow and Repaint
+- Cumulative Layout Shift(CLS)
