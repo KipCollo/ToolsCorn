@@ -73,22 +73,34 @@ a:active {
 }
 ```
 
+```css
+a:link {
+  color: red;
+}
+a:visited {
+}
+a:hover {
+}
+a:active {
+}
+```
+
 ## CSS Background
 
 It's used to define the background effects for elements. CSS background properties:
 
-- background-color sets the background color of an element. Eg. background-color: "green;
-- background-image specifies an image to use as the background of an element. By default, the image is repeated both horizontally and vertically so it covers the entire element. Eg. background-image: url("img_tree.gif"), url("paper.gif");
-- background-repeat background images can be repeated individually or both horizontally or vertically. Eg.
+- background-color - sets the background color of an element. Eg. background-color: "green;
+- background-image - specifies an image to use as the background of an element. By default, the image is repeated both horizontally and vertically so it covers the entire element. Eg. background-image: url("img_tree.gif"), url("paper.gif");
+- background-repeat - background images can be repeated individually or both horizontally or vertically. Eg.
   - background-repeat: repeat-x; // horizontally
   - background-repeat: repeat-y; // vertically
   - background-repeat: repeat; // both(default)
   - background-repeat: no-repeat; // no repeated, shown only once
-- background-attachment specifies whether the background image should scroll or not. Eg.
+- background-attachment - specifies whether the background image should scroll or not. Eg.
   - background-attachment: fixed; // not scroll with the rest of the page
   - background-attachment: scroll; // scroll with the rest of the page
   - background-attachment: local; // scroll with the element's contents
-- background-position specifies the position of the background image. Eg.
+- background-position - specifies the position of the background image. Eg.
   - background-position: right top; // one/two values using left, top, center & bottom
   - background-position: 50% 50%;
   - background-position: 50px 150px;
@@ -108,12 +120,14 @@ Text is styled with some of the text formatting properties.
 - `word-spacing` is used to specify the space between the words in a text. It can be used to increase or decrease the space between words: Eg. word-spacing: 10px; word-spacing: -5px;
 - `text-shadow` adds shadow to text. It can be used to specify the position of the horizontal shadow (3px), vertical shadow (2px) and the color (red). Eg. text-shadow: 3px 2px red;
 - `text-overflow` specifies how overflowed content that is not displayed should be signaled to the user. It can be clipped, display an ellipsis (...), or display a custom string. Eg.
+- `text-shadow` Text shadows are like box shadows except that they are shadows for text rather than the whole element. Luckily, there is no vendor prefix necessary for text shadow.The options for text shadow are the same as for box-shadow except that there is _no inset_ text shadow support.As with box shadows, it is possible to have multiple text shadows just by separating them with commas. Here is an example that creates a flaming text effect.
 
 ```css
 div {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-shadow: 0 0 50px #333;
 }
 ```
 
@@ -131,3 +145,118 @@ Height and Width properties are used to set the height and width of an element. 
 - `max-height` sets the maximum height of an element. It adds a vertical scrollbar to the page when the browser window is smaller than the height of the element.
 - `min-height` sets the minimum height of an element. Only if the content is smaller than the minimum height, the minimum height will be applied.
   Block-level elements always take up the full width available. Setting the width prevents it from stretching out to the edges of its container. Set the margin to auto, to horizontally center the element within its container. The problem occurs when the browser window is smaller than the width of the element. The browser then adds a horizontal scrollbar to the page. Using max-width instead, in this situation, will improve the browser's handling of small windows. This is important when making a site usable on small devices.aut
+
+## CSS Sprites
+
+​A CSS sprite is a performance optimization technique that combines multiple images into a single image called a sprite sheet or tile set. Sprites reduce network congestion by reducing the number of downloads needed to render a web page.
+While combining several images into one with sprites, all images are loaded with a single HTTP request. Browsers limit the number of concurrent requests a site can make and HTTP requests require a bit of handshaking. Thus, sprites are important for the same reasons that minifying and concatenating CSS and JavaScript are important.
+
+**Using Sprites in CSS**
+
+You set the same background-image on several CSS classes and set the background position and dimensions of the individual classes to display a single portion of the sprite.
+
+```css
+.flags-canada,
+.flags-mexico,
+.flags-usa {
+  background-image: url("../images/flags.png");
+  background-repeat: no-repeat;
+}
+
+.flags-canada {
+  height: 128px;
+  background-position: -5px -5px;
+}
+
+.flags-usa {
+  height: 135px;
+  background-position: -5px -143px;
+}
+
+.flags-mexico {
+  height: 147px;
+  background-position: -5px -288px;
+}
+```
+
+**Benefits**
+
+​CSS sprites reduce overall page load time while giving enterprises more control over the performance of their website.
+
+- Users experience faster page load times since images appear as soon as the sprite sheet is downloaded.
+- Enterprises see greater throughput and lower resource usage as fewer HTTP requests are made, reducing the amount of network congestion.
+
+## Shadows
+
+## Vertical Alignment
+
+Vertical alignment is one of the main reasons some people think CSS is confusing. You wonder, I guess, why is it so _hard_ to align content vertically with CSS? Why don't they create a property that does it automatically? _Why does `vertical-align` not work for me?!_
+
+About the `vertical-align` question: this property is only for aligning inline or table-cell elements, hope it ends your doubt about it.
+
+And about being hard, well, turns out it is not that hard, but there are some questions you have to do to yourself when wanting do align something vertically:
+
+- Is it a inline or block-level element?
+- If it's a text, is it single or multi-line?
+- Do you always know the height of the content?
+- Can you use CSS3?
+
+**The line-height method:**
+
+This method can be used when you're vertically aligning a single-line text, single-line inline-level element or a image.
+
+Let's say you have the following HTML:
+
+```html
+<div class="parent">
+  <span class="child">Hello!</span>
+</div>
+```
+
+You'll then align the `.child` content with:
+
+```css
+.parent {
+  height: 150px;
+}
+
+.child {
+  line-height: 150px;
+}
+```
+
+But if the content of `.child` is directly inside `.parent` like this:
+
+```html
+<div class="parent">Hello!</div>
+```
+
+You then can put the `line-height` property on it:
+
+```css
+.parent {
+  height: 150px;
+  line-height: 150px;
+}
+```
+
+If, instead of a `<span>` you have a `<img>`:
+
+```html
+<div class="parent">
+  <img src="image.jpg" class="child-image" />
+</div>
+```
+
+You got to change to:
+
+```css
+.parent {
+  height: 150px;
+  line-height: 150px;
+}
+
+.child-image {
+  vertical-align: middle; /* Aha! Here it does work :) */
+}
+```

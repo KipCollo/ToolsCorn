@@ -251,47 +251,20 @@ Application Programming Interfaces (APIs) are everywhere. They power the backend
 
 That is to say, if you’re thinking about becoming a backend developer, you will be coding APIs/microservices. This is why understanding the basics of them is crucial to ensuring your relevance in the field.
 
-![System vs External System](https://assets.roadmap.sh/guest/6529303b545cb53d4aa730ca_1709057608824.png)
-
-The above diagram explains how APIs interact with whatever you might be building.
-
 Now, if you’re inside the “**The System**” box, then you need to understand how to interact with these APIs using the right tools. If you’re inside the “**External System**” box, then you need to understand the type of standards these APIs need to follow and how to implement them.
 
 Don’t worry though, for both situations, there are always frameworks and libraries you can use to simplify your task and ensure you’re following the proper industry standards.
 
-### What are the most common API types?
+**common API types** - The most common types of APIs used in the industry currently are REST and GraphQL.
 
-The most common types of APIs used in the industry currently are REST and GraphQL.
-
-As a backend developer, it’s not mandatory that you master both of these types, but it’s definitely recommended that you have some practical experience with one of them.
-
-- **RESTful APIs.** These are APIs that work over HTTP and make extensive use of the HTTP Verbs to give meaning to each request. They’ve been the most popular type of API until recently, so there are still a lot of projects and teams that make use of it.
-- **GraphQL.** GraphQL APIs operate over HTTP as well, leveraging the HTTP protocol and its verbs. In contrast to the conventional RESTful APIs, GraphQL has emerged as a powerful alternative, offering a flexible and efficient approach to data querying and manipulation. GraphQL allows clients to request only the data they need, providing a more tailored and efficient interaction between clients and servers.
+- _RESTful APIs_ These are APIs that work over HTTP and make extensive use of the HTTP Verbs to give meaning to each request. They’ve been the most popular type of API until recently, so there are still a lot of projects and teams that make use of it.
+- _GraphQL_ GraphQL APIs operate over HTTP as well, leveraging the HTTP protocol and its verbs. In contrast to the conventional RESTful APIs, GraphQL has emerged as a powerful alternative, offering a flexible and efficient approach to data querying and manipulation. GraphQL allows clients to request only the data they need, providing a more tailored and efficient interaction between clients and servers.
 
 Is there one better than the other? There is no easy way to answer that question as both are capable of doing everything you’d need. It’s more about your particular requirements and the preferences of your dev team.
 
-## Version Control Savvy
+## Version Control
 
-One mandatory skill that all backend developers should work on (actually, all developers, in general) is version control, or in other words, understanding and being familiar with version control systems.
-
-Essentially, you’ll want to know how to use the version control tool that everyone else is using. The industry standard at the moment of writing this is [Git](https://git-scm.com/), while there might be some teams using other (older) tools, as long as you understand the current one, you’ll be in good shape.
-
-### What is version control?
-
-Version control references the ability for you and other developers to share code with each other while you’re working on the same files.
-
-While Git is the industry standard at the moment, GitHub has created such a popular platform around Git, that it almost makes it mandatory to learn about.
-
-So go ahead and create an account, browse what others are doing, and upload your own personal projects. It’s definitely a great way to learn.
-
-### What should you learn about Git?
-
-If you’re picking up Git as your version control system of choice, there are two main areas you should be focusing on.
-
-- **The basics.** Clearly understanding how Git works and the basic commands to add, push and pull changes. You should aim to learn enough about them to feel comfortable using them on your day-to-day (because you will).
-- **Branching strategies.** Sadly, using Git alone is not enough. While through Git you can already start versioning your code, when the project is complex enough and your team big enough, the tool alone will not be enough. You’ll have to come up with [branching strategies](https://learngitbranching.js.org/?locale=es_ES) to organize the whole team’s workflow.
-
-Keep in mind that Git and Git branching are not trivial topics, and they’ll take a while to master. So, while you should give yourself time to learn about them, also make sure you check with others (or use tools such as ChatGPT) to validate your commands before using them. Remember, a wrong Git command or a wrong workflow can cause major problems within a project, especially if there are many developers working on the same codebase.
+Version control references the ability for you and other developers to share code with each other while you’re working on the same files.While Git is the industry standard at the moment, GitHub has created such a popular platform around Git.
 
 ## principles
 

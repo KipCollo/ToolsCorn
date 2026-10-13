@@ -5,12 +5,12 @@ Here's an example of transpiling:
 
 ```javascript
 // Modern JavaScript code using let and const
-let myVar = 'Hello';
-const myConst = 'World';
+let myVar = "Hello";
+const myConst = "World";
 
 // Transpiled JavaScript code using var
-var myVar = 'Hello';
-var myConst = 'World';
+var myVar = "Hello";
+var myConst = "World";
 ```
 
 In this example, we define two variables using the let and const keywords, which are features introduced in ECMAScript 6 (ES6). However, not all browsers support ES6, so we need to transpile our code to an older version of JavaScript that is widely supported.
@@ -32,8 +32,21 @@ In this example, we define a simple function using the modern JavaScript arrow f
 
 After transpiling, the code is converted to use function expressions, which are supported in all modern browsers and environments.
 
-Transpiling is a powerful technique that allows developers to use the latest features of JavaScript without worrying about browser compatibility issues. However, it's important to note that not all features of modern JavaScript can be transpiled, and some may require polyfills or other workarounds to work in older environments.
+For example, the Array.from() method was introduced in ECMAScript 6 (ES6) and allows you to create an array from an array-like or iterable object. However, this method is not available in older versions of JavaScript, such as ES5. In order to use this method in older versions of JavaScript, you can use a polyfill that provides an implementation of the method if it is not already available.
 
+Here is an example of a polyfill for Array.from():
+
+```javascript
+if (!Array.from) {
+  Array.from = function (object) {
+    return Array.prototype.slice.call(object);
+  };
+}
+```
+
+This code checks if the Array.from() method is already defined. If it is not, it defines a new function with the same name that uses the slice() method to create an array from the provided object. This allows you to use Array.from() in older versions of JavaScript that do not support it natively.
+
+Transpiling is a powerful technique that allows developers to use the latest features of JavaScript without worrying about browser compatibility issues. However, it's important to note that not all features of modern JavaScript can be transpiled, and some may require polyfills or other workarounds to work in older environments.
 
 ## Babel
 

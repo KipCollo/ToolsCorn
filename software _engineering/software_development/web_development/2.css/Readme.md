@@ -48,7 +48,7 @@ So, an inline style has the highest priority, and will override external and int
 
 ## Selectors
 
-Selectors are used to "find" (or select) the HTML elements you want to style. To group selectors, separate each selector with a comma. The universal selector (\*) selects all HTML elements on the page. We can divide them into five categories:
+Selectors are used to find (or select) the HTML elements you want to style. To group selectors, separate each selector with a comma. The universal selector (\*) selects all HTML elements on the page. We can divide them into five categories:
 
 1. Simple selectors (select elements based on name, id, class)
 2. Combinator selectors (select elements based on a specific relationship between them)
@@ -342,19 +342,19 @@ select {
 }
 ```
 
+## variables
+
+Used in other declarations using the var() function.E.g --variable-name: value
+Used in other declarations using the var() function.E.g var(--variable-name)
+
+`Counter Reset` - Create a new counter or reversed counter with the given name on the specified element.E.g counter-reset: name-of-counter
+`Counter Increment` - Increases or decreases the value of a CSS counter by a given value.E.g counter-increment: name-of-counter
+`Counter Dynamic value` - Adjust appearance of content based on its location in a document.E.g content: counter(name-of-counter)
 
 TODO:-
 
-- Specifity
 - Overflow
-- Shadows
-- Bg Images
 - Masking & Blending
-- Media Queries
-- Flex Advanced
-- CSS sprites
-- CSS variables & counters
 - Container queries
 - Subgrid
 - BEM standards
-- Responsive web design
