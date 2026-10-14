@@ -14,7 +14,7 @@ div {
 
 2D transformation methods:
 
-- `translate()` moves an element from its current position (according to the parameters given for the X-axis and the Y-axis). Ex. transform: translate(50px, 100px); //50px right & 100px down from current position
+- `translate()` moves an element from its current position (according to the parameters given for the X-axis and the Y-axis). Ex. transform: translate(50px, 100px); //50px right & 100px down from current position.
 - `rotate()` rotates an element clockwise or counter-clockwise according to a given degree. Ex. transform: rotate(20deg); //rotates element clockwise with 20 degrees
 - `scaleX()` increases or decreases the width of an element. Ex. transform: scaleX(2); //increases width twice to its original
 - `scaleY()` increases or decreases the height of an element. Ex. transform: scaleY(3); //increases height thrice to its original
