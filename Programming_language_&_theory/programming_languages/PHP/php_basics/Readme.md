@@ -1,6 +1,7 @@
 # Introductions
 
-## Basic Syntax:
+## Basic Syntax
+
 PHP has certain syntax and structure to create a valid script that executes on web server. 
 
 **Embedding PHP Code in Your Web Pages**:- One of PHP’s advantages is that you can embed PHP code directly alongside HTML. For the code to do anything, the page must be passed to the PHP engine for interpretation. But the web server doesn’t just pass every page; rather, it passes only those pages identified by a specific file extension (typically .php).But even selectively passing only certain pages to the engine would nonetheless be highly inefficient for the engine to consider every line as a potential PHP command. Therefore, the engine needs some means to immediately determine which areas of the page are PHP-enabled. This is logically accomplished by delimiting the PHP code. There are four delimitation variants.
@@ -127,9 +128,14 @@ require "index.view.php";
 ```
 
 
-## Displaying Outputs
+## Displaying Statements
 
-- *echo statement*:- The easiest way to display outputs in PHP is to use an echostatement. To do that, we enclose the text that we want to display in a pair of matching quotation marks after the echo keyword. The echo keyword is not case sensitive. Hence, echo, Echo or ECHO will all work. we can use an echo statement with or without parentheses.echo()’s prototype looks like this:- void echo(string argument1 [, ...string argumentN])
+PHP offers different ways to display output data to the browser.
+
+- *echo statement*:- The easiest way to display outputs in PHP is to use an echo statement. To do that, we enclose the text that we want to display in a pair of matching quotation marks after the echo keyword. The echo keyword is not case sensitive. Hence, echo, Echo or ECHO will all work. we can use an echo statement with or without parentheses.echo()’s prototype looks like this:- void echo(string argument1 [, ...string argumentN])
+    - It prints one or more expressions.
+    - It doesn't return a value.
+    - It can be used without parentheses.
 
 ```php
 echo 'PHP is fun<BR>and easy!';
@@ -138,7 +144,22 @@ $lightweight = "Floyd Mayweather";
 echo $heavyweight, " and ", $lightweight, " are great fighters.";
 ```
 
+To print multiple lines, use either `print` or `echo` with newlines:
+
+```php
+echo "Line 1\nLine 2\nLine 3";
+```
+
+use `nl2br()` to convert newlines to `<br>` tags:
+
+```php
+echo nl2br("Line 1\nLine 2\nLine 3");
+```
+
 - *print() statement*:- Besides using echo statements to display outputs, we can use print statements.print statements are VERY similar to echo statements.The print() statement outputs data passed to it . Its prototype looks like this:- int print(argument)
+    - It prints a single expression only.
+    - It returns 1 on success, 0 on failure.
+    - It requires parentheses sometimes.
 
 ```php
 print "My name is Brody.";
@@ -171,16 +192,68 @@ Commonly Used Type Specifiers:-
 8. %x - Argument considered an integer; presented as a lowercase hexadecimal number
 9. %X - Argument considered an integer; presented as an uppercase hexadecimal number
 
+- Additional Formatting Options:
+	- Precision: Specify the number of decimal places for float numbers:
+  ```php
+  printf("Pi: %.3f", 3.14159); // Output: Pi: 3.142
+  ```
+	- Zero-padding: Use the `0` flag:
+  ```php
+  printf("Visits: %010d", 30); // Output: Visits: 000000030
+  ```
+
 - *The sprintf() Statement*:- The sprintf() statement is functionally identical to printf() except that the output is assigned to a string rather than rendered to the browser. The prototype follows:- string sprintf(string format [, mixed arguments])
 
 ```php
 $cost = sprintf("$%.2f", 43.2); // $cost = $43.20
 ```
 
+- *Print_r Function* - It prints human-readable information about a variable. For debugging and inspecting complex data structures. Syntax:- print_r(expression, boolean);
+    - It accepts optional second argument `boolean` to controls the output format:
+        - `true`: Returns the output as a string.
+        - `false` (default): Prints the output directly.
+
+```php
+$array = [1, 2, 3];
+print_r($array);
+
+echo print_r($array, true);
+```
+
+- *Var_dump Function*:- It prints detailed information about one or more expressions, including their type and value. And it is useful for debugging. Syntax:- var_dump(expression1, expression2, ...);
+
+```php
+$array = [1, 2, 3];
+var_dump($array);
+```
+
+- *Vprintf Function*:- It is similar to `printf` function, but uses an array of arguments instead of number of variable arguments.
+- *Vsprintf Function*:- It is similar to `sprintf` function, but accepts array of argument
+
+**Comparison Among Statements**:
+
+| Function | Description | Return Value | Use Cases |
+|---|---|---|---|
+| `echo` | Outputs one or more strings | None | Simple output, printing HTML content |
+| `print` | Outputs a single string | 1 on success, 0 on failure | Similar to `echo`, but can be used in one expression at a time |
+| `printf` | Formats output using placeholders | None | Formatting output with specific data types (e.g., numbers, strings) |
+| `sprintf` | Similar to `printf`, but returns the formatted string instead of printing it | Formatted string | Storing formatted strings for later use |
+| `vprintf` | Like `printf`, but takes an array of arguments | None | Formatting output with number of arguments as a variable |
+| `vsprintf` | Like `sprintf`, but takes an array of arguments and returns the formatted string | Formatted string | Storing formatted strings with a variable number of arguments |
+| `print_r` | Prints human-readable information about a variable | None | Debugging and inspecting complex data structures (arrays, objects) |
+| `var_dump` | Dumps information about a variable, including its type and value | None | Debugging and inspecting variables in detail |
+
+**Choosing the Right Function:**
+- Return Value: `print` returns 1 on success, while `echo` doesn't return anything.
+- Argument Count: `echo` can take multiple arguments, while `print` takes only one.
+- Formatting: `printf` and `sprintf` offer more control over formatting output using placeholders.
+- Debugging: `print_r` and `var_dump` are useful for debugging and inspecting complex data structures.
+
 
 ------
 
 ## Variables
+
 It is used to store data that can be handled throughout the program. To declare a variable in PHP using a `$` symbol followed by a name. The variable name should follow certain rules:
   - It can start with a letter or underscore (_).
   - It can contain letters, numbers, and followed by underscores.
@@ -251,57 +324,6 @@ User Define variable are 3 types
 1. variable scope
 2. variable variables
 3. reference variable
-
-
-**$_GET**:- $_GET is a pre-defined array in PHP, that's used to collect form-data sent through HTTP GET method. It's useful whenever you need to process or interact with data that has been passed in via a URL's query string. For an example if you have a form with a GET method, you can get the values of the form elements through this global $_GET array. Here’s an example:
-
-```html
-<form method="get" action="test.php">
-    Name: <input type="text" name="fname">
-    <input type="submit">
-</form>
-```
-
-Using $\_GET in `test.php`, you can fetch the 'fname' value from the URL:
-
-    echo "Name is: " . $_GET['fname'];
-
-- [@official@$_GET](https://www.php.net/manual/en/reserved.variables.get.php)
-
-
-**$_POST**:- $_POST is a superglobal variable in PHP that's used to collect form data submitted via HTTP POST method. Your PHP script can access this data through `$_POST`. Let's say you have a simple HTML form on your webpage. When the user submits this form, the entered data can be fetched using `$_POST`. Here's a brief example:
-
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = $_POST["name"];
-    }
-    ?>
-    
-In this code, `$_POST["name"]` fetches the value entered in the 'name' field of the form. Always be cautious when using `$_POST` as it may contain user input which is a common source of vulnerabilities. Always validate and sanitize data from `$_POST` before using it.
-
-- [@official@$_POST](https://www.php.net/manual/en/reserved.variables.post.php)
-
-
-**$_REQUEST**:- $_REQUEST is a PHP superglobal variable that contains the contents of both $_GET, $_POST, and $_COOKIE. It is used to collect data sent via both the GET and POST methods, as well as cookies. $_REQUEST is useful if you do not care about the method used to send data, but its usage is generally discouraged as it could lead to security vulnerabilities. Here's a simple example:
-
-    $name = $_REQUEST['name'];
-    
-This statement will store the value of the 'name' field sent through either a GET or POST method. Always remember to sanitize user input to avoid security problems.
-
-Visit the following resources to learn more:
-
-- [@official@$_REQUEST](https://www.php.net/manual/en/reserved.variables.request.php)
-
-
-**$_SERVER**:- The `$_SERVER` is a superglobal in PHP, holding information about headers, paths, and script locations. $_SERVER is an associative array containing server variables created by the web server. This can include specific environmental configurations, the server signature, your PHP script's paths and details, client data, and the active request/response sequence. Among its many uses, `$_SERVER['REMOTE_ADDR']` can help get the visitor's IP while `$_SERVER['HTTP_USER_AGENT']` offers information about their browser. Don't forget to sanitize the content before use to prevent security exploits.
-
-Here's an easy code sample that prints the client's IP:
-
-    echo 'Your IP is: ' . $_SERVER['REMOTE_ADDR'];
-
-Visit the following resources to learn more:
-
-- [@official@$_SERVER](https://www.php.net/reserved.variables.server)
 
 
 ## Variable scope
@@ -566,6 +588,7 @@ print $obj->scalar; // returns "Toyota"
 ------
 
 ## Operators
+
 It can perform operations on variables and values. Common operators in PHP:
 - **Arithmetic Operators:** can perform calculations like,
 	- `+`: Addition

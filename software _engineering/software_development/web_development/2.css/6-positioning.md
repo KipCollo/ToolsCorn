@@ -20,6 +20,8 @@ div {
 }
 ```
 
+Any element that has its position set to absolute, relative, or fixed automatically becomes a reference point (an "anchor") for any absolutely positioned items inside it.
+
 _Static positioning_:- The default position of an element is static.This keyword lets the element use the normal behavior, that is it is laid out in its current position in the ﬂow. The top, right, bottom, left and z-index properties do not apply.
 The only reason you would ever set an element to position: static is to forcefully-remove some positioning that got applied to an element outside of your control. This is fairly rare, as positioning doesn't cascade.
 

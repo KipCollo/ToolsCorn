@@ -1,45 +1,34 @@
 # Arrays
+
 Arrays are fundamental data structures in PHP. It allows to store and manage collections and series of items under a single variable name. 
 
-### &#10022; Array Types:
 PHP has 3 types of arrays.
-  1. [Indexed Array](#-indexed-array)
-  2. [Associative Array](#-associative-array)
-  3. [Multi Dimensional Array](#-multi-dimensional-array)
+  1. Indexed Array
+  2. Associative Array
+  3. Multi Dimensional Array
 
-### &#10022; Indexed Array:
-This indexed arrays are holding collection of items in ordered manner, where each item is accessed by a numerical index starting from 0.
+*Indexed Array*: This indexed arrays are holding collection of items in ordered manner, where each item is accessed by a numerical index starting from 0.
 
-*Example:*
 ```php
 $fruits = ["apple", "banana", "orange"];
-
-echo $fruits[0]; 
-// Outputs "apple"
-echo $fruits[2]; 
-// Outputs "orange"
+echo $fruits[0]; // Outputs "apple"
+echo $fruits[2]; // Outputs "orange"
 ```
 
-### &#10022; Associative Array:
-This associative arrays are also known as Hashes, these arrays items are stored as key-value pairs. The item can be accessed using their unique keys instead of numerical indexes.
+*Associative Array*: This associative arrays are also known as Hashes, these arrays items are stored as key-value pairs. The item can be accessed using their unique keys instead of numerical indexes.
 
-*Example:*
 ```php
 $grocery = [
   "fruit" => "banana",
   "vegetable" => "cauliflower"  
 ];
 
-echo $grocery["fruit"]; 
-// Outputs "banana"
-echo $grocery["vegetable"]; 
-// Outputs "cauliflower"
+echo $grocery["fruit"]; // Outputs "banana"
+echo $grocery["vegetable"]; // Outputs "cauliflower"
 ```
 
-### &#10022; Multi Dimensional Array:
-If an array holds an another array, then it is known as multi dimensional array. That represents the array items in a multi dimensional structure. and it is useful for complex data sets and nested elements. It may either indexed array or associative array.
+*Multi Dimensional Array*: If an array holds an another array, then it is known as multi dimensional array. That represents the array items in a multi dimensional structure. and it is useful for complex data sets and nested elements. It may either indexed array or associative array.
 
-*Example:*
 ```php
 $products = [
   [
@@ -54,32 +43,28 @@ $products = [
   ]
 ];
 
-echo $products[0]["size"][2]; 
-// Outputs "L" (size at index 2 of product 0)
+echo $products[0]["size"][2]; // Outputs "L" (size at index 2 of product 0)
 ```
 
-### &#10022; Choosing Array
+**Choosing Array**:-
 - Indexed arrays: when there is a need for storing the elements in an ordered and sequential.
 - Associative arrays: when there is a need for storing the elements with identification and access elements by specific names.
 
-### &#10022; Adding Elements in Array:
-To add elements to existing array by using their array reference.
 
-*Syntax: `$array1[] = $element;`*
+*Adding Elements in Array*: To add elements to existing array by using their array reference.
+Syntax: 
 
-*Example:*
+`$array1[] = $element;`
+
 ```php
 $fruits = ["apple", "banana"];
 // adding array elements
 $fruits[] = "orange";
-print_r($fruits); 
-// Output: Array ( [0] => apple [1] => banana [2] => orange )
+print_r($fruits); // Output: Array ( [0] => apple [1] => banana [2] => orange )
 ```
 
-### &#10022; Accessing Array Elements:
-Accessing array elements by specifying their index and key name in the series of square brackets.
+*Accessing Array Elements:* - Accessing array elements by specifying their index and key name in the series of square brackets.
 
-*Example:*
 ```php
 $grocery = [
     ["name" => "Mango", "price" => 100],
@@ -90,27 +75,23 @@ echo $grocery[0]["name"];
 // Output: Mango
 ```
 
-### &#10022; Array Elements Unpack:
-It allows to unpack elements of array into individual variables.
+*Array Elements Unpack*: It allows to unpack elements of array into individual variables.
+Syntax: 
 
-*Syntax: `list($variable1,...) = $array1;`*
+`list($variable1,...) = $array1;`*
 
-*Example:*
 ```php
 $person = ["Kumar", 30];
 list($name, $age) = $person;
 
-echo $name; 
-// Output: Kumar
-echo $age; 
-// Output: 30
+echo $name; // Output: Kumar
+echo $age; // Output: 30
 ```
 
 To unpack array elements into individual parameter during function call.
 
 *Syntax: `functionName(...$array1);`*
 
-*Example:*
 ```php
 function sum($a, $b) {
   return $a + $b;
@@ -123,10 +104,10 @@ echo $result;
 // Output: 3
 ```
 
-### &#10022; Iterating Array Elements:
-Iterate array elements with array iterator class.
+*Iterating Array Elements*: Iterate array elements with array iterator class.
 
-*Example: Using `foreach` loop*
+Using `foreach` loop:-
+
 ```php
 $array = ["apple", "banana", "orange"];
 $iterator = new ArrayIterator($array);
@@ -136,8 +117,7 @@ foreach ($iterator as $value) {
 }
 ```
 
-*Example: Using `array_walk` function*
-It iterates through one dimension level.
+Using `array_walk` function:- It iterates through one dimension level.
 
 ```php
 $grocery = [
@@ -153,8 +133,7 @@ function groceryItems($value)
 }
 ```
 
-*Example: Using `array_walk_recursive` function*
-It iterates through multi dimensional level in one by one. It pass parameters to the function as named parameter such as `$key` and `$value`.
+Using `array_walk_recursive` function:- It iterates through multi dimensional level in one by one. It pass parameters to the function as named parameter such as `$key` and `$value`.
 
 ```php
 $grocery = [
@@ -178,7 +157,8 @@ function groceryItemsValue($value)
 }
 ```
 
-### &#10022; Common Array Functions:
+
+## Common Array Functions:
 PHP provides a rich set of functions to manipulate and interact with arrays. Here are some commonly used functions:
 - Sorting:
   - `sort()`: Sorts an array elements in ascending order.
@@ -232,6 +212,7 @@ PHP provides a rich set of functions to manipulate and interact with arrays. Her
     print_r($fruits); 
     // Output: Array ( [apple] => 90 [banana] => 10 [orange] => 50 )
     ```
+  
 - Searching:
   - `array_key_exists()`: Checks if array key exist in associative array.
     ```php
@@ -271,6 +252,7 @@ PHP provides a rich set of functions to manipulate and interact with arrays. Her
     print_r($diff); 
     // Output: Array ( [0] => 1 [2] => 3 [3] => 4 [5] => 6 )
     ```
+  
 - Manipulation:
   - `array_pop()`: Removes and returns the last element of an array.
     ```php

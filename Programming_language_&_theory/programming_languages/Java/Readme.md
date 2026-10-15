@@ -13,7 +13,6 @@ Java Editions includes:
 7. Java DB
 8. Java TV
 
-
 Before writing Java program,you have to install JDK.There are two versions of JDKs:-
 
 1. Proprietary JDK of Oracle.Every six months, Oracle releases a new version of Java.
@@ -55,25 +54,15 @@ Picked up _JAVA_OPTIONS: -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
 jshell>
 ```
 
-A Java program begins execution with its main() method.The main() method is often called an entry point into the program, because it is the starting point that the JVM looks for when it begins running a new program.
+JDK contains a compiler. Java class files run on the JVM and therefore run on any machine with Java rather than just the machine or operating system they happened to have been compiled on.
 
-The main() method lets the JVM call our code.
+_Single-­File Source-­Code_ - If you get tired of typing both javac and java every time you want to try a code example, there’s a shortcut. You can instead run
 
-```java
-public static void main(String[] args) {
-   System.out.println("Hello World");
-}
+```sh
+java Zoo.java Bronx Zoo
 ```
 
-The main() method’s parameter list, represented as an array of java.lang.String objects. You can use any valid variable name along with any of these three formats:
-
-- String[] args
-- String options[]
-- String... friends
-
-The compiler accepts any of these. The variable name args is common because it hints that this list contains values that were read in (arguments) when the JVM started. The characters [] are brackets and represent an array. An array is a fixed-­size list of items that are all of the same type. The characters ... are called varargs (variable argument lists).
-
-To compile Java code with the javac command, the file must have the extension .java.The name of the file must match the name of the public class. The result is a file of bytecode with the same name but with a .class filename extension. Remember that bytecode consists of instructions that the JVM knows how to execute.
+There is a key difference here. When compiling first, you omitted the `.java` extension when running java. When skipping the explicit compilation step, you include this extension. This feature is called launching single-­file source-­code programs and is useful for testing or for small programs. The name cleverly tells you that it is designed for when your program is one file.
 
 ## Java Runtime Environment(JRE)
 
@@ -101,7 +90,7 @@ There are three main types of ClassLoaders in Java.
 - Bootstrap ClassLoader: This is the first ClassLoader. It loads classes from rt.jar file.
 - Extension ClassLoader: It loads class files from jre/lib/ext location.
 - Application ClassLoader: This ClassLoader depends on CLASSPATH to find the location of class files. If you specify your jars in CLASSPATH, then this ClassLoader
-will load them.
+  will load them.
 
 By design, the JVM allows compiled Java code to be transported across networks, operate seamlessly on various client machines, and provide safety assurance. The JVM’s architecture and execution model ensures that Java programs behave consistently, regardless of their origin or the host machine they run on. This evolution from small, networked devices to large-scale servers showcases Java’s versatility and enduring impact on the world of software development.
 
@@ -110,7 +99,6 @@ The JVM operates at the operating system layer, serving as a critical bridge bet
 It also acts as an interpreter for Java bytecode, transforming high-level Java code into low-level instructions that the underlying hardware can understand. It manages memory, handles multithreading, and provides various runtime services, allowing Java applications to run seamlessly across different platforms and operating systems.
 
 `Just In Time compiler` also known as JIT compiler is used for performance improvement in Java. It is enabled by default. It is compilation done at execution time rather earlier. Java has popularized the use of JIT compiler by including it in JVM.
-
 
 Java is a platform independent language. Java compiler converts Java code in to byte code that can be interpreted by JVM. There are JVM written for almost all the popular platforms in the world.
 Java byte code can run on any supported platform in same way. Where as other languages require libraries compiled for a specific platform to run.
@@ -137,6 +125,7 @@ It incudes all Frameworks,Tools and Technologies for modern development.
 **Build Tools**:-
 
 Tools to automate the process of building,testing and deploying applications.
+
 1. Maven:- Dependency management and bild tool.
 2. Gradle:- Build automation tool for multi-language projects
 3. Ant:- XML-based build tool
@@ -244,6 +233,7 @@ Building Java GUIs require use of frameworks:
 ## Profiling tools
 
 These tools help developers to analyze the performance of their java applications and identify bottlenecks and other issues.Includes:-
+
 1. JProfiler
 2. YourKit Java Profiler
 3. VisualVM.
@@ -251,6 +241,7 @@ These tools help developers to analyze the performance of their java application
 ## Code Quality tools
 
 These tools help to identify code quality issues and ensure that the code meets certain standards.Inncludes:-
+
 1. SonarQube
 2. Checkstyle
 3. PMD
@@ -258,6 +249,7 @@ These tools help to identify code quality issues and ensure that the code meets 
 ## Code Coverage
 
 Code coverage tools can be used to measure the extent to which your tests are covering your code,helping you identify areas that may need more testing.
+
 1. JaCoCo
 2. Cobertura
 
@@ -265,26 +257,24 @@ Repositories:-
 
 1. Awesome-Java
 
-
-
 Evolution of Key Java SE Features
-1. Networking (java.net) ➡️ Servlets ➡️ Spring MVC
-Java SE: Provides ServerSocket and Socket. You must manually handle bytes and ports.
-Jakarta EE: Extends this into the Servlet API. It abstracts TCP into HTTP, providing HttpServletRequest and Response.
-Spring: Extends Servlets with Spring MVC (DispatcherServlet). It automates data binding and routing, so you work with Java objects instead of raw HTTP parameters.
-2. Database Connectivity (java.sql) ➡️ JPA ➡️ Spring Data
-Java SE: Provides JDBC. You write raw SQL strings and manually manage database connections.
-Jakarta EE: Extends this into JPA (Jakarta Persistence API). It introduces ORM (Object-Relational Mapping), allowing you to map Java classes to database tables.
-Spring: Extends JPA with Spring Data JPA. It eliminates the need to write "Boilerplate" code; you can perform database queries just by naming an interface method (e.g., findByLastName).
-3. Object Creation (new Object()) ➡️ CDI ➡️ Spring IoC
-Java SE: You manually instantiate classes using the new keyword.
-Jakarta EE: Introduces CDI (Contexts and Dependency Injection). The server manages the lifecycle of your objects.
-Spring: Built entirely on the IoC (Inversion of Control) Container. It uses Dependency Injection (@Autowired) to wire the entire network of your application together automatically.
-4. Remote Invocation (java.rmi) ➡️ EJB ➡️ Spring Boot/Cloud
-Java SE: Uses RMI (Remote Method Invocation) to call code on another JVM. It is notoriously difficult to configure.
-Jakarta EE: Extends this into EJB (Enterprise JavaBeans), adding transaction management and security to remote calls.
-Spring: Simplifies this into RestTemplates or Feign Clients, treating remote network calls like simple local method calls.
 
+1. Networking (java.net) ➡️ Servlets ➡️ Spring MVC
+   Java SE: Provides ServerSocket and Socket. You must manually handle bytes and ports.
+   Jakarta EE: Extends this into the Servlet API. It abstracts TCP into HTTP, providing HttpServletRequest and Response.
+   Spring: Extends Servlets with Spring MVC (DispatcherServlet). It automates data binding and routing, so you work with Java objects instead of raw HTTP parameters.
+2. Database Connectivity (java.sql) ➡️ JPA ➡️ Spring Data
+   Java SE: Provides JDBC. You write raw SQL strings and manually manage database connections.
+   Jakarta EE: Extends this into JPA (Jakarta Persistence API). It introduces ORM (Object-Relational Mapping), allowing you to map Java classes to database tables.
+   Spring: Extends JPA with Spring Data JPA. It eliminates the need to write "Boilerplate" code; you can perform database queries just by naming an interface method (e.g., findByLastName).
+3. Object Creation (new Object()) ➡️ CDI ➡️ Spring IoC
+   Java SE: You manually instantiate classes using the new keyword.
+   Jakarta EE: Introduces CDI (Contexts and Dependency Injection). The server manages the lifecycle of your objects.
+   Spring: Built entirely on the IoC (Inversion of Control) Container. It uses Dependency Injection (@Autowired) to wire the entire network of your application together automatically.
+4. Remote Invocation (java.rmi) ➡️ EJB ➡️ Spring Boot/Cloud
+   Java SE: Uses RMI (Remote Method Invocation) to call code on another JVM. It is notoriously difficult to configure.
+   Jakarta EE: Extends this into EJB (Enterprise JavaBeans), adding transaction management and security to remote calls.
+   Spring: Simplifies this into RestTemplates or Feign Clients, treating remote network calls like simple local method calls.
 
 String Examples
 
@@ -387,8 +377,6 @@ System.out.println("Consonants: " + consonants);
 }
 ```
 
-
-
 •1. What is the difference between JDK and JRE?
 •2. Why is Java a platform independent language?
 •3. What is the difference between an abstract class and an interface?
@@ -403,7 +391,6 @@ System.out.println("Consonants: " + consonants);
 •12. What exactly is System.out.println in Java?
 •13. What part of memory - Stack or Heap - is cleaned in the garbage collection process?
 
-
 ## Java Versions
 
 - `First Release 1991`:- Green project for consumer electronics market.
@@ -414,105 +401,107 @@ System.out.println("Consonants: " + consonants);
 - `JDK 1.1 (1997)`:- Improved inner classes,JavaBeans,JDBC/RMI/Reflection.
 
 - `J2SE 1.2 (1998)`:- Java versions were given codenames.The Java version 1.2 codename was **Playground**.J2SE replaced JDK because the Java platform was now composed of three parts:
-   1. J2SE (Java 2 Platform, Standard Edition), which later became JSE, a computing platform for the development and deployment of portable code for desktop and server environments
-   2. J2EE (Java 2 Platform, Enterprise Edition), which later became JEE, a set of specifications extending Java SE with specifications for enterprise features such as distributed computing and web services
-   3. J2ME (Java 2 Platform, Micro Edition), which later became JME, a computing platform for development and deployment of portable code for embedded and mobile devices
-Features includes:-
-   1. RMI/Reflection
-   2. JDBC
-   3. Introduced Inner classes.
+  1.  J2SE (Java 2 Platform, Standard Edition), which later became JSE, a computing platform for the development and deployment of portable code for desktop and server environments
+  2.  J2EE (Java 2 Platform, Enterprise Edition), which later became JEE, a set of specifications extending Java SE with specifications for enterprise features such as distributed computing and web services
+  3.  J2ME (Java 2 Platform, Micro Edition), which later became JME, a computing platform for development and deployment of portable code for embedded and mobile devices
+      Features includes:-
+  4.  RMI/Reflection
+  5.  JDBC
+  6.  Introduced Inner classes.
 
 - `J2SE 1.3 (2000)`:- The codename was **Kestrel** (maybe as a reference to the newly introduced Java sound classes).This release also contained Java XML APIs.JNDI/JSSE/Javasound.HotSpot JVM.
 
 - `J2SE 1.4 (2002)`:- codename was **Merlin**.This is the first year that the Java Community Process members were involved in deciding which features the release
-should contain, and thus, the release was quite consistent.his is the first release of the Java platform developed under the Java Community Process as JSR 59.Features included:-
-   1. Support for IPv6 (basically applications that run over a network can now be written to work using networking protocol IPv6).
-   2. **Non-blocking IO**(IO is an acronym for input-output, which refers to reading and writing data— a very slow operation. Making IO non-­blocking means to optimize these operations to increase speed of the running application.)
-   3. **Logging API** (Operations that get executed need to be reported to a file or a resource, which can be read in case of failure to determine the cause and find a solution. This process is called logging and apparently only in this version components to support this operation were introduced.)
-   4. **Image processing API** (Components developers can use this to manipulate images with Java code.)
-   5. Assertion.
-   6. Introduced Regular Expressions.
+  should contain, and thus, the release was quite consistent.his is the first release of the Java platform developed under the Java Community Process as JSR 59.Features included:-
+  1.  Support for IPv6 (basically applications that run over a network can now be written to work using networking protocol IPv6).
+  2.  **Non-blocking IO**(IO is an acronym for input-output, which refers to reading and writing data— a very slow operation. Making IO non-­blocking means to optimize these operations to increase speed of the running application.)
+  3.  **Logging API** (Operations that get executed need to be reported to a file or a resource, which can be read in case of failure to determine the cause and find a solution. This process is called logging and apparently only in this version components to support this operation were introduced.)
+  4.  **Image processing API** (Components developers can use this to manipulate images with Java code.)
+  5.  Assertion.
+  6.  Introduced Regular Expressions.
 
 Java’s coffee cup logo made its entrance in 2003 (between releases 1.4 and 5.0) at the JavaOne conference.
 
 - `J2SE 1.5 (2005)`(Major Change):- codename **Tiger**.Initially, it followed the typical versioning, and was named 1.5, but because this was a major release with a significant number of new features that proved a serious improvement of maturity, stability, scalability, and security of the J2SE, the version was labeled 5.0 and presented like that to the public, even if internally 1.5 was still used.Features:-
-   1. **Generics** provide compile-time (static) type safety for collections and eliminates the need for most type conversions (which means the type used in a certain context is decided while the application is running).
-   2. **Annotations**, also known as metadata, are used to tag classes and methods to allow metadata-aware utilities to process them (which means a component is labeled as something another component recognizes and does specific operations with it).
-   3. **Autoboxing/unboxing** are automatic conversion between primitive types and matching object types (wrappers).
-   4. **Enumerations** define static final ordered sets of values using the enum keyword.
-   5.** Varargs** are the last parameter of a method is declared using a type name followed by three dots (String...), which implies that any number of arguments of that type can be provided and is placed into an array.
-   6. **Enhanced for each loop** is used to iterate over collections and arrays too.
-   7. Improved semantics for multithreaded Java programs(Executor).
-   8. Static imports.
-   9. Improvements for RMI,Swing, concurrency utilities(Executor) and introduction to the Scanner class.
+  1.  **Generics** provide compile-time (static) type safety for collections and eliminates the need for most type conversions (which means the type used in a certain context is decided while the application is running).
+  2.  **Annotations**, also known as metadata, are used to tag classes and methods to allow metadata-aware utilities to process them (which means a component is labeled as something another component recognizes and does specific operations with it).
+  3.  **Autoboxing/unboxing** are automatic conversion between primitive types and matching object types (wrappers).
+  4.  **Enumerations** define static final ordered sets of values using the enum keyword. 5.** Varargs** are the last parameter of a method is declared using a type name followed by three dots (String...), which implies that any number of arguments of that type can be provided and is placed into an array.
+  5.  **Enhanced for each loop** is used to iterate over collections and arrays too.
+  6.  Improved semantics for multithreaded Java programs(Executor).
+  7.  Static imports.
+  8.  Improvements for RMI,Swing, concurrency utilities(Executor) and introduction to the Scanner class.
 
 Java 5 was the first available for Mac OS X (version 10.4) and the default version installed on Mac OS X (version 10.5). There were a lot of updates8 released for this version to fix issues related to security and performance.
 
 - `Java SE 6 (2006)`:- codename **Mustang**.This was the last major Java release by Sun Microsystems. Oracle acquired the company in January 2010.Features:-
-   1. Dramatic performance improvements for the core platform (applications run faster, need less memory or CPU to execute).
-   2. Improved web service support (optimized components that are required for development of web applications).
-   3. JDBC 4.0 (optimized components that are required for development of applications using databases).
-   4. Java Compiler API (basically, from your code you can components that are used to compile code).
-   5. Many GUI improvements, such as integration of SwingWorker in the API, table sorting and filtering, and true Swing double-buffering (eliminating the gray-area effect); basically, improvement of components used to create interfaces for desktop applications.
-   7. Pluggable Annotations.
-   8. Scripting support.
-In December 2008, Java FX 1.0 SDK was released. JavaFX is used to create graphical user interfaces for any platform, and the initial version was a scripting language. Until
-2008, there were two ways to create a user interface in Java:
-   1. AWT (Abstract Window Toolkit) components, which are rendered and controlled by a native peer component specific to the underlying operating system; that is why AWT components are also called heavyweight components.
-   2. Swing components, which are called lightweight because they do not require allocation of native resources in the operating system’s windowing toolkit. The Swing API is a complimentary extension of AWT.
-In the first versions, it was never really clear if JavaFX would actually have a future and grow up to replace Swing.
+  1.  Dramatic performance improvements for the core platform (applications run faster, need less memory or CPU to execute).
+  2.  Improved web service support (optimized components that are required for development of web applications).
+  3.  JDBC 4.0 (optimized components that are required for development of applications using databases).
+  4.  Java Compiler API (basically, from your code you can components that are used to compile code).
+  5.  Many GUI improvements, such as integration of SwingWorker in the API, table sorting and filtering, and true Swing double-buffering (eliminating the gray-area effect); basically, improvement of components used to create interfaces for desktop applications.
+  6.  Pluggable Annotations.
+  7.  Scripting support.
+      In December 2008, Java FX 1.0 SDK was released. JavaFX is used to create graphical user interfaces for any platform, and the initial version was a scripting language. Until
+      2008, there were two ways to create a user interface in Java:
+  8.  AWT (Abstract Window Toolkit) components, which are rendered and controlled by a native peer component specific to the underlying operating system; that is why AWT components are also called heavyweight components.
+  9.  Swing components, which are called lightweight because they do not require allocation of native resources in the operating system’s windowing toolkit. The Swing API is a complimentary extension of AWT.
+      In the first versions, it was never really clear if JavaFX would actually have a future and grow up to replace Swing.
 
 - `Java SE 7 (2011)`:- codename **Dolphin**, was the first Java version released by Oracle.It was the result of an extensive collaboration between Oracle engineers and members of the worldwide Java communities, like the OpenJDK Community and the Java Community Process (JCP).Features:-
-   1. JVM support for dynamic languages with the new invokedynamic bytecode (basically, Java code can use code implemented in non-Java languages, such as C).
-   2. Compressed 64-bit pointers (internal optimization of the JVM, so less memory is consumed).
-   3. Small language changes grouped under project Coin:-
+  1.  JVM support for dynamic languages with the new invokedynamic bytecode (basically, Java code can use code implemented in non-Java languages, such as C).
+  2.  Compressed 64-bit pointers (internal optimization of the JVM, so less memory is consumed).
+  3.  Small language changes grouped under project Coin:-
       - strings in switch
       - automatic resource management in try-statement
       - improved type inference for generics—the diamond <> operator.
       - binary integer literals.
       - multiple exceptions handling improvements.
-   4. Concurrency improvements(ForkJoin).
-   5. New I/O library (new classes added to read/write data to/from files).
-   6. Timsort to sort collections and arrays of objects instead of merge sort (Sets of data that are ordered need to be sorted using an algorithm, basically, in this version, the algorithm was replaced with one that has better performance. Better performance usually means reducing of consumed resources: memory and/or CPU, or reducing the time needed for execution.)
-   JavaFX 2.0 was released with Java 7. This confirmed that the JavaFX project had a future with Oracle. As a major change, JavaFX stopped being a scripting language and became a Java API.JavaFX started gaining ground over Swing because of its hardware-accelerated graphical engine called Prism that did a better job at rendering.
+  4.  Concurrency improvements(ForkJoin).
+  5.  New I/O library (new classes added to read/write data to/from files).
+  6.  Timsort to sort collections and arrays of objects instead of merge sort (Sets of data that are ordered need to be sorted using an algorithm, basically, in this version, the algorithm was replaced with one that has better performance. Better performance usually means reducing of consumed resources: memory and/or CPU, or reducing the time needed for execution.)
+      JavaFX 2.0 was released with Java 7. This confirmed that the JavaFX project had a future with Oracle. As a major change, JavaFX stopped being a scripting language and became a Java API.JavaFX started gaining ground over Swing because of its hardware-accelerated graphical engine called Prism that did a better job at rendering.
 
 - `Java SE 8 (2014)`:- codename **Spider**.Included features that were initially intended to be part of Java 7.JDK8 was created to simplify programming i.e way of writing code in less no. of lines.It's also influenced by the hardware i.e CPU became multicore, majority of java programs used only one core.JDK8 enabled parallel programming/procesing so that Java programs can run in multi-processors.Features:-
-   1. Language syntax changes:-
+  1.  Language syntax changes:-
       - Language-level support for lambda expressions (functional programming features).
-      - Support for default methods in interfaces.
+      - Support for default and static methods in interfaces.
       - Stream API.
-      - Optionals.
+      - Optional Class.
       - Functionl Interfaces.
       - New date and time API.
       - Method References.
       - New way to do parallel processing by using streams.
-      - CompletableFuture
-   2. Improvements of the garbage collection process.
-   3. Improved integration with JavaScript (the Nashorn project).
+      - Enhancements in Java Collections (e.g., forEach, removeIf, etc.)
+      - Concurrency Enhancements (CompletableFuture, parallel streams).
+      - Base64 Encoding and Decoding API.
+  2.  Improvements of the garbage collection process.
+  3.  Improved integration with JavaScript (the Nashorn project).
 
 - `Java SE 9 (2017)`:- called **Jigsaw** project.The Java platform is finally modular.Features introduced in Java modules:-
-   1. The Java Shell tool, an interactive command-line interface for evaluation declarations, statements, and expressions written in Java.
-   2. Quite a few security updates.
-   3. Improved try-with-resources: final variables can now be used as resources.
-   4. "_" is removed from the set of legal identifier names.
-   5. Support for private interface methods.
-   6. Enhancements for the Garbage-First (G1) garbage collector; this becomes the default garbage collector.
-   7. Internally, a new more compact String representation is used.
-   8. Concurrency updates (related to parallel execution).
-   9. Factory methods for collections.
-   10. Updates of the image processing API optimization of components used to write code that processes images.
-   11. HTTP/2 client.
-   12. multi-release JARs
+  1.  The Java Shell tool, an interactive command-line interface for evaluation declarations, statements, and expressions written in Java.
+  2.  Quite a few security updates.
+  3.  Improved try-with-resources: final variables can now be used as resources.
+  4.  "\_" is removed from the set of legal identifier names.
+  5.  Support for private interface methods.
+  6.  Enhancements for the Garbage-First (G1) garbage collector; this becomes the default garbage collector.
+  7.  Internally, a new more compact String representation is used.
+  8.  Concurrency updates (related to parallel execution).
+  9.  Factory methods for collections.
+  10. Updates of the image processing API optimization of components used to write code that processes images.
+  11. HTTP/2 client.
+  12. multi-release JARs
 
 - `Java SE 10(Java 18.3) (2018)`:- Oracle changed the Java release style, so a new version is released every six months.Also, Java 10 uses the new versioning convention set up by Oracle: the version numbers follow a $YEAR.$MONTH format.Features:-
-   1. A local-variable type inference to enhance the language to extend type inference to local variables.
-   2. More optimizations for garbage collection.
-   3. Application Class-Data Sharing to reduce the footprint by sharing common class metadata across processes.
-   4. More concurrency updates (related to parallel execution).
-   5. Heap allocation on alternative memory devices (The memory needed by JVM to run a Java program—called heap memory—can be allocated on an alternative memory device, so the heap can also be split between volatile and non-volatile RAM).
-   6. JIT compiler.
-   7. Local variable type inference(var).
-   1. JShell
+  1.  A local-variable type inference to enhance the language to extend type inference to local variables.
+  2.  More optimizations for garbage collection.
+  3.  Application Class-Data Sharing to reduce the footprint by sharing common class metadata across processes.
+  4.  More concurrency updates (related to parallel execution).
+  5.  Heap allocation on alternative memory devices (The memory needed by JVM to run a Java program—called heap memory—can be allocated on an alternative memory device, so the heap can also be split between volatile and non-volatile RAM).
+  6.  JIT compiler.
+  7.  Local variable type inference(var).
+  8.  JShell
+
 2. JPMS (Java Platform Modulen System)
 3. JLink (Java Linker)
 4. HTTP/2 Client
@@ -520,118 +509,113 @@ In the first versions, it was never really clear if JavaFX would actually have a
 6. Private method inside Interface
 7. Try with Resources Enhancement
 8. Factory Methods to create unmodifiable colections
-9. <> Operator Enhancement  (Dimond Operator)
+9. <> Operator Enhancement (Dimond Operator)
 10. Stream API Enhancement
 11. Safe Varargs Arguments
 12. G1GC (Garbage Fiest Garbage Collector)
 
-
 - `Java SE 11 (2018)`:-
-   1. LTS release with HTTP client/flight recorder.
-   2. ZGC/Epsilon GC.
+  1.  LTS release with HTTP client/flight recorder.
+  2.  ZGC/Epsilon GC.
 
 - `Java SE 12 (2019)`:-
-   1. Switch Expressions.
-   2. Raw string literals.
-   3. Shenandoh GC(production).
-   4. Microbenchmark suite.
-   5. JVM constants API.
+  1.  Switch Expressions.
+  2.  Raw string literals.
+  3.  Shenandoh GC(production).
+  4.  Microbenchmark suite.
+  5.  JVM constants API.
 
 - `Java SE 13 (2019)`:-
-   1. Dynamic class-file constants.
-   2. switch expressions/Text blocks(preview).
-   3. Legacy socket API removal.
+  1.  Dynamic class-file constants.
+  2.  switch expressions/Text blocks(preview).
+  3.  Legacy socket API removal.
 
 - `Java SE 14 (2020)`:-
-   1. packaging tool/switch expressions(standard).
-   2. foreign-memory access API(incubator)/instanceof.
+  1.  packaging tool/switch expressions(standard).
+  2.  foreign-memory access API(incubator)/instanceof.
 
 - `Java SE 15 (2020)`:-
-   1. Sealed classes/text blocks(standard).
-   2. Hidden classes/records(standard).
-   3. Multi-line string/API removal.
+  1.  Sealed classes/text blocks(standard).
+  2.  Hidden classes/records(standard).
+  3.  Multi-line string/API removal.
 
 - `Java SE 16 (2021)`:-
-   1. Pattern matching for instanceof(standard).
-   2. records(standard)/foreign-memory access API(preview).
+  1.  Pattern matching for instanceof(standard).
+  2.  records(standard)/foreign-memory access API(preview).
 
 - `Java SE 17 (2021)` :-
-   1. Foreign-linker API(incubator).
-   2. LTS release with pattern matching for instanceof.
-   3. records/sealed classes(preview).
+  1.  Foreign-linker API(incubator).
+  2.  LTS release with pattern matching for instanceof.
+  3.  records/sealed classes(preview).
 
 - `Java SE 18 (2022)`:-
-   1. Simple web server.
-   2. UTF-8 by default.
-   3. Vector API(second incubator).
-   4. foreign function & memory API(incubator).
+  1.  Simple web server.
+  2.  UTF-8 by default.
+  3.  Vector API(second incubator).
+  4.  foreign function & memory API(incubator).
 
 - `Java SE 19 (2022)`:-
-   1. Value-based classes.
-   2. virtual threads.
-   3. switch pattern matching.
+  1.  Value-based classes.
+  2.  virtual threads.
+  3.  switch pattern matching.
 
 - `Java SE 20 (2023)`:-
-   1. Runtime class-file patching.
-   2. Annotations on Java types/vector API(third incubator).
-   3. generic specialization.
-   4. enhanced pseudorandom number generators.
+  1.  Runtime class-file patching.
+  2.  Annotations on Java types/vector API(third incubator).
+  3.  generic specialization.
+  4.  enhanced pseudorandom number generators.
 
 - `Java SE 21 (2023)`:-
-   1. Virtual threads(standard).
-   2. Vector APIs(fourth incubator).
-   3. macOS/AArch64 port.
+  1.  Virtual threads(standard).
+  2.  Vector APIs(fourth incubator).
+  3.  macOS/AArch64 port.
 
 - `Java SE 22 (2024)`:-
-   1. Foreign Function & Memory API(standard).
-   2. Unnamed variables & Patterns/String templates(preview).
+  1.  Foreign Function & Memory API(standard).
+  2.  Unnamed variables & Patterns/String templates(preview).
 
 - `Java SE 23 (2024)`:-
-   1. Pattern Matching for Primitives(preview).
-   2. Module import declarations(preview).
-   3. Generational ZGC/Vector API(incubator).
-   4. Simplified class Declarations(preview).
+  1.  Pattern Matching for Primitives(preview).
+  2.  Module import declarations(preview).
+  3.  Generational ZGC/Vector API(incubator).
+  4.  Simplified class Declarations(preview).
 
 - `Java SE 24 (2025)`:-
-   1. Compact Object Headers.
-   2. Enhanced Pattern Matching by allowing primitive types in all pattern contexts, and extend instanceof and switch to work with all primitive types.Align type patterns with instance of, and align instanceof with safe casting.
-   3. Improved Foreign Function & Memory API.
-
-
+  1.  Compact Object Headers.
+  2.  Enhanced Pattern Matching by allowing primitive types in all pattern contexts, and extend instanceof and switch to work with all primitive types.Align type patterns with instance of, and align instanceof with safe casting.
+  3.  Improved Foreign Function & Memory API.
 
 1. Whta is JPMS (Java Platform Module System). ?
 
 A.Definition:
-	Jpms is an Module Programming insted of Jar File.
-	We are uysing Traditional Jar file Aproach before Java9, but with Jar File Aproach
-	there are some problems are there those problems are called Jar Hell
-	to over come this proble this JPMS concept comes in Java9.
+Jpms is an Module Programming insted of Jar File.
+We are uysing Traditional Jar file Aproach before Java9, but with Jar File Aproach
+there are some problems are there those problems are called Jar Hell
+to over come this proble this JPMS concept comes in Java9.
 
 Advantages:
-	1.In the moduler programming JVM is going to check at the begining only
-	all the dependentabl thing are available are not. 
-	(there for there no chance of NoClassDefFoundError)
+1.In the moduler programming JVM is going to check at the begining only
+all the dependentabl thing are available are not.
+(there for there no chance of NoClassDefFoundError)
 
-	2. if i want to export only 1-package so then other package will never touch by other.
+    2. if i want to export only 1-package so then other package will never touch by other.
 
-	3. JRE, rt.jar are divided into Module, which module are required only that module 
-		my Jre will use now the size of JRE is by default become decresed
+    3. JRE, rt.jar are divided into Module, which module are required only that module
+    	my Jre will use now the size of JRE is by default become decresed
 
 Problems with before Java-9
-	
-	fig: Jar Hell or Class Path Hell
-	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	|(ClassFile, Interface, Enum) --into--> Packages ---into--> Jar Filers		|
-	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+fig: Jar Hell or Class Path Hell
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|(ClassFile, Interface, Enum) --into--> Packages ---into--> Jar Filers |
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-		Problems  
-		1. ClassNotFoundException
-		2. Version Conflict
-		3. Security Problems
-		4. Jdk|Jre having Monolithic Structure and Bigger in size.
+    	Problems
+    	1. ClassNotFoundException
+    	2. Version Conflict
+    	3. Security Problems
+    	4. Jdk|Jre having Monolithic Structure and Bigger in size.
 
 B.Histry
-
 
 +++++++++++++++++++++
 HTTP/2 Client
@@ -639,16 +623,15 @@ HTTP/2 Client
 
 before Java 9 to communicate in Network for Request and Response we use HttpUrl, which is very dificult
 HttpUrlConnection (in 1997)
-	Difficult to use
-	At a time onle onew Request (i.e Synchronized)
-	Tex oriented
-	Blocking Mode
+Difficult to use
+At a time onle onew Request (i.e Synchronized)
+Tex oriented
+Blocking Mode
 
-Then we are use 3rt party api i.e  Apache HttpClient Or GoogleHttpClient
+Then we are use 3rt party api i.e Apache HttpClient Or GoogleHttpClient
 
 But in Java9 the new features HttP/2 Client
 all problems are solved
-
 
 ## Reflection API
 
@@ -692,8 +675,6 @@ Object value = field.get(instance);
 System.out.println("Value: " + value);
 ```
 
-
-
 Custom Networking — An introduction to the Java platform's powerful networking features.
 The Extension Mechanism — How to make custom APIs available to all applications running on the Java platform.
 Full-Screen Exclusive Mode API — How to write applications that more fully utilize the user's graphics hardware.
@@ -716,21 +697,87 @@ Creating Graphical User Interfaces
 Creating a GUI with Swing — A comprehensive introduction to GUI creation on the Java platform.
 Creating a JavaFX GUI — A collection of JavaFX tutorials.
 
-
-- *Java Fundamentals*
-- *Java Object-Oriented Programming*
-- *Java Collections Framework*
-- *I/O & Networking in Java*
-- *Concurrency in Java*
-- *Databases in Java*
-- *Design Patterns in Java*
-- *Data Structures in Java*
-- *Algorithms in Java*
-- *Kotlin - Modern JVM Language*
-- *Android Development (Kotlin)*
-- *Android Libraries (Kotlin)*
-- *Unit Testing in Java/Kotlin*
-
-
+- _Java Object-Oriented Programming_
+- _Java Collections Framework_
+- _I/O & Networking in Java_
+- _Concurrency in Java_
+- _Databases in Java_
+- _Design Patterns in Java_
+- _Data Structures in Java_
+- _Algorithms in Java_
+- _Kotlin - Modern JVM Language_
+- _Android Development (Kotlin)_
+- _Android Libraries (Kotlin)_
+- _Unit Testing in Java/Kotlin_
 
 **FreeMarker**:- Java Tepmlate engine library.
+
+## Java Garbage Collections
+
+Java provides a garbage collector to automatically look for objects that aren't needed anymore.Java code exists inside off a JVM,which includes numerous processes independent from your application code.One of the most important of those is a built-in garbage collector.
+
+All java objects are stored in the program memory's heap.The heap,also referred as free store,represents a large pool of unused memory allocated to your java application.If your program keeps instantiating objects and leaving them on the heap, eventually it will run out of memory and crash.Garbage collection solves this problem.
+
+`Garbage collection` refers to the process of automatically freeing memory on the heap by deleting objects that are no longer reachable in your program.There are many different algorithms for garbage collections
+
+In Java and other languages, `eligible for garbage collection` refers to an object’s state of no longer being accessible in a program and therefore able to be garbage collected.
+Java includes a built-­in method to help support garbage collection where you can suggest that garbage collection run.
+
+```java
+System.gc();
+```
+
+**Tracing Eligibility**:-The JVM waits patiently and monitors each object until it determines that the code no longer needs that memory. An object will remain on the heap until it is no longer reachable. An object is no longer reachable when one of two situations occurs:
+
+1. The object no longer has any references pointing to it.
+2. All references to the object have gone out of scope.
+
+## Stack and Heap
+
+Stack is used for storing primitive types (numbers, boolean and character) and variables that store references to objects in the heap.Variables stored in the stack are immediately cleared when they go out of scope (eg when a method finishes execution). Objects stored in the heap get removed later on when they’re no longer references. This is done by Java’s garbage collector.
+
+## Interface Cloneable
+
+    All Known Subinterfaces:
+        AclEntry, Attribute, AttributedCharacterIterator, Attributes, CertPathBuilderResult, CertPathParameters, CertPathValidatorResult, CertSelector, CertStoreParameters, CharacterIterator, CRLSelector, Descriptor, GSSCredential, Name
+
+
+    public interface Cloneable
+
+    A class implements the Cloneable interface to indicate to the Object.clone() method that it is legal for that method to make a field-for-field copy of instances of that class.
+
+    Invoking Object's clone method on an instance that does not implement the Cloneable interface results in the exception CloneNotSupportedException being thrown.
+
+    By convention, classes that implement this interface should override Object.clone (which is protected) with a public method. See Object.clone() for details on overriding this method.
+
+    Note that this interface does not contain the clone method. Therefore, it is not possible to clone an object merely by virtue of the fact that it implements this interface. Even if the clone method is invoked reflectively, there is no guarantee that it will succeed.
+
+---
+
+# UUID
+
+A class that represents an immutable universally unique identifier (UUID). A UUID represents a 128-bit value.
+
+There exist different variants of these global identifiers. The methods of this class are for manipulating the Leach-Salz variant, although the constructors allow the creation of any variant of UUID (described below).
+
+The variant field contains a value which identifies the layout of the UUID. The bit layout described above is valid only for a UUID with a variant value of 2, which indicates the Leach-Salz variant.
+
+The version field holds a value that describes the type of this UUID. There are four different basic types of UUIDs: time-based, DCE security, name-based, and randomly generated UUIDs. These types have a version value of 1, 2, 3 and 4, respectively.
+
+Used for creating random files name,session id in web applications, transactions id
+
+**constructor** -
+
+```java
+    public UUID(long mostSigBits,
+                long leastSigBits)
+```
+
+Constructs a new UUID using the specified data. mostSigBits is used for the most significant 64 bits of the UUID and leastSigBits becomes the least significant 64 bits of the UUID.
+
+Parameters:
+
+- mostSigBits - The most significant bits of the UUID
+- leastSigBits - The least significant bits of the UUID
+
+## Reflection

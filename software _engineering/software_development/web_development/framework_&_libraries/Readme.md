@@ -104,6 +104,10 @@ Visit the following resources to learn more:
 - [Angular NgRx Redux Quick Start Tutorial](https://www.youtube.com/watch?v=2LCo926NFLI)
 - [NgRx Course](https://www.youtube.com/watch?v=nuHBHD32iw8)
 
+- `Angular Universal` - The Angular Universal project is a community driven project to expand on the core APIs from Angular (platform-server) to enable developers to do the server side rendering of Angular applications. It mainly uses express to render pages on pages on node.js server.
+
+- [Server-side rendering (SSR) with Angular Universal](https://angular.io/guide/universal)
+
 - _Nuxt.js_ - Nuxt.js is a free and open source JavaScript library based on Vue.js, Node.js, Webpack and Babel.js. Nuxt is inspired by Next.js, which is a framework of similar purpose, based on React.js.
   - [@official@Nuxt Website](https://nuxtjs.org/)
   - [@official@Nuxt Docs](https://nuxtjs.org/docs/get-started/installation)
@@ -112,11 +116,19 @@ Visit the following resources to learn more:
   - [@article@Nuxt.js Fundamentals](https://vueschool.io/courses/nuxtjs-fundamentals)
   - [@feed@Explore top posts about JavaScript](https://app.daily.dev/tags/javascript?ref=roadmapsh)
 
+Nuxt.js is a free and open source JavaScript library based on Vue.js, Node.js, Webpack and Babel.js. Nuxt is inspired by Next.js, which is a framework of similar purpose, based on React.js.
+
+Visit the following resources to learn more:
+
+- [Nuxt Website](https://nuxtjs.org/)
+- [Nuxt Docs](https://nuxtjs.org/docs/get-started/installation)
+- [Nuxt Tutorials](https://nuxtjs.org/tutorials)
+- [Get Started with Nuxt](https://explorers.netlify.com/learn/get-started-with-nuxt)
+- [Nuxt.js Fundamentals](https://vueschool.io/courses/nuxtjs-fundamentals)
+
 Nuxt.js is an open-source development framework built on top of Node.js
 enabling Vue based web applications functionalities such as server-side
 rendering and generating static websites.
-
-Visit the following resources to learn more:
 
 - [@official@Official Website](https://nuxtjs.org/)
 - [@official@Official Docs for Getting Started](https://nuxtjs.org/docs/get-started)
@@ -186,6 +198,24 @@ Visit the following resources to learn more:
 - [@video@React Course - Beginners Tutorial for React JavaScript Library \[2022\]](https://www.youtube.com/watch?v=bMknfKXIFA8)
 - [@video@Understanding Reacts UI Rendering Process](https://www.youtube.com/watch?v=i793Qm6kv3U)
 - [@feed@Explore top posts about React](https://app.daily.dev/tags/react?ref=roadmapsh)
+
+- `Recoil` - Recoil is a new state management library built by the Facebook team that simplifies global state management.
+
+- [Recoil Official Website](https://recoiljs.org/)
+- [Official Documentation](https://recoiljs.org/docs/introduction/getting-started)
+- [Learn the basics of Recoil.js](https://www.youtube.com/watch?v=BchtCWxs7sA)
+
+`Redux` - Redux is a predictable state container for JavaScript apps. It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. On top of that, it provides a great developer experience, such as [live code editing combined with a time traveling debugger](https://github.com/reduxjs/redux-devtools).
+
+- [Official Website](https://redux.js.org/)
+- [Official Getting Started to Redux](https://redux.js.org/introduction/getting-started)
+- [Official Tutorial to Learn Redux](https://redux.js.org/tutorials/essentials/part-1-overview-concepts)
+- [Fundamentals of Redux Course from Dan Abramov](https://egghead.io/courses/fundamentals-of-redux-course-from-dan-abramov-bd5cc867)
+
+`MobX` - MobX is an open source state management tool. MobX, a simple, scalable, and standalone state management library, follows functional reactive programming (FRP) implementation and prevents inconsistent state by ensuring that all derivations are performed automatically.
+
+- [MobX Official Website](https://mobx.js.org/)
+- [Intro to MobX Tutorial](https://www.youtube.com/watch?v=WQQq1QbYlAw)
 
 - _Remix_ - Remix is a full stack web framework built on top of react that lets you focus on the user interface and work back through web standards to deliver a fast, slick, and resilient user experience. People are gonna love using your stuff.
 

@@ -4,16 +4,21 @@ Introduced in Java 8.
 
 ## Java Streams
 
-`Stream API` is used to process collections of objects.
-A `stream` in Java is a sequence of objects/elemnts that supports various methods that can be pipelined to produce the desired result.It was introduced in Java 8.It supports functional-style operations on collections and other data sources, making code concise, readable, and efficient.
+`Stream API` - The Streams API in Java 8 provides a powerful way to process collections of data efficiently.It enables functional-style operations on collections (like filtering, mapping, and reducing) without modifying the original data. Streams make it easier to work with data in a declarative, concise, and parallelizable manner.
 
-Stream is an interface, containing stream() method.Stream method returns an object of type stream.Any operation can be performed inside stream method.Any changes done inside stream can be reflected on actual list.Once we work with stream we can't reuse.
-Stream is not a data structure,it is an abstraction of functions.
-Bucket - List/Sets
-Pipe - Stream
+A `stream` in Java is a sequence of objects/elements that supports various methods that can be pipelined to produce the desired result.It supports functional-style operations on collections and other data sources, making code concise, readable, and efficient.
+It does not store data but processes data from a source such as collections, arrays, or I/O channels.
 
-Streams allows us to process a collection of data in a declarative programming, focusing on what to do rather than how to do it.A stream in Java is a sequence of data. A stream pipeline consists of the operations that run on a stream to produce a result.
-A stream is a sequence of elements that supports aggregate operations like map, filter, reduce, etc.Streams don’t store data. Instead, they operate on data from a source (e.g., collections, arrays, I/O channels).
+Any operation can be performed inside stream method.Any changes done inside stream can be reflected on actual list.Once we work with stream we can't reuse.
+Streams allows us to process a collection of data in a declarative programming, focusing on what to do rather than how to do it. A stream pipeline consists of the operations that run on a stream to produce a result.
+
+Characteristics of Streams:
+
+1. Not a Data Structure – It does not store elements; it processes them.
+2. Functional-Style Operations – Uses declarative operations like map, filter, and reduce.
+3. Lazy Evaluation – Intermediate operations are not executed until a terminal operation is invoked.
+4. Parallel Processing – Can be processed in parallel to improve performance.
+5. Single-Use:- Streams cannot be reused once operated on. A new stream must be created for additional operations.
 
 Use of Stream in Java:
 
@@ -36,27 +41,31 @@ Limitations:-
 2. Single pipeline - a single terminal operation.
 3. No elegant way to catch exceptions - Exceptions are imperative style ideas.
 
-Characteristics:-
+- `Pipeline Concept`:- A stream pipeline has three stages:
+  - Source: Generates the stream (e.g., a list or an array).(Where the stream comes from.)
+  - Intermediate Operations: Transform the stream (e.g., filter, map) into another one.Since streams use lazy evaluation, the intermediate operations do not run until the terminal operation runs.
+  - Terminal Operations: Produce a result or side effects (e.g., collect, forEach).Since streams can be used only once, the stream is no longer valid after a terminal operation completes.
 
-1. Pipeline Concept:- A stream pipeline has three stages:
-      - Source: Generates the stream (e.g., a list or an array).(Where the stream comes from.)
-      - Intermediate Operations: Transform the stream (e.g., filter, map) into another one.Since streams use lazy evaluation, the intermediate operations do not run until the terminal operation runs.
-      - Terminal Operations: Produce a result or side effects (e.g., collect, forEach).Since streams can be used only once, the stream is no longer valid after a terminal operation completes.
-2. Lazy Evaluation:- Intermediate operations are not executed until a terminal operation is invoked.
-3. Single-Use:- Streams cannot be reused once operated on. A new stream must be created for additional operations.
+Types of stream:-
 
-
-**Types of stream**:-
 - `Sequantial Stream` - Processes elements sequantially in a single thread.
 - `Parallel Stream` - Processes elements in multiple threads for faster computation.
 
-- **Creating Streams**:- Streams can be created from:-
-      1. From collections
-      2. From arrays
-      3. From an arbitrary number of objects
-      4. Infinite/finite streams
+Stream is represented by Strean<T> interface, containing stream() method defined in java.util.stream package.Stream method returns an object of type stream.
 
-`Creating Stream Sources` - In Java, the streams are represented by the `Stream<T> interface`, defined in the java.util.stream package.
+- _Creating Streams_:- Streams can be created from collections,arrays,an arbitrary number of objects and Infinite/finite streams.
+
+Stream creation methods:-
+
+1. Stream.empty() - Finite - Creates Stream with zero elements.
+2. Stream.of(varargs) - Finite - Creates Stream with elements listed.
+3. coll.stream() - Finite - Creates Stream from Collection.
+4. coll.parallelStream() - Finite - Creates Stream from Collection where the stream can run in parallel.
+5. Stream.generate(supplier) - Infinite - Creates Stream by calling Supplier for each element upon request.
+6. Stream.iterate(seed,unaryOperator) - Infinite - Creates Stream by using seed for first element and then calling UnaryOperator for each subsequent element upon request.The iterate() method takes a seed or starting value as the first parameter. This is the first element that will be part of the stream. The other parameter is a lambda expression that is passed the previous value and generates the next value. As with the random numbers example, it will keep on producing odd numbers as long as you need them.
+7. Stream.iterate(seed,predicate,unaryOperator) - Finite or infinite - Creates Stream by using seed for first element and then calling UnaryOperator for each subsequent element upon request. Stops if Predicate returns false
+
+`Creating Finite Streams` - There are a few ways to create them.
 
 ```java
 Collection<Integer> x;//Collections
@@ -68,21 +77,12 @@ list.stream()
 int[] numbers = {1,2,3};//Arrays
 Arrays.stream(numbers);
 
-Stream.of(1,2,3,4);
-
-Stream.generate(()- > Math.random());//infinite stream
-Stream.iterate(1,n -> n +1);
-```
-
-`Creating Finite Streams` - There are a few ways to create them.
-
-```java
 Stream<String> empty = Stream.empty();// count = 0
 Stream<Integer> singleElement = Stream.of(1);// count = 1
 Stream<Integer> fromArray = Stream.of(1, 2, 3); // count = 3
 ```
 
-`Creating a Parallel Stream` - It is just as easy to create a parallel stream from a list.
+Creating a Parallel Stream - It is just as easy to create a parallel stream from a list.
 
 ```java
 var list = List.of("a", "b", "c");
@@ -96,45 +96,39 @@ Stream<Double> randoms = Stream.generate(Math::random);
 Stream<Integer> oddNumbers = Stream.iterate(1, n -­> n + 2);
 ```
 
-The iterate() method takes a seed or starting value as the first parameter. This is the first element that will be part of the stream. The other parameter is a lambda expression that is passed the previous value and generates the next value. As with the random numbers example, it will keep on producing odd numbers as long as you need them.
+- _Operations On Streams_:- There are two types of Operations in Streams: 1. Intermediate Operations -Are operations in which multiple methods are chained in a row. 2. Terminate Operations
 
-1. Stream.empty() - Finite - Creates Stream with zero elements.
-2. Stream.of(varargs) - Finite - Creates Stream with elements listed.
-3. coll.stream() - Finite - Creates Stream from Collection.
-4. coll.parallelStream() - Finite - Creates Stream from Collection where the stream can run in parallel.
-5. Stream.generate(supplier) - Infinite - Creates Stream by calling Supplier for each element upon request.
-6. Stream.iterate(seed,unaryOperator) - Infinite - Creates Stream by using seed for first element and then calling UnaryOperator for each subsequent element upon request.
-7. Stream.iterate(seed,predicate,unaryOperator) - Finite or infinite - Creates Stream by using seed for first element and then calling UnaryOperator for each subsequent element upon request. Stops if Predicate returns false
+- **Intermediate**:- An intermediate operation produces a stream as its result. An intermediate operation can also deal with an infinite stream simply by returning another infinite stream.
 
-
-- **Operations On Streams**:- There are two types of Operations in Streams:
-      1. Intermediate Operations -Are operations in which multiple methods are chained in a row.
-      2. Terminate Operations
-
-- *Intermediate*:- An intermediate operation produces a stream as its result. An intermediate operation can also deal with an infinite stream simply by returning another infinite stream.
-
-`map()` - The map method is used to return a stream consisting of the results of applying the given function to the elements of this stream.Syntax:-
+_map()_ - The map() method creates a one-­to-­one mapping from the elements in the stream to the elements of the next step in the stream.
+It uses the lambda expression to figure out the type passed to that function and the one returned. The return type is the stream that is returned.The method signature is as follows:
 
 ```Java
 <R> Stream<R> map(Function<? super T, ? extends R> mapper)
-
-list.stream()
-      .map(String::toUpperCase)
 ```
 
-Filtering - `filter()` - The filter method is used to select elements as per the Predicate passed as an argument.*Stream<T> filter(Predicate<? super T> predicate)*
+```java
+names.stream().map((name)-> name.toUpperCase()).forEach(System.out::println);
+```
+
+_flatMap()_:- The flatMap operation in Java Streams is used to flatten a stream of collections into a single stream of elements.This is helpful when you want to remove empty elements from a stream or combine a stream of lists.
 
 ```Java
-Predicate<Movie> isPopular = m -> m.getLikes() > 10;
-movies.stream()
-      .filter(isPopular)
+<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper)
 
-movies.stream()
-      .filter(m -> m.getLikes() > 10)
+List<List<Integer>> nestedList = Arrays.asList(
+      Arrays.List(1,2,3),
+      Arrays.asList(4,5,6),
+      Arrays.asList(7,8,9));
+List<Integer> flatList = nestedList.stream().flatMap(List::stream).collect(Collectors.toList());
+//[1,2,3,4,5,6,7,8,9]
+```
 
-list.stream()
-    .filter(s -> s.startsWith("A"))
-    .forEach(System.out::println);
+_filter()_ - The filter method is used to select elements as per the Predicate passed as an argument.`Stream<T> filter(Predicate<? super T> predicate)`.
+
+```Java
+Arrays.stream(marks).filter((val)-> val > 50).forEach(System.out::println);
+list.stream().filter(s -> s.startsWith("A"))
 ```
 
 `sorted()` - The sorted method is used to sort the stream.
@@ -146,19 +140,6 @@ Stream<T> sorted(Comparator<? super T> comparator)
 list.stream()
     .sorted()
     .forEach(System.out::println);
-```
-
-`flatMap()`:- The flatMap operation in Java Streams is used to flatten a stream of collections into a single stream of elements.
-
-```Java
-<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper)
-
-List<List<Integer>> nestedList = Arrays.asList(
-      Arrays.List(1,2,3),
-      Arrays.asList(4,5,6),
-      Arrays.asList(7,8,9));
-List<Integer> flatList = nestedList.stream().flatMap(List::stream).collect(Collectors.toList());
-//[1,2,3,4,5,6,7,8,9]
 ```
 
 `distinct ()`:- Removes duplicate elements. It returns a stream consisting of the distinct elements (according to Object.equals(Object)).
@@ -185,39 +166,47 @@ This example showcases how Java Streams can be used to process and manipulate co
 int max = numbers.stream().max(Interger::compare).orElse(0);
 ```
 
-- *Terminal Operations*:- Terminal Operations are the type of Operations that return the result. These Operations are not processed further just return a final result value.
+- **Terminal Operations**:- Terminal Operations are the type of Operations that return the result. These Operations are not processed further just return a final result value.You can perform a terminal operation without any intermediate operations but not the other way around.
 
-`collect()` - The collect method is used to return the result of the intermediate operations performed on the stream.Gathers the stream elements into a collection.
-
-```Java
-<R, A> R collect(Collector<? super T, A, R> collector)
-
-List<String> result = list.stream()
-                          .filter(s -> s.length() > 3)
-                          .collect(Collectors.toList());
-
-```
-
-`forEach()` - The forEach method is used to iterate through every element of the stream.
+_forEach()_ - The forEach method is used to iterate through every element of the stream.Calling forEach() on an infinite stream does not terminate.Since there is no return value, it is not a reduction.This is the only terminal operation with a return type of void.
+If you want something to happen, you have to make it happen in the Consumer.
 
 ```Java
 void forEach(Consumer<? super T> action)
-
-list.stream().forEach(System.out::println);
 ```
 
-`reduce()` - The reduce method is used to reduce the elements of a stream to a single value. The reduce method takes a BinaryOperator as a parameter.
+```java
+list.stream().forEach(System.out::println);
+Arrays.stream(students).forEach((e) -> System.out.println(e.toUpperCase()));
+```
+
+Notice that you can’t use a traditional for loop on a stream.While forEach() sounds like a loop, it is really a terminal operator for streams. Streams cannot be used as the source in a for-­each loop because they don’t implement the Iterable interface.
+
+_reduce()_ - The reduce method is used to reduce the elements of a stream to a single value. The reduce method takes a BinaryOperator as a parameter.The three method signatures are these:
 
 ```Java
 T reduce(T identity, BinaryOperator<T> accumulator)
 Optional<T> reduce(BinaryOperator<T> accumulator)
-
-int sum = numbers.stream()
-                 .reduce(0, Integer::sum);
+public <U> U reduce(U identity,BiFunction<U,? super T,U> accumulator,BinaryOperator<U> combiner)
 ```
 
-`count()`- Returns the count of elements in the stream.The count() method determines the number of elements in a finite stream.
-For an infinite stream, it never terminates.The count() method is a reduction because it looks at each element in the stream and returns a single value.
+The most common way of doing a reduction is to start with an initial value and keep merging it with the next value.The identity is the initial value of the reduction.The accumulator combines the current result with the current value in the stream.
+
+```java
+int sum = numbers.stream().reduce(0, Integer::sum);
+```
+
+In many cases, the identity isn’t really necessary, so Java lets us omit it. When you don’t specify an identity, an Optional is returned because there might not be any data. There are three choices for what is in the Optional:
+
+1. If the stream is empty, an empty Optional is returned.
+2. If the stream has one element, it is returned.
+3. If the stream has multiple elements, the accumulator is applied to combine them.\
+
+```java
+int sum = numbers.stream().reduce(Integer::sum);
+```
+
+_count()_- Returns the count of elements in the stream.The count() method determines the number of elements in a finite stream.For an infinite stream, it never terminates.The count() method is a reduction because it looks at each element in the stream and returns a single value.
 Syntax:
 
 ```Java
@@ -225,8 +214,8 @@ long count()
 ```
 
 ```java
-Stream<String> s = Stream.of("monkey", "gorilla", "bonobo");
-System.out.println(s.count());// 3
+Stream<String> animals = Stream.of("monkey", "gorilla", "bonobo");
+System.out.println(animals.count());// 3
 ```
 
 Finding a Value - `findFirst() & findAny()` - Returns the first element of the stream, if present.If the stream is empty, they return an empty Optional.
@@ -260,7 +249,7 @@ public boolean allMatch(Predicate <? super T> predicate)
 public boolean noneMatch(Predicate <? super T> predicate)
 ```
 
-Finding the Minimum and Maximum - `min() & max()`:- The min() and max() methods allow you to pass a custom comparator and find the smallest or largest value in a finite stream according to that sort order. Like the count() method,min() and max() hang on an infinite stream because they cannot be sure that a smaller or larger value isn’t coming later in the stream. Both methods are reductions because they return a single value after looking at the entire stream. 
+Finding the Minimum and Maximum - `min() & max()`:- The min() and max() methods allow you to pass a custom comparator and find the smallest or largest value in a finite stream according to that sort order. Like the count() method,min() and max() hang on an infinite stream because they cannot be sure that a smaller or larger value isn’t coming later in the stream. Both methods are reductions because they return a single value after looking at the entire stream.
 The method signatures are as follows:
 
 ```java
@@ -270,10 +259,20 @@ public Optional<T> max(Comparator<? super T> comparator)
 
 Notice that the code returns an Optional rather than the value. This allows the method to specify that no minimum or maximum was found.
 
+_collect()_ - The collect method is used to return the result of the intermediate operations performed on the stream.Gathers the stream elements into a collection.This is a really useful method, because it lets us get data out of streams and into another form. The method signatures are as follows:
+
+```Java
+public <R> R collect(Supplier<R> supplier, BiConsumer<R, ? super T> accumulator, BiConsumer<R, R> combiner)
+<R, A> R collect(Collector<? super T, A, R> collector)
+```
+
+```java
+List<String> result = list.stream().filter(s -> s.length() > 3).collect(Collectors.toList());
+```
+
 Note: Intermediate Operations are running based on the concept of Lazy Evaluation, which ensures that every method returns a fixed value(Terminal operation) before moving to the next method.
 
-
-**Collectors** - Collectors is a utility for reducing streams.
+**Collectors** - Collectors is a utility for reducing streams.These collectors are available via static methods on the Collectors class.
 Common collectors:
 
 - toList(), toSet(): Convert to a list or set.
@@ -287,7 +286,6 @@ Map<Integer,List<String>> grouped = names.stream().collect(Collectors.groupingBy
 
 String sentence = words.stream().collect(Collectors.joining(" "));
 ```
-
 
 ## Parallel Streams
 
@@ -336,9 +334,7 @@ source.stream()
       .toList();
 ```
 
-
-----------
-
+---
 
 ## Optionals
 
@@ -389,7 +385,6 @@ System.out.println("Is value present in the Optional? : " + opt.isPresent());//I
 `ofNullable()` - static <T> Optional<T> ofNullable(T value) - is static factory method that returns an Optional describing the specified value, if non-null,
 otherwise returns an empty Optional.
 
-
 ```java
 Optional<String> opt1 = Optional.ofNullable("Java");
 System.out.println("Optional instance: " + opt1);// Optional instance: Optional[Java]
@@ -422,7 +417,6 @@ if(opt.isPresent())
 Optional<Double> opt = average();
 System.out.println(opt.get()); //NoSuchElementException - No value present
 ```
-
 
 ### Methods
 

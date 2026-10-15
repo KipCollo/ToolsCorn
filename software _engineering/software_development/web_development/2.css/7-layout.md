@@ -262,6 +262,7 @@ Typing both grid-column-start and grid-column-end every time can get tiring. For
 ```css
 grid-column: 2 / 4;
 grid-column: 2 / span 3;
+grid-column: span 2;
 ```
 
 One of the things that sets CSS grids apart from flexbox is that you can easily position items in two dimensions: columns and rows. grid-row-start works much like grid-column-start except along the vertical axis.
