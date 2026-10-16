@@ -85,26 +85,6 @@ a:active {
 }
 ```
 
-## CSS Background
-
-It's used to define the background effects for elements. CSS background properties:
-
-- background-color - sets the background color of an element. Eg. background-color: "green;
-- background-image - specifies an image to use as the background of an element. By default, the image is repeated both horizontally and vertically so it covers the entire element. Eg. background-image: url("img_tree.gif"), url("paper.gif");
-- background-repeat - background images can be repeated individually or both horizontally or vertically. Eg.
-  - background-repeat: repeat-x; // horizontally
-  - background-repeat: repeat-y; // vertically
-  - background-repeat: repeat; // both(default)
-  - background-repeat: no-repeat; // no repeated, shown only once
-- background-attachment - specifies whether the background image should scroll or not. Eg.
-  - background-attachment: fixed; // not scroll with the rest of the page
-  - background-attachment: scroll; // scroll with the rest of the page
-  - background-attachment: local; // scroll with the element's contents
-- background-position - specifies the position of the background image. Eg.
-  - background-position: right top; // one/two values using left, top, center & bottom
-  - background-position: 50% 50%;
-  - background-position: 50px 150px;
-
 ## Text
 
 Text is styled with some of the text formatting properties.
@@ -135,7 +115,7 @@ div {
 
 Height and Width properties are used to set the height and width of an element. It may have the following values:
 
-- `o` - This is default. The browser calculates the height and width
+- `0` - This is default. The browser calculates the height and width
 - `length` - Defines the height/width in px, cm etc.
 - `%` - Defines the height/width in percent of the containing block
   Note: Remember that the height and width properties do not include padding, borders, or margins.They set the height/width of the content area inside the padding, border, and margin of the element.
@@ -145,6 +125,9 @@ Height and Width properties are used to set the height and width of an element. 
 - `max-height` sets the maximum height of an element. It adds a vertical scrollbar to the page when the browser window is smaller than the height of the element.
 - `min-height` sets the minimum height of an element. Only if the content is smaller than the minimum height, the minimum height will be applied.
   Block-level elements always take up the full width available. Setting the width prevents it from stretching out to the edges of its container. Set the margin to auto, to horizontally center the element within its container. The problem occurs when the browser window is smaller than the width of the element. The browser then adds a horizontal scrollbar to the page. Using max-width instead, in this situation, will improve the browser's handling of small windows. This is important when making a site usable on small devices.aut
+
+- `aspect-ratio` - The aspect-ratio CSS property allows you to define the desired width-to-height ratio of an element's box. This means that even if the parent container or viewport size changes, the browser will adjust the element's dimensions to maintain the specified width-to-height ratio. The specified aspect ratio is used in the calculation of auto sizes and some other layout functions.
+  At least one of the box's sizes needs to be automatic in order for aspect-ratio to have any effect. If neither the width nor height is an automatic size, then the provided aspect ratio has no effect on the box's preferred sizes.
 
 ## CSS Sprites
 
@@ -260,3 +243,32 @@ You got to change to:
   vertical-align: middle; /* Aha! Here it does work :) */
 }
 ```
+
+## CSS Images
+
+width - Image is mostly scaled by the width.
+height - Set to auto to make it resize properly with the width.
+
+Image is inline by default. To remove the space under the image you set the display to block.
+Fitting and positioning image to container - You can go to parent container and set the overflow to hidden, You can use `object-fit` property to fit the image properly to the container.Image should have same height and width as container.
+
+## CSS Background
+
+It's used to define the background effects for elements. CSS background properties:
+
+- background-color - sets the background color of an element. Eg. background-color: "green;
+- background-image - specifies an image to use as the background of an element. By default, the image is repeated both horizontally and vertically so it covers the entire element. Eg. background-image: url("img_tree.gif"), url("paper.gif");
+- background-repeat - background images can be repeated individually or both horizontally or vertically. Eg.
+  - background-repeat: repeat-x; // horizontally
+  - background-repeat: repeat-y; // vertically
+  - background-repeat: repeat; // both(default)
+  - background-repeat: no-repeat; // no repeated, shown only once
+- background-attachment - specifies whether the background image should scroll or not. Eg.
+  - background-attachment: fixed; // not scroll with the rest of the page
+  - background-attachment: scroll; // scroll with the rest of the page
+  - background-attachment: local; // scroll with the element's contents
+- background-position - specifies the position of the background image. Eg.
+  - background-position: right top; // one/two values using left, top, center & bottom
+  - background-position: 50% 50%;
+  - background-position: 50px 150px;
+- background-size - The background-size CSS property sets the size of the element's background image. The image can be left to its natural size, stretched, or constrained to fit the available space.

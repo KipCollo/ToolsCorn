@@ -3,10 +3,612 @@
 A backend developer focuses entirely on writing business logic for an application and much of the supporting logic as well.
 That said, there might be applications where the business logic is split into the frontend and the backend. However, while the frontend dev might have to share their time between UI code and business logic, the backend dev will focus most of their time on core business logic. That’s the main difference between the two.
 
+## Backend Principles
+
+1. High level understanding - How backend systems work.
+2. HTTP protocol:- HTTP headers,Types of headers(Request,Representational,General,Security),CORS,HTTP Requests and Response,HTTP Caching,HTTP compression,SSL/TLS, HTTP Methods, HTTP Status code,HTTP Versions,Content Negotiation.
+3. Routing:-(Routing components - Query strings, Path param),Route Deprication,Route grouping,securing and optimizing routes,static and dynamic routes.
+4. Serialization and Deserialization - (Formats in serialization and deserialization -JSON,XML,Binary fromats),Error handling in serialization & desrialization,security in deserialization.
+5. Authentication and Authorization - (Types of authentication- stateless,basic),OAuth,JWT,API keys,Mutli-factor authentication,Salting , Hashing, Crptograpy techniques,CSRF,Auditing,priviledge escalating,Rate limiting.
+6. Validation and Transformation - (Validation types - syntatic validation,semantic validation,type validation),client side validation,server side validation,Fail-first principle,Normalizations,Sanitizations,Error handling in validation,Handle failed transformation,trade-offs of validations.
+7. Middlewares - Role of middleware, flow of middleware, common middleware - (security middlewares, authentication middleware,logging middleware, error handling middleware, compression middleware,data parsing middleware).
+8. Request context - Metadata passed to middlewares,services.
+9. API - REST(CRUD),API versioning,SOAP, API pagination.
+10. Databases - Relational vs Non-relational databases, indexing, Query optimizations,transactions, ORM, Migrations.
+11. Business Logic Layers - Layers of request layer, Separation of Concerns, Service layer design.
+12. Caching - Types of caching,caching strategy, level of caching, caching for web aps.
+13. Transactional Emails.
+14. Task queueing and Scheduling - Batch processing, scheduling - (data backups), task groups,retries in task queues.
+15. Elasticsearch - Full text search, indexes, optimization, Search patterns.
+16. Error Handling - Error types.
+17. Configurations Management - Different Environments, Managing sensitive data,Dynamic enabling and disabling features.
+18. Logging, Monitoring & Observability - Types of logging, levels of logging, log rotation.
+19. Graceful shutdown - Server restarts, long running jobs.
+20. Security - Avoid attacks i.e SQL injection.
+21. Scaling & Performance - Bottlenecks, N+1 problems, lazy loading, Memory leaks, Performance testing, modularizations.
+22. Concurrency & Parallelism - I/O bounds, CPU bounds.
+23. Object Storage & Large files - Multiparts uploads.
+24. Real-time backend systems - Websockets, server side events.
+25. Testing & Code Quality - TDD, Test coverage.
+26. OpenAPI standard - Documentations.
+27. WebHooks - 3rd party integration.
+28. DevOps for backend.
+
+**HTTP**-
+
+_HTTP_ - HTTP is the `TCP/IP` based application layer communication protocol which standardizes how the client and server communicate with each other. It defines how the content is requested and transmitted across the internet.
+
+- [@article@Everything you need to know about HTTP](https://cs.fyi/guide/http-in-depth)
+- [@article@What is HTTP?](https://www.cloudflare.com/en-gb/learning/ddos/glossary/hypertext-transfer-protocol-http/)
+- [@video@Full HTTP Networking Course](https://www.youtube.com/watch?v=2JYT5f2isg4)
+- [@article@An overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview)
+- [@article@HTTP/3 From A To Z: Core Concepts](https://www.smashingmagazine.com/2021/08/http3-core-concepts-part1/)
+- [@video@HTTP/1 to HTTP/2 to HTTP/3](https://www.youtube.com/watch?v=a-sBfyiXysI)
+- [@video@HTTP Crash Course & Exploration](https://www.youtube.com/watch?v=iYM2zFP3Zn0)
+- [@video@SSL, TLS, HTTPS Explained](https://www.youtube.com/watch?v=j9QmMEWmcfo)
+
+_HTTPS_ - HTTPS is a secure way to send data between a web server and a browser.
+A communication through HTTPS starts with the handshake phase during which the server and the client agree on how to encrypt the communication, in particular they choose an encryption algorithm and a secret key. After the handshake all the communication between the server and the client will be encrypted using the agreed upon algorithm and key.
+
+The handshake phase uses a particular kind of cryptography, called asymmetric cryptography, to communicate securely even though client and server have not yet agreed on a secret key. After the handshake phase the HTTPS communication is encrypted with symmetric cryptography, which is much more efficient but requires client and server to both have knowledge of the secret key.
+
+- [@article@What is HTTPS?](https://www.cloudflare.com/en-gb/learning/ssl/what-is-https/)
+- [@article@Why HTTPS Matters](https://developers.google.com/web/fundamentals/security/encrypt-in-transit/why-https)
+- [@article@Enabling HTTPS on Your Servers](https://web.dev/articles/enable-https)
+- [@article@How HTTPS works (comic)](https://howhttps.works/)
+- [@video@SSL, TLS, HTTP, HTTPS Explained](https://www.youtube.com/watch?v=hExRDVZHhig)
+- [@video@HTTPS — Stories from the field](https://www.youtube.com/watch?v=GoXgl9r0Kjk)
+- [@article@HTTPS explained with carrier pigeons](https://baida.dev/articles/https-explained-with-carrier-pigeons)
+
+**Authentication and Authorization** -
+
+_Authentication_ - The API authentication process validates the identity of the client attempting to make a connection by using an authentication protocol. The protocol sends the credentials from the remote client requesting the connection to the remote access server in either plain text or encrypted form. The server then knows whether it can grant access to that remote client or not.
+
+Here is the list of common ways of authentication:
+
+- JWT Authentication
+- Token based Authentication
+- Session based Authentication
+- Basic Authentication
+- OAuth - Open Authorization
+- SSO - Single Sign On
+
+Visit the following resources to learn more:
+
+- [@article@User Authentication: Understanding the Basics & Top Tips](https://swoopnow.com/user-authentication/)
+- [@article@An overview about authentication methods](https://betterprogramming.pub/how-do-you-authenticate-mate-f2b70904cc3a)
+- [@roadmap.sh@SSO - Single Sign On](https://roadmap.sh/guides/sso)
+- [@roadmap.sh@OAuth - Open Authorization](https://roadmap.sh/guides/oauth)
+- [@roadmap.sh@JWT Authentication](https://roadmap.sh/guides/jwt-authentication)
+- [@roadmap.sh@Token Based Authentication](https://roadmap.sh/guides/token-authentication)
+- [@roadmap.sh@Session Based Authentication](https://roadmap.sh/guides/session-authentication)
+- [@roadmap.sh@Basic Authentication](https://roadmap.sh/guides/basic-authentication)
+- [@feed@Explore top posts about Authentication](https://app.daily.dev/tags/authentication?ref=roadmapsh)
+
+`Basic authentication` -Given the name "Basic Authentication", you should not confuse Basic Authentication with the standard username and password authentication. Basic authentication is a part of the HTTP specification, and the details can be [found in the RFC7617](https://www.rfc-editor.org/rfc/rfc7617.html).
+Because it is a part of the HTTP specifications, all the browsers have native support for "HTTP Basic Authentication".
+
+- [@roadmap.sh@HTTP Basic Authentication](https://roadmap.sh/guides/http-basic-authentication)
+- [@video@Illustrated HTTP Basic Authentication](https://www.youtube.com/watch?v=mwccHwUn7Gc)
+- [@feed@Explore top posts about Authentication](https://app.daily.dev/tags/authentication?ref=roadmapsh)
+
+`OAuth` - OAuth stands for **O**pen **Auth**orization and is an open standard for authorization. It works to authorize devices, APIs, servers and applications using access tokens rather than user credentials, known as "secure delegated access".
+
+In its most simplest form, OAuth delegates authentication to services like Facebook, Amazon, Twitter and authorizes third-party applications to access the user account **without** having to enter their login and password.
+
+It is mostly utilized for REST/APIs and only provides a limited scope of a user's data.
+
+- [@article@Okta - What the Heck is OAuth](https://developer.okta.com/blog/2017/06/21/what-the-heck-is-oauth)
+- [@article@DigitalOcean - An Introduction to OAuth 2](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2)
+- [@video@What is OAuth really all about](https://www.youtube.com/watch?v=t4-416mg6iU)
+- [@video@OAuth 2.0: An Overview](https://www.youtube.com/watch?v=CPbvxxslDTU)
+- [@feed@Explore top posts about OAuth](https://app.daily.dev/tags/oauth?ref=roadmapsh)
+
+`Token authentication` - Token-based authentication is a protocol which allows users to verify their identity, and in return receive a unique access token. During the life of the token, users then access the website or app that the token has been issued for, rather than having to re-enter credentials each time they go back to the same webpage, app, or any resource protected with that same token.
+
+Auth tokens work like a stamped ticket. The user retains access as long as the token remains valid. Once the user logs out or quits an app, the token is invalidated.
+
+Token-based authentication is different from traditional password-based or server-based authentication techniques. Tokens offer a second layer of security, and administrators have detailed control over each action and transaction.
+
+But using tokens requires a bit of coding know-how. Most developers pick up the techniques quickly, but there is a learning curve.
+
+- [@article@What Is Token-Based Authentication?](https://www.okta.com/identity-101/what-is-token-based-authentication/)
+- [@feed@Explore top posts about Authentication](https://app.daily.dev/tags/authentication?ref=roadmapsh)
+
+_SAML_ stands for Security Assertion Markup Language. It is an XML-based standard for exchanging authentication and authorization data between parties, particularly between an identity provider (IdP) and a service provider (SP). In a SAML-based system, a user requests access to a protected resource. The service provider asks the identity provider to authenticate the user and assert whether they are granted access to the resource.
+
+Benefits of SAML - Some advantages of using SAML include:
+
+- Single Sign-On (SSO): Users can log in once at the IdP and access multiple service providers without needing to authenticate again.
+- Improved security: Passwords and user credentials are not required to be stored and managed by the service provider, reducing the potential vectors for attack.
+- Increased efficiency: As users no longer need to maintain multiple sets of credentials, managing access becomes easier for both the user and the system administrators.
+- Interoperability: SAML enables a wide range of applications to work together, regardless of the underlying technology or platform.
+
+SAML Components - Three main components are involved in the SAML architecture:
+
+1. Identity Provider (IdP): The entity that manages users' identities and authenticates them by providing security tokens, also called assertions.
+2. Service Provider (SP): The entity that provides a service (such as a web application or API) and relies on the identity provider to authenticate users and grant/deny access to the resources.
+3. User/Principal: The end user seeking access to the service provided by the service provider.
+
+SAML Workflow - The SAML authentication process consists of the following steps:
+
+1. The user requests access to a protected resource from the service provider.
+2. If the user is not already authenticated, the service provider generates and sends a SAML authentication request to the identity provider.
+3. The identity provider authenticates the user (using, e.g., a username and password, multi-factor authentication, or another method).
+4. The identity provider constructs a SAML response, which includes details about the user and asserts whether the user is authorized to access the requested resource.
+5. The SAML response is sent back to the service provider, typically via the user's web browser or API client.
+6. The service provider processes the SAML response, extracts the necessary information, and grants or denies access to the user based on the identity provider's assertion.
+
+With SAML, you can streamline user authentication and authorization across various applications and systems, providing a better user experience and improving your overall backend security.
+
+**APIs** - API is the acronym for Application Programming Interface, which is a software intermediary that allows two applications to talk to each other.
+
+- [@article@What is an API?](https://aws.amazon.com/what-is/api/)
+- [@video@What is an API?](https://www.youtube.com/watch?v=s7wmiS2mSXY)
+
+_REST_ - REST, or REpresentational State Transfer, is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other.
+
+- [@article@REST Fundamental](https://dev.to/cassiocappellari/fundamentals-of-rest-api-2nag)
+- [@article@What is a REST API?](https://www.redhat.com/en/topics/api/what-is-a-rest-api)
+- [@article@Roy Fieldings dissertation chapter, Representational State Transfer (REST)](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
+- [@article@Learn REST: A RESTful Tutorial](https://restapitutorial.com/)
+- [@feed@Explore top posts about REST API](https://app.daily.dev/tags/rest-api?ref=roadmapsh)
+
+`Hateoas` - HATEOAS is an acronym for <b>H</b>ypermedia <b>A</b>s <b>T</b>he <b>E</b>ngine <b>O</b>f <b>A</b>pplication <b>S</b>tate, it's the concept that when sending information over a RESTful API the document received should contain everything the client needs in order to parse and use the data i.e they don't have to contact any other endpoint not explicitly mentioned within the Document.
+
+- [@article@What is HATEOAS and why is it important for my REST API?](https://restcookbook.com/Basics/hateoas/)
+
+_SOAP_ - Simple Object Access Protocol (SOAP) is a message protocol for exchanging information between systems and applications. When it comes to application programming interfaces (APIs), a SOAP API is developed in a more structured and formalized way. SOAP messages can be carried over a variety of lower-level protocols, including the web-related Hypertext Transfer Protocol (HTTP).
+
+- [@article@w3school SOAP explanation](https://www.w3schools.com/xml/xml_soap.asp)
+
+_gRPC_ - gRPC is a high-performance, open source universal RPC framework
+RPC stands for Remote Procedure Call, there's an ongoing debate on what the g stands for. RPC is a protocol that allows a program to execute a procedure of another program located on another computer. The great advantage is that the developer doesn’t need to code the details of the remote interaction. The remote procedure is called like any other function. But the client and the server can be coded in different languages.
+
+- [@official@gRPC Website](https://grpc.io/)
+- [@official@gRPC Docs](https://grpc.io/docs/)
+- [@article@What Is GRPC?](https://www.wallarm.com/what/the-concept-of-grpc)
+- [@video@What Is GRPC?](https://www.youtube.com/watch?v=hVrwuMnCtok)
+- [@feed@Explore top posts about gRPC](https://app.daily.dev/tags/grpc?ref=roadmapsh)
+
+_GraphQL_ - GraphQL is a query language and runtime system for APIs (application programming interfaces). It is designed to provide a flexible and efficient way for clients to request data from servers, and it is often used as an alternative to REST (representational state transfer) APIs.
+
+One of the main features of GraphQL is its ability to specify exactly the data that is needed, rather than receiving a fixed set of data from an endpoint. This allows clients to request only the data that they need, and it reduces the amount of data that needs to be transferred over the network.
+
+GraphQL also provides a way to define the structure of the data that is returned from the server, allowing clients to request data in a predictable and flexible way. This makes it easier to build and maintain client applications that depend on data from the server.
+
+GraphQL is widely used in modern web and mobile applications, and it is supported by a large and active developer community.
+
+- [@official@GraphQL Official Website](https://graphql.org/)
+- [@feed@Explore top posts about GraphQL](https://app.daily.dev/tags/graphql?ref=roadmapsh)
+
+**Databases** -
+
+_ACID_ - ACID are the four properties of relational database systems that help in making sure that we are able to perform the transactions in a reliable manner. It's an acronym which refers to the presence of four properties: atomicity, consistency, isolation and durability
+
+- [@article@What is ACID Compliant Database?](https://retool.com/blog/whats-an-acid-compliant-database/)
+- [@article@What is ACID Compliance?: Atomicity, Consistency, Isolation](https://fauna.com/blog/what-is-acid-compliance-atomicity-consistency-isolation)
+- [@video@ACID Explained: Atomic, Consistent, Isolated & Durable](https://www.youtube.com/watch?v=yaQ5YMWkxq4)
+
+_ORMs_ - Object-Relational Mapping (ORM) is a technique that lets you query and manipulate data from a database using an object-oriented paradigm. When talking about ORM, most people are referring to a library that implements the Object-Relational Mapping technique, hence the phrase "an ORM".
+
+- [@article@Object Relational Mapping - Wikipedia](https://en.wikipedia.org/wiki/Object–relational_mapping)
+- [@article@What is an ORM and how should I use it?](https://stackoverflow.com/questions/1279613/what-is-an-orm-how-does-it-work-and-how-should-i-use-one)
+- [@article@What is an ORM, how does it work, and how should I use one?](https://stackoverflow.com/a/1279678)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
+
+_Transactions_ - In short, a database transaction is a sequence of multiple operations performed on a database, and all served as a single logical unit of work — taking place wholly or not at all. In other words, there's never a case where only half of the operations are performed and the results saved.
+
+- [@article@What are Transactions?](https://fauna.com/blog/database-transaction)
+
+_Database Normalization_ - Database normalization is the process of structuring a relational database in accordance with a series of so-called normal forms in order to reduce data redundancy and improve data integrity. It was first proposed by Edgar F. Codd as part of his relational model.
+
+Normalization entails organizing the columns (attributes) and tables (relations) of a database to ensure that their dependencies are properly enforced by database integrity constraints. It is accomplished by applying some formal rules either by a process of synthesis (creating a new database design) or decomposition (improving an existing database design).
+
+- [@article@What is Normalization in DBMS (SQL)? 1NF, 2NF, 3NF, BCNF Database with Example](https://www.guru99.com/database-normalization.html)
+- [@article@Database normalization](https://en.wikipedia.org/wiki/Database_normalization)
+- [@video@Basic Concept of Database Normalization](https://www.youtube.com/watch?v=xoTyrdT9SZI)
+- [@feed@Explore top posts about Database](https://app.daily.dev/tags/database?ref=roadmapsh)
+
+_Migration Strategies_ - Learn how to run database migrations effectively. Especially zero downtime multi-phase schema migrations. Rather than make all changes at once, do smaller incremental changes to allow old code, and new code to work with the database at the same time, before removing old code, and finally removing the parts of the database schema which is no longer used.
+
+- [@article@Databases as a Challenge for Continuous Delivery](https://phauer.com/2015/databases-challenge-continuous-delivery/)
+
+_Relational Databases_ - A relational database is a type of database that stores and provides access to data points that are related to one another. Relational databases store data in a series of tables. Interconnections between the tables are specified as foreign keys. A foreign key is a unique reference from one row in a relational table to another row in a table, which can be the same table but is most commonly a different table.
+
+- [@article@Relational Databases](https://www.ibm.com/cloud/learn/relational-databases)
+- [@article@51 Years of Relational Databases](https://learnsql.com/blog/codd-article-databases/)
+- [@course@Databases and SQL](https://www.edx.org/course/databases-5-sql)
+- [@article@Intro To Relational Databases](https://www.udacity.com/course/intro-to-relational-databases--ud197)
+- [@video@What is Relational Database](https://youtu.be/OqjJjpjDRLc)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
+
+`PostgreSQL` - PostgreSQL, also known as Postgres, is a free and open-source relational database management system emphasizing extensibility and SQL compliance.
+
+- [@roadmap@Visit Dedicated PostgreSQL DBA Roadmap](/postgresql-dba)
+- [@official@Official Website](https://www.postgresql.org/)
+- [@article@Learn PostgreSQL - Full Tutorial for Beginners](https://www.postgresqltutorial.com/)
+- [@video@Learn PostgreSQL Tutorial - Full Course for Beginners](https://www.youtube.com/watch?v=qw--VYLpxG4)
+- [@video@Postgres tutorial for Beginners](https://www.youtube.com/watch?v=eMIxuk0nOkU)
+- [@feed@Explore top posts about PostgreSQL](https://app.daily.dev/tags/postgresql?ref=roadmapsh)
+
+`Oracle` - Oracle Database Server or sometimes called Oracle RDBMS or even simply Oracle is a world leading relational database management system produced by Oracle Corporation.
+
+- [@official@Official Website](https://www.oracle.com/database/)
+- [@article@Official Docs](https://docs.oracle.com/en/database/index.html)
+- [@video@Oracle SQL Tutorial for Beginners](https://www.youtube.com/watch?v=ObbNGhcxXJA)
+- [@feed@Explore top posts about Oracle](https://app.daily.dev/tags/oracle?ref=roadmapsh)
+
+`SQLite` - SQLite is a relational database management system that is embedded into the end program. It is self-contained, serverless, zero-configuration, transactional SQL database engine.
+
+- [@official@SQLite website](https://www.sqlite.org/index.html)
+- [@article@SQLite Tutorial](https://www.sqlitetutorial.net/)
+- [@feed@Explore top posts about SQLite](https://app.daily.dev/tags/sqlite?ref=roadmapsh)
+
+`MariaDB` - MariaDB server is a community developed fork of MySQL server. Started by core members of the original MySQL team, MariaDB actively works with outside developers to deliver the most featureful, stable, and sanely licensed open SQL server in the industry. MariaDB was created with the intention of being a more versatile, drop-in replacement version of MySQL
+
+- [@official@MariaDB website](https://mariadb.org/)
+- [@article@MariaDB vs MySQL](https://www.guru99.com/mariadb-vs-mysql.html)
+- [@article@W3Schools - MariaDB tutorial ](https://www.w3schools.blog/mariadb-tutorial)
+- [@video@MariaDB Tutorial For Beginners in One Hour](https://www.youtube.com/watch?v=_AMj02sANpI)
+- [@feed@Explore top posts about Infrastructure](https://app.daily.dev/tags/infrastructure?ref=roadmapsh)
+
+`MySQL` - MySQL is an incredibly popular open source relational database management system (RDBMS). MySQL can be used as a stand-alone client or in conjunction with other services to provide database connectivity. The **M** in LAMP stack stands for MySQL; that alone should provide an idea of its prevalence.
+
+- [@official@MySQL website](https://www.mysql.com/)
+- [@article@W3Schools - MySQL tutorial ](https://www.w3schools.com/mySQl/default.asp)
+- [@video@MySQL tutorial for beginners](https://www.youtube.com/watch?v=7S_tz1z_5bA)
+- [@article@MySQL for Developers](https://planetscale.com/courses/mysql-for-developers/introduction/course-introduction)
+- [@article@MySQL Tutorial](https://www.mysqltutorial.org/)
+- [@feed@Explore top posts about MySQL](https://app.daily.dev/tags/mysql?ref=roadmapsh)
+
+_NoSQL databases_ - NoSQL databases offer data storage and retrieval that is modelled differently to "traditional" relational databases. NoSQL databases typically focus more on horizontal scaling, eventual consistency, speed and flexibility and is used commonly for big data and real-time streaming applications.
+NoSQL is often described as a BASE system (**B**asically **A**vailable, **S**oft state, **E**ventual consistency) as opposed to SQL/relational which typically focus on ACID (Atomicity, Consistency, Isolation, Durability). Common NoSQL data structures include key-value pair, wide column, graph and document.
+
+- [@article@NoSQL Explained](https://www.mongodb.com/nosql-explained)
+- [@video@How do NoSQL Databases work](https://www.youtube.com/watch?v=0buKQHokLK8)
+- [@video@SQL vs NoSQL Explained](https://www.youtube.com/watch?v=ruz-vK8IesE)
+- [@feed@Explore top posts about NoSQL](https://app.daily.dev/tags/nosql?ref=roadmapsh)
+
+`Document Databases` - MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas. MongoDB is developed by MongoDB Inc. and licensed under the Server Side Public License (SSPL).
+
+- [@roadmap@Visit Dedicated MongoDB Roadmap](/mongodb)
+- [@article@MongoDB Website](https://www.mongodb.com/)
+- [@article@MongoDB Documentation](https://docs.mongodb.com/)
+- [@article@MongoDB Online Sandbox](https://mongoplayground.net/)
+- [@article@Learning Path for MongoDB Developers](https://learn.mongodb.com/catalog)
+- [@article@Dynamo DB Docs](https://docs.aws.amazon.com/dynamodb/index.html)
+- [@article@Official Developers Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
+
+`Graph databases` - A graph database stores nodes and relationships instead of tables, or documents. Data is stored just like you might sketch ideas on a whiteboard. Your data is stored without restricting it to a pre-defined model, allowing a very flexible way of thinking about and using it.
+
+- [@article@What is a Graph Database?](https://neo4j.com/developer/graph-database/)
+- [@article@Graph Databases VS Relational Databases](https://www.freecodecamp.org/news/graph-database-vs-relational-database/)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
+
+`Key-Value Databases` -A key-value database (KV database) is a type of database that stores data as a collection of key-value pairs. In a KV database, each piece of data is identified by a unique key, and the value is the data associated with that key.
+KV databases are designed for fast and efficient storage and retrieval of data, and they are often used in applications that require high performance and low latency. They are particularly well-suited for storing large amounts of unstructured data, such as log data and user profiles.
+
+Some popular KV databases include Redis, Memcached, and LevelDB. These databases are often used in combination with other types of databases, such as relational databases or document databases, to provide a complete and scalable data storage solution.
+
+- [@article@Key-Value Databases - Wikipedia](https://en.wikipedia.org/wiki/Key-value_database)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
+
+**Task queueing and Scheduling** -
+
+_Apache_ - Apache is a free, open-source HTTP server, available on many operating systems, but mainly used on Linux distributions. It is one of the most popular options for web developers, as it accounts for over 30% of all the websites, as estimated by W3Techs.
+
+- [@article@Apache Server Website](https://httpd.apache.org/)
+- [@video@What is Apache Web Server?](https://www.youtube.com/watch?v=kaaenHXO4t4)
+- [@feed@Explore top posts about Apache](https://app.daily.dev/tags/apache?ref=roadmapsh)
+
+_Kafka_ - Apache Kafka is an open-source distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications.
+
+- [@article@Apache Kafka quickstart](https://kafka.apache.org/quickstart)
+- [@video@Apache Kafka Fundamentals](https://www.youtube.com/watch?v=B5j3uNBH8X4)
+- [@feed@Explore top posts about Kafka](https://app.daily.dev/tags/kafka?ref=roadmapsh)
+
+_RabbitMQ_ - With tens of thousands of users, RabbitMQ is one of the most popular open-source message brokers. RabbitMQ is lightweight and easy to deploy on-premises and in the cloud. It supports multiple messaging protocols. RabbitMQ can be deployed in distributed and federated configurations to meet high-scale, high-availability requirements.
+
+- [@official@RabbitMQ Tutorials](https://www.rabbitmq.com/getstarted.html)
+- [@video@RabbitMQ Tutorial - Message Queues and Distributed Systems](https://www.youtube.com/watch?v=nFxjaVmFj5E)
+- [@feed@Explore top posts about RabbitMQ](https://app.daily.dev/tags/rabbitmq?ref=roadmapsh)
+
+**Elasticsearch** - Elastic search at its core is a document-oriented search engine. It is a document based database that lets you INSERT, DELETE , RETRIEVE and even perform analytics on the saved records. But, Elastic Search is unlike any other general purpose database you have worked with, in the past. It's essentially a search engine and offers an arsenal of features you can use to retrieve the data stored in it, as per your search criteria. And that too, at lightning speeds.
+
+- [@official@Elasticsearch Website](https://www.elastic.co/elasticsearch/)
+- [@official@Elasticsearch Documentation](https://www.elastic.co/guide/index.html)
+- [@feed@Explore top posts about ELK](https://app.daily.dev/tags/elk?ref=roadmapsh)
+
+**Graceful Shutdown** -
+
+_Graceful Degradation_ - Graceful degradation is a design principle that states that a system should be designed to continue functioning, even if some of its components or features are not available. In the context of web development, graceful degradation refers to the ability of a web page or application to continue functioning, even if the user's browser or device does not support certain features or technologies.
+
+Graceful degradation is often used as an alternative to progressive enhancement, a design principle that states that a system should be designed to take advantage of advanced features and technologies if they are available.
+
+- [@article@What is Graceful Degradation & Why Does it Matter?](https://blog.hubspot.com/website/graceful-degradation)
+- [@article@Four Considerations When Designing Systems For Graceful Degradation](https://newrelic.com/blog/best-practices/design-software-for-graceful-degradation)
+- [@article@The Art of Graceful Degradation](https://farfetchtechblog.com/en/blog/post/the-art-of-failure-ii-graceful-degradation/)
+
+**Caching** - Caching is a technique of storing frequently used data or information in a local memory, for a certain time period. So, next time, when the client requests the same information, instead of retrieving the information from the database, it will give the information from the local memory. The main advantage of caching is that it improves the performance by reducing the processing burden.
+
+_Client Side Caching_ - Client-side caching is the storage of network data to a local cache for future re-use. After an application fetches network data, it stores that resource in a local cache. Once a resource has been cached, the browser uses the cache on future requests for that resource to boost performance.
+
+- [@video@Everything you need to know about HTTP Caching](https://www.youtube.com/watch?v=HiBDZgTNpXY)
+
+**Logging, Monitoring & Observability** -
+
+_Instrumentation, Monitoring, and Telemetry_ -
+
+Instrumentation refers to the measure of a product's performance, in order to diagnose errors and to write trace information. Instrumentation can be of two types: source instrumentation and binary instrumentation.
+Backend monitoring allows the user to view the performance of infrastructure i.e. the components that run a web application. These include the HTTP server, middleware, database, third-party API services, and more.
+
+Telemetry is the process of continuously collecting data from different components of the application. This data helps engineering teams to troubleshoot issues across services and identify the root causes. In other words, telemetry data powers observability for your distributed applications.
+
+- [@article@What is Instrumentation?](<https://en.wikipedia.org/wiki/Instrumentation_(computer_programming)>)
+- [@article@What is Monitoring?](https://www.yottaa.com/performance-monitoring-backend-vs-front-end-solutions/)
+- [@article@What is Telemetry?](https://www.sumologic.com/insight/what-is-telemetry/)
+- [@feed@Explore top posts about Monitoring](https://app.daily.dev/tags/monitoring?ref=roadmapsh)
+
+_Observability_ -
+
+In software development, observability is the measure of how well we can understand a system from the work it does, and how to make it better.
+
+So what makes a system to be "observable"? It is its ability of producing and collecting metrics, logs and traces in order for us to understand what happens under the hood and identify issues and bottlenecks faster.
+
+You can of course implement all those features by yourself, but there are a lot of softwares out there that can help you with it like Datadog, Sentry and CloudWatch.
+
+- [@article@DataDog Docs](https://docs.datadoghq.com/)
+- [@article@AWS CloudWatch Docs](https://aws.amazon.com/cloudwatch/getting-started/)
+- [@article@Sentry Docs](https://docs.sentry.io/)
+- [@video@AWS re:Invent 2017: Improving Microservice and Serverless Observability with Monitor](https://www.youtube.com/watch?v=Wx0SHRb2xcI)
+- [@article@Observability and Instrumentation: What They Are and Why They Matter](https://newrelic.com/blog/best-practices/observability-instrumentation)
+- [@feed@Explore top posts about Observability](https://app.daily.dev/tags/observability?ref=roadmapsh)
+
+**Security** -
+
+_OWASP Security Risks_ - OWASP or Open Web Application Security Project is an online community that produces freely-available articles, methodologies, documentation, tools, and technologies in the field of web application security.
+
+- [@article@Wikipedia - OWASP](https://en.wikipedia.org/wiki/OWASP)
+- [@opensource@OWASP Application Security Verification Standard](https://github.com/OWASP/ASVS)
+- [@article@OWASP Top 10 Security Risks](https://cheatsheetseries.owasp.org/IndexTopTen.html)
+- [@article@OWASP Cheatsheets](https://cheatsheetseries.owasp.org/cheatsheets/AJAX_Security_Cheat_Sheet.html)
+
+**Testing & Code Quality** - A key to building software that meets requirements without defects is testing. Software testing helps developers know they are building the right software. When tests are run as part of the development process (often with continuous integration tools), they build confidence and prevent regressions in the code.
+
+- [@article@What is Software Testing?](https://www.guru99.com/software-testing-introduction-importance.html)
+- [@article@Testing Pyramid](https://www.browserstack.com/guide/testing-pyramid-for-test-automation)
+- [@feed@Explore top posts about Testing](https://app.daily.dev/tags/testing?ref=roadmapsh)
+
+_Test Driven Development_ - Test driven development (TDD) is the process of writing tests for software's requirements which will fail until the software is developed to meet those requirements. Once those tests pass, then the cycle repeats to refactor code or develop another feature/requirement. In theory, this ensures that software is written to meet requirements in the simplest form, and avoids code defects.
+
+- [@article@What is Test Driven Development (TDD)?](https://www.guru99.com/test-driven-development.html)
+- [@article@Test-driven development](https://www.ibm.com/garage/method/practices/code/practice_test_driven_development/)
+- [@video@Agile in Practice: Test Driven Development](https://youtu.be/uGaNkTahrIw)
+- [@feed@Explore top posts about TDD](https://app.daily.dev/tags/tdd?ref=roadmapsh)
+
+_Unit Testing_ - Unit testing is where individual units (modules, functions/methods, routines, etc.) of software are tested to ensure their correctness. This low-level testing ensures smaller components are functionally sound while taking the burden off of higher-level tests. Generally, a developer writes these tests during the development process and they are run as automated tests.
+
+- [@article@Unit Testing Tutorial](https://www.guru99.com/unit-testing-guide.html)
+- [@video@What is Unit Testing?](https://youtu.be/3kzHmaeozDI)
+- [@feed@Explore top posts about Testing](https://app.daily.dev/tags/testing?ref=roadmapsh)
+
+_Integration Testing_ - Integration testing is a broad category of tests where multiple software modules are integrated and tested as a group. It is meant to test the interaction between multiple services, resources, or modules. For example, an API's interaction with a backend service, or a service with a database.
+
+- [@article@Integration Testing](https://www.guru99.com/integration-testing.html)
+- [@article@How to Integrate and Test Your Tech Stack](https://thenewstack.io/how-to-integrate-and-test-your-tech-stack/)
+- [@video@What is Integration Testing?](https://youtu.be/QYCaaNz8emY)
+- [@feed@Explore top posts about Testing](https://app.daily.dev/tags/testing?ref=roadmapsh)
+
+**Scaling & Performance** -
+
+_Horizontal/Vertical Scaling_ -
+Horizontal scaling is a change in the **number** of a resource. For example, increasing the number of virtual machines processing messages in a queue. Vertical scaling is a change in the **size/power** of a resource. For example, increasing the memory or disk space available to a machine. Scaling can be applied to databases, cloud resources, and other areas of computing.
+
+- [@article@Horizontal vs Vertical Scaling](https://touchstonesecurity.com/horizontal-vs-vertical-scaling-what-you-need-to-know/)
+- [@video@System Design Basics: Horizontal vs. Vertical Scaling](https://youtu.be/xpDnVSmNFX0)
+- [@video@System Design 101](https://www.youtube.com/watch?v=Y-Gl4HEyeUQ)
+
+_Scaling Databases_ - Scaling databases is the process of adapting them to handle more data and users efficiently. It's achieved by either upgrading existing hardware (vertical scaling) or adding more servers (horizontal scaling). Techniques like sharding and replication are key. This ensures databases continue to be a robust asset as they grow.
+
+- [@article@MongoDB: Database Scaling Basics](https://www.mongodb.com/basics/scaling)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
+
+_Profiling Performance_ - There are several ways to profile the performance of a database:
+
+- Monitor system performance: You can use tools like the Windows Task Manager or the Unix/Linux top command to monitor the performance of your database server. These tools allow you to see the overall CPU, memory, and disk usage of the system, which can help identify any resource bottlenecks.
+- Use database-specific tools: Most database management systems (DBMSs) have their own tools for monitoring performance. For example, Microsoft SQL Server has the SQL Server Management Studio (SSMS) and the sys.dm_os_wait_stats dynamic management view, while Oracle has the Oracle Enterprise Manager and the v$waitstat view. These tools allow you to see specific performance metrics, such as the amount of time spent waiting on locks or the number of physical reads and writes.
+- Use third-party tools: There are also several third-party tools that can help you profile the performance of a database. Some examples include SolarWinds Database Performance Analyzer, Quest Software Foglight, and Redgate SQL Monitor. These tools often provide more in-depth performance analysis and can help you identify specific issues or bottlenecks.
+- Analyze slow queries: If you have specific queries that are running slowly, you can use tools like EXPLAIN PLAN or SHOW PLAN in MySQL or SQL Server to see the execution plan for the query and identify any potential issues. You can also use tools like the MySQL slow query log or the SQL Server Profiler to capture slow queries and analyze them further.
+- Monitor application performance: If you are experiencing performance issues with a specific application that is using the database, you can use tools like Application Insights or New Relic to monitor the performance of the application and identify any issues that may be related to the database.
+
+Have a look at the documentation for the database that you are using.
+
+_N plus one problem_ - The N+1 query problem happens when your code executes N additional query statements to fetch the same data that could have been retrieved when executing the primary query.
+
+- [@article@In Detail Explanation of N+1 Problem](https://medium.com/doctolib/understanding-and-fixing-n-1-query-30623109fe89)
+- [@article@What is the N+1 Problem](https://planetscale.com/blog/what-is-n-1-query-problem-and-how-to-solve-it)
+- [@article@Solving N+1 Problem: For Java Backend Developers](https://dev.to/jackynote/solving-the-notorious-n1-problem-optimizing-database-queries-for-java-backend-developers-2o0p)
+
+**Twelve-Factor Apps** - The Twelve-Factor App is a methodology for building scalable and maintainable software-as-a-service (SaaS) applications. It is based on a set of best practices that were identified by the authors of the methodology as being essential for building modern, cloud-native applications.
+
+The Twelve-Factor App methodology consists of the following principles:
+
+- Codebase: There should be a single codebase for the application, with multiple deployments.
+- Dependencies: The application should explicitly declare and isolate its dependencies.
+- Config: The application should store configuration in the environment.
+- Backing services: The application should treat backing services as attached resources.
+- Build, release, run: The application should be built, released, and run as an isolated unit.
+- Processes: The application should be executed as one or more stateless processes.
+- Port binding: The application should expose its services through port binding.
+- Concurrency: The application should scale out by adding more processes, not by adding threads.
+- Disposability: The application should be designed to start and stop quickly.
+- Dev/prod parity: The development, staging, and production environments should be as similar as possible.
+- Logs: The application should treat logs as event streams.
+- Admin processes: The application should run admin/maintenance tasks as one-off processes.
+
+The Twelve-Factor App methodology is widely adopted by developers of SaaS applications, and it is seen as a best practice for building cloud-native applications that are scalable, maintainable, and easy to deploy.
+
+- [@article@The Twelve-Factor App](https://12factor.net/)
+
+**Real-time backend systems** - Real Time Data - There are many ways to get real time data from the backend. Some of them are:
+
+1. Websockets
+2. Server Sent Events
+3. Long Polling
+4. Short Polling
+
+- [@video@Introduction to HTTP Polling and Web Sockets](https://www.youtube.com/watch?v=OsgrJDMPl58)
+- [@article@Introduction to Long Polling](https://www.pubnub.com/guides/long-polling/)
+
+_Web sockets_ - Web sockets are defined as a two-way communication between the servers and the clients, which mean both the parties, communicate and exchange data at the same time. This protocol defines a full duplex communication from the ground up. Web sockets take a step forward in bringing desktop rich functionalities to the web browsers.
+
+- [Introduction to WebSockets](https://www.tutorialspoint.com/websockets/index.htm)
+- [A Beginners Guide to WebSockets](https://www.youtube.com/watch?v=8ARodQ4Wlf4)
+- [Socket.io Library Bidirectional and low-latency communication for every platform](https://socket.io/)
+
+_Server Sent Events_ - Server-Sent Events (SSE) is a technology that allows a web server to push data to a client in real-time. It uses an HTTP connection to send a stream of data from the server to the client, and the client can listen for these events and take action when they are received.
+
+SSE is useful for applications that require real-time updates, such as chat systems, stock tickers, and social media feeds. It is a simple and efficient way to establish a long-lived connection between a client and a server, and it is supported by most modern web browsers.
+
+To use SSE, the client must create an EventSource object and specify the URL of the server-side script that will send the events. The server can then send events by writing them to the response stream with the proper formatting.
+
+- [@article@Server-Sent Events - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events)
+
+_Long Polling_ - Long polling is a technique where the client polls the server for new data. However, if the server does not have any data available for the client, instead of sending an empty response, the server holds the request and waits for some specified period of time for new data to be available. If new data becomes available during that time, the server immediately sends a response to the client, completing the open request. If no new data becomes available and the timeout period specified by the client expires, the server sends a response indicating that fact. The client will then immediately re-request data from the server, creating a new request-response cycle.
+
+_Short Polling_ - Short polling is a technique where the client repeatedly polls the server for new data. This is the most common approach to polling. It's simple to implement and understand, but it's not the most efficient way of doing things.
+
+**DevOps for backend** -
+
+_CI/CD_ - CI/CD (Continuous Integration/Continuous Deployment) is the practice of automating building, testing, and deployment of applications with the main goal of detecting issues early, and provide quicker releases to the production environment.
+
+_Containerization vs. Virtualization_ - Containers and virtual machines are the two most popular approaches to setting up a software infrastructure for your organization.
+
+- [@article@Containerization vs. Virtualization: Everything you need to know](https://middleware.io/blog/containerization-vs-virtualization/)
+- [@video@Containerization or Virtualization - The Differences ](https://www.youtube.com/watch?v=1WnDHitznGY)
+- [@feed@Explore top posts about Containers](https://app.daily.dev/tags/containers?ref=roadmapsh)
+
+_Version Control Systems_ - Version control/source control systems allow developers to track and control changes to code over time. These services often include the ability to make atomic revisions to code, branch/fork off of specific points, and to compare versions of code. They are useful in determining the who, what, when, and why code changes were made.
+
+- [@article@Git](https://git-scm.com/)
+- [@article@What is Version Control?](https://www.atlassian.com/git/tutorials/what-is-version-control)
+
+`Git` - [Git](https://git-scm.com/) is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+
+- [@article@Introduction to Git](https://learn.microsoft.com/en-us/training/modules/intro-to-git/)
+- [@video@Git & GitHub Crash Course For Beginners](https://www.youtube.com/watch?v=SWYqp7iY_Tc)
+- [@article@Learn Git with Tutorials, News and Tips - Atlassian](https://www.atlassian.com/git)
+- [@article@Git Cheat Sheet](https://cs.fyi/guide/git-cheatsheet)
+- [@article@Learn Git Branching](https://learngitbranching.js.org/)
+- [@article@Git Tutorial](https://www.w3schools.com/git/)
+- [@feed@Explore top posts about Git](https://app.daily.dev/tags/git?ref=roadmapsh)
+
+`GitHub` - GitHub is a provider of Internet hosting for software development and version control using Git. It offers the distributed version control and source code management functionality of Git, plus its own features.
+
+- [@opensource@GitHub Website](https://github.com)
+- [@article@GitHub Documentation](https://docs.github.com/en/get-started/quickstart)
+- [@article@How to Use Git in a Professional Dev Team](https://ooloo.io/project/github-flow)
+- [@video@What is GitHub?](https://www.youtube.com/watch?v=w3jLJU7DT5E)
+- [@video@Git vs. GitHub: Whats the difference?](https://www.youtube.com/watch?v=wpISo9TNjfU)
+- [@video@Git and GitHub for Beginners](https://www.youtube.com/watch?v=RGOj5yH7evk)
+- [@video@Git and GitHub - CS50 Beyond 2019](https://www.youtube.com/watch?v=eulnSXkhE7I)
+- [@article@Learn Git Branching](https://learngitbranching.js.org/?locale=en_us)
+- [@feed@Explore top posts about GitHub](https://app.daily.dev/tags/github?ref=roadmapsh)
+
+`GitLab` - GitLab is a provider of internet hosting for software development and version control using Git. It offers the distributed version control and source code management functionality of Git, plus its own features.
+
+- [@opensource@GitLab Website](https://gitlab.com/)
+- [@article@GitLab Documentation](https://docs.gitlab.com/)
+- [@feed@Explore top posts about GitLab](https://app.daily.dev/tags/gitlab?ref=roadmapsh)
+
 ## Core and Emerging Programming Languages
+
+Even if you’re a beginner the least you would have known is that Web Development is majorly classified into two facets: Frontend Development and Backend Development. And obviously, they both have their respective set of tools and technologies. For instance, when we talk about Frontend Development, there always comes 3 names first and foremost – HTML, CSS, and JavaScript.
+
+In the same way, when it comes to Backend Web Development – we primarily require a backend (or you can say server-side) programming language to make the website function along with various other tools & technologies such as databases, frameworks, web servers, etc.
+
+Pick a language from the given list and make sure to learn its quirks, core details about its runtime e.g. concurrency, memory model etc.
+
+- _Go_
+
+Go is an open source programming language supported by Google. Go can be used to write cloud services, CLI tools, used for API development, and much more.
+
+- [@roadmap@Visit Dedicated Go Roadmap](/golang)
+- [@official@A Tour of Go – Go Basics](https://go.dev/tour/welcome/1)
+- [@official@Go Reference Documentation](https://go.dev/doc/)
+- [@article@Go by Example - annotated example programs](https://gobyexample.com/)
+- [@article@W3Schools Go Tutorial ](https://www.w3schools.com/go/)
+- [@article@Making a RESTful JSON API in Go](https://thenewstack.io/make-a-restful-json-api-go/)
+- [@article@Go, the Programming Language of the Cloud](https://thenewstack.io/go-the-programming-language-of-the-cloud/)
+- [@video@Go Class by Matt](https://www.youtube.com/playlist?list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
+- [@feed@Explore top posts about Golang](https://app.daily.dev/tags/golang?ref=roadmapsh)
+
+- _Java_
+
+Java is general-purpose language, primarily used for Internet-based applications.
+It was created in 1995 by James Gosling at Sun Microsystems and is one of the most popular options for backend developers.
+
+Visit the following resources to learn more:
+
+- [@roadmap@Visit Dedicated Java Roadmap](/java)
+- [@official@Java Website](https://www.java.com/)
+- [@article@W3 Schools Tutorials](https://www.w3schools.com/java/)
+- [@video@Java Crash Course](https://www.youtube.com/watch?v=eIrMbAQSU34)
+- [@video@Complete Java course](https://www.youtube.com/watch?v=xk4_1vDrzzo)
+- [@feed@Explore top posts about Java](https://app.daily.dev/tags/java?ref=roadmapsh)
 
 One of the most basic skills you should focus on as a backend developer is on identifying key programming languages to learn (or at least keep an eye out for).
 There are some essential backend languages that the industry has adopted as de facto standards. This means most new projects are usually coded using one (or multiple) of these programming languages.
+
+- _JavaScript_
+
+Apart from being used in the browser, JavaScript is also used in backend e.g. using [Node.js](https://nodejs.org/) or [Deno](https://deno.land/) for writing server-side code in JavaScript.
+
+If you pick up JavaScript for the Backend, my personal recommendation would be to learn [JavaScript](/javascript) and then go with [Node.js](/nodejs) as it is the most popular and widely used option. Also, I would recommend learning TypeScript later on as you continue with your backend development Journey; it's a superset of JavaScript and is used in many projects.
+
+- [@roadmap@Visit Dedicated JavaScript Roadmap](/javascript)
+- [@article@W3Schools – JavaScript Tutorial](https://www.w3schools.com/js/)
+- [@article@The Modern JavaScript Tutorial](https://javascript.info/)
+- [@article@Eloquent Javascript - Book](https://eloquentjavascript.net/)
+- [@opensource@You Dont Know JS Yet (book series) ](https://github.com/getify/You-Dont-Know-JS)
+- [@video@JavaScript Crash Course for Beginners](https://youtu.be/hdI2bqOjy3c)
+- [@roadmap@Visit Dedicated Node.js Roadmap](/nodejs)
+- [@video@Node.js Crash Course](https://www.youtube.com/watch?v=fBNz5xF-Kx4)
+- [@video@Node.js Tutorial for Beginners](https://www.youtube.com/watch?v=TlB_eWDSMt4)
+- [@official@Official JavaScript Documentation](https://www.javascript.com/)
+- [@feed@Explore top posts about JavaScript](https://app.daily.dev/tags/javascript?ref=roadmapsh)
+
+- _PHP_
+
+PHP is a general purpose scripting language often used for making dynamic and interactive Web pages. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1994. The PHP reference implementation is now produced by The PHP Group and supported by PHP Foundation. PHP supports procedural and object-oriented styles of programming with some elements of functional programming as well.
+
+- [@official@PHP Website](https://php.net/)
+- [@article@Learn PHP - W3Schools](https://www.w3schools.com/php/)
+- [@article@PHP - The Right Way](https://phptherightway.com/)
+- [@video@PHP for Beginners](https://www.youtube.com/watch?v=U2lQWR6uIuo&list=PL3VM-unCzF8ipG50KDjnzhugceoSG3RTC)
+- [@video@PHP For Absolute Beginners](https://www.youtube.com/watch?v=2eebptXfEvw)
+- [@video@Full PHP 8 Tutorial - Learn PHP The Right Way In 2022](https://www.youtube.com/watch?v=sVbEyFZKgqk&list=PLr3d3QYzkw2xabQRUpcZ_IBk9W50M9pe-)
+- [@feed@Explore top posts about PHP](https://app.daily.dev/tags/php?ref=roadmapsh)
+
+- _Ruby_ - Ruby is a high-level, interpreted programming language that blends Perl, Smalltalk, Eiffel, Ada, and Lisp. Ruby focuses on simplicity and productivity along with a syntax that reads and writes naturally. Ruby supports procedural, object-oriented and functional programming and is dynamically typed.
+
+- [@article@Ruby Website](https://www.ruby-lang.org/en/)
+- [@article@Learn Ruby in 20 minutes](https://www.ruby-lang.org/en/documentation/quickstart/)
+- [@article@Ruby, An Introduction to a Programmer’s Best Friend](https://thenewstack.io/ruby-a-programmers-best-friend/)
+- [@video@Ruby Comprehensive courses](https://www.youtube.com/playlist?list=PL_EzhIKp343lBMH4UuklrMRL_WkilGoXe)
+- [@feed@Explore top posts about Ruby](https://app.daily.dev/tags/ruby?ref=roadmapsh)
+
+- _Rust_
+
+Rust is a modern systems programming language focusing on safety, speed, and concurrency. It accomplishes these goals by being memory safe without using garbage collection.
+
+- [@article@The Rust Programming Language - online book](https://doc.rust-lang.org/book/)
+- [@article@Rust by Example - collection of runnable examples](https://doc.rust-lang.org/stable/rust-by-example/index.html)
+- [@article@Rust vs. Go: Why They’re Better Together](https://thenewstack.io/rust-vs-go-why-theyre-better-together/)
+- [@article@Rust by the Numbers: The Rust Programming Language in 2021](https://thenewstack.io/rust-by-the-numbers-the-rust-programming-language-in-2021/)
+- [@feed@Explore top posts about Rust](https://app.daily.dev/tags/rust?ref=roadmapsh)
 
 **Java.** One of the most common alternatives for enterprise solutions, Java, has been constantly evolving since its first release back in 1995. All that time making its way into big enterprises that trust its robustness and ever-growing community of developers. While not the easiest language to learn, it’s definitely up there in the top 10 most popular [backend languages](https://roadmap.sh/backend/languages) (according to [StackOverflow’s 2023 Developer survey](https://survey.stackoverflow.co/2023/#technology-most-popular-technologies)).
 
@@ -265,36 +867,6 @@ Is there one better than the other? There is no easy way to answer that question
 ## Version Control
 
 Version control references the ability for you and other developers to share code with each other while you’re working on the same files.While Git is the industry standard at the moment, GitHub has created such a popular platform around Git.
-
-## principles
-
-1. High level understanding.
-2. HTTP protocol:- HTTP headers,Types of headers(Request,Representational,general,security),CORS,HTTP Requests and Response,HTTP Caching,HTTP compression,SSL/TLS
-3. Routing:- Path param,API versioning,Route Deprication,Route grouping,securing and optimizing routes.
-4. Serialization and Deserialization - JSON,Error handling in serialization,security in deserialization.
-5. Authentication and Authorization.
-6. Validation and Transformation.
-7. Middlewares.
-8. Request context.
-9. API - REST.
-10. Databases.
-11. Business Logic Layers.
-12. Caching.
-13. Transactional Emails
-14. Task queueing and Scheduling.
-15. Elasticsearch.
-16. Error Handling.
-17. Configurations Management.
-18. Logging.
-19. Graceful shutdown.
-20. Security.
-21. Scaling & Performance.
-22. Concurrency & Parallelism.
-23. Object Storage & Large files.
-24. Real-time backend systems.
-25. Testing & Code Quality.
-26. OpenAPI standard.
-27. WebHooks
 
 As developers, we’re not just writing code on a text editor without any other external help. Whether we realize it or not, we’re constantly using different development tools to improve the way we work and the speed at which we can deliver our code.
 
@@ -1290,3 +1862,39 @@ Feel free to add extra commands to make the navigation even more interactive.
 With the last of our backend project ideas, you’ve covered all the major areas involved in backend development and you’re more than ready to apply for a backend development job if you haven’t already.
 
 If you find a piece of technology that wasn’t covered here, you’ll have the skills required to pick it up in no time.
+
+## Testing
+
+Manual QA Tester - Manually testing software for bugs, usability issues and functionality defects.Use tools i.e Bug reporting tools(JIRA, Bugzilla)
+Automation QA Engineer - Writing automated scripts to test applications using tools such as Selenium, Appium, JUnit.
+
+## others
+
+•
+Develop & Maintain Backend Systems: Build scalable server-side applications using
+Node.js (including NestJS), Python or PHP.
+•
+API Development & Integration: Design and maintain RESTful & GraphQL APIs using
+frameworks like NestJS, Express.js or Laravel.
+•
+Database Management: Work with SQL (PostgreSQL, MySQL) and NoSQL (MongoDB,
+Firebase) databases, ensuring efficient data modeling and indexing.
+•
+Performance & Scalability: Optimize backend systems with caching (Redis), load
+balancing, and cloud services (AWS, Azure, GCP).
+•
+Authentication & Security: Implement OAuth, JWT, Role-Based Access Control (RBAC)
+and follow best practices for OWASP, GDPR, PCI DSS compliance.
+•
+DevOps & CI/CD: Automate deployments with Docker, Kubernetes, GitHub Actions,
+and monitor applications with Prometheus.
+•
+Testing & Code Quality: Ensure high code quality with unit and integration testing (Jest,
+Mocha) and conduct regular code reviews.
+•
+Agile Development: Work in Scrum environments, participate in sprint planning, daily
+stand-ups, and retrospectives.
+•
+Documentation & Collaboration: Maintain API documentation with Swagger, Postman,
+and collaborate with front-end developers (React, Angular, Vue) for seamless
+integration.
