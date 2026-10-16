@@ -34,7 +34,24 @@ That said, there might be applications where the business logic is split into th
 27. WebHooks - 3rd party integration.
 28. DevOps for backend.
 
-**HTTP**-
+**High level overview** -
+
+_DNS_ - The Domain Name System (DNS) is the phonebook of the Internet. Humans access information online through domain names, like nytimes.com or espn.com. Web browsers interact through Internet Protocol (IP) addresses. DNS translates domain names to IP addresses so browsers can load Internet resources.
+
+- [@article@What is DNS?](https://www.cloudflare.com/en-gb/learning/dns/what-is-dns/)
+- [@article@How DNS works (comic)](https://howdns.works/)
+- [@article@Understanding Domain names](https://developer.mozilla.org/en-US/docs/Glossary/DNS/)
+- [@video@DNS and How does it Work?](https://www.youtube.com/watch?v=Wj0od2ag5sk)
+- [@video@DNS Records](https://www.youtube.com/watch?v=7lxgpKh_fRY)
+- [@video@Complete DNS mini-series](https://www.youtube.com/watch?v=zEmUuNFBgN8&list=PLTk5ZYSbd9MhMmOiPhfRJNW7bhxHo4q-K)
+- [@feed@Explore top posts about DNS](https://app.daily.dev/tags/dns?ref=roadmapsh)
+
+_Domain Name_ - A domain name is a unique, easy-to-remember address used to access websites, such as ‘google.com’, and ‘facebook.com’. Users can connect to websites using domain names thanks to the DNS system.
+
+- [@article@What is a Domain Name?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_domain_name)
+- [@article@What is a Domain Name? | Domain name vs. URL](https://www.cloudflare.com/en-gb/learning/dns/glossary/what-is-a-domain-name/)
+- [@video@A Beginners Guide to How Domain Names Work](https://www.youtube.com/watch?v=Y4cRx19nhJk)
+  **HTTP**-
 
 _HTTP_ - HTTP is the `TCP/IP` based application layer communication protocol which standardizes how the client and server communicate with each other. It defines how the content is requested and transmitted across the internet.
 
@@ -115,6 +132,20 @@ But using tokens requires a bit of coding know-how. Most developers pick up the 
 - [@article@What Is Token-Based Authentication?](https://www.okta.com/identity-101/what-is-token-based-authentication/)
 - [@feed@Explore top posts about Authentication](https://app.daily.dev/tags/authentication?ref=roadmapsh)
 
+`Cookie-Based Authentication` - Cookies are pieces of data used to identify the user and their preferences. The browser returns the cookie to the server every time the page is requested. Specific cookies like HTTP cookies are used to perform cookie-based authentication to maintain the session for each user.
+
+- [@article@How does cookie based authentication work?](https://stackoverflow.com/questions/17769011/how-does-cookie-based-authentication-work)
+
+_OpenID_ - OpenID is a protocol that utilizes the authorization and authentication mechanisms of OAuth 2.0 and is now widely adopted by many identity providers on the Internet.
+It solves the problem of needing to share user's personal info between many different web services(e.g. online shops, discussion forums etc.)
+
+- [@official@Official Website](https://openid.net/)
+- [@official@What is OpenID](https://openid.net/connect/)
+- [@article@OAuth vs OpenID](https://securew2.com/blog/oauth-vs-openid-which-is-better)
+- [@video@An Illustrated Guide to OAuth and OpenID Connect](https://www.youtube.com/watch?v=t18YB3xDfXI)
+- [@video@OAuth 2.0 and OpenID Connect (in plain English)](https://www.youtube.com/watch?v=996OiexHze0)
+- [@feed@Explore top posts about Authentication](https://app.daily.dev/tags/authentication?ref=roadmapsh)
+
 _SAML_ stands for Security Assertion Markup Language. It is an XML-based standard for exchanging authentication and authorization data between parties, particularly between an identity provider (IdP) and a service provider (SP). In a SAML-based system, a user requests access to a protected resource. The service provider asks the identity provider to authenticate the user and assert whether they are granted access to the resource.
 
 Benefits of SAML - Some advantages of using SAML include:
@@ -182,7 +213,19 @@ GraphQL is widely used in modern web and mobile applications, and it is supporte
 - [@official@GraphQL Official Website](https://graphql.org/)
 - [@feed@Explore top posts about GraphQL](https://app.daily.dev/tags/graphql?ref=roadmapsh)
 
-**Databases** -
+**Serializatin and Deserialization** -
+
+_JSON or JavaScript Object Notation_ is an encoding scheme that is designed to eliminate the need for an ad-hoc code for each application to communicate with servers that communicate in a defined way. JSON API module exposes an implementation for data stores and data structures, such as entity types, bundles, and fields.
+
+- [@official@Official Website](https://jsonapi.org/)
+- [@official@Official Docs](https://jsonapi.org/implementations/)
+- [@video@JSON API: Explained in 4 minutes ](https://www.youtube.com/watch?v=N-4prIh7t38)
+
+**Databases** - A database is a collection of useful data of one or more related organizations structured in a way to make data an asset to the organization. A database management system is a software designed to assist in maintaining and extracting large collections of data in a timely fashion.
+
+- [@article@Oracle: What is a Database?](https://www.oracle.com/database/what-is-database/)
+- [@article@Prisma.io: What are Databases?](https://www.prisma.io/dataguide/intro/what-are-databases)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
 
 _ACID_ - ACID are the four properties of relational database systems that help in making sure that we are able to perform the transactions in a reliable manner. It's an acronym which refers to the presence of four properties: atomicity, consistency, isolation and durability
 
@@ -213,6 +256,18 @@ Normalization entails organizing the columns (attributes) and tables (relations)
 _Migration Strategies_ - Learn how to run database migrations effectively. Especially zero downtime multi-phase schema migrations. Rather than make all changes at once, do smaller incremental changes to allow old code, and new code to work with the database at the same time, before removing old code, and finally removing the parts of the database schema which is no longer used.
 
 - [@article@Databases as a Challenge for Continuous Delivery](https://phauer.com/2015/databases-challenge-continuous-delivery/)
+
+_Database Indexes_ - An index is a data structure that you build and assign on top of an existing table that basically looks through your table and tries to analyze and summarize so that it can create shortcuts.
+
+- [@article@An in-depth look at Database Indexing](https://www.freecodecamp.org/news/database-indexing-at-a-glance-bb50809d48bd/)
+- [@video@Database Indexing Explained](https://www.youtube.com/watch?v=-qNSXK7s7_w)
+- [@feed@Explore top posts about Database](https://app.daily.dev/tags/database?ref=roadmapsh)
+
+_Sharding strategies_ - Sharding strategy is a technique to split a large dataset into smaller chunks (logical shard) in which we distribute these chunks in different machines/database nodes in order to distribute the traffic load. It’s a good mechanism to improve the scalability of an application. Many databases support sharding, but not all.
+
+- [@article@Wikipedia - Sharding in Database Architectures](<https://en.wikipedia.org/wiki/Shard_(database_architecture)>)
+- [@article@How sharding a database can make it faster](https://stackoverflow.blog/2022/03/14/how-sharding-a-database-can-make-it-faster/)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
 
 _Relational Databases_ - A relational database is a type of database that stores and provides access to data points that are related to one another. Relational databases store data in a series of tables. Interconnections between the tables are specified as foreign keys. A foreign key is a unique reference from one row in a relational table to another row in a table, which can be the same table but is most commonly a different table.
 
@@ -262,6 +317,12 @@ _Relational Databases_ - A relational database is a type of database that stores
 - [@article@MySQL Tutorial](https://www.mysqltutorial.org/)
 - [@feed@Explore top posts about MySQL](https://app.daily.dev/tags/mysql?ref=roadmapsh)
 
+`MS SQL` - MS SQL (or Microsoft SQL Server) is the Microsoft developed relational database management system (RDBMS). MS SQL uses the T-SQL (Transact-SQL) query language to interact with the relational databases. There are many different versions and editions available of MS SQL
+
+- [@article@MS SQL website](https://www.microsoft.com/en-ca/sql-server/)
+- [@article@Tutorials for SQL Server](https://docs.microsoft.com/en-us/sql/sql-server/tutorials-for-sql-server-2016?view=sql-server-ver15)
+- [@video@SQL Server tutorial for beginners](https://www.youtube.com/watch?v=-EPMOaV7h_Q)
+
 _NoSQL databases_ - NoSQL databases offer data storage and retrieval that is modelled differently to "traditional" relational databases. NoSQL databases typically focus more on horizontal scaling, eventual consistency, speed and flexibility and is used commonly for big data and real-time streaming applications.
 NoSQL is often described as a BASE system (**B**asically **A**vailable, **S**oft state, **E**ventual consistency) as opposed to SQL/relational which typically focus on ACID (Atomicity, Consistency, Isolation, Durability). Common NoSQL data structures include key-value pair, wide column, graph and document.
 
@@ -295,13 +356,36 @@ Some popular KV databases include Redis, Memcached, and LevelDB. These databases
 - [@article@Key-Value Databases - Wikipedia](https://en.wikipedia.org/wiki/Key-value_database)
 - [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
 
+`Redis` - Redis is an open source (BSD licensed), in-memory **data structure store** used as a database, cache, message broker, and streaming engine. Redis provides data structures such as [strings](https://redis.io/topics/data-types-intro#strings), [hashes](https://redis.io/topics/data-types-intro#hashes), [lists](https://redis.io/topics/data-types-intro#lists), [sets](https://redis.io/topics/data-types-intro#sets), [sorted sets](https://redis.io/topics/data-types-intro#sorted-sets) with range queries, [bitmaps](https://redis.io/topics/data-types-intro#bitmaps), [hyperloglogs](https://redis.io/topics/data-types-intro#hyperloglogs), [geospatial indexes](https://redis.io/commands/geoadd), and [streams](https://redis.io/topics/streams-intro). Redis has built-in [replication](https://redis.io/topics/replication), [Lua scripting](https://redis.io/commands/eval), [LRU eviction](https://redis.io/topics/lru-cache), [transactions](https://redis.io/topics/transactions), and different levels of [on-disk persistence](https://redis.io/topics/persistence), and provides high availability via [Redis Sentinel](https://redis.io/topics/sentinel) and automatic partitioning with [Redis Cluster](https://redis.io/topics/cluster-tutorial).
+
+- [@official@Redis Website](https://redis.io/)
+- [@video@Redis in 100 Seconds](https://www.youtube.com/watch?v=G1rOthIU-uo)
+- [@feed@Explore top posts about Redis](https://app.daily.dev/tags/redis?ref=roadmapsh)
+
+`Column Databases` - A **<u>wide-column database</u>** (sometimes referred to as a column database) is similar to a relational database. It store data in tables, rows and columns. However in opposite to relational databases here each row can have its own format of the columns. Column databases can be seen as a two-dimensional key-value database. One of such database system is **Apache Cassandra**.
+
+_Realtime databases_ - A real-time database is broadly defined as a data store designed to collect, process, and/or enrich an incoming series of data points (i.e., a data stream) in real time, typically immediately after the data is created.
+
+[Firebase](https://firebase.google.com/)
+[RethinkDB](https://rethinkdb.com/)
+
+**Warning:** <a href="https://en.wikipedia.org/wiki/Wide-column_store#Wide-column_stores_versus_columnar_databases">note that a "columnar database" and a "column database" are two different terms!</a>
+
+- [@article@Apache Cassandra](https://cassandra.apache.org/_/index.html)
+- [@video@Apache Cassandra - Course for Beginners](https://www.youtube.com/watch?v=J-cSy5MeMOA)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
+
+`Timeseries databases` - InfluxDB - InfluxDB was built from the ground up to be a purpose-built time series database; i.e., it was not repurposed to be time series. Time was built-in from the beginning. InfluxDB is part of a comprehensive platform that supports the collection, storage, monitoring, visualization and alerting of time series data. It’s much more than just a time series database.
+
+- [@article@InfluxDB Website](https://www.influxdata.com/)
+- [@article@Time series database](https://www.influxdata.com/time-series-database/)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
+
 **Task queueing and Scheduling** -
 
-_Apache_ - Apache is a free, open-source HTTP server, available on many operating systems, but mainly used on Linux distributions. It is one of the most popular options for web developers, as it accounts for over 30% of all the websites, as estimated by W3Techs.
+_Message Brokers_ - Message brokers are an inter-application communication technology to help build a common integration mechanism to support cloud-native, microservices-based, serverless, and hybrid cloud architectures. Two of the most famous message brokers are `RabbitMQ` and `Apache Kafka`
 
-- [@article@Apache Server Website](https://httpd.apache.org/)
-- [@video@What is Apache Web Server?](https://www.youtube.com/watch?v=kaaenHXO4t4)
-- [@feed@Explore top posts about Apache](https://app.daily.dev/tags/apache?ref=roadmapsh)
+- [@video@Introduction to Message Brokers](https://www.youtube.com/watch?v=57Qr9tk6Uxc)
 
 _Kafka_ - Apache Kafka is an open-source distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications.
 
@@ -336,6 +420,34 @@ Graceful degradation is often used as an alternative to progressive enhancement,
 _Client Side Caching_ - Client-side caching is the storage of network data to a local cache for future re-use. After an application fetches network data, it stores that resource in a local cache. Once a resource has been cached, the browser uses the cache on future requests for that resource to boost performance.
 
 - [@video@Everything you need to know about HTTP Caching](https://www.youtube.com/watch?v=HiBDZgTNpXY)
+
+_Server side_ - Server-side caching temporarily stores web files and data on the origin server to reuse later.
+When the user first requests for the webpage, the website goes under the normal process of retrieving data from the server and generates or constructs the webpage of the website. After the request has happened and the response has been sent back, the server copies the webpage and stores it as a cache.
+
+Next time the user revisits the website, it loads the already saved or cached copy of the webpage, thus making it faster.
+
+- [@article@Server-side caching ](https://www.starwindsoftware.com/resource-library/server-side-caching/)
+- [@article@Server-side caching and Client-side caching](https://www.codingninjas.com/codestudio/library/server-side-caching-and-client-side-caching)
+- [@feed@Explore top posts about Web Development](https://app.daily.dev/tags/webdev?ref=roadmapsh)
+
+_Memcached_ - Memcached (pronounced variously mem-cash-dee or mem-cashed) is a general-purpose distributed memory-caching system. It is often used to speed up dynamic database-driven websites by caching data and objects in RAM to reduce the number of times an external data source (such as a database or API) must be read. Memcached is free and open-source software, licensed under the Revised BSD license. Memcached runs on Unix-like operating systems (Linux and macOS) and on Microsoft Windows. It depends on the `libevent` library.
+
+Memcached's APIs provide a very large hash table distributed across multiple machines. When the table is full, subsequent inserts cause older data to be purged in the least recently used (LRU) order. Applications using Memcached typically layer requests and additions into RAM before falling back on a slower backing store, such as a database.
+
+Memcached has no internal mechanism to track misses which may happen. However, some third-party utilities provide this functionality.
+
+- [@article@Memcached, From Wikipedia](https://en.wikipedia.org/wiki/Memcached)
+- [@opensource@Memcached, From Official Github](https://github.com/memcached/memcached#readme)
+- [@article@Memcached Tutorial](https://www.tutorialspoint.com/memcached/index.htm)
+
+_CDN (Content Delivery Network)_ - A Content Delivery Network (CDN) service aims to provide high availability and performance improvements of websites. This is achieved with fast delivery of website assets and content typically via geographically closer endpoints to the client requests.
+Traditional commercial CDNs (Amazon CloudFront, Akamai, CloudFlare and Fastly) provide servers across the globe which can be used for this purpose.
+Serving assets and contents via a CDN reduces bandwidth on website hosting, provides an extra layer of caching to reduce potential outages and can improve website security as well
+
+- [@article@CloudFlare - What is a CDN? | How do CDNs work?](https://www.cloudflare.com/en-ca/learning/cdn/what-is-a-cdn/)
+- [@article@Wikipedia - Content Delivery Network](https://en.wikipedia.org/wiki/Content_delivery_network)
+- [@video@What is Cloud CDN?](https://www.youtube.com/watch?v=841kyd_mfH0)
+- [@video@What is a Content Delivery Network (CDN)?](https://www.youtube.com/watch?v=Bsq5cKkS33I)
 
 **Logging, Monitoring & Observability** -
 
@@ -375,6 +487,79 @@ _OWASP Security Risks_ - OWASP or Open Web Application Security Project is an on
 - [@article@OWASP Top 10 Security Risks](https://cheatsheetseries.owasp.org/IndexTopTen.html)
 - [@article@OWASP Cheatsheets](https://cheatsheetseries.owasp.org/cheatsheets/AJAX_Security_Cheat_Sheet.html)
 
+_Web Security Knowledge_ - Web security refers to the protective measures taken by the developers to protect the web applications from threats that could affect the business.
+
+- [@article@Why HTTPS Matters](https://developers.google.com/web/fundamentals/security/encrypt-in-transit/why-https)
+- [@article@Wikipedia - OWASP](https://en.wikipedia.org/wiki/OWASP)
+- [@opensource@OWASP Web Application Security Testing Checklist](https://github.com/0xRadi/OWASP-Web-Checklist)
+- [@article@OWASP Top 10 Security Risks](https://sucuri.net/guides/owasp-top-10-security-vulnerabilities-2021/)
+- [@article@OWASP Cheatsheets](https://cheatsheetseries.owasp.org/cheatsheets/AJAX_Security_Cheat_Sheet.html)
+- [@article@Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+- [@feed@Explore top posts about Security](https://app.daily.dev/tags/security?ref=roadmapsh)
+
+_Cors_ - Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism that allows a server to indicate any origins (domain, scheme, or port) other than its own from which a browser should permit loading resources.
+
+- [@article@Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+- [@video@CORS in 100 Seconds](https://www.youtube.com/watch?v=4KHiSt0oLJ0)
+- [@video@CORS in 6 minutes](https://www.youtube.com/watch?v=PNtFSVU-YTI)
+- [@article@Understanding CORS](https://rbika.com/blog/understanding-cors)
+
+_Content Security Policy_ - Content Security Policy is a computer security standard introduced to prevent cross-site scripting, clickjacking and other code injection attacks resulting from execution of malicious content in the trusted web page context.
+
+- [@article@MDN — Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+- [@article@Google Devs — Content Security Policy (CSP)](https://developers.google.com/web/fundamentals/security/csp)
+- [@feed@Explore top posts about Security](https://app.daily.dev/tags/security?ref=roadmapsh)
+
+_MD5_ - MD5 (Message-Digest Algorithm 5) is a hash function that is currently advised not to be used due to its extensive vulnerabilities. It is still used as a checksum to verify data integrity.
+
+- [@article@Wikipedia - MD5](https://en.wikipedia.org/wiki/MD5)
+- [@article@What is MD5?](https://www.techtarget.com/searchsecurity/definition/MD5)
+- [@article@Why is MD5 not safe?](https://infosecscout.com/why-md5-is-not-safe/)
+
+_SSL/TLS_ - Secure Sockets Layer (SSL) and Transport Layer Security (TLS) are cryptographic protocols used to provide security in internet communications. These protocols encrypt the data that is transmitted over the web, so anyone who tries to intercept packets will not be able to interpret the data. One difference that is important to know is that SSL is now deprecated due to security flaws, and most modern web browsers no longer support it. But TLS is still secure and widely supported, so preferably use TLS.
+
+- [@article@Wikipedia - SSL/TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security)
+- [@article@Cloudflare - What is SSL?](https://www.cloudflare.com/learning/ssl/what-is-ssl/)
+
+_SHA family_ - SHA (Secure Hash Algorithms) is a family of cryptographic hash functions created by the NIST (National Institute of Standards and Technology). The family includes:
+
+- SHA-0: Published in 1993, this is the first algorithm in the family. Shortly after its release, it was discontinued for an undisclosed significant flaw.
+- SHA-1: Created to replace SHA-0 and which resembles MD5, this algorithm has been considered insecure since 2010.
+- SHA-2: This isn't an algorithm, but a set of them, with SHA-256 and SHA-512 being the most popular. SHA-2 is still secure and widely used.
+- SHA-3: Born in a competition, this is the newest member of the family. SHA-3 is very secure and doesn't carry the same design flaws as its brethren.
+
+Visit the following resources to learn more:
+
+- [@article@Wikipedia - SHA-1](https://en.wikipedia.org/wiki/SHA-1)
+- [@article@Wikipedia - SHA-2](https://en.wikipedia.org/wiki/SHA-2)
+- [@article@Wikipedia - SHA-3](https://en.wikipedia.org/wiki/SHA-3)
+
+_Scrypt_ - Scrypt (pronounced "ess crypt") is a password hashing function (like bcrypt). It is designed to use a lot of hardware, which makes brute-force attacks more difficult. Scrypt is mainly used as a proof-of-work algorithm for cryptocurrencies.
+
+- [@article@Wikipedia - Scrypt](https://en.wikipedia.org/wiki/Scrypt)
+
+_Bcrypt_ - bcrypt is a password hashing function, that has been proven reliable and secure since it's release in 1999. It has been implemented into most commonly-used programming languages.
+
+- [@article@bcrypts npm package](https://www.npmjs.com/package/bcrypt)
+- [@article@Understanding bcrypt](https://auth0.com/blog/hashing-in-action-understanding-bcrypt/)
+- [@video@bcrypt explained](https://www.youtube.com/watch?v=O6cmuiTBZVs)
+
+_Server Security_ - Learn about the security of your server and how to secure it. Here are some of the topics off the top of my head:
+
+- Use a firewall: One of the most effective ways to secure a server is to use a firewall to block all unnecessary incoming traffic. You can use iptables on Linux systems or a hardware firewall to do this.
+- Close unnecessary ports: Make sure to close any ports that are not needed for your server to function properly. This will reduce the attack surface of your server and make it more difficult for attackers to gain access.
+- Use strong passwords: Use long, complex passwords for all of your accounts, and consider using a password manager to store them securely.
+- Keep your system up to date: Make sure to keep your operating system and software up to date with the latest security patches. This will help to prevent vulnerabilities from being exploited by attackers.
+- Use SSL/TLS for communication: Use Secure Sockets Layer (SSL) or Transport Layer Security (TLS) to encrypt communication between your server and client devices. This will help to protect against man-in-the-middle attacks and other types of cyber threats.
+- Use a intrusion detection system (IDS): An IDS monitors network traffic and alerts you to any suspicious activity, which can help you to identify and respond to potential threats in a timely manner.
+- Enable two-factor authentication: Two-factor authentication adds an extra layer of security to your accounts by requiring a second form of authentication, such as a code sent to your phone, in addition to your password.
+
+Also learn about OpenSSL and creating your own PKI as well as managing certs, renewals, and mutual client auth with x509 certs
+
+Learn more from the following resources:
+
+- [@article@How to Defend Against Server-Side Request Forgery](https://www.freecodecamp.org/news/defending-against-ssrf-attacks/)
+
 **Testing & Code Quality** - A key to building software that meets requirements without defects is testing. Software testing helps developers know they are building the right software. When tests are run as part of the development process (often with continuous integration tools), they build confidence and prevent regressions in the code.
 
 - [@article@What is Software Testing?](https://www.guru99.com/software-testing-introduction-importance.html)
@@ -400,6 +585,41 @@ _Integration Testing_ - Integration testing is a broad category of tests where m
 - [@article@How to Integrate and Test Your Tech Stack](https://thenewstack.io/how-to-integrate-and-test-your-tech-stack/)
 - [@video@What is Integration Testing?](https://youtu.be/QYCaaNz8emY)
 - [@feed@Explore top posts about Testing](https://app.daily.dev/tags/testing?ref=roadmapsh)
+
+_Functional Testing_ - Functional testing is where software is tested to ensure functional requirements are met. Usually, it is a form of black box testing in which the tester has no understanding of the source code; testing is performed by providing input and comparing expected/actual output.
+It contrasts with non-functional testing, which includes performance, load, scalability, and penetration testing.
+
+- [@article@What is Functional Testing?](https://www.guru99.com/functional-testing.html)
+- [@video@Functional Testing vs Non-Functional Testing](https://youtu.be/j_79AXkG4PY)
+- [@feed@Explore top posts about Testing](https://app.daily.dev/tags/testing?ref=roadmapsh)
+
+**OpenAPI standard** -
+
+_Building for Scale_ - Speaking in general terms, scalability is the ability of a system to handle a growing amount of work by adding resources to it.
+A software that was conceived with a scalable architecture in mind, is a system that will support higher workloads without any fundamental changes to it, but don't be fooled, this isn't magic. You'll only get so far with smart thinking without adding more sources to it.
+
+For a system to be scalable, there are certain things you must pay attention to, like:
+
+- Coupling
+- Observability
+- Evolvability
+- Infrastructure
+
+When you think about the infrastructure of a scalable system, you have two main ways of building it: using on-premises resources or leveraging all the tools a cloud provider can give you.
+
+The main difference between on-premises and cloud resources will be FLEXIBILITY, on cloud providers you don't really need to plan ahead, you can upgrade your infrastructure with a couple of clicks, while with on-premises resources you will need a certain level of planning.
+
+- [@article@Scalable Architecture: A Definition and How-To Guide](https://www.sentinelone.com/blog/scalable-architecture/)
+- [@video@Scaling Distributed Systems - Software Architecture Introduction](https://www.youtube.com/watch?v=gxfERVP18-g)
+
+_Open api spec_ - The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to RESTful APIs which allows both humans and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection. When properly defined, a consumer can understand and interact with the remote service with a minimal amount of implementation logic.
+
+An OpenAPI definition can then be used by documentation generation tools to display the API, code generation tools to generate servers and clients in various programming languages, testing tools, and many other use cases.
+
+- [@article@OpenAPI Specification Website](https://swagger.io/specification/)
+- [@article@Open API Live Editor](https://swagger.io/tools/swagger-editor/)
+- [@article@Official training guide](https://swagger.io/docs/specification/about/)
+- [@video@OpenAPI 3.0: How to Design and Document APIs with the Latest OpenAPI Specification 3.0](https://www.youtube.com/watch?v=6kwmW_p_Tig)
 
 **Scaling & Performance** -
 
@@ -442,8 +662,7 @@ The Twelve-Factor App methodology consists of the following principles:
 - Build, release, run: The application should be built, released, and run as an isolated unit.
 - Processes: The application should be executed as one or more stateless processes.
 - Port binding: The application should expose its services through port binding.
-- Concurrency: The application should scale out by adding more processes, not by adding threads.
-- Disposability: The application should be designed to start and stop quickly.
+- Concurrency: The application should scale out by adding more processes, not by adding threads.- Disposability: The application should be designed to start and stop quickly.
 - Dev/prod parity: The development, staging, and production environments should be as similar as possible.
 - Logs: The application should treat logs as event streams.
 - Admin processes: The application should run admin/maintenance tasks as one-off processes.
@@ -484,11 +703,30 @@ _Short Polling_ - Short polling is a technique where the client repeatedly polls
 
 _CI/CD_ - CI/CD (Continuous Integration/Continuous Deployment) is the practice of automating building, testing, and deployment of applications with the main goal of detecting issues early, and provide quicker releases to the production environment.
 
+CI/CD (Continuous Integration/Continuous Deployment) is the practice of automating building, testing, and deployment of applications with the main goal of detecting issues early, and provide quicker releases to the production environment.
+
+- [@video@DevOps CI/CD Explained in 100 Seconds by Fireship](https://www.youtube.com/watch?v=scEDHsr3APg)
+- [@video@Automate your Workflows with GitHub Actions](https://www.youtube.com/watch?v=nyKZTKQS_EQ)
+- [@article@What is CI/CD?](https://about.gitlab.com/topics/ci-cd/)
+- [@article@A Primer: Continuous Integration and Continuous Delivery (CI/CD)](https://thenewstack.io/a-primer-continuous-integration-and-continuous-delivery-ci-cd/)
+- [@article@3 Ways to Use Automation in CI/CD Pipelines](https://thenewstack.io/3-ways-to-use-automation-in-ci-cd-pipelines/)
+- [@article@Articles about CI/CD](https://thenewstack.io/category/ci-cd/)
+- [@feed@Explore top posts about CI/CD](https://app.daily.dev/tags/cicd?ref=roadmapsh)
+
 _Containerization vs. Virtualization_ - Containers and virtual machines are the two most popular approaches to setting up a software infrastructure for your organization.
 
 - [@article@Containerization vs. Virtualization: Everything you need to know](https://middleware.io/blog/containerization-vs-virtualization/)
 - [@video@Containerization or Virtualization - The Differences ](https://www.youtube.com/watch?v=1WnDHitznGY)
 - [@feed@Explore top posts about Containers](https://app.daily.dev/tags/containers?ref=roadmapsh)
+
+`LXC` is an abbreviation used for Linux Containers which is an operating system that is used for running multiple Linux systems virtually on a controlled host via a single Linux kernel. LXC is a userspace interface for the Linux kernel containment features. Through a powerful API and simple tools, it lets Linux users easily create and manage system or application containers.
+
+Visit the following resources to learn more:
+
+- [@article@LXC Documentation](https://linuxcontainers.org/lxc/documentation/)
+- [@article@What is LXC?](https://linuxcontainers.org/lxc/introduction/)
+- [@video@Linux Container (LXC) Introduction](https://youtu.be/_KnmRdK69qM)
+- [@video@Getting started with LXC containers](https://youtu.be/CWmkSj_B-wo)
 
 _Version Control Systems_ - Version control/source control systems allow developers to track and control changes to code over time. These services often include the ability to make atomic revisions to code, branch/fork off of specific points, and to compare versions of code. They are useful in determining the who, what, when, and why code changes were made.
 
@@ -522,6 +760,90 @@ _Version Control Systems_ - Version control/source control systems allow develop
 - [@opensource@GitLab Website](https://gitlab.com/)
 - [@article@GitLab Documentation](https://docs.gitlab.com/)
 - [@feed@Explore top posts about GitLab](https://app.daily.dev/tags/gitlab?ref=roadmapsh)
+
+`Bitbucket` - Bitbucket is a Git based hosting and source code repository service that is Atlassian's alternative to other products like GitHub, GitLab etc
+Bitbucket offers hosting options via Bitbucket Cloud (Atlassian's servers), Bitbucket Server (customer's on-premise) or Bitbucket Data Centre (number of servers in customers on-premise or cloud environment)
+
+- [@official@Bitbucket Website](https://bitbucket.org/product)
+- [@official@Getting started with Bitbucket](https://bitbucket.org/product/guides/basics/bitbucket-interface)
+- [@article@Using Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)
+- [@official@A brief overview of Bitbucket](https://bitbucket.org/product/guides/getting-started/overview#a-brief-overview-of-bitbucket)
+- [@video@Bitbucket tutorial | How to use Bitbucket Cloud](https://www.youtube.com/watch?v=M44nEyd_5To)
+- [@video@Bitbucket Tutorial | Bitbucket for Beginners](https://www.youtube.com/watch?v=i5T-DB8tb4A)
+- [@feed@Explore top posts about Bitbucket](https://app.daily.dev/tags/bitbucket?ref=roadmapsh)
+
+## Web Servers
+
+Web servers can be either hardware or software, or perhaps a combination of the two.
+
+**Hardware Side**:- A hardware web server is a computer that houses web server software and the files that make up a website (for example, HTML documents, images, CSS stylesheets, and JavaScript files). A web server establishes a connection to the Internet and facilitates the physical data exchange with other web-connected devices.
+
+**Software side**:A software web server has a number of software components that regulate how hosted files are accessed by online users. This is at the very least an HTTP server. Software that knows and understands HTTP and URLs (web addresses) is known as an HTTP server (the protocol your browser uses to view webpages). The content of these hosted websites is sent to the end user's device through an HTTP server, which may be accessed via the domain names of the websites it holds.
+
+Basically, an HTTP request is made by a browser anytime it wants a file that is stored on a web server. The relevant (hardware) web server receives the request, which is then accepted by the appropriate (software) HTTP server, which then locates the requested content and returns it to the browser over HTTP. (If the server cannot locate the requested page, it responds with a 404 error.)
+
+- [@article@What is a Web Server ](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_web_server)
+- [@video@Web Server Concepts and Examples](https://youtu.be/9J1nJOivdyw)
+
+_Nginx_ - NGINX is a powerful web server and uses a non-threaded, event-driven architecture that enables it to outperform Apache if configured correctly. It can also do other important things, such as load balancing, HTTP caching, or be used as a reverse proxy.
+
+- [@official@Official Website](https://nginx.org/)
+- [@video@NGINX Explained in 100 Seconds](https://www.youtube.com/watch?v=JKxlsvZXG7c)
+- [@feed@Explore top posts about Nginx](https://app.daily.dev/tags/nginx?ref=roadmapsh)
+
+_MS IIS_ - Internet Information Services (IIS) for Windows® Server is a flexible, secure and manageable Web server for hosting anything on the Web.
+
+- [@official@Official Website](https://www.iis.net/)
+- [@video@Learn Windows Web Server IIS](https://www.youtube.com/watch?v=1VdxPWwtISA)
+- [@feed@Explore top posts about .NET](https://app.daily.dev/tags/.net?ref=roadmapsh)
+
+_Caddy_ - The Caddy web server is an extensible, cross-platform, open-source web server written in Go. It has some really nice features like automatic SSL/HTTPs and a really easy configuration file.
+
+- [@article@Official Website](https://caddyserver.com/)
+- [@video@Getting started with Caddy the HTTPS Web Server from scratch](https://www.youtube.com/watch?v=t4naLFSlBpQ)
+
+_Apache_ - Apache is a free, open-source HTTP server, available on many operating systems, but mainly used on Linux distributions. It is one of the most popular options for web developers, as it accounts for over 30% of all the websites, as estimated by W3Techs.
+
+- [@article@Apache Server Website](https://httpd.apache.org/)
+- [@video@What is Apache Web Server?](https://www.youtube.com/watch?v=kaaenHXO4t4)
+- [@feed@Explore top posts about Apache](https://app.daily.dev/tags/apache?ref=roadmapsh)
+
+## Architectural Patterns
+
+An architectural pattern is a general, reusable solution to a commonly occurring problem in software architecture within a given context. The architectural patterns address various issues in software engineering, such as computer hardware performance limitations, high availability and minimization of a business risk.
+
+Visit the following resources to learn more:
+
+- [@article@Architectural Patterns in a nutshell](https://towardsdatascience.com/10-common-software-architectural-patterns-in-a-nutshell-a0b47a1e9013)
+
+## Backpressure
+
+Backpressure is a design pattern that is used to manage the flow of data through a system, particularly in situations where the rate of data production exceeds the rate of data consumption. It is commonly used in cloud computing environments to prevent overloading of resources and to ensure that data is processed in a timely and efficient manner.
+
+There are several ways to implement backpressure in a cloud environment:
+
+- Buffering: This involves storing incoming data in a buffer until it can be processed, allowing the system to continue receiving data even if it is temporarily unable to process it.
+- Batching: This involves grouping incoming data into batches and processing the batches in sequence, rather than processing each piece of data individually.
+- Flow control: This involves using mechanisms such as flow control signals or windowing to regulate the rate at which data is transmitted between systems.
+
+Backpressure is an important aspect of cloud design, as it helps to ensure that data is processed efficiently and that the system remains stable and available. It is often used in conjunction with other design patterns, such as auto-scaling and load balancing, to provide a scalable and resilient cloud environment.
+
+Visit the following resources to learn more:
+
+- [@article@Awesome Architecture: Backpressure](https://awesome-architecture.com/back-pressure/)
+
+## Circuit Breaker
+
+The circuit breaker design pattern is a way to protect a system from failures or excessive load by temporarily stopping certain operations if the system is deemed to be in a failed or overloaded state. It is commonly used in cloud computing environments to prevent cascading failures and to improve the resilience and availability of a system.
+
+A circuit breaker consists of three states: closed, open, and half-open. In the closed state, the circuit breaker allows operations to proceed as normal. If the system encounters a failure or becomes overloaded, the circuit breaker moves to the open state, and all subsequent operations are immediately stopped. After a specified period of time, the circuit breaker moves to the half-open state, and a small number of operations are allowed to proceed. If these operations are successful, the circuit breaker moves back to the closed state; if they fail, the circuit breaker moves back to the open state.
+
+The circuit breaker design pattern is useful for protecting a system from failures or excessive load by providing a way to temporarily stop certain operations and allow the system to recover. It is often used in conjunction with other design patterns, such as retries and fallbacks, to provide a more robust and resilient cloud environment.
+
+Visit the following resources to learn more:
+
+- [@article@Circuit Breaker - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_mitigate_interaction_failure_graceful_degradation.html)
+- [@article@Circuit Breaker - Complete Guide](https://mateus4k.github.io/posts/circuit-breakers/)
 
 ## Core and Emerging Programming Languages
 
@@ -609,6 +931,16 @@ Rust is a modern systems programming language focusing on safety, speed, and con
 - [@article@Rust vs. Go: Why They’re Better Together](https://thenewstack.io/rust-vs-go-why-theyre-better-together/)
 - [@article@Rust by the Numbers: The Rust Programming Language in 2021](https://thenewstack.io/rust-by-the-numbers-the-rust-programming-language-in-2021/)
 - [@feed@Explore top posts about Rust](https://app.daily.dev/tags/rust?ref=roadmapsh)
+
+_C#_ - C# (pronounced "C sharp") is a general purpose programming language made by Microsoft. It is used to perform different tasks and can be used to create web apps, games, mobile apps, etc.
+
+Visit the following resources to learn more:
+
+- [@article@C# Learning Path](https://docs.microsoft.com/en-us/learn/paths/csharp-first-steps/?WT.mc_id=dotnet-35129-website)
+- [@article@C# on W3 schools](https://www.w3schools.com/cs/index.php)
+- [@article@Introduction to C#](https://docs.microsoft.com/en-us/shows/CSharp-101/?WT.mc_id=Educationalcsharp-c9-scottha)
+- [@video@C# tutorials](https://www.youtube.com/watch?v=gfkTfcpWqAY&list=PLTjRvDozrdlz3_FPXwb6lX_HoGXa09Yef)
+- [@feed@Explore top posts about C#](https://app.daily.dev/tags/c#?ref=roadmapsh)
 
 **Java.** One of the most common alternatives for enterprise solutions, Java, has been constantly evolving since its first release back in 1995. All that time making its way into big enterprises that trust its robustness and ever-growing community of developers. While not the easiest language to learn, it’s definitely up there in the top 10 most popular [backend languages](https://roadmap.sh/backend/languages) (according to [StackOverflow’s 2023 Developer survey](https://survey.stackoverflow.co/2023/#technology-most-popular-technologies)).
 
@@ -819,6 +1151,17 @@ Let’s take a quick look at some of the most common architectures used for crea
 
 ### Most common backend architectures
 
+Microservice architecture is a pattern in which highly cohesive, loosely coupled services are separately developed, maintained, and deployed. Each component handles an individual function, and when combined, the application handles an overall business function.
+
+Visit the following resources to learn more:
+
+- [@official@Pattern: Microservice Architecture](https://microservices.io/patterns/microservices.html)
+- [@article@What is Microservices?](https://smartbear.com/solutions/microservices/)
+- [@article@Microservices 101](https://thenewstack.io/microservices-101/)
+- [@article@Primer: Microservices Explained](https://thenewstack.io/primer-microservices-explained/)
+- [@article@Articles about Microservices](https://thenewstack.io/category/microservices/)
+- [@feed@Explore top posts about Microservices](https://app.daily.dev/tags/microservices?ref=roadmapsh)
+
 There are too many different architectural styles and patterns to cover them all inside a single article, but let's just look at some of the most common ones and how they can help you while working on your backend system.
 
 - **Monolithic architecture:** In a monolithic architecture, the entire application is built as a single, tightly coupled unit. All components (frontend, backend, database, etc) are part of the same codebase. This is a great first architecture because it feels very natural to develop under, and if your project is not going to grow out of proportion, then you will probably not hit any of the cons.
@@ -829,6 +1172,61 @@ There are too many different architectural styles and patterns to cover them all
 - **Microkernel architecture:** This architecture lets you build the core, essential functionality into a small microkernel and have the rest of the features built as plugins that can be added, removed or exchanged easily.
 
 And if you want to know more about the patterns and principles mentioned here, please check out the [Software Design and Architecture roadmap](https://roadmap.sh/software-design-architecture).
+
+Serverless is an architecture in which a developer builds and runs applications without provisioning or managing servers. With cloud computing/serverless, servers exist but are managed by the cloud provider. Resources are used as they are needed, on demand and often using auto scaling.
+
+Visit the following resources to learn more:
+
+- [@article@Serverless](https://www.ibm.com/cloud/learn/serverless)
+- [@article@AWS Services](https://aws.amazon.com/serverless/)
+- [@video@Serverless Computing in 100 Seconds](https://www.youtube.com/watch?v=W_VV2Fx32_Y&ab_channel=Fireship)
+- [@feed@Explore top posts about Serverless](https://app.daily.dev/tags/serverless?ref=roadmapsh)
+
+Monolithic architecture is a pattern in which an application handles requests, executes business logic, interacts with the database, and creates the HTML for the front end. In simpler terms, this one application does many things. It's inner components are highly coupled and deployed as one unit.
+
+Visit the following resources to learn more:
+
+- [@article@Pattern: Monolithic Architecture](https://microservices.io/patterns/monolithic.html)
+- [@article@Monolithic Architecture - Advantages & Disadvantages](https://datamify.medium.com/monolithic-architecture-advantages-and-disadvantages-e71a603eec89)
+
+A service mesh is an architectural pattern for enhancing communication, security, and management between microservices in a distributed network. It employs a collection of intelligent proxies to manage service-to-service communication, ensuring high availability, efficient load balancing, and robust service discovery. Additionally, a service mesh offers advanced features like observability for monitoring network behavior, and various traffic management capabilities.
+
+In a typical service mesh setup, each microservice is paired with a proxy. This proxy, often deployed using a sidecar pattern, is responsible not only for handling communication to and from its associated microservice but also for implementing various network functionalities. These functionalities include load balancing, intelligent routing, and ensuring secure data transfer.
+
+The sidecar pattern, integral to service meshes, involves deploying the proxy as a sidecar container alongside the main microservice container, especially in Kubernetes environments. This design allows the service mesh to function independently from the microservices themselves, simplifying management and updates.
+
+Popular service mesh implementations include Istio and Linkerd, which offer robust solutions tailored to modern, cloud-based application architectures.
+
+Visit the following resources to learn more:
+
+- [@article@What is a Service Mesh?](https://www.nginx.com/blog/what-is-a-service-mesh/)
+- [@video@Microservices pain points and how service mesh can help solve those issues](https://www.youtube.com/watch?v=QiXK0B9FhO0)
+- [@feed@Explore top posts about Service Mesh](https://app.daily.dev/tags/service-mesh?ref=roadmapsh)
+
+SOA, or service-oriented architecture, defines a way to make software components reusable via service interfaces. These interfaces utilize common communication standards in such a way that they can be rapidly incorporated into new applications without having to perform deep integration each time.
+
+Visit the following resources to learn more:
+
+- [@article@Reference Architecture Foundation for Service Oriented Architecture](http://docs.oasis-open.org/soa-rm/soa-ra/v1.0/soa-ra.html)
+- [@feed@Explore top posts about Architecture](https://app.daily.dev/tags/architecture?ref=roadmapsh)
+
+## Domain-Driven Design
+
+Domain-driven design (DDD) is a software design approach focusing on modeling software to match a domain according to input from that domain's experts.
+
+In terms of object-oriented programming, it means that the structure and language of software code (class names, class methods, class variables) should match the business domain. For example, if a software processes loan applications, it might have classes like LoanApplication and Customer, and methods such as AcceptOffer and Withdraw.
+
+DDD connects the implementation to an evolving model and it is predicated on the following goals:
+
+- Placing the project's primary focus on the core domain and domain logic;
+- Basing complex designs on a model of the domain;
+- Initiating a creative collaboration between technical and domain experts to iteratively refine a conceptual model that addresses particular domain problems.
+
+Visit the following resources to learn more:
+
+- [@article@Domain-Driven Design](https://redis.com/glossary/domain-driven-design-ddd/)
+- [@article@Domain-Driven Design: Tackling Complexity in the Heart of Software](https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215)
+- [@feed@Explore top posts about Domain-Driven Design](https://app.daily.dev/tags/domain-driven-design?ref=roadmapsh)
 
 ## Database Management Systems
 
@@ -1868,6 +2266,49 @@ If you find a piece of technology that wasn’t covered here, you’ll have the 
 Manual QA Tester - Manually testing software for bugs, usability issues and functionality defects.Use tools i.e Bug reporting tools(JIRA, Bugzilla)
 Automation QA Engineer - Writing automated scripts to test applications using tools such as Selenium, Appium, JUnit.
 
+## Throttling
+
+Throttling is a design pattern that is used to limit the rate at which a system or component can be used. It is commonly used in cloud computing environments to prevent overuse of resources, such as compute power, network bandwidth, or storage capacity.
+
+There are several ways to implement throttling in a cloud environment:
+
+- Rate limiting: This involves setting a maximum number of requests that can be made to a system or component within a specified time period.
+- Resource allocation: This involves allocating a fixed amount of resources to a system or component, and then limiting the use of those resources if they are exceeded.
+- Token bucket: This involves using a "bucket" of tokens to represent the available resources, and then allowing a certain number of tokens to be "consumed" by each request. When the bucket is empty, additional requests are denied until more tokens become available.
+
+Throttling is an important aspect of cloud design, as it helps to ensure that resources are used efficiently and that the system remains stable and available. It is often used in conjunction with other design patterns, such as auto-scaling and load balancing, to provide a scalable and resilient cloud environment.
+
+Visit the following resources to learn more:
+
+- [@article@Throttling - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2022-03-31/framework/rel_mitigate_interaction_failure_throttle_requests.html)
+
+## Design Patterns
+
+Design patterns are typical solutions to commonly occurring problems in software design. They can be broken into three categories:
+
+- Creational Patterns for the creation of objects
+- Structural Patterns to provide relationship between objects
+- Behavioral Patterns to help define how objects interact
+
+Visit the following resources to learn more:
+
+- [@opensource@Design Patterns for Humans](https://github.com/kamranahmedse/design-patterns-for-humans)
+- [@article@GOF design patterns](https://springframework.guru/gang-of-four-design-patterns/)
+- [@article@Design Patterns](https://refactoring.guru/design-patterns)
+
+## Event Sourcing
+
+Event sourcing is a design pattern in which the state of a system is represented as a sequence of events that have occurred over time. In an event-sourced system, changes to the state of the system are recorded as events and stored in an event store. The current state of the system is derived by replaying the events from the event store.
+
+One of the main benefits of event sourcing is that it provides a clear and auditable history of all the changes that have occurred in the system. This can be useful for debugging and for tracking the evolution of the system over time.
+
+Event sourcing is often used in conjunction with other patterns, such as Command Query Responsibility Segregation (CQRS) and domain-driven design, to build scalable and responsive systems with complex business logic. It is also useful for building systems that need to support undo/redo functionality or that need to integrate with external systems.
+
+Visit the following resources to learn more:
+
+- [@article@Event Sourcing - Martin Fowler](https://martinfowler.com/eaaDev/EventSourcing.html)
+- [@feed@Explore top posts about Architecture](https://app.daily.dev/tags/architecture?ref=roadmapsh)
+
 ## others
 
 •
@@ -1898,3 +2339,108 @@ stand-ups, and retrospectives.
 Documentation & Collaboration: Maintain API documentation with Swagger, Postman,
 and collaborate with front-end developers (React, Angular, Vue) for seamless
 integration.
+
+## Data Replication
+
+Data replication is the process by which data residing on a physical/virtual server(s) or cloud instance (primary instance) is continuously replicated or copied to a secondary server(s) or cloud instance (standby instance). Organizations replicate data to support high availability, backup, and/or disaster recovery.
+
+Visit the following resources to learn more:
+
+- [@video@What is Data Replication?](https://youtu.be/fUrKt-AQYtE)
+
+## Failure Modes
+
+There are several different failure modes that can occur in a database, including:
+
+- Read contention: This occurs when multiple clients or processes are trying to read data from the same location in the database at the same time, which can lead to delays or errors.
+- Write contention: This occurs when multiple clients or processes are trying to write data to the same location in the database at the same time, which can lead to delays or errors.
+- Thundering herd: This occurs when a large number of clients or processes try to access the same resource simultaneously, which can lead to resource exhaustion and reduced performance.
+- Cascade: This occurs when a failure in one part of the database system causes a chain reaction that leads to failures in other parts of the system.
+- Deadlock: This occurs when two or more transactions are waiting for each other to release a lock on a resource, leading to a standstill.
+- Corruption: This occurs when data in the database becomes corrupted, which can lead to errors or unexpected results when reading or writing to the database.
+- Hardware failure: This occurs when hardware components, such as disk drives or memory, fail, which can lead to data loss or corruption.
+- Software failure: This occurs when software components, such as the database management system or application, fail, which can lead to errors or unexpected results.
+- Network failure: This occurs when the network connection between the database and the client is lost, which can lead to errors or timeouts when trying to access the database.
+- Denial of service (DoS) attack: This occurs when a malicious actor attempts to overwhelm the database with requests, leading to resource exhaustion and reduced performance.
+
+## Load Shifting
+
+Load shifting is a design pattern that is used to manage the workload of a system by shifting the load to different components or resources at different times. It is commonly used in cloud computing environments to balance the workload of a system and to optimize the use of resources.
+
+There are several ways to implement load shifting in a cloud environment:
+
+- Scheduling: This involves scheduling the execution of tasks or workloads to occur at specific times or intervals.
+- Load balancing: This involves distributing the workload of a system across multiple resources, such as servers or containers, to ensure that the workload is balanced and that resources are used efficiently.
+- Auto-scaling: This involves automatically adjusting the number of resources that are available to a system based on the workload, allowing the system to scale up or down as needed.
+
+Load shifting is an important aspect of cloud design, as it helps to ensure that resources are used efficiently and that the system remains stable and available. It is often used in conjunction with other design patterns, such as throttling and backpressure, to provide a scalable and resilient cloud environment.
+
+## CQRS
+
+CQRS, or command query responsibility segregation, defines an architectural pattern where the main focus is to separate the approach of reading and writing operations for a data store. CQRS can also be used along with Event Sourcing pattern in order to persist application state as an ordered of sequence events, making it possible to restore data to any point in time.
+
+Visit the following resources to learn more:
+
+- [@article@CQRS Pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
+
+## Solr
+
+Solr is highly reliable, scalable and fault tolerant, providing distributed indexing, replication and load-balanced querying, automated failover and recovery, centralized configuration and more. Solr powers the search and navigation features of many of the world's largest internet sites.
+
+- [@article@Official Website](https://solr.apache.org/)
+- [@article@Official Documentation](https://solr.apache.org/resources.html#documentation)
+
+## Hosting
+
+Web hosting is an online service that allows you to publish your website files onto the internet. So, anyone who has access to the internet has access to your website.
+
+- [@video@What Is Web Hosting? Explained](https://www.youtube.com/watch?v=htbY9-yggB0)
+- [@video@Different Types of Web Hosting Explained](https://www.youtube.com/watch?v=AXVZYzw8geg)
+- [@video@Where to Host a Fullstack Project on a Budget](https://www.youtube.com/watch?v=Kx_1NYYJS7Q)
+- [@article@What is the difference between webpage, website, web server, and search engine?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/Pages_sites_servers_and_search_engines)
+- [@article@What is a web server?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_web_server)
+
+**Repo Hosting Services** - When working on a team, you often need a remote place to put your code so others can access it, create their own branches, and create or review pull requests. These services often include issue tracking, code review, and continuous integration features. A few popular choices are GitHub, GitLab, BitBucket, and AWS CodeCommit.
+
+- [@opensource@GitHub](https://github.com/features/)
+- [@article@GitLab](https://about.gitlab.com/)
+- [@article@BitBucket](https://bitbucket.org/product/guides/getting-started/overview)
+- [@article@How to choose the best source code repository](https://bitbucket.org/product/code-repository)
+
+# Design and Development Principles
+
+In this section, we'll discuss some essential design and development principles to follow while building the backend of any application. These principles will ensure that the backend is efficient, scalable, and maintainable.
+
+## 1. Separation of Concerns (SoC)
+
+Separation of Concerns is a fundamental principle that states that different functionalities of a system should be as independent as possible. This approach improves maintainability and scalability by allowing developers to work on separate components without affecting each other. Divide your backend into clear modules and layers, such as data storage, business logic, and network communication.
+
+## 2. Reusability
+
+Reusability is the ability to use components, functions, or modules in multiple places without duplicating code. While designing the backend, look for opportunities where you can reuse existing code. Use techniques like creating utility functions, abstract classes, and interfaces to promote reusability and reduce redundancy.
+
+## 3. Keep It Simple and Stupid (KISS)
+
+KISS principle states that the simpler the system, the easier it is to understand, maintain, and extend. When designing the backend, try to keep the architecture and code as simple as possible. Use clear naming conventions and modular structures, and avoid over-engineering and unnecessary complexity.
+
+## 4. Don't Repeat Yourself (DRY)
+
+Do not duplicate code or functionality across your backend. Duplication can lead to inconsistency and maintainability issues. Instead, focus on creating reusable components, functions or modules, which can be shared across different parts of the backend.
+
+## 5. Scalability
+
+A scalable system is one that can efficiently handle an increasing number of users, requests, or data. Design the backend with scalability in mind, considering factors such as data storage, caching, load balancing, and horizontal scaling (adding more instances of the backend server).
+
+## 6. Security
+
+Security is a major concern when developing any application. Always follow best practices to prevent security flaws, such as protecting sensitive data, using secure communication protocols (e.g., HTTPS), implementing authentication and authorization mechanisms, and sanitizing user inputs.
+
+## 7. Testing
+
+Testing is crucial for ensuring the reliability and stability of the backend. Implement a comprehensive testing strategy, including unit, integration, and performance tests. Use automated testing tools and set up continuous integration (CI) and continuous deployment (CD) pipelines to streamline the testing and deployment process.
+
+## 8. Documentation
+
+Proper documentation helps developers understand and maintain the backend codebase. Write clear and concise documentation for your code, explaining the purpose, functionality, and how to use it. Additionally, use comments and appropriate naming conventions to make the code itself more readable and self-explanatory.
+
+By following these design and development principles, you'll be well on your way to creating an efficient, secure, and maintainable backend for your applications.
