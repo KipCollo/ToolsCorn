@@ -2,6 +2,14 @@
 
 JWT stands for JSON Web Token is a token-based encryption open standard/methodology that is used to transfer information securely as a JSON object. Clients and Servers use JWT to securely share information, with the JWT containing encoded JSON objects and claims. JWT tokens are designed to be compact, safe to use within URLs, and ideal for SSO contexts.
 
+JWT stands for JSON Web Token is a token-based encryption open standard/methodology that is used to transfer information securely as a JSON object. Clients and Servers use JWT to securely share information, with the JWT containing encoded JSON objects and claims. JWT tokens are designed to be compact, safe to use within URLs, and ideal for SSO contexts.
+
+- [jwt.io Website](https://jwt.io/)
+- [Introduction to JSON Web Tokens](https://jwt.io/introduction)
+- [What is JWT?](https://www.akana.com/blog/what-is-jwt)
+- [What Is JWT and Why Should You Use JWT](https://www.youtube.com/watch?v=7Q17ubqLfaM)
+- [What is JWT? JSON Web Token Explained](https://www.youtube.com/watch?v=926mknSW9Lo)
+
 The JSON Object Signing and Encryption group (JOSE) was formed in the year 20119 . The group’s objective was to “standardize the mechanism for integrity protection (signature and MAC) and encryption as well as the format for keys and algorithm identifiers to support interoperability of security services for protocols that use JSON
 
 JSON Web Token, or JWT (“jot”) for short, is a standard for safely passing claims in space constrained environments.
@@ -33,12 +41,12 @@ Another key aspect of JWTs is the possiblity of signing them, using JSON Web Sig
 Although the main purpose of JWTs is to transfer claims between two parties, arguably the most important aspect of this is the standardization effort in the form of a simple, optionally validated and/or encrypted, container format. Ad hoc solutions to this same problem have been implemented both privately and publicly in the past. Older standards8 for establishing claims about certain parties are also available. What JWT brings to the table is a simple, useful, standard container format.
 
 Some of these applications include:
+
 1. Authentication
 2. Authorization
 3. Federated identity
 4. Client-side sessions (“stateless” sessions)
 5. Client-side secrets
-
 
 All JWTs are constructed from three different elements: the header, the payload, and the signature/encryption data. The first two elements are JSON objects of a certain structure. The third is dependent on the algorithm used for signing or encryption, and, in the case of unencrypted JWTs it is omitted. JWTs can be encoded in a compact representation known as JWS/JWE Compact Serialization.
 
@@ -46,7 +54,7 @@ The JWS and JWE specifications define a third serialization format known as JSON
 
 The compact serialization is a Base641 URL-safe encoding of the UTF-82 bytes of the first two JSON elements (the header and the payload) and the data, as required, for signing or encryption (which is not a JSON object itself). This data is Base64-URL encoded as well. These three elements are separated by dots (“.”).
 
-JWT uses a variant of Base64 encoding that is safe for URLs. This encoding basically substitutes the “+” and “/” characters for the “-” and “_” characters, respectively.
+JWT uses a variant of Base64 encoding that is safe for URLs. This encoding basically substitutes the “+” and “/” characters for the “-” and “\_” characters, respectively.
 Padding is removed as well. This variant is known as base64url3 . Note that all references to Base64 encoding in this document refer to this variant.
 
 The resulting sequence is a printable string like the following (newlines inserted for readability):
@@ -61,8 +69,8 @@ The decoded header is:
 
 ```json
 {
-   "alg": "HS256",
-   "typ": "JWT"
+  "alg": "HS256",
+  "typ": "JWT"
 }
 ```
 
@@ -70,9 +78,9 @@ The decoded payload is:
 
 ```json
 {
-   "sub": "1234567890",
-   "name": "John Doe",
-   "admin": true
+  "sub": "1234567890",
+  "name": "John Doe",
+  "admin": true
 }
 ```
 
@@ -94,13 +102,13 @@ Optional header claims include the typ and cty claims:
 
 - `typ`: the media type5 of the JWT itself. This parameter is only meant to be used as a help for uses where JWTs may be mixed with other objects carrying a JOSE header. In practice,this rarely happens. When present, this claim should be set to the value JWT.
 - `cty`:- the content type. Most JWTs carry specific claims plus arbitrary data as part of their payload. For this case, the content type claim must not be set. For instances where the payload is a JWT itself (a nested JWT), this claim must be present and carry the value JWT.
-This tells the implementation that further processing of the nested JWT is required. Nested JWTs are rare, so the cty claim is rarely present in headers.
+  This tells the implementation that further processing of the nested JWT is required. Nested JWTs are rare, so the cty claim is rarely present in headers.
 
 So, for unencrypted JWTs, the header is simply:
 
 ```json
 {
-"alg": "none"
+  "alg": "none"
 }
 ```
 
@@ -114,9 +122,9 @@ It is possible to add additional, user-defined claims to the header. This is gen
 
 ```json
 {
-"sub": "1234567890",
-"name": "John Doe",
-"admin": true
+  "sub": "1234567890",
+  "name": "John Doe",
+  "admin": true
 }
 ```
 
@@ -128,4 +136,4 @@ The payload is the element where all the interesting user data is usually added.
 2. sub: from the word subject. A case-sensitive string or URI that uniquely identifies the party that this JWT carries information about. In other words, the claims contained in this JWT are statements about this party. The JWT spec specifies that this claim must be unique in the context of the issuer or, in cases where that is not possible, globally unique. Handling of this claim is application specific.
 3. aud: from the word audience. Either a single case-sensitive string or URI or an array of such values that uniquely identify the intended recipients of this JWT. In other words, when this claim is present, the party reading the data in this JWT must find itself in the aud claim ordisregard the data contained in the JWT. As in the case of the iss and sub claims, this claim is application specific.
 4. exp: from the word expiration (time). A number representing a specific date and time in the format “seconds since epoch” as defined by POSIX6 . This claims sets the exact moment from which this JWT is considered invalid. Some implementations may allow for a certain skew between clocks (by considering this JWT to be valid for a few minutes after the expiration date).
-5. 
+5.

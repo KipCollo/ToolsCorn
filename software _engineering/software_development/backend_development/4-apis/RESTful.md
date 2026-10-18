@@ -1,8 +1,8 @@
 # REST
 
-REST is an acronym for REpresentational State Transfer and an architectural style for distributed hypermedia systems. Roy Fielding first presented it in 2000 in his famous dissertation. Since then, it has become one of the most widely used approaches for building web-based APIs (Application Programming Interfaces). 
+REST is an acronym for REpresentational State Transfer and an architectural style for distributed hypermedia systems. Roy Fielding first presented it in 2000 in his famous dissertation. Since then, it has become one of the most widely used approaches for building web-based APIs (Application Programming Interfaces).
 REST, or REpresentational State Transfer, is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other.
-REST was first defined by Roy Fielding in his 2000 Dotoral dissertation
+
 A REST API provides endpoints that allow clients to communicate with a server over the internet. Each endpoint represents a specific resource or action, such as retrieving data,creating new data, updating existing data, or deleting data. Clients send requests to these endpoints using HTTP methods like GET, POST, PUT, PATCH, and DELETE, and the server responds with the requested data or performs the requested action.
 
 REST is not a protocol or a standard, it is an architectural style. During the development phase, API developers can implement REST in a variety of ways.
@@ -12,6 +12,7 @@ A Web API (or Web Service) conforming to the REST architectural style is called 
 This client-server communication follows the principles of REST (Representational State Transfer), which emphasizes statelessness, a uniform interface, and resource-based interactions.
 
 So, in total, REST APIs support these seven HTTP methods:
+
 1. GET – Retrieve data (with response body).
 2. POST – Create a new resource.
 3. PUT – Update/replace a resource.
@@ -24,7 +25,7 @@ So, in total, REST APIs support these seven HTTP methods:
 
 REST is based on some constraints and principles that promote simplicity, scalability, and statelessness in the design. The six guiding principles or constraints of the RESTful architecture are:
 
- Uniform Interface
+\*Uniform Interface
 
 By applying the principle of generality to the components interface, we can simplify the overall system architecture and improve the visibility of interactions. Multiple architectural constraints help in obtaining a uniform interface and guiding the behavior of components.
 
@@ -64,8 +65,7 @@ A layman’s example of a layered system is the MVC pattern. The MVC pattern all
 
 REST also allows client functionality to be extended by downloading and executing code in the form of applets or scripts.
 
-The downloaded code simplifies clients by reducing the number of features required to be pre-implemented. Servers can provide part of the features delivered to the client in the form of code, and the client only needs to execute the code.
-2. What is a Resource?
+The downloaded code simplifies clients by reducing the number of features required to be pre-implemented. Servers can provide part of the features delivered to the client in the form of code, and the client only needs to execute the code. 2. What is a Resource?
 
 The key abstraction of information in REST is a resource. Any information that we can name can be a resource. For example, a REST resource can be a document or image, a temporal service, a collection of other resources, or a non-virtual object (e.g., a person).
 
@@ -100,8 +100,6 @@ So in practice, we will create lots of custom media types – usually one media 
 Every media type defines a default processing model. For example, HTML defines a rendering process for hypertext and the browser behavior around each element.
 
     Media Types have no relation to the resource methods GET/PUT/POST/DELETE/… other than the fact that some media type elements will define a process model that goes like “anchor elements with an href attribute create a hypertext link that, when selected, invokes a retrieval request (GET) on the URI corresponding to the CDATA-encoded href attribute.”
-
-
 
 In simpler words, REST defines a consistent and uniform interface for interactions between clients and servers. For example, the HTTP-based REST APIs make use of the standard HTTP methods (GET, POST, PUT, DELETE, etc.) and the URIs (Uniform Resource Identifiers) to identify resources.
 1.2. Client-Server
@@ -132,8 +130,7 @@ A layman’s example of a layered system is the MVC pattern. The MVC pattern all
 
 REST also allows client functionality to be extended by downloading and executing code in the form of applets or scripts.
 
-The downloaded code simplifies clients by reducing the number of features required to be pre-implemented. Servers can provide part of the features delivered to the client in the form of code, and the client only needs to execute the code.
-2. What is a Resource?
+The downloaded code simplifies clients by reducing the number of features required to be pre-implemented. Servers can provide part of the features delivered to the client in the form of code, and the client only needs to execute the code. 2. What is a Resource?
 
 The key abstraction of information in REST is a resource. Any information that we can name can be a resource. For example, a REST resource can be a document or image, a temporal service, a collection of other resources, or a non-virtual object (e.g., a person).
 
@@ -169,11 +166,6 @@ Every media type defines a default processing model. For example, HTML defines a
 
     Media Types have no relation to the resource methods GET/PUT/POST/DELETE/… other than the fact that some media type elements will define a process model that goes like “anchor elements with an href attribute create a hypertext link that, when selected, invokes a retrieval request (GET) on the URI corresponding to the CDATA-encoded href attribute.”
 
-
-
-
-
-
 key characteristics of REST APIs:-
 
 - `Stateless`: Each request from a client must contain all the necessary information, as the server does not store session data.
@@ -185,12 +177,10 @@ key characteristics of REST APIs:-
 
 **HATEOAS** is an acronym for <b>H</b>ypermedia <b>A</b>s <b>T</b>he <b>E</b>ngine <b>O</b>f <b>A</b>pplication <b>S</b>tate, it's the concept that when sending information over a RESTful API the document received should contain everything the client needs in order to parse and use the data i.e they don't have to contact any other endpoint not explicitly mentioned within the Document.
 
-
 **Resource Design**:- The resource should always be prural nouns in the API endpoint and is one instance resource should be retrieved,pass the id in the URL.
 (GET /accounts, GET /accounts/1).
 In case of nested resources(resource under resource),the resources should be accessible as follows.(GET /accounts/1/payments/56).
 Use the HTTP methods to specify what to do with resources.With methods GET,POST,PUT,PATCH,DELETE you can provide CRUD functionality(Create,Read,Update,Delete).
-
 
 An idempotent operation means that making multiple identical requests will not change the server state beyond the first request.
 Idempotent methods: GET, PUT, DELETE, HEAD, OPTIONS
@@ -215,10 +205,7 @@ OAuth 2.0 – Secure authorization framework for third-party access.
 JWT (JSON Web Token) – Used for stateless authentication.
 API Keys – A unique key provided to authenticate requests.
 
-
-
-
-A REST API (Representational State Transfer Application Programming Interface) is an architectural style for designing networked applications, particularly web services. It utilizes standard web protocols, primarily HTTP, to facilitate communication between different software systems. 
+A REST API (Representational State Transfer Application Programming Interface) is an architectural style for designing networked applications, particularly web services. It utilizes standard web protocols, primarily HTTP, to facilitate communication between different software systems.
 Key characteristics and principles of REST APIs:
 
     Statelessness:
@@ -235,19 +222,15 @@ Key characteristics and principles of REST APIs:
         POST: Create a new resource.
         PUT: Update or replace an existing resource.
         PATCH: Partially update an existing resource.
-        DELETE: Remove a resource. 
+        DELETE: Remove a resource.
     Representations:
     Resources are represented in various formats, most commonly JSON (JavaScript Object Notation) or XML (Extensible Markup Language).
     Hypermedia as the Engine of Application State (HATEOAS):
-    Resources can include links to related resources, guiding the client through the application's state transitions. 
+    Resources can include links to related resources, guiding the client through the application's state transitions.
 
-Benefits of using REST APIs:
+_Benefits of using REST APIs_:
 
-    Simplicity and Ease of Use:
-    Leverages familiar HTTP protocols and concepts, making them relatively straightforward to design and consume.
-    Scalability:
-    Statelessness and client-server separation contribute to easier scaling of applications.
-    Flexibility and Platform Independence:
-    Clients can be developed in various programming languages and on different platforms.
-    Loose Coupling:
-    Client and server can evolve independently without tightly coupled dependencies.
+1. Simplicity and Ease of Use:- Leverages familiar HTTP protocols and concepts, making them relatively straightforward to design and consume.
+2. Scalability:- Statelessness and client-server separation contribute to easier scaling of applications.
+3. Flexibility and Platform Independence:- Clients can be developed in various programming languages and on different platforms.
+4. Loose Coupling:- Client and server can evolve independently without tightly coupled dependencies.

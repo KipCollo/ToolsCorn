@@ -1,28 +1,29 @@
 # Application Layer
 
-*Application Layer*:- The application layer enables the user, whether human or software, to access the network. It provides user interfaces and support for services such as electronic mail, remote file access and transfer, shared database management, and other types of distributed information services.
+_Application Layer_:- The application layer enables the user, whether human or software, to access the network. It provides user interfaces and support for services such as electronic mail, remote file access and transfer, shared database management, and other types of distributed information services.
 
 Internet applications include the classic text-based applications that became popular in the 1970s and 1980s: text e-mail, remote access to computers, file transfers, and newsgroups. They include the killer application of the mid-1990s, the World Wide Web, encompassing Web surfing, search, and electronic commerce. They include instant messaging and P2P file sharing, the two killer applications introduced at the end of the millennium. In the new millennium, new and highly compelling applications continue to emerge, including voice over IP and video conferencing such as Skype, Facetime, and Google Hangouts; user generated video such as YouTube and movies on demand such as Netflix; multiplayer online games such as Second Life and World of Warcraft. During this same period, we have seen the emergence of a new generation of social networking applications—such as Facebook, Instagram, Twitter, and WeChat—which have created engaging human networks on top of the Internet’s network or routers and communication links. And most recently, along with the arrival of the smartphone, there has been a profusion of location based mobile apps, including popular check-in, dating, and road-traffic forecasting apps (such as Yelp, Tinder, Waz, and Yik Yak).
 
 Specific services provided by the application layer include the following:
+
 - Network virtual terminal: A network virtual terminal is a software version of a physical terminal, and it allows a user to log on to a remote host. To do so, the application creates a software emulation of a terminal at the remote host. The user's computer talks to the software terminal which, in turn, talks to the host, and vice versa. The remote host believes it is communicating with one of its own terminals and allows the user to log on.
 - File transfer, access and management: This application allows a user to access files in a remote host (to make changes or read data), to retrieve files from a remote computer for use in the local computer, and to manage or control files in a remote computer locally.
 - Mail services: This application provides the basis for e-mail forwarding and storage.Directory services. This application provides distributed database sources and access for global information about various objects and services.
 
 Creating a Network Application
 Write programs that:
+
 - run on (different) end systems
-- communicate over network  e.g., web server software communicates with browser software
+- communicate over network e.g., web server software communicates with browser software
 
 No need to write software for network-core devices
+
 - network-core devices do not run user applications
 - applications on end systems allows for rapid app development, propagation
-
 
 At the core of network application development is writing programs that run on different end systems and communicate with each other over the network. For example, in the Web application there are two distinct programs that communicate with each other: the browser program running in the user’s host (desktop, laptop, tablet, smartphone, and so on); and the Web server program running in the Web server host. As another example, in a P2P file-sharing system there is a program in each host that participates in the file-sharing community.
 Thus, when developing your new application, you need to write software that will run on multiple end systems. This software could be written, for example, in C, Java, or Python. Importantly, you do not need to write software that runs on network-core devices, such as routers or link-layer switches. Even if you wanted to write application software for these network-core devices, you wouldn’t be able to do so.
 Network-core devices do not function at the application layer but instead function at lower layers—specifically at the network layer and below.This basic design—namely, confining application software to the end systems—has facilitated the rapid development and deployment of a vast array of network applications.
-
 
 ## Application-Layer Protocols
 
@@ -30,13 +31,13 @@ The application layer enables the user,whether human or software,to access the n
 Some network application that utilizes application layer - Social Networking,Web,Text Messaging,E-mail,Multi-User Network Games,Streaming Stored Video(Youtube,Netflix),P2P File sharing,Voice Over IP(Skype),real-Time Video Conference(Zoom),Internet search,Remote Login.
 The application layer in TCP/IP is equivalent to the combined session,presentation, and application layers in the OSI model. Many protocols are defined at this layer some include the following:-
 
-
 **Simple Mail Transfer Protocol (SMTP)** - Simple Mail Transfer Protocol (SMTP) is responsible for making sure that e-mail is delivered. SMTP only handles the delivery of mail to servers and between servers. It does not handle the delivery to the final e-mail client application.Mail transfer is done through message transfer agents (MTA).SMTP simply defines how commands and responses must be sent back and forth.
 SMTP is a push protocol and is used to send the mail wheres `POP`(Post Office Protocol) or `IMAP`(Internet Message Access Protocol) is used to retrieve those mails at receiver's side.
 
 The client who wants to send the mail opens a TCP connection to SMTP server and then sends the mail across the connection.The SMTP server is an always-on listening mode.As soon as it listens for a TCP connection from any client,the SMTP process initiates a connection through port 25.After successfully establishig a TCP connection the client process sends mail instantly.
 
 The SMTP model is of two types:
+
 1. End-to-End method
 2. Store-and-Forward method.
 
@@ -46,10 +47,10 @@ The end-to-end model is used to communicate between different organizations wher
 The MTA maintains a small queue of mail so that it can schedule repeat delivery of mail in case the receiver is not available.The MTA delivers the mail to the mailboxes.
 
 - Components of SMTP:
-    - Mail User Agent(MUA):- It is a computer application that helps you in sending and retreiving mail.Responsible for creating email messages for transfer to the mail transfer agent(MTA).
-    - Mail Submission Agent(MSA):- Computer program that receives email from a Mail User Agent(MUA) and interacts with Mail Transfer Agent(MTA) for transfer of email.
-    - Mail Transfer Agent(MTA):- Software that has the work to transfer mail from one system to another with help of SMTP.
-    - Mail Delivery Agent(MDA):- A system that helps in delivery of mail to local system.
+  - Mail User Agent(MUA):- It is a computer application that helps you in sending and retreiving mail.Responsible for creating email messages for transfer to the mail transfer agent(MTA).
+  - Mail Submission Agent(MSA):- Computer program that receives email from a Mail User Agent(MUA) and interacts with Mail Transfer Agent(MTA) for transfer of email.
+  - Mail Transfer Agent(MTA):- Software that has the work to transfer mail from one system to another with help of SMTP.
+  - Mail Delivery Agent(MDA):- A system that helps in delivery of mail to local system.
 
 `Working with SMTP`:- Steps for working with SMTP:-
 
@@ -57,21 +58,19 @@ The MTA maintains a small queue of mail so that it can schedule repeat delivery 
 2. Sending Mails:- Mail is sent by series of request and responses messages between client and server.The message which is sent across consists of a header and a body.A null line is used to terminate mail header and everything after null line is considered body of message,which is a sequence of ASCII characters.The body contains actual info read by recipt.
 3. Receiving mails - User agent on server side checks mailboxes at particular time of intervals.If any info is received,it informs user about the mail.
 
-*Extended SMTP*:- Is an extended version of SMTP.Is a set of protocols for sending and receiving electronic messages on the internet.
-
+_Extended SMTP_:- Is an extended version of SMTP.Is a set of protocols for sending and receiving electronic messages on the internet.
 
 - **POP3**:- POP3 is an extremely simple mail access protocol. It is defined in [RFC 1939], which is short and quite readable. Because the protocol is so simple, its functionality is rather limited. POP3 begins when the user agent (the client) opens a TCP connection to the mail server (the server) on port 110. With the TCPconnection established, POP3 progresses through three phases: authorization, transaction, and update.
-During the first phase, authorization, the user agent sends a username and a password (in the clear) to authenticate the user. During the second phase, transaction, the user agent retrieves messages; also during this phase, the user agent can mark messages for deletion, remove deletion marks, and obtain mail statistics. The third phase, update, occurs after the client has issued the quit command, ending the POP3 session; at this time, the mail server deletes the messages that were marked for deletion.
+  During the first phase, authorization, the user agent sends a username and a password (in the clear) to authenticate the user. During the second phase, transaction, the user agent retrieves messages; also during this phase, the user agent can mark messages for deletion, remove deletion marks, and obtain mail statistics. The third phase, update, occurs after the client has issued the quit command, ending the POP3 session; at this time, the mail server deletes the messages that were marked for deletion.
 
 - **IMAP**:- IMAP protocol, defined in [RFC 3501], was invented. Like POP3,IMAP is a mail access protocol. It has many more features than POP3, but it is also significantly more complex. (And thus the client and server side implementations are significantly more complex.)
-An IMAP server will associate each message with a folder; when a message first arrives at the server, it is associated with the recipient’s INBOX folder. The recipient can then move the message into a new, user-created folder, read the message, delete the message, and so on. The IMAP protocol provides commands to allow users to create folders and move messages from one folder to another. IMAP also provides commands that allow users to search remote folders for messages matching specific criteria.
-Note that, unlike POP3, an IMAP server maintains user state information across IMAP sessions—for example, the names of the folders and which messages are associated with which folders.
-Another important feature of IMAP is that it has commands that permit a user agent to obtain components of messages. For example, a user agent can obtain just the message header of a message or just one part of a multipart MIME message. This feature is useful when there is a low-bandwidth connection (for example, a slow-speed modem link) between the user agent and its mail server. With a low-bandwidth connection, the user may not want to download all of the messages in its mailbox, particularly avoiding long messages that might contain, for example, an audio or video clip.
-
+  An IMAP server will associate each message with a folder; when a message first arrives at the server, it is associated with the recipient’s INBOX folder. The recipient can then move the message into a new, user-created folder, read the message, delete the message, and so on. The IMAP protocol provides commands to allow users to create folders and move messages from one folder to another. IMAP also provides commands that allow users to search remote folders for messages matching specific criteria.
+  Note that, unlike POP3, an IMAP server maintains user state information across IMAP sessions—for example, the names of the folders and which messages are associated with which folders.
+  Another important feature of IMAP is that it has commands that permit a user agent to obtain components of messages. For example, a user agent can obtain just the message header of a message or just one part of a multipart MIME message. This feature is useful when there is a low-bandwidth connection (for example, a slow-speed modem link) between the user agent and its mail server. With a low-bandwidth connection, the user may not want to download all of the messages in its mailbox, particularly avoiding long messages that might contain, for example, an audio or video clip.
 
 - **File Transfer Protocol (FTP)** - Mechanism provided by TCP/IP for copying a file from one host to another.Establishes two connections between the hosts. One connection is used for data transfer, the other for control information (commands and responses).FTP uses the services of TCP. It needs two TCP connections.
-    1. The well-known port 21 is used for the control connection.
-    2. The well-known port 20 for the data connection.
+  1. The well-known port 21 is used for the control connection.
+  2. The well-known port 20 for the data connection.
 
 ### Domain Name System (DNS)
 
@@ -82,11 +81,13 @@ DNS protocol is an application-layer protocol since it:- runs between communicat
 Just as humans can be identified in many ways, so too can Internet hosts. One identifier for a host is its `hostname`. Hostnames—such as www.facebook.com, www.google.com ,gaia.cs.umass.edu —are mnemonic and are therefore appreciated by humans. However,hostnames provide little, if any, information about the location within the Internet of the host. (A hostname such as www.eurecom.fr , which ends with the country code .fr , tells us that the host is probably in France, but doesn’t say much more.) Furthermore, because hostnames can consist of variable-length alphanumeric characters, they would be difficult to process by routers. For these reasons, hosts are also identified by so-called `IP addresses`.
 An IP address consists of four bytes and has a rigid hierarchical structure. An IP address looks like 121.7.106.83 , where each period separates one of the bytes expressed in decimal notation from 0 to 255. An IP address is hierarchical because as we scan the address from left to right, we obtain more and more specific information about where the host is located in the Internet (that is,within which network, in the network of networks).
 
-*Services Provided by DNS*:-  People prefer the more mnemonic hostname identifier, while routers prefer fixed-length, hierarchically structured IP addresses. In order to reconcile these preferences, we need a directory service that translates hostnames to IP addresses. This is the main task of the Internet’s `domain name system(DNS)`. The DNS is:-
+_Services Provided by DNS_:- People prefer the more mnemonic hostname identifier, while routers prefer fixed-length, hierarchically structured IP addresses. In order to reconcile these preferences, we need a directory service that translates hostnames to IP addresses. This is the main task of the Internet’s `domain name system(DNS)`. The DNS is:-
+
 1. A distributed database implemented in a hierarchy of DNS servers.
 2. An application-layer protocol that allows hosts to query the distributed database. The DNS servers are often UNIX machines running the Berkeley Internet Name Domain (BIND) software [BIND 2016]. The DNS protocol runs over UDP and uses `port 53`.
 
 DNS is commonly employed by other application-layer protocols—including HTTP and SMTP to translate user-supplied hostnames to IP addresses. As an example, consider what happens when a browser (that is, an HTTP client), running on some user’s host, requests the URL www.someschool.edu/index.html . In order for the user’s host to be able to send an HTTP request message to the Web server www.someschool.edu , the user’s host must first obtain the IP address of www.someschool.edu . This is done as follows.
+
 1. The same user machine runs the client side of the DNS application.
 2. The browser extracts the hostname, www.someschool.edu , from the URL and passes the hostname to the client side of the DNS application.
 3. The DNS client sends a query containing the hostname to a DNS server.
@@ -100,9 +101,9 @@ DNS provides a few other important services in addition to translating hostnames
 2. `Mail server aliasing`. For obvious reasons, it is highly desirable that e-mail addresses be mnemonic.For example, if Bob has an account with Yahoo Mail, Bob’s e-mail address might be as simple as bob@yahoo.mail.However, the hostname of the Yahoo mail server is more complicated and much less mnemonic than simply yahoo.com (for example, the canonical hostname might be something like relay1.west-coast.yahoo.com ). DNS can be invoked by a mail application to obtain the canonical hostname for a supplied alias hostname as well as the IP address of the host.In fact, the MX record permits a company’s mail server and Web server to have identical (aliased) hostnames; for example, a company’s Web server and mail server can both be called enterprise.com.
 3. `Load distribution`. DNS is also used to perform load distribution among replicated servers, such as replicated Web servers. Busy sites, such as cnn.com , are replicated over multiple servers, with each server running on a different end system and each having a different IP address. For replicated Web servers, a set of IP addresses is thus associated with one canonical hostname. The DNS database contains this set of IP addresses. When clients make a DNS query for a name mapped to a set of addresses, the server responds with the entire set of IP addresses, but rotates the ordering of the addresses within each reply. Because a client typically sends its HTTP request message to the IP address that is listed first in the set, DNS rotation distributes the traffic among the replicated servers. DNS rotation is also used for e-mail so that multiple mail servers can have the same alias name. Also, content distribution companies such as Akamai have used DNS in more sophisticated ways [Dilley 2002] to provide Web content distribution.
 
-
-*Overview of How DNS Works*:- Suppose that some application (such as a Web browser or a mail reader) running in a user’s host needs to translate a hostname to an IP address. The application will invoke the client side of DNS, specifying the hostname that needs to be translated. (On many UNIX-based machines, gethostbyname() is the function call that an application calls in order to perform the translation.) DNS in the user’s host then takes over, sending a query message into the network. All DNS query and reply messages are sent within UDP datagrams to port 53. After a delay, ranging from milliseconds to seconds, DNS in the user’s host receives a DNS reply message that provides the desired mapping. This mapping is then passed to the invoking application. Thus, from the perspective of the invoking application in the user’s host, DNS is a black box providing a simple, straightforward translation service. But in fact, the black box that implements the service is complex, consisting of a large number of DNS servers distributed around the globe, as well as an application-layer protocol that specifies how the DNS servers and querying hosts communicate.
+_Overview of How DNS Works_:- Suppose that some application (such as a Web browser or a mail reader) running in a user’s host needs to translate a hostname to an IP address. The application will invoke the client side of DNS, specifying the hostname that needs to be translated. (On many UNIX-based machines, gethostbyname() is the function call that an application calls in order to perform the translation.) DNS in the user’s host then takes over, sending a query message into the network. All DNS query and reply messages are sent within UDP datagrams to port 53. After a delay, ranging from milliseconds to seconds, DNS in the user’s host receives a DNS reply message that provides the desired mapping. This mapping is then passed to the invoking application. Thus, from the perspective of the invoking application in the user’s host, DNS is a black box providing a simple, straightforward translation service. But in fact, the black box that implements the service is complex, consisting of a large number of DNS servers distributed around the globe, as well as an application-layer protocol that specifies how the DNS servers and querying hosts communicate.
 A simple design for DNS would have one DNS server that contains all the mappings. In this centralized design, clients simply direct all queries to the single DNS server, and the DNS server responds directly to the querying clients. Although the simplicity of this design is attractive, it is inappropriate for today’s Internet, with its vast (and growing) number of hosts. The problems with a centralized design include:
+
 1. A single point of failure.If the DNS server crashes, so does the entire Internet.
 2. Traffic volume. A single DNS server would have to handle all DNS queries (for all the HTTP requests and e-mail messages generated from hundreds of millions of hosts).
 3. Distant centralized database. A single DNS server cannot be “close to” all the querying clients. If we put the single DNS server in New York City, then all queries from Australia must travel to the other side of the globe, perhaps over slow and congested links. This can lead to significant delays.
@@ -111,7 +112,6 @@ A simple design for DNS would have one DNS server that contains all the mappings
 Consequently, the DNS is distributed by design.
 
 `A Distributed, Hierarchical Database`:- In order to deal with the issue of scale, the DNS uses a large number of servers, organized in a hierarchical fashion and distributed around the world. No single DNS server has all of the mappings for all of the hosts in the Internet. Instead, the mappings are distributed across the DNS servers. To a first approximation, there are three classes of DNS servers—root DNS servers, top-level domain (TLD) DNS servers, and authoritative DNS servers—organized in a hierarchy.
-
 
 ```
             Root DNS servers
@@ -133,24 +133,24 @@ An authoritative DNS server is the final authority in domain lookup process,hold
 
 There is another important type of DNS server called the `local DNS server`. A local DNS server does not strictly belong to the hierarchy of servers but is nevertheless central to the DNS architecture. Each ISP—such as a residential ISP or an institutional ISP—has a local DNS server (also called a default name server). When a host connects to an ISP, the ISP provides the host with the IP addresses of one or more of its local DNS servers.You can easily determine the IP address of your local DNS server by accessing network status windows in Windows or UNIX. A host’s local DNS server is typically “close to” the host. For an institutional ISP, the local DNS server may be on the same LAN as the host; for a residential ISP, it is typically separated from the host by no more than a few routers. When a host makes a DNS query, the query is sent to the local DNS server, which acts a proxy, forwarding the query into the DNS server hierarchy.
 
-
-*DNS Caching*:- DNS extensively exploits DNS caching in order to improve the delay performance and to reduce the number of DNS messages ricocheting around the Internet.
+_DNS Caching_:- DNS extensively exploits DNS caching in order to improve the delay performance and to reduce the number of DNS messages ricocheting around the Internet.
 In a query chain, when a DNS server receives a DNS reply (containing, for example, a mapping from a hostname to an IP address), it can cache the mapping in its local memory.Because hosts and mappings between hostnames and IP addresses are by no means permanent, DNS servers discard cached information after a period of time (often set to two days).
 
-
-*DNS Records and Messages*:- The DNS servers that together implement the DNS distributed database store resource records (RRs), including RRs that provide hostname-to-IP address mappings. Each DNS reply message carries one or more resource records.
+_DNS Records and Messages_:- The DNS servers that together implement the DNS distributed database store resource records (RRs), including RRs that provide hostname-to-IP address mappings. Each DNS reply message carries one or more resource records.
 A resource record is a four-tuple that contains the following fields:- (Name, Value, Type, TTL).
 TTL is the time to live of the resource record; it determines when a resource should be removed from ancache. In the example records given below, we ignore the TTL field. The meaning of Name and Value depend on Type:
+
 - If `Type=A` , then Name is a hostname and Value is the IP address for the hostname. Thus, a Type A record provides the standard hostname-to-IP address mapping. As an example,(relay1.bar.foo.com, 145.37.93.126, A) is a Type A record.
 - If `Type=NS` , then Name is a domain (such as foo.com ) and Value is the hostname of an authoritative DNS server that knows how to obtain the IP addresses for hosts in the domain. This record is used to route DNS queries further along in the query chain. As an example, (foo.com,dns.foo.com, NS) is a Type NS record.
 - If `Type=CNAME`, then Value is a canonical hostname for the alias hostname Name . This record can provide querying hosts the canonical name for a hostname. As an example, (foo.com,relay1.bar.foo.com, CNAME) is a CNAME record.
 - If `Type=MX`, then Value is the canonical name of a mail server that has an alias hostname Name .As an example, (foo.com, mail.bar.foo.com, MX) is an MX record. MX records allow the hostnames of mail servers to have simple aliases. Note that by using the MX record, a company can have the same aliased name for its mail server and for one of its other servers (such as its Web server). To obtain the canonical name for the mail server, a DNS client would query for an MXrecord; to obtain the canonical name for the other server, the DNS client would query for the CNAME record.
 
-*DNS VULNERABILITIES*:- The first type of attack that comes to mind is a DDoS bandwidth-flooding attackagainst DNS servers. For example, an attacker could attempt to send to each DNS root server a deluge of packets, so many that the majority of legitimate DNS queries never get answered. Such a large-scale DDoS attack against DNS root servers actually took place on October 21, 2002. In this attack, the attackers leveraged a botnet to send truck loads of ICMP ping messages to each of the 13 DNS root IP addresses.
+_DNS VULNERABILITIES_:- The first type of attack that comes to mind is a DDoS bandwidth-flooding attackagainst DNS servers. For example, an attacker could attempt to send to each DNS root server a deluge of packets, so many that the majority of legitimate DNS queries never get answered. Such a large-scale DDoS attack against DNS root servers actually took place on October 21, 2002. In this attack, the attackers leveraged a botnet to send truck loads of ICMP ping messages to each of the 13 DNS root IP addresses.
 
 Tools to identify DNS include- `nslookup`
 
 Common DNS attacks -
+
 1. DNS Spoofing/Cache Poisoning
 2. DNS Tunnelling.
 3. Domain Look-up attack
@@ -160,40 +160,13 @@ Common DNS attacks -
 7. NXDOMAIN Attack.
 8. Random Subdomain Atack.
 
-
 - **Simple Network Management Protocol (SNMP)**:- (SNMP) is a framework for managing devices in an internet using the TCP/IP protocol suite provides a set of fundamental operations for monitoring and maintaining an internet, controls and monitors a set of agents, usually routers SNMP frees management tasks from both the physical characteristics of the managed devices and the underlying networking technology. Used in a heterogeneous internet made of different LANs and WANs connected by routers made by different manufacturers. SNMP uses two other protocols Structure of Management Information (SMI) and Management Information Base(MIB).
-
 
 ### Web and Hypertext Transfer Protocol (HTTP)
 
-- **Web and Hypertext Transfer Protocol (HTTP)** - Web’s application-layer protocol for client/server model: Client browser requests, receives, (using HTTP protocol) and “displays” Web objects and Web server sends (using HTTP protocol) objects in response to requests from clients.This protocol can be used to request a resource from a server, and it can be used to return a response from a server.
-HTTP is a protocol for fetching resources such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. A complete document is typically constructed from resources such as text content, layout instructions, images, videos, scripts, and more.
-HTTP is an application-layer protocol for transmitting hypermedia documents, such as HTML. It was designed for communication between web browsers and web servers, but it can also be used for other purposes, such as machine-to-machine communication, programmatic access to APIs, and more.
+`Hypertext Transfer Protocol (HTTP)` - Web’s application-layer protocol for client/server model: Client browser requests, receives, (using HTTP protocol) and “displays” Web objects and Web server sends (using HTTP protocol) objects in response to requests from clients.This protocol can be used to request a resource from a server, and it can be used to return a response from a server.HTTP is a protocol for fetching resources such as HTML documents. It is the foundation of any data exchange on the Web and it is a client-server protocol, which means requests are initiated by the recipient, usually the Web browser. A complete document is typically constructed from resources such as text content, layout instructions, images, videos, scripts, and more.HTTP is an application-layer protocol for transmitting hypermedia documents, such as HTML. It was designed for communication between web browsers and web servers, but it can also be used for other purposes, such as machine-to-machine communication, programmatic access to APIs, and more.
 
 Client initiates TCP connection (creates socket) to server, port 80 and server accepts TCP connection from client. HTTP messages (application-layer protocol messages) exchanged between browser (HTTP client) and Web server (HTTP server) and TCP connection closed.
-HTTP is “stateless” where server maintains no information about past client requests
-
-HTTP follows a classical client-server model, with a client opening a connection to make a request, then waiting until it receives a response from the server. HTTP is a stateless protocol, meaning that the server does not keep any session data between two requests, although the later addition of cookies adds state to some client-server interactions.
-
-Clients and servers communicate by exchanging individual messages (as opposed to a stream of data). The messages sent by the client are called requests and the messages sent by the server as an answer are called responses.
-Designed in the early 1990s, HTTP is an extensible protocol which has evolved over time. It is an application layer protocol that is sent over TCP, or over a TLS-encrypted TCP connection, though any reliable transport protocol could theoretically be used. Due to its extensibility, it is used to not only fetch hypertext documents, but also images and videos or to post content to servers, like with HTML form results. HTTP can also be used to fetch parts of documents to update Web pages on demand.
-
-`Components of HTTP-based systems` - HTTP is a client-server protocol: requests are sent by one entity, the user-agent (or a proxy on behalf of it). Most of the time the user-agent is a Web browser, but it can be anything, for example, a robot that crawls the Web to populate and maintain a search engine index.Each individual request is sent to a server, which handles it and provides an answer called the response. Between the client and the server there are numerous entities, collectively called proxies, which perform different operations and act as gateways or caches.
-
-Client: the user-agent - The user-agent is any tool that acts on behalf of the user. This role is primarily performed by the Web browser, but it may also be performed by programs used by engineers and Web developers to debug their applications.
-The browser is always the entity initiating the request. It is never the server (though some mechanisms have been added over the years to simulate server-initiated messages).
-To display a Web page, the browser sends an original request to fetch the HTML document that represents the page. It then parses this file, making additional requests corresponding to execution scripts, layout information (CSS) to display, and sub-resources contained within the page (usually images and videos). The Web browser then combines these resources to present the complete document, the Web page. Scripts executed by the browser can fetch more resources in later phases and the browser updates the Web page accordingly.
-A Web page is a hypertext document. This means some parts of the displayed content are links, which can be activated (usually by a click of the mouse) to fetch a new Web page, allowing the user to direct their user-agent and navigate through the Web. The browser translates these directions into HTTP requests, and further interprets the HTTP responses to present the user with a clear response.
-
-The Web server:- On the opposite side of the communication channel is the server, which serves the document as requested by the client. A server appears as only a single machine virtually; but it may actually be a collection of servers sharing the load (load balancing), or other software (such as caches, a database server, or e-commerce servers), totally or partially generating the document on demand.
-A server is not necessarily a single machine, but several server software instances can be hosted on the same machine. With HTTP/1.1 and the Host header, they may even share the same IP address.
-
-Proxies:- Between the Web browser and the server, numerous computers and machines relay the HTTP messages. Due to the layered structure of the Web stack, most of these operate at the transport, network or physical levels, becoming transparent at the HTTP layer and potentially having a significant impact on performance. Those operating at the application layers are generally called proxies. These can be transparent, forwarding on the requests they receive without altering them in any way, or non-transparent, in which case they will change the request in some way before passing it along to the server. Proxies may perform numerous functions:
-1. caching (the cache can be public or private, like the browser cache)
-2. filtering (like an antivirus scan or parental controls)
-3. load balancing (to allow multiple servers to serve different requests)
-4. authentication (to control access to different resources)
-5. logging (allowing the storage of historical information)
 
 `Basic aspects of HTTP`:-
 
@@ -201,7 +174,28 @@ Proxies:- Between the Web browser and the server, numerous computers and machine
 2. HTTP is extensible:- Introduced in HTTP/1.0, HTTP headers make this protocol easy to extend and experiment with. New functionality can even be introduced by an agreement between a client and a server about a new header's semantics.
 3. HTTP is stateless, but not sessionless:- HTTP is stateless: there is no link between two requests being successively carried out on the same connection. This immediately has the prospect of being problematic for users attempting to interact with certain pages coherently, for example, using e-commerce shopping baskets. But while the core of HTTP itself is stateless, HTTP cookies allow the use of stateful sessions. Using header extensibility, HTTP Cookies are added to the workflow, allowing session creation on each HTTP request to share the same context, or the same state.
 
-`HTTP and connections` - A connection is controlled at the transport layer, and therefore fundamentally out of scope for HTTP. HTTP doesn't require the underlying transport protocol to be connection-based; it only requires it to be reliable, or not lose messages (at minimum, presenting an error in such cases). Among the two most common transport protocols on the Internet, TCP is reliable and UDP isn't. HTTP therefore relies on the TCP standard, which is connection-based.
+HTTP is a `stateless` protocol, meaning that the server does not keep any session data between two requests, although the later addition of cookies adds state to some client-server interactions.
+HTTP follows a classical `client-server model`, with a client opening a connection to make a request, then waiting until it receives a response from the server.Clients and servers communicate by exchanging individual messages (as opposed to a stream of data). The messages sent by the client are called requests and the messages sent by the server as an answer are called responses.
+
+_Components of HTTP-based systems_ - HTTP is a client-server protocol: requests are sent by one entity, the user-agent (or a proxy on behalf of it). Most of the time the user-agent is a Web browser, but it can be anything, for example, a robot that crawls the Web to populate and maintain a search engine index.Each individual request is sent to a server, which handles it and provides an answer called the response. Between the client and the server there are numerous entities, collectively called proxies, which perform different operations and act as gateways or caches.
+
+- `Client: the user-agent` - The user-agent is any tool that acts on behalf of the user. This role is primarily performed by the Web browser, but it may also be performed by programs used by engineers and Web developers to debug their applications.
+  The browser is always the entity initiating the request. It is never the server (though some mechanisms have been added over the years to simulate server-initiated messages).
+  To display a Web page, the browser sends an original request to fetch the HTML document that represents the page. It then parses this file, making additional requests corresponding to execution scripts, layout information (CSS) to display, and sub-resources contained within the page (usually images and videos). The Web browser then combines these resources to present the complete document, the Web page. Scripts executed by the browser can fetch more resources in later phases and the browser updates the Web page accordingly.
+  A Web page is a hypertext document. This means some parts of the displayed content are links, which can be activated (usually by a click of the mouse) to fetch a new Web page, allowing the user to direct their user-agent and navigate through the Web. The browser translates these directions into HTTP requests, and further interprets the HTTP responses to present the user with a clear response.
+
+- `The Web server`:- On the opposite side of the communication channel is the server, which serves the document as requested by the client. A server appears as only a single machine virtually; but it may actually be a collection of servers sharing the load (load balancing), or other software (such as caches, a database server, or e-commerce servers), totally or partially generating the document on demand.
+  A server is not necessarily a single machine, but several server software instances can be hosted on the same machine. With HTTP/1.1 and the Host header, they may even share the same IP address.
+
+- `Proxies`:- Between the Web browser and the server, numerous computers and machines relay the HTTP messages. Due to the layered structure of the Web stack, most of these operate at the transport, network or physical levels, becoming transparent at the HTTP layer and potentially having a significant impact on performance. Those operating at the application layers are generally called proxies. These can be transparent, forwarding on the requests they receive without altering them in any way, or non-transparent, in which case they will change the request in some way before passing it along to the server. Proxies may perform numerous functions:
+
+1. caching (the cache can be public or private, like the browser cache)
+2. filtering (like an antivirus scan or parental controls)
+3. load balancing (to allow multiple servers to serve different requests)
+4. authentication (to control access to different resources)
+5. logging (allowing the storage of historical information)
+
+_HTTP and connections_ - A connection is controlled at the transport layer, and therefore fundamentally out of scope for HTTP. HTTP doesn't require the underlying transport protocol to be connection-based; it only requires it to be reliable, or not lose messages (at minimum, presenting an error in such cases). Among the two most common transport protocols on the Internet, TCP is reliable and UDP isn't. HTTP therefore relies on the TCP standard, which is connection-based.
 Before a client and server can exchange an HTTP request/response pair, they must establish a TCP connection, a process which requires several round-trips. The default behavior of HTTP/1.0 is to open a separate TCP connection for each HTTP request/response pair. This is less efficient than sharing a single TCP connection when multiple requests are sent in close succession.
 
 In order to mitigate this flaw, HTTP/1.1 introduced pipelining (which proved difficult to implement) and persistent connections: the underlying TCP connection can be partially controlled using the Connection header. HTTP/2 went a step further by multiplexing messages over a single connection, helping keep the connection warm and more efficient.
@@ -221,17 +215,16 @@ Here is a list of common features controllable with HTTP:
 HTTP flow - When a client wants to communicate with a server, either the final server or an intermediate proxy, it performs the following steps:
 
 1. Open a TCP connection: The TCP connection is used to send a request, or several, and receive an answer. The client may open a new connection, reuse an existing connection, or open several TCP connections to the servers.
-2. Send an HTTP message: HTTP messages (before HTTP/2) are human-readable. With HTTP/2, these messages are encapsulated in frames, making them impossible to read directly, but the principle remains the same. 
+2. Send an HTTP message: HTTP messages (before HTTP/2) are human-readable. With HTTP/2, these messages are encapsulated in frames, making them impossible to read directly, but the principle remains the same.
 3. Read the response sent by the server.
 4. Close or reuse the connection for further requests.
 
 If HTTP pipelining is activated, several requests can be sent without waiting for the first response to be fully received. HTTP pipelining has proven difficult to implement in existing networks, where old pieces of software coexist with modern versions. HTTP pipelining has been superseded in HTTP/2 with more robust multiplexing requests within a frame.
 
-
-`HTTP Messages`:- HTTP messages, as defined in HTTP/1.1 and earlier, are human-readable. In HTTP/2, these messages are embedded into a binary structure, a frame, allowing optimizations like compression of headers and multiplexing. Even if only part of the original HTTP message is sent in this version of HTTP, the semantics of each message is unchanged and the client reconstitutes (virtually) the original HTTP/1.1 request. It is therefore useful to comprehend HTTP/2 messages in the HTTP/1.1 format.
+**HTTP Messages**:- HTTP messages, as defined in HTTP/1.1 and earlier, are human-readable. In HTTP/2, these messages are embedded into a binary structure, a frame, allowing optimizations like compression of headers and multiplexing. Even if only part of the original HTTP message is sent in this version of HTTP, the semantics of each message is unchanged and the client reconstitutes (virtually) the original HTTP/1.1 request. It is therefore useful to comprehend HTTP/2 messages in the HTTP/1.1 format.
 HTTP messages are the mechanism used to exchange data between a server and a client in the HTTP protocol.
 
-There are two types of messages: requests sent by the client to trigger an action on the server, and responses, the answer that the server sends in response to a request.
+There are two types of messages: `requests` sent by the client to trigger an action on the server, and `responses`, the answer that the server sends in response to a request.
 
 Developers rarely, if ever, build HTTP messages from scratch. Applications such as a browser, proxy, or web server use software designed to create HTTP messages in a reliable and efficient way. How messages are created or transformed is controlled via APIs in browsers, configuration files for proxies or servers, or other interfaces.
 In HTTP protocol versions up to HTTP/2, messages are text-based, and are relatively straightforward to read and understand after you've familiarized yourself with the format. In HTTP/2, messages are wrapped in binary framing, which makes them slightly harder to read. However the underlying semantics of the protocol are the same, so you can learn the structure and meaning of HTTP messages based on the text-based format of HTTP/1.x messages, and apply this understanding to HTTP/2 and beyond.
@@ -245,9 +238,8 @@ Both requests and responses share a similar structure:
 
 The start-line and headers of the HTTP message are collectively known as the head of the requests, and the part afterwards that contains its content is known as the body.
 
-
-`HTTP Request`:- The first line of HTTP request is known as *request line*.This line contains request method,the request URL, and the request Protocol.Typically,the request is Get or Post,but other methods are supported by HTTP.Similarly,request protocol is usually HTTP 1.1,but could possibly be HTTP 1.0 or HTTP 1.2.
-After the request line,an HTTP request contains the *request headers*.These headers contain information about client that's making the request.A request can contain several headers.Each request header begins with the name of request header,followed by a colon and a space,followed by the value of request header.
+_HTTP Request_:- The first line of HTTP request is known as `request line`.This line contains request method,the request URL, and the request Protocol.Typically,the request is Get or Post,but other methods are supported by HTTP.Similarly,request protocol is usually HTTP 1.1,but could possibly be HTTP 1.0 or HTTP 1.2.
+After the request line,an HTTP request contains the `request headers`.These headers contain information about client that's making the request.A request can contain several headers.Each request header begins with the name of request header,followed by a colon and a space,followed by the value of request header.
 After the request headers,an HTTP request that uses the Post method may include a blank line followed by the parameters for te request.Unlike a Get request,a Post request doesn't include its parameters in URL.
 Requests consist of the following elements:
 
@@ -256,7 +248,6 @@ Requests consist of the following elements:
 - The version of the HTTP protocol.
 - Optional headers that convey additional information for the servers.
 - A body, for some methods like POST, similar to those in responses, which contain the resource sent.
-
 
 ```http
 GET /demo_war_exploded/ HTTP/1.1
@@ -279,7 +270,7 @@ Cache-Control: no-cache
 
 Common HTTP request headers:- Most of the time, a web browser automatically sets these request headers when it makes a request.Then,when the server receives the request,it can check these headers to learn about the browser.In addition,though,you can write servlets that set some of these request headers.
 
-1. accept - Specifies the preferred order of MIME types tht browser can accept.The "*/*" type indicates that the browser can handle any MIME type.
+1. accept - Specifies the preferred order of MIME types tht browser can accept.The "_/_" type indicates that the browser can handle any MIME type.
 2. accept-encoding - Specifies the types of compression encoding that the browser can support.
 3. accept-charset - Specifies the character sets that the browser can accept.
 4. accept-language - Specifies the Standard language codes for the languages that browser prefers.The standard language code for English is "en" or "en-us".
@@ -291,9 +282,8 @@ Common HTTP request headers:- Most of the time, a web browser automatically sets
 10. referer - Indicates the URL of the referring web page.
 11. user-agent - Indicates the type of browser and its environments.
 
-
-`HTTP Response`:- The first line of HTTP response is known as *status line*.This line specifices the version of HTTP that's being used, a status code, and a message that's associated with status code.After status line,an HTTP response contains the *response headers*.These headers contain information about server and about response that's being returned to the client.Like request headers,each response header takes one line.
-After the response headers,an HTTP response contains a blank line,followed by the *response entity* or *response body*.The response body could be XML document,a video file,PDF file,HTML document,sound file..
+_HTTP Response_:- The first line of HTTP response is known as `status line`.This line specifices the version of HTTP that's being used, a status code, and a message that's associated with status code.After status line,an HTTP response contains the `response headers`.These headers contain information about server and about response that's being returned to the client.Like request headers,each response header takes one line.
+After the response headers,an HTTP response contains a blank line,followed by the `response entity` or `response body`.The response body could be XML document,a video file,PDF file,HTML document,sound file..
 Responses consist of the following elements:
 
 1. The version of the HTTP protocol they follow.
@@ -303,7 +293,7 @@ Responses consist of the following elements:
 5. Optionally, a body containing the fetched resource.
 
 ```http
-HTTP/1.1 200 
+HTTP/1.1 200
 Content-Type: text/html;charset=UTF-8
 Content-Length: 614
 Date: Thu, 30 Oct 2025 21:12:26 GMT
@@ -329,8 +319,7 @@ Connection: keep-alive
 
 ```
 
-
-`Media types (MIME types)`:- A media type (formerly known as a Multipurpose Internet Mail Extensions or MIME type) indicates the nature and format of a document, file, or assortment of bytes. MIME types are defined and standardized in IETF's RFC 6838.
+**Media types (MIME types)**:- A media type (formerly known as a Multipurpose Internet Mail Extensions or MIME type) indicates the nature and format of a document, file, or assortment of bytes. MIME types are defined and standardized in IETF's RFC 6838.
 The Internet Assigned Numbers Authority (IANA) is responsible for all official MIME types, and you can find the most up-to-date and complete list at their Media Types page.
 The Multipurpose Internet Mail Extension(MIME) types provide standards for the various types of data that can be transferred across the internet.
 It can be included in accept header of request or the content-type header of response.
@@ -339,8 +328,8 @@ To specify an officially registered MIME type,you use the format(type/subtype).T
 Structure of a MIME type - A MIME type most commonly consists of just two parts: a type and a subtype, separated by a slash (/) — with no whitespace between:
 
 1. type/subtype - The type represents the general category into which the data type falls, such as video or text.The subtype identifies the exact kind of data of the specified type the MIME type represents. For example, for the MIME type text, the subtype might be plain (plain text), html (HTML source code), or calendar (for iCalendar/.ics) files.
-Each type has its own set of possible subtypes. A MIME type always has both a type and a subtype, never just one or the other.
-An optional parameter can be added to provide additional details:
+   Each type has its own set of possible subtypes. A MIME type always has both a type and a subtype, never just one or the other.
+   An optional parameter can be added to provide additional details:
 
 type/subtype;parameter=value
 
@@ -353,8 +342,8 @@ Discrete types - The discrete types currently registered with the IANA are:
 
 - application - Any kind of binary data that doesn't fall explicitly into one of the other types; either data that will be executed or interpreted in some way or binary data that requires a specific application or category of application to use. Generic binary data (or binary data whose true type is unknown) is application/octet-stream. Other common examples include application/pdf, application/pkcs8, and application/zip. (See application type registry at IANA)
 - audio - Audio or music data. Examples include audio/mpeg, audio/vorbis. (See audio type registry at IANA)
-example
-    Reserved for use as a placeholder in examples showing how to use MIME types. These should never be used outside of sample code listings and documentation. example can also be used as a subtype; for instance, in an example related to working with audio on the web, the MIME type audio/example can be used to indicate that the type is a placeholder and should be replaced with an appropriate one when using the code in the real world.
+  example
+  Reserved for use as a placeholder in examples showing how to use MIME types. These should never be used outside of sample code listings and documentation. example can also be used as a subtype; for instance, in an example related to working with audio on the web, the MIME type audio/example can be used to indicate that the type is a placeholder and should be replaced with an appropriate one when using the code in the real world.
 - font - Font/typeface data. Common examples include font/woff, font/ttf, and font/otf. (See font type registry at IANA)
 - image - Image or graphical data including both bitmap and vector still images as well as animated versions of still image formats such as animated GIF or APNG. Common examples are image/jpeg, image/png, and image/svg+xml. (See image type registry at IANA)
 - model - Model data for a 3D object or scene. Examples include model/3mf and model/vrml. (See model type registry at IANA)
@@ -374,39 +363,16 @@ Important MIME types for Web developers:-
 
 1. application/octet-stream - This is the default for binary files. As it means unknown binary file, browsers usually don't execute it, or even ask if it should be executed. They treat it as if the Content-Disposition header was set to attachment, and propose a "Save As" dialog.
 2. text/plain - This is the default for textual files. Even if it really means "unknown textual file," browsers assume they can display it.
-Note: text/plain does not mean "any kind of textual data." If they expect a specific kind of textual data, they will likely not consider it a match. Specifically if they download a text/plain file from a <link> element declaring a CSS file, they will not recognize it as a valid CSS file if presented with text/plain. The CSS mime type text/css must be used.
+   Note: text/plain does not mean "any kind of textual data." If they expect a specific kind of textual data, they will likely not consider it a match. Specifically if they download a text/plain file from a <link> element declaring a CSS file, they will not recognize it as a valid CSS file if presented with text/plain. The CSS mime type text/css must be used.
 3. text/css - CSS files used to style a Web page must be sent with text/css. If a server doesn't recognize the .css suffix for CSS files, it may send them with text/plain or application/octet-stream MIME types. If so, they won't be recognized as CSS by most browsers and will be ignored.
 4. text/html - All HTML content should be served with this type. Alternative MIME types for XHTML (like application/xhtml+xml) are mostly useless nowadays.
-Note: Use application/xml or application/xhtml+xml if you want XML's strict parsing rules, <![CDATA[…]]> sections, or elements that aren't from HTML/SVG/MathML namespaces.
-5. text/javascript - JavaScript content should always be served with the MIME type text/javascript. For historic reasons, browsers may support some legacy JavaScript types listed below, but you should not assume scripts served with any MIME type other than text/javascript will always load or run.Note that in HTML the type attribute for script elements may only contain the JavaScript MIME type essence: text/javascript. Including any parameter, such as charset=utf-8, is the same as setting the type to any other MIME type: the script content is treated as a data block and is not executed as JavaScript. (Note that setting the type to a JavaScript MIME type is a deprecated feature itself: you should omit the type in this case.) In contrast, when using the HTTP Content-Type header you may optionally specify the charset parameter as usual.
-    - Legacy JavaScript MIME types - In addition to the text/javascript MIME type, for historical reasons, the MIME Sniffing Standard (the definition of how browsers should interpret MIME types and figure out what to do with content that doesn't have a valid one) also allows JavaScript to be served using any of the following legacy JavaScript MIME types:
-        - application/javascript Deprecated
-        - application/ecmascript Deprecated
-        - application/x-ecmascript Non-standard
-        - application/x-javascript Non-standard
-        - text/ecmascript Deprecated
-        - text/javascript1.0 Non-standard
-        - text/javascript1.1 Non-standard
-        - text/javascript1.2 Non-standard
-        - text/javascript1.3 Non-standard
-        - text/javascript1.4 Non-standard
-        - text/javascript1.5 Non-standard
-        - text/jscript Non-standard
-        - text/livescript Non-standard
-        - text/x-ecmascript Non-standard
-        - text/x-javascript Non-standard
-Note: Even though any given user agent may support any or all of these, you should only use text/javascript. It's the only MIME type guaranteed to work now and into the future.
+   Note: Use application/xml or application/xhtml+xml if you want XML's strict parsing rules, <![CDATA[…]]> sections, or elements that aren't from HTML/SVG/MathML namespaces.
+5. text/javascript - JavaScript content should always be served with the MIME type text/javascript. For historic reasons, browsers may support some legacy JavaScript types listed below, but you should not assume scripts served with any MIME type other than text/javascript will always load or run.Note that in HTML the type attribute for script elements may only contain the JavaScript MIME type essence: text/javascript. Including any parameter, such as charset=utf-8, is the same as setting the type to any other MIME type: the script content is treated as a data block and is not executed as JavaScript. (Note that setting the type to a JavaScript MIME type is a deprecated feature itself: you should omit the type in this case.) In contrast, when using the HTTP Content-Type header you may optionally specify the charset parameter as usual. - Legacy JavaScript MIME types - In addition to the text/javascript MIME type, for historical reasons, the MIME Sniffing Standard (the definition of how browsers should interpret MIME types and figure out what to do with content that doesn't have a valid one) also allows JavaScript to be served using any of the following legacy JavaScript MIME types: - application/javascript Deprecated - application/ecmascript Deprecated - application/x-ecmascript Non-standard - application/x-javascript Non-standard - text/ecmascript Deprecated - text/javascript1.0 Non-standard - text/javascript1.1 Non-standard - text/javascript1.2 Non-standard - text/javascript1.3 Non-standard - text/javascript1.4 Non-standard - text/javascript1.5 Non-standard - text/jscript Non-standard - text/livescript Non-standard - text/x-ecmascript Non-standard - text/x-javascript Non-standard
+   Note: Even though any given user agent may support any or all of these, you should only use text/javascript. It's the only MIME type guaranteed to work now and into the future.
 6. application/json - JavaScript Object Notation (JSON) is a standard text-based format for representing structured data based on JavaScript object syntax. It is commonly used for transmitting data in web applications.
 
-- Image types - Files whose MIME type is image contain image data. The subtype specifies which specific image file format the data represents.The following image types are used commonly enough to be considered safe for use on web pages:
-    - image/apng: Animated Portable Network Graphics (APNG)
-    - image/avif : AV1 Image File Format (AVIF)
-    - image/gif: Graphics Interchange Format (GIF)
-    - image/jpeg: Joint Photographic Expert Group image (JPEG)
-    - image/png: Portable Network Graphics (PNG)
-    - image/svg+xml: Scalable Vector Graphics (SVG)
-    - image/webp: Web Picture format (WEBP)
-The Image file type and format guide provides information and recommendations about when to use the different image formats.
+- Image types - Files whose MIME type is image contain image data. The subtype specifies which specific image file format the data represents.The following image types are used commonly enough to be considered safe for use on web pages: - image/apng: Animated Portable Network Graphics (APNG) - image/avif : AV1 Image File Format (AVIF) - image/gif: Graphics Interchange Format (GIF) - image/jpeg: Joint Photographic Expert Group image (JPEG) - image/png: Portable Network Graphics (PNG) - image/svg+xml: Scalable Vector Graphics (SVG) - image/webp: Web Picture format (WEBP)
+  The Image file type and format guide provides information and recommendations about when to use the different image formats.
 
 Audio and video types:- As is the case for images, HTML doesn't mandate that web browsers support any specific file and codec types for the <audio> and <video> elements, so it's important to consider your target audience and the range of browsers (and versions of those browsers) they may be using when choosing the file type and codecs to use for media.
 Our media container formats guide provides a list of the file types that are commonly supported by web browsers, including information about what their special use cases may be, any drawbacks they have, and compatibility information, along with other details.
@@ -416,13 +382,13 @@ As for MIME types of audio or video files, they typically specify the container 
 multipart/form-data - The multipart/form-data type can be used when sending the values of a completed HTML Form from browser to server.
 As a multipart document format, it consists of different parts, delimited by a boundary (a string starting with a double dash --). Each part is its own entity with its own HTTP headers, Content-Disposition, and Content-Type for file uploading fields.
 
-`HTTP Methods`:
+**HTTP Methods**:
 GET - Retrieves data from server
 POST - submit data to server
 PUT - update data already on server
 DELETE - delete data from server.
 
-`HTTP Status Code`:- HTTP status codes are three-digit numbers returned by a server in response to an HTTP request, indicating the outcome of the request. These codes are grouped into five classes, each representing a general category of response:
+**HTTP Status Code**:- HTTP status codes are three-digit numbers returned by a server in response to an HTTP request, indicating the outcome of the request. These codes are grouped into five classes, each representing a general category of response:
 
 1. 1xx: Informational - The request was received, and the server is continuing the process. Examples include 100 Continue and 101 Switching Protocols.
 2. 2xx: Successful - The action requested by the client was successfully received, understood, and accepted. Examples include 200 OK, 201 Created, and 204 No Content.
@@ -440,10 +406,10 @@ Informational responses:
 Successful responses:
 
 - 200 OK - The request succeeded. The result and meaning of "success" depends on the HTTP method:
-   1. GET: The resource has been fetched and transmitted in the message body.
-   2. HEAD: Representation headers are included in the response without any message body.
-   3. PUT or POST: The resource describing the result of the action is transmitted in the message body.
-   4. TRACE: The message body contains the request as received by the server.
+  1.  GET: The resource has been fetched and transmitted in the message body.
+  2.  HEAD: Representation headers are included in the response without any message body.
+  3.  PUT or POST: The resource describing the result of the action is transmitted in the message body.
+  4.  TRACE: The message body contains the request as received by the server.
 - 201 Created - The request succeeded, and a new resource was created as a result. This is typically the response sent after POST requests, or some PUT requests.
 - 202 Accepted - The request has been received but not yet acted upon. It is noncommittal, since there is no way in HTTP to later send an asynchronous response indicating the outcome of the request. It is intended for cases where another process or server handles the request, or for batch processing.
 - 203 Non-Authoritative Information - This response code means the returned metadata is not exactly the same as is available from the origin server, but is collected from a local or a third-party copy. This is mostly used for mirrors or backups of another resource. Except for that specific case, the 200 OK response is preferred to this status.
@@ -512,52 +478,53 @@ Client error responses:
 - 510 Not Extended - The client request declares an HTTP Extension (RFC 2774) that should be used to process the request, but the extension is not supported.
 - 511 Network Authentication Required - Indicates that the client needs to authenticate to gain network access.
 
+Designed in the early 1990s, HTTP is an extensible protocol which has evolved over time. It is an application layer protocol that is sent over TCP, or over a TLS-encrypted TCP connection, though any reliable transport protocol could theoretically be used. Due to its extensibility, it is used to not only fetch hypertext documents, but also images and videos or to post content to servers, like with HTML form results. HTTP can also be used to fetch parts of documents to update Web pages on demand.
 
-`Evolution of HTTP`:- HTTP (HyperText Transfer Protocol) is the underlying protocol of the World Wide Web. Developed by Tim Berners-Lee and his team between 1989-1991, HTTP has gone through many changes that have helped maintain its simplicity while shaping its flexibility.HTTP evolved from a protocol designed to exchange files in a semitrusted laboratory environment into a modern internet maze that carries images and videos in high resolution and 3D.
+**Evolution of HTTP**:- HTTP (HyperText Transfer Protocol) is the underlying protocol of the World Wide Web. Developed by Tim Berners-Lee and his team between 1989-1991, HTTP has gone through many changes that have helped maintain its simplicity while shaping its flexibility.HTTP evolved from a protocol designed to exchange files in a semitrusted laboratory environment into a modern internet maze that carries images and videos in high resolution and 3D.
 
 - Invention of the World Wide Web:- In 1989, while working at CERN, Tim Berners-Lee wrote a proposal to build a hypertext system over the internet. Initially called the Mesh, it was later renamed the World Wide Web during its implementation in 1990. Built over the existing TCP and IP protocols, it consisted of 4 building blocks:
-    1. A textual format to represent hypertext documents, the HyperText Markup Language (HTML).
-    2. A protocol to exchange these documents, the HyperText Transfer Protocol (HTTP).
-    3. A client to display (and edit) these documents, the first web browser called the WorldWideWeb.
-    4. A server to give access to the document, an early version of httpd.
+  1. A textual format to represent hypertext documents, the HyperText Markup Language (HTML).
+  2. A protocol to exchange these documents, the HyperText Transfer Protocol (HTTP).
+  3. A client to display (and edit) these documents, the first web browser called the WorldWideWeb.
+  4. A server to give access to the document, an early version of httpd.
 
 These four building blocks were completed by the end of 1990, and the first servers were running outside of CERN by early 1991. On August 6, 1991, Tim Berners-Lee posted on the public alt.hypertext newsgroup. This is now considered to be the official start of the World Wide Web as a public project.
 The HTTP protocol used in those early phases was very simple. It was later dubbed HTTP/0.9 and is sometimes called the one-line protocol.
 
 - HTTP/0.9 – The one-line protocol:- The initial version of HTTP had no version number; it was later called 0.9 to differentiate it from later versions. HTTP/0.9 was extremely simple: requests consisted of a single line and started with the only possible method GET followed by the path to the resource. The full URL wasn't included as the protocol, server, and port weren't necessary once connected to the server.
-Unlike subsequent evolutions, there were no HTTP headers. This meant that only HTML files could be transmitted. There were no status or error codes. If there was a problem, a specific HTML file was generated and included a description of the problem for human consumption.
+  Unlike subsequent evolutions, there were no HTTP headers. This meant that only HTML files could be transmitted. There were no status or error codes. If there was a problem, a specific HTML file was generated and included a description of the problem for human consumption.
 
 - HTTP/1.0 – Building extensibility:-mHTTP/0.9 was very limited, but browsers and servers quickly made it more versatile:
-    1. Versioning information was sent within each request (HTTP/1.0 was appended to the GET line).
-    2. A status code line was also sent at the beginning of a response. This allowed the browser itself to recognize the success or failure of a request and adapt its behavior accordingly. For example, updating or using its local cache in a specific way.
-    3. The concept of HTTP headers was introduced for both requests and responses. Metadata could be transmitted and the protocol became extremely flexible and extensible.
-    4. Documents other than plain HTML files could be transmitted thanks to the Content-Type header.
+  1. Versioning information was sent within each request (HTTP/1.0 was appended to the GET line).
+  2. A status code line was also sent at the beginning of a response. This allowed the browser itself to recognize the success or failure of a request and adapt its behavior accordingly. For example, updating or using its local cache in a specific way.
+  3. The concept of HTTP headers was introduced for both requests and responses. Metadata could be transmitted and the protocol became extremely flexible and extensible.
+  4. Documents other than plain HTML files could be transmitted thanks to the Content-Type header.
 
 Between 1991-1995, these were introduced with a try-and-see approach. A server and a browser would add a feature and see if it got traction. Interoperability problems were common. In an effort to solve these issues, an informational document that described the common practices was published in November 1996. This was known as RFC 1945 and defined HTTP/1.0.
 
 - HTTP/1.1 – The standardized protocol:- In the meantime, proper standardization was in progress. This happened in parallel to the diverse implementations of HTTP/1.0. The first standardized version of HTTP, HTTP/1.1, was published in early 1997, only a few months after HTTP/1.0.HTTP/1.1 clarified ambiguities and introduced numerous improvements:
-    1. A connection could be reused, which saved time. It no longer needed to be opened multiple times to display the resources embedded in the single original document.
-    2. Pipelining was added. This allowed a second request to be sent before the answer to the first one was fully transmitted. This lowered the latency of the communication.
-    3. Chunked responses were also supported.
-    4. Additional cache control mechanisms were introduced.
-    5. Content negotiation, including language, encoding, and type, was introduced. A client and a server could now agree on which content to exchange.
-    6. Thanks to the Host header, the ability to host different domains from the same IP address allowed server collocation.
+  1. A connection could be reused, which saved time. It no longer needed to be opened multiple times to display the resources embedded in the single original document.
+  2. Pipelining was added. This allowed a second request to be sent before the answer to the first one was fully transmitted. This lowered the latency of the communication.
+  3. Chunked responses were also supported.
+  4. Additional cache control mechanisms were introduced.
+  5. Content negotiation, including language, encoding, and type, was introduced. A client and a server could now agree on which content to exchange.
+  6. Thanks to the Host header, the ability to host different domains from the same IP address allowed server collocation.
 
 - HTTP/2 – A protocol for greater performance:- Over the years, web pages became more complex. Some of them were even applications in their own right. More visual media was displayed and the volume and size of scripts adding interactivity also increased. Much more data was transmitted over significantly more HTTP requests and this created more complexity and overhead for HTTP/1.1 connections. To account for this, Google implemented an experimental protocol SPDY in the early 2010s. This alternative way of exchanging data between client and server amassed interest from developers working on both browsers and servers. SPDY defined an increase in responsiveness and solved the problem of duplicate data transmission, serving as the foundation for the HTTP/2 protocol.The HTTP/2 protocol differs from HTTP/1.1 in a few ways:
-    1. It's a binary protocol rather than a text protocol. It can't be read and created manually. Despite this hurdle, it allows for the implementation of improved optimization techniques.
-    2. It's a multiplexed protocol. Parallel requests can be made over the same connection, removing the constraints of the HTTP/1.x protocol.
-    3. It compresses headers. As these are often similar among a set of requests, this removes the duplication and overhead of data transmitted.
+  1. It's a binary protocol rather than a text protocol. It can't be read and created manually. Despite this hurdle, it allows for the implementation of improved optimization techniques.
+  2. It's a multiplexed protocol. Parallel requests can be made over the same connection, removing the constraints of the HTTP/1.x protocol.
+  3. It compresses headers. As these are often similar among a set of requests, this removes the duplication and overhead of data transmitted.
 
 Officially standardized in May 2015, HTTP/2 use peaked in January 2022 at 46.9% of all websites (see these stats). High-traffic websites showed the most rapid adoption in an effort to save on data transfer overhead and subsequent budgets.
 This rapid adoption was likely because HTTP/2 didn't require changes to websites and applications. To use it, only an up-to-date server that communicated with a recent browser was necessary. Only a limited set of groups was needed to trigger adoption, and as legacy browser and server versions were renewed, usage was naturally increased, without significant work for web developers.
 
 - Post-HTTP/2 evolution:- HTTP's extensibility is still being used to add new features. Notably, we can cite new extensions of the HTTP protocol that appeared in 2016:
-    1. Support for Alt-Svc allowed the dissociation of the identification and the location of a given resource. This meant a smarter CDN caching mechanism.
-    2. The introduction of client hints allowed the browser or client to proactively communicate information about its requirements and hardware constraints to the server.
-    3. The introduction of security-related prefixes in the Cookie header helped guarantee that secure cookies couldn't be altered.
+  1. Support for Alt-Svc allowed the dissociation of the identification and the location of a given resource. This meant a smarter CDN caching mechanism.
+  2. The introduction of client hints allowed the browser or client to proactively communicate information about its requirements and hardware constraints to the server.
+  3. The introduction of security-related prefixes in the Cookie header helped guarantee that secure cookies couldn't be altered.
 
 - HTTP/3 - HTTP over QUIC:- The next major version of HTTP, HTTP/3 has the same semantics as earlier versions of HTTP but uses QUIC instead of TCP for the transport layer portion. By October 2022, 26% of all websites were using HTTP/3.
-QUIC is designed to provide much lower latency for HTTP connections. Like HTTP/2, it is a multiplexed protocol, but HTTP/2 runs over a single TCP connection, so packet loss detection and retransmission handled at the TCP layer can block all streams. QUIC runs multiple streams over UDP and implements packet loss detection and retransmission independently for each stream, so that if an error occurs, only the stream with data in that packet is blocked.
+  QUIC is designed to provide much lower latency for HTTP connections. Like HTTP/2, it is a multiplexed protocol, but HTTP/2 runs over a single TCP connection, so packet loss detection and retransmission handled at the TCP layer can block all streams. QUIC runs multiple streams over UDP and implements packet loss detection and retransmission independently for each stream, so that if an error occurs, only the stream with data in that packet is blocked.
 
 Defined in RFC 9114, HTTP/3 is supported by most major browsers including Chromium (and its variants such as Chrome and Edge) and Firefox.
 
@@ -568,22 +535,20 @@ HTTP is an extensible protocol that is easy to use. The client-server structure,
 
 Though HTTP/2 adds some complexity by embedding HTTP messages in frames to improve performance, the basic structure of messages has stayed the same since HTTP/1.0. Session flow remains basic, allowing it to be investigated and debugged with a HTTP network monitor.
 
-
 `HTTP authentication`:- HTTP provides a general framework for access control and authentication. This page is an introduction to the HTTP framework for authentication, and shows how to restrict access to your server using the HTTP "Basic" scheme.
 
 The general HTTP authentication framework - RFC 7235 defines the HTTP authentication framework, which can be used by a server to challenge a client request, and by a client to provide authentication information.
+
 - The challenge and response flow works like this:
-    1. The server responds to a client with a 401 (Unauthorized) response status and provides information on how to authorize with a WWW-Authenticate response header containing at least one challenge.
-    2. A client that wants to authenticate itself with the server can then do so by including an Authorization request header with the credentials.
-    3. Usually a client will present a password prompt to the user and will then issue the request including the correct Authorization header.
+  1. The server responds to a client with a 401 (Unauthorized) response status and provides information on how to authorize with a WWW-Authenticate response header containing at least one challenge.
+  2. A client that wants to authenticate itself with the server can then do so by including an Authorization request header with the credentials.
+  3. Usually a client will present a password prompt to the user and will then issue the request including the correct Authorization header.
 
 NOTE:- HTTP vs App - Application Layer Protocol (HTTP): The set of rules for the conversation (e.g., "I will say GET, and you will give me a file").Your Software Application: The logic that decides what to say (e.g., "I need the user's profile picture").
-
 
 **HTTP caching**:- The HTTP cache stores a response associated with a request and reuses the stored response for subsequent requests.
 There are several advantages to reusability. First, since there is no need to deliver the request to the origin server, then the closer the client and cache are, the faster the response will be. The most typical example is when the browser itself stores a cache for browser requests.
 Also, when a response is reusable, the origin server does not need to process the request — so it does not need to parse and route the request, restore the session based on the cookie, query the DB for results, or render the template engine. That reduces the load on the server.
-
 
 **Using HTTP cookies**:- A cookie (also known as a web cookie or browser cookie) is a small piece of data a server sends to a user's web browser. The browser may store cookies, create new cookies, modify existing ones, and send them back to the same server with later requests. Cookies enable web applications to store limited amounts of data and remember state information; by default the HTTP protocol is stateless.
 
@@ -599,7 +564,6 @@ Cookies are mainly used for three purposes:
 - Session management: User sign-in status, shopping cart contents, game scores, or any other user session-related details that the server needs to remember.
 - Personalization: User preferences such as display language and UI theme.
 - Tracking: Recording and analyzing user behavior.
-
 
 ### WebSocket
 
@@ -638,6 +602,5 @@ wss://host:port/path?query
 
 The ws scheme represents an unencrypted WebSocket connection, and the wss scheme represents an encrypted connection. The port component is optional; the default port number is 80 for unencrypted connections and 443 for encrypted connections. The path component indicates the location of an endpoint within a server. The query component is optional.
 Modern web browsers implement the WebSocket protocol and provide a JavaScript API to connect to endpoints, send messages, and assign callback methods for WebSocket events (such as opened connections, received messages, and closed connections).
-
 
 ## Video Streaming and Content Distribution Networks

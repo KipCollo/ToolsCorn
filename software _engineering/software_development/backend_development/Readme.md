@@ -221,166 +221,6 @@ _JSON or JavaScript Object Notation_ is an encoding scheme that is designed to e
 - [@official@Official Docs](https://jsonapi.org/implementations/)
 - [@video@JSON API: Explained in 4 minutes ](https://www.youtube.com/watch?v=N-4prIh7t38)
 
-**Databases** - A database is a collection of useful data of one or more related organizations structured in a way to make data an asset to the organization. A database management system is a software designed to assist in maintaining and extracting large collections of data in a timely fashion.
-
-- [@article@Oracle: What is a Database?](https://www.oracle.com/database/what-is-database/)
-- [@article@Prisma.io: What are Databases?](https://www.prisma.io/dataguide/intro/what-are-databases)
-- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
-
-_ACID_ - ACID are the four properties of relational database systems that help in making sure that we are able to perform the transactions in a reliable manner. It's an acronym which refers to the presence of four properties: atomicity, consistency, isolation and durability
-
-- [@article@What is ACID Compliant Database?](https://retool.com/blog/whats-an-acid-compliant-database/)
-- [@article@What is ACID Compliance?: Atomicity, Consistency, Isolation](https://fauna.com/blog/what-is-acid-compliance-atomicity-consistency-isolation)
-- [@video@ACID Explained: Atomic, Consistent, Isolated & Durable](https://www.youtube.com/watch?v=yaQ5YMWkxq4)
-
-_ORMs_ - Object-Relational Mapping (ORM) is a technique that lets you query and manipulate data from a database using an object-oriented paradigm. When talking about ORM, most people are referring to a library that implements the Object-Relational Mapping technique, hence the phrase "an ORM".
-
-- [@article@Object Relational Mapping - Wikipedia](https://en.wikipedia.org/wiki/Object–relational_mapping)
-- [@article@What is an ORM and how should I use it?](https://stackoverflow.com/questions/1279613/what-is-an-orm-how-does-it-work-and-how-should-i-use-one)
-- [@article@What is an ORM, how does it work, and how should I use one?](https://stackoverflow.com/a/1279678)
-- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
-
-_Transactions_ - In short, a database transaction is a sequence of multiple operations performed on a database, and all served as a single logical unit of work — taking place wholly or not at all. In other words, there's never a case where only half of the operations are performed and the results saved.
-
-- [@article@What are Transactions?](https://fauna.com/blog/database-transaction)
-
-_Database Normalization_ - Database normalization is the process of structuring a relational database in accordance with a series of so-called normal forms in order to reduce data redundancy and improve data integrity. It was first proposed by Edgar F. Codd as part of his relational model.
-
-Normalization entails organizing the columns (attributes) and tables (relations) of a database to ensure that their dependencies are properly enforced by database integrity constraints. It is accomplished by applying some formal rules either by a process of synthesis (creating a new database design) or decomposition (improving an existing database design).
-
-- [@article@What is Normalization in DBMS (SQL)? 1NF, 2NF, 3NF, BCNF Database with Example](https://www.guru99.com/database-normalization.html)
-- [@article@Database normalization](https://en.wikipedia.org/wiki/Database_normalization)
-- [@video@Basic Concept of Database Normalization](https://www.youtube.com/watch?v=xoTyrdT9SZI)
-- [@feed@Explore top posts about Database](https://app.daily.dev/tags/database?ref=roadmapsh)
-
-_Migration Strategies_ - Learn how to run database migrations effectively. Especially zero downtime multi-phase schema migrations. Rather than make all changes at once, do smaller incremental changes to allow old code, and new code to work with the database at the same time, before removing old code, and finally removing the parts of the database schema which is no longer used.
-
-- [@article@Databases as a Challenge for Continuous Delivery](https://phauer.com/2015/databases-challenge-continuous-delivery/)
-
-_Database Indexes_ - An index is a data structure that you build and assign on top of an existing table that basically looks through your table and tries to analyze and summarize so that it can create shortcuts.
-
-- [@article@An in-depth look at Database Indexing](https://www.freecodecamp.org/news/database-indexing-at-a-glance-bb50809d48bd/)
-- [@video@Database Indexing Explained](https://www.youtube.com/watch?v=-qNSXK7s7_w)
-- [@feed@Explore top posts about Database](https://app.daily.dev/tags/database?ref=roadmapsh)
-
-_Sharding strategies_ - Sharding strategy is a technique to split a large dataset into smaller chunks (logical shard) in which we distribute these chunks in different machines/database nodes in order to distribute the traffic load. It’s a good mechanism to improve the scalability of an application. Many databases support sharding, but not all.
-
-- [@article@Wikipedia - Sharding in Database Architectures](<https://en.wikipedia.org/wiki/Shard_(database_architecture)>)
-- [@article@How sharding a database can make it faster](https://stackoverflow.blog/2022/03/14/how-sharding-a-database-can-make-it-faster/)
-- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
-
-_Relational Databases_ - A relational database is a type of database that stores and provides access to data points that are related to one another. Relational databases store data in a series of tables. Interconnections between the tables are specified as foreign keys. A foreign key is a unique reference from one row in a relational table to another row in a table, which can be the same table but is most commonly a different table.
-
-- [@article@Relational Databases](https://www.ibm.com/cloud/learn/relational-databases)
-- [@article@51 Years of Relational Databases](https://learnsql.com/blog/codd-article-databases/)
-- [@course@Databases and SQL](https://www.edx.org/course/databases-5-sql)
-- [@article@Intro To Relational Databases](https://www.udacity.com/course/intro-to-relational-databases--ud197)
-- [@video@What is Relational Database](https://youtu.be/OqjJjpjDRLc)
-- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
-
-`PostgreSQL` - PostgreSQL, also known as Postgres, is a free and open-source relational database management system emphasizing extensibility and SQL compliance.
-
-- [@roadmap@Visit Dedicated PostgreSQL DBA Roadmap](/postgresql-dba)
-- [@official@Official Website](https://www.postgresql.org/)
-- [@article@Learn PostgreSQL - Full Tutorial for Beginners](https://www.postgresqltutorial.com/)
-- [@video@Learn PostgreSQL Tutorial - Full Course for Beginners](https://www.youtube.com/watch?v=qw--VYLpxG4)
-- [@video@Postgres tutorial for Beginners](https://www.youtube.com/watch?v=eMIxuk0nOkU)
-- [@feed@Explore top posts about PostgreSQL](https://app.daily.dev/tags/postgresql?ref=roadmapsh)
-
-`Oracle` - Oracle Database Server or sometimes called Oracle RDBMS or even simply Oracle is a world leading relational database management system produced by Oracle Corporation.
-
-- [@official@Official Website](https://www.oracle.com/database/)
-- [@article@Official Docs](https://docs.oracle.com/en/database/index.html)
-- [@video@Oracle SQL Tutorial for Beginners](https://www.youtube.com/watch?v=ObbNGhcxXJA)
-- [@feed@Explore top posts about Oracle](https://app.daily.dev/tags/oracle?ref=roadmapsh)
-
-`SQLite` - SQLite is a relational database management system that is embedded into the end program. It is self-contained, serverless, zero-configuration, transactional SQL database engine.
-
-- [@official@SQLite website](https://www.sqlite.org/index.html)
-- [@article@SQLite Tutorial](https://www.sqlitetutorial.net/)
-- [@feed@Explore top posts about SQLite](https://app.daily.dev/tags/sqlite?ref=roadmapsh)
-
-`MariaDB` - MariaDB server is a community developed fork of MySQL server. Started by core members of the original MySQL team, MariaDB actively works with outside developers to deliver the most featureful, stable, and sanely licensed open SQL server in the industry. MariaDB was created with the intention of being a more versatile, drop-in replacement version of MySQL
-
-- [@official@MariaDB website](https://mariadb.org/)
-- [@article@MariaDB vs MySQL](https://www.guru99.com/mariadb-vs-mysql.html)
-- [@article@W3Schools - MariaDB tutorial ](https://www.w3schools.blog/mariadb-tutorial)
-- [@video@MariaDB Tutorial For Beginners in One Hour](https://www.youtube.com/watch?v=_AMj02sANpI)
-- [@feed@Explore top posts about Infrastructure](https://app.daily.dev/tags/infrastructure?ref=roadmapsh)
-
-`MySQL` - MySQL is an incredibly popular open source relational database management system (RDBMS). MySQL can be used as a stand-alone client or in conjunction with other services to provide database connectivity. The **M** in LAMP stack stands for MySQL; that alone should provide an idea of its prevalence.
-
-- [@official@MySQL website](https://www.mysql.com/)
-- [@article@W3Schools - MySQL tutorial ](https://www.w3schools.com/mySQl/default.asp)
-- [@video@MySQL tutorial for beginners](https://www.youtube.com/watch?v=7S_tz1z_5bA)
-- [@article@MySQL for Developers](https://planetscale.com/courses/mysql-for-developers/introduction/course-introduction)
-- [@article@MySQL Tutorial](https://www.mysqltutorial.org/)
-- [@feed@Explore top posts about MySQL](https://app.daily.dev/tags/mysql?ref=roadmapsh)
-
-`MS SQL` - MS SQL (or Microsoft SQL Server) is the Microsoft developed relational database management system (RDBMS). MS SQL uses the T-SQL (Transact-SQL) query language to interact with the relational databases. There are many different versions and editions available of MS SQL
-
-- [@article@MS SQL website](https://www.microsoft.com/en-ca/sql-server/)
-- [@article@Tutorials for SQL Server](https://docs.microsoft.com/en-us/sql/sql-server/tutorials-for-sql-server-2016?view=sql-server-ver15)
-- [@video@SQL Server tutorial for beginners](https://www.youtube.com/watch?v=-EPMOaV7h_Q)
-
-_NoSQL databases_ - NoSQL databases offer data storage and retrieval that is modelled differently to "traditional" relational databases. NoSQL databases typically focus more on horizontal scaling, eventual consistency, speed and flexibility and is used commonly for big data and real-time streaming applications.
-NoSQL is often described as a BASE system (**B**asically **A**vailable, **S**oft state, **E**ventual consistency) as opposed to SQL/relational which typically focus on ACID (Atomicity, Consistency, Isolation, Durability). Common NoSQL data structures include key-value pair, wide column, graph and document.
-
-- [@article@NoSQL Explained](https://www.mongodb.com/nosql-explained)
-- [@video@How do NoSQL Databases work](https://www.youtube.com/watch?v=0buKQHokLK8)
-- [@video@SQL vs NoSQL Explained](https://www.youtube.com/watch?v=ruz-vK8IesE)
-- [@feed@Explore top posts about NoSQL](https://app.daily.dev/tags/nosql?ref=roadmapsh)
-
-`Document Databases` - MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas. MongoDB is developed by MongoDB Inc. and licensed under the Server Side Public License (SSPL).
-
-- [@roadmap@Visit Dedicated MongoDB Roadmap](/mongodb)
-- [@article@MongoDB Website](https://www.mongodb.com/)
-- [@article@MongoDB Documentation](https://docs.mongodb.com/)
-- [@article@MongoDB Online Sandbox](https://mongoplayground.net/)
-- [@article@Learning Path for MongoDB Developers](https://learn.mongodb.com/catalog)
-- [@article@Dynamo DB Docs](https://docs.aws.amazon.com/dynamodb/index.html)
-- [@article@Official Developers Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
-- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
-
-`Graph databases` - A graph database stores nodes and relationships instead of tables, or documents. Data is stored just like you might sketch ideas on a whiteboard. Your data is stored without restricting it to a pre-defined model, allowing a very flexible way of thinking about and using it.
-
-- [@article@What is a Graph Database?](https://neo4j.com/developer/graph-database/)
-- [@article@Graph Databases VS Relational Databases](https://www.freecodecamp.org/news/graph-database-vs-relational-database/)
-- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
-
-`Key-Value Databases` -A key-value database (KV database) is a type of database that stores data as a collection of key-value pairs. In a KV database, each piece of data is identified by a unique key, and the value is the data associated with that key.
-KV databases are designed for fast and efficient storage and retrieval of data, and they are often used in applications that require high performance and low latency. They are particularly well-suited for storing large amounts of unstructured data, such as log data and user profiles.
-
-Some popular KV databases include Redis, Memcached, and LevelDB. These databases are often used in combination with other types of databases, such as relational databases or document databases, to provide a complete and scalable data storage solution.
-
-- [@article@Key-Value Databases - Wikipedia](https://en.wikipedia.org/wiki/Key-value_database)
-- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
-
-`Redis` - Redis is an open source (BSD licensed), in-memory **data structure store** used as a database, cache, message broker, and streaming engine. Redis provides data structures such as [strings](https://redis.io/topics/data-types-intro#strings), [hashes](https://redis.io/topics/data-types-intro#hashes), [lists](https://redis.io/topics/data-types-intro#lists), [sets](https://redis.io/topics/data-types-intro#sets), [sorted sets](https://redis.io/topics/data-types-intro#sorted-sets) with range queries, [bitmaps](https://redis.io/topics/data-types-intro#bitmaps), [hyperloglogs](https://redis.io/topics/data-types-intro#hyperloglogs), [geospatial indexes](https://redis.io/commands/geoadd), and [streams](https://redis.io/topics/streams-intro). Redis has built-in [replication](https://redis.io/topics/replication), [Lua scripting](https://redis.io/commands/eval), [LRU eviction](https://redis.io/topics/lru-cache), [transactions](https://redis.io/topics/transactions), and different levels of [on-disk persistence](https://redis.io/topics/persistence), and provides high availability via [Redis Sentinel](https://redis.io/topics/sentinel) and automatic partitioning with [Redis Cluster](https://redis.io/topics/cluster-tutorial).
-
-- [@official@Redis Website](https://redis.io/)
-- [@video@Redis in 100 Seconds](https://www.youtube.com/watch?v=G1rOthIU-uo)
-- [@feed@Explore top posts about Redis](https://app.daily.dev/tags/redis?ref=roadmapsh)
-
-`Column Databases` - A **<u>wide-column database</u>** (sometimes referred to as a column database) is similar to a relational database. It store data in tables, rows and columns. However in opposite to relational databases here each row can have its own format of the columns. Column databases can be seen as a two-dimensional key-value database. One of such database system is **Apache Cassandra**.
-
-_Realtime databases_ - A real-time database is broadly defined as a data store designed to collect, process, and/or enrich an incoming series of data points (i.e., a data stream) in real time, typically immediately after the data is created.
-
-[Firebase](https://firebase.google.com/)
-[RethinkDB](https://rethinkdb.com/)
-
-**Warning:** <a href="https://en.wikipedia.org/wiki/Wide-column_store#Wide-column_stores_versus_columnar_databases">note that a "columnar database" and a "column database" are two different terms!</a>
-
-- [@article@Apache Cassandra](https://cassandra.apache.org/_/index.html)
-- [@video@Apache Cassandra - Course for Beginners](https://www.youtube.com/watch?v=J-cSy5MeMOA)
-- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
-
-`Timeseries databases` - InfluxDB - InfluxDB was built from the ground up to be a purpose-built time series database; i.e., it was not repurposed to be time series. Time was built-in from the beginning. InfluxDB is part of a comprehensive platform that supports the collection, storage, monitoring, visualization and alerting of time series data. It’s much more than just a time series database.
-
-- [@article@InfluxDB Website](https://www.influxdata.com/)
-- [@article@Time series database](https://www.influxdata.com/time-series-database/)
-- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
-
 **Task queueing and Scheduling** -
 
 _Message Brokers_ - Message brokers are an inter-application communication technology to help build a common integration mechanism to support cloud-native, microservices-based, serverless, and hybrid cloud architectures. Two of the most famous message brokers are `RabbitMQ` and `Apache Kafka`
@@ -1131,6 +971,19 @@ Frameworks are there to provide you with a simplified gateway into the functiona
 
 Frameworks are an essential aspect of the work you’ll do as a backend developer, which is why you should not neglect them. Of course, learning and mastering every single framework out there is impossible. Instead, learn to keep an eye out in the industry and see what are the most common frameworks, and focus on one (or two) of them.
 
+## API Development
+
+Now, if you’re inside the “**The System**” box, then you need to understand how to interact with these APIs using the right tools. If you’re inside the “**External System**” box, then you need to understand the type of standards these APIs need to follow and how to implement them.
+
+Don’t worry though, for both situations, there are always frameworks and libraries you can use to simplify your task and ensure you’re following the proper industry standards.
+
+**common API types** - The most common types of APIs used in the industry currently are REST and GraphQL.
+
+- _RESTful APIs_ These are APIs that work over HTTP and make extensive use of the HTTP Verbs to give meaning to each request. They’ve been the most popular type of API until recently, so there are still a lot of projects and teams that make use of it.
+- _GraphQL_ GraphQL APIs operate over HTTP as well, leveraging the HTTP protocol and its verbs. In contrast to the conventional RESTful APIs, GraphQL has emerged as a powerful alternative, offering a flexible and efficient approach to data querying and manipulation. GraphQL allows clients to request only the data they need, providing a more tailored and efficient interaction between clients and servers.
+
+Is there one better than the other? There is no easy way to answer that question as both are capable of doing everything you’d need. It’s more about your particular requirements and the preferences of your dev team.
+
 ## Software Design and Architecture
 
 Coding is not just about writing code.
@@ -1228,12 +1081,140 @@ Visit the following resources to learn more:
 - [@article@Domain-Driven Design: Tackling Complexity in the Heart of Software](https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215)
 - [@feed@Explore top posts about Domain-Driven Design](https://app.daily.dev/tags/domain-driven-design?ref=roadmapsh)
 
-## Database Management Systems
+## Databases
 
-As a backend developer, you will undoubtedly have to deal with database administration in your daily tasks. They are the industry standard for storing persistent data.Because of that, it’s important to understand that you should be aware of two main categories of databases: SQL databases and NoSQL databases.
+A database is a collection of useful data of one or more related organizations structured in a way to make data an asset to the organization. A database management system is a software designed to assist in maintaining and extracting large collections of data in a timely fashion.
 
+- [@article@Oracle: What is a Database?](https://www.oracle.com/database/what-is-database/)
+- [@article@Prisma.io: What are Databases?](https://www.prisma.io/dataguide/intro/what-are-databases)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
+
+**ACID** - ACID are the four properties of relational database systems that help in making sure that we are able to perform the transactions in a reliable manner. It's an acronym which refers to the presence of four properties: atomicity, consistency, isolation and durability
+
+- [@article@What is ACID Compliant Database?](https://retool.com/blog/whats-an-acid-compliant-database/)
+- [@article@What is ACID Compliance?: Atomicity, Consistency, Isolation](https://fauna.com/blog/what-is-acid-compliance-atomicity-consistency-isolation)
+- [@video@ACID Explained: Atomic, Consistent, Isolated & Durable](https://www.youtube.com/watch?v=yaQ5YMWkxq4)
+
+**ORMs** - Object-Relational Mapping (ORM) is a technique that lets you query and manipulate data from a database using an object-oriented paradigm. When talking about ORM, most people are referring to a library that implements the Object-Relational Mapping technique, hence the phrase "an ORM".
+
+- [@article@Object Relational Mapping - Wikipedia](https://en.wikipedia.org/wiki/Object–relational_mapping)
+- [@article@What is an ORM and how should I use it?](https://stackoverflow.com/questions/1279613/what-is-an-orm-how-does-it-work-and-how-should-i-use-one)
+- [@article@What is an ORM, how does it work, and how should I use one?](https://stackoverflow.com/a/1279678)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
+
+**Transactions** - In short, a database transaction is a sequence of multiple operations performed on a database, and all served as a single logical unit of work — taking place wholly or not at all. In other words, there's never a case where only half of the operations are performed and the results saved.
+
+- [@article@What are Transactions?](https://fauna.com/blog/database-transaction)
+
+**Database Normalization** - Database normalization is the process of structuring a relational database in accordance with a series of so-called normal forms in order to reduce data redundancy and improve data integrity. It was first proposed by Edgar F. Codd as part of his relational model.
+
+Normalization entails organizing the columns (attributes) and tables (relations) of a database to ensure that their dependencies are properly enforced by database integrity constraints. It is accomplished by applying some formal rules either by a process of synthesis (creating a new database design) or decomposition (improving an existing database design).
+
+- [@article@What is Normalization in DBMS (SQL)? 1NF, 2NF, 3NF, BCNF Database with Example](https://www.guru99.com/database-normalization.html)
+- [@article@Database normalization](https://en.wikipedia.org/wiki/Database_normalization)
+- [@video@Basic Concept of Database Normalization](https://www.youtube.com/watch?v=xoTyrdT9SZI)
+- [@feed@Explore top posts about Database](https://app.daily.dev/tags/database?ref=roadmapsh)
+
+_Migration Strategies_ - Learn how to run database migrations effectively. Especially zero downtime multi-phase schema migrations. Rather than make all changes at once, do smaller incremental changes to allow old code, and new code to work with the database at the same time, before removing old code, and finally removing the parts of the database schema which is no longer used.
+
+- [@article@Databases as a Challenge for Continuous Delivery](https://phauer.com/2015/databases-challenge-continuous-delivery/)
+
+_Database Indexes_ - An index is a data structure that you build and assign on top of an existing table that basically looks through your table and tries to analyze and summarize so that it can create shortcuts.
+
+- [@article@An in-depth look at Database Indexing](https://www.freecodecamp.org/news/database-indexing-at-a-glance-bb50809d48bd/)
+- [@video@Database Indexing Explained](https://www.youtube.com/watch?v=-qNSXK7s7_w)
+- [@feed@Explore top posts about Database](https://app.daily.dev/tags/database?ref=roadmapsh)
+
+_Sharding strategies_ - Sharding strategy is a technique to split a large dataset into smaller chunks (logical shard) in which we distribute these chunks in different machines/database nodes in order to distribute the traffic load. It’s a good mechanism to improve the scalability of an application. Many databases support sharding, but not all.
+
+- [@article@Wikipedia - Sharding in Database Architectures](<https://en.wikipedia.org/wiki/Shard_(database_architecture)>)
+- [@article@How sharding a database can make it faster](https://stackoverflow.blog/2022/03/14/how-sharding-a-database-can-make-it-faster/)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
+
+**N plus one problem** - The N+1 query problem happens when your code executes N additional query statements to fetch the same data that could have been retrieved when executing the primary query.
+
+- [In Detail Explanation of N+1 Problem](https://medium.com/doctolib/understanding-and-fixing-n-1-query-30623109fe89)
+
+**Profiling Performance** - There are several ways to profile the performance of a database:
+
+- Monitor system performance: You can use tools like the Windows Task Manager or the Unix/Linux top command to monitor the performance of your database server. These tools allow you to see the overall CPU, memory, and disk usage of the system, which can help identify any resource bottlenecks.
+- Use database-specific tools: Most database management systems (DBMSs) have their own tools for monitoring performance. For example, Microsoft SQL Server has the SQL Server Management Studio (SSMS) and the sys.dm_os_wait_stats dynamic management view, while Oracle has the Oracle Enterprise Manager and the v$waitstat view. These tools allow you to see specific performance metrics, such as the amount of time spent waiting on locks or the number of physical reads and writes.
+- Use third-party tools: There are also several third-party tools that can help you profile the performance of a database. Some examples include SolarWinds Database Performance Analyzer, Quest Software Foglight, and Redgate SQL Monitor. These tools often provide more in-depth performance analysis and can help you identify specific issues or bottlenecks.
+- Analyze slow queries: If you have specific queries that are running slowly, you can use tools like EXPLAIN PLAN or SHOW PLAN in MySQL or SQL Server to see the execution plan for the query and identify any potential issues. You can also use tools like the MySQL slow query log or the SQL Server Profiler to capture slow queries and analyze them further.
+- Monitor application performance: If you are experiencing performance issues with a specific application that is using the database, you can use tools like Application Insights or New Relic to monitor the performance of the application and identify any issues that may be related to the database.
+
+Have a look at the documentation for the database that you are using.
+
+**Failure Modes** - There are several different failure modes that can occur in a database, including:
+
+- Read contention: This occurs when multiple clients or processes are trying to read data from the same location in the database at the same time, which can lead to delays or errors.
+- Write contention: This occurs when multiple clients or processes are trying to write data to the same location in the database at the same time, which can lead to delays or errors.
+- Thundering herd: This occurs when a large number of clients or processes try to access the same resource simultaneously, which can lead to resource exhaustion and reduced performance.
+- Cascade: This occurs when a failure in one part of the database system causes a chain reaction that leads to failures in other parts of the system.
+- Deadlock: This occurs when two or more transactions are waiting for each other to release a lock on a resource, leading to a standstill.
+- Corruption: This occurs when data in the database becomes corrupted, which can lead to errors or unexpected results when reading or writing to the database.
+- Hardware failure: This occurs when hardware components, such as disk drives or memory, fail, which can lead to data loss or corruption.
+- Software failure: This occurs when software components, such as the database management system or application, fail, which can lead to errors or unexpected results.
+- Network failure: This occurs when the network connection between the database and the client is lost, which can lead to errors or timeouts when trying to access the database.
+- Denial of service (DoS) attack: This occurs when a malicious actor attempts to overwhelm the database with requests, leading to resource exhaustion and reduced performance.
+
+**Relational Databases** - A relational database is a type of database that stores and provides access to data points that are related to one another. Relational databases store data in a series of tables. Interconnections between the tables are specified as foreign keys. A foreign key is a unique reference from one row in a relational table to another row in a table, which can be the same table but is most commonly a different table.
 _SQL databases_ - These are the standard structured databases (A.K.A relational databases) where you need to define the schema for your data (essentially the data structures you’re dealing with), and then you’ll use a language called [SQL (Structured Query Language)](https://roadmap.sh/sql) to interact with the data inside it. Most backend developers will interact with SQL databases at some point in their career, as this is the most common type of database.
 
+- [@article@Relational Databases](https://www.ibm.com/cloud/learn/relational-databases)
+- [@article@51 Years of Relational Databases](https://learnsql.com/blog/codd-article-databases/)
+- [@course@Databases and SQL](https://www.edx.org/course/databases-5-sql)
+- [@article@Intro To Relational Databases](https://www.udacity.com/course/intro-to-relational-databases--ud197)
+- [@video@What is Relational Database](https://youtu.be/OqjJjpjDRLc)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
+
+_PostgreSQL_ - PostgreSQL, also known as Postgres, is a free and open-source relational database management system emphasizing extensibility and SQL compliance.
+
+- [@roadmap@Visit Dedicated PostgreSQL DBA Roadmap](/postgresql-dba)
+- [@official@Official Website](https://www.postgresql.org/)
+- [@article@Learn PostgreSQL - Full Tutorial for Beginners](https://www.postgresqltutorial.com/)
+- [@video@Learn PostgreSQL Tutorial - Full Course for Beginners](https://www.youtube.com/watch?v=qw--VYLpxG4)
+- [@video@Postgres tutorial for Beginners](https://www.youtube.com/watch?v=eMIxuk0nOkU)
+- [@feed@Explore top posts about PostgreSQL](https://app.daily.dev/tags/postgresql?ref=roadmapsh)
+
+_Oracle_ - Oracle Database Server or sometimes called Oracle RDBMS or even simply Oracle is a world leading relational database management system produced by Oracle Corporation.
+
+- [@official@Official Website](https://www.oracle.com/database/)
+- [@article@Official Docs](https://docs.oracle.com/en/database/index.html)
+- [@video@Oracle SQL Tutorial for Beginners](https://www.youtube.com/watch?v=ObbNGhcxXJA)
+- [@feed@Explore top posts about Oracle](https://app.daily.dev/tags/oracle?ref=roadmapsh)
+
+_SQLite_ - SQLite is a relational database management system that is embedded into the end program. It is self-contained, serverless, zero-configuration, transactional SQL database engine.
+
+- [@official@SQLite website](https://www.sqlite.org/index.html)
+- [@article@SQLite Tutorial](https://www.sqlitetutorial.net/)
+- [@feed@Explore top posts about SQLite](https://app.daily.dev/tags/sqlite?ref=roadmapsh)
+
+_MariaDB_ - MariaDB server is a community developed fork of MySQL server. Started by core members of the original MySQL team, MariaDB actively works with outside developers to deliver the most featureful, stable, and sanely licensed open SQL server in the industry. MariaDB was created with the intention of being a more versatile, drop-in replacement version of MySQL
+
+- [@official@MariaDB website](https://mariadb.org/)
+- [@article@MariaDB vs MySQL](https://www.guru99.com/mariadb-vs-mysql.html)
+- [@article@W3Schools - MariaDB tutorial ](https://www.w3schools.blog/mariadb-tutorial)
+- [@video@MariaDB Tutorial For Beginners in One Hour](https://www.youtube.com/watch?v=_AMj02sANpI)
+- [@feed@Explore top posts about Infrastructure](https://app.daily.dev/tags/infrastructure?ref=roadmapsh)
+
+_MySQL_ - MySQL is an incredibly popular open source relational database management system (RDBMS). MySQL can be used as a stand-alone client or in conjunction with other services to provide database connectivity. The **M** in LAMP stack stands for MySQL; that alone should provide an idea of its prevalence.
+
+- [@official@MySQL website](https://www.mysql.com/)
+- [@article@W3Schools - MySQL tutorial ](https://www.w3schools.com/mySQl/default.asp)
+- [@video@MySQL tutorial for beginners](https://www.youtube.com/watch?v=7S_tz1z_5bA)
+- [@article@MySQL for Developers](https://planetscale.com/courses/mysql-for-developers/introduction/course-introduction)
+- [@article@MySQL Tutorial](https://www.mysqltutorial.org/)
+- [@feed@Explore top posts about MySQL](https://app.daily.dev/tags/mysql?ref=roadmapsh)
+
+_MS SQL_ - MS SQL (or Microsoft SQL Server) is the Microsoft developed relational database management system (RDBMS). MS SQL uses the T-SQL (Transact-SQL) query language to interact with the relational databases. There are many different versions and editions available of MS SQL
+
+- [@article@MS SQL website](https://www.microsoft.com/en-ca/sql-server/)
+- [@article@Tutorials for SQL Server](https://docs.microsoft.com/en-us/sql/sql-server/tutorials-for-sql-server-2016?view=sql-server-ver15)
+- [@video@SQL Server tutorial for beginners](https://www.youtube.com/watch?v=-EPMOaV7h_Q)
+
+**NoSQL databases** - NoSQL databases offer data storage and retrieval that is modelled differently to "traditional" relational databases. NoSQL databases typically focus more on horizontal scaling, eventual consistency, speed and flexibility and is used commonly for big data and real-time streaming applications.
+NoSQL is often described as a BASE system (**B**asically **A**vailable, **S**oft state, **E**ventual consistency) as opposed to SQL/relational which typically focus on ACID (Atomicity, Consistency, Isolation, Durability). Common NoSQL data structures include key-value pair, wide column, graph and document.
 _NoSQL databases_ - As the name implies, these are not your standard SQL databases; in fact, within this category, there are columnar databases, document-based ones (such as MongoDB), key-value-based ones (like Redis), and more. They don’t use predefined data structures, giving you more flexibility and control over what you can store and how you store it. Backend developers will deal with only a handful of these, as there are many different sub-types, and more are created every year.
 
 Some examples of these databases are:
@@ -1245,53 +1226,72 @@ Some examples of these databases are:
 
 In the end, the decision between SQL and NoSQL is about trade-offs and figuring out what works best for your particular use case.
 
-## API Development Capabilities
+- [@article@NoSQL Explained](https://www.mongodb.com/nosql-explained)
+- [@video@How do NoSQL Databases work](https://www.youtube.com/watch?v=0buKQHokLK8)
+- [@video@SQL vs NoSQL Explained](https://www.youtube.com/watch?v=ruz-vK8IesE)
+- [@feed@Explore top posts about NoSQL](https://app.daily.dev/tags/nosql?ref=roadmapsh)
 
-Application Programming Interfaces (APIs) are everywhere. They power the backend of almost all major systems out there (according to a [study conducted by O’Reilly in 2020](https://www.oreilly.com/pub/pr/3307), 77% of companies were using microservices/APIs).
+_Document Databases_ - MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas. MongoDB is developed by MongoDB Inc. and licensed under the Server Side Public License (SSPL).
 
-That is to say, if you’re thinking about becoming a backend developer, you will be coding APIs/microservices. This is why understanding the basics of them is crucial to ensuring your relevance in the field.
+- [@roadmap@Visit Dedicated MongoDB Roadmap](/mongodb)
+- [@article@MongoDB Website](https://www.mongodb.com/)
+- [@article@MongoDB Documentation](https://docs.mongodb.com/)
+- [@article@MongoDB Online Sandbox](https://mongoplayground.net/)
+- [@article@Learning Path for MongoDB Developers](https://learn.mongodb.com/catalog)
+- [@article@Dynamo DB Docs](https://docs.aws.amazon.com/dynamodb/index.html)
+- [@article@Official Developers Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
 
-Now, if you’re inside the “**The System**” box, then you need to understand how to interact with these APIs using the right tools. If you’re inside the “**External System**” box, then you need to understand the type of standards these APIs need to follow and how to implement them.
+_Graph databases_ - A graph database stores nodes and relationships instead of tables, or documents. Data is stored just like you might sketch ideas on a whiteboard. Your data is stored without restricting it to a pre-defined model, allowing a very flexible way of thinking about and using it.
 
-Don’t worry though, for both situations, there are always frameworks and libraries you can use to simplify your task and ensure you’re following the proper industry standards.
+- [@article@What is a Graph Database?](https://neo4j.com/developer/graph-database/)
+- [@article@Graph Databases VS Relational Databases](https://www.freecodecamp.org/news/graph-database-vs-relational-database/)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
 
-**common API types** - The most common types of APIs used in the industry currently are REST and GraphQL.
+_Key-Value Databases_ -A key-value database (KV database) is a type of database that stores data as a collection of key-value pairs. In a KV database, each piece of data is identified by a unique key, and the value is the data associated with that key.
+KV databases are designed for fast and efficient storage and retrieval of data, and they are often used in applications that require high performance and low latency. They are particularly well-suited for storing large amounts of unstructured data, such as log data and user profiles.
 
-- _RESTful APIs_ These are APIs that work over HTTP and make extensive use of the HTTP Verbs to give meaning to each request. They’ve been the most popular type of API until recently, so there are still a lot of projects and teams that make use of it.
-- _GraphQL_ GraphQL APIs operate over HTTP as well, leveraging the HTTP protocol and its verbs. In contrast to the conventional RESTful APIs, GraphQL has emerged as a powerful alternative, offering a flexible and efficient approach to data querying and manipulation. GraphQL allows clients to request only the data they need, providing a more tailored and efficient interaction between clients and servers.
+Some popular KV databases include Redis, Memcached, and LevelDB. These databases are often used in combination with other types of databases, such as relational databases or document databases, to provide a complete and scalable data storage solution.
 
-Is there one better than the other? There is no easy way to answer that question as both are capable of doing everything you’d need. It’s more about your particular requirements and the preferences of your dev team.
+- [@article@Key-Value Databases - Wikipedia](https://en.wikipedia.org/wiki/Key-value_database)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
+
+`Redis` - Redis is an open source (BSD licensed), in-memory **data structure store** used as a database, cache, message broker, and streaming engine. Redis provides data structures such as [strings](https://redis.io/topics/data-types-intro#strings), [hashes](https://redis.io/topics/data-types-intro#hashes), [lists](https://redis.io/topics/data-types-intro#lists), [sets](https://redis.io/topics/data-types-intro#sets), [sorted sets](https://redis.io/topics/data-types-intro#sorted-sets) with range queries, [bitmaps](https://redis.io/topics/data-types-intro#bitmaps), [hyperloglogs](https://redis.io/topics/data-types-intro#hyperloglogs), [geospatial indexes](https://redis.io/commands/geoadd), and [streams](https://redis.io/topics/streams-intro). Redis has built-in [replication](https://redis.io/topics/replication), [Lua scripting](https://redis.io/commands/eval), [LRU eviction](https://redis.io/topics/lru-cache), [transactions](https://redis.io/topics/transactions), and different levels of [on-disk persistence](https://redis.io/topics/persistence), and provides high availability via [Redis Sentinel](https://redis.io/topics/sentinel) and automatic partitioning with [Redis Cluster](https://redis.io/topics/cluster-tutorial).
+
+- [@official@Redis Website](https://redis.io/)
+- [@video@Redis in 100 Seconds](https://www.youtube.com/watch?v=G1rOthIU-uo)
+- [@feed@Explore top posts about Redis](https://app.daily.dev/tags/redis?ref=roadmapsh)
+
+`Column Databases` - A **<u>wide-column database</u>** (sometimes referred to as a column database) is similar to a relational database. It store data in tables, rows and columns. However in opposite to relational databases here each row can have its own format of the columns. Column databases can be seen as a two-dimensional key-value database. One of such database system is **Apache Cassandra**.
+
+_Realtime databases_ - A real-time database is broadly defined as a data store designed to collect, process, and/or enrich an incoming series of data points (i.e., a data stream) in real time, typically immediately after the data is created.
+
+[Firebase](https://firebase.google.com/)
+[RethinkDB](https://rethinkdb.com/)
+
+**Warning:** <a href="https://en.wikipedia.org/wiki/Wide-column_store#Wide-column_stores_versus_columnar_databases">note that a "columnar database" and a "column database" are two different terms!</a>
+
+- [@article@Apache Cassandra](https://cassandra.apache.org/_/index.html)
+- [@video@Apache Cassandra - Course for Beginners](https://www.youtube.com/watch?v=J-cSy5MeMOA)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
+
+`Timeseries databases` - InfluxDB - InfluxDB was built from the ground up to be a purpose-built time series database; i.e., it was not repurposed to be time series. Time was built-in from the beginning. InfluxDB is part of a comprehensive platform that supports the collection, storage, monitoring, visualization and alerting of time series data. It’s much more than just a time series database.
+
+- [@article@InfluxDB Website](https://www.influxdata.com/)
+- [@article@Time series database](https://www.influxdata.com/time-series-database/)
+- [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
 
 ## Version Control
 
 Version control references the ability for you and other developers to share code with each other while you’re working on the same files.While Git is the industry standard at the moment, GitHub has created such a popular platform around Git.
 
-As developers, we’re not just writing code on a text editor without any other external help. Whether we realize it or not, we’re constantly using different development tools to improve the way we work and the speed at which we can deliver our code.
+## Tools
 
-The categories we’ll tackle are:
-
-- IDEs and editors
-- Database tools
-- Collaboration
-- Hosting Services
-- API-Related tools
-- Productivity tools
-
-So let’s get started!
-
-## Beyond programming languages: IDEs and Editors
-
-Other than the actual programming languages, the Integrated Development Environment (A.K.A your IDE) is the single most important tool you’ll have to pick and use throughout your career in software development.
+**IDEs and Editors** - Other than the actual programming languages, the Integrated Development Environment (A.K.A your IDE) is the single most important tool you’ll have to pick and use throughout your career in software development.
 
 Some of them are generic (as in, they work for all types of development), and others will have specific backend development tools (which is what we’re focusing on right now).
 
-Let’s see some examples that are great for a web development project.
-
-### 1. Jetbrains Products
-
-The [Jetbrains family](https://www.jetbrains.com/) of IDEs targets multiple programming languages, including JavaScript, .NET, JAVA (and the Java Virtual Machine), Python, PHP, and more (mostly great options for web development).
-
-![Jetbrains code editor](https://assets.roadmap.sh/guest/jetbrains-code-editor-z7z1t.png)
+1. _Jetbrains Products_ - The [Jetbrains family](https://www.jetbrains.com/) of IDEs targets multiple programming languages, including JavaScript, .NET, JAVA (and the Java Virtual Machine), Python, PHP, and more (mostly great options for web development).
 
 The benefit of using these IDEs, in comparison with others, is that given how they’re language/technology specific, they have tools designed for those programming languages and specifically for this list to help in your backend development tasks, such as:
 
@@ -1301,45 +1301,29 @@ The benefit of using these IDEs, in comparison with others, is that given how th
 
 The only minor issue with these IDEs, especially when compared to the rest of the options listed here, is that they’re not all free. While not all of them are priced the same, I recommend you check out your IDE’s pricing page to understand what options you have (there are free plans if you qualify for them).
 
-### 2. Visual Studio Code
-
-[VSCode](https://code.visualstudio.com/) is definitely one of the most popular alternatives these days for all types of web developers, but definitely for backend developers. This IDE’s strongest selling point is that it’s incredibly extensible through plugins. And the community using it is so big and varied that there are plugins for literally anything you need.
-
-![VSCode code editor](https://assets.roadmap.sh/guest/vscode-code-editor-8pznw.png)
+2. _Visual Studio Code_ - [VSCode](https://code.visualstudio.com/) is definitely one of the most popular alternatives these days for all types of web developers, but definitely for backend developers. This IDE’s strongest selling point is that it’s incredibly extensible through plugins. And the community using it is so big and varied that there are plugins for literally anything you need.
 
 The other major benefit of VSCode over JetBrains products is that it gives developers a fully working IDE for FREE. While some of the extensions don’t provide exactly the same developer experience as a JetBrains IDE, the proper combination of extensions can provide a very close alternative through VSCode.
 
-### 3. Zed
-
-[Zed](https://zed.dev/) is a different type of code editor, and because of that, it might just be the right one for you.
-
-![Zed code editor](https://assets.roadmap.sh/guest/zed-code-editor-7ovxz.png)
+3. _Zed_ - [Zed](https://zed.dev/) is a different type of code editor, and because of that, it might just be the right one for you.
 
 Zed, like VSCode, is an all-purpose code editor, letting you code in whatever language you want (whether you’re doing web development or not). The main reasons why you’d pick Zed over others are:
 
-- **Improved performance.** Zed takes advantage of your CPU AND GPU to improve the speed at which the IDE responds to your commands.
-- **Multi-user support.**
-- **Team features.** Zed lets you build software while working with others by sharing notes and letting you interact with teammates through the IDE.
+- Improved performance - Zed takes advantage of your CPU AND GPU to improve the speed at which the IDE responds to your commands.
+- Multi-user support.
+- Team features - Zed lets you build software while working with others by sharing notes and letting you interact with teammates through the IDE.
 
 Zed is an [open-source project](https://github.com/zed-industries/zed), but at the time of writing this article, it’s only available for macOS, so Linux and Windows users are still unable to try this excellent option.
 
-### 4. Sublime Text
-
-Before VSCode, [Sublime Text](https://www.sublimetext.com/) was probably one of the most popular code editors for web developers who wanted something powerful for free.
+4. _Sublime Text_ - Before VSCode, [Sublime Text](https://www.sublimetext.com/) was probably one of the most popular code editors for web developers who wanted something powerful for free.
 
 Just like VSCode, Sublime supports extensibility through plugins, and the rich ecosystem of plugins makes it quite a versatile editor. As a note, this code editor also supports GPU rendering of the UI, like Zed does, so if performance is important to you, then you’ll want to keep reading.
 
-![Sublime code editor](https://assets.roadmap.sh/guest/sublime-text-code-editor-ngtnf.png)
-
 With a refreshed UI (if you’ve used Sublime Text in the past, you’ll be happily surprised!) and better internal tooling, the latest version of this editor (version 4) is trying to regain the portion of the market that VSCode took from it at the time.
 
-### 5. VIM - a developer-focused editor
-
-[VIM](https://www.vim.org/) is a tool that you either hate or love as a developer, but there is no middle ground.
+5. _VIM - a developer-focused editor_ - [VIM](https://www.vim.org/) is a tool that you either hate or love as a developer, but there is no middle ground.
 
 This is such an iconic text editor that all the previously mentioned IDE have what is called a “vim mode,” which allows you to use them as if you were using VIM (with the visual and input modes).
-
-![Vim code editor](https://assets.roadmap.sh/guest/vim-code-editor-ohiyc.png)
 
 Vim lets you write code without having to move your fingers away from the home row (the row where you “rest” your fingers, the one with the F and G keys). That means you can navigate documents, write code, move through projects, and more, all with minimum hand movement.
 
@@ -1347,29 +1331,17 @@ This is the key philosophy behind Vim’s design, and if you embrace it, it shou
 
 Just like with all the generic IDEs here, you’ll have to [customize it through “scripts”](https://www.vim.org/scripts/script_search_results.php?order_by=creation_date&direction=descending) to make it work exactly as you want for your environment.
 
-## Database Tools
+**Database Tools** - While doing backend development, you will definitely be interacting with databases. They’re a ubiquitous backend tool in the realm of web development.Let’s take a look at some great database tools you can use as a backend developer to interact with your favorite database management systems (DBMS).
 
-While doing backend development, you will definitely be interacting with databases. They’re a ubiquitous backend tool in the realm of web development.
-
-Let’s take a look at some great database tools you can use as a backend developer to interact with your favorite database management systems (DBMS).
-
-### 6. DataGrip
-
-[Datagrip](https://www.jetbrains.com/datagrip/) is a JetBrains product, which makes it a great option if you’re also going with a JetBrains IDE.
+6. _DataGrip_ - [Datagrip](https://www.jetbrains.com/datagrip/) is a JetBrains product, which makes it a great option if you’re also going with a JetBrains IDE.
 
 This tool lets you access all SQL databases from within the same user interface, it provides great help while browsing the data stored in the database, and it also has features that help you write better SQL queries.
 
-![DataGrip database explorer](https://assets.roadmap.sh/guest/datagrip-database-explorer-l8987.png)
-
 While the pricing of these tools might be a bit steep (especially if you go with the IDE as well), it’s definitely a solid option if you’re looking for feature-rich and stable software development tools.
 
-### 7. Navicat
-
-[Navicat](https://navicat.com/en/products) actually has a family of alternatives based on what you need, from the standard set of SQL databases (such as MySQL, Oracle, Postgre, and so on) up to other NoSQL databases such as MongoDB and Redis.
+7. _Navicat_ - [Navicat](https://navicat.com/en/products) actually has a family of alternatives based on what you need, from the standard set of SQL databases (such as MySQL, Oracle, Postgre, and so on) up to other NoSQL databases such as MongoDB and Redis.
 
 In general, the Navicat alternatives are quite lightweight and powerful to use. They might not be as feature-rich as Datagrip, but they let you easily browse and query the data you need.
-
-![Navicat database explorer](https://assets.roadmap.sh/guest/navicat-database-explorer-r1unn.png)
 
 The free trial for Navicat only lasts 14 days, and then you’ll have to pay a monthly fee. That said, for non-commercial use, the license is quite low, which makes it accessible to almost all developers.
 
@@ -1382,14 +1354,10 @@ As for features, it has all the ones you’d expect from a tool like this:
 
 The Navicat series of apps are great backend tools to have at your disposal, if you don’t mind their price, that is.
 
-### 8. TablePlus
-
-[Tableplus](https://tableplus.com/) is very similar to Navicat in the sense that it’s another lightweight database manager. The main differences are:
+8. _TablePlus_ - [Tableplus](https://tableplus.com/) is very similar to Navicat in the sense that it’s another lightweight database manager. The main differences are:
 
 - Tableplus only supports SQL-based databases.
 - The pricing model is simpler, by only charging a one-time license without you having to commit to a monthly subscription.
-
-![TablePlus database manager](https://assets.roadmap.sh/guest/tableplus-database-manager-06d09.png)
 
 Some of the most relevant features of Tableplus are:
 
@@ -1400,13 +1368,9 @@ Some of the most relevant features of Tableplus are:
 
 This is a solid backend tool alternative to any of the previous options and with a simpler price tag.
 
-### 9. DBeaver
-
-[DBeaver](https://dbeaver.io/) is a free, cross-platform tool that lets you connect and interact with multiple databases. While there is a PRO version with extra features, the free version is more than powerful enough to get you started with almost any database you can think of, both SQL and NoSQL alike.
+9. _DBeaver_ - [DBeaver](https://dbeaver.io/) is a free, cross-platform tool that lets you connect and interact with multiple databases. While there is a PRO version with extra features, the free version is more than powerful enough to get you started with almost any database you can think of, both SQL and NoSQL alike.
 
 For a full list of supported databases on the free version, check out their [about page](https://dbeaver.io/about/).
-
-![DBeaver database manager](https://assets.roadmap.sh/guest/dbeaver-database-manager-fvlrd.png)
 
 Some of the major features of DBeaver are:
 
@@ -1416,37 +1380,22 @@ Some of the major features of DBeaver are:
 
 Task management to kill any long-lasting queries that block your database.
 
-## Collaboration tools for web development
-
-Unless you’re working as a solo-dev (and even then!), collaboration tools allow you to coordinate your work and understand who’s working on what and what you should be working on next.
-
+**Collaboration tools for web development** - Unless you’re working as a solo-dev (and even then!), collaboration tools allow you to coordinate your work and understand who’s working on what and what you should be working on next.
 While these might not be considered “backend tools” per se, they definitely help improve your performance and organization, so we can still call them “development tools” as a broader term.
 
-### 10. Trello
-
-[Trello](https://trello.com/) is a very simple yet powerful organizational tool that lets teams build a Kanban-like board with clear states and simple UX (drag&drop is king in Trello).
+10. _Trello_ - [Trello](https://trello.com/) is a very simple yet powerful organizational tool that lets teams build a Kanban-like board with clear states and simple UX (drag&drop is king in Trello).
 
 Setting up a new project and a team takes minutes in Trello, and through the plugin system, you can get extra features such as date reminders, calendar integrations, and more.
 
-![Trello board](https://assets.roadmap.sh/guest/trello-board-o0i4i.png)
-
 The simple UI and intuitive UX make Trello one of the best options out there for collaborative tools as long as the needs of the team are met with simple column-based layouts and minimal information.
 
-### 11. Monday
-
-[Monday](https://monday.com/) is a relatively new online platform for project management and collaboration. I say “new” because some of the other alternatives here have been around for over 5+ years.
+11. _Monday_ - [Monday](https://monday.com/) is a relatively new online platform for project management and collaboration. I say “new” because some of the other alternatives here have been around for over 5+ years.
 
 Their limited free plan lasts forever, so if you have a small team and limited requirements, this might just be the perfect tool for you. Also, if you actually need to pay, Monday’s plans are accessible, especially when compared to other alternatives.
 
-![Monday project management tool](https://assets.roadmap.sh/guest/monday-project-management-tool-xws17.png)
-
 Monday’s fully customizable UI lets you build the collaborative environment you need. This is a huge advantage over others who've been around for longer and have a fixed UI that you have to adapt to.
 
-### 12. Basecamp
-
-[Basecamp](https://basecamp.com/) is a mix between Trello, Monday, and Notion in the sense that it tries to provide developers with the best and most relevant tools from those worlds, leaving out the ones that just create “noise.”
-
-![Basecamp project management tool](https://assets.roadmap.sh/guest/basecamp-project-management-tool-2pusd.png)
+12. _Basecamp_ - [Basecamp](https://basecamp.com/) is a mix between Trello, Monday, and Notion in the sense that it tries to provide developers with the best and most relevant tools from those worlds, leaving out the ones that just create “noise.”
 
 Basecamp’s philosophy is to keep things simple and only focus on the features that truly add to collaboration:
 
@@ -1457,27 +1406,18 @@ Basecamp’s philosophy is to keep things simple and only focus on the features 
 
 The only “downside” to basecamp, if you will, is that there is no “forever free” plan. Both their plans are paid and have a 30-day free trial, so you can definitely give it a shot and figure out if what they offer is enough for your needs.
 
-### 13. Wrike
-
-[Wrike](https://www.wrike.com/) is yet another attempt at making project management and collaboration feel organic and seamless. They have a minimalistic UI and provide you with over 400 integrations to create your own workflows based on your needs and current ecosystem.
+13. _Wrike_ - [Wrike](https://www.wrike.com/) is yet another attempt at making project management and collaboration feel organic and seamless. They have a minimalistic UI and provide you with over 400 integrations to create your own workflows based on your needs and current ecosystem.
 
 They have a free plan that, while feature-limited, it’s perfect for understanding the basic way of using Wrike and how useful it can be to you in your current project.
-
-![Wrike project management tool](https://assets.roadmap.sh/guest/wrike-project-management-tool-5g3kl.png)
 
 Their innovative use of AI allows you to create content faster, analyze project and task descriptions, and create subtasks based on it.
 
 Wrike feels efficient and powerful, even for its free plan. Give it a chance if you’re a freelancer or if you have a small team looking for something new and powerful.
 
-## Hosting Services
-
-When it comes to backend development, deploying your code and running it on the cloud will be a common thing; this is a practice known as continuous integration and continuous deployment (CI/CD). While in some situations, you’ll be dealing with a custom, in-house infrastructure, there are platforms that will make the entire process very lightweight (as in deploying with a couple of clicks).
-
+**Hosting Services** - When it comes to backend development, deploying your code and running it on the cloud will be a common thing; this is a practice known as continuous integration and continuous deployment (CI/CD). While in some situations, you’ll be dealing with a custom, in-house infrastructure, there are platforms that will make the entire process very lightweight (as in deploying with a couple of clicks).
 Let’s take a look at some of the most common alternatives!
 
-### 14. Railway
-
-[Railway.app](https://railway.app/) aims at giving developers all the tools they need at a click’s distance. We’re talking about:
+14. _Railway_ - [Railway.app](https://railway.app/) aims at giving developers all the tools they need at a click’s distance. We’re talking about:
 
 - PR-triggered deployments.
 - Support for all popular programming languages.
@@ -1487,49 +1427,31 @@ Let’s take a look at some of the most common alternatives!
 - A great uptime (99.95%)
 - With more than 200 ready-made templates for you to get going.
 
-![Railway hosting](https://assets.roadmap.sh/guest/railway-hosting-j8me8.png)
-
 Railway has no free plan, but their basic one is very accessible. Careful though, they also charge per resource utilization. Lucky for you, they have a [very handy consumption calculator](https://railway.app/pricing) to avoid surprises at the end of the month!
 
-### 15. Heroku
-
-[Heroku](https://www.heroku.com/) is another Platform as a Service provider. This one provides the basic services most of them do, such as autoscaling, monitoring, GitHub integration, and more.
+15. _Heroku_ - [Heroku](https://www.heroku.com/) is another Platform as a Service provider. This one provides the basic services most of them do, such as autoscaling, monitoring, GitHub integration, and more.
 
 The list of supported programming languages is not huge, but the most common ones are definitely covered: Node.js, Ruby, JAVA, PHP, Python, Go, Scala, and even Clojure.
 
-![Heroku hosting](https://assets.roadmap.sh/guest/heroku-hosting-2u6bz.png)
-
 Another great selling point for Heroku is that on top of their infrastructure, they also offer a managed Postgre database as a service and a Redis one. In both situations, you’ll have to pay for the services as you use them, so keep that in mind.
 
-### 16. Digital Ocean
-
-As opposed to platforms such as Heroku, [Digital Ocean](https://www.digitalocean.com/) is known as an Infrastructure as a Service provider (IaaS). They give you all the servers you need and all the resources (memory, CPU, etc) you want to pay for. However, setting up your deployment process, automating your integration tests, or even having all the required libraries to run your code is up to you.
+16. _Digital Ocean_ - As opposed to platforms such as Heroku, [Digital Ocean](https://www.digitalocean.com/) is known as an Infrastructure as a Service provider (IaaS). They give you all the servers you need and all the resources (memory, CPU, etc) you want to pay for. However, setting up your deployment process, automating your integration tests, or even having all the required libraries to run your code is up to you.
 
 This is by no means something bad, some teams do prefer to have that freedom over other platforms like Railway and Heroku, where everything’s already managed.
-
-![Digital Ocean hosting](https://assets.roadmap.sh/guest/digital-ocean-hosting-i7a9c.png)
 
 Large-scale applications will usually require to have custom infrastructure that managed services can hardly provide. This is where IaaS providers come in.
 
 On top of their basic offering, they do offer managed databases such as MongoDB, MySQL, Redis, and others.
 
-### 17. Hetzner
-
-[Hetzner](https://www.hetzner.com/) is yet another IaaS that offers everything you need to get going if you know what to do with it. In other words, they offer all the hardware you might dream of, even in the cloud, but you have to configure it and maintain it.
+17. _Hetzner_ - [Hetzner](https://www.hetzner.com/) is yet another IaaS that offers everything you need to get going if you know what to do with it. In other words, they offer all the hardware you might dream of, even in the cloud, but you have to configure it and maintain it.
 
 Their only “managed” offer is for web hosting though, so if you’re looking to host your website or app and you don’t want to have to deal with server maintenance and configuration, then this is a good option for you.
 
-![Hetzner hosting](https://assets.roadmap.sh/guest/hetzner-hosting-oupq8.jpg)
-
 Other than that, their offering is quite standard, although their pricing model might not be. While they do have the standard pricing tiers like the rest of them, they also give you the option to “bid” for used hardware that is no longer needed.
 
-### 18. Vercel
-
-If you’re building a NextJS application and you’re looking for a quick way to deploy it, then there is probably no better place than [Vercel](https://vercel.com/) (the owner of NextJS).
+18. _Vercel_ - If you’re building a NextJS application and you’re looking for a quick way to deploy it, then there is probably no better place than [Vercel](https://vercel.com/) (the owner of NextJS).
 
 Their platform allows you to link your GitHub account to their systems and deploy your entire application with a single push to the repo.
-
-![Vercel hosting](https://assets.roadmap.sh/guest/vercel-hosting-9jvk9.png)
 
 And since they’re experts on NextJS, your app will “just work.”
 
@@ -1537,61 +1459,36 @@ Even their free plan is perfect for quick SaaS prototypes and small applications
 
 While it’s true they don’t support other technologies or even offer other related services, such as managed databases, there is hardly anyone who can provide a better developer experience when it comes to deploying a NextJS application.
 
-### 19. Render
-
-You can think of [Render](https://render.com/) as if Vercel and Heroku had a love child. Render gives you the amazing developer experience provided by Vercel but the flexibility (or more) from Heroku.
+19. _Render_ - You can think of [Render](https://render.com/) as if Vercel and Heroku had a love child. Render gives you the amazing developer experience provided by Vercel but the flexibility (or more) from Heroku.
 
 You’re not tied to a single technology; instead, you have all the major runtimes available out of the box. Much higher HTTP timeouts (up to 100 minutes, which is incredible compared to the standard 10 or 30 seconds most providers give you) and tons of other security and quality-of-life improvements.
 
-![Render hosting](https://assets.roadmap.sh/guest/render-hosting-w4urq.png)
-
 Render also offers managed MySQL and managed Redis instances for you to use, even in their free tier. In the end, unless you’ve been using Heroku for a while and you’re happy with their DX, it might be a good idea to check out Render instead.
 
-### 20. OVHCloud
-
-[OVHCloud](https://www.ovhcloud.com/) is an all-in-one solution that seems to provide you with everything you need, from “bare metal” (as in infrastructure) to managed hosting for web applications, managed databases (they have many to choose from), and many other services.
+20. _OVHCloud_ - [OVHCloud](https://www.ovhcloud.com/) is an all-in-one solution that seems to provide you with everything you need, from “bare metal” (as in infrastructure) to managed hosting for web applications, managed databases (they have many to choose from), and many other services.
 
 However, they do not seem to offer quality-of-life integrations to make your deployment workflow simple and intuitive.
 
-![OVHCloud hosting](https://assets.roadmap.sh/guest/ovhcloud-hosting-ncfch.png)
-
 Now, given how they centralize all related services from domain name registration all the way up to analytics, identity management, file storage (CDN), and even one-click install CMS (content management systems, such as WordPress), etc, it might just be a good option for you. That is if you have the expertise in your team to deal with all these options.
 
-## API-Related Tools
-
-As backend developers, we’ll always be dealing with APIs (Application Programming Interface), either through using the ones created by others or writing our own.
-
+**API-Related Tools** - As backend developers, we’ll always be dealing with APIs (Application Programming Interface), either through using the ones created by others or writing our own.
 Whatever you’re doing, it’s always good to have some backend tools to help you build and test them faster, so let’s take a look at a few options.
 
-### 21. Swagger
-
-Some developers would argue that one of the hardest parts of creating an API is documenting it. Not only because it might sound like a boring task, but explaining what the API endpoint is doing well enough is not trivial.
+21. _Swagger_ - Some developers would argue that one of the hardest parts of creating an API is documenting it. Not only because it might sound like a boring task, but explaining what the API endpoint is doing well enough is not trivial.
 
 That’s where [Swagger](https://swagger.io/) comes into play.
 
-![Swagger API tool](https://assets.roadmap.sh/guest/swagger-api-tool-vngxu.png)
-
 This tool allows you to create interactive documentation that provides developers with all they need to understand how to use your endpoints, and at the same time, it also gives them the option to test them directly from the generated UI.
 
-### 22. Postman
-
-[Postman](https://www.postman.com/) is less of a documentation-only app and has grown over the years to become a testing API tool that every developer and development team should know about. Backend developers are especially benefited from using Postman because of how well it helps organize and manage APIs.
+22. _Postman_ - [Postman](https://www.postman.com/) is less of a documentation-only app and has grown over the years to become a testing API tool that every developer and development team should know about. Backend developers are especially benefited from using Postman because of how well it helps organize and manage APIs.
 
 With Postman, you can organize all your company’s APIs, share them with the associated dev teams, and let them use and interact with them without having to write a single line of code.
 
-![Postman documentation tool](https://assets.roadmap.sh/guest/postman-documentation-tool-cl81q.png)
-
 While Swagger is more of a development tool that every backend developer should know about, Postman is the tool that every development team should use to share & control internal API access and documentation.
 
-## Productivity
+**Productivity** - Finally, the last category is about productivity. While some of the products and services mentioned already do provide productivity enhancements, they weren’t there for that. The following list of backend tools is created thinking only about the benefits they can bring to your productivity while working as a backend developer.
 
-Finally, the last category is about productivity. While some of the products and services mentioned already do provide productivity enhancements, they weren’t there for that. The following list of backend tools is created thinking only about the benefits they can bring to your productivity while working as a backend developer.
-
-### 23. iTerm
-
-If you’re a macOS user, then [iTerm](https://iterm2.com/) is definitely one of the “must haves” you need to look into. As a backend developer, you’ll spend a lot of your day in the terminal.
-
-![iTerm terminal developer tool](https://assets.roadmap.sh/guest/iterm-terminal-developer-tool-zze25.png)
+23. _iTerm_ - If you’re a macOS user, then [iTerm](https://iterm2.com/) is definitely one of the “must haves” you need to look into. As a backend developer, you’ll spend a lot of your day in the terminal.
 
 iTerm will take that experience to the next level by bringing in features such as:
 
@@ -1603,16 +1500,12 @@ iTerm will take that experience to the next level by bringing in features such a
 
 Mind you, none of these features are mandatory; you can easily work without them, but they do improve your quality of life as a developer. Hence the reason why iTerm leads this list.
 
-### 24. Zsh/OhMyZsh
-
-The combination of these two gives your terminal superpowers. [Zsh](https://zsh.sourceforge.io/) is an improved shell that lets you work much faster and more efficiently if you’re spending several hours typing commands in your terminal. For example, you get features such as:
+24. _Zsh/OhMyZsh_ - The combination of these two gives your terminal superpowers. [Zsh](https://zsh.sourceforge.io/) is an improved shell that lets you work much faster and more efficiently if you’re spending several hours typing commands in your terminal. For example, you get features such as:
 
 - Advanced tab auto-complete
 - Extensibility
 - Spelling corrections
 - And more.
-
-![Oh my Zsh shell](https://assets.roadmap.sh/guest/zsh-shell-ui-6s163.png)
 
 As mentioned above, after you have your ZSH installed and set up, you should look into installing oh-my-zsh, which helps with configuring all the customization options you have on this shell:
 
@@ -1621,19 +1514,11 @@ As mentioned above, after you have your ZSH installed and set up, you should loo
 
 If you find yourself spending hours on the terminal, consider installing this combo.
 
-### 25. Raycast
-
-[Raycast](https://www.raycast.com/) allows you to improve your productivity by giving you a better application launcher. Instead of using the default launcher, you can replace it with Raycast and gain superpowers.
+25. _Raycast_ - [Raycast](https://www.raycast.com/) allows you to improve your productivity by giving you a better application launcher. Instead of using the default launcher, you can replace it with Raycast and gain superpowers.
 
 Now, you suddenly have access to hundreds of [community-created extensions](https://www.raycast.com/store) that allow you to directly interact with chatGPT from the app launcher, use GitHub, interact with VSCode directly, and more.
 
-![Raycast app launcher](https://assets.roadmap.sh/guest/raycast-app-launcher-w5rg3.png)
-
 While it is only available for macOS users, Raycast has become a must-have application for backend developers on this platform. In the end, the faster you can reach for your tools, the more productive you become. And a properly configured Raycast can make your web development process feel like a breeze.
-
-Whether your goal is to become a backend developer or to stay relevant as one, the goal itself requires adopting an eternal student mindset. The ever-evolving web development space demands continuous learning, regardless of the programming language you use. New frameworks, libraries, and methodologies emerge regularly, offering different solutions to old problems. To remain relevant as a [backend developer](/backend), you’ll have to stay updated by honing your core skills.
-
-In this article, we’ll cover the following set of backend developer skills we recommend you aim for:
 
 - Keeping an eye on core and new backend programming languages
 - Understanding the basics of software design and architecture
@@ -1643,8 +1528,6 @@ In this article, we’ll cover the following set of backend developer skills we 
 - Testing and debugging
 - CI/CD and DevOps fundamentals
 - Soft skills
-
-So, let's get going!
 
 ## Testing
 
