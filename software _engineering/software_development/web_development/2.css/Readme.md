@@ -157,7 +157,7 @@ _Structural Pseudo Selectors_ - This type of pseudo-selectors targets element ba
 - :root: Targets the root element of the document (typically <html>).
 - :first-child: Targets the first child element of its parent.
 - :last-child: Targets the last child element of its parent.
-- :nth-child(n): Targets the nth child element of its parent, where n is an integer.
+- :nth-child(n): Targets the nth child element of its parent, where n is an integer. Can also accept `odd` or `even` values.
 - :nth-of-type(n): Targets the nth element of a specific type within its parent.
 - :only-child: Targets an element that is the only child of its parent.
 - :first-of-type: Targets the first element of a specific type within its parent.

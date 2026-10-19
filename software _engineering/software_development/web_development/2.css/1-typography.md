@@ -101,6 +101,7 @@ Text is styled with some of the text formatting properties.
 - `text-shadow` adds shadow to text. It can be used to specify the position of the horizontal shadow (3px), vertical shadow (2px) and the color (red). Eg. text-shadow: 3px 2px red;
 - `text-overflow` specifies how overflowed content that is not displayed should be signaled to the user. It can be clipped, display an ellipsis (...), or display a custom string. Eg.
 - `text-shadow` Text shadows are like box shadows except that they are shadows for text rather than the whole element. Luckily, there is no vendor prefix necessary for text shadow.The options for text shadow are the same as for box-shadow except that there is _no inset_ text shadow support.As with box shadows, it is possible to have multiple text shadows just by separating them with commas. Here is an example that creates a flaming text effect.
+- `letter-spacing` -
 
 ```css
 div {

@@ -37,12 +37,11 @@ div {
 }
 ```
 
-`CSS Table Borders` - The CSS border property is the best way to define the borders for the tables.
+`CSS Table Borders` - The CSS border property is the best way to define the borders for the tables.The border property is a shorthand property for:
 
-- The border property is a shorthand property for:
-  - border-width - sets the width of the border
-  - border-style - sets the style of the border (required)
-  - border-color - sets the color of the border
+- border-width - sets the width of the border
+- border-style - sets the style of the border (required)
+- border-color - sets the color of the border
 
 ```css
 table,
@@ -54,9 +53,7 @@ td {
 
 Notice that the tables have double borders. This is because both the <table>, <th>, and <td> elements have separate borders.
 
-`CSS Collapse Table Borders`:- The CSS border-collapse property sets whether table borders should collapse into a single border or be separated as in standard HTML.
-
-- This property can have one of the following values:
+- `CSS Collapse Table Borders`:- The CSS border-collapse property sets whether table borders should collapse into a single border or be separated as in standard HTML.This property can have one of the following values:
   - separate - Default value. Borders are separated; each cell will display its own borders
   - collapse - Borders are collapsed into a single border when possible
 
