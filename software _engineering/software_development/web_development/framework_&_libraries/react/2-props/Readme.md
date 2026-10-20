@@ -30,6 +30,19 @@ function Car(props) {
   );
 }
 
+// props destructuring
+/*
+function Car({car}){
+return (
+    <>
+      <h1>{car.name}</h1>
+      <p>{car.color}</p>
+      <p>{car.ratings}</p>
+    </>
+  );
+  }
+*/
+
 export default Car;
 ```
 
