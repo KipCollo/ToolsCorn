@@ -251,8 +251,6 @@ The difference between state and props in React Native is the same as in React.j
 AsyncStorage is a simple, asynchronous, persistent key-value storage system provided by React Native. It allows you to store data on the device's disk and retrieve it later, making it useful for caching data or storing user preferences.
 Expo is a set of tools, libraries, and services built on top of React Native. It provides a simplified development workflow, pre-configured native modules, and access to device features, allowing developers to build and deploy React Native apps faster.
 
-React DevTools is a browser extension that allows you to inspect and debug React component hierarchies. It provides a set of tools for inspecting components, examining props and state, and profiling performance.
-
 React.memo() is a higher-order component that memoizes the rendering of a functional component, similar to the shouldComponentUpdate() lifecycle method for class components. It prevents unnecessary re-renders of the component if its props have not changed.
 A controlled component is a component where form data is handled by React stateand is fully controlled by React. An uncontrolled component, on the other hand, manages its own stateand stores form data internally without relying on React state.
 
@@ -331,6 +329,8 @@ Note that the element id does not have to be called "root", but this is the stan
 
 `Context` provides a way to pass data through the component tree without having to pass props manually at every level. It is used for sharing data that can be considered "global" for a tree of React components.
 
+## Tools
+
 **React.StrictMode** is a component that helps highlight potential problems in an application. It enables additional checks and warnings in the development mode to help identify and address potential bugs and deprecated features.
 
 ```js
@@ -338,3 +338,5 @@ Note that the element id does not have to be called "root", but this is the stan
   <App />
 </React.StrictMode>
 ```
+
+**React DevTools** is a browser extension that allows you to inspect and debug React component hierarchies. It provides a set of tools for inspecting components, examining props and state, and profiling performance.
