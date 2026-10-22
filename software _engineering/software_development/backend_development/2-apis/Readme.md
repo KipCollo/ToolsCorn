@@ -7,23 +7,33 @@ An API handles requests from clients on behalf of users. Clients may be web brow
 Can be libraries, SDKs, OS interfaces, or web-based.
 Examples:- Java API,Mobile Phone Camera API,Windows API,Payment API,(REST API, SOAP API (these are web APIs)).
 
-API Design
-API Development
-API Documentation
-API Testing
-API Mocking and Virtualization
-API Governance
-API Monitoring
-OpenAPI & Swagger
-
-Traditionally, an API was provided by a software library that could be linked into an application either statically or dynamically at runtime, allowing reuse of procedures and functions for specific problems, such as OpenGL for 3D graphics, or libraries for TCP/IP networking. Such APIs are still common, but a growing number of APIs are now made available over the internet as RESTful web services.
+Traditionally, an API was provided by a software library that could be linked into an application either statically or dynamically at runtime, allowing reuse of procedures and functions for specific problems, such as OpenGL for 3D graphics, or libraries for TCP/IP networking. Such APIs are still common, but a growing number of APIs are now made available over the internet as web apis.
 
 A UI also provides a boundary to a software system and restricts the operations that can be performed. What distinguishes an API from a UI is that an API is explicitly designed to be easy to interact with by other software, while a UI is designed to be easy for a user to interact with directly.
+
+- API intro
+- API types - public ,private, partner, composite.
+- API architecture - REST, GraphQL, SOAP, gRPC, WebSockets, WebHooks.
+- API secutiry - Authentication, Rate limiting, Authorization, Encryption.
+- API Design - RESTful conventions, versioning,pagination,HATEOS
+  API Development
+- API Documentation - OpenAPI & Swagger, Postman, Redoc, DapperDox, Slate, Readme
+- API Testing - SoapUI, JMeter, Newman, Postman, Katalon studio, Insomnia, Pact, Rest-Assured.
+  API Mocking and Virtualization
+  API Governance
+  API Monitoring
 
 ## Web APIs
 
 A Web API is an interface that allows applications to interact with each other over HTTP or HTTPS protocols. It provides a set of rules and protocols for building and interacting with software applications. There are many types of Web APIs like REST and GraphQL
-A Web API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate with each other over the internet, typically using HTTP/HTTPS. It defines how clients (like web browsers or mobile apps) can request and receive data or functionality from a server.
+A Web API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate with each other over the internet, typically using HTTP/HTTPS. It defines how clients (like web browsers or mobile apps) can request and receive data or functionality from a server
+
+Web APIs are fundamental to modern web development, enabling the creation of dynamic, interactive, and interconnected applications.
+Types of Web APIs:
+
+1.  Browser APIs: Built directly into web browsers, these allow JavaScript to interact with browser functionalities and the surrounding computer environment (e.g., Web Audio API, Web Speech API, IndexedDB API).
+2.  Third-party APIs: Provided by external services or platforms, enabling developers to integrate functionalities from those platforms into their own applications (e.g., Spotify Web API, Google Maps API).
+3.  RESTful APIs: A specific architectural style for building Web APIs that adheres to the principles of Representational State Transfer (REST), emphasizing statelessness and the use of standard HTTP methods.
 
 Key characteristics and concepts of Web APIs:
 
@@ -34,33 +44,33 @@ Key characteristics and concepts of Web APIs:
 - `Statelessness (in RESTful APIs)`:- In the context of RESTful Web APIs, each request from a client to a server contains all the necessary information to understand the request, and the server does not store any client session state between requests.
 - `Authorization and Authentication`:- Web APIs often require mechanisms to verify the identity of the client (authentication) and determine what actions they are authorized to perform (authorization), frequently using tokens or API keys.
 
-Types of Web APIs:
-
-1.  Browser APIs: Built directly into web browsers, these allow JavaScript to interact with browser functionalities and the surrounding computer environment (e.g., Web Audio API, Web Speech API, IndexedDB API).
-2.  Third-party APIs: Provided by external services or platforms, enabling developers to integrate functionalities from those platforms into their own applications (e.g., Spotify Web API, Google Maps API).
-3.  RESTful APIs: A specific architectural style for building Web APIs that adheres to the principles of Representational State Transfer (REST), emphasizing statelessness and the use of standard HTTP methods.
-
-Web APIs are fundamental to modern web development, enabling the creation of dynamic, interactive, and interconnected applications.
-
-`REST API` - A REST API is a type of Web API that adheres to the principles of REST. REST principles emphasize statelessness, easy-to-use and self-descriptive messages, and a layered structures to facilitate the caching of components to help scaling.
-`GraphQL API` - GraphQL is a query language for APIs that provide a more flexible and efficient approach to data retrieval. REST exposes multiple endpoints for different resources, but GraphQL exposes a single endpoint for all interactions. This single endpoint allows clients to request exactly the data they need, down to individual fields on objects.
+A Web API is a broad term for an interface that allows two applications to interact over the HTTP/HTTPS protocol, which includes lightweight styles like REST, GraphQL, or WebSockets. A Web Service, traditionally, is a more restricted type of network-based interface that relies on specific W3C standards and stricter communication protocols (like SOAP).
 
 There are several popular approaches to exposing remote APIs:
 
 1. `Remote Procedure Call (RPC) APIs` expose a set of procedures or functions that can be called by clients over a network connection. The RPC style is designed to resemble normal procedure calls as if the API were provided locally. RPC APIs often use compact binary formats for messages and are very efficient, but usually require the client to install specific libraries (known as stubs) that work with a single API. The gRPC framework from Google (https://grpc.io) is an example of a modern RPC approach. The older SOAP (Simple Object Access Protocol) framework, which uses XML for messages, is still widely deployed.
 2. A variant of the RPC style known as `Remote Method Invocation (RMI)` uses object-oriented techniques to allow clients to call methods on remote objects as if they were local. RMI approaches used to be very popular, with technologies such as CORBA and Enterprise Java Beans (EJBs) often used for building large enterprise systems. The complexity of these frameworks has led to a decline in their use.
 3. The `REST (REpresentational State Transfer)` style was developed by Roy Fielding to describe the principles that led to the success of HTTP and the web and was later adapted as a set of principles for API design. In contrast to RPC, RESTful APIs emphasize standard message formats and a small number of generic operations to reduce the coupling between a client and a specific API. Use of hyperlinks to navigate the API reduce the risk of clients breaking as the API evolves over time.
+   `REST API` - A REST API is a type of Web API that adheres to the principles of REST. REST principles emphasize statelessness, easy-to-use and self-descriptive messages, and a layered structures to facilitate the caching of components to help scaling.
 4. Some APIs are mostly concerned with efficient querying and filtering of large data sets, such as SQL databases or the `GraphQL framework` from Facebook (https://graphql.org). In these cases, the API often only provides a few operations and a complex query language allows the client significant control over what data is returned.
+   `GraphQL API` - GraphQL is a query language for APIs that provide a more flexible and efficient approach to data retrieval. REST exposes multiple endpoints for different resources, but GraphQL exposes a single endpoint for all interactions. This single endpoint allows clients to request exactly the data they need, down to individual fields on objects.
+5. `MQTT` - Lightweight messaging protocol ideal for low-bandwidth networks, popular IoT scenarios.
 
 Different API styles are suitable for different environments. For example, an organization that has adopted a microservices architecture might opt for an efficient RPC framework to reduce the overhead of API calls. This is appropriate because the organization controls all of the clients and servers in this environment and can manage distributing new stub libraries when they are required. On the other hand, a widely used public API might be better suited to the REST style using a widely used format such as JSON to maximize interoperability with different types of clients.
 
-A Web API is a broad term for an interface that allows two applications to interact over the HTTP/HTTPS protocol, which includes lightweight styles like REST, GraphQL, or WebSockets. A Web Service, traditionally, is a more restricted type of network-based interface that relies on specific W3C standards and stricter communication protocols (like SOAP).
-
 **Web Services** - Web services are a standardized way for different software applications to communicate with each other over a network, typically the internet, by exchanging messages. They enable interoperable machine-to-machine interaction and can be built on different platforms and written in different languages, making them ideal for connecting diverse systems in distributed applications. Web services use protocols like SOAP and technologies like XML and WSDL to define, describe, and discover their functions.
 
-Web Service = An API that works over the internet (web).
-Web services are services available over the web.
-Components of web services:-
+A web service is a set of open protocols and standards that allow data to be exchanged between different applications or systems. Web services can be used by software programs written in a variety of programming languages and running on a variety of platforms to exchange data via computer networks such as the Internet in a similar way to inter-process communication on a single computer.
+
+Any software, application, or cloud technology that uses standardized web protocols (HTTP or HTTPS) to connect, interoperate, and exchange data messages – commonly XML (Extensible Markup Language) – across the internet is considered a web service.
+Web services have the advantage of allowing programs developed in different languages to connect with one another by exchanging data over a web service between clients and servers. A client invokes a web service by submitting an XML request, which the service responds with an XML response.
+
+Mostly, there are two kinds of Web Services that should be remembered in your next API testing interview:
+
+1. SOAP (Simple Object Access Protocol) – an XML-based method to expose web services.
+2. Web services developed in the REST style are referred to as RESTful web services. These web services use HTTP methods to implement the concept of REST architecture. A RESTful web service usually defines a URI, Uniform Resource Identifier a service, that provides resource representation like JSON and a set of HTTP methods.
+
+Web services are services available over the web.Components of web services:-
 
 1. WSDL
 2. UDDI
@@ -123,6 +133,33 @@ Instead, REST uses:
 REST Doesn’t Use WSDL because REST is based on the concept of resources, not functions.
 SOAP uses functions/operations so it needs WSDL to define them.
 
+- Web services should have a higher level of security than the Secure Socket Layer (SSL) (SSL). Entrust Secure Transaction Platform is the only way to attain this level of security. This level of security is required for web services in order to assure dependable transactions and secure confidential information.
+
+soap--->wsdl------xml
+rest---->swagger--json/yaml
+
+- URL-Uniform Resource locator e.g <https://www.collo.com>
+- URI -Uniform Resource Identifier e.g <https://www.collo.com/resource1>, <https://www.collo.com/resource1/rest>.It can be one-to-one or many-to-one resource locator.It cant be many-to-one.
+
+### SOAP
+
+Simple Object Access Protocol (SOAP) is a message protocol for exchanging information between systems and applications. When it comes to application programming interfaces (APIs), a SOAP API is developed in a more structured and formalized way. SOAP messages can be carried over a variety of lower-level protocols, including the web-related Hypertext Transfer Protocol (HTTP),SMTP.
+
+- SOAP (Simple Object Access Protocol)(JAXWS)
+
+SOAP stands for “Simple Object Access Protocol.” It is a transport-independent messaging protocol. SOAP is built on sending XML data in the form of SOAP Messages. A document known as an XML document is attached to each message. Only the structure of the XML document, not the content, follows a pattern. The best thing about Web services and SOAP is that everything is sent through HTTP, the standard web protocol.
+
+A root element known as the element is required in every SOAP document. In an XML document, the root element is the first element. The “envelope” is separated into two halves. The header comes first, followed by the body. The routing data, or information that directs the XML document to which client it should be sent to, is contained in the header. The real message will be in the body.
+
+- UDDI (Universal Description, Discovery, and Integration)
+
+UDDI is a standard for specifying, publishing and discovering a service provider’s online services. It provides a specification that aids in the hosting of data via web services. UDDI provides a repository where WSDL files can be hosted so that a client application can discover a WSDL file to learn about the various actions that a web service offers. As a result, the client application will have full access to the UDDI, which serves as a database for all WSDL files.
+The UDDI registry will hold the required information for the online service, just like a telephone directory has the name, address, and phone number of a certain individual. So that a client application may figure out where it is.
+
+- WSDL (Web Services Description Language)
+
+If a web service can’t be found, it can’t be used. The client invoking the web service should be aware of the location of the web service. Second, the client application must understand what the web service does in order to invoke the correct web service. The WSDL, or Web services description language, is used to accomplish this. The WSDL file is another XML-based file that explains what the web service does to the client application. The client application will be able to understand where the web service is located and how to use it by using the WSDL document.
+
 ---
 
 ### REST
@@ -133,10 +170,6 @@ REST, or REpresentational State Transfer, is an architectural style for providin
 A REST API (Representational State Transfer Application Programming Interface) is an architectural style for designing networked applications, particularly web services. It utilizes standard web protocols, primarily HTTP, to facilitate communication between different software systems.
 
 A REST API provides endpoints that allow clients to communicate with a server over the internet. Each endpoint represents a specific resource or action, such as retrieving data,creating new data, updating existing data, or deleting data. Clients send requests to these endpoints using HTTP methods like GET, POST, PUT, PATCH, and DELETE, and the server responds with the requested data or performs the requested action.
-
-REST is not a protocol or a standard, it is an architectural style. During the development phase, API developers can implement REST in a variety of ways.
-Like the other architectural styles, REST also has its guiding principles and constraints. These principles must be satisfied if a service interface is to be referred to as RESTful.
-A Web API (or Web Service) conforming to the REST architectural style is called a REST API (or RESTful API).
 
 This client-server communication follows the principles of REST (Representational State Transfer), which emphasizes statelessness, a uniform interface, and resource-based interactions.
 
@@ -157,6 +190,59 @@ _Benefits of using REST APIs_:
 3. Flexibility and Platform Independence:- Clients can be developed in various programming languages and on different platforms.
 4. Loose Coupling:- Client and server can evolve independently without tightly coupled dependencies.
 
+REST is not a protocol or a standard, it is an architectural style. During the development phase, API developers can implement REST in a variety of ways.Like the other architectural styles, REST also has its guiding principles and constraints. These principles must be satisfied if a service interface is to be referred to as RESTful.
+
+REpresentational State Transfer (REST) is an architectural style that defines a set of constraints to be used for creating web services. REST API is a way of accessing web services in a simple and flexible way without having any processing.
+REST technology is generally preferred to the more robust Simple Object Access Protocol (SOAP) technology because REST uses less bandwidth, simple and flexible making it more suitable for internet usage. It’s used to fetch or give some information from a web service. All communication done via REST API uses only HTTP request.
+
+In HTTP there are five methods that are commonly used in a REST-based Architecture i.e., POST, GET, PUT, PATCH, and DELETE. These correspond to create, read, update, and delete (or CRUD) operations respectively. There are other methods which are less frequently used like OPTIONS and HEAD.
+
+- What is a resource -Understand resource as the concept of a user. Don't think about the table in your database, think about an abstraction of a user with their set of attributes.
+- What is a representation in my example?-A JSON document can be used to represent the state of a particular resource. A resource can have many representations, such as JSON and/or XML documents, and the client can use content negotiation to request different representations of the same resource.
+- What is a state transfer or when does this happens in my example?-The state of a given resource can be retrieved and manipulated using representations.
+
+A GET request, for example, allows you to retrieve a representation of the state of a resource, sent in the response payload. A PUT request, for example, allows you to replace the state of a resource with the state defined by the representation enclosed in the request payload.
+
+Consider a user resource with attributes such as id and name stored somehow in your server:
+
+```
+ID: 1
+Name: John Doe
+```
+
+These details make the state of the resource.
+
+A URL such as /users/1 can be used to locate the resource in your server.
+
+Requests such as GET, PUT and DELETE can be performed against this URL to retrieve/manipulate the state of the resource using representations, such as JSON and/or XML documents (other representations can be supported according to your needs):
+
+```json
+{
+  "id": 1,
+  "name": "John Doe"
+}
+```
+
+```xml
+<user>
+  <id>1</id>
+  <name>John Doe</name>
+</user>
+```
+
+Old web features included; HTTP,Methods & URL.REST API extended the features and added Resource,URI,Representation,Uniform Interface & HATEOAS
+
+1. Resource- A resource can be any object the API can offer info about.i.e interface,images,file,method & database
+2. URI-A Uniform Resource Identifier (URI), formerly Universal Resource Identifier, is a unique sequence of characters that identifies an abstract or physical resource,
+   such as resources on a webpage, mail address, phone number,books, real-world objects such as people and places, concepts.
+3. Representation- client and server exchange representations of a resource, which reflect its current state or its desired state. REST is a way for two machines to transfer the state of a resource via representations.Format request and response data is rep.i.e json,xml,text,html
+4. Uniform Interface-
+5. HATEOAS-
+
+- When apps follow the above principles;it becomes resful services
+
+When designing REST over HTTP, URLs are used to locate the resources, HTTP methods are used to express the operations over the resources and representations such as JSON and/or XML documents are used to represent the state of the resource. HTTP headers can be used to exchange some metadata about the request and response while HTTP status code are used to inform the client regarding the status of the operation.
+
 **Principles of REST** - REST is based on some constraints and principles that promote simplicity, scalability, and statelessness in the design. The six guiding principles or constraints of the RESTful architecture are:
 
 1. `Uniform Interface` - By applying the principle of generality to the components interface, we can simplify the overall system architecture and improve the visibility of interactions.Uses standard HTTP methods and URIs for interaction - Identification of resources,Manipulation of resources through these representations,self-descrptive messages,Hypermedia As The Engine Of Application State(HATEOS).Multiple architectural constraints help in obtaining a uniform interface and guiding the behavior of components.
@@ -171,16 +257,12 @@ In simpler words, REST defines a consistent and uniform interface for interactio
 2. `Client-Server` - The client-server design pattern enforces the separation of concerns, which helps the client and the server components evolve independently.By separating the user interface concerns (client) from the data storage concerns (server), we improve the portability of the user interface across multiple platforms and improve scalability by simplifying the server components.
    While the client and the server evolve, we have to make sure that the interface/contract between the client and the server does not break.
 
-3. `Stateless` - Statelessness mandates that each request from the client to the server must contain all of the information necessary to understand and complete the request.
-   The server cannot take advantage of any previously stored context information on the server.For this reason, the client application must entirely keep the session state.
-
+3. `Stateless` - Statelessness mandates that each request from the client to the server must contain all of the information necessary to understand and complete the request.The server cannot take advantage of any previously stored context information on the server.For this reason, the client application must entirely keep the session state.
 4. `Cacheable` - The cacheable constraint requires that a response should implicitly or explicitly label itself as cacheable or non-cacheable.If the response is cacheable, the client application gets the right to reuse the response data later for equivalent requests and a specified period.Responses can be cached to improve performance.
+5. `Layered System` - The layered system style allows an architecture to be composed of hierarchical layers by constraining component behavior. In a layered system, each component cannot see beyond the immediate layer they are interacting with.APIs can have multiple layers for security, load balancing, etc. A layman’s example of a layered system is the MVC pattern. The MVC pattern allows for a clear separation of concerns, making it easier to develop, maintain, and scale the application.
+6. `Code on Demand (Optional)` - REST also allows client functionality to be extended by downloading and executing code in the form of applets or scripts.The downloaded code simplifies clients by reducing the number of features required to be pre-implemented. Servers can provide part of the features delivered to the client in the form of code, and the client only needs to execute the code.
 
-5. `Layered System` - The layered system style allows an architecture to be composed of hierarchical layers by constraining component behavior. In a layered system, each component cannot see beyond the immediate layer they are interacting with.APIs can have multiple layers for security, load balancing, etc.
-   A layman’s example of a layered system is the MVC pattern. The MVC pattern allows for a clear separation of concerns, making it easier to develop, maintain, and scale the application.
-
-6. `Code on Demand (Optional)` - REST also allows client functionality to be extended by downloading and executing code in the form of applets or scripts.
-   The downloaded code simplifies clients by reducing the number of features required to be pre-implemented. Servers can provide part of the features delivered to the client in the form of code, and the client only needs to execute the code.
+A Web API (or Web Service) conforming to the REST architectural style is called a REST API (or RESTful API).
 
 **Resource** - The key abstraction of information in REST is a resource. Any information that we can name can be a resource. For example, a REST resource can be a document or image, a temporal service, a collection of other resources, or a non-virtual object (e.g., a person).
 
@@ -232,13 +314,12 @@ Types of API authentication methods:-
 - JWT (JSON Web Token) – Used for stateless authentication.
 - API Keys – A unique key provided to authenticate requests.
 
-### SOAP
-
-Simple Object Access Protocol (SOAP) is a message protocol for exchanging information between systems and applications. When it comes to application programming interfaces (APIs), a SOAP API is developed in a more structured and formalized way. SOAP messages can be carried over a variety of lower-level protocols, including the web-related Hypertext Transfer Protocol (HTTP),SMTP.
+Data format - XML, JSON, HTML,plain text.
+Uses Standard HTTP methods for resource manipulation, making it stateless and efficient.
 
 ### gRPC
 
-gRPC is a high-performance, open source universal RPC framework
+gRPC is a high-performance, open source universal RPC framework from Google.Uses Protocol Buffers for data serialization and provides a structured and strongly-typed contract for services.
 
 RPC stands for Remote Procedure Call, there's an ongoing debate on what the g stands for. RPC is a protocol that allows a program to execute a procedure of another program located on another computer. The great advantage is that the developer doesn’t need to code the details of the remote interaction. The remote procedure is called like any other function. But the client and the server can be coded in different languages.
 
@@ -248,6 +329,8 @@ Visit the following resources to learn more:
 - [gRPC Docs](https://grpc.io/docs/)
 - [What Is GRPC?](https://www.wallarm.com/what/the-concept-of-grpc)
 - [What Is GRPC?](https://www.youtube.com/watch?v=hVrwuMnCtok)
+
+Data format - JSON, XML,Protobuf, Thrift, FlatBuffers.
 
 ### Graphql
 
@@ -260,6 +343,7 @@ One of the main features of GraphQL is its ability to specify exactly the data t
 GraphQL also provides a way to define the structure of the data that is returned from the server, allowing clients to request data in a predictable and flexible way. This makes it easier to build and maintain client applications that depend on data from the server.
 
 GraphQL is widely used in modern web and mobile applications, and it is supported by a large and active developer community.
+Data formats - JSON.
 
 Visit the following resources to learn more:
 

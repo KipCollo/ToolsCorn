@@ -3,7 +3,6 @@
 A backend developer focuses entirely on writing business logic for an application and much of the supporting logic as well.
 That said, there might be applications where the business logic is split into the frontend and the backend. However, while the frontend dev might have to share their time between UI code and business logic, the backend dev will focus most of their time on core business logic. That’s the main difference between the two.
 
-
 ## Backend Principles
 
 1. High level understanding - How backend systems work.
@@ -522,7 +521,7 @@ The Twelve-Factor App methodology is widely adopted by developers of SaaS applic
 - [@video@Introduction to HTTP Polling and Web Sockets](https://www.youtube.com/watch?v=OsgrJDMPl58)
 - [@article@Introduction to Long Polling](https://www.pubnub.com/guides/long-polling/)
 
-_Web sockets_ - Web sockets are defined as a two-way communication between the servers and the clients, which mean both the parties, communicate and exchange data at the same time. This protocol defines a full duplex communication from the ground up. Web sockets take a step forward in bringing desktop rich functionalities to the web browsers.
+_Web sockets_ - Web sockets are defined as a two-way communication between the servers and the clients, which mean both the parties, communicate and exchange data at the same time. This protocol defines a full duplex , bi-directional, real-time communication over a single, long-lived connection. Web sockets take a step forward in bringing desktop rich functionalities to the web browsers.
 
 - [Introduction to WebSockets](https://www.tutorialspoint.com/websockets/index.htm)
 - [A Beginners Guide to WebSockets](https://www.youtube.com/watch?v=8ARodQ4Wlf4)
