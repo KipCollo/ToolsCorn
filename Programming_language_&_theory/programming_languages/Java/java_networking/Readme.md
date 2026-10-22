@@ -11,8 +11,7 @@ The Internet Protocol is a low-level protocol for delivering data from one compu
 `TCP` enables two hosts to establish a connection and exchange streams of data. TCP guarantees delivery of data and also guarantees that packets will be delivered in the same order in which they were sent.
 `UDP` is a standard, low-overhead, connectionless, host-to-host protocol that is used over the IP. UDP allows an application program on one computer to send a datagram to an application program on another computer.
 
-Java supports both stream-based and packet-based communications. Stream-based communications use TCP for data transmission, whereas packet-based communications use UDP.
-Since TCP can detect lost transmissions and resubmit them, transmissions are lossless and reliable. UDP, in contrast, cannot guarantee lossless transmission. Stream-based communications are used in most areas of Java programming.
+Java supports both stream-based and packet-based communications. Stream-based communications use TCP for data transmission, whereas packet-based communications use UDP.Since TCP can detect lost transmissions and resubmit them, transmissions are lossless and reliable. UDP, in contrast, cannot guarantee lossless transmission. Stream-based communications are used in most areas of Java programming.
 
 Common networking tasks include:
 
@@ -32,71 +31,51 @@ Common networking tasks include:
 
 With networks, a single program can retrieve information stored in millions of computers located anywhere in the world. A single program can communicate with tens of millions of people. A single program can harness the power of many computers to work on one problem.
 
-
-
 ## Java Networking
 
+Java Networking is a concept of connecting two or more computing devices together so that we can share resources.With networks, a single program can regain information stored in millions of computers positioned anywhere in the world. Java Networking is a notion of combining two or more computing devices together to share resources.
+Java Socket Programming provides facility to share data between different computing devices.All the Java program communications over the network are done at the application layer.
 
-Java's core library includes classes for communicating with Internet hosts using the TCP and UDP protocols of the TCP/IP family. You just tell Java what IP address and port you want, and Java handles the low-level details.
+Java's core library includes classes for communicating with Internet hosts using the TCP and UDP protocols of the TCP/IP family. You just tell Java what IP address and port you want, and Java handles the low-level details.Once a program has connected to a server, the local program must understand the protocol that the remote server speaks and properly interpret the data the server sends back.
+
 A Java program can connect to a network time-server to synchronize itself with an atomic clock.A Java program can speak any custom protocols it needs to speak, including the one to control the HAWC.
 
-Once a program has connected to a server, the local program must understand the protocol that the remote server speaks and properly interpret the data the server sends back.
-
-Java Networking is a concept of connecting two or more computing devices together so that we can share resources.
-When computing devices such as laptops, desktops, servers, smartphones, and tablets and an eternally-expanding arrangement of IoT gadgets such as cameras, door locks, doorbells, refrigerators, audio/visual systems, thermostats, and various sensors are sharing information and data with each other is known as networking.
-With networks, a single program can regain information stored in millions of computers positioned anywhere in the world. Java Networking is a notion of combining two or more computing devices together to share resources.
-
-Java Socket Programming provides facility to share data between different computing devices.
-
 - Advantage of Java Networking :-
-    1. sharing resources
-    2. centralized software management
+  1. sharing resources
+  2. centralized software management
 
-All the Java program communications over the network are done at the application layer. 
-The `java.net` package of the J2SE APIs comprises various classes and interfaces that execute the low-level communication features, enabling the user to formulate programs that focus on resolving the problem.
-
-The java.net Package Supports 2 Protocols:
-
-- TCP:- Transmission Control Protocol provides reliable communication between the sender and receiver. TCP is used along with the Internet Protocol referred as TCP/IP.
-- UDP:- User Datagram Protocol provides a connection-less protocol service by allowing packet of data to be transferred along two or more nodes
+The `java.net` package of the J2SE APIs comprises various classes and interfaces that provide an easy-to-use means to access network resources, enabling the user to formulate programs that focus on resolving the problem.
+Package `javax.net`, introduced in J2SE 1.4, contains factory classes for creating sockets in an implementation-independent fashion. Using classes from these packages (primarily from the former), the network programmer can communicate with any server on the Internet or implement his/her own Internet server.
 
 Some of the widely used java networking terminologies are as follows:
 
-1. IP Address- IP address is a unique number assigned to a node of a network e.g. 192.168.0.1. It is composed of octets that range from 0 to 255. It is a logical address that can be changed.
+1. IP Address- IP address is a unique number assigned to a node of a network e.g. 192.168.0.1. It is composed of octets that range from 0 to 255. It is a logical address that can be changed.An IP address is either a 32-bit or 128-bit unsigned number used by IP, a lower-level protocol on which protocols like UDP and TCP are built.
 2. Protocol- A protocol is a set of rules basically that is followed for communication. For example: TCP, FTP, Telnet, SMTP, POP, etc.
 3. Port Number- The port number is used to uniquely identify different applications. It acts as a communication endpoint between applications. The port number is associated with the IP address for communication between two applications.
 4. MAC Address- MAC (Media Access Control) Address is a unique identifier of NIC (Network Interface Controller). A network node can have multiple NIC but each with unique MAC. The main difference between MAC and IP address is that, MAC Address is used to ensure the physical address of computer. It uniquely identifies the devices on a network. While IP address are used to uniquely identifies the connection of network with that device take part in a network.
-5. Socket- A socket is one endpoint of a two-way communication connection between the two applications running on the network. The socket mechanism presents a method of inter-process communication (IPC) by setting named contact points between which the communication occurs. A socket is tied to a port number so that the TCP layer can recognize the application to which the data is intended to be sent.
+5. Socket- A socket is one endpoint of a two-way communication connection between the two applications running on the network. The socket mechanism presents a method of inter-process communication (IPC) by setting named contact points between which the communication occurs. A socket is tied to a port number so that the TCP layer can recognize the application to which the data is intended to be sent.Includes:-
+   - TCP Sockets: Use Socket and ServerSocket classes.
+   - UDP Sockets: Use DatagramSocket and DatagramPacket.
 6. Connection-oriented protocol- In connection-oriented protocol, acknowledgement is sent by the receiver. So, it is reliable but slow. The example of connection-oriented protocol is TCP.
 7. Connection-less protocol- In connection-less protocol, acknowledgement is not sent by the receiver. So, it is not reliable but fast. The example of connection-less protocol is UDP.
-8. Sockets:-Endpoints for communication between two machines.Types:
-    - TCP Sockets: Use Socket and ServerSocket classes.
-    - UDP Sockets: Use DatagramSocket and DatagramPacket.
 
-The java.net package of the Java programming language includes various classes that provide an easy-to-use means to access network resources. The classes covered in the java.net package are given as follows:-
+| <!-- -->            | <!-- -->               | <!-- -->          | <!-- -->           | <!-- -->         |
+| ------------------- | ---------------------- | ----------------- | ------------------ | ---------------- |
+| Authenticator       | CacheRequest           | CacheResponse     | ContentHandler     | CookieHandler    |
+| CookieManager       | DatagramPacket         | DatagramSocket    | DatagramSocketImpl | InterfaceAddress |
+| JarURLConnection    | MulticastSocket        | InetSocketAddress | InetAddress        | Inet4Address     |
+| Inet6Address        | IDN                    | HttpURLConnection | HttpCookie         | NetPermission    |
+| NetworkInterface    | PasswordAuthentication | Proxy             | ProxySelector      | ResponseCache    |
+| SecureCacheResponse | ServerSocket           | Socket            | SocketAddress      | SocketImpl       |
+| SocketPermission    | StandardSocketOptions  | URI               | URL                | URLClassLoader   |
+| URLConnection       | URLDecoder             | URLEncoder        | URLStreamHandler   | -                |
 
-| <!-- -->    | <!-- -->    | <!-- -->    | <!-- -->    | <!-- -->    |
-|-------------|-------------|-------------|-------------|-------------|
-|Authenticator|CacheRequest|CacheResponse|ContentHandler|CookieHandler|
-|CookieManager|DatagramPacket|DatagramSocket|DatagramSocketImpl|InterfaceAddress|
-|JarURLConnection|MulticastSocket|InetSocketAddress|InetAddress|Inet4Address|
-|Inet6Address|IDN|HttpURLConnection|HttpCookie|NetPermission|
-|NetworkInterface|PasswordAuthentication|Proxy|ProxySelector|ResponseCache|
-|SecureCacheResponse|ServerSocket|Socket|SocketAddress|SocketImpl|
-|SocketPermission|StandardSocketOptions|URI|URL|URLClassLoader|
-|URLConnection|URLDecoder|URLEncoder|URLStreamHandler|-|
-
-1. CacheRequest - The CacheRequest class is used in java whenever there is a need to store resources in ResponseCache. The objects of this class provide an edge for the OutputStream object to store resource data into the cache. 
+1. CacheRequest - The CacheRequest class is used in java whenever there is a need to store resources in ResponseCache. The objects of this class provide an edge for the OutputStream object to store resource data into the cache.
 2. CookieHandler- The CookieHandler class is used in Java to implement a callback mechanism for securing up an HTTP state management policy implementation inside the HTTP protocol handler. The HTTP state management mechanism specifies the mechanism of how to make HTTP requests and responses.
 3. CookieManager - The CookieManager class is used to provide a precise implementation of CookieHandler. This class separates the storage of cookies from the policy surrounding accepting and rejecting cookies. A CookieManager comprises a CookieStore and a CookiePolicy.
-4. DatagramPacket- The DatagramPacket class is used to provide a facility for the connectionless transfer of messages from one system to another. This class provides tools for the production of datagram packets for connectionless transmission applying the datagram socket class.
-5. InetAddress- The InetAddress class is used to provide methods to get the IP address of any hostname. An IP address is expressed by a 32-bit or 128-bit unsigned number. InetAddress can handle both IPv4 and IPv6 addresses.
-6. Server Socket- The ServerSocket class is used for implementing system-independent implementation of the server-side of a client/server Socket Connection. The constructor for ServerSocket class throws an exception if it can’t listen on the specified port. For example – it will throw an exception if the port is already being used.
-7. Socket- The Socket class is used to create socket objects that help the users in implementing all fundamental socket operations. The users can implement various networking actions such as sending, reading data, and closing connections. Each Socket object built using java.net.Socket class has been connected exactly with 1 remote host; for connecting to another host, a user must create a new socket object.
-8. DatagramSocket- The DatagramSocket class is a network socket that provides a connection-less point for sending and receiving packets. Every packet sent from a datagram socket is individually routed and delivered. It can further be practiced for transmitting and accepting broadcast information. Datagram Sockets is Java’s mechanism for providing network communication via UDP instead of TCP.
-9. Proxy- A proxy is a changeless object and a kind of tool or method or program or system, which serves to preserve the data of its users and computers. It behaves like a wall between computers and internet users. A Proxy Object represents the Proxy settings to be applied with a connection.
-10. URL- The URL class in Java is the entry point to any available sources on the internet. A Class URL describes a Uniform Resource Locator, which is a signal to a “resource” on the World Wide Web. A source can denote a simple file or directory, or it can indicate a more difficult object, such as a query to a database or a search engine.
-11. URLConnection- The URLConnection class in Java is an abstract class describing a connection of a resource as defined by a similar URL. The URLConnection class is used for assisting two distinct yet interrelated purposes. Firstly it provides control on interaction with a server(especially an HTTP server) than a URL class. Furthermore, with a URLConnection, a user can verify the header transferred by the server and can react consequently. A user can also configure header fields used in client requests using URLConnection.
+4. Proxy- A proxy is a changeless object and a kind of tool or method or program or system, which serves to preserve the data of its users and computers. It behaves like a wall between computers and internet users. A Proxy Object represents the Proxy settings to be applied with a connection.
+5. URL- The URL class in Java is the entry point to any available sources on the internet. A Class URL describes a Uniform Resource Locator, which is a signal to a “resource” on the World Wide Web. A source can denote a simple file or directory, or it can indicate a more difficult object, such as a query to a database or a search engine.
+6. URLConnection- The URLConnection class in Java is an abstract class describing a connection of a resource as defined by a similar URL. The URLConnection class is used for assisting two distinct yet interrelated purposes. Firstly it provides control on interaction with a server(especially an HTTP server) than a URL class. Furthermore, with a URLConnection, a user can verify the header transferred by the server and can react consequently. A user can also configure header fields used in client requests using URLConnection.
 
 The java.net package includes various interfaces also that provide an easy-to-use means to access network resources. The interfaces included in the java.net package are as follows:-
 
@@ -107,171 +86,95 @@ The java.net package includes various interfaces also that provide an easy-to-us
 5. SocketImplFactory- The SocketImplFactory interface defines a factory for SocketImpl instances. It is used by the socket class to create socket implementations that implement various policies.
 6. ProtocolFamily- This interface represents a family of communication protocols. The ProtocolFamily interface contains a method known as name(), which returns the name of the protocol family.
 
-## URI(Uniform Resource Identifier)
+**Addresses** - Addresses are used throughout the java.net APIs as either host identifiers, or socket endpoint identifiers.
 
-`URI`:- This class provides constructors for creating URI instances from their components or by parsing their string forms, methods for accessing the various components of an instance, and methods for normalizing, resolving, and relativizing URI instances. Instances of this class are immutable.
+_The InetAddress Class_:- The InetAddress class is used to encapsulate both the numerical IP address and the domain name for the address. You interact with this class by using the name of an IP host, which is more convenient and understandable than its IP address. The InetAddress class hides the number inside. InetAddress can handle both IPv4 and IPv6 addresses.
+An instance of an InetAddress consists of an IP address and possibly its corresponding host name (depending on whether it is constructed with a host name or whether it has already done reverse host name resolution).
 
-## URL
+Java includes support for both IPv4 and IPv6 addresses. Because of this, two subclasses of InetAddress were created: Inet4Address and Inet6Address.
+`Inet4Address` represents a traditional-style IPv4 address. `Inet6Address` encapsulates a newer IPv6 address. Because they are subclasses of InetAddress, an InetAddress reference can refer to either. This is one way that Java was able to add IPv6 functionality without breaking existing code or adding many more classes. For the most part, you can simply use InetAddress when working with IP addresses because it can accommodate both styles.
 
-The URL class in Java is the entry point to any available sources on the internet. A Class URL describes a Uniform Resource Locator, which is a signal to a “resource” on the World Wide Web. A source can denote a simple file or directory, or it can indicate a more difficult object, such as a query to a database or a search engine. URL is a string of text that recognizes all the sources on the Internet, showing us the address of the source, how to interact with it, and recover something from it.
+_Factory Methods_ - The InetAddress class has no visible constructors. To create an InetAddress object, you have to use one of the available factory methods. Factory methods are merely a convention whereby static methods in a class return an instance of that class. This is done in lieu of overloading a constructor with various parameter lists when having unique method names makes the results much clearer.
 
-#### Components of a URL
+- Static method `getByName` of this class uses DNS (Domain Name System) to return the Internet address of a specified host name as an InetAddress object. In order to display the IP address from this object, we can simply use method println (which will cause the object’s toString method to be executed).
+- InetAddress also includes the factory method `getByAddress( )`, which takes an IP address and returns an InetAddress object. Either an IPv4 or an IPv6 address can be used.
+- The `getLocalHost( ) method` simply returns the InetAddress object that represents the local host.
 
-A URL can have many forms. The most general however follows a three-components system-  
- > Protocol – The protocol in a URL defines how information is transported among the host and a client (or web browser).
- > Hostname – The hostname is the name of the device on which the resource exists.
- > File Name – The filename is the pathname to the file on the device.
- > Port Number – The port number is used to identify different applications uniquely. It is typically optional.
+If these methods are unable to resolve the host name, they throw an UnknownHostException.
 
- InetAddress: Used to represent an IP address.
-
-```java
-import java.net.*;
-
-public class InetAddressExample {
-    public static void main(String[] args) throws Exception {
-        InetAddress address = InetAddress.getByName("www.google.com");
-        System.out.println("IP Address: " + address.getHostAddress());
-        System.out.println("Host Name: " + address.getHostName());
-    }
-}
-```
-
-DatagramSocket (UDP): For sending and receiving datagrams.
-
-Sender:
+The server program can use the InetAddress class to obtain the information about the IP address and host name for the client.Occasionally, you would like to know who is connecting to the server. You can use the InetAddress class to find the client’s host name and IP address. The InetAddress class models an IP address. You can use the following statement in the server program to get an instance of InetAddress on a socket that connects to the client.
 
 ```java
-import java.net.*;
+InetAddress inetAddress = socket.getInetAddress();
+System.out.println("Client's IP Address is " + inetAddress.getHostAddress());
 
-public class UDPSender {
-    public static void main(String[] args) throws Exception {
-        DatagramSocket socket = new DatagramSocket();
-        String message = "Hello, UDP Receiver!";
-        InetAddress address = InetAddress.getByName("localhost");
-        DatagramPacket packet = new DatagramPacket(message.getBytes(), message.length(), address, 5000);
-        socket.send(packet);
-        socket.close();
-    }
-}
+InetAddress address = InetAddress.getByName("liang.armstrong.edu");
 ```
 
-Receiver:
+**Sockets** - The Java API provides the classes for creating sockets to facilitate program communications over the Internet.Java Socket programming is used for communication between the applications running on different JRE. Java Socket programming can be connection-oriented or connection-less.
 
-```java
-import java.net.*;
-
-public class UDPReceiver {
-    public static void main(String[] args) throws Exception {
-        DatagramSocket socket = new DatagramSocket(5000);
-        byte[] buffer = new byte[1024];
-        DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-
-        socket.receive(packet);
-        String message = new String(packet.getData(), 0, packet.getLength());
-        System.out.println("Received: " + message);
-
-        socket.close();
-    }
-}
-```
-
-## Client/Server Computing
-
-Networking is tightly integrated in Java. The Java API provides the classes for creating sockets to facilitate program communications over the Internet.
-Network programming usually involves a server and one or more clients. The client sends requests to the server, and the server responds. The client begins by attempting to establish a connection to the server. The server can accept or deny the connection. Once a connection is established, the client and the server communicate through sockets.
-The server must be running when a client attempts to connect to the server. The server waits for a connection request from the client.
-Java Socket programming is used for communication between the applications running on different JRE. Java Socket programming can be connection-oriented or connection-less.
+Network programming usually involves a server and one or more clients. The client sends requests to the server, and the server responds. The client begins by attempting to establish a connection to the server. The server can accept or deny the connection. Once a connection is established, the client and the server communicate through sockets.The server must be running when a client attempts to connect to the server. The server waits for a connection request from the client.
 
 Sockets are the endpoints of logical connections between two hosts and can be used to send and receive data. Java treats socket communications much as it treats I/O operations; thus, programs can read from or write to sockets as easily as they can read from or write to files.
+Java implements both TCP/IP sockets and datagram sockets (UDP sockets).
+
+_TCP Sockets_ - A communication link created via TCP/IP sockets is a connection-orientated link.This means that the connection between server and client remains open throughout the duration of the dialogue between the two and is only broken (under normal circumstances) when one end of the dialogue formally terminates the exchanges (via an agreed protocol).
 Java provides the `ServerSocket` class for creating a server socket and the `Socket` class for creating a client socket. Two programs on the Internet communicate through a server socket and a client socket using I/O streams.
 
-Socket and ServerSocket classes are used for connection-oriented socket programming and DatagramSocket and DatagramPacket classes are used for connection-less socket programming.
+`Server Sockets`:-To establish a server, you need to create a server socket and attach it to a port, which is where the server listens for connections. The port identifies the TCP service on the socket. Port numbers range from 0 to 65536, but port numbers 0 to 1024 are reserved for privileged services.
 
+The server creates a server socket and, once a connection to a client is established, connects to the client with a client socket.A server socket waits for requests to come in over the network. It performs some operation based on that request, and then possibly returns a result to the requester.The actual work of the server socket is performed by an instance of the SocketImpl class.The ServerSocket class defines convenience methods to set and get several socket options. This class also defines the setOption and getOption methods to set and query socket options.
 
-**Server Sockets**:-To establish a server, you need to create a server socket and attach it to a port, which is where the server listens for connections. The port identifies the TCP service on the socket. Port numbers range from 0 to 65536, but port numbers 0 to 1024 are reserved for privileged services.
-
-A server socket waits for requests to come in over the network. It performs some operation based on that request, and then possibly returns a result to the requester.
-The actual work of the server socket is performed by an instance of the SocketImpl class.The ServerSocket class defines convenience methods to set and get several socket options. This class also defines the setOption and getOption methods to set and query socket options.
-
-The server creates a server socket and, once a connection to a client is established, connects to the client with a client socket.
-For instance, the email server runs on port 25, and the Web server usually runs on port 80.You can choose any port number that is not currently used by other programs. The following statement creates a server socket serverSocket:
-
-```java
-ServerSocket serverSocket = new ServerSocket(port);
-```
+- Server Socket- The ServerSocket class is used for implementing system-independent implementation of the server-side of a client/server Socket Connection. The constructor for ServerSocket class throws an exception if it can’t listen on the specified port. For example – it will throw an exception if the port is already being used.
+- Socket- The Socket class is used to create socket objects that help the users in implementing all fundamental socket operations. The users can implement various networking actions such as sending, reading data, and closing connections. Each Socket object built using java.net.Socket class has been connected exactly with 1 remote host; for connecting to another host, a user must create a new socket object.
 
 NOTE:- Attempting to create a server socket on a port already in use would cause a java.net.BindException.
 
-
 For every client connecting to server a new socket is created.
 
-1. Create a server socket on a port, e.g.,8000, using the following statement.
-2. Create a socket to connect to a client,using the following statement.
-3. A client program uses the following statement to connect to the server.
+1. Create a server socket object a port. The ServerSocket constructor requires a port number (1024–65535, for non-reserved ones) as an argument., e.g.,8000.
+2. Put the server into a waiting state.The server waits indefinitely (‘blocks’) for a client to connect. It does this by calling method accept of class ServerSocket, which returns a Socket object when a connection is made.
+3. Set up input and output streams.Methods getInputStream and getOutputStream of class Socket are used to get references to streams associated with the socket returned in step 2. These streams will be used for communication with the client that has just made connection.Similarly, we can wrap a PrintWriter object around the OutputStream object returned by method getOutputStream. Supplying the PrintWriter constructor with a second argument of true will cause the output buffer to be flushed for every call of println (which is usually desirable).
+4. Close the connection (after completion of the dialogue).This is achieved via method close of class Socket.
 
 ```java
 ServerSocket serverSocket = new ServerSocket(8000);
 Socket socket =serverSocket.accept();
-
-Socket socket = new Socket(serverHost, 8000);
+Scanner input = new Scanner(socket.getInputStream());
+String input = input.nextLine();
+PrintWriter output = new PrintWriter(socket.getOutputStream(),true);
+socket.close();
 ```
 
+`Client Sockets`: - The client in socket programming must know two information:- IP Address of Server and Port number.
 
-**Client Sockets**:-After a server socket is created, the server can use the following statement to listen for connections:
+1. Establish a connection to the server.We create a Socket object, supplying its constructor with the following two arguments:- the server’s IP address (of type InetAddress); the appropriate port number for the service.
+2. Set up input and output streams.These are set up in exactly the same way as the server streams were set up (by calling methods getInputStream and getOutputStream of the Socket object)
+3. Close the connection.This is exactly the same as for the server process (using method close of class Socket).
+
+Alternatively, you can use the domain name to create a socket.When you create a socket with a host name, the JVM asks the DNS to translate the host name into the IP address.
 
 ```java
-Socket socket = new Socket(serverName, port);
+Socket socket = new Socket(InetAddress.geLocalHost(), 8000)
+Socket socket = new Socket("kali/localhost", 8000);
 ```
-
-
-```java
-Socket socket = serverSocket.accept();
-```
-
-This statement waits until a client connects to the server socket. The client issues the following statement to request a connection to a server:
-connect to client
-
-The client in socket programming must know two information:
-
-1. IP Address of Server
-2. Port number.
-
-
-This statement opens a socket so that the client program can communicate with the server.serverName is the server’s Internet host name or IP address. The following statement creates a socket on the client machine to connect to the host 130.254.204.33 at port 8000:
-
-```java
-Socket socket = new Socket("130.254.204.33", 8000)
-```
-
-Alternatively, you can use the domain name to create a socket, as follows:
-
-```java
-Socket socket = new Socket("liang.armstrong.edu", 8000);
-```
-
-When you create a socket with a host name, the JVM asks the DNS to translate the host name into the IP address.
 
 NOTE:- A program can use the host name localhost or the IP address 127.0.0.1 to refer to the machine on which a client is running.
 
 If the server is not running, the client program terminates with a java.net.ConnectException. After it is connected, the client gets input and output streams—wrapped by data input and output streams—in order to receive and send data to the server.
 
-**Data Transmission through Sockets**:- After the server accepts the connection, communication between the server and the client is conducted in the same way as for I/O streams. The statements needed to create the streams and to exchange data between them.
+`Data Transmission through Sockets`:- After the server accepts the connection, communication between the server and the client is conducted in the same way as for I/O streams. The statements needed to create the streams and to exchange data between them.
 
-To get an input stream and an output stream, use the getInputStream() and getOutputStream() methods on a socket object. For example, the following statements
-create an InputStream stream called input and an OutputStream stream called output from a socket:
+To get an input stream and an output stream, use the getInputStream() and getOutputStream() methods on a socket object. For example, the following statements create an InputStream stream called input and an OutputStream stream called output from a socket:
 
 ```java
 InputStream input = socket.getInputStream();
 OutputStream output = socket.getOutputStream();
 ```
 
-The InputStream and OutputStream streams are used to read or write bytes. You can use DataInputStream, DataOutputStream, BufferedReader, and PrintWriter to
-wrap on the InputStream and OutputStream to read or write data, such as int, double, or String. The following statements, for instance, create the DataInputStream stream
-input and the DataOutput stream output to read and write primitive data values:
+The InputStream and OutputStream streams are used to read or write bytes. You can use DataInputStream, DataOutputStream, BufferedReader, and PrintWriter to wrap on the InputStream and OutputStream to read or write data, such as int, double, or String. The following statements, for instance, create the DataInputStream stream input and the DataOutput stream output to read and write primitive data values:
 
 ```java
-
 DataOutputStream output = new DataOutputStream(socket.getOutputStream());
 ```
 
@@ -279,44 +182,7 @@ The server can use input.readDouble() to receive a double value from the client 
 
 Recall that binary I/O is more efficient than text I/O because text I/O requires encoding and decoding. Therefore, it is better to use binary I/O for transmitting data between a server and a client to improve performance
 
-**The InetAddress Class**:- The InetAddress class is used to encapsulate both the numerical IP address and the domain name for that address. You interact with this class by using the name of an IP host, which is more convenient and understandable than its IP address. The InetAddress class hides the number inside. InetAddress can handle both IPv4 and IPv6 addresses.
-
-This class represents an Internet Protocol (IP) address.
-An IP address is either a 32-bit or 128-bit unsigned number used by IP, a lower-level protocol on which protocols like UDP and TCP are built.
-An instance of an InetAddress consists of an IP address and possibly its corresponding host name (depending on whether it is constructed with a host name or whether it has already done reverse host name resolution).
-
-`Factory Methods` - The InetAddress class has no visible constructors. To create an InetAddress object, you have to use one of the available factory methods. Factory methods are merely a convention whereby static methods in a class return an instance of that class. This is done in lieu of overloading a constructor with various parameter lists when having unique method names makes the results much clearer. Three commonly used InetAddress factory methods are shown here:
-
-```java
-static InetAddress getLocalHost( ) throws UnknownHostException
-static InetAddress getByName(String hostName) throws UnknownHostException
-static InetAddress[ ] getAllByName(String hostName) throws UnknownHostException
-```
-
-The getLocalHost( ) method simply returns the InetAddress object that represents the local host. The getByName( ) method returns an InetAddress for a host name passed to it. If these methods are unable to resolve the host name, they throw an UnknownHostException.
-
-InetAddress also includes the factory method getByAddress( ), which takes an IP address and returns an InetAddress object. Either an IPv4 or an IPv6 address can be used.
-
-The server program can use the InetAddress class to obtain the information about the IP address and host name for the client.
-Occasionally, you would like to know who is connecting to the server. You can use the InetAddress class to find the client’s host name and IP address. The InetAddress class
-models an IP address. You can use the following statement in the server program to get an instance of InetAddress on a socket that connects to the client.
-
-```java
-InetAddress inetAddress = socket.getInetAddress();
-System.out.println("Client's IP Address is " + inetAddress.getHostAddress());
-```
-
-You can also create an instance of InetAddress from a host name or IP address using the static getByName method. For example, the following statement creates an InetAddress
-for the host liang.armstrong.edu.
-
-```java
-InetAddress address = InetAddress.getByName("liang.armstrong.edu");
-```
-
-Java includes support for both IPv4 and IPv6 addresses. Because of this, two subclasses of InetAddress were created: Inet4Address and Inet6Address. Inet4Address represents a
-traditional-style IPv4 address. Inet6Address encapsulates a newer IPv6 address. Because they are subclasses of InetAddress, an InetAddress reference can refer to either. This is one way that Java was able to add IPv6 functionality without breaking existing code or adding many more classes. For the most part, you can simply use InetAddress when working with IP addresses because it can accommodate both styles.
-
-**Serving Multiple Clients**:-A server can serve multiple clients. The connection to each client is handled by one thread.
+`Serving Multiple Clients`:-A server can serve multiple clients. The connection to each client is handled by one thread.
 Multiple clients are quite often connected to a single server at the same time. Typically, a server runs continuously on a server computer, and clients from all over the Internet can connect to it. You can use threads to handle the server’s multiple clients simultaneously—simply create a thread for each connection. Here is how the server handles the establishment of a connection:
 
 ```java
@@ -329,33 +195,18 @@ thread.start();
 
 The server socket can have many connections. Each iteration of the while loop creates a new connection. Whenever a connection is established, a new thread is created to handle communication between the server and the new client, and this allows multiple connections to run at the same time.
 
-## Socket Class
+_UDP Sockets_ - Unlike TCP/IP sockets, datagram sockets are connectionless. That is to say, the connection between client and server is not maintained throughout the duration of the dialogue. Instead, each datagram packet is sent as an isolated transmission whenever necessary.Datagram (UDP) sockets provide a (usually) faster means of transmitting data than TCP/IP sockets, but they are unreliable.
 
-A socket is simply an endpoint for communications between the machines. The Socket class can be used to create a socket.
+Since the connection is not maintained between transmissions, the server does not create an individual Socket object for each client, as it did in our TCP/IP example. A further difference from TCP/IP sockets is that, instead of a ServerSocket object, the server creates a `DatagramSocket` object, as does each client when it wants to send datagram(s) to the server. The final and most significant difference is that `DatagramPacket` objects are created and sent at both ends, rather than simple strings.
 
-**Important methods :**
+- DatagramPacket- The DatagramPacket class is used to provide a facility for the connectionless transfer of messages from one system to another. This class provides tools for the production of datagram packets for connectionless transmission applying the datagram socket class.
+- DatagramSocket- The DatagramSocket class is a network socket that provides a connection-less point for sending and receiving packets. Every packet sent from a datagram socket is individually routed and delivered. It can further be practiced for transmitting and accepting broadcast information. Datagram Sockets is Java’s mechanism for providing network communication via UDP instead of TCP.
 
-- void connect(SocketAddress host, int timeout)|connects the socket to the particularized host|
-- int getPort()|returns the port to which the socket is pinned on the remote machine|
-- InetAddress getInetAddress()|returns the location of the other computer to which the socket is connected|
-- int getLocalPort()|returns the port to which the socket is joined on the local machine|
-- SocketAddress getRemoteSocketAddress()|returns the location of the remote socket|
-- InputStream getInputStream()|returns the input stream of the socket|
-- OutputStream getOutputStream()|returns the output stream of the socket|
-- synchronized void close()|closes the socket|
-
-### ServerSocket Class
-
-The ServerSocket class can be used to create a server socket. This object is used to establish communication with the clients.
-
-**Important methods :**
-
-- int getLocalPort()|returns the port that the server socket is monitoring on|
-- void setSoTimeout(int timeout)|sets the time-out in which the server socket pauses for a client during the accept() method|
-- Socket accept()|waits for an incoming client; returns the socket and establish a connection between server and client|
-- void bind(SocketAddress host, int backlog)|bind the socket to the particularized server and port in the object of SocketAddress|
-- synchronized void close()|closes the server socket|
-
+1. Create a DatagramSocket object.Just as for the creation of a ServerSocket object, this means supplying the object’s constructor with the port number.
+2. Create a buffer for incoming datagrams.This is achieved by creating an array of bytes.
+3. Create a DatagramPacket object for the incoming datagrams.The constructor for this object requires two arguments: the previously-created byte array; the size of this array.
+4. Accept an incoming datagram.This is effected via the receive method of our DatagramSocket object, using our DatagramPacket object as the receptacle.
+5. Accept the sender’s address and port from the packet.Methods getAddress and getPort of our DatagramPacket object are used for this.
 
 ## Networking Libraries in Java
 
@@ -381,15 +232,15 @@ What OkHttp Offers Beyond Java 21:
 
 Better HTTP/2 support: OkHttp has fine-tuned HTTP/2 support, including connection multiplexing, header compression, and the ability to make use of features like server push.
 HTTP/3 support: OkHttp fully supports HTTP/3 (over QUIC protocol), which Java’s native HttpClient does not support out of the box (though Java 21 introduces experimental HTTP/3 support).
-    WebSockets: OkHttp has a robust WebSocket implementation, which Java's native HTTP client only partially supports with its WebSocket API in Java 11+.
-    Interceptors: OkHttp’s interceptor mechanism allows for request and response modifications, logging, and custom authentication in a cleaner, more flexible way than Java's native HttpClient.
-    Connection pooling and retries: OkHttp manages connections more efficiently with connection pooling and automatic retries for failed requests, which isn't as straightforward in Java's HttpClient.
+WebSockets: OkHttp has a robust WebSocket implementation, which Java's native HTTP client only partially supports with its WebSocket API in Java 11+.
+Interceptors: OkHttp’s interceptor mechanism allows for request and response modifications, logging, and custom authentication in a cleaner, more flexible way than Java's native HttpClient.
+Connection pooling and retries: OkHttp manages connections more efficiently with connection pooling and automatic retries for failed requests, which isn't as straightforward in Java's HttpClient.
 
 When to Use OkHttp Over Java 21’s HttpClient:
 
 Advanced features like connection pooling, retry strategies, interceptors for logging or adding custom headers, and WebSockets.
 If you're targeting HTTP/3 (OkHttp offers full HTTP/3 support, whereas Java's support is still experimental).
-    More control over low-level details like connection management or network configurations.
+More control over low-level details like connection management or network configurations.
 
 Using OkHttp with Java 21:
 
@@ -445,9 +296,6 @@ Java 21 provides solid support for HTTP/2 and HTTP/3 (experimental), making it a
 OkHttp, however, is still a better choice for advanced features like connection pooling, HTTP/3 support, WebSockets, interceptors, and more granular control over the networking behavior.
 If you're working on complex, performance-sensitive applications or need full HTTP/3 and WebSocket support, OkHttp is likely the better choice, even in Java 21.
 
-
-
-
 Networking Basics
 Computers running on the Internet communicate to each other using either the Transmission Control Protocol (TCP) or the User Datagram Protocol (UDP), as this diagram illustrates:
 
@@ -463,7 +311,7 @@ TCP provides a point-to-point channel for applications that require reliable com
 UDP
 The UDP protocol provides for communication that is not guaranteed between two applications on the network. UDP is not connection-based like TCP. Rather, it sends independent packets of data, called datagrams, from one application to another. Sending datagrams is much like sending a letter through the postal service: The order of delivery is not important and is not guaranteed, and each message is independent of any other.
 
-Definition: 
+Definition:
 UDP (User Datagram Protocol) is a protocol that sends independent packets of data, called datagrams, from one computer to another with no guarantees about arrival. UDP is not connection-based like TCP.
 
 For many applications, the guarantee of reliability is critical to the success of the transfer of information from one end of the connection to the other. However, other forms of communication don't require such strict standards. In fact, they may be slowed down by the extra overhead or the reliable connection may invalidate the service altogether.
@@ -474,7 +322,7 @@ Another example of a service that doesn't need the guarantee of a reliable chann
 
 The UDP protocol provides for communication that is not guaranteed between two applications on the network. UDP is not connection-based like TCP. Rather, it sends independent packets of data from one application to another. Sending datagrams is much like sending a letter through the mail service: The order of delivery is not important and is not guaranteed, and each message is independent of any others.
 
-Note: 
+Note:
 Many firewalls and routers have been configured not to allow UDP packets. If you're having trouble connecting to a service outside your firewall, or if clients are having trouble connecting to your service, ask your system administrator if UDP is permitted.
 
 Understanding Ports
@@ -485,7 +333,7 @@ Data transmitted over the Internet is accompanied by addressing information that
 In connection-based communication such as TCP, a server application binds a socket to a specific port number. This has the effect of registering the server with the system to receive all data destined for that port. A client can then rendezvous with the server at the server's port, as illustrated here:
 
 A client communicating to a server through its port
-Definition: 
+Definition:
 The TCP and UDP protocols use ports to map incoming data to a particular process running on a computer.
 
 In datagram-based communication such as UDP, the datagram packet contains the port number of its destination and UDP routes the packet to the appropriate application, as illustrated in this figure:
@@ -496,7 +344,75 @@ Port numbers range from 0 to 65,535 because ports are represented by 16-bit numb
 Networking Classes in the JDK
 Through the classes in java.net, Java programs can use TCP or UDP to communicate over the Internet. The URL, URLConnection, Socket, and ServerSocket classes all use TCP to communicate over the network. The DatagramPacket, DatagramSocket, and MulticastSocket classes are for use with UDP.
 
+## URI(Uniform Resource Identifier)
 
+`URI`:- This class provides constructors for creating URI instances from their components or by parsing their string forms, methods for accessing the various components of an instance, and methods for normalizing, resolving, and relativizing URI instances. Instances of this class are immutable.
+
+## URL
+
+The URL class in Java is the entry point to any available sources on the internet. A Class URL describes a Uniform Resource Locator, which is a signal to a “resource” on the World Wide Web. A source can denote a simple file or directory, or it can indicate a more difficult object, such as a query to a database or a search engine. URL is a string of text that recognizes all the sources on the Internet, showing us the address of the source, how to interact with it, and recover something from it.
+
+#### Components of a URL
+
+A URL can have many forms. The most general however follows a three-components system-
+
+> Protocol – The protocol in a URL defines how information is transported among the host and a client (or web browser).
+> Hostname – The hostname is the name of the device on which the resource exists.
+> File Name – The filename is the pathname to the file on the device.
+> Port Number – The port number is used to identify different applications uniquely. It is typically optional.
+
+InetAddress: Used to represent an IP address.
+
+```java
+import java.net.*;
+
+public class InetAddressExample {
+    public static void main(String[] args) throws Exception {
+        InetAddress address = InetAddress.getByName("www.google.com");
+        System.out.println("IP Address: " + address.getHostAddress());
+        System.out.println("Host Name: " + address.getHostName());
+    }
+}
+```
+
+DatagramSocket (UDP): For sending and receiving datagrams.
+
+Sender:
+
+```java
+import java.net.*;
+
+public class UDPSender {
+    public static void main(String[] args) throws Exception {
+        DatagramSocket socket = new DatagramSocket();
+        String message = "Hello, UDP Receiver!";
+        InetAddress address = InetAddress.getByName("localhost");
+        DatagramPacket packet = new DatagramPacket(message.getBytes(), message.length(), address, 5000);
+        socket.send(packet);
+        socket.close();
+    }
+}
+```
+
+Receiver:
+
+```java
+import java.net.*;
+
+public class UDPReceiver {
+    public static void main(String[] args) throws Exception {
+        DatagramSocket socket = new DatagramSocket(5000);
+        byte[] buffer = new byte[1024];
+        DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
+
+        socket.receive(packet);
+        String message = new String(packet.getData(), 0, packet.getLength());
+        System.out.println("Received: " + message);
+
+        socket.close();
+    }
+}
+```
 
 **URLs**:- URL is the acronym for Uniform Resource Locator. It is a reference (an address) to a resource on the Internet. You provide URLs to your favorite Web browser so that it can locate files on the Internet in the same way that you provide addresses on letters so that the post office can locate your correspondents.
 Java programs that interact with the Internet also may use URLs to find the resources on the Internet they wish to access. Java programs can use a class called URL in the java.net package to represent a URL address.
@@ -519,10 +435,11 @@ Some URLs, such as many that are connected to cgi-bin scripts, allow you to (or 
 
 It's often easiest, although not entirely accurate, to think of a URL as the name of a file on the World Wide Web because most URLs refer to a file on some machine on the network. However, remember that URLs also can point to other resources on the network, such as database queries and command output.
 
-Definition: 
+Definition:
 URL is an acronym for Uniform Resource Locator and is a reference (an address) to a resource on the Internet.
 
 A URL has two main components:
+
 1. Protocol identifier: For the URL http://example.com, the protocol identifier is http.
 2. Resource name: For the URL http://example.com, the resource name is example.com.
 
@@ -587,7 +504,7 @@ The first argument is the protocol, the second is the host name, and the last is
 
 The final URL constructor adds the port number to the list of arguments used in the previous constructor:
 
-URL gamelan = new URL("http", "example.com", 80, "pages/page1.html"); 
+URL gamelan = new URL("http", "example.com", 80, "pages/page1.html");
 This creates a URL object for the following URL:
 
 http://example.com:80/pages/page1.html
@@ -610,15 +527,14 @@ MalformedURLException
 Each of the four URL constructors throws a MalformedURLException if the arguments to the constructor refer to a null or unknown protocol. Typically, you want to catch and handle this exception by embedding your URL constructor statements in a try/catch pair, like this:
 
 try {
-    URL myURL = new URL(...);
-} 
-catch (MalformedURLException e) {
-    // exception handler code here
-    // ...
+URL myURL = new URL(...);
 }
-Note: 
+catch (MalformedURLException e) {
+// exception handler code here
+// ...
+}
+Note:
 URLs are "write-once" objects. Once you've created a URL object, you cannot change any of its attributes (protocol, host name, filename, or port number).
-
 
 Parsing a URL
 The URL class provides several methods that let you query URL objects. You can get the protocol, authority, host name, port number, path, query, filename, and reference from a URL using these accessor methods:
@@ -639,18 +555,18 @@ getFile
 Returns the filename component of the URL. The getFile method returns the same as getPath, plus the concatenation of the value of getQuery, if any.
 getRef
 Returns the reference component of the URL.
-Note: 
+Note:
 Remember that not all URL addresses contain these components. The URL class provides these methods because HTTP URLs do contain these components and are perhaps the most commonly used URLs. The URL class is somewhat HTTP-centric.
 
 You can use these getXXX methods to get information about the URL regardless of the constructor that you used to create the URL object.
 
 The URL class, along with these accessor methods, frees you from ever having to parse URLs again! Given any string specification of a URL, just create a new URL object and call any of the accessor methods for the information you need. This small example program creates a URL from a string specification and then uses the URL object's accessor methods to parse the URL:
 
-import java.net.*;
-import java.io.*;
+import java.net._;
+import java.io._;
 
 public class ParseURL {
-    public static void main(String[] args) throws Exception {
+public static void main(String[] args) throws Exception {
 
         URL aURL = new URL("http://example.com:80/docs/books/tutorial"
                            + "/index.html?name=networking#DOWNLOADING");
@@ -664,6 +580,7 @@ public class ParseURL {
         System.out.println("filename = " + aURL.getFile());
         System.out.println("ref = " + aURL.getRef());
     }
+
 }
 Here is the output displayed by the program:
 
@@ -676,18 +593,16 @@ query = name=networking
 filename = /docs/books/tutorial/index.html?name=networking
 ref = DOWNLOADING
 
-
-
 Reading Directly from a URL
 After you've successfully created a URL, you can call the URL's openStream() method to get a stream from which you can read the contents of the URL. The openStream() method returns a java.io.InputStream object, so reading from a URL is as easy as reading from an input stream.
 
 The following small Java program uses openStream() to get an input stream on the URL http://www.oracle.com/. It then opens a BufferedReader on the input stream and reads from the BufferedReader thereby reading from the URL. Everything read is copied to the standard output stream:
 
-import java.net.*;
-import java.io.*;
+import java.net._;
+import java.io._;
 
 public class URLReader {
-    public static void main(String[] args) throws Exception {
+public static void main(String[] args) throws Exception {
 
         URL oracle = new URL("http://www.oracle.com/");
         BufferedReader in = new BufferedReader(
@@ -698,10 +613,9 @@ public class URLReader {
             System.out.println(inputLine);
         in.close();
     }
+
 }
 When you run the program, you should see, scrolling by in your command window, the HTML commands and textual content from the HTML file located at http://www.oracle.com/. Alternatively, the program might hang or you might see an exception stack trace. If either of the latter two events occurs, you may have to set the proxy host so that the program can find the Oracle server.
-
-
 
 Connecting to a URL
 After you've successfully created a URL object, you can call the URL object's openConnection method to get a URLConnection object, or one of its protocol specific subclasses, for example java.net.HttpURLConnection
@@ -709,25 +623,23 @@ After you've successfully created a URL object, you can call the URL object's op
 You can use this URLConnection object to setup parameters and general request properties that you may need before connecting. Connection to the remote object represented by the URL is only initiated when the URLConnection.connect method is called. When you do this you are initializing a communication link between your Java program and the URL over the network. For example, the following code opens a connection to the site example.com:
 
 try {
-    URL myURL = new URL("http://example.com/");
-    URLConnection myURLConnection = myURL.openConnection();
-    myURLConnection.connect();
-} 
-catch (MalformedURLException e) { 
-    // new URL() failed
-    // ...
-} 
-catch (IOException e) {   
-    // openConnection() failed
-    // ...
+URL myURL = new URL("http://example.com/");
+URLConnection myURLConnection = myURL.openConnection();
+myURLConnection.connect();
+}
+catch (MalformedURLException e) {
+// new URL() failed
+// ...
+}
+catch (IOException e) {  
+ // openConnection() failed
+// ...
 }
 A new URLConnection object is created every time by calling the openConnection method of the protocol handler for this URL.
 
 You are not always required to explicitly call the connect method to initiate the connection. Operations that depend on being connected, like getInputStream, getOutputStream, etc, will implicitly perform the connection, if necessary.
 
 Now that you've successfully connected to your URL, you can use the URLConnection object to perform actions such as reading from or writing to the connection. The next section shows you how.
-
-
 
 Reading from and Writing to a URLConnection
 The URLConnection class contains many methods that let you communicate with the URL over the network. URLConnection is an HTTP-centric class; that is, many of its methods are useful only when you are working with HTTP URLs. However, most URL protocols allow you to read from and write to the connection. This section describes both functions.
@@ -737,20 +649,20 @@ The following program performs the same function as the URLReader program shown 
 
 However, rather than getting an input stream directly from the URL, this program explicitly retrieves a URLConnection object and gets an input stream from the connection. The connection is opened implicitly by calling getInputStream. Then, like URLReader, this program creates a BufferedReader on the input stream and reads from it. The bold statements highlight the differences between this example and the previous:
 
-import java.net.*;
-import java.io.*;
+import java.net._;
+import java.io._;
 
 public class URLConnectionReader {
-    public static void main(String[] args) throws Exception {
-        URL oracle = new URL("http://www.oracle.com/");
-        URLConnection yc = oracle.openConnection();
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                                    yc.getInputStream()));
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) 
-            System.out.println(inputLine);
-        in.close();
-    }
+public static void main(String[] args) throws Exception {
+URL oracle = new URL("http://www.oracle.com/");
+URLConnection yc = oracle.openConnection();
+BufferedReader in = new BufferedReader(new InputStreamReader(
+yc.getInputStream()));
+String inputLine;
+while ((inputLine = in.readLine()) != null)
+System.out.println(inputLine);
+in.close();
+}
 }
 The output from this program is identical to the output from the program that opens a stream directly from the URL. You can use either way to read from a URL. However, reading from a URLConnection instead of reading directly from a URL might be more useful. This is because you can use the URLConnection object for other tasks (like writing to the URL) at the same time.
 
@@ -776,11 +688,11 @@ The servlet running in a container reads from its InputStream, reverses the stri
 
 Here's an example program that runs the ReverseServlet over the network through a URLConnection:
 
-import java.io.*;
-import java.net.*;
+import java.io._;
+import java.net._;
 
 public class Reverse {
-    public static void main(String[] args) throws Exception {
+public static void main(String[] args) throws Exception {
 
         if (args.length != 2) {
             System.err.println("Usage:  java Reverse "
@@ -809,15 +721,14 @@ public class Reverse {
         }
         in.close();
     }
+
 }
 Let's examine the program and see how it works. First, the program processes its command-line arguments:
 
 if (args.length != 2) {
-    System.err.println("Usage:  java Reverse "
-        + "http://<location of your servlet/script>"
-        + " string_to_reverse");
-    System.exit(1);
-}       
+System.err.println("Usage: java Reverse " + "http://<location of your servlet/script>" + " string_to_reverse");
+System.exit(1);
+}
 
 String stringToReverse = URLEncoder.encode(args[1], "UTF-8");
 These statements ensure that the user provides two and only two command-line arguments to the program. The command-line arguments are the location of the ReverseServlet and the string that will be reversed. It may contain spaces or other non-alphanumeric characters. These characters must be encoded because the string is processed on its way to the server. The URLEncoder class methods encode the characters.
@@ -841,11 +752,11 @@ This code writes to the output stream using the write method. So you can see tha
 The servlet reads the information you write, performs a reverse operation on the string value, and then sends this back to you. You now need to read the string the server has sent back. The Reverse program does it like this:
 
 BufferedReader in = new BufferedReader(
-                            new InputStreamReader(
-                            connection.getInputStream()));
+new InputStreamReader(
+connection.getInputStream()));
 String decodedString;
 while ((decodedString = in.readLine()) != null) {
-    System.out.println(decodedString);
+System.out.println(decodedString);
 }
 in.close();
 If your ReverseServlet is located at http://example.com/servlet/ReverseServlet, then when you run the Reverse program using
@@ -854,11 +765,8 @@ http://example.com/servlet/ReverseServlet "Reverse Me"
 as the argument (including the double quote marks), you should see this output:
 
 Reverse Me
- reversed is: 
+reversed is:
 eM esreveR
-
-
-
 
 All About Sockets
 URLs and URLConnections provide a relatively high-level mechanism for accessing resources on the Internet. Sometimes your programs require lower-level network communication, for example, when you want to write a client-server application.
@@ -876,8 +784,6 @@ This page contains a small example that illustrates how a client program can rea
 Writing a Client/Server Pair
 The previous page showed an example of how to write a client program that interacts with an existing server via a Socket object. This page shows you how to write a program that implements the other side of the connection—a server program.
 
-
-
 What Is a Socket?
 Normally, a server runs on a specific computer and has a socket that is bound to a specific port number. The server just waits, listening to the socket for a client to make a connection request.
 
@@ -891,7 +797,7 @@ On the client side, if the connection is accepted, a socket is successfully crea
 
 The client and server can now communicate by writing to or reading from their sockets.
 
-Definition: 
+Definition:
 A socket is one endpoint of a two-way communication link between two programs running on the network. A socket is bound to a port number so that the TCP layer can identify the application that data is destined to be sent to.
 
 An endpoint is a combination of an IP address and a port number. Every TCP connection can be uniquely identified by its two endpoints. That way you can have multiple connections between your host and the server.
@@ -901,7 +807,6 @@ The java.net package in the Java platform provides a class, Socket, that impleme
 Additionally, java.net includes the ServerSocket class, which implements a socket that servers can use to listen for and accept connections to clients. This lesson shows you how to use the Socket and ServerSocket classes.
 
 If you are trying to connect to the Web, the URL class and related classes (URLConnection, URLEncoder) are probably more appropriate than the socket classes. In fact, URLs are a relatively high-level connection to the Web and use sockets as part of the underlying implementation. See Working with URLs for information about connecting to the Web via URLs.
-
 
 Reading from and Writing to a Socket
 Let's look at a simple example that illustrates how a program can establish a connection to a server program using the Socket class and then, how the client can send data to and receive data from the server through the socket.
@@ -918,15 +823,15 @@ String hostName = args[0];
 int portNumber = Integer.parseInt(args[1]);
 
 try (
-    Socket echoSocket = new Socket(hostName, portNumber);        // 1st statement
-    PrintWriter out =                                            // 2nd statement
-        new PrintWriter(echoSocket.getOutputStream(), true);
-    BufferedReader in =                                          // 3rd statement 
-        new BufferedReader(
-            new InputStreamReader(echoSocket.getInputStream()));
-    BufferedReader stdIn =                                       // 4th statement 
-        new BufferedReader(
-            new InputStreamReader(System.in))
+Socket echoSocket = new Socket(hostName, portNumber); // 1st statement
+PrintWriter out = // 2nd statement
+new PrintWriter(echoSocket.getOutputStream(), true);
+BufferedReader in = // 3rd statement
+new BufferedReader(
+new InputStreamReader(echoSocket.getInputStream()));
+BufferedReader stdIn = // 4th statement
+new BufferedReader(
+new InputStreamReader(System.in))
 )
 The first statement in the try-with resources statement creates a new Socket object and names it echoSocket. The Socket constructor used here requires the name of the computer and the port number to which you want to connect. The example program uses the first command-line argument as the name of the computer (the host name) and the second command line argument as the port number. When you run this program on your computer, make sure that the host name you use is the fully qualified IP name of the computer to which you want to connect. For example, if your echo server is running on the computer echoserver.example.com and it is listening on port number 7, first run the following command from the computer echoserver.example.com if you want to use the EchoServer example as your echo server:
 
@@ -940,8 +845,8 @@ The next interesting part of the program is the while loop. The loop reads a lin
 
 String userInput;
 while ((userInput = stdIn.readLine()) != null) {
-    out.println(userInput);
-    System.out.println("echo: " + in.readLine());
+out.println(userInput);
+System.out.println("echo: " + in.readLine());
 }
 The last statement in the while loop reads a line of information from the BufferedReader connected to the socket. The readLine method waits until the server echoes the information back to EchoClient. When readline returns, EchoClient prints the information to the standard output.
 
@@ -955,8 +860,6 @@ Read from and write to the stream according to the server's protocol.
 Close the streams.
 Close the socket.
 Only step 3 differs from client to client, depending on the server. The other steps remain largely the same.
-
-
 
 Writing the Server Side of a Socket
 This section shows you how to write a server and the client that goes with it. The server in the client/server pair serves up Knock Knock jokes. Knock Knock jokes are favored by children and are usually vehicles for bad puns. They go like this:
@@ -982,13 +885,13 @@ The server program creates the ServerSocket object in a try-with-resources state
 
 int portNumber = Integer.parseInt(args[0]);
 
-try ( 
-    ServerSocket serverSocket = new ServerSocket(portNumber);
-    Socket clientSocket = serverSocket.accept();
-    PrintWriter out =
-        new PrintWriter(clientSocket.getOutputStream(), true);
-    BufferedReader in = new BufferedReader(
-        new InputStreamReader(clientSocket.getInputStream()));
+try (
+ServerSocket serverSocket = new ServerSocket(portNumber);
+Socket clientSocket = serverSocket.accept();
+PrintWriter out =
+new PrintWriter(clientSocket.getOutputStream(), true);
+BufferedReader in = new BufferedReader(
+new InputStreamReader(clientSocket.getInputStream()));
 ) {
 ServerSocket is a java.net class that provides a system-independent implementation of the server side of a client/server socket connection. The constructor for ServerSocket throws an exception if it can't listen on the specified port (for example, the port is already being used). In this case, the KnockKnockServer has no choice but to exit.
 
@@ -1000,14 +903,14 @@ The accept method waits until a client starts up and requests a connection on th
 After the server successfully establishes a connection with a client, it communicates with the client using this code:
 
 try (
-    // ...
-    PrintWriter out =
-        new PrintWriter(clientSocket.getOutputStream(), true);
-    BufferedReader in = new BufferedReader(
-        new InputStreamReader(clientSocket.getInputStream()));
+// ...
+PrintWriter out =
+new PrintWriter(clientSocket.getOutputStream(), true);
+BufferedReader in = new BufferedReader(
+new InputStreamReader(clientSocket.getInputStream()));
 ) {
-    String inputLine, outputLine;
-            
+String inputLine, outputLine;
+
     // Initiate conversation with client
     KnockKnockProtocol kkp = new KnockKnockProtocol();
     outputLine = kkp.processInput(null);
@@ -1019,6 +922,7 @@ try (
         if (outputLine.equals("Bye."))
             break;
     }
+
 This code does the following:
 
 Gets the socket's input and output stream and opens readers and writers on them.
@@ -1048,10 +952,10 @@ String hostName = args[0];
 int portNumber = Integer.parseInt(args[1]);
 
 try (
-    Socket kkSocket = new Socket(hostName, portNumber);
-    PrintWriter out = new PrintWriter(kkSocket.getOutputStream(), true);
-    BufferedReader in = new BufferedReader(
-        new InputStreamReader(kkSocket.getInputStream()));
+Socket kkSocket = new Socket(hostName, portNumber);
+PrintWriter out = new PrintWriter(kkSocket.getOutputStream(), true);
+BufferedReader in = new BufferedReader(
+new InputStreamReader(kkSocket.getInputStream()));
 )
 When creating its socket, the KnockKnockClient example uses the host name of the first command-line argument, the name of the computer on your network that is running the server program KnockKnockServer.
 
@@ -1063,15 +967,16 @@ The client's socket is bound to any available local port—a port on the client 
 Next comes the while loop that implements the communication between the client and the server. The server speaks first, so the client must listen first. The client does this by reading from the input stream attached to the socket. If the server does speak, it says "Bye." and the client exits the loop. Otherwise, the client displays the text to the standard output and then reads the response from the user, who types into the standard input. After the user types a carriage return, the client sends the text to the server through the output stream attached to the socket.
 
 while ((fromServer = in.readLine()) != null) {
-    System.out.println("Server: " + fromServer);
-    if (fromServer.equals("Bye."))
-        break;
+System.out.println("Server: " + fromServer);
+if (fromServer.equals("Bye."))
+break;
 
     fromUser = stdIn.readLine();
     if (fromUser != null) {
         System.out.println("Client: " + fromUser);
         out.println(fromUser);
     }
+
 }
 The communication ends when the server asks if the client wishes to hear another joke, the client says no, and the server says "Bye."
 
@@ -1111,7 +1016,7 @@ Client: Who's there?
 Server: Turnip
 Turnip who?
 Client: Turnip who?
-Server: Turnip the heat, it's cold in here! Want another? (y/n)   
+Server: Turnip the heat, it's cold in here! Want another? (y/n)  
 If you want to hear another joke, type y; if not, type n. If you type y, the server begins again with "Knock! Knock!" If you type n, the server says "Bye." thus causing both the client and the server to exit.
 
 If at any point you make a typing mistake, the KnockKnockServer object catches it and the server responds with a message similar to this:
@@ -1128,15 +1033,13 @@ To keep the KnockKnockServer example simple, we designed it to listen for and ha
 The basic flow of logic in such a server is this:
 
 while (true) {
-    accept a connection;
-    create a thread to deal with the client;
+accept a connection;
+create a thread to deal with the client;
 }
 The thread reads from and writes to the client connection as necessary.
 
-Try This: 
+Try This:
 Modify the KnockKnockServer so that it can service multiple clients at the same time. Two classes compose our solution: KKMultiServer and KKMultiServerThread. KKMultiServer loops forever, listening for client connection requests on a ServerSocket. When a request comes in, KKMultiServer accepts the connection, creates a new KKMultiServerThread object to process it, hands it the socket returned from accept, and starts the thread. Then the server goes back to listening for connection requests. The KKMultiServerThread object communicates to the client by reading from and writing to the socket. Run the new Knock Knock server KKMultiServer and then run several clients in succession.
-
-
 
 Datagrams
 Some applications that you write to communicate over the network will not require the reliable, point-to-point channel provided by TCP. Rather, your applications might benefit from a mode of communication that delivers independent packages of information whose arrival and order of arrival are not guaranteed.
@@ -1152,7 +1055,7 @@ This section walks you through an example that contains two Java programs that u
 Broadcasting to Multiple Recipients
 This section modifies the quote server so that instead of sending a quotation to a single client upon request, the quote server broadcasts a quote every minute to as many clients as are listening. The client program must be modified accordingly.
 
-Note: 
+Note:
 Many firewalls and routers are configured not to allow UDP packets. If you have trouble connecting to a service outside your firewall, or if clients have trouble connecting to your service, ask your system administrator if UDP is permitted.
 
 Datagram?
@@ -1160,11 +1063,10 @@ Clients and servers that communicate via a reliable channel, such as a TCP socke
 
 In contrast, applications that communicate via datagrams send and receive completely independent packets of information. These clients and servers do not have and do not need a dedicated point-to-point channel. The delivery of datagrams to their destinations is not guaranteed. Nor is the order of their arrival.
 
-Definition: 
+Definition:
 A datagram is an independent, self-contained message sent over the network whose arrival, arrival time, and content are not guaranteed.
 
 The java.net package contains three classes to help you write Java programs that use datagrams to send and receive packets over the network: DatagramSocket, DatagramPacket, and MulticastSocketAn application can send and receive DatagramPackets through a DatagramSocket. In addition, DatagramPackets can be broadcast to multiple recipients all listening to a MulticastSocket.
-
 
 Datagram Client and Server
 The example featured in this section consists of two applications: a client and a server. The server continuously receives datagram packets over a datagram socket. Each datagram packet received by the server indicates a client request for a quotation. When the server receives a datagram, it replies by sending a datagram packet that contains a one-line "quote of the moment" back to the client.
@@ -1178,12 +1080,12 @@ Let's investigate these classes, starting with the class that contains the main 
 The QuoteServer Class
 The QuoteServer class, shown here in its entirety, contains a single method: the main method for the quote server application. The main method simply creates a new QuoteServerThread object and starts it:
 
-import java.io.*;
+import java.io.\*;
 
 public class QuoteServer {
-    public static void main(String[] args) throws IOException {
-        new QuoteServerThread().start();
-    }
+public static void main(String[] args) throws IOException {
+new QuoteServerThread().start();
+}
 }
 The QuoteServerThread class implements the main logic of the quote server.
 
@@ -1191,19 +1093,20 @@ The QuoteServerThread Class
 When created, the QuoteServerThread creates a DatagramSocket on port 4445 (arbitrarily chosen). This is the DatagramSocket through which the server communicates with all of its clients.
 
 public QuoteServerThread() throws IOException {
-    this("QuoteServer");
+this("QuoteServer");
 }
 
 public QuoteServerThread(String name) throws IOException {
-    super(name);
-    socket = new DatagramSocket(4445);
+super(name);
+socket = new DatagramSocket(4445);
 
     try {
         in = new BufferedReader(new FileReader("one-liners.txt"));
-    }   
+    }
     catch (FileNotFoundException e){
         System.err.println("Couldn't open quote file.  Serving time instead.");
     }
+
 }  
 Remember that certain ports are dedicated to well-known services and you cannot use them. If you specify a port that is in use, the creation of the DatagramSocket will fail.
 
@@ -1226,9 +1129,9 @@ Now assume that, the server has received a request from a client for a quote. No
 
 String dString = null;
 if (in == null)
-    dString = new Date().toString();
+dString = new Date().toString();
 else
-    dString = getNextQuote();
+dString = getNextQuote();
 buf = dString.getBytes();
 If the quote file did not get opened for some reason, then in equals null. If this is the case, the quote server serves up the time of day instead. Otherwise, the quote server gets the next quote from the already opened file. Finally, the code converts the string to an array of bytes.
 
@@ -1258,8 +1161,8 @@ byte[] sendBuf = new byte[256];
 First, the main method processes the command-line arguments used to invoke the QuoteClient application:
 
 if (args.length != 1) {
-    System.out.println("Usage: java QuoteClient <hostname>");
-    return;
+System.out.println("Usage: java QuoteClient <hostname>");
+return;
 }
 The QuoteClient application requires one command-line arguments: the name of the machine on which the QuoteServer is running.
 
@@ -1272,8 +1175,8 @@ Next, the QuoteClient program sends a request to the server:
 
 byte[] buf = new byte[256];
 InetAddress address = InetAddress.getByName(args[0]);
-DatagramPacket packet = new DatagramPacket(buf, buf.length, 
-                                address, 4445);
+DatagramPacket packet = new DatagramPacket(buf, buf.length,
+address, 4445);
 socket.send(packet);
 The code segment gets the Internet address for the host named on the command line (presumably the name of the machine on which the server is running). This InetAddress and the port number 4445 (the port number that the server used to create its DatagramSocket) are then used to create DatagramPacket destined for that Internet address and port number. Therefore the DatagramPacket will be delivered to the quote server.
 
@@ -1299,7 +1202,6 @@ After the client sends a request and receives a response from the server, you sh
 Quote of the Moment:
 Good programming is 99% sweat and 1% coffee.
 
-
 Broadcasting to Multiple Recipients
 In addition to DatagramSocket, which lets programs send packets to one another, java.net includes a class called MulticastSocket. This kind of socket is used on the client-side to listen for packets that the server broadcasts to multiple clients.
 
@@ -1309,27 +1211,27 @@ This example is comprised of three classes which are modifications of the three 
 
 Here is the new version of the server's main program. The differences between this code and the previous version, QuoteServer, are shown in bold:
 
-import java.io.*;
+import java.io.\*;
 
 public class MulticastServer {
-    public static void main(String[] args) throws IOException {
-        new MulticastServerThread().start();
-    }
+public static void main(String[] args) throws IOException {
+new MulticastServerThread().start();
+}
 }
 Basically, the server got a new name and creates a MulticastServerThread instead of a QuoteServerThread. Now let's look at the MulticastServerThread which contains the heart of the server. Here's its class declaration:
 
 public class MulticastServerThread extends QuoteServerThread {
-    // ...
+// ...
 }
 We've made this class a subclass of QuoteServerThread so that it can use the constructor, and inherit some member variable and the getNextQuote method. Recall that QuoteServerThread creates a DatagramSocket bound to port 4445 and opens the quote file. The DatagramSocket's port number doesn't actually matter in this example because the client never send anything to the server.
 
 The only method explicitly implemented in MulticastServerThread is its run method. The differences between this run method and the one in QuoteServerThread are shown in bold:
 
 public void run() {
-    while (moreQuotes) {
-        try {
-            byte[] buf = new byte[256];
-            // don't wait for request...just send a quote
+while (moreQuotes) {
+try {
+byte[] buf = new byte[256];
+// don't wait for request...just send a quote
 
             String dString = null;
             if (in == null)
@@ -1345,7 +1247,7 @@ public void run() {
 
             try {
                 sleep((long)Math.random() * FIVE_SECONDS);
-            } 
+            }
             catch (InterruptedException e) { }
         }
         catch (IOException e) {
@@ -1354,6 +1256,7 @@ public void run() {
         }
     }
     socket.close();
+
 }
 The interesting change is how the DatagramPacket is constructed, in particular, the InetAddress and port used to construct the DatagramPacket. Recall that the previous example retrieved the InetAddress and port number from the packet sent to the server from the client. This was because the server needed to reply directly to the client. Now, the server needs to address multiple clients. So this time both the InetAddress and the port number are hard-coded.
 
@@ -1369,21 +1272,21 @@ socket.joinGroup(group);
 
 DatagramPacket packet;
 for (int i = 0; i < 5; i++) {
-    byte[] buf = new byte[256];
-    packet = new DatagramPacket(buf, buf.length);
-    socket.receive(packet);
+byte[] buf = new byte[256];
+packet = new DatagramPacket(buf, buf.length);
+socket.receive(packet);
 
     String received = new String(packet.getData());
     System.out.println("Quote of the Moment: " + received);
+
 }
 
 socket.leaveGroup(group);
 socket.close();
 Notice that the server uses a DatagramSocket to broadcast packet received by the client over a MulticastSocket. Alternatively, it could have used a MulticastSocket. The socket used by the server to send the DatagramPacket is not important. What's important when broadcasting packets is the addressing information contained in the DatagramPacket, and the socket used by the client to listen for it
 
-Try this: 
+Try this:
 Run the MulticastServer and several clients. Watch how the clients all get the same quotes.
-
 
 Programmatic Access to Network Parameters
 Systems often run with multiple active network connections, such as wired Ethernet, 802.11 b/g (wireless), and bluetooth. Some applications might need to access this information to perform the particular network activity on a specific connection.
@@ -1403,7 +1306,6 @@ This page shows you how to list the IP addresses assigned to all the network int
 
 Network Interface Parameters
 This page shows you how to determine whether a network interface is running or if the network interface is a loopback interface, a point-to-point interface, or a virtual interface. You can also learn how to determine if the interface supports multicasting.
-
 
 What Is a Network Interface?
 A network interface is the point of interconnection between a computer and a private or public network. A network interface is generally a network interface card (NIC), but does not have to have a physical form. Instead, the network interface can be implemented in software. For example, the loopback interface (127.0.0.1 for IPv4 and ::1 for IPv6) is not a physical device but a piece of software simulating a network interface. The loopback interface is commonly used in test environments.
@@ -1431,7 +1333,6 @@ MulticastSocket ms = new MulticastSocket();
 ms.joinGroup(new InetSocketAddress(hostname, port), nif);
 NetworkInterface can be used with Java APIs in many other ways beyond the two uses described here.
 
-
 Retrieving Network Interfaces
 The NetworkInterface class has no public constructor. Therefore, you cannot just create a new instance of this class with the new operator. Instead, the following static methods are available so that you can retrieve the interface details from the system: getByInetAddress(), getByName(), and getNetworkInterfaces(). The first two methods are used when you already know the IP address or the name of the particular interface. The third method, getNetworkInterfaces() returns the complete list of interfaces on the machine.
 
@@ -1439,16 +1340,16 @@ Network interfaces can be hierarchically organized. The NetworkInterface class i
 
 The following example program lists the name of all the network interfaces and subinterfaces (if any exist) on a machine.
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io._;
+import java.net._;
+import java.util.\*;
 import static java.lang.System.out;
 
-public class ListNIFs 
+public class ListNIFs
 {
-    public static void main(String args[]) throws SocketException {
-        Enumeration<NetworkInterface> nets = NetworkInterface.getNetworkInterfaces();
-        
+public static void main(String args[]) throws SocketException {
+Enumeration<NetworkInterface> nets = NetworkInterface.getNetworkInterfaces();
+
         for (NetworkInterface netIf : Collections.list(nets)) {
             out.printf("Display name: %s\n", netIf.getDisplayName());
             out.printf("Name: %s\n", netIf.getName());
@@ -1459,37 +1360,36 @@ public class ListNIFs
 
     static void displaySubInterfaces(NetworkInterface netIf) throws SocketException {
         Enumeration<NetworkInterface> subIfs = netIf.getSubInterfaces();
-        
+
         for (NetworkInterface subIf : Collections.list(subIfs)) {
             out.printf("\tSub Interface Display name: %s\n", subIf.getDisplayName());
             out.printf("\tSub Interface Name: %s\n", subIf.getName());
         }
      }
+
 }  
 The following is sample output from the example program:
 
 Display name: bge0
 Name: bge0
-    Sub Interface Display name: bge0:3
-    Sub Interface Name: bge0:3
-    Sub Interface Display name: bge0:2
-    Sub Interface Name: bge0:2
-    Sub Interface Display name: bge0:1
-    Sub Interface Name: bge0:1
+Sub Interface Display name: bge0:3
+Sub Interface Name: bge0:3
+Sub Interface Display name: bge0:2
+Sub Interface Name: bge0:2
+Sub Interface Display name: bge0:1
+Sub Interface Name: bge0:1
 
 Display name: lo0
 Name: lo0
-
-
 
 Listing Network Interface Addresses
 One of the most useful pieces of information you can get from a network interface is the list of IP addresses that are assigned to it. You can obtain this information from a NetworkInterface instance by using one of two methods. The first method, getInetAddresses(), returns an Enumeration of InetAddress. The other method, getInterfaceAddresses(), returns a list of java.net.InterfaceAddress instances. This method is used when you need more information about an interface address beyond its IP address. For example, you might need additional information about the subnet mask and broadcast address when the address is an IPv4 address, and a network prefix length in the case of an IPv6 address.
 
 The following example program lists all the network interfaces and their addresses on a machine:
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io._;
+import java.net._;
+import java.util.\*;
 import static java.lang.System.out;
 
 public class ListNets {
@@ -1509,6 +1409,7 @@ public class ListNets {
         }
         out.printf("\n");
      }
+
 }  
 The following is sample output from the example program:
 
@@ -1519,7 +1420,6 @@ InetAddress: /127.0.0.1
 Display name: Wireless Network Connection
 Name: eth0
 InetAddress: /192.0.2.0
-
 
 Network Interface Parameters
 You can access network parameters about a network interface beyond the name and IP addresses assigned to it
@@ -1533,9 +1433,9 @@ The supportsMulticast() method indicates whether the network interface supports 
 
 The following example expands on the example in Listing Network Interface Addresses by adding the additional network parameters described on this page:
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io._;
+import java.net._;
+import java.util.\*;
 import static java.lang.System.out;
 
 public class ListNetsEx {
@@ -1550,11 +1450,11 @@ public class ListNetsEx {
         out.printf("Display name: %s\n", netint.getDisplayName());
         out.printf("Name: %s\n", netint.getName());
         Enumeration<InetAddress> inetAddresses = netint.getInetAddresses();
-        
+
         for (InetAddress inetAddress : Collections.list(inetAddresses)) {
             out.printf("InetAddress: %s\n", inetAddress);
         }
-       
+
         out.printf("Up? %s\n", netint.isUp());
         out.printf("Loopback? %s\n", netint.isLoopback());
         out.printf("PointToPoint? %s\n", netint.isPointToPoint());
@@ -1565,6 +1465,7 @@ public class ListNetsEx {
         out.printf("MTU: %s\n", netint.getMTU());
         out.printf("\n");
      }
+
 }  
 The following is sample output from the example program:
 
@@ -1592,7 +1493,6 @@ Virtual? false
 Hardware address: null
 MTU: 8232
 
-
 Cookies
 Though you are probably already familiar with cookies, you might not know how to take advantage of them in your Java application. This lesson guides you through the concept of cookies and explains how to set a cookie handler so that your HTTP URL connections will use it.
 
@@ -1610,7 +1510,6 @@ Java SE provides a default cookie handler implementation that is sufficient in m
 Custom CookieManager
 Here are some examples of how to customize the cookie policy and write your own cookie store.
 
-
 HTTP State Management With Cookies
 The HTTP state management mechanism specifies a way to create a stateful session with HTTP requests and responses.
 
@@ -1619,8 +1518,6 @@ Generally, HTTP request/response pairs are independent of each other. However, t
 A cookie is a piece of data that can be stored in a browser's cache. If you visit a web site and then revisit it, the cookie data can be used to identify you as a return visitor. Cookies enable state information, such as an online shopping cart, to be remembered. A cookie can be short term, holding data for a single web session, that is, until you close the browser, or a cookie can be longer term, holding data for a week or a year.
 
 For more information about HTTP state management, see RFC 2965: HTTP State Management Mechanism.
-
-
 
 CookieHandler Callback Mechanism
 HTTP state management is implemented in Java SE through the java.net.CookieHandler class. A CookieHandler object provides a callback mechanism to provide an HTTP state management policy implementation in the HTTP protocol handler. That is, URLs that use HTTP as the protocol, new URL("http://example.com") for example, will use the HTTP protocol handler. This protocol handler calls back to the CookieHandler object, if set, to handle the state management.
@@ -1650,7 +1547,6 @@ When retrieving cookies from the cookie store, CookieManager also enforces the p
 
 In summary, CookieManager provides the framework for handling cookies and provides a good default implementation for CookieStore. CookieManager is highly customizable by enabling you to set your own CookieStore, CookiePolicy, or both.
 
-
 Custom CookieManager
 Two aspects of the CookieManager class can be customized, the CookiePolicy and the CookieStore.
 
@@ -1663,10 +1559,10 @@ CookiePolicy.ACCEPT_NONE accepts no cookies.
 You can also define your own cookie policy by implementing the shouldAccept method of CookiePolicy. You can then use this CookiePolicy by passing it to the multi-argument CookieManager constructor or by calling the setCookiePolicy(cookiePolicy) method to change an already existing cookie manager.
 The following is an example of a cookie policy that rejects cookies from domains that are on a blacklist, before applying the CookiePolicy.ACCEPT_ORIGINAL_SERVER policy:
 
-import java.net.*;
+import java.net.\*;
 
 public class BlacklistCookiePolicy implements CookiePolicy {
-    String[] blacklist;
+String[] blacklist;
 
     public BlacklistCookiePolicy(String[] list) {
         blacklist = list;
@@ -1681,13 +1577,14 @@ public class BlacklistCookiePolicy implements CookiePolicy {
         }
 
         for (int i = 0; i<blacklist.length; i++) {
-	    if (HttpCookie.domainMatches(blacklist[i], host)) {
+        if (HttpCookie.domainMatches(blacklist[i], host)) {
                 return false;
             }
         }
 
         return CookiePolicy.ACCEPT_ORIGINAL_SERVER.shouldAccept(uri, cookie);
     }
+
 }
 When you create a BlacklistCookiePolicy instance, you pass it an array of strings representing the domains that you do not want to accept cookies from. Then, you set this BlacklistCookiePolicy instance as the cookie policy for your CookieManager. For example:
 String[] list = new String[]{ ".example.com" };
@@ -1711,11 +1608,11 @@ During runtime, cookies are stored and retrieved from memory.
 Cookies are written out to persistent storage before exiting.
 The following is an incomplete example of this cookie store. This example shows you how to leverage the Java SE default in-memory cookie store and how you might extend its functionality.
 
-import java.net.*;
-import java.util.*;
+import java.net._;
+import java.util._;
 
 public class PersistentCookieStore implements CookieStore, Runnable {
-    CookieStore store;
+CookieStore store;
 
     public PersistentCookieStore() {
         // get the default in memory cookie store
@@ -1725,7 +1622,7 @@ public class PersistentCookieStore implements CookieStore, Runnable {
         // and add them store
 
         // add a shutdown hook to write out the in memory cookies
-        Runtime.getRuntime().addShutdownHook(new Thread(this)); 
+        Runtime.getRuntime().addShutdownHook(new Thread(this));
     }
 
     public void run() {
@@ -1743,7 +1640,7 @@ public class PersistentCookieStore implements CookieStore, Runnable {
     public List<HttpCookie> getCookies() {
         return store.getCookies();
     }
-    
+
     public List<URI> getURIs() {
         return store.getURIs();
     }
@@ -1755,17 +1652,13 @@ public class PersistentCookieStore implements CookieStore, Runnable {
     public boolean removeAll()  {
         return store.removeAll();
     }
+
 }
-
-
-
 
 Evaluation often differs based on which API layer you use:
 Low-Level (java.net.Socket): Provides fine-grained control over IP addresses and bidirectional data streams.
 High-Level (java.net.URL, java.net.HttpURLConnection): Simpler to use but adds more overhead as it handles protocol-specific details like HTTP headers.
-Non-blocking I/O (java.nio): Scalable for thousands of concurrent connections but requires more complex evaluation of selector and buffer management. 
-
-
+Non-blocking I/O (java.nio): Scalable for thousands of concurrent connections but requires more complex evaluation of selector and buffer management.
 
 Servlet is an extension of Java's networking capabilities, specifically designed for the request-response model of the web.
 While the core java.net package provides the "plumbing" (sockets and packets), the Jakarta Servlet API (formerly Java Servlet) provides the "architecture" for building server-side applications.
@@ -1776,20 +1669,14 @@ Lifecycle Management: The container manages the creation, execution, and destruc
 Multithreading: Instead of manually managing a ServerSocket and spawning threads for every user, the container manages a Thread Pool for you.
 Session Tracking: It provides built-in mechanisms to remember users across multiple requests (HTTPSession), which isn't possible with raw sockets alone.
 
-
-
-
 - JDK 19:- HTTPS Channel Binding support for Java GSS/Kerberos.
-    - MD5 and SHA-1 are disabled by default for HTTP Digest Authentication.
-    - Improved HTTP Proxy Detction on Windows.
-    - Make HttpURLConnection default Keep Alive Timeout Configurable.
+  - MD5 and SHA-1 are disabled by default for HTTP Digest Authentication.
+  - Improved HTTP Proxy Detction on Windows.
+  - Make HttpURLConnection default Keep Alive Timeout Configurable.
 
 - JDK 18:- JEP 408: Simple Web Server.
-    - InetAddress resolution SPI
-    - Removal of support for Pre JDK 1.4 DatagramSocketImpl implementations.
-
-
-
+  - InetAddress resolution SPI
+  - Removal of support for Pre JDK 1.4 DatagramSocketImpl implementations.
 
 ## Sockets
 
@@ -1799,18 +1686,20 @@ In order to support the inter-process communication, specific support has to be 
 Sockets are network communication link end-points between two applications (i.e., server and client). They offer basic transport data communication support and hide lower layer implementation details. They provide a higher level of abstraction for the communication infrastructure beneath and enable support for fast and easy network- based applications development.
 
 - There are two type of sockets that can be used for application development:- transport layer sockets and application layer sockets.
-    - `Transport layer sockets` make use of transport-layer protocols such as the Transmission Control Protocol (TCP) and User Datagram Protocol (UDP). UDP is a connectionless non-reliable transmission of datagrams protocol, similar to the postal service. TCP is a connection-based reliable, orderly transmission of data packets, similar to the telephone service.
-    - `Application layer sockets` make use of application-layer protocols such as the Hypertext Transfer Protocol (HTTP) and Simple Mail Transfer Protocol (SMTP). HTTP is a TCP-based web page delivery service, while SMTP is a TCP-based e-mail delivery service.
+  - `Transport layer sockets` make use of transport-layer protocols such as the Transmission Control Protocol (TCP) and User Datagram Protocol (UDP). UDP is a connectionless non-reliable transmission of datagrams protocol, similar to the postal service. TCP is a connection-based reliable, orderly transmission of data packets, similar to the telephone service.
+  - `Application layer sockets` make use of application-layer protocols such as the Hypertext Transfer Protocol (HTTP) and Simple Mail Transfer Protocol (SMTP). HTTP is a TCP-based web page delivery service, while SMTP is a TCP-based e-mail delivery service.
 
 **Socket-Based Network Communications**:- The network communication using sockets involves several basic steps which have to be followed by the application developer in order to have a functional transport mechanism between the two communicating parties.
+
 - The first step involves creating and opening sockets. Each communicating party requires a separate socket. When creating/opening a socket, the important parameters to be provided include the IP address, port number, and communication protocol(TCP or UDP).
 - The second step involves establishing contact or associating the socket with another socket. In order to be able to communicate, the sockets have to use the same protocol. In general, the client knows the server’s IP address, port number, and the protocol used and contacts it using these details. Depending on the protocol, it can either request a service or establish a connection.
 - The third step consists of exchanging data between the two parties and represents the main stage of network application’s communication tasks. This step usually happens recursively. Information is sent and received by the two communicating sockets.
 - The last step involves closing and destroying the sockets which closes the communication end-point. After this step the socket cannot be used for communication any more.
 
-*UDP Sockets*:- When using UDP sockets the connection between the client and the server is not maintained throughout the communication session. Each datagram packet is sent as an isolated transmission when necessary. There are no guarantees that the packets arrive in order at the destination or that the packets arrive at the destination at all.
+_UDP Sockets_:- When using UDP sockets the connection between the client and the server is not maintained throughout the communication session. Each datagram packet is sent as an isolated transmission when necessary. There are no guarantees that the packets arrive in order at the destination or that the packets arrive at the destination at all.
 
 `UDP Sockets—Server Side`:- Java UDP server communication steps include the following:
+
 1. Step 1—Create a datagram socket object.
 2. Step 2—Create a buffer to store the incoming datagrams
 3. Step 3—Create a datagram packet object for incoming datagrams
@@ -1829,6 +1718,7 @@ String msgIn = new String(inPkt.getData(), 0, inPkt.getLength());
 ```
 
 `UDP Sockets—Client Side`:- Java UDP client communication steps include:
+
 1. Step 1—Create a datagram socket object:
 2. Step 2—Create the outgoing datagram:
 3. Step 3—Send the response datagram:
@@ -1842,11 +1732,12 @@ DatagramPacket outPkt = new DatagramPacket(msg.getBytes(),msg.length(), host, po
 dgramSocket.send(outPkt);
 ```
 
-*TCP Sockets*:- As TCP is a connection-oriented protocol, when TCP sockets are used, connections are established between client and server hosts. Client and server TCP sockets are created first and are bound for the duration of the data communication session.Following connection establishment, TCP packets are sent to the partner’s socket.
+_TCP Sockets_:- As TCP is a connection-oriented protocol, when TCP sockets are used, connections are established between client and server hosts. Client and server TCP sockets are created first and are bound for the duration of the data communication session.Following connection establishment, TCP packets are sent to the partner’s socket.
 These packets are guaranteed to arrive (if lost, retransmission occurs) and are received in order at the destination.
 Exchanging messages using TCP sockets involves a set of steps that must be followed by the application developer. Next these steps are presented, with the focus on server and client side, respectively.
 
 `TCP Sockets—Server Side`:- Java TCP server communication steps:
+
 1. Step 1—Create a TCP server socket object.
 2. Step 2—Set the server to wait (block) for clients to connect.
 3. Step 3—Set input and output streams.
@@ -1864,6 +1755,7 @@ sock.close();
 ```
 
 `TCP Sockets—Client Side` Java TCP client communication steps:
+
 1. Step 1—Create a TCP client socket and establish a connection to the server.
 
 ```java
@@ -1872,10 +1764,8 @@ int srvPortNo = 1234;
 Socket sock = new Socket(srvIPAddr.getLocalHost(),srvPortNo);/*sock is a socket object*/
 ```
 
-
 **Socket-Based Client–Server Communication**:- Sockets offer the basic mechanisms for data communication between two processes, each running on a distinct machine.
 Client–server is a request–response remote communication model that involves processes requesting services from other processes which offer these services via the network.
-
 
 ## Server-Side Network Programming
 
