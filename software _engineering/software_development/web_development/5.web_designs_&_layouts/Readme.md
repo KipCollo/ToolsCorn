@@ -94,6 +94,13 @@ Icons toolbox:- Phosphor icons, ionicons, icons8.
 To keep icons neutral, use same color as text.To draw more attention, use different color.
 Don't make icons larger than what they were designed for.If needed, enclose them in a shape.
 
+**How To Add Icons** - To insert an icon, add the name of the icon class to any inline HTML element.The <i> and <span> elements are widely used to add icons.
+All the icons in the icon libraries below, are scalable vector icons that can be customized with CSS (size, color, shadow, etc.)
+
+`Font Awesome 5 Icons` - To use the Free Font Awesome 5 icons, go to https://fontawesome.com and sign in to get a code to use in your web pages.
+`Bootstrap 3 Icons` - To use the Bootstrap 3 glyphicons, add the following line inside the <head> section of your HTML page.
+`Google Icons` - To use the Google icons, add the following line inside the <head> section of your HTML page:
+
 ## Components & Layouts
 
 Elements ----> Components ------> Layouts ----Webpage

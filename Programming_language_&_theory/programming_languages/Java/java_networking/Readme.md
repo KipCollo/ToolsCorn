@@ -1393,7 +1393,8 @@ Note - URLConnection does not have the best-designed API in the Java class libra
 
 ### HTTP Client and WebSocket APIs
 
-Provides high-level client interfaces to HTTP (versions 1.1 and 2) and low-level client interfaces to WebSocket. The main types defined are:- HttpClient, HttpRequest, HttpResponse, WebSocket
+Provides high-level client interfaces to HTTP (versions 1.1 and 2) and low-level client interfaces to WebSocket. The main types defined are:- HttpClient, HttpRequest, HttpResponse,
+WebSocket
 
 The protocol-specific requirements are defined in the Hypertext Transfer Protocol Version 2 (HTTP/2), the Hypertext Transfer Protocol (HTTP/1.1), and The WebSocket Protocol.
 
