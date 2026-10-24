@@ -1,5 +1,27 @@
 # I/O
 
+Common I/O tasks includes:
+
+- Reading and writing files
+- Communicating over network connections
+- Filtering data
+- Interpreting a wide variety of formats for integer and floating-point numbers
+- Passing data between threads
+- Encrypting and decrypting data
+- Calculating digital signatures for streams
+- Compressing and decompressing data
+- Writing objects to streams
+- Copying, moving, renaming, and getting information about files and directories
+- Letting users choose files from a GUI interface
+- Reading and writing non-English text in a variety of character sets
+- Formatting integer and floating-point numbers as strings
+- Talking directly to modems and other serial port devices
+- Talking directly to printers and other parallel port devices
+
+Java is the first language to provide a cross-platform I/O library that is powerful enough to handle all these diverse tasks.
+
+Input and output, I/O for short, are fundamental to any computer operating system or programming language.
+
 We use I/O (input/output) and NIO.2 (non-­blocking I/O) APIs to interact with files and I/O streams. The preferred approach for working with files and directories with newer software applications is to use NIO.2 rather than I/O where possible.
 
 `package java.io`: Provides for system input and output through data streams, serialization and the file system. Unless otherwise noted, passing a null argument to a constructor or method in any class or interface in this package will cause a NullPointerException to be thrown. A pathname string passed as a String argument to a constructor or method in any class or interface in this package will be interpreted as described in the class specification of File.
@@ -10,6 +32,28 @@ Java uses the concept of a stream to make I/O operation fast.The stream in the j
 Java performs I/O through streams.A stream is linked to a physical layer by java I/O system to make input and output operation in java.A stream is a sequence of data.In java stream is composed of bytes.Streams support of diff kinds of data including simple bytes,primitive data types,localized characters and objects.
 
 NIO stands for non-­blocking input/output API and is sometimes referred to as new I/O.
+
+## Streams
+
+**Stream** - A stream is a sequence of data(bytes) of undetermined length. In Java, a stream is composed of bytes. It's called a stream because it is like a stream of water that continues to flow.Stream supports diff types of data including primitive data types,localized characters and objects.
+Input streams move bytes of data into a Java program from some generally external source. Output streams move bytes of data from Java to some generally external target. (In special cases streams can also move bytes from one part of a Java program to another.)
+
+Java application uses an input stream to read data from source ,it may be a file,memory arrays,peripheral device or socket.Java application uses an output stream to read data to destination,it may be a file,memory arrays,peripheral device or socket.
+
+_Sources of stream_ -
+
+- The first source of input most programmers encounter is `System.in`.The console is also available for output through the static field out in the java.lang.System class, that is, System.out.Finally, stderr is available as System.err. This is most commonly used for debugging and printing error messages from inside catch clauses.
+- `Files` are another common source of input and destination for output. File input streams provide a stream of data that starts with the first byte in a file and finishes with the last byte in the file. File output streams write data into a file, either by erasing the file's contents and starting from the beginning or by appending data to the file.
+- `Network connections` provide streams too. When you connect to a web server or FTP server or something else, you read the data it sends from an input stream connected from that server and write data onto an output stream connected to that server.
+- `Java programs` themselves produce streams. Byte array input streams, byte array output streams, piped input streams, and piped output streams all use the stream metaphor to move data from one part of a Java program to another.
+
+_Stream classes_ - Most of the classes that work directly with streams are part of the java.io package. The two main classes are `java.io.InputStream` and `java.io.OutputStream`.
+The `java.util.zip` package contains four input stream classes that read data in a compressed format and return it in uncompressed format and four output stream classes that read data in uncompressed format and write in compressed format.
+The `java.util.jar` package includes two stream classes for reading files from JAR archives.
+The `java.security` package includes a couple of stream classes used for calculating message digests.
+The `Java Cryptography Extension (JCE)` adds two classes for encryption and decryption
+
+**InputStream** - The java.io.InputStream class is the abstract superclass for all input streams. It declares the three basic methods needed to read bytes of data from a stream. It also has methods for closing and flushing streams, checking how many bytes of data are available to be read, skipping over input, marking a position in a stream and resetting back to that position, and determining whether marking and resetting are supported.
 
 ## Conceptualizing the File System
 
@@ -33,11 +77,11 @@ System.out.print(System.getProperty("file.separator"));
 - The relative path of a file or directory is the path from the current working directory to the file or directory.
 
 Absolute and relative paths can contain path symbols. A path symbol is one of a reserved series of characters with special meaning in some file systems.
+
 1. . A reference to the current directory
 2. .. A reference to the parent of the current directory
 
 A symbolic link is a special file within a file system that serves as a reference or pointer to another file or directory.In general, symbolic links are transparent to the user, as the operating system takes care of resolving the reference to the actual file. While the I/O APIs do not support symbolic links, NIO.2 includes full support for creating, detecting, and navigating symbolic links within the file system.
-
 
 ## Creating a File or Path
 
@@ -58,7 +102,7 @@ File zooFile3 = new File(parent, "data/stripes.txt");
 All three create a File object that points to the same location on disk. If we passed null as the parent to the final constructor, it would be ignored, and the method would behave the same way as the single String constructor
 
 - **Creating a Path**:- Since Path is an interface, we can’t create an instance directly. After all, interfaces don’t have constructors! Java provides a number of classes and methods that you can use to obtain Path objects.
-The simplest and most straightforward way to obtain a Path object is to use a static factory method defined on Path or Paths. All four of these examples point to the same reference on disk:
+  The simplest and most straightforward way to obtain a Path object is to use a static factory method defined on Path or Paths. All four of these examples point to the same reference on disk:
 
 ```java
 Path zooPath1 = Path.of("/home/tiger/data/stripes.txt");
@@ -90,24 +134,20 @@ Path zooPath1 = FileSystems.getDefault().getPath("/home/tiger/data/stripes.txt")
 Path zooPath2 = FileSystems.getDefault().getPath("/home", "tiger", "data", "stripes.txt");
 ```
 
-
 The model for I/O is smaller, and you only need to understand the File class. In contrast,NIO.2 has more features and makes extensive use of the factory pattern.Many of your interactions with NIO.2 will require two types: an abstract class or interface and a factory or helper class.Classes with plural names include methods to create or operate on class/interface instances with singular names.
 
 NOTE:- The java.io.File is the I/O class, while Files is an NIO.2 helper class.Files operates on Path instances, not java.io.File instances.
-
 
 ## Operating on File and Path
 
 Many operations can be done using both the I/O and NIO.2 libraries.
 
 - Common File and Path operations:-
-   1. Gets name of file/directory - I/O file -getName(), NIO - getFileName()
-   2. Retrieves parent directory or null if there is none - I/O - getParent(), NIO - getParent()
-   3. Checks if file/directory is absolute path - I/O - isAbsolute(), NIO -isAbsolute()
+  1.  Gets name of file/directory - I/O file -getName(), NIO - getFileName()
+  2.  Retrieves parent directory or null if there is none - I/O - getParent(), NIO - getParent()
+  3.  Checks if file/directory is absolute path - I/O - isAbsolute(), NIO -isAbsolute()
 
 ## Creating, Moving, and Deleting Files and Directories
-
-
 
 ## NIO
 
@@ -118,7 +158,7 @@ A FileSystem can provide read-only or read-write access to the file system. Whet
 
 **FileSystems**:- Factory methods for file systems. This class defines the getDefault method to get the default file system and factory methods to construct other types of file systems.The first invocation of any of the methods defined by this class causes the default provider to be loaded. The default provider, identified by the URI scheme "file", creates the FileSystem that provides access to the file systems accessible to the Java virtual machine. If the process of loading or initializing the default provider fails then an unspecified error is thrown.
 
-- 
+-
 
 ```java
 public static FileSystem getDefault()
@@ -126,7 +166,7 @@ public static FileSystem getDefault()
 
 Returns the default FileSystem. The default file system creates objects that provide access to the file systems accessible to the Java virtual machine. The working directory of the file system is the current user directory, named by the system property user. dir. This allows for interoperability with the java. io. File class.
 
-- 
+-
 
 ```java
 public static FileSystem getFileSystem(URI uri)
@@ -134,7 +174,6 @@ public static FileSystem getFileSystem(URI uri)
 
 Returns a reference to an existing FileSystem.
 This method iterates over the installed providers to locate the provider that is identified by the URI scheme of the given URI. URI schemes are compared without regard to case. The exact form of the URI is highly provider dependent. If found, the provider's getFileSystem method is invoked to obtain a reference to the FileSystem.
-
 
 **Files**:- This class consists exclusively of static methods that operate on files, directories, or other types of files.In most cases, the methods defined here will delegate to the associated file system provider to perform the file operations.
 
@@ -161,7 +200,6 @@ Files.createDirectories(Path.of("/bison/field/pasture/green"));
 The first example creates a new directory, field, in the directory /bison, assuming /bison exists; otherwise, an exception is thrown. Contrast this with the second example,
 which creates the directory green along with any of the following parent directories if they do not already exist, including bison, field, and pasture.
 
-
 - `Creating a file`:-
 
 ```java
@@ -169,7 +207,6 @@ public static Path createFile(Path path, FileAttribute<?>... attrs) throws IOExc
 ```
 
 Creates a new and empty file, failing if the file already exists. The check for the existence of the file and the creation of the new file if it does not exist are a single operation that is atomic with respect to all other filesystem activities that might affect the directory.
-
 
 - `Copying Files`:- The Files class provides a method for copying files and directories within the file system.
 
@@ -180,9 +217,10 @@ public static Path copy(Path source, Path target,CopyOption... options) throws I
 This method copies a file to the target file with the options parameter specifying how the copy is performed. By default, the copy fails if the target file already exists or is a symbolic link, except if the source and target are the same file, in which case the method completes without copying the file. File attributes are not required to be copied to the target file. If symbolic links are supported, and the file is a symbolic link, then the final target of the link is copied. If the file is a directory then an empty directory is created in the target location (entries in the directory are not copied).
 
 The options parameter may include any of the following:
+
 1.  REPLACE_EXISTING - Replace an existing file. A non-empty directory cannot be replaced. If the target file exists and is a symbolic link, then the symbolic link itself, not the target of the link, is replaced.
-2. COPY_ATTRIBUTES - Attempts to copy the file attributes associated with this file to the target file. The exact file attributes that are copied is platform and file system dependent and therefore unspecified. Minimally, the last-modified-time is copied to the target file if supported by both the source and target file stores. Copying of file timestamps may result in precision loss.
-3. NOFOLLOW_LINKS - Symbolic links are not followed. If the file is a symbolic link, then the symbolic link itself, not the target of the link, is copied. It is implementation specific if file attributes can be copied to the new link. In other words, the COPY_ATTRIBUTES option may be ignored when copying a symbolic link.
+2.  COPY_ATTRIBUTES - Attempts to copy the file attributes associated with this file to the target file. The exact file attributes that are copied is platform and file system dependent and therefore unspecified. Minimally, the last-modified-time is copied to the target file if supported by both the source and target file stores. Copying of file timestamps may result in precision loss.
+3.  NOFOLLOW_LINKS - Symbolic links are not followed. If the file is a symbolic link, then the symbolic link itself, not the target of the link, is copied. It is implementation specific if file attributes can be copied to the new link. In other words, the COPY_ATTRIBUTES option may be ignored when copying a symbolic link.
 
 The method copies a file or directory from one location to another using Path objects.
 The following shows an example of copying a file and a directory:
@@ -245,20 +283,6 @@ Files.copy(Paths.get("/fish/clown.xsl"), System.out);
 While we used FileInputStream in the first example, the I/O stream could have been
 any valid I/O stream including website connections, in-­memory stream resources, and so
 forth. The second example prints the contents of a file directly to the System.out stream.
-
-## Stream
-
-A stream is a sequence of data. In Java, a stream is composed of bytes. It's called a stream because it is like a stream of water that continues to flow.Stream supports diff types of data including primitive data types,localized characters and objects.
-
-In Java, 3 streams are created for us automatically. All these streams are attached with the console.
-
-1) System.out: standard output stream
-2) System.in: standard input stream  
-3) System.err: standard error stream
-
-Java application uses an input stream to read data from source ,it may be a file,memory arrays,peripheral device or socket.
-
-Java application uses an output stream to read data to destination,it may be a file,memory arrays,peripheral device or socket.
 
 ### Java InputStream class
 
@@ -373,7 +397,7 @@ new File( f.toURI()).equals( f.getAbsoluteFile())
 so long as the original abstract pathname, the URI, and the new abstract pathname are all created in (possibly different invocations of) the same Java virtual machine. This relationship typically does not hold, however, when a file: URI that is created in a virtual machine on one operating system is converted into an abstract pathname in a virtual machine on a different operating system.
 
 - **FileWriter**: This class inherits from the OutputStreamWriter class. The class is used for writing streams of characters.
-This class has several constructors to create required objects.
+  This class has several constructors to create required objects.
 
 - **FileReader**: This class inherits from the InputStreamReader class. FileReader is used for reading streams of characters.
 
@@ -391,7 +415,7 @@ Once you have FileReader object in hand then there is a list of helper methods w
 
 1. public int read() throws IOException- Reads a single character. Returns an int, which represents the character read.
 2. public int read(char [] c, int offset, int len)- Reads characters into an array. Returns the number of characters read.
-Example:
+   Example:
 
 ```java
 import java.io.*;
@@ -472,7 +496,7 @@ Another way that you can familiarize yourself with the java.io API is by segment
 
 1. A low-­level stream connects directly with the source of the data, such as a file, an array, or a String. Low-­level I/O streams process the raw data or resource and are accessed in a direct and unfiltered manner. For example, a FileInputStream is a class that reads file data one byte at a time.
 2. A high-­level stream is built on top of another I/O stream using wrapping.Wrapping is the process by which an instance is passed to the constructor of another class,
-and operations on the resulting instance are filtered and applied to the original instance.For example, take a look at the FileReader and BufferedReader objects in the following sample code:
+   and operations on the resulting instance are filtered and applied to the original instance.For example, take a look at the FileReader and BufferedReader objects in the following sample code:
 
 ```java
 try (var br = new BufferedReader(new FileReader("zoo-­data.txt"))) {
@@ -548,7 +572,7 @@ void copyStream(Reader in, Writer out) throws IOException {
    int b;
    while ((b = in.read()) != -­1) {
       out.write(b);
-   }  
+   }
 }
 ```
 
@@ -563,7 +587,6 @@ private static void nioWrite(Path file,String text){
    }
 }
 ```
-
 
 ```java
     private static void read(File file){
@@ -580,7 +603,6 @@ private static void nioWrite(Path file,String text){
         }
     }
 ```
-
 
 **Interacting with Users**:- Java includes numerous classes for interacting with the user. For example, you might want to write an application that asks a user to log in and then prints a success message.
 
@@ -606,11 +628,8 @@ System.out.println("You entered: " + userInput);
 When executed, this application first fetches text from the user until the user presses the Enter key. It then outputs the text the user entered to the screen.
 
 - `Closing System Streams`:- You might have noticed that we never created or closed System.out, System.err, and System.in when we used them. In fact, these are the only I/O streams in the entire chapter that we did not use a try-­with-­resources block on.Because these are static objects, the System streams are shared by the entire application.
-The JVM creates and opens them for us. They can be used in a try-­with-­resources statement or by calling close(), although closing them is not recommended. Closing the System streams makes them permanently unavailable for all threads in the remainder of the program.
-The methods of PrintStream do not throw any checked exceptions and rely on the checkError() to report errors, so they fail silently.
-
-
-
+  The JVM creates and opens them for us. They can be used in a try-­with-­resources statement or by calling close(), although closing them is not recommended. Closing the System streams makes them permanently unavailable for all threads in the remainder of the program.
+  The methods of PrintStream do not throw any checked exceptions and rely on the checkError() to report errors, so they fail silently.
 
 ## Review of Key APIs
 
@@ -626,17 +645,20 @@ The methods of PrintStream do not throw any checked exceptions and rely on the c
 10. Reader - Superclass for reading files based on characters
 11. Writer - Superclass for writing files based on characters
 
-
 ## ObjectOutputStream class
+
 The ObjectOutputStream class is used to write primitive data types and Java objects to an OutputStream. Only objects that support the java.io.Serializable interface can be written to streams.
 
 **Constructor :**
+
 ```java
 public ObjectOutputStream(OutputStream out) throws IOException {}
 ```
+
 Above constructor creates an ObjectOutputStream that writes to the specified OutputStream.
 
 **Important Methods :**
+
 <table class="alt">
 <tbody><tr><th>Method</th><th>Description</th></tr>
 <tr><td>1) public final void writeObject(Object obj) throws IOException {}</td><td>writes the specified object to the ObjectOutputStream. </td></tr>
@@ -644,22 +666,18 @@ Above constructor creates an ObjectOutputStream that writes to the specified Out
 <tr><td>3) public void close() throws IOException {}</td><td>closes the current output stream. </td></tr>
 </tbody></table>
 
-
-
 ## Serialization and Deserialization
 
 Serialization in java is a mechanism of writing the state of an object into a byte stream. It is mainly used in Hibernate, RMI, JPA, EJB and JMS technologies. The reverse operation of serialization is called deserialization.JVM can use this byte array to transmit/ read object over a network.
 Serialization is the process of converting an in-­memory object to a byte stream. Likewise, deserialization is the process of converting from a byte stream into an object. Serialization often involves writing an object to a stored or transmittable format,while deserialization is the reciprocal process.
 
-
 File System(girrafe.txt) <--------------------->Java Vitual Machine(Girrafe Object)
 
-
 Advantage of Java Serialization :-
+
 1. It is mainly used to travel object's state on the network (known as marshaling).
 2. Can be used for caching to improve performance
 3. Used for persistence storing object's state in db.
-
 
 `java.io.Serializable interface`:- Serializable is a marker interface (has no data member and method). It is used to "mark" java classes so that objects of these classes may get certain capability. The Cloneable and Remote are also marker interfaces.
 To serialize an object using the I/O API, the object must implement the java.io.Serializable interface. The Serializable interface is a marker interface, which means it does not have any methods. Any class can implement the Serializable interface since there are no required methods to implement.
@@ -672,12 +690,10 @@ this book are Serializable.
 Maintaining a serialVersionUID:- It’s a good practice to declare a static serialVersionUID variable in every class that implements Serializable. The version is stored with each object as part of serialization.Then, every time the class structure changes, this value is updated or incremented.The idea is a class could have been serialized with an older version of the class and deserialized with a newer version of the class.
 The serialVersionUID helps inform the JVM that the stored data may not match the new class definition. If an older version of the class is encountered during deserialization,a java.io.InvalidClassException may be thrown. Alternatively, some APIs support converting data between versions.
 
-
 - Marking Data transient:- The transient modifier can be used for sensitive data of the class, like a password. There are other objects it does not make sense to serialize, like the state of an in-­memory Thread.If the object is part of a serializable object, we just mark it transient to ignore these select instance members.
-The data maarked transient on deserialization reverts to its default Java values, such as 0.0 for double, or null for an object.
+  The data maarked transient on deserialization reverts to its default Java values, such as 0.0 for double, or null for an object.
 
 NOTE:- Marking static fields transient has little effect on serialization. Other than the serialVersionUID, only the instance members of a class are serialized.
-
 
 ```java
 import java.io.Serializable;
@@ -690,14 +706,12 @@ public class Gorilla implements Serializable {
 }
 ```
 
-
 **Serialization Rules**:-
 
 1. Serialization with Inheritance (IS-A Relationship) :- If a class implements serializable then all its sub classes will also be serializable. Parent class properties are inherited to subclasses so if parent class is Serializable, subclass would also be.
 2. Serialization with Aggregation (HAS-A Relationship):- If a class has a reference of another class, all the references must be Serializable otherwise serialization process will not be performed. In such case, NotSerializableException is thrown at runtime. All the objects within an object must be Serializable.
 3. Serialization with static data member:- If there is any static data member in a class, it will not be serialized because static is the part of class not object.
 4. Serialization with array or collection:- In case of array or collection, all the objects of array or collection must be serializable. If any object is not serialiizable, serialization will be failed.
-
 
 **Storing Data with ObjectOutputStream and ObjectInputStream**:- The ObjectInputStream class is used to deserialize an object, while the ObjectOutputStream is used to serialize an object. They are high-­level streams that operate on existing I/O streams. Both of these classes contain a number of methods for
 built-­in data types like primitives.
@@ -708,7 +722,6 @@ public Object readObject() throws IOException, ClassNotFoundException{}
 // ObjectOutputStream
 public void writeObject(Object obj) throws IOException{}
 ```
-
 
 ```java
 void saveToFile(List<Gorilla> gorillas, File dataFile) throws IOException {
@@ -738,79 +751,84 @@ List<Gorilla> readFromFile(File dataFile) throws IOException,ClassNotFoundExcept
 Notice that readObject() declares a checked ClassNotFoundException since the class might not be available on deserialization.
 If your program happens to know the number of objects in the I/O stream, you can call readObject() a fixed number of times, rather than using an infinite loop.
 
-
-
 ## Externalizable in Java
+
 The Externalizable interface provides the facility of writing the state of an object into a byte stream in compress format. It is not a marker interface.
 
 The Externalizable interface provides two methods:
+
 - public void writeExternal(ObjectOutput out) throws IOException
 - public void readExternal(ObjectInput in) throws IOException
 
+  public interface Serializable
 
-    public interface Serializable
+  Serializability of a class is enabled by the class implementing the java.io.Serializable interface. Classes that do not implement this interface will not have any of their state serialized or deserialized. All subtypes of a serializable class are themselves serializable. The serialization interface has no methods or fields and serves only to identify the semantics of being serializable.
 
-    Serializability of a class is enabled by the class implementing the java.io.Serializable interface. Classes that do not implement this interface will not have any of their state serialized or deserialized. All subtypes of a serializable class are themselves serializable. The serialization interface has no methods or fields and serves only to identify the semantics of being serializable.
+  To allow subtypes of non-serializable classes to be serialized, the subtype may assume responsibility for saving and restoring the state of the supertype's public, protected, and (if accessible) package fields. The subtype may assume this responsibility only if the class it extends has an accessible no-arg constructor to initialize the class's state. It is an error to declare a class Serializable if this is not the case. The error will be detected at runtime.
 
-    To allow subtypes of non-serializable classes to be serialized, the subtype may assume responsibility for saving and restoring the state of the supertype's public, protected, and (if accessible) package fields. The subtype may assume this responsibility only if the class it extends has an accessible no-arg constructor to initialize the class's state. It is an error to declare a class Serializable if this is not the case. The error will be detected at runtime.
+  During deserialization, the fields of non-serializable classes will be initialized using the public or protected no-arg constructor of the class. A no-arg constructor must be accessible to the subclass that is serializable. The fields of serializable subclasses will be restored from the stream.
 
-    During deserialization, the fields of non-serializable classes will be initialized using the public or protected no-arg constructor of the class. A no-arg constructor must be accessible to the subclass that is serializable. The fields of serializable subclasses will be restored from the stream.
+  When traversing a graph, an object may be encountered that does not support the Serializable interface. In this case the NotSerializableException will be thrown and will identify the class of the non-serializable object.
 
-    When traversing a graph, an object may be encountered that does not support the Serializable interface. In this case the NotSerializableException will be thrown and will identify the class of the non-serializable object.
+  Classes that require special handling during the serialization and deserialization process must implement special methods with these exact signatures:
 
-    Classes that require special handling during the serialization and deserialization process must implement special methods with these exact signatures:
+  private void writeObject(java.io.ObjectOutputStream out)
+  throws IOException
+  private void readObject(java.io.ObjectInputStream in)
+  throws IOException, ClassNotFoundException;
+  private void readObjectNoData()
+  throws ObjectStreamException;
 
-     private void writeObject(java.io.ObjectOutputStream out)
-         throws IOException
-     private void readObject(java.io.ObjectInputStream in)
-         throws IOException, ClassNotFoundException;
-     private void readObjectNoData()
-         throws ObjectStreamException;
-     
+  The writeObject method is responsible for writing the state of the object for its particular class so that the corresponding readObject method can restore it. The default mechanism for saving the Object's fields can be invoked by calling out.defaultWriteObject. The method does not need to concern itself with the state belonging to its superclasses or subclasses. State is saved by writing the individual fields to the ObjectOutputStream using the writeObject method or by using the methods for primitive data types supported by DataOutput.
 
-    The writeObject method is responsible for writing the state of the object for its particular class so that the corresponding readObject method can restore it. The default mechanism for saving the Object's fields can be invoked by calling out.defaultWriteObject. The method does not need to concern itself with the state belonging to its superclasses or subclasses. State is saved by writing the individual fields to the ObjectOutputStream using the writeObject method or by using the methods for primitive data types supported by DataOutput.
+  The readObject method is responsible for reading from the stream and restoring the classes fields. It may call in.defaultReadObject to invoke the default mechanism for restoring the object's non-static and non-transient fields. The defaultReadObject method uses information in the stream to assign the fields of the object saved in the stream with the correspondingly named fields in the current object. This handles the case when the class has evolved to add new fields. The method does not need to concern itself with the state belonging to its superclasses or subclasses. State is saved by writing the individual fields to the ObjectOutputStream using the writeObject method or by using the methods for primitive data types supported by DataOutput.
 
-    The readObject method is responsible for reading from the stream and restoring the classes fields. It may call in.defaultReadObject to invoke the default mechanism for restoring the object's non-static and non-transient fields. The defaultReadObject method uses information in the stream to assign the fields of the object saved in the stream with the correspondingly named fields in the current object. This handles the case when the class has evolved to add new fields. The method does not need to concern itself with the state belonging to its superclasses or subclasses. State is saved by writing the individual fields to the ObjectOutputStream using the writeObject method or by using the methods for primitive data types supported by DataOutput.
+  The readObjectNoData method is responsible for initializing the state of the object for its particular class in the event that the serialization stream does not list the given class as a superclass of the object being deserialized. This may occur in cases where the receiving party uses a different version of the deserialized instance's class than the sending party, and the receiver's version extends classes that are not extended by the sender's version. This may also occur if the serialization stream has been tampered; hence, readObjectNoData is useful for initializing deserialized objects properly despite a "hostile" or incomplete source stream.
 
-    The readObjectNoData method is responsible for initializing the state of the object for its particular class in the event that the serialization stream does not list the given class as a superclass of the object being deserialized. This may occur in cases where the receiving party uses a different version of the deserialized instance's class than the sending party, and the receiver's version extends classes that are not extended by the sender's version. This may also occur if the serialization stream has been tampered; hence, readObjectNoData is useful for initializing deserialized objects properly despite a "hostile" or incomplete source stream.
+  Serializable classes that need to designate an alternative object to be used when writing an object to the stream should implement this special method with the exact signature:
 
-    Serializable classes that need to designate an alternative object to be used when writing an object to the stream should implement this special method with the exact signature:
+  ANY-ACCESS-MODIFIER Object writeReplace() throws ObjectStreamException;
 
-     ANY-ACCESS-MODIFIER Object writeReplace() throws ObjectStreamException;
-     
+  This writeReplace method is invoked by serialization if the method exists and it would be accessible from a method defined within the class of the object being serialized. Thus, the method can have private, protected and package-private access. Subclass access to this method follows java accessibility rules.
 
-    This writeReplace method is invoked by serialization if the method exists and it would be accessible from a method defined within the class of the object being serialized. Thus, the method can have private, protected and package-private access. Subclass access to this method follows java accessibility rules.
+  Classes that need to designate a replacement when an instance of it is read from the stream should implement this special method with the exact signature.
 
-    Classes that need to designate a replacement when an instance of it is read from the stream should implement this special method with the exact signature.
+  ANY-ACCESS-MODIFIER Object readResolve() throws ObjectStreamException;
 
-     ANY-ACCESS-MODIFIER Object readResolve() throws ObjectStreamException;
-     
+  This readResolve method follows the same invocation rules and accessibility rules as writeReplace.
 
-    This readResolve method follows the same invocation rules and accessibility rules as writeReplace.
+  The serialization runtime associates with each serializable class a version number, called a serialVersionUID, which is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. If the receiver has loaded a class for the object that has a different serialVersionUID than that of the corresponding sender's class, then deserialization will result in an InvalidClassException. A serializable class can declare its own serialVersionUID explicitly by declaring a field named "serialVersionUID" that must be static, final, and of type long:
 
-    The serialization runtime associates with each serializable class a version number, called a serialVersionUID, which is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. If the receiver has loaded a class for the object that has a different serialVersionUID than that of the corresponding sender's class, then deserialization will result in an InvalidClassException. A serializable class can declare its own serialVersionUID explicitly by declaring a field named "serialVersionUID" that must be static, final, and of type long:
+  ANY-ACCESS-MODIFIER static final long serialVersionUID = 42L;
 
-     ANY-ACCESS-MODIFIER static final long serialVersionUID = 42L;
-     
-
-    If a serializable class does not explicitly declare a serialVersionUID, then the serialization runtime will calculate a default serialVersionUID value for that class based on various aspects of the class, as described in the Java(TM) Object Serialization Specification. However, it is strongly recommended that all serializable classes explicitly declare serialVersionUID values, since the default serialVersionUID computation is highly sensitive to class details that may vary depending on compiler implementations, and can thus result in unexpected InvalidClassExceptions during deserialization. Therefore, to guarantee a consistent serialVersionUID value across different java compiler implementations, a serializable class must declare an explicit serialVersionUID value. It is also strongly advised that explicit serialVersionUID declarations use the private modifier where possible, since such declarations apply only to the immediately declaring class--serialVersionUID fields are not useful as inherited members. Array classes cannot declare an explicit serialVersionUID, so they always have the default computed value, but the requirement for matching serialVersionUID values is waived for array classes.
+  If a serializable class does not explicitly declare a serialVersionUID, then the serialization runtime will calculate a default serialVersionUID value for that class based on various aspects of the class, as described in the Java(TM) Object Serialization Specification. However, it is strongly recommended that all serializable classes explicitly declare serialVersionUID values, since the default serialVersionUID computation is highly sensitive to class details that may vary depending on compiler implementations, and can thus result in unexpected InvalidClassExceptions during deserialization. Therefore, to guarantee a consistent serialVersionUID value across different java compiler implementations, a serializable class must declare an explicit serialVersionUID value. It is also strongly advised that explicit serialVersionUID declarations use the private modifier where possible, since such declarations apply only to the immediately declaring class--serialVersionUID fields are not useful as inherited members. Array classes cannot declare an explicit serialVersionUID, so they always have the default computed value, but the requirement for matching serialVersionUID values is waived for array classes.
 
 ## Deserialization in java
+
 Deserialization is the process of reconstructing the object from the serialized state.It is the reverse operation of serialization.
 
 ## ObjectInputStream class
+
 An ObjectInputStream deserializes objects and primitive data written using an ObjectOutputStream.
 
 **Constructor :**
+
 ```java
 public ObjectInputStream(InputStream in) throws IOException {}
 ```
+
 Above constructor creates an ObjectInputStream that reads from the specified InputStream.
 
 **Important Methods :**
+
 <table class="alt">
 <tbody><tr><th>Method</th><th>Description</th></tr>
 <tr><td>1) public final Object readObject() throws IOException, ClassNotFoundException{}</td><td>reads an object from the input stream. </td></tr>
 <tr><td>2) public void close() throws IOException {}</td><td>closes ObjectInputStream.</td></tr>
 </tbody></table>
 
+In Java, 3 streams are created for us automatically. All these streams are attached with the console.
+
+1. System.out: standard output stream
+2. System.in: standard input stream
+3. System.err: standard error stream

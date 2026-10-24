@@ -1,5 +1,8 @@
 # Security
 
+Security functions help you to protect your programs and data from harm, to keep data shielded and private, and to deploy new applications in security-aware runtime environments.
+Java also provides several tools to help you to manage access to system resources; to create, store and maintain encrypted public and private passwords (key pairs) and certificates; and to create and sign jarfiles during the deployment process.
+
 The following are commonly used cryptography terms and their definitions.
 
 `authentication` - The process of confirming the identity of a party with whom one is communicating.
@@ -9,14 +12,13 @@ The following are commonly used cryptography terms and their definitions.
 `Cryptographic Service Provider (CSP)` - Sometimes referred to simply as providers for short, the Java Cryptography Architecture (JCA) defines it as a package (or set of packages) that implements one or more engine classes for specific cryptographic algorithms. An engine class defines a cryptographic service in an abstract fashion without a concrete implementation.
 
 Three mechanisms help ensure safety:
+
 1. Language design features (bounds checking on arrays, no unchecked type conversions, no pointer arithmetic, and so on).
 2. An access control mechanism that controls what the code can do (such as file access, network access, and so on).
 3. Code signing, whereby code authors can use standard cryptographic algorithms to authenticate Java code. Then, the users of the code can determine exactly who created the code and whether the code has been altered after it was signed.
 
-
 `Class loaders` checks class files for integrity when they are loaded into the virtual machine.For maximum security, both the default mechanism for loading a class and a custom class loader need to work with a security manager class that controls what actions code can perform.
 `cryptographic algorithms` supplied in the java.security package allows code signing and user authentication.
-
 
 ## Java Security
 
@@ -27,7 +29,7 @@ The Java security APIs span a wide range of areas. Cryptographic and public key 
 
 The APIs allow for multiple interoperable implementations of algorithms and other security services. Services are implemented in providers, which are plugged into the JDK through a standard interface that makes it easy for applications to obtain security services without having to know anything about their implementations. This allows developers to focus on how to integrate security into their applications, rather than on how to actually implement complex
 security mechanisms.
- 
+
 The JDK includes a number of providers that implement a core set of security services. It also allows for additional custom providers to be installed. This enables developers to extend the platform with new security mechanisms.
 The JDK is divided into modules. Modules that contain security APIs include the following:
 
@@ -37,9 +39,8 @@ The JDK is divided into modules. Modules that contain security APIs include the 
 4. java.smartcardio - Defines the Java Smart Card I/O API.
 5. java.xml.crypto - Defines the API for XML cryptography.
 6. jdk.jartool - Defines APIs for signing jar files.
-7. jdk.security.auth - Provides implementations of the javax.security.auth.* interfaces and various authentication modules.
+7. jdk.security.auth - Provides implementations of the javax.security.auth.\* interfaces and various authentication modules.
 8. jdk.security.jgss - Defines Java extensions to the GSS-API and an implementation of the SASL GSS-API mechanism.
-
 
 The Java language is designed to be type-safe and easy to use. It provides automatic memory management, garbage collection, and range-checking on arrays. This reduces the overall programming burden placed on developers, leading to fewer subtle programming errors and to safer, more robust code.
 A compiler translates Java programs into a machine-independent bytecode representation. A bytecode verifier is invoked to ensure that only legitimate bytecodes are executed in the Java runtime. It checks that the bytecodes conform to the Java Language Specification and do not violate Java language rules or namespace restrictions. The verifier also checks for memory management violations, stack underflows or overflows, and illegal data typecasts. Once bytecodes have been verified, the Java runtime prepares them for execution.
@@ -51,7 +52,6 @@ The APIs are designed around the following principles:
 - Implementation independence - Applications do not need to implement security themselves. Rather, they can request security services from the JDK. Security services are implemented in providers, which are plugged into the JDK via a standard interface. An application may rely on multiple independent providers for security functionality.
 - Implementation interoperability - Providers are interoperable across applications. Specifically, an application is not bound to a specific provider if it does not rely on default values from the provider.
 - Algorithm extensibility - The JDK includes a number of built-in providers that implement a basic set of security services that are widely used today. However, some applications may rely on emerging standards not yet implemented, or on proprietary services. The JDK supports the installation of custom providers that implement such services.
-
 
 Java provides built-in libraries and APIs for security purposes:
 
@@ -86,7 +86,7 @@ public class AESCryptoExample {
     }
 }
 ```
-  
+
 **Message Digests (Hashing)**:- Used for integrity. The java.security.MessageDigest class is used for hashing.
 
 Example using SHA-256:
@@ -114,7 +114,6 @@ public class HashingExample {
 }
 ```
 
-
 ## Java Authentication and Authorization Service(JAAS)
 
 JAAS is a standard Java API for user authentication and authorization.
@@ -132,7 +131,6 @@ Once the user or service executing the code has been authenticated, the JAAS aut
 
 LoginModule for pluggable authentication.
 Subject and Principal for identity representation.
-
 
 The JAAS-related core classes and interfaces can be broken into three categories: Common,Authentication, and Authorization
 
@@ -164,26 +162,24 @@ public class SimpleHttpsServer {
 }
 ```
 
-
 Security in the Java ecosystem evolved from protecting the local machine (Java SE) to protecting web sessions (Jakarta) and finally to securing distributed microservices (Spring).
 🛡️ The Security Evolution Path
+
 1. Java SE: The Foundation (java.security)
-In the Standard Edition, security is focused on the JVM sandbox and cryptography.
-Permissions: Managing what a local file can access (Policy files).
-JAAS (Java Authentication and Authorization Service): A framework to verify who is running the code.
-JCA/JCE: The "engine room" for encryption (AES), digital signatures, and message digests.
-JSSE: Provides SSL/TLS support for java.net sockets.
+   In the Standard Edition, security is focused on the JVM sandbox and cryptography.
+   Permissions: Managing what a local file can access (Policy files).
+   JAAS (Java Authentication and Authorization Service): A framework to verify who is running the code.
+   JCA/JCE: The "engine room" for encryption (AES), digital signatures, and message digests.
+   JSSE: Provides SSL/TLS support for java.net sockets.
 2. Jakarta EE: The Web Standard (jakarta.security)
-Jakarta extends SE by moving security to the Server/Container level.
-Declarative Security: You define security roles in a web.xml file or via annotations (@RolesAllowed).
-Container-Managed Auth: The server (Tomcat/Wildfly) handles the login popup or form, not your code.
-Servlet Security: Adds methods like request.isUserInRole() and request.login().
-JASPIC: A standard for integrating 3rd-party auth providers (like LDAP) into the server.
+   Jakarta extends SE by moving security to the Server/Container level.
+   Declarative Security: You define security roles in a web.xml file or via annotations (@RolesAllowed).
+   Container-Managed Auth: The server (Tomcat/Wildfly) handles the login popup or form, not your code.
+   Servlet Security: Adds methods like request.isUserInRole() and request.login().
+   JASPIC: A standard for integrating 3rd-party auth providers (like LDAP) into the server.
 3. Spring Security: The Modern Powerhouse
-Spring Security is the most widely used because it doesn't rely on the server. It sits inside your app.
-Method-Level Security: You can lock down a single Java method with @PreAuthorize.
-OAuth2 & JWT: Built-in support for modern "Login with Google/GitHub" and stateless Token-based security.
-CORS & CSRF: Automatic protection against common web attacks that Jakarta requires manual handling for.
-Filters: It uses a "Chain of Filters" to intercept every network request before it even reaches your logic.
-
-
+   Spring Security is the most widely used because it doesn't rely on the server. It sits inside your app.
+   Method-Level Security: You can lock down a single Java method with @PreAuthorize.
+   OAuth2 & JWT: Built-in support for modern "Login with Google/GitHub" and stateless Token-based security.
+   CORS & CSRF: Automatic protection against common web attacks that Jakarta requires manual handling for.
+   Filters: It uses a "Chain of Filters" to intercept every network request before it even reaches your logic.

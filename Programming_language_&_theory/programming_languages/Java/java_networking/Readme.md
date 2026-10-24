@@ -815,6 +815,16 @@ Since the connection is not maintained between transmissions, the server does no
 4. Accept an incoming datagram.This is effected via the receive method of our DatagramSocket object, using our DatagramPacket object as the receptacle.
 5. Accept the sender’s address and port from the packet.Methods getAddress and getPort of our DatagramPacket object are used for this.
 
+Datagram - A datagram is an independent, self-contained message sent over the network whose arrival, arrival time, and content are not guaranteed.
+Clients and servers that communicate via a reliable channel, such as a TCP socket, have a dedicated point-to-point channel between themselves, or at least the illusion of one. To communicate, they establish a connection, transmit the data, and then close the connection. All data sent over the channel is received in the same order in which it was sent. This is guaranteed by the channel.
+
+In contrast, applications that communicate via datagrams send and receive completely independent packets of information. These clients and servers do not have and do not need a dedicated point-to-point channel. The delivery of datagrams to their destinations is not guaranteed. Nor is the order of their arrival.
+
+Definition:
+A datagram is an independent, self-contained message sent over the network whose arrival, arrival time, and content are not guaranteed.
+
+The java.net package contains three classes to help you write Java programs that use datagrams to send and receive packets over the network: DatagramSocket, DatagramPacket, and MulticastSocketAn application can send and receive DatagramPackets through a DatagramSocket. In addition, DatagramPackets can be broadcast to multiple recipients all listening to a MulticastSocket.
+
 ### Interfaces
 
 Systems often run with multiple active network connections, such as wired Ethernet, 802.11 b/g (wireless), and bluetooth. Some applications might need to access this information to perform the particular network activity on a specific connection.The `java.net.NetworkInterface` class provides access to this information.
@@ -1389,6 +1399,133 @@ eM esreveR
 
 Note - URLConnection does not have the best-designed API in the Java class library. One of several problems is that the URLConnection class is too closely tied to the HTTP protocol. For instance, it assumes that each file transferred is preceded by a MIME header or something very much like one. However, most classic protocols such as FTP and SMTP don’t use MIME headers.
 
+Reading from and Writing to a URLConnection
+The URLConnection class contains many methods that let you communicate with the URL over the network. URLConnection is an HTTP-centric class; that is, many of its methods are useful only when you are working with HTTP URLs. However, most URL protocols allow you to read from and write to the connection. This section describes both functions.
+
+Reading from a URLConnection
+The following program performs the same function as the URLReader program shown in Reading Directly from a URL.
+
+However, rather than getting an input stream directly from the URL, this program explicitly retrieves a URLConnection object and gets an input stream from the connection. The connection is opened implicitly by calling getInputStream. Then, like URLReader, this program creates a BufferedReader on the input stream and reads from it. The bold statements highlight the differences between this example and the previous:
+
+import java.net._;
+import java.io._;
+
+public class URLConnectionReader {
+public static void main(String[] args) throws Exception {
+URL oracle = new URL("http://www.oracle.com/");
+URLConnection yc = oracle.openConnection();
+BufferedReader in = new BufferedReader(new InputStreamReader(
+yc.getInputStream()));
+String inputLine;
+while ((inputLine = in.readLine()) != null)
+System.out.println(inputLine);
+in.close();
+}
+}
+The output from this program is identical to the output from the program that opens a stream directly from the URL. You can use either way to read from a URL. However, reading from a URLConnection instead of reading directly from a URL might be more useful. This is because you can use the URLConnection object for other tasks (like writing to the URL) at the same time.
+
+Again, if the program hangs or you see an error message, you may have to set the proxy host so that the program can find the Oracle server.
+
+Writing to a URLConnection
+Many HTML pages contain forms — text fields and other GUI objects that let you enter data to send to the server. After you type in the required information and initiate the query by clicking a button, your Web browser writes the data to the URL over the network. At the other end the server receives the data, processes it, and then sends you a response, usually in the form of a new HTML page.
+
+Many of these HTML forms use the HTTP POST METHOD to send data to the server. Thus writing to a URL is often called posting to a URL. The server recognizes the POST request and reads the data sent from the client.
+
+For a Java program to interact with a server-side process it simply must be able to write to a URL, thus providing data to the server. It can do this by following these steps:
+
+Create a URL.
+Retrieve the URLConnection object.
+Set output capability on the URLConnection.
+Open a connection to the resource.
+Get an output stream from the connection.
+Write to the output stream.
+Close the output stream.
+Here is a small servlet named ReverseServlet (or if you prefer a cgi-bin script). You can use this servlet to test the following example program.
+
+The servlet running in a container reads from its InputStream, reverses the string, and writes it to its OutputStream. The servlet requires input of the form string=string_to_reverse, where string_to_reverse is the string whose characters you want displayed in reverse order.
+
+Here's an example program that runs the ReverseServlet over the network through a URLConnection:
+
+import java.io._;
+import java.net._;
+
+public class Reverse {
+public static void main(String[] args) throws Exception {
+
+        if (args.length != 2) {
+            System.err.println("Usage:  java Reverse "
+                + "http://<location of your servlet/script>"
+                + " string_to_reverse");
+            System.exit(1);
+        }
+
+        String stringToReverse = URLEncoder.encode(args[1], "UTF-8");
+
+        URL url = new URL(args[0]);
+        URLConnection connection = url.openConnection();
+        connection.setDoOutput(true);
+
+        OutputStreamWriter out = new OutputStreamWriter(
+                                         connection.getOutputStream());
+        out.write("string=" + stringToReverse);
+        out.close();
+
+        BufferedReader in = new BufferedReader(
+                                    new InputStreamReader(
+                                    connection.getInputStream()));
+        String decodedString;
+        while ((decodedString = in.readLine()) != null) {
+            System.out.println(decodedString);
+        }
+        in.close();
+    }
+
+}
+Let's examine the program and see how it works. First, the program processes its command-line arguments:
+
+if (args.length != 2) {
+System.err.println("Usage: java Reverse " + "http://<location of your servlet/script>" + " string_to_reverse");
+System.exit(1);
+}
+
+String stringToReverse = URLEncoder.encode(args[1], "UTF-8");
+These statements ensure that the user provides two and only two command-line arguments to the program. The command-line arguments are the location of the ReverseServlet and the string that will be reversed. It may contain spaces or other non-alphanumeric characters. These characters must be encoded because the string is processed on its way to the server. The URLEncoder class methods encode the characters.
+
+Next, the program creates the URL object, and sets the connection so that it can write to it:
+
+URL url = new URL(args[0]);
+URLConnection connection = url.openConnection();
+connection.setDoOutput(true);
+The program then creates an output stream on the connection and opens an OutputStreamWriter on it:
+
+OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream());
+If the URL does not support output, getOutputStream method throws an UnknownServiceException. If the URL does support output, then this method returns an output stream that is connected to the input stream of the URL on the server side — the client's output is the server's input.
+
+Next, the program writes the required information to the output stream and closes the stream:
+
+out.write("string=" + stringToReverse);
+out.close();
+This code writes to the output stream using the write method. So you can see that writing data to a URL is as easy as writing data to a stream. The data written to the output stream on the client side is the input for the servlet on the server side. The Reverse program constructs the input in the form required by the script by prepending string= to the encoded string to be reversed.
+
+The servlet reads the information you write, performs a reverse operation on the string value, and then sends this back to you. You now need to read the string the server has sent back. The Reverse program does it like this:
+
+BufferedReader in = new BufferedReader(
+new InputStreamReader(
+connection.getInputStream()));
+String decodedString;
+while ((decodedString = in.readLine()) != null) {
+System.out.println(decodedString);
+}
+in.close();
+If your ReverseServlet is located at http://example.com/servlet/ReverseServlet, then when you run the Reverse program using
+
+http://example.com/servlet/ReverseServlet "Reverse Me"
+as the argument (including the double quote marks), you should see this output:
+
+Reverse Me
+reversed is:
+eM esreveR
+
 ## HTTP
 
 ### HTTP Client and WebSocket APIs
@@ -1566,6 +1703,62 @@ Session Tracking: It provides built-in mechanisms to remember users across multi
   - InetAddress resolution SPI
   - Removal of support for Pre JDK 1.4 DatagramSocketImpl implementations.
 
+## HTTP CLIENT
+
+HTTP Client API is a Java based framework for communication with Web Services.The HTTP Client was added in Java 11. It can be used to request HTTP resources over the network. It supports HTTP/1.1, HTTP/2 and HTTP/3, both synchronous and asynchronous programming models, handles request and response bodies as reactive-streams, and follows the familiar builder pattern.
+
+HTTP Client provides the following capabilities:
+
+- easy way of creating and configuring of HTTP requests,
+- synchronous and asynchronous executing of request,
+- performing request pre-processing and response post-processing.
+
+An HttpClient can be used to send requests and retrieve their responses. An HttpClient is created through a builder. The newBuilder method returns a builder that creates instances of the default HttpClient implementation. The builder can be used to configure per-client state, like: the preferred protocol version ( HTTP/1.1 or HTTP/2 ), whether to follow redirects, a proxy, an authenticator, etc. Once built, an HttpClient is immutable, and can be used to send multiple requests.
+
+**HttpClient** - An HttpClient provides configuration information, and resource sharing, for all requests sent through it. An HttpClient instance typically manages its own pools of connections, which it may then reuse as and when necessary. Connection pools are typically not shared between HttpClient instances. Creating a new client for each operation, though possible, will usually prevent reusing such connections.
+
+A BodyHandler must be supplied for each HttpRequest sent. The BodyHandler determines how to handle the response body, if any. Once an HttpResponse is received, the headers, response code, and body (typically) are available. Whether the response body bytes have been read or not depends on the type, T, of the response body.
+
+Requests can be sent either synchronously or asynchronously:
+
+send(HttpRequest, BodyHandler) blocks until the request has been sent and the response has been received.
+sendAsync(HttpRequest, BodyHandler) sends the request and receives the response asynchronously. The sendAsync method returns immediately with a CompletableFuture<HttpResponse>. The CompletableFuture completes when the response becomes available. The returned CompletableFuture can be combined in different ways to declare dependencies among several asynchronous tasks.
+
+To send a request, first create an HttpClient from its builder. The builder can be used to configure per-client state, like:
+
+- The preferred protocol version ( HTTP/1.1, HTTP/2, or HTTP/3 )
+- Whether to follow redirects
+- A proxy
+- An authenticator
+
+```java
+HttpClient client = HttpClient.newBuilder()
+      .version(Version.HTTP_2)
+      .followRedirects(Redirect.NORMAL)
+      .proxy(ProxySelector.of(new InetSocketAddress("www-proxy.com", 8080)))
+      .authenticator(Authenticator.getDefault())
+      .build();
+```
+
+**HttpRequest** - An HttpRequest is created from its builder. The request builder can be used to set:
+
+- The request URI
+- The request method ( GET, PUT, POST )
+- The request body ( if any )
+- A timeout
+- Request headers
+
+```java
+HttpRequest request = HttpRequest.newBuilder()
+      .uri(URI.create("http://openjdk.org/"))
+      .timeout(Duration.ofMinutes(1))
+      .header("Content-Type", "application/json")
+      .POST(BodyPublishers.ofFile(Paths.get("file.json")))
+      .build()
+```
+
+Once built an HttpRequest is immutable, and can be sent multiple times.
+
 ## Server-Side Network Programming
 
 Server-side network programming involves designing and implementing programs to be run on a server. Server-side applications run as processes on a dedicated physical machine, virtual machine, or cloud infrastructure. Server-side applications receive requests from the clients and perform tasks as requested by the clients. This chapter introduces various server-side methods and techniques used to generate and deliver web documents to requesting clients, including Java specific solutions such as Java Servlets and Java Servlet Pages.
@@ -1670,3 +1863,61 @@ Conclusion:
 Java 21 provides solid support for HTTP/2 and HTTP/3 (experimental), making it a good choice for many networking tasks.
 OkHttp, however, is still a better choice for advanced features like connection pooling, HTTP/3 support, WebSockets, interceptors, and more granular control over the networking behavior.
 If you're working on complex, performance-sensitive applications or need full HTTP/3 and WebSocket support, OkHttp is likely the better choice, even in Java 21.
+
+## RMI
+
+The Java Remote Method Invocation (RMI) system allows an object running in one Java virtual machine to invoke methods on an object running in another Java virtual machine. RMI provides for remote communication between programs written in the Java programming language.
+
+RMI applications often comprise two separate programs, a server and a client. A typical server program creates some remote objects, makes references to these objects accessible, and waits for clients to invoke methods on these objects. A typical client program obtains a remote reference to one or more remote objects on a server and then invokes methods on them. RMI provides the mechanism by which the server and the client communicate and pass information back and forth. Such an application is sometimes referred to as a distributed object application.
+
+Distributed object applications need to do the following:
+
+Locate remote objects. Applications can use various mechanisms to obtain references to remote objects. For example, an application can register its remote objects with RMI's simple naming facility, the RMI registry. Alternatively, an application can pass and return remote object references as part of other remote invocations.
+Communicate with remote objects. Details of communication between remote objects are handled by RMI. To the programmer, remote communication looks similar to regular Java method invocations.
+Load class definitions for objects that are passed around. Because RMI enables objects to be passed back and forth, it provides mechanisms for loading an object's class definitions as well as for transmitting an object's data.
+
+Advantages of Dynamic Code Loading
+One of the central and unique features of RMI is its ability to download the definition of an object's class if the class is not defined in the receiver's Java virtual machine. All of the types and behavior of an object, previously available only in a single Java virtual machine, can be transmitted to another, possibly remote, Java virtual machine. RMI passes objects by their actual classes, so the behavior of the objects is not changed when they are sent to another Java virtual machine. This capability enables new types and behaviors to be introduced into a remote Java virtual machine, thus dynamically extending the behavior of an application. The compute engine example in this trail uses this capability to introduce new behavior to a distributed program.
+
+Remote Interfaces, Objects, and Methods
+Like any other Java application, a distributed application built by using Java RMI is made up of interfaces and classes. The interfaces declare methods. The classes implement the methods declared in the interfaces and, perhaps, declare additional methods as well. In a distributed application, some implementations might reside in some Java virtual machines but not others. Objects with methods that can be invoked across Java virtual machines are called remote objects.
+
+An object becomes remote by implementing a remote interface, which has the following characteristics:
+
+A remote interface extends the interface java.rmi.Remote.
+Each method of the interface declares java.rmi.RemoteException in its throws clause, in addition to any application-specific exceptions.
+RMI treats a remote object differently from a non-remote object when the object is passed from one Java virtual machine to another Java virtual machine. Rather than making a copy of the implementation object in the receiving Java virtual machine, RMI passes a remote stub for a remote object. The stub acts as the local representative, or proxy, for the remote object and basically is, to the client, the remote reference. The client invokes a method on the local stub, which is responsible for carrying out the method invocation on the remote object.
+
+A stub for a remote object implements the same set of remote interfaces that the remote object implements. This property enables a stub to be cast to any of the interfaces that the remote object implements. However, only those methods defined in a remote interface are available to be called from the receiving Java virtual machine.
+
+Creating Distributed Applications by Using RMI
+Using RMI to develop a distributed application involves these general steps:
+
+Designing and implementing the components of your distributed application.
+Compiling sources.
+Making classes network accessible.
+Starting the application.
+Designing and Implementing the Application Components
+First, determine your application architecture, including which components are local objects and which components are remotely accessible. This step includes:
+
+Defining the remote interfaces. A remote interface specifies the methods that can be invoked remotely by a client. Clients program to remote interfaces, not to the implementation classes of those interfaces. The design of such interfaces includes the determination of the types of objects that will be used as the parameters and return values for these methods. If any of these interfaces or classes do not yet exist, you need to define them as well.
+Implementing the remote objects. Remote objects must implement one or more remote interfaces. The remote object class may include implementations of other interfaces and methods that are available only locally. If any local classes are to be used for parameters or return values of any of these methods, they must be implemented as well.
+Implementing the clients. Clients that use remote objects can be implemented at any time after the remote interfaces are defined, including after the remote objects have been deployed.
+Compiling Sources
+As with any Java program, you use the javac compiler to compile the source files. The source files contain the declarations of the remote interfaces, their implementations, any other server classes, and the client classes.
+
+Note: With versions prior to Java Platform, Standard Edition 5.0, an additional step was required to build stub classes, by using the rmic compiler. However, this step is no longer necessary.
+Making Classes Network Accessible
+In this step, you make certain class definitions network accessible, such as the definitions for the remote interfaces and their associated types, and the definitions for classes that need to be downloaded to the clients or servers. Classes definitions are typically made network accessible through a web server.
+
+Starting the Application
+Starting the application includes running the RMI remote object registry, the server, and the client.
+
+The rest of this section walks through the steps used to create a compute engine.
+
+Building a Generic Compute Engine
+This trail focuses on a simple, yet powerful, distributed application called a compute engine. The compute engine is a remote object on the server that takes tasks from clients, runs the tasks, and returns any results. The tasks are run on the machine where the server is running. This type of distributed application can enable a number of client machines to make use of a particularly powerful machine or a machine that has specialized hardware.
+
+The novel aspect of the compute engine is that the tasks it runs do not need to be defined when the compute engine is written or started. New kinds of tasks can be created at any time and then given to the compute engine to be run. The only requirement of a task is that its class implement a particular interface. The code needed to accomplish the task can be downloaded by the RMI system to the compute engine. Then, the compute engine runs the task, using the resources on the machine on which the compute engine is running.
+
+The ability to perform arbitrary tasks is enabled by the dynamic nature of the Java platform, which is extended to the network by RMI. RMI dynamically loads the task code into the compute engine's Java virtual machine and runs the task without prior knowledge of the class that implements the task. Such an application, which has the ability to download code dynamically, is often called a behavior-based application. Such applications usually require full agent-enabled infrastructures. With RMI, such applications are part of the basic mechanisms for distributed computing on the Java platform.
