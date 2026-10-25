@@ -23,9 +23,34 @@ System.out.println("c" + 1 + 2);// c12
 System.out.println("c" + null);// cnull
 ```
 
-Since a String is a sequence of characters and it implements the interface CharSequence. This interface is a general way of representing several classes, including String and StringBuilder.
+Since a String is a sequence of characters and it implements the interface `CharSequence`. This interface is a general way of representing several classes, including String and StringBuilder.
+
+**Java String Pool** - In Java, all objects — including strings — are stored in a region of memory called the Heap. But strings are a bit special.
+To optimize memory usage, Java uses a specific area within the heap known as the String Pool (or String Constant Pool).
+
+Whenever a string is created using double quotes, Java checks the String Pool to see if a string with the same content already exists.If it exists, it reuses the same object from the pool.If it doesn’t, it creates a new object and stores it in the pool.
+When you use the new keyword, Java skips the pool and creates a new object in the heap even if that string already exists in the pool.
+
+`intern()` - The intern() method is used to manually add a String to the String Pool, or return the existing pooled version if it already exists.
+
+```java
+String a = new String("Hello");
+String b = "Hello";
+
+a==b //false
+String c = a.intern()
+c == b //true
+```
+
+If you create a string using the new keyword, it won’t automatically go into the String Pool — it gets stored in the heap. But when you call .intern() on that string, Java checks the pool for an existing match. If found, it returns the pooled object; otherwise, it adds the string to the pool.
 
 _String Methods_:- The String class has dozens of methods.String is a sequence of characters and Java counts from 0 when indexed.You also need to know that a String is immutable, or unchangeable. This means calling a method on a String will return a different String object rather than changing the value of the reference.
+
+Why Are Strings Immutable:-
+
+1. Security: Strings are often used in sensitive operations—like file paths,network connections,or credentials. Making them immutable ensures they can't be changed unexpectedly.
+2. Thread Safety: Since String objects can't be changed, they are naturally safe to use in multi-threaded environments.
+3. Performance (String Pooling): Java maintains a String pool to save memory. Immutable strings can be shared safely, which reduces object creation and memory usage.
 
 `Determining the Length`:- The method length() returns the number of characters in the String. The method signature is as follows:
 
@@ -124,6 +149,9 @@ System.out.println("abc".equals("ABC"));//false
 System.out.println("ABC".equals("ABC"));//true
 System.out.println("abc".equalsIgnoreCase("ABC"));//true
 ```
+
+The == operator checks if both variables point to the exact same object in memory (i.e., same reference), not just the content.If both strings are created as literals, Java uses the String Pool, and both variables might point to the same object.
+But don’t rely on this — always use .equals() for comparing string values.
 
 `Searching for Substrings`:- Often, you need to search a larger string to determine if a substring is contained within it.The startsWith() and endsWith() methods look at whether the provided value matches part of the String. The contains() method isn’t as particular; it looks for matches anywhere in the String. The method signatures are as follows:
 

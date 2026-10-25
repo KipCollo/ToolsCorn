@@ -53,9 +53,94 @@ The `java.util.jar` package includes two stream classes for reading files from J
 The `java.security` package includes a couple of stream classes used for calculating message digests.
 The `Java Cryptography Extension (JCE)` adds two classes for encryption and decryption
 
-**InputStream** - The java.io.InputStream class is the abstract superclass for all input streams. It declares the three basic methods needed to read bytes of data from a stream. It also has methods for closing and flushing streams, checking how many bytes of data are available to be read, skipping over input, marking a position in a stream and resetting back to that position, and determining whether marking and resetting are supported.
+**Input Stream** - The java.io.InputStream class is the abstract superclass for all input streams. It declares the three basic methods needed to read bytes of data from a stream. It also has methods for closing and flushing streams, checking how many bytes of data are available to be read, skipping over input, marking a position in a stream and resetting back to that position, and determining whether marking and resetting are supported.
 
-## Conceptualizing the File System
+Java uses byte streams to perform input and output of 8-bit bytes.All input byte stream classes are descended from _IputStream_.InputStream class is an abstract class.Is superclass of all class rep input stream of bytes.
+
+1. AudioInputStream
+2. ByteArrayInputStream
+3. FileInputStream
+4. FilterInputStream
+5. ObjectInputStream
+6. PipedinputStream
+7. SequenceInputStream
+8. StringBufferinputStream
+
+_The read( ) Method_ - The fundamental method of the InputStream class is read(), which reads a single unsigned byte of data and returns the integer value of the unsigned byte. This is a number between and 255: `public abstract int read() throws IOException`
+Notice that although read() is reading a byte, it returns an int. If you want to store the raw bytes instead, you can cast the int to a byte.When you call read(), you also have to catch the IOException that it might throw.
+
+The read() method waits or blocks until a byte of data is available and ready to be read.Input and output can be slow, so if your program is doing anything else of importance, you should try to put I/O in its own thread.
+read() is declared abstract; therefore, InputStream is abstract. Hence, you can never instantiate an InputStream directly; you always work with one of its concrete subclasses.
+
+**Output Stream** - The java.io.OutputStream class declares the three basic methods you need to write bytes of data onto a stream. It also has methods for closing and flushing streams.
+OutputStream is an abstract class. Subclasses provide implementations of the abstract write(int b) method. They may also override the four nonabstract methods. For example, the FileOutputStream class overrides all five methods with native methods that know how to write bytes into files on the host platform. Although OutputStream is abstract, often you only need to know that the object you have is an OutputStream ; the more specific subclass of OutputStream is hidden from you.
+
+Java uses byte streams to perform input and output of 8-bit bytes.All input byte stream classes are descended from _OutputStream_.OutputStream class is an abstract class.Is superclass of all class rep output stream of bytes.
+
+1. ByteArrayoutputStream
+2. FileOutputStream
+3. FilterOutputStream
+4. ObjectOutputStream
+5. PipedOutputStream
+
+_Writing Bytes to Output Streams_ - The fundamental method of the OutputStream class is write():- `public abstract void write(int b) throws IOException`
+This method writes a single unsigned byte of data whose value should be between and 255. If you pass a number larger than 255 or smaller than zero, it's reduced modulo 256 before being written.
+The PrintStream class, of which System.out is an instance, overrides write() with a variant that does not throw IOException.
+
+_Writing Arrays of Bytes_ - It's often faster to write larger chunks of data than to write byte by byte. Two overloaded variants of the write() method do this:
+
+- public void write(byte[] data) throws IOException
+- public void write(byte[] data, int offset, int length) throws IOException
+
+The first variant writes the entire byte array data. The second writes only the sub-array of data starting at offset and continuing for length bytes.
+
+_Flushing and Closing Output Streams_ - Many output streams buffer writes to improve performance. Rather than sending each byte to its destination as it's written, the bytes are accumulated in a memory buffer ranging in size from several bytes to several thousand bytes. When the buffer fills up, all the data is sent at once. The flush() method forces the data to be written whether or not the buffer is full:- `public void flush() throws IOException`
+
+This is not the same as any buffering performed by the operating system or the hardware.These buffers will not be emptied by a call to flush(). (Then sync() method in the FileDescriptor class can sometimes be used to empty these buffers.) For example, assuming out is an OutputStream of some sort, you would call out.flush() to empty the buffers.
+
+If you only use a stream for a short time, you don't need to flush it explicitly. It should be flushed when the stream is closed. This should happen when the program exits or when you explicitly invoke the close() method: `public void close() throws IOException`
+
+_Subclassing OutputStream_ - OutputStream is an abstract class that mainly describes the operations available with any particular OutputStream object. Specific subclasses know how to write bytes to particular destinations. For instance, a FileOutputStream uses native code to write data in files. A ByteArrayOutputStream uses pure Java to write its output in a potentially expanding byte array.
+Subclasses must implement the abstract write(int b) method. They often choose to override the third variant, write(byte[], data int offset, int length), for reasons of performance. The implementation of the three-argument version of the write() method in OutputStream simply invokes write(int b) repeatedly.
+
+## Data sources
+
+**File Streams** - `java.io.FileInputStream` and `java.io.FileOutputStream classes` are concrete subclasses of java.io.InputStream and java.io.OutputStream, to read and write files.FileInputStream and FileOutputStream provide input and output streams that let you read and write files.
+
+A file output stream is an output stream for writing data to a File or to a FileDescriptor. Whether or not a file is available or may be created depends upon the underlying platform. Some platforms, in particular, allow a file to be opened for writing by only one FileOutputStream (or other file-writing object) at a time. In such situations the constructors in this class will fail if the file involved is already open.
+
+FileOutputStream is meant for writing streams of raw bytes such as image data. For writing streams of characters, consider using FileWriter.
+
+Note:- The close() method should be called to release resources used by this stream, either directly, or with the try-with-resources statement.
+
+- _Constructors_ -
+  1.  FileOutputStream(File file) - Creates a file output stream to write to the file represented by the specified File object.
+  2.  FileOutputStream(FileDescriptor fdObj) - Creates a file output stream to write to the specified file descriptor, which represents an existing connection to an actual file in the file system.
+  3.  FileOutputStream(File file, boolean append) - Creates a file output stream to write to the file represented by the specified File object.
+  4.  FileOutputStream(String name) - Creates a file output stream to write to the file with the specified name.
+  5.  FileOutputStream(String name, boolean append) - Creates a file output stream to write to the file with the specified name.
+
+- _Methods_ -
+
+1. void close() - Closes this file output stream and releases any system resources associated with this stream.
+2. FileChannel getChannel() - Returns the unique FileChannel object associated with this file output stream.
+3. final FileDescriptor getFD() - Returns the file descriptor associated with this stream.
+4. void write(byte[] b) - Writes b.length bytes from the specified byte array to this file output stream.
+5. void write(byte[] b, int off, int len) - Writes len bytes from the specified byte array starting at offset off to this file output stream.
+6. void write(int b) - Writes the specified byte to this file output stream.
+
+**Network Streams** - Java is the first programming language to provide as much support for network I/O as it does for file I/O, perhaps even more—Java's URL, URLConnection, Socket, and ServerSocket classes are all fertile sources of streams.
+The exact type of the stream used by a network connection is typically hidden inside the undocumented sun classes.Thus, network I/O relies primarily on the basic InputStream and OutputStream methods, which you can wrap with any higher-level stream that suits your needs: buffering, cryptography, compression, or whatever your application requires.
+
+## Filter Streams
+
+Filter input streams read data from a preexisting input stream like a FileInputStream and have an opportunity to work with or change the data before it is delivered to the client program. Filter output streams write data to a preexisting output stream such as a FileOutputStream and have an opportunity to work with or change the data before it is written onto the underlying stream. Multiple filters can be chained onto a single underlying stream. Filter streams are used for encryption, compression, translation, buffering, and much more.
+
+**The Filter Stream Subclasses** - The java.io package contains many useful filter stream classes. The `BufferedInputStream` and `BufferedOutputStream` classes buffer reads and writes by first putting data into a buffer (an internal array of bytes). Thus, an application can read or write bytes to the stream without necessarily calling the underlying native methods. The data is read from or written into the buffer in blocks; subsequent accesses go straight to the buffer. This improves performance in many situations. Buffered input streams also allow the reader to back up and reread data.
+
+## Files
+
+### Conceptualizing the File System
 
 Data is stored on persistent storage devices, such as hard disk drives and memory cards. A `file` within the storage device holds data. Files are organized into hierarchies using directories. A `directory` is a location that can contain files as well as other directories.
 When working with directories in Java, we often treat them like files. We use many of the same classes and interfaces to operate on files and directories.For example, a file and directory both can be renamed with the same Java method.
@@ -283,56 +368,6 @@ Files.copy(Paths.get("/fish/clown.xsl"), System.out);
 While we used FileInputStream in the first example, the I/O stream could have been
 any valid I/O stream including website connections, in-­memory stream resources, and so
 forth. The second example prints the contents of a file directly to the System.out stream.
-
-### Java InputStream class
-
-Java uses byte streams to perform input and output of 8-bit bytes.All input byte stream classes are descended from **IputStream**.InputStream class is an abstract class.Is superclass of all class rep input stream of bytes.
-
-1. AudioInputStream
-2. ByteArrayInputStream
-3. FileInputStream
-4. FilterInputStream
-5. ObjectInputStream
-6. PipedinputStream
-7. SequenceInputStream
-8. StringBufferinputStream
-
-### Java OutputStream class
-
-Java uses byte streams to perform input and output of 8-bit bytes.All input byte stream classes are descended from **OutputStream**.OutputStream class is an abstract class.Is superclass of all class rep output stream of bytes.
-
-1. ByteArrayoutputStream
-2. FileOutputStream
-3. FilterOutputStream
-4. ObjectOutputStream
-5. PipedOutputStream
-
-#### Class FileOutputStream
-
-A file output stream is an output stream for writing data to a File or to a FileDescriptor. Whether or not a file is available or may be created depends upon the underlying platform. Some platforms, in particular, allow a file to be opened for writing by only one FileOutputStream (or other file-writing object) at a time. In such situations the constructors in this class will fail if the file involved is already open.
-
-FileOutputStream is meant for writing streams of raw bytes such as image data. For writing streams of characters, consider using FileWriter.
-
-Note:
-
-The close() method should be called to release resources used by this stream, either directly, or with the try-with-resources statement.
-
-##### Constructors
-
-1. FileOutputStream(File file) - Creates a file output stream to write to the file represented by the specified File object.
-2. FileOutputStream(FileDescriptor fdObj) - Creates a file output stream to write to the specified file descriptor, which represents an existing connection to an actual file in the file system.
-3. FileOutputStream(File file, boolean append) - Creates a file output stream to write to the file represented by the specified File object.
-4. FileOutputStream(String name) - Creates a file output stream to write to the file with the specified name.
-5. FileOutputStream(String name, boolean append) - Creates a file output stream to write to the file with the specified name.
-
-##### Methods
-
-1. void close() - Closes this file output stream and releases any system resources associated with this stream.
-2. FileChannel getChannel() - Returns the unique FileChannel object associated with this file output stream.
-3. final FileDescriptor getFD() - Returns the file descriptor associated with this stream.
-4. void write(byte[] b) - Writes b.length bytes from the specified byte array to this file output stream.
-5. void write(byte[] b, int off, int len) - Writes len bytes from the specified byte array starting at offset off to this file output stream.
-6. void write(int b) - Writes the specified byte to this file output stream.
 
 ## File Navigation and I/O
 
@@ -751,6 +786,23 @@ List<Gorilla> readFromFile(File dataFile) throws IOException,ClassNotFoundExcept
 Notice that readObject() declares a checked ClassNotFoundException since the class might not be available on deserialization.
 If your program happens to know the number of objects in the I/O stream, you can call readObject() a fixed number of times, rather than using an infinite loop.
 
+**Deserialization in java** - Deserialization is the process of reconstructing the object from the serialized state.It is the reverse operation of serialization.
+
+`ObjectInputStream class` - An ObjectInputStream deserializes objects and primitive data written using an ObjectOutputStream.
+
+_Constructor :_
+
+```java
+public ObjectInputStream(InputStream in) throws IOException {}
+```
+
+Above constructor creates an ObjectInputStream that reads from the specified InputStream.
+
+_Important Methods :_
+
+- public final Object readObject() throws IOException, ClassNotFoundException{} - reads an object from the input stream.
+- public void close() throws IOException {} - closes ObjectInputStream.
+
 ## Externalizable in Java
 
 The Externalizable interface provides the facility of writing the state of an object into a byte stream in compress format. It is not a marker interface.
@@ -803,32 +855,16 @@ The Externalizable interface provides two methods:
 
   If a serializable class does not explicitly declare a serialVersionUID, then the serialization runtime will calculate a default serialVersionUID value for that class based on various aspects of the class, as described in the Java(TM) Object Serialization Specification. However, it is strongly recommended that all serializable classes explicitly declare serialVersionUID values, since the default serialVersionUID computation is highly sensitive to class details that may vary depending on compiler implementations, and can thus result in unexpected InvalidClassExceptions during deserialization. Therefore, to guarantee a consistent serialVersionUID value across different java compiler implementations, a serializable class must declare an explicit serialVersionUID value. It is also strongly advised that explicit serialVersionUID declarations use the private modifier where possible, since such declarations apply only to the immediately declaring class--serialVersionUID fields are not useful as inherited members. Array classes cannot declare an explicit serialVersionUID, so they always have the default computed value, but the requirement for matching serialVersionUID values is waived for array classes.
 
-## Deserialization in java
-
-Deserialization is the process of reconstructing the object from the serialized state.It is the reverse operation of serialization.
-
-## ObjectInputStream class
-
-An ObjectInputStream deserializes objects and primitive data written using an ObjectOutputStream.
-
-**Constructor :**
-
-```java
-public ObjectInputStream(InputStream in) throws IOException {}
-```
-
-Above constructor creates an ObjectInputStream that reads from the specified InputStream.
-
-**Important Methods :**
-
-<table class="alt">
-<tbody><tr><th>Method</th><th>Description</th></tr>
-<tr><td>1) public final Object readObject() throws IOException, ClassNotFoundException{}</td><td>reads an object from the input stream. </td></tr>
-<tr><td>2) public void close() throws IOException {}</td><td>closes ObjectInputStream.</td></tr>
-</tbody></table>
-
 In Java, 3 streams are created for us automatically. All these streams are attached with the console.
 
 1. System.out: standard output stream
 2. System.in: standard input stream
 3. System.err: standard error stream
+
+## Readers and Writers
+
+A language that supports international text must separate the reading and writing of raw bytes from the reading and writing of characters, since in an international system they are no longer the same thing. Classes that read characters must be able to parse a variety of character encodings, not just ASCII, and translate them into the language's native character set. Classes that write characters must be able to translate the language's native character set into a variety of formats and write those. In Java this task is performed by the `Reader` and `Writer` classes.
+
+## The Java Communications API
+
+`Java Communications API 2.0` is a standard extension available in Java 1.1 and later that allows Java applications (but not applets) to send and receive data to and from the serial and parallel ports of the host computer. The Java Communications API allows Java programs to communicate with essentially any device connected to a serial or parallel port, like a printer, a scanner, a modem, a tape backup unit, and so on. The Comm API operates at a very low level. It only understands how to send and receive bytes to these ports.It does not understand anything about what these bytes mean. Doing useful work generally requires not only understanding the Java Communications API (which is actually quite simple) but also the protocols spoken by the devices connected to the ports (which can be almost arbitrarily complex).

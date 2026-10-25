@@ -4,13 +4,12 @@ Java's Collection framework provides a way to store and manipulate groups of obj
 In Java, a collection is a single unit of objects(A collection is a group of objects contained in a single object). ArrayList, Vector, LinkedList, PriorityQueue, HashSet, LinkedHashSet, TreeSet, and LinkedList are all classes of Java Collection framework.
 
 Program design often requires the handling of collections of objects. The Java Collections Framework provides a set of standard utility classes for managing various kinds of collections. The core framework is provided in the java.util package and comprises three main parts:
+
 - The core interfaces that allow collections to be manipulated independently of their implementation. These generic interfaces define the common functionality exhibited by collections and facilitate data exchange between collections.
 - A set of implementations (i.e., concrete classes) that are specific implementations of the core interfaces, providing data structures that a program can readily use.
 - An assortment of static utility methods found in the Collections and Arrays classes that can be used to perform various operations on collections and arrays, such as sorting and searching, or creating customized collections.
 
-
 **Core Interfaces**:- generic Collection interface is a generalized interface for maintaining collections and is root of the interface inheritance hierarchy for collections.Extends Iterable interface that specifies an `iterator` to sequentially access the elements of an `Iterable` object.
-
 
 ```java
                         java.lang.Iterable<E>
@@ -51,8 +50,7 @@ The collections framework is interface-based, meaning that collections are manip
 All the concrete classes implement the Serializable and the Cloneable interfaces; therefore, the objects of these classes can be serialized and also cloned.
 The collection and map implementations except for Vector and Hashtable, are not thread-safe, that is, their integrity can be jeopardized by concurrent access. The Java Collections Framework provides a plethora of collections and maps for use in single-threaded and concurrent applications.
 
-
------------
+---
 
 ## Collection
 
@@ -63,29 +61,29 @@ The Collection interface specifies the contract that all collections should impl
 Many of the methods return a boolean value to indicate whether the collection was modified as a result of the operation.
 
 - `Basic Operations`:- The basic operations are used to query a collection about its contents and allow elements to be added to and removed from a collection.
-    - int size()- return the total number of elements in the collection.
-    - boolean isEmpty()- checks if collection is empty.
-    - boolean contains(Object element)- is used to search an element.
-    - boolean add(E element)- is used to insert an element in this collection.
-    - boolean remove(Object element)- is used to delete an element from this collection.
+  - int size()- return the total number of elements in the collection.
+  - boolean isEmpty()- checks if collection is empty.
+  - boolean contains(Object element)- is used to search an element.
+  - boolean add(E element)- is used to insert an element in this collection.
+  - boolean remove(Object element)- is used to delete an element from this collection.
 
 The add() and remove() methods return true if the collection was modified as a result of the operation.By returning the value false, the add() method indicates that the collection excludes duplicates and that the collection already contains an object equal to the argument object.
 The contains() method checks for membership of the argument object in the collection, using object value equality.
 Note that we can only add an object of a specific type (E). However, a collection allows us to determine whether it has an element equal to any arbitrary object,or remove an element that is equal to any arbitrary object.
 
 - `Bulk Operations`:- These operations perform on a collection as a single unit.
-    - containsAll(Collection c)-is used to search the specified collection in this collection.
-    - boolean addAll(Collection c)- is used to insert the specified collection elements in the invoking collection.
-    - boolean removeAll(Collection c)- is used to delete all the elements of specified collection from the invoking collection.
-    - boolean retainAll(Collection c)- is used to delete all the elements of invoking collection except the specified collection.
-    - void clear()- removes the total no of element from the collection.
+  - containsAll(Collection c)-is used to search the specified collection in this collection.
+  - boolean addAll(Collection c)- is used to insert the specified collection elements in the invoking collection.
+  - boolean removeAll(Collection c)- is used to delete all the elements of specified collection from the invoking collection.
+  - boolean retainAll(Collection c)- is used to delete all the elements of invoking collection except the specified collection.
+  - void clear()- removes the total no of element from the collection.
 
 - `Iterators`:- A collection provides an iterator which allows sequential access to the elements of a collection. An iterator can be obtained by calling the following method of the Collection interface:
-    - Iterator<E> iterator() - Returns an object which implements the Iterator interface.
+  - Iterator<E> iterator() - Returns an object which implements the Iterator interface.
 
 - `Array Operations`:- These operations convert collections to arrays.
-    - Object[] toArray()- converts collection into array.
-    - <T> T[] toArray(T[] a) - stores the elements of a collection in an array of type T.
+  - Object[] toArray()- converts collection into array.
+  - <T> T[] toArray(T[] a) - stores the elements of a collection in an array of type T.
 
 If the given array is big enough, the elements are stored in this array. If there is room to spare in the array, that is, the length of the array is greater than the number of elements in the collection, the spare room is filled with null values before the array is returned. If the array is too small, a new array of type T and appropriate size is created. If T is not a supertype of the runtime type of every element in the collection, an ArrayStoreException is thrown.
 
@@ -182,7 +180,6 @@ Determining Equality:- There is a custom implementation of equals() so you can c
 boolean equals(Object object)
 ```
 
-
 **Sorting DaTa**:- When working with a String, remember that numbers sort before letters, and uppercase letters sort before lowercase letters.
 We use Collections.sort(). It returns void because themmethod parameter is what gets sorted.
 You can also sort objects that you create yourself. Java provides an interface called Comparable. If your class implements Comparable, it can be used in data structures that require comparison. There is also a class called Comparator, which is used to specify that you want to use a different order than the object itself provides.
@@ -190,7 +187,7 @@ You can also sort objects that you create yourself. Java provides an interface c
 13. public boolean equals(Object element) - matches two collection.
 14. public int hashCode() - returns the hashcode number for collection.
 
----------------
+---
 
 ## List Interface
 
@@ -200,12 +197,12 @@ List is an ordered collection.It maintains the insertion order, meaning it will 
 Items can be retrieved and inserted at specific positions in the list based on an int index, much like an array. Unlike an array, though, many List implementations can change in size after they are declared.Lists are commonly used because there are many situations in programming where you need to keep track of a list of objects.
 The main thing all List implementations have in common is that they are ordered and allow duplicates. Beyond that, they each offer different functionality.Some implementations include: ArrayList, LinkedList, Vectors, Stack, CopyOnWriteArrayList.
 
-*Creating a List*:-
+_Creating a List_:-
 
 - `Using Factory`:- When you create a List of type ArrayList or LinkedList, you know the type. There are a few special methods where you get a List back but don’t know the type.These method let you create a List including data in one line using a factory method. This is convenient, especially when testing. Some of these methods return an immutable object.
-    1. Arrays.asList(varargs) - Returns fixed size list backed by an aaray.Cannot add or delete elements but can replace elements.
-    2. List.of(varargs) - Returns immutable list.Cannot add,replace or delete elements.
-    3. List.copyof(collection ) - Returns immutable list with copy of original collection's values.Cannot add,replace or delete elements.
+  1. Arrays.asList(varargs) - Returns fixed size list backed by an aaray.Cannot add or delete elements but can replace elements.
+  2. List.of(varargs) - Returns immutable list.Cannot add,replace or delete elements.
+  3. List.copyof(collection ) - Returns immutable list with copy of original collection's values.Cannot add,replace or delete elements.
 
 ```java
 String[] array = new String[] {"a", "b", "c"};
@@ -225,87 +222,85 @@ System.out.println(Arrays.toString(array)); // [x, b, c]
 copy.add("y");// UnsupportedOperationException
 ```
 
-- `Using a Constructor`:- 
+- `Using a Constructor`:-
 
 - `List Methods`:- In addition to the operations inherited from the Collection interface, the List interface also defines operations that work specifically on lists: position-based access of the list elements, searching in a list, operations on parts of a list (called open range-view operations), and creation of customized iterators.
-    - E get(int index)- Returns element at specified index.
-    - E set(int index, E e) - Replaces element at index and returns original element.Throws IndexOutOfBoundsException if index is invalid.
-    - void add(int index,E element) - Adds element at index and moves the rest toward the end.The inherited method add(E) from the Collection interface will append the specified element to the end of the list.
-    - boolean addAll(int index, Collection<? extends E> c) - inserts the elements from the specified collection at the specified index, using an iterator of the specified collection, i.e. the method splices the elements of the specified collection into the list at the specified index. The method returns true if any elements were added.
-    - E remove(int index) - Removes element at index and moves the rest toward the front.The inherited method remove(E) from the Collection interface will remove the first occurrence of the element from the list.
-    - int indexOf(Object o) - return the index of the first occurrence of the element that is the same as the specified argument if such an element exists in the list; otherwise, the value –1 is returned.
-    - int lastIndexOf(Object o) - return the index of the last occurrence of the element that is the same as the specified argument if such an element exists in the list; otherwise, the value –1 is returned.
-    - List<E> subList(int fromIndex, int toIndex) - This method returns a view of the list, which consists of the sublist of the elements from the index fromIndex to the index toIndex-1, i.e. a half-open interval. A view allows the range it represents in the underlying list to be manipulated. Any changes in the view are reflected in the underlying list, and vice versa. Views can be used to perform operations on specific ranges of a list.
-    - ListIterator<E> listIterator() - traverses the elements consecutively, starting with the first element of the list.
-    - ListIterator<E> listIterator(int index) - tarts traversing the list from the element indicated by the specified index.
+  - E get(int index)- Returns element at specified index.
+  - E set(int index, E e) - Replaces element at index and returns original element.Throws IndexOutOfBoundsException if index is invalid.
+  - void add(int index,E element) - Adds element at index and moves the rest toward the end.The inherited method add(E) from the Collection interface will append the specified element to the end of the list.
+  - boolean addAll(int index, Collection<? extends E> c) - inserts the elements from the specified collection at the specified index, using an iterator of the specified collection, i.e. the method splices the elements of the specified collection into the list at the specified index. The method returns true if any elements were added.
+  - E remove(int index) - Removes element at index and moves the rest toward the front.The inherited method remove(E) from the Collection interface will remove the first occurrence of the element from the list.
+  - int indexOf(Object o) - return the index of the first occurrence of the element that is the same as the specified argument if such an element exists in the list; otherwise, the value –1 is returned.
+  - int lastIndexOf(Object o) - return the index of the last occurrence of the element that is the same as the specified argument if such an element exists in the list; otherwise, the value –1 is returned.
+  - List<E> subList(int fromIndex, int toIndex) - This method returns a view of the list, which consists of the sublist of the elements from the index fromIndex to the index toIndex-1, i.e. a half-open interval. A view allows the range it represents in the underlying list to be manipulated. Any changes in the view are reflected in the underlying list, and vice versa. Views can be used to perform operations on specific ranges of a list.
+  - ListIterator<E> listIterator() - traverses the elements consecutively, starting with the first element of the list.
+  - ListIterator<E> listIterator(int index) - tarts traversing the list from the element indicated by the specified index.
 
 The ListIterator interface is a bidirectional iterator for lists. It extends the Iterator interface and allows the list to be traversed in either direction. When traversing lists, it can be helpful to imagine a cursor moving forward or backward between the elements when calls are made to the next() and the previous() methods, respectively. The element that the cursor passes over is returned.When the remove() method is called, the element last passed over is removed from the list.
 
 5. public default void replaceAll( UnaryOperator<E> op) - Replaces each element in list with result of operator.
-7. public default void sort( Comparator<? super E> c) - Sorts list.
-
+6. public default void sort( Comparator<? super E> c) - Sorts list.
 
 - **LinkedList**:- A `LinkedList` is special because it implements both List and Deque. It has all the methods of a List. It also has additional methods to facilitate adding or removing from the beginning and/or end of the list.The main benefits of a LinkedList are that you can access, add to, and remove from the beginning and end of the list in constant time. The trade-­off is that dealing with an arbitrary index takes linear time. This makes a LinkedList a good choice when you’ll be using it as Deque.
 
-A LinkedList is a linear data structure where elements are stored in non-contiguous memory locations.More intuitively, a linked list is a linear chain of nodes, where each node contains the data and the memory location of the next or previous or both the next and previous nodes. 
+A LinkedList is a linear data structure where elements are stored in non-contiguous memory locations.More intuitively, a linked list is a linear chain of nodes, where each node contains the data and the memory location of the next or previous or both the next and previous nodes.
 Internally, the elements are stored in a doubly linked list.In LinkedList, the manipulation is fast because no shifting is required.
 
 The 'LinkedList' class extends the 'AbstractSequentialList' class and implements the 'List', 'Queue' and 'Deque' interfaces.
-		
-- *Constructors*
-    - LinkedList() : Creates empty list containing all defaults.
-    - LinkedList(Collection c):- Constructs a list containing the elements of the specified collection, in the order they are returned by the collection's iterator.
 
-- *Methods In List*:-
+- _Constructors_
+  - LinkedList() : Creates empty list containing all defaults.
+  - LinkedList(Collection c):- Constructs a list containing the elements of the specified collection, in the order they are returned by the collection's iterator.
+
+- _Methods In List_:-
 
 - `Adding elements to LinkedList`:-
-	- boolean add(E obj) : Declared in the Collection interface. Adds object to the collection. Returns true if object was added, otherwise returns false.
-	- void add(int index, E obj) : Declared in the List interface. Adds object obj to the invoking list at the index passed. Any preexisting element at or beyond the index are shifted up. Thus no elements are overwritten.
-	- boolean addAll(Collection c) : Declared in the Collection interface. Adds all the elements of c to the invoking collection. Returns true if elements were added to the invoking collection. Otherwise, returns false.		
+  - boolean add(E obj) : Declared in the Collection interface. Adds object to the collection. Returns true if object was added, otherwise returns false.
+  - void add(int index, E obj) : Declared in the List interface. Adds object obj to the invoking list at the index passed. Any preexisting element at or beyond the index are shifted up. Thus no elements are overwritten.
+  - boolean addAll(Collection c) : Declared in the Collection interface. Adds all the elements of c to the invoking collection. Returns true if elements were added to the invoking collection. Otherwise, returns false.
     - boolean addAll(int index, Collection c) : Declared in the List interface.Adds all the elements of c to the invoking list at the index passed. Any preexisting element at or beyond the index are shifted up. Thus no elements are overwritten. Returns true if elements were added to the invoking list.Otherwise, returns false.
 - `Removing elements from LinkedList`:-
-    - boolean remove(Object obj) : Declared in the Collection interface. Removes one instance of obj from the invoking collection. Returns true if the element was removed. Otherwise, returns false.	 
-    - boolean removeAll(Collection c) : Declared in the Collection interface. Removes all elements of c from the invoking collection. Returns true if elements were removed from the invoking collection. Otherwise, returns false.
-    - E remove(int index) : Declared in the List interface. Removes the element at the specified index from the invoking list, returning the element in the process. The indexes of the subsequent elements are decremented by one.		
-    - boolean retainAll(Collection c) : Declared in the Collection interface.Removes all elements from the invoking collection except those in c. Returns true if elements were removed from the invoking collection. Otherwise,returns false.
+  - boolean remove(Object obj) : Declared in the Collection interface. Removes one instance of obj from the invoking collection. Returns true if the element was removed. Otherwise, returns false.
+  - boolean removeAll(Collection c) : Declared in the Collection interface. Removes all elements of c from the invoking collection. Returns true if elements were removed from the invoking collection. Otherwise, returns false.
+  - E remove(int index) : Declared in the List interface. Removes the element at the specified index from the invoking list, returning the element in the process. The indexes of the subsequent elements are decremented by one.
+  - boolean retainAll(Collection c) : Declared in the Collection interface.Removes all elements from the invoking collection except those in c. Returns true if elements were removed from the invoking collection. Otherwise,returns false.
 - `Check if LinkedList contains an object`:-
-	- boolean contains(Object obj) : Declared in the Collection interface. Returns true if obj is an element of the invoking collection. Otherwise, returns false.
-	- boolean containsAll(Collection c) : Declared in the Collection interface.Returns true if the invoking collection contains all elements of c.Otherwise, returns false.
+  - boolean contains(Object obj) : Declared in the Collection interface. Returns true if obj is an element of the invoking collection. Otherwise, returns false.
+  - boolean containsAll(Collection c) : Declared in the Collection interface.Returns true if the invoking collection contains all elements of c.Otherwise, returns false.
 - `Get the element at an index in LinkedList`:-
-	- E get(int index) : Declared in the List interface. Returns the object stored at the specified index within the invoking collection.	
+  - E get(int index) : Declared in the List interface. Returns the object stored at the specified index within the invoking collection.
 - `Get the index of an element in LinkedList`:-
-	- int indexOf(Object obj) : Declared in the List interface. Returns the index of the first instance of obj in the invoking list. If obj is not present in the list, -1 is returned.
-	- int lastIndexOf(Object obj) : Declared in the List interface. Returns the index of the last instance of obj in the invoking list. If obj is not present in the list, -1 is returned.
+  - int indexOf(Object obj) : Declared in the List interface. Returns the index of the first instance of obj in the invoking list. If obj is not present in the list, -1 is returned.
+  - int lastIndexOf(Object obj) : Declared in the List interface. Returns the index of the last instance of obj in the invoking list. If obj is not present in the list, -1 is returned.
 - `Set the element at an index in LinkedList`
-	- E set(int index, E obj) : Declared in the List interface. Assigns obj to the location specified by index within the invoking list. Returns the old va
-- *Methods declared by the 'Queue', 'Deque' interfaces*:-
+  - E set(int index, E obj) : Declared in the List interface. Assigns obj to the location specified by index within the invoking list. Returns the old va
+- _Methods declared by the 'Queue', 'Deque' interfaces_:-
 - `Adding elements to LinkedList`:-
-    - boolean offer(E obj) : Declared in the Queue interface. Adds object to the queue. Returns true if object was added, otherwise returns false.
-	- void addFirst(E obj) : Declared in the Deque interface. Adds obj to the head of the deque. Throws an IllegalStateException if a capacity-restricted deque is out of space.
+  - boolean offer(E obj) : Declared in the Queue interface. Adds object to the queue. Returns true if object was added, otherwise returns false.
+  - void addFirst(E obj) : Declared in the Deque interface. Adds obj to the head of the deque. Throws an IllegalStateException if a capacity-restricted deque is out of space.
     - void addLast(E obj) : Declared in the Deque interface. Adds obj to the tail of the deque. Throws an IllegalStateException if a capacity-restricted deque is out of space.
     - boolean offerFirst(E obj) : Declared in the Deque interface. Attempts to add obj to the head of the deque. Returns true if obj was added and false otherwise.
-	- boolean offerLast(E obj) : Declared in the Deque interface. Attempts to add obj to the tail of the deque. Returns true if obj was added and false otherwise.
+  - boolean offerLast(E obj) : Declared in the Deque interface. Attempts to add obj to the tail of the deque. Returns true if obj was added and false otherwise.
     - void push(E obj) : Declared in the Deque interface. Adds obj to the head of the deque. Throws an IllegalStateException if a capacity-restricted deque is out of space.
 - `Removing elements from LinkedList`:-
-    - E remove() : Declared in the Queue interface. Removes the element at the hef the queue returning the element in the process. It throws NoSuchElementException if the queue is empty.
-    - E removeFirst() : Declared in the Deque interface. Removes the element at the head of the deque returning the element in the process. It throws NoSuchElementException if the deque is empty.
-    - E removeLast() : Declared in the Deque interface. Removes the element at the tail of the deque returning the element in the process. It throws NoSuchElementException if the deque is empty.
-    - boolean removeFirstOccurrence(Object obj) : Declared in the Deque interface. Removes the first occurrence of obj from the deque. Returns true if successful and false if the deque did not contain obj.
-    - boolean removeLastOccurrence(Object obj) : Declared in the Deque interface. Removes the last occurrence of obj from the deque. Returns true if successful and false if the deque did not contain obj.
+  - E remove() : Declared in the Queue interface. Removes the element at the hef the queue returning the element in the process. It throws NoSuchElementException if the queue is empty.
+  - E removeFirst() : Declared in the Deque interface. Removes the element at the head of the deque returning the element in the process. It throws NoSuchElementException if the deque is empty.
+  - E removeLast() : Declared in the Deque interface. Removes the element at the tail of the deque returning the element in the process. It throws NoSuchElementException if the deque is empty.
+  - boolean removeFirstOccurrence(Object obj) : Declared in the Deque interface. Removes the first occurrence of obj from the deque. Returns true if successful and false if the deque did not contain obj.
+  - boolean removeLastOccurrence(Object obj) : Declared in the Deque interface. Removes the last occurrence of obj from the deque. Returns true if successful and false if the deque did not contain obj.
 - `Get the head / tail element of LinkedList`:-
-    - E peek() : Declared in the Queue interface. Returns the element at the head of the queue. It returns null if the queue is empty.
-	- E peekFirst() : Declared in the Deque interface. Returns the element at the head of the deque. It returns null if the deque is empty. The object is not removed.
+  - E peek() : Declared in the Queue interface. Returns the element at the head of the queue. It returns null if the queue is empty.
+  - E peekFirst() : Declared in the Deque interface. Returns the element at the head of the deque. It returns null if the deque is empty. The object is not removed.
     - E peekLast() : Declared in the Deque interface. Returns the element at the tail of the deque. It returns null if the deque is empty. The object is not removed.
     - E getFirst() : Declared in the Deque interface. Returns the first element in the deque. The object is not removed from the deque. It throws NoSuchElementException if the deque is empty.
     - E getLast() : Declared in the Deque interface. Returns the last element in the deque. The object is not removed from the deque. It throws NoSuchElementException if the deque is empty.
 - `Get & remove the head / tail element of LinkedList`:-
-	- E poll() : Declared in the Queue interface. Returns the element at the head of the queue, removing the element in the process. It returns null if the queue is empty.
-	- E pop() : Declared in the Deque interface. Returns the element at the head of the deque, removing it in the process. It throws NoSuchElementException if the deque is empty.		  
+  - E poll() : Declared in the Queue interface. Returns the element at the head of the queue, removing the element in the process. It returns null if the queue is empty.
+  - E pop() : Declared in the Deque interface. Returns the element at the head of the deque, removing it in the process. It throws NoSuchElementException if the deque is empty.
     - E pollFirst() : Declared in the Deque interface. Returns the element at the head of the deque, removing the element in the process. It returns null if the deque is empty.
-	- E pollLast() : Declared in the Deque interface. Returns the element at the tail of the deque, removing the element in the process. It returns null if the deque is empty.
+  - E pollLast() : Declared in the Deque interface. Returns the element at the tail of the deque, removing the element in the process. It returns null if the deque is empty.
 - `Reverse order iteration over the contents of a LinkedList`:-
-	- Iterator<E> descendingIterator(): Declared in the Deque interface. Returns an iterator that moves from the tail to the head (reverse iterator) of the deque.
-	
+  - Iterator<E> descendingIterator(): Declared in the Deque interface. Returns an iterator that moves from the tail to the head (reverse iterator) of the deque.
 
 - **ArrayList**:- Resizable-array implementation of the List interface.An ArrayList is a dynamic-sized array. It grows and shrinks in size dynamically as we keep on adding or removing elements. The 'ArrayList' class extends the 'AbstractList' class and implements the 'List' interface.
 
@@ -315,45 +310,44 @@ Allows duplicate and null values.Is an ordered collection and maintains order. C
 Java Arraylist is not synchronized. If multiple threads is required try to modify then outcome wil be non-deterministicYou must explicitly sysnchronize access if multiple threads gonna modify it.
 When you aren’t sure which collection to use, use an ArrayList.The main benefit of an ArrayList is that you can look up any element in constant time.Adding or removing an element is slower than accessing an element. This makes an ArrayList a good choice when you are reading more often than (or the same amount as) writing to the ArrayList.
 
-- *Constructors*:-
-    - ArrayList() : Creates empty list with initial capacity of ten.
-    - ArrayList(initialCapacity) : Creates empty list with initial capacity specified.
-    - ArrayList(Collection c):- Constructs a list containing the elements of the specified collection, in the order they are returned by the collection's iterator.
+- _Constructors_:-
+  - ArrayList() : Creates empty list with initial capacity of ten.
+  - ArrayList(initialCapacity) : Creates empty list with initial capacity specified.
+  - ArrayList(Collection c):- Constructs a list containing the elements of the specified collection, in the order they are returned by the collection's iterator.
 
-- *Methods*:-
+- _Methods_:-
 - `Adding elements to ArrayList`:-
-    - boolean add(E obj) : Declared in the Collection interface. Adds object to the collection. Returns true if object was added, otherwise returns false.
-    - void add(int index, E obj) : Declared in the List interface. Adds object obj to the invoking list at the index passed. Any preexisting element at or beyond the index are shifted up. Thus no elements are overwritten.
-    - boolean addAll(Collection c) : Declared in the Collection interface. Adds all the elements of c to the invoking collection. Returns true if elements were added to the invoking collection. Otherwise, returns false.
-    - boolean addAll(int index, Collection c) : Declared in the List interface. Adds all the elements of c to the invoking list at the index passed. Any preexisting element at or beyond the index are shifted up. Thus no elements are overwritten. Returns true if elements were added to the invoking list.Otherwise, returns false.
+  - boolean add(E obj) : Declared in the Collection interface. Adds object to the collection. Returns true if object was added, otherwise returns false.
+  - void add(int index, E obj) : Declared in the List interface. Adds object obj to the invoking list at the index passed. Any preexisting element at or beyond the index are shifted up. Thus no elements are overwritten.
+  - boolean addAll(Collection c) : Declared in the Collection interface. Adds all the elements of c to the invoking collection. Returns true if elements were added to the invoking collection. Otherwise, returns false.
+  - boolean addAll(int index, Collection c) : Declared in the List interface. Adds all the elements of c to the invoking list at the index passed. Any preexisting element at or beyond the index are shifted up. Thus no elements are overwritten. Returns true if elements were added to the invoking list.Otherwise, returns false.
 - `Removing elements from ArrayList`:-
-    - boolean remove(Object obj) : Declared in the Collection interface. Removes one instance of obj from the invoking collection. Returns true if the element was removed. Otherwise, returns false.
-    - boolean removeAll(Collection c) : Declared in the Collection interface. Removes all elements of c from the invoking collection. Returns true if elements were removed from the invoking collection. Otherwise, returns false.
-	- E remove(int index) : Declared in the List interface. Removes the element at the specified index from the invoking list, returning the element in the process. The indexes of the subsequent elements are decremented by one.
-	- boolean retainAll(Collection c) : Declared in the Collection interface. Removes all elements from the invoking collection except those in c. Returns true if elements were removed from the invoking collection. Otherwise,returns false.
+  - boolean remove(Object obj) : Declared in the Collection interface. Removes one instance of obj from the invoking collection. Returns true if the element was removed. Otherwise, returns false.
+  - boolean removeAll(Collection c) : Declared in the Collection interface. Removes all elements of c from the invoking collection. Returns true if elements were removed from the invoking collection. Otherwise, returns false.
+  - E remove(int index) : Declared in the List interface. Removes the element at the specified index from the invoking list, returning the element in the process. The indexes of the subsequent elements are decremented by one.
+  - boolean retainAll(Collection c) : Declared in the Collection interface. Removes all elements from the invoking collection except those in c. Returns true if elements were removed from the invoking collection. Otherwise,returns false.
 - `Check if ArrayList contains an object`:-
-    - boolean contains(Object obj) : Declared in the Collection interface. Returns true if obj is an element of the invoking collection. Otherwise, returns false.
-    - boolean containsAll(Collection c) : Declared in the Collection interface. Returns true if the invoking collection contains all elements of c. Otherwise, returns false.
+  - boolean contains(Object obj) : Declared in the Collection interface. Returns true if obj is an element of the invoking collection. Otherwise, returns false.
+  - boolean containsAll(Collection c) : Declared in the Collection interface. Returns true if the invoking collection contains all elements of c. Otherwise, returns false.
 - `Get the element at an index in ArrayList`:-
-    - E get(int index) : Declared in the List interface. Returns the object stored at the specified index within the invoking collection.
+  - E get(int index) : Declared in the List interface. Returns the object stored at the specified index within the invoking collection.
 - `Get the index of an element in ArrayList`:-
-    - int indexOf(Object obj) : Declared in the List interface. Returns the index of the first instance of obj in the invoking list. If obj is not present in the list, -1 is returned.
-    - int lastIndexOf(Object obj) : Declared in the List interface. Returns the index of the last instance of obj in the invoking list. If obj is not present in the list, -1 is returned.
+  - int indexOf(Object obj) : Declared in the List interface. Returns the index of the first instance of obj in the invoking list. If obj is not present in the list, -1 is returned.
+  - int lastIndexOf(Object obj) : Declared in the List interface. Returns the index of the last instance of obj in the invoking list. If obj is not present in the list, -1 is returned.
 - `Set the element at an index in ArrayList`:-
-    - E set(int index, E obj) : Declared in the List interface. Assigns obj to the location specified by index within the invoking list. Returns the old value.
+  - E set(int index, E obj) : Declared in the List interface. Assigns obj to the location specified by index within the invoking list. Returns the old value.
 - `Check if ArrayList is empty or not`:-
-    - boolean isEmpty() : Declared in the Collection interface. Returns true if the invoking collection is empty. Otherwise, returns false.
+  - boolean isEmpty() : Declared in the Collection interface. Returns true if the invoking collection is empty. Otherwise, returns false.
 - `Get the count of elements present in the ArrayList`:-
-    - int size() : Declared in the Collection interface. Returns the number of elements held in the invoking collection.		
+  - int size() : Declared in the Collection interface. Returns the number of elements held in the invoking collection.
 - `Get sub-list from an ArrayList`:-
-    - List<E> subList(int startIndex, int endIndex) : Declared in the List interface. Returns a list that includes elements from startIndex to (endIndex- 1) in the invoking list Elements in the returned list are also referenced by the invoking object.
+  - List<E> subList(int startIndex, int endIndex) : Declared in the List interface. Returns a list that includes elements from startIndex to (endIndex- 1) in the invoking list Elements in the returned list are also referenced by the invoking object.
 - `Clear the ArrayList`:-
-	- void clear() : Declared in the Collection interface. Removes all elementsfrom the invoking collection.
+  - void clear() : Declared in the Collection interface. Removes all elementsfrom the invoking collection.
 - `Iterating over the contents of a ArrayList`:-
-	- Iterator<E> iterator() : Declared in the Collection interface. Returns an iterator for the invoking collection.
+  - Iterator<E> iterator() : Declared in the Collection interface. Returns an iterator for the invoking collection.
 
-
----------------
+---
 
 ## Set Interface
 
@@ -369,19 +363,15 @@ Set<Character> copy = Set.copyOf(letters);
 ```
 
 - **HashSet**:- A `HashSet` stores its elements in a hash table, which means the keys are a hash and the values are an Object. This means that the HashSet uses the hashCode() method of the objects to retrieve them more efficiently. Remember that a valid hashCode() doesn’t mean every object will get a unique value, but the method is often written so that hash values are spread out over a large range to reduce collisions.A HashSet relies on the implementation of the hashCode() and equals() methods of its elements. The hashCode() method is used for hashing the elements, and the equals() method is needed for comparing elements. In fact, the equality and the hash codes of HashSets are defined in terms of the equality and the hash codes of their elements.
-The main benefit is that adding elements and checking whether an element is in the set both have constant time. The trade-­off is that you lose the order in which you inserted the elements. Most of the time, you aren’t concerned with this in a Set anyway, making HashSet the most common set.
-
+  The main benefit is that adding elements and checking whether an element is in the set both have constant time. The trade-­off is that you lose the order in which you inserted the elements. Most of the time, you aren’t concerned with this in a Set anyway, making HashSet the most common set.
 
 - **LinkedHashSet** - The LinkedList implementation of the Set Interface is represented by the LinkedHashSet class.It implements the Set interface and extends the HashSet class. It has distinctive components just like HashSet. It permits null elements and preserves insertion order.
 
-
 - **TreeSet**:- A `TreeSet` stores its elements in a sorted tree structure. The main benefit is that the set is always in sorted order. The trade-­off is that adding and checking whether an element exists takes longer than with a HashSet, especially as the tree grows larger.The Set interface, which uses a tree for storage, is implemented by the Java TreeSet class.TreeSet has distinct components, just as HashSet. However, TreeSet has fairly quick access and retrieval time. The TreeSet stores its elements in ascending order.
-
 
 - **SortedSet Interface** - The alternative to the Set interface, known as SortedSet, offers a complete ordering of its items.The SortedSet's elements are organized in ascending (increasing) order. The SortedSet offers extra methods that prevent the elements' default sorting.
 
-
---------------
+---
 
 ## Queue Interface
 
@@ -400,12 +390,9 @@ The Queue interface contains 6 methods.There are three pieces of functionality a
 5. public E remove() - Get and remove from front.
 6. public E poll() - Get and remove from front.
 
-
 - **PriorityQueue** - The Queue interface is implemented by the PriorityQueue class.It contains the substances or things that must be handled according to their priority. Null values cannot be saved in the queue using PriorityQueue.
 
-
-----------------
-
+---
 
 ## Deque
 
@@ -424,7 +411,7 @@ Deque methods includes:-
 4. public boolean offerLast(E e)
 5. public E getFirst() - Read from front.
 6. public E peekFirst()
-7.  public E getLast() - Read from back.
+7. public E getLast() - Read from back.
 8. public E peekLast()
 9. public E removeFirst() - Get and remove from front.
 10. public E pollFirst()
@@ -432,37 +419,34 @@ Deque methods includes:-
 12. public E pollLast()
 
 - `Adding elements to deque`:-
-    - boolean add(E obj) : Declared in the Collection interface. Adds object to the collection. Returns true if object was added, otherwise returns false.
-    - boolean offer(E obj) : Declared in the Queue interface. Adds object to the queue. Returns true if object was added, otherwise returns false.
-    - void addFirst(E obj) : Declared in the Deque interface. Adds obj to the head of the deque. Throws an IllegalStateException if a capacity-restricted deque is out of space.
-    - void addLast(E obj) : Declared in the Deque interface. Adds obj to the tail of the deque. Throws an IllegalStateException if a capacity-restricted deque is out of space.
-    - boolean offerFirst(E obj) : Declared in the Deque interface. Attempts to add obj to the head of the deque. Returns true if obj was added and false otherwise.
-    - boolean offerLast(E obj) : Declared in the Deque interface. Attempts to add obj to the tail of the deque. Returns true if obj was added and false otherwise.
-    - void push(E obj) : Declared in the Deque interface. Adds obj to the head of the deque. Throws an IllegalStateException if a capacity-restricted deque is out of space.
-- `Removing elements from deque`:- 
-    - E remove() : Declared in the Queue interface. Removes the element at the head of the queue returning the element in the process. It throws NoSuchElementException if the queue is empty.
-    - boolean remove(Object obj) : Declared in the Collection interface. Removes one instance of obj from the queue. Returns true if the element was removed.Otherwise, returns false.
-    - E removeFirst() : Declared in the Deque interface. Removes the element at the head of the deque returning the element in the process. It throws NoSuchElementException if the deque is empty.
-    - E removeLast() : Declared in the Deque interface. Removes the element at the tail of the deque returning the element in the process. It throws NoSuchElementException if the deque is empty.
-    - boolean removeFirstOccurrence(Object obj) : Declared in the Deque interface.Removes the first occurrence of obj from the deque. Returns true if successful and false if the deque did not contain obj.
-    - boolean removeLastOccurrence(Object obj) : Declared in the Deque interface.Removes the last occurrence of obj from the deque. Returns true if successful and false if the deque did not contain obj.
+  - boolean add(E obj) : Declared in the Collection interface. Adds object to the collection. Returns true if object was added, otherwise returns false.
+  - boolean offer(E obj) : Declared in the Queue interface. Adds object to the queue. Returns true if object was added, otherwise returns false.
+  - void addFirst(E obj) : Declared in the Deque interface. Adds obj to the head of the deque. Throws an IllegalStateException if a capacity-restricted deque is out of space.
+  - void addLast(E obj) : Declared in the Deque interface. Adds obj to the tail of the deque. Throws an IllegalStateException if a capacity-restricted deque is out of space.
+  - boolean offerFirst(E obj) : Declared in the Deque interface. Attempts to add obj to the head of the deque. Returns true if obj was added and false otherwise.
+  - boolean offerLast(E obj) : Declared in the Deque interface. Attempts to add obj to the tail of the deque. Returns true if obj was added and false otherwise.
+  - void push(E obj) : Declared in the Deque interface. Adds obj to the head of the deque. Throws an IllegalStateException if a capacity-restricted deque is out of space.
+- `Removing elements from deque`:-
+  - E remove() : Declared in the Queue interface. Removes the element at the head of the queue returning the element in the process. It throws NoSuchElementException if the queue is empty.
+  - boolean remove(Object obj) : Declared in the Collection interface. Removes one instance of obj from the queue. Returns true if the element was removed.Otherwise, returns false.
+  - E removeFirst() : Declared in the Deque interface. Removes the element at the head of the deque returning the element in the process. It throws NoSuchElementException if the deque is empty.
+  - E removeLast() : Declared in the Deque interface. Removes the element at the tail of the deque returning the element in the process. It throws NoSuchElementException if the deque is empty.
+  - boolean removeFirstOccurrence(Object obj) : Declared in the Deque interface.Removes the first occurrence of obj from the deque. Returns true if successful and false if the deque did not contain obj.
+  - boolean removeLastOccurrence(Object obj) : Declared in the Deque interface.Removes the last occurrence of obj from the deque. Returns true if successful and false if the deque did not contain obj.
 - `Get the head / tail element of deque`:-
-    - E peek() : Declared in the Queue interface. Returns the element at the head of the queue. It returns null if the queue is empty.
-    - E peekFirst() : Declared in the Deque interface. Returns the element at the head of the deque. It returns null if the deque is empty. The object is not removed.
-    - E peekLast() : Declared in the Deque interface. Returns the element at the tail of the deque. It returns null if the deque is empty. The object is nremoved.
-    - E getFirst() : Declared in the Deque interface. Returns the first element in the deque. The object is not removed from the deque. It throws NoSuchElementException if the deque is empty.
-    - E getLast() : Declared in the Deque interface. Returns the last element in the deque. The object is not removed from the deque. It throws NoSuchElementException if the deque is empty.
-
+  - E peek() : Declared in the Queue interface. Returns the element at the head of the queue. It returns null if the queue is empty.
+  - E peekFirst() : Declared in the Deque interface. Returns the element at the head of the deque. It returns null if the deque is empty. The object is not removed.
+  - E peekLast() : Declared in the Deque interface. Returns the element at the tail of the deque. It returns null if the deque is empty. The object is nremoved.
+  - E getFirst() : Declared in the Deque interface. Returns the first element in the deque. The object is not removed from the deque. It throws NoSuchElementException if the deque is empty.
+  - E getLast() : Declared in the Deque interface. Returns the last element in the deque. The object is not removed from the deque. It throws NoSuchElementException if the deque is empty.
 
 - **ArrayDeque** - ArrayDeque class implements the Deque interface. It facilitates us to use the Deque.Unlike queue, we can add or delete the elements from both ends.ArrayDeque is faster than ArrayList and Stack and has no capacity restrictions.
 
-
-------------------
-
+---
 
 ## Map Interface
 
-The Map interface maps unique keys to values(stores key-value pairs). Both key and values are objects. Using a key you can find its value. Keys must be unique, but the values may contain duplicates.A key is an object that can be used to retrieve its corresponding value. 
+The Map interface maps unique keys to values(stores key-value pairs). Both key and values are objects. Using a key you can find its value. Keys must be unique, but the values may contain duplicates.A key is an object that can be used to retrieve its corresponding value.
 The 'AbstractMap' class implements most of the 'Map' interface and serves as a superclass for all concrete map implementations.
 
 Map.of() and Map.copyOf() - Just like List and Set, there is a factory method to create a Map. You pass any number of pairs of keys and values.
@@ -482,7 +466,7 @@ Map.entry("key2", "value2"));
 Now we can’t forget to pass a value. If we leave out a parameter, the entry() method won’t compile. Conveniently, Map.copyOf(map) works just like the List and Set inter-
 face copyOf() methods.
 
-*Working with Map Methods*:- Given that Map doesn’t extend Collection, more methods are specified on the Map interface.Since there are both keys and values, we need generic type parameters for both. The class uses K for key and V for value
+_Working with Map Methods_:- Given that Map doesn’t extend Collection, more methods are specified on the Map interface.Since there are both keys and values, we need generic type parameters for both. The class uses K for key and V for value
 
 1. public void clear() - Removes all keys and values from map.
 2. public boolean containsKey(Object key) - Returns whether key is in map.
@@ -503,13 +487,11 @@ face copyOf() methods.
 17. public Collection<V> values()Returns Collection of all values.
 
 - **HashMap**:- A HashMap stores the keys in a hash table. This means that it uses the hashCode() method of the keys to retrieve their values more efficiently.
-The main benefit is that adding elements and retrieving the element by key both have constant time. The trade-­off is that you lose the order in which you inserted the elements.Most of the time, you aren’t concerned with this in a map anyway. If you were, you could use LinkedHashMap.
+  The main benefit is that adding elements and retrieving the element by key both have constant time. The trade-­off is that you lose the order in which you inserted the elements.Most of the time, you aren’t concerned with this in a map anyway. If you were, you could use LinkedHashMap.
 
 - **TreeMap**:- A TreeMap stores the keys in a sorted tree structure. The main benefit is that the keys are always in sorted order. Like a TreeSet, the trade-­off is that adding and checking whether a key is present takes longer as the tree grows larger.
 
-
---------------------
-
+---
 
 ## Vector
 
@@ -521,7 +503,6 @@ Vector<String> vec = new Vector<String>();
 vec.add("Java");
 vec.add("PHP");
 ```
-
 
 ## Stack
 
@@ -543,7 +524,6 @@ There are five main interfaces:-
 4. `Queue` :A queue is a collection that orders its elements in a specific order for processing.A Deque is a subinterface of Queue that allows access at both ends.A queue is also ordered, but you'll only ever touch elements at one end. All elements get inserted at the "end" and removed from the "beginning" (or head) of the queue. You can find out how many elements are in the queue,.
 5. `Set` :A set is not ordered and cannot contain duplicates. Any given object either is or isn't in the set. {7, 5, 3, 1} is the exact same set as {1, 7, 3, 5}. You can add or remove elements, and you can find out if a certain element exists.
 
-
 <table class="alt">
 <tbody>
 <tr><th> </th><th>List</th><th>Set</th><th>Queue</th><th>Map</th></tr>
@@ -551,7 +531,6 @@ There are five main interfaces:-
 <tr><th>Duplicates</th><th>Yes</th><th>No</th><th>Yes</th><th>No (Allow duplicate values not keys)</th></tr>
 <tr><th>Null Values</th><th>Yes</th><th>Single Null</th><th>Yes (LinkedList Queue). No (Priority Queue).</th><th>Single null key and many null values</th></tr>
 </tbody></table>
-
 
 Methods of Iterator Interface :-
 
@@ -580,7 +559,6 @@ Methods of Iterator Interface :-
 <tr><td>5) ArrayList uses <strong>Iterator</strong> interface to traverse the elements.</td><td>Vector uses <strong>Enumeration</strong> interface to traverse the elements. But it can use Iterator also.</td></tr>
 </tbody></table>
 
-
 ## Useful Methods of Map Interface :
 
 <table class="alt">
@@ -595,6 +573,7 @@ Methods of Iterator Interface :-
 </tbody></table>
 
 ## Methods of Map.Entry Interface :
+
 <table class="alt">
 <tbody><tr><th>Method</th><th>Description</th></tr>
 <tr><td> Object getKey()</td><td>It is used to obtain key.</td></tr>
@@ -641,7 +620,6 @@ Set - The familiar set abstraction. No duplicate elements permitted. May or may 
 List - Ordered collection, also known as a sequence. Duplicates are generally permitted. Allows positional access. Extends the Collection interface.
 Queue - A collection designed for holding elements before processing. Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations.
 Deque - A double ended queue, supporting element insertion and removal at both ends. Extends the Queue interface.
-
 
 ## Need For Collection Framework
 
