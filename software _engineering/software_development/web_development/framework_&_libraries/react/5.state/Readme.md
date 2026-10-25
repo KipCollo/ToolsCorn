@@ -91,6 +91,14 @@ function Form({ onAddItems }) {
 }
 ```
 
+**_Derived State_** - It is state computed from another existing piece of state or from props.
+
+```js
+const [cart, setCart] = useState([]);
+const numItems = cart.length;
+const totalPrice = cart.reduce((acc, cur) => acc + cur.price, 0);
+```
+
 ## Hooks
 
 Hooks were introduced in React 16.8 and they let us use React's features-like managing your component's state and or performing an after effect when certain changes occur in state(s) without writing a class.Hooks are functions that allow you to use state and other React features without writing a class. They were introduced in React 16.8 to provide a simpler and more readable way to write React components.

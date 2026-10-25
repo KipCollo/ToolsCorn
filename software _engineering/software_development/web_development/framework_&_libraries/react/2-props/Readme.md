@@ -72,4 +72,32 @@ export default App;
 ```
 
 The `key prop` is used to give a unique identity to each element in a list of components.It helps React efficiently update and re-render the components by identifying which items have changed, been added, or removed.
+
+**Children props** -
+
 The `children prop` is a special prop that allows you to pass components, elements, or text as children to other components. It enables the composition of components and the creation of more flexible and reusable component APIs.
+An empty "hole" that can be filled by any JSX the component receives as children.The children prop allows us to pass JSX into an elemnt(besides regular props).Useful for generic components that don't know their content before being used(e.g modal)
+
+```jsx
+<div>
+  <Button bgColor="#7950f2" textColor="#fff" onClick={handlePrevious}>
+    <span>👈</span> Previous{/*children props */}
+  </Button>
+
+  <Button bgColor="#7950f2" textColor="#fff" onClick={handleNext}>
+    Next <span>👉</span>s{/*children props */}
+    <span>🤓</span>
+  </Button>
+</div>;
+
+function Button({ textColor, bgColor, onClick, children }) {
+  return (
+    <button
+      style={{ backgroundColor: bgColor, color: textColor }}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+}
+```
