@@ -25,14 +25,12 @@ Docker is a container technology: A tool for creating and managing containers.
 2. Same development environments with employees working on same project
 3. Switching between projects should not cause clash.
 
-
 ## Docker concepts
 
 `Image` - A read-only template used to create container. For example,an image can contain an Ubuntu Operation system with a python environment.
 `Container`: Arunnable instance of an image.
 `Docker file`: A script that contains instructions for building docker image.
 `Registry`: A storage for Docker images,like docker hub.
-
 
 ## Docker Architecture
 
@@ -78,47 +76,44 @@ docker help cp
 
 That will display a usage pattern for docker cp, a general description of what the command does, and a detailed breakdown of its arguments.
 
-
 ## Docker and OCI
 
 The [Open Container Initiative (OCI)](https://opencontainers.org/) is a Linux Foundation project which aims at creating industry standards for container formats and runtimes. Its primary goal is to ensure the compatibility and interoperability of container environments through defined technical specifications.
 
 [Docker](https://www.docker.com/) is one of the founding members of the OCI, and it has played a pivotal role in shaping the standards for container formats and runtimes. Docker initially developed the container runtime (Docker Engine) and image format (Docker Image) that serve as the basis for OCI specifications.
 
-*OCI Specifications*:- OCI has three main specifications:
-   1. `Runtime Specification (runtime-spec)`: It defines the specification for executing a container via an isolation technology, like a container engine. The container runtime built by Docker, called 'containerd', has guided the development of the OCI runtime-spec.
-   2. `Image Specification (image-spec)`: It defines the container image format, which describes the contents of a container and can be run by a compliant runtime. Docker's initial image format has led to the creation of the OCI image-spec.
-   3. `Distribution Specification (distribution-spec)`:It defines an API protocol to facilitate and standardize the distribution of content. Docker's existing registry API served as a starting point and heavily influenced the design of the OCI Distro Spec.
+_OCI Specifications_:- OCI has three main specifications:
 
+1.  `Runtime Specification (runtime-spec)`: It defines the specification for executing a container via an isolation technology, like a container engine. The container runtime built by Docker, called 'containerd', has guided the development of the OCI runtime-spec.
+2.  `Image Specification (image-spec)`: It defines the container image format, which describes the contents of a container and can be run by a compliant runtime. Docker's initial image format has led to the creation of the OCI image-spec.
+3.  `Distribution Specification (distribution-spec)`:It defines an API protocol to facilitate and standardize the distribution of content. Docker's existing registry API served as a starting point and heavily influenced the design of the OCI Distro Spec.
 
-*Compatibility between Docker and OCI*:- Docker remains committed to supporting the OCI specifications and, since its involvement in OCI, has continuously updated its software to be compliant with OCI standards. Docker's containerd runtime and image format are fully compatible with OCI specifications, enabling Docker containers to be run by other OCI-compliant container runtimes and vice versa.
+_Compatibility between Docker and OCI_:- Docker remains committed to supporting the OCI specifications and, since its involvement in OCI, has continuously updated its software to be compliant with OCI standards. Docker's containerd runtime and image format are fully compatible with OCI specifications, enabling Docker containers to be run by other OCI-compliant container runtimes and vice versa.
 
 In summary, Docker and the Open Container Initiative work together to maintain standardization and compatibility within the container industry. Docker has played a significant role in the development of the OCI specifications, ensuring that the container ecosystem remains healthy, interoperable, and accessible to a wide range of users and platforms across the industry.
-
 
 ## History of virtualization
 
 Here is a quick overview of the differences between bare metal, virtual machines, and containers.
 
-*Bare Metal* - Before virtualization was invented, all programs ran directly on the host system. The terminology many people use for this is "bare metal". While that sounds fancy and scary, you are almost certainly familiar with running on bare metal because that is what you do whenever you install a program onto your laptop/desktop computer
+_Bare Metal_ - Before virtualization was invented, all programs ran directly on the host system. The terminology many people use for this is "bare metal". While that sounds fancy and scary, you are almost certainly familiar with running on bare metal because that is what you do whenever you install a program onto your laptop/desktop computer
 Bare metal is a term used to describe a computer that is running directly on the hardware without any virtualization. This is the most performant way to run an application, but it is also the least flexible. You can only run one application per server, and you cannot easily move the application to another server.
 
 With a bare metal system, the operating system, binaries/libraries, and applications are installed and run directly onto the physical hardware.
 
 This is simple to understand and direct access to the hardware can be useful for specific configuration, but can lead to:
+
 - Hellish dependency conflicts
 - Low utilization efficiency
 - Large blast radius
 - Slow start up & shut down speed (minutes)
 - Very slow provisioning & decommissioning (hours to days)
 
-
 `Virtual Machines`:- Virtual machines (VMs) are a way to run multiple applications on a single server. Each VM runs on top of a hypervisor, which is a piece of software that emulates the hardware of a computer. The hypervisor allows you to run multiple operating systems on a single server, and it also provides isolation between applications running on different VMs.
 
 `Containers`:- Containers are a way to run multiple applications on a single server without the overhead of a hypervisor. Each container runs on top of a container engine, which is a piece of software that emulates the operating system of a computer. The container engine allows you to run multiple applications on a single server, and it also provides isolation between applications running on different containers.
 
 Containers are created with doker run IMAGE and can be configured with various options/flags.
-
 
 ## Docker Underlying Technologies
 
@@ -131,6 +126,7 @@ Understanding the core technologies that power Docker will provide you with a de
 `cgroups` or `control groups` is a Linux kernel feature that allows you to allocate and manage resources, such as CPU, memory, network bandwidth, and I/O, among groups of processes running on a system. It plays a crucial role in providing resource isolation and limiting the resources that a running container can use.
 
 Docker utilizes cgroups to enforce resource constraints on containers, allowing them to have a consistent and predictable behavior. Below are some of the key features and benefits of cgroups in the context of Docker containers:
+
 1. Resource Isolation - cgroups helps to confine each container to a specific set of resources, ensuring fair sharing of system resources among multiple containers. This enables better isolation between different containers, so that a misbehaving container does not consume all available resources, thereby negatively affecting other containers.
 2. Limiting Resources - With cgroups, you can set limits on various system resources used by a container, such as CPU, memory, and I/O. This helps to prevent a single container from consuming excessive resources and causing performance issues for other containers or the host system.
 3. Prioritizing Containers - By allocating different shares of resources, cgroups allows you to give preference or priority to certain containers. This can be useful in scenarios where some containers are more critical than others, or during high resource contention situations.
@@ -143,12 +139,14 @@ Overall, cgroups is an essential underlying technology in Docker. By leveraging 
 Union filesystems, also known as UnionFS, play a crucial role in the overall functioning of Docker. It's a unique type of filesystem that creates a virtual, layered file structure by overlaying multiple directories. Instead of modifying the original file system or merging directories, UnionFS enables the simultaneous mounting of multiple directories on a single mount point while keeping their contents separate. This feature is especially beneficial in the context of Docker, as it allows us to manage and optimize storage performance by minimizing duplication and reducing the container image size.
 
 These are some of the essential features of union filesystems:
+
 1. Layered Structure: UnionFS builds a layered structure consisting of multiple read-only layers and a top writable layer. This structure enables efficient handling of changes by only updating the writable layer, while the read-only layers preserve the original data.
 2. Copy-on-Write: The copy-on-write (COW) mechanism is an indispensable feature of UnionFS. If a container makes changes to an existing file, the system creates a copy of the file in the writable layer, leaving the original file in the read-only layer untouched. This process restricts modification to the topmost layer, ensuring a fast and resource-efficient operation.
 3. Resource Sharing: Union filesystems allow multiple containers to share common base layers while running separately. This feature prevents resource duplication and saves significant storage space.
 4. ast Container Initialization: Union filesystems make it possible to create new containers instantly by merely creating a new writable layer on existing read-only layers. This quick initialization reduces the overhead of duplicated file operations, ultimately improving performance.
 
 Docker supports multiple union filesystems that facilitate building and managing containers. Some of the popular options include:
+
 1. [@article@**AUFS (Advanced Multi-Layered Unification Filesystem)**](http://aufs.sourceforge.net/): AUFS is widely used as a Docker storage driver, enabling efficient management of multiple layers.
 2. [@article@**OverlayFS (Overlay Filesystem)**](https://www.kernel.org/doc/html/latest/filesystems/overlayfs.html): OverlayFS is another union filesystem supported by Docker. It uses a simplified approach compared to AUFS to create and manage overlayed directories.
 3. [@article@**Btrfs (B-Tree Filesystem)**](https://btrfs.wiki.kernel.org/index.php/Main_Page): Btrfs, a modern file system, offers compatibility with union filesystems in addition to advanced storage features like snapshots and checksumming.
@@ -175,7 +173,6 @@ By leveraging namespaces, Docker ensures that containers are truly portable and 
 
 In summary, namespaces provide a level of resource isolation that enables running multiple containers with separate system resources within the same host, without them interfering with each other. This is a critical feature that forms the backbone of Docker's container technology.
 
-
 ## Docker Tools and Building blocks
 
 1. Docker Engine
@@ -183,16 +180,20 @@ In summary, namespaces provide a level of resource isolation that enables runnin
 3. Docker Hub
 4. Docker Compose
 
-
 ## Outline
 
+- Docker Architecture
 - Images and containers:- A Container is running unit of software while Image is a template/blueprint for containers.Multiple containers can be created based on one image.
+- Dockerfile
 - Data & Volumes in Containers
 - Containers & Networking
 - Multi-Container Project
 - Docker-compose
 - Utility containers
+- Docker Hub
 - Deploying Docker Containers
+- Security Best Pracises
+- Troubleshooting
 
 ## Commands
 
@@ -322,12 +323,11 @@ docker import <file> #imports a tarball to create an image
 
 - <https://docs.docker.com/network/host/>
 
->The host networking driver only works on Linux hosts, and is not supported on Docker Desktop for Mac, Docker Desktop for Windows, or Docker EE for Windows Server.
+> The host networking driver only works on Linux hosts, and is not supported on Docker Desktop for Mac, Docker Desktop for Windows, or Docker EE for Windows Server.
 
 ## Ignoring dockerfiles
 
 Create a .dockerignore files.It ignores the files and folders.
-
 
 ## Installation
 
@@ -365,7 +365,7 @@ sudo systemctl disable docker docker.socket containerd
 
 When installing Docker Desktop, a dedicated "desktop-linux" context is created to interact with Docker Desktop. On startup, Docker Desktop automatically sets its own context (desktop-linux) as the current context. This means that subsequent Docker CLI commands target Docker Desktop. On shutdown, Docker Desktop resets the current context to the default context.
 
-Use the docker context ls command to view what contexts are available on your machine. The current context is indicated with an asterisk (*).
+Use the docker context ls command to view what contexts are available on your machine. The current context is indicated with an asterisk (\*).
 
 ```sh
 docker context ls
@@ -392,7 +392,6 @@ docker context use desktop-linux
 desktop-linux
 Current context is now "desktop-linux"
 ```
-
 
 ## Deploy Docker containers
 

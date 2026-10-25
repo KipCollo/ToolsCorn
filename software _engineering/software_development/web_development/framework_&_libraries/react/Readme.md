@@ -329,6 +329,15 @@ Note that the element id does not have to be called "root", but this is the stan
 
 `Context` provides a way to pass data through the component tree without having to pass props manually at every level. It is used for sharing data that can be considered "global" for a tree of React components.
 
+## Thinking in React
+
+The "thinking in react" process:-
+
+1. Break desired UI into components and establish component tree.
+2. Build static version in React(without state)
+3. Think about state - When to use state, types of state(local vs global),where to place each piece of state.
+4. Establish data flow - One-way data flow, child-to-parent communication, accessing global state.
+
 ## Tools
 
 **React.StrictMode** is a component that helps highlight potential problems in an application. It enables additional checks and warnings in the development mode to help identify and address potential bugs and deprecated features.

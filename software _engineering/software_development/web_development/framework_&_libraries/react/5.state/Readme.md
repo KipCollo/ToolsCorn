@@ -8,9 +8,6 @@ State allows developers to:-
 - Update the component's view by re-rendering it.
 - Persist local variables between renders.
 
-State Management is the implementation of a design pattern to synchronize the state of the application throghout all components of the application.
-State management solutions includes:- React API:- useState and useReducer,context API,Redux,MobX,VueX,Recoil,Zustand,Hookstate,Akita.
-
 `Difference between State and Props`:
 
 | Props                                                                           | State                                                                |
@@ -21,6 +18,78 @@ State management solutions includes:- React API:- useState and useReducer,contex
 | Props are used to communicate between components.                               | States can be used for rendering dynamic changes with the component. |
 | Stateless component can have Props.                                             | Stateless components cannot have State.                              |
 | Props are external and controlled by whatever renders the component.            | The State is internal and controlled by the React Component itself.  |
+
+## State Management
+
+State manageement is deciding when to create pieces of state, what types of state are necessary, where to place each piece of state, and how data flows through the app.
+State Management is the implementation of a design pattern to synchronize the state of the application throghout all components of the application.
+State management solutions includes:- React API:- useState and useReducer,context API,Redux,MobX,VueX,Recoil,Zustand,Hookstate,Akita.
+
+_Types of state_ -
+
+- `Local state` - State needed only by one or few components.State that is defined in a component and only that component and child components have access to it(by passing via props).
+- `Global state` - State that many components might need. Shared state that is accessible to every component in the entire application.Defined by Context API, Redux.
+
+**_Sharing state with sibling component_** - Data can only flow down to children(via props), not sideways to siblings.The solution is lifting state up.The sate is lifted up to the closest common parent.By lifting state up, we share one piece of state with multiple components in different positions in the component tree.
+Child-to-parent communication(inverse data flow)- child updating parent state(data flowing up)
+
+```js
+function App() {
+  const [items, setItems] = useState([]);
+
+  function handleAddItems(item) {
+    setItems((items) => [...items, item]);
+  }
+  return (
+    <div>
+      <Form onAddItems={handleAddItems} />
+      <PackingList items={items} />
+    </div>
+  );
+}
+
+function PackingList({ items }) {
+  return (
+    <div className="list">
+      <ul>
+        {items.map((item) => (
+          <Item item={item} key={item.id} />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function Form({ onAddItems }) {
+  const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState(0);
+
+  function handleSubmit(e) {
+
+    const newItem = { description, quantity, packed: false, id: Date.now() };
+    onAddItems(newItem);
+  }
+  return (
+      <select
+        onChange={(e) => setQuantity(Number(e.target.value))}
+        value={quantity}
+      >
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+          <option value={num} key={num}>
+            {num}
+          </option>
+        ))}
+      </select>
+      <input
+        type="text"
+        placeholder="Item..."
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+
+  );
+}
+```
 
 ## Hooks
 

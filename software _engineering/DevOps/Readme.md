@@ -94,7 +94,6 @@ Devops tools includes:-
 7. Operate:- Terraform,Kubernetes,Puppet,Ansible
 8. Monitor:- Prometheus,Grafana,Datadog
 
-
 `Version Control`:-
 
 1. Git is widely used for version control, and helps track changes in source code during development.
@@ -113,8 +112,7 @@ Devops tools includes:-
 1. Ansible is an open source automation tool that simplifies configuration management, application deployment, and task automation.
 2. Chef enables infrastructure automation and configuration management using reusable scripts called recipes.
 3. Puppet is a configuration management tool for automating the provisioning and management of infrastructure.It allows delivery and release of technology changes quickly and frequently.Has features of versioning,automated testing and continuous delivery.It enables to manage entire infrastructure as code without expanding size of the team.
-Puppet is a tool that helps you manage and automate the configuration of servers.Puppet is made up of several packages, which you use to manage, store and run your Puppet code. These packages include puppetserver, puppetdb, and puppet-agent — which includes Facter and Hiera.
-
+   Puppet is a tool that helps you manage and automate the configuration of servers.Puppet is made up of several packages, which you use to manage, store and run your Puppet code. These packages include puppetserver, puppetdb, and puppet-agent — which includes Facter and Hiera.
 
 `Containerization and Orchestration`:-
 
@@ -145,7 +143,6 @@ Puppet is a tool that helps you manage and automate the configuration of servers
 1. Slack is a team collaboration tool for communication and sharing updates.
 2. Microsoft Teams is a communication and collaboration platform that integrates with other Microsoft tools.
 
-
 `Logging`
 
 1. ELK Stack (Elasticsearch, Logstash, Kibana) is a set of tools for log management, enabling search, analysis, and visualization of log data.
@@ -161,6 +158,10 @@ Puppet is a tool that helps you manage and automate the configuration of servers
 
 `Nagios`:- It determines the errors and rectify them with help of network,infrastructure,server and log monitoring systems.
 
+- Nginx, HAProxy, Cloudflare
+- Security - Vault,trivy,Snyk
+- collaboration - slack, jira
+- Code Quality - Sonarqube, ESLint.
 
 ## Start DevOps with Docker
 
@@ -360,7 +361,7 @@ Puppet is a tool that helps you manage and automate the configuration of servers
 - Step 15 - Providing Declarative Configuration with Ansible
 - Step 16 - Deleting all AWS EC2 Instances
 
-TODO 
+TODO
 
 1. Deploy Web server with Docker for consistent environments and scalability
 2. Automate CI with Jenkins remoting across environments for better efficiencies.
@@ -489,7 +490,7 @@ Site Reliability Engineering (SRE) follows a set of principles that guide the ap
     Emergency Response and Blameless Postmortems
     SREs are equipped to respond rapidly and effectively to incidents. The focus is on minimizing downtime and restoring service functionality. A blame-free post-mortem culture is embraced, allowing teams to learn from incidents and implement improvements to prevent future occurrences.
     Instead of focusing solely on fault-finding, incident reviews (often called postmortems) aim to identify the root cause of problems with a different approach. This shift in perspective is reflected in the name itself - a postmortem is less accusatory than a traditional "root cause analysis" (RCA). The goal is to learn from mistakes and improve the system, not to point fingers.
-    Postmortems go beyond just identifying the root cause. They also ask crucial questions about how to better detect, respond to, and fix issues faster. This focus on improving response is often a challenge for organizations used to traditional blame-oriented RCAs. Building a "blameless culture" where learning is prioritized is key to getting the most out of postmortems. 
+    Postmortems go beyond just identifying the root cause. They also ask crucial questions about how to better detect, respond to, and fix issues faster. This focus on improving response is often a challenge for organizations used to traditional blame-oriented RCAs. Building a "blameless culture" where learning is prioritized is key to getting the most out of postmortems.
 
 The seven principles of SRE provide a framework for building and operating reliable systems at scale. By focusing on measurable objectives, automation, and a culture of continuous improvement, SRE teams aim to deliver services that meet user expectations while allowing for innovation and adaptation to changing requirements.
 
