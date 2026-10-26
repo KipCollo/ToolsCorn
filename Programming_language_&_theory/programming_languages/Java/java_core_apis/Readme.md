@@ -248,7 +248,10 @@ Since it is a random number, we can’t know the result in advance. However, we 
 
 ## Arrays
 
+An array is a data structure that defines an indexed collection of a fixed number of homogeneous data elements. This means that all elements in the array have the same data type. A position in the array is indicated by a non-negative integer value called the index. An element at a given position in the array is accessed using the index. The size of an array is fixed and cannot be changed.
 Arrays are used to store multiple values in a single variable, instead of declaring separate variables for each value.An array is a collection of a fixed number of elements, wherein the elements are of same data types.
+
+In Java, arrays are objects. Arrays can be of primitive data types or reference types.In the former case, all elements in the array are of a specific primitive data type. In the latter case, all elements are references of a specific reference type. References in the array can then denote objects of this reference type or its subtypes. Each array object has a final field called length, which specifies the array size, i.e., the number of elements the array can accommodate. The first element is always at index 0 and the last element at index n-1, where n is the value of the length field in the array.
 
 - Properties
   1.  Stores data of specified type.
@@ -256,130 +259,109 @@ Arrays are used to store multiple values in a single variable, instead of declar
   3.  Each elements has unique index.
   4.  Size of array is defined.
 
-- Types of Arrays
+Types of Arrays - Simple arrays are `one-dimensional arrays`, that is, a simple list of values. Since arrays can store reference values, the objects referenced can also be array objects. Thus, `multi-dimensional arrays` are implemented as array of arrays.
 
 1. One Dimensional: An array with a bunch of values having been declared with single index.i.e a[i]->i btwn 0 and N.
 2. Multi Dimensional- Two dimensional, Three dimensional..N dimensional: 2D array with bunch of values declared with double index.i.e `a[i(Row)][j(Column)]`->i and j btwn 0 and N.
-
-- `Creating Array`
-
-We can:
 
 - Declare: Create reference to Array.
 - Instantiate: Creates an array
 - Initialization: Assigns value to cells in array.
 
-- `Declaring(O(1))`
+_Declaring Array Variables (O(1))_ - To declare an array, define the variable type with square brackets:
 
-Syntax:
+dataType arrayName[]; OR dataType[] arrayName;
 
-dataType arrayName[];
-
-To declare an array, define the variable type with square brackets:
+The array variable `arrayName` has the type `datatype[]`. Note that the array size is not specified. This means that the array variable arryName can be assigned the reference value of an array of any length, as long as its elements have datatype.
+Declaration does not actually create an array.It only declares a reference that can refer to an array object.
 
 ```Java
 String[] cars;
 ```
 
-- `Insatiate.(O(1))`
+An array variable that is declared as a member of a class, but is not initialized to any array, will be initialized to the default reference value null. This default initialization does not apply to local reference variables and, therefore, does not apply to local array variables either.
 
-In Java array is an object, **arrayName** is a reference variable.To store data we must initiate the array object.
+_Insatiating array.(O(1))_ - In Java array is an object, `arrayName` is a reference variable.To store data we must initiate the array object.An array can be constructed for a fixed number of elements of a specific type, using the new operator. The reference value of the resulting array can be assigned to an array variable of the corresponding type. The syntax of the array creation expression is shown on the right-hand side of the following assignment statement:
 
-arrayName = new datatype[intExp];
+arrayName = new datatype[array_size];
 
-The **intExp** rep number of components in array.
+The minimum value of <array size> is 0, in other words, zero-length arrays can be constructed in Java. If the array size is negative, a NegativeArraySizeException is thrown.
 
 ```Java
 cars = new String[10];
 ```
 
-You can combine the statement:
+The array declaration and construction can be combined.When the array is constructed, all its elements are initialized to the default value for `dataType`. This is true for both member and
+local arrays when they are constructed.
 
-dataType[] arrayName = new datatype[intExp];
+dataType[] arrayName = new datatype[array_size];
+
+The array elements are implicitly initialized to their default value. For example, all elements of the array of integers get the value 0, and all element of the array objects get the value
+null when the arrays are constructed.
 
 ```Java
+int[] anIntArray = new int[10];// Default element value: 0.
+Eatable[] eatables = new Pizza[2];// Default element value: null.
 String[] cars = new String[10];
 ```
 
-- `Initialize`
+_Initializing Array_ - When array is initialised, Java automatically initialises it's components to their default values.e.g numeric are initialised to 0.
+Java provides the means of declaring, constructing, and explicitly initializing an array in one declaration statement:
 
-- When array is initialised, Java automatically initialises it's components to their default values.e.g numeric are initialised to 0.
+datatype[] arrayname = { <array_initialize_list> };
 
-- `Insertion`
+This form of initialization applies to member as well as local arrays. The <array_initialize_list> is a comma-separated list of zero or more expressions. Such an array initialization block results in the construction and initialization of the array.
 
-- To add components to array you use:
+```java
+int[] anIntArray = {13, 49, 267, 15, 215};//(O(1))
+Object[] objArray = { new Pizza(), new Pizza(), null };
+```
+
+The expressions in the <array_initialize_list> are evaluated from left to right.The list can also be legally terminated by a comma.
+
+```java
+Topping[] pizzaToppings = { new Topping("cheese"), new Topping("tomato"), };
+```
+
+_Array Insertion_ - To add components to array you use:
 
 ```Java
 cars[0]="Volvo";
 cars[1]="Toyota";// all sum to (O(N))
 ```
 
-- Shorter way to declare and initialize an Array. To insert values to it, you can place the values in a comma-separated list, inside curly braces:
-
-```java
-String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};//(O(1))
-```
-
-- To create an array of integers, you could write:
-
-```java
-int[] myNum = {10, 20, 30, 40};
-```
-
-- `Accessing Array Components`:- The general format to access an array is:
+_Accessing Array Components_:- The array object is referenced by the array name, but individual array elements are accessed by specifying an index with the [] operator. The array element access expression has the following syntax:
 
 arrayName[indexExp]
+
+Each individual element is treated as a simple variable of the element type. The index is specified by the <indexExp>, which can be any expression that evaluates to a non-negative int value. Since the lower bound of an array is always 0, the upper bound is one less than the array size, that is, <arrayName>.length-1. The ith element in the array has index (i-1). At runtime, the index value is automatically checked to ensure that it is within the array index bounds. If the index value is less than 0, or greater than or equal to <array name>.length, an ArrayIndexOutOfBoundsException is thrown.
 
 ```Java
 myNum[1];
 ```
 
-The [] operator is called **array subscripting operator**
+The [] operator is called `array subscripting operator`. It is used to declare array types, specify array size and to access array elements.This operator is not used when the array reference is manipulated or when the array reference is passed as an actual parameter in a method call.
 
 ```java
-import java.util.Arrays;
+Topping[]
+new Topping[3]
+toppings[1]
+```
 
-public class Array1 {
+**Anonymous Arrays** - Java has another array creation expression, called anonymous array, which allows the concept of the array creation expression and the array initializer block to be combined, to create and initialize an array object:
 
- public static void main (String[] args)
- {
- // declares an Array of integers.
- int[] arr;
+new dataType[] { <array_initialize_list> }
 
- // allocating memory for 5 integers.(Insatiate)
- arr = new int[5];
+```java
+new int[] {3, 5, 2, 8, 6}
+```
 
- // initialize the elements of the array
- arr[0] = 10;
- arr[1] = 20;
- arr[2] = 30;
- arr[3] = 40;
- arr[4] = 50;
+The construct has enough information to create a nameless array of a specific type. Neither the name of the array nor the size of the array is specified. The construct returns the reference value of the newly-created array, which can be assigned to references and passed as argument in method calls.
 
- // accessing element at a position
-
- System.out.println(arr[1]);
-
- // accessing the elements of the specified array
- for (int i = 0; i < arr.length; i++)
-  System.out.println("index " + i +
-         " : "+ arr[i]);
-
- // Print all the array elements using for-each
- System.out.println("Print using foreach loop");
-    for (int element: arr)
-        System.out.println(element);
-
- String[] cars= {"Volvo", "Mercedes"};
-
- // Accessing arrays using Array class
- System.out.println(Arrays.toString(cars));
-
-
-    }
-
-
-}
+```java
+int[] daysInMonth;
+daysInMonth = new int[] {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; // ok.
+daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; // Not ok.
 ```
 
 - `Sorting`:- Java makes it easy to sort an array by providing a sort method—­or rather, a bunch of sort methods. Just like StringBuilder allowed you to pass almost anything to append(), you can pass almost any array to Arrays.sort().
@@ -481,7 +463,7 @@ public static void main(String[] args)
 public static void main(String args[])
 public static void main(String... args) // varargs
 
-- **Working with Multidimensional Arrays**:-Arrays are objects, and of course, array components can be objects and it can hold other arrays
+**Multidimensional Arrays**:- Arrays are objects, and of course, array components can be objects and it can hold other arrays
 
 - `Creating a Multidimensional Array`:- Multiple array separators are all it takes to declare arrays with multiple dimensions. You can locate them with the type or variable name in the declaration, just as before:
 
