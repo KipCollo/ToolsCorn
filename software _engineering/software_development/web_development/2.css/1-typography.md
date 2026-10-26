@@ -272,4 +272,8 @@ It's used to define the background effects for elements. CSS background properti
   - background-position: right top; // one/two values using left, top, center & bottom
   - background-position: 50% 50%;
   - background-position: 50px 150px;
-- background-size - The background-size CSS property sets the size of the element's background image. The image can be left to its natural size, stretched, or constrained to fit the available space.
+- background-size - The background-size CSS property sets the size of the element's background image. The image can be left to its natural size, stretched, or constrained to fit the available space.- `cover, conatin, unset`
+
+## clip
+
+clip-path

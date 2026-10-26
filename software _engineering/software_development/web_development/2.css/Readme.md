@@ -14,7 +14,7 @@ CSS styles are mainly used for presenting and styling the web pages as per the r
 
 There are three ways of inserting a style sheet:-
 
-1. `External CSS` - With an external style sheet, you can change the look of an entire website by changing just one file!. Each HTML page must include a reference to the external style sheet file inside the _<link>_ element, inside the head section. An external style sheet can be written in any text editor, and must be saved with a .css extension. The external .css file should not contain any HTML tags. Eg.
+1. `External CSS` - With an external style sheet, you can change the look of an entire website by changing just one file!. Each HTML page must include a reference to the external style sheet file inside the <link> element, inside the head section. An external style sheet can be written in any text editor, and must be saved with a .css extension. The external .css file should not contain any HTML tags. Eg.
 
 ```java
 <link rel="stylesheet" type="text/css" href="mystyle.css">

@@ -89,6 +89,7 @@ A floated element is removed from the normal document flow and pulled to the edg
 - Note that overflow: auto doesn't clear floats — it causes the element to contain its floats by way of establishing a new block formatting context for them so that they don't intrude to other elements in the parent context.
   That is what forces the parent to stretch to contain them. You can only clear a float if you add a clearing element after the float. A parent element cannot clear its floating children.
 - A better way to clear floats is to add a `clearfix` class to the container element with the following styles
+
   ```css
   .clearfix:after {
     content: "";

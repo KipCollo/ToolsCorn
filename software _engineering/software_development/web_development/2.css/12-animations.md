@@ -53,8 +53,8 @@ Animation properties do two things:
 
 The animation properties are added to the CSS selectors(or elements) that you want to animate, You must add the following two animation properties for the animation to take effect.
 
-- animation-name: The name of the animation defined in the @keyframes.
-- animation-duration: The duration of the animations, in seconds (eg. 5s) or milliseconds (eg. 200ms).
+- `animation-name`: The name of the animation defined in the @keyframes.
+- `animation-duration`: The duration of the animations, in seconds (eg. 5s) or milliseconds (eg. 200ms).
 
 Continuing with the above bounceIn example, we’ll add animation-name and animation-duration to the div that we want to animate.
 
@@ -77,12 +77,12 @@ By adding both the @keyframes and the animation properties, we have a simple ani
 
 In addition to the required animation-name and animation-duration properties, you can further customize and create complex animations using the following properties:
 
-- animation-timing-function – specifies the speed curve of the animation.
-- animation-delay – specifies a delay for the start of an animation.
-- animation-iteration-count – specifies the number of times an animation should be played.
-- animation-direction – specifies whether an animation should play in reverse direction or alternate cycles.
-- animation-fill-mode – specifies a style for the element when the animation is not playing. Such as when it is finished or when it has a delay.
-- animation-play-state – specifies whether the animation is running or paused.
+- `animation-timing-function` – specifies the speed curve of the animation.i.e ease, ease-in,ease-out, linear, step-end
+- `animation-delay` – specifies a delay for the start of an animation.
+- `animation-iteration-count` – specifies the number of times an animation should be played.
+- `animation-direction` – specifies whether an animation should play in reverse direction or alternate cycles.
+- `animation-fill-mode` – specifies a style for the element when the animation is not playing. Such as when it is finished or when it has a delay.
+- `animation-play-state` – specifies whether the animation is running or paused.
 
 Order used in shorthand syntax:
 

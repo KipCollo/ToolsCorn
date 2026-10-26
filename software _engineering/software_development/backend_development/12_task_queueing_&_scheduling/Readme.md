@@ -32,3 +32,7 @@ Useful when you don't need reply,No clear picture of E2E architecture.It is lang
 - Needs producer coordination with consumer for partition increases.
 
 Useful when you want replay,Streaming,high throughput.
+
+## Message Brokers
+
+Message brokers are an inter-application communication technology to help build a common integration mechanism to support cloud-native, microservices-based, serverless, and hybrid cloud architectures. Two of the most famous message brokers are `RabbitMQ` and `Apache Kafka`

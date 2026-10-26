@@ -114,7 +114,7 @@ Hooks have some rules: They must be used only at the top level of a function com
 7. The `useReducer()` hook is used to manage state in functional components using the reducer pattern. It is an alternative to useState() and is suitable for managing more complex state or state transitions. It returns the current state and a dispatch function to update the state
 8. The `useContext()` hook is used to consume values from a React context. It allows functional components to access context values without nesting multiple layers of components or using render props.
 
-**useState** - `useState` hook is used to add and manage the state of a component in functional components. Calling useState returns an array with two elements: the current state value and a function to update the state.By calling the update function, the component can trigger a re-render with the updated state.
+**useState** - `useState` is a React hook that lets you add a state variable to your components. Calling useState returns an array with two elements: the current state value and a function to update the state.By calling the update function, the component can trigger a re-render with the updated state.
 useState is a Hook,it's called only at the top level of your component or your own hooks.It can't be called inside loops or conditions,if you need to,extract a new component and move state into it.
 
 In Strict Mode,React will call your initializer function twice in order to help you find accidental impurities.
@@ -147,10 +147,10 @@ function MyComponent() {
 - `Parameters`: - initialState:- The value you want the state to be initially.It can be value of any type,but there is special behaviour for functions.This argument is ignored after initial render.If you pass a function as initialState,it will be treated as an initializer function.It should be pure,shoud take no arguments and should return a value of any type.React will call your initializer function when initializing the component,and store its return value as the initial state.
 
 - `Returns`: useState returns an array with two values:-
-  1.  The current state,which during first render it will match initialState you passed
+  1.  The current state,which during first render it will match initialState you passed.
   2.  set function that lets you update state to a diff value and trigger a re-render.
 
-- _Set Functions_:-The set function returned by useState lets you update the state to a diff value and trigger a re-render.You can pass next state directly,or a function that calculates it from previous state.It does not have a return value.
+- _Set Functions_:-The set function returned by useState lets you update the state to a diff value and trigger a re-render.You can pass next state directly,or a function that calculates it from previous state.It does not have a return value.If you pass a function as nextState, it will be treated as an updater function.It must be pure, should take the pending state as its only argument, and should return the next state.React will put your updater function in a queue and re-render your component..During the next render, React will calculate the next state by applying all of the queued updaters to the previous state.
 
 ```js
 const [name, setName] = useState("Coolins");
@@ -160,7 +160,13 @@ function handleClick() {
 }
 ```
 
-**seEffect Hook** - `useEffect` is a special hook that lets you run side effects in React. It is similar to componentDidMount and componentDidUpdate, but it only runs when the component (or some of its props) changes and during the initial mount.
+- The set function only updates the state variable for the next render.If you read the state variable after calling the set function you will still get the old value that was on the screen before your call.
+- If the new value you provide is identical to current state, as determined by an Object.is comparison, React will skip re-rendering the components and its children.This is an optimization.
+- React batches state updates.It updates the screen after all the event handlers have run and called their set functions.This prevents multiple re-renders during a single event.In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use `flushSync`.
+- Calling the set function during rerendering is only allowed from within the currently rendering component.React will discard its output and immediately attempt to render it again with the new state.This pattern is rarely neede, but you can use it to store information from previous renders.
+- In Strict Mode, React will call your updater function twice in order to help you ind accidental ipurities.This is development-only behaviour and does not affect production.
+
+**useEffect Hook** - `useEffect` is a special hook that lets you run side effects in React. It is similar to componentDidMount and componentDidUpdate, but it only runs when the component (or some of its props) changes and during the initial mount.
 
 The useEffect hook is used to perform side effects in functional components. It allows you to run code after the component has rendered and handle actions such as data fetching, subscriptions, or manually updating the DOM.It lets you synchronize a component with external system.
 

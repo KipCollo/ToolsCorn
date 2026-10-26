@@ -5,12 +5,18 @@ Redis, an in-memory database/data structure server, originally written by Salvat
 
 Redis is an in-memory remote database that offers high performance, replication, and a unique data model to produce a platform for solving problems. By supporting five different types of data structures.
 
+Redis is an open source (BSD licensed), in-memory **data structure store** used as a database, cache, message broker, and streaming engine. Redis provides data structures such as [strings](https://redis.io/topics/data-types-intro#strings), [hashes](https://redis.io/topics/data-types-intro#hashes), [lists](https://redis.io/topics/data-types-intro#lists), [sets](https://redis.io/topics/data-types-intro#sets), [sorted sets](https://redis.io/topics/data-types-intro#sorted-sets) with range queries, [bitmaps](https://redis.io/topics/data-types-intro#bitmaps), [hyperloglogs](https://redis.io/topics/data-types-intro#hyperloglogs), [geospatial indexes](https://redis.io/commands/geoadd), and [streams](https://redis.io/topics/streams-intro). Redis has built-in [replication](https://redis.io/topics/replication), [Lua scripting](https://redis.io/commands/eval), [LRU eviction](https://redis.io/topics/lru-cache), [transactions](https://redis.io/topics/transactions), and different levels of [on-disk persistence](https://redis.io/topics/persistence), and provides high availability via [Redis Sentinel](https://redis.io/topics/sentinel) and automatic partitioning with [Redis Cluster](https://redis.io/topics/cluster-tutorial).
+
+Visit the following resources to learn more:
+
+- [Redis Website](https://redis.io/)
+- [Redis in 100 Seconds](https://www.youtube.com/watch?v=G1rOthIU-uo)
+
 Redis is a very fast non-relational database that stores a mapping of keys to five different types of values. Redis supports in-memory persistent storage on disk, replication to scale read performance, and client-side sharding 1 to scale write performance.
 
 Redis has two different forms of persistence available for writing in-memory data to disk in a compact format.
 The first method is a point-in-time dump either when certain conditions are met (a number of writes in a given period) or when one of the two dump-to-disk commands is called.
 The other method uses an append-only file that writes every command that alters data in Redis to disk as it happens.
-
 
 Redis allows us to store keys that map to any one of five different data structure types; STRINGs, LISTs, SETs, HASHes, and ZSETs. Each of the five different structures have some shared commands (DEL, TYPE, RENAME, and others), as well as some commands that can only be used by one or two of the structures.
 
@@ -19,7 +25,6 @@ Redis allows us to store keys that map to any one of five different data structu
 3. SET - Unordered collection of unique strings - Add, fetch, or remove individual items, check membership, intersect, union, difference, fetch random items
 4. HASH - Unordered hash table of keys to values - Add, fetch, or remove individual items, fetch the whole hash
 5. ZSET (sorted set)Ordered mapping of string members to floating-point scores, ordered by score - Add, fetch, or remove individual values, fetch items based on score ranges or member value
-
 
 **Strings in Redis**:- In Redis, STRINGs are similar to strings that we see in other languages or other key-value stores.
 The operations available to STRINGs start with what’s available in other key-value stores. We can GET values, SET values, and DEL values.
@@ -43,12 +48,11 @@ OK
 (integer) 1
 127.0.0.1:6379> GET name
 (nil)
-127.0.0.1:6379> 
+127.0.0.1:6379>
 ```
 
 In addition to being able to GET, SET, and DEL STRING values, there are a handful of other commands for reading and writing parts of STRINGs, and commands that allow
 us to treat strings as numbers to increment/decrement them.
-
 
 **Lists in Redis**:- LISTs in Redis store an ordered sequence of strings.
 The operations that can be performed on LISTs are typical of what we find in almost any programming language.We can push items to the front and the back of the LIST with LPUSH/RPUSH; we can pop items from the front and back of the list with LPOP/RPOP; we can fetch an item at a given position with LINDEX; and we can fetch a range of items with LRANGE.
@@ -69,16 +73,16 @@ The operations that can be performed on LISTs are typical of what we find in alm
 1) "item1"
 2) "item2"
 3) "item3"
-127.0.0.1:6379> LRANGE list-key 0 
+127.0.0.1:6379> LRANGE list-key 0
 (error) ERR wrong number of arguments for 'lrange' command
-127.0.0.1:6379> LINDEX list-key 0 
+127.0.0.1:6379> LINDEX list-key 0
 "item1"
-127.0.0.1:6379> LPOP list-key 
+127.0.0.1:6379> LPOP list-key
 "item1"
 127.0.0.1:6379> LRANGE list-key 0 -1
 1) "item2"
 2) "item3"
-127.0.0.1:6379> 
+127.0.0.1:6379>
 ```
 
 We can also remove items, insert items in the middle, trim the list to be a particular size (discarding items from one or both ends), and more.
@@ -115,7 +119,7 @@ Because Redis SETs are unordered,we can’t push and pop items from the ends lik
 127.0.0.1:6379> SMEMBERS set-key
 1) "item1"
 2) "item3"
-127.0.0.1:6379> 
+127.0.0.1:6379>
 ```
 
 Three commonly used operations with SETs include intersection, union, and difference (SINTER, SUNION, and SDIFF, respectively).
@@ -153,7 +157,7 @@ Some of the same commands that we can perform on STRINGs, we can perform on the 
 127.0.0.1:6379> HGETALL hash-key
 1) "sub-key2"
 2) "value2"
-127.0.0.1:6379> 
+127.0.0.1:6379>
 ```
 
 We can consider a Redis HASH as being similar to a document in a document store, or a row in a relational database, in that we can access or change individual or multiple fields at a time.
@@ -187,6 +191,5 @@ We can consider a Redis HASH as being similar to a document in a document store,
 127.0.0.1:6379> ZRANGE zset-key 0 -1 WITHSCORES
 1) "member0"
 2) "4"
-127.0.0.1:6379> 
+127.0.0.1:6379>
 ```
-
