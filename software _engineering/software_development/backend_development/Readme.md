@@ -51,31 +51,30 @@ _Domain Name_ - A domain name is a unique, easy-to-remember address used to acce
 - [@article@What is a Domain Name?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_domain_name)
 - [@article@What is a Domain Name? | Domain name vs. URL](https://www.cloudflare.com/en-gb/learning/dns/glossary/what-is-a-domain-name/)
 - [@video@A Beginners Guide to How Domain Names Work](https://www.youtube.com/watch?v=Y4cRx19nhJk)
-  **HTTP**-
+
+**HTTP**- HTTP methods describe intent, the what of the request i.e want to request, delete data.
 
 _HTTP_ - HTTP is the `TCP/IP` based application layer communication protocol which standardizes how the client and server communicate with each other. It defines how the content is requested and transmitted across the internet.
-
-- [@article@Everything you need to know about HTTP](https://cs.fyi/guide/http-in-depth)
-- [@article@What is HTTP?](https://www.cloudflare.com/en-gb/learning/ddos/glossary/hypertext-transfer-protocol-http/)
-- [@video@Full HTTP Networking Course](https://www.youtube.com/watch?v=2JYT5f2isg4)
-- [@article@An overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview)
-- [@article@HTTP/3 From A To Z: Core Concepts](https://www.smashingmagazine.com/2021/08/http3-core-concepts-part1/)
-- [@video@HTTP/1 to HTTP/2 to HTTP/3](https://www.youtube.com/watch?v=a-sBfyiXysI)
-- [@video@HTTP Crash Course & Exploration](https://www.youtube.com/watch?v=iYM2zFP3Zn0)
-- [@video@SSL, TLS, HTTPS Explained](https://www.youtube.com/watch?v=j9QmMEWmcfo)
 
 _HTTPS_ - HTTPS is a secure way to send data between a web server and a browser.
 A communication through HTTPS starts with the handshake phase during which the server and the client agree on how to encrypt the communication, in particular they choose an encryption algorithm and a secret key. After the handshake all the communication between the server and the client will be encrypted using the agreed upon algorithm and key.
 
 The handshake phase uses a particular kind of cryptography, called asymmetric cryptography, to communicate securely even though client and server have not yet agreed on a secret key. After the handshake phase the HTTPS communication is encrypted with symmetric cryptography, which is much more efficient but requires client and server to both have knowledge of the secret key.
 
-- [@article@What is HTTPS?](https://www.cloudflare.com/en-gb/learning/ssl/what-is-https/)
-- [@article@Why HTTPS Matters](https://developers.google.com/web/fundamentals/security/encrypt-in-transit/why-https)
-- [@article@Enabling HTTPS on Your Servers](https://web.dev/articles/enable-https)
-- [@article@How HTTPS works (comic)](https://howhttps.works/)
-- [@video@SSL, TLS, HTTP, HTTPS Explained](https://www.youtube.com/watch?v=hExRDVZHhig)
-- [@video@HTTPS — Stories from the field](https://www.youtube.com/watch?v=GoXgl9r0Kjk)
-- [@article@HTTPS explained with carrier pigeons](https://baida.dev/articles/https-explained-with-carrier-pigeons)
+**URIs & Routes** - It expresses the where of the request(address of a request). Where yo want to request teh resource etc. _Routing_ is mapping URL parameters to server side logic.API routes map a unique URL pattern to a specific function on the server. When a client sends a request to that URL, the server matches the path and executes the designated code:
+Combination of HTTP method and routes maps to handler.E.g POST /api/books
+
+_URIs_ - Uniform Resource Identifiers (URI) are used to identify "resources" on the web. URIs are commonly used as targets of HTTP requests, in which case the URI represents a location for a resource, such as a document, a photo, binary data. The most common type of URI is a `Uniform Resource Locator (URL)`, which is known as the web address.
+URIs can be used to trigger behaviors other than fetching a resource, including opening an email client, sending text messages, or executing JavaScript, when used in other places such as the href of an HTML <a> link.
+
+_Types of routes_ -
+
+- `static routes` - Are routes that does not have any variable parameters inside route.Match an exact, unchanging URL path. They point to a singular, specific resource or page. E.g /api/books
+- `dynamic routes` - Are routes that does have any variable parameters`(path parameters or query parameters)` inside route.• This allows a single route handler to respond to thousands of unique URLs dynamically.Path parameters(/api/books/:id). E.g /api/books/12, /api/books/100 and query parameters(api/books?query=handler) useful for filtering, pagination, E.g api/books?query=value1 + value2.
+
+_Nested Routes_ - Nesting routes is the structural practice of grouping related endpoints hierarchically to represent parent-child relationships in your data. Instead of flat, independent endpoints, nested routes chain resource paths together to make the context of a request immediately obvious. - E.g /api/books/12/author/5
+
+_Route versioning & deprecation_ - Route versioning is the practice of managing changes to an API over time by separating different iterations of your endpoints.It ensures that when you introduce breaking changes—like renaming a data field or altering a response structure—you do not break existing mobile apps, frontend clients, or third-party integrations that rely on your older API layout. E.g- /api/v1/products, /api/v2/products.Versioning helps in deprecating routes.
 
 **Authentication and Authorization** -
 

@@ -44,7 +44,7 @@ c == b //true
 
 If you create a string using the new keyword, it won’t automatically go into the String Pool — it gets stored in the heap. But when you call .intern() on that string, Java checks the pool for an existing match. If found, it returns the pooled object; otherwise, it adds the string to the pool.
 
-_String Methods_:- The String class has dozens of methods.String is a sequence of characters and Java counts from 0 when indexed.You also need to know that a String is immutable, or unchangeable. This means calling a method on a String will return a different String object rather than changing the value of the reference.
+**String Methods**:- The String class has dozens of methods.String is a sequence of characters and Java counts from 0 when indexed.You also need to know that a String is immutable, or unchangeable. This means calling a method on a String will return a different String object rather than changing the value of the reference.
 
 Why Are Strings Immutable:-
 
@@ -367,8 +367,7 @@ All of these methods provide a default implementation in Object, but if you want
 
 ## StringBuilder class
 
-The `StringBuilder` class creates a String without storing all those interim String values. Unlike the String class, StringBuilder is not immutable.
-StringBuffer works the same way, except it supports threads.It performs slower than StringBuilder.
+The `StringBuilder` class creates a String without storing all those interim String values. Unlike the String class, StringBuilder is not immutable. `StringBuffer` works the same way, except it supports threads.It performs slower than StringBuilder.
 
 There are three ways to construct a StringBuilder:
 
