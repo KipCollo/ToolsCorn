@@ -684,112 +684,20 @@ Visit the following resources to learn more:
 - [@article@Circuit Breaker - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_mitigate_interaction_failure_graceful_degradation.html)
 - [@article@Circuit Breaker - Complete Guide](https://mateus4k.github.io/posts/circuit-breakers/)
 
-## Core and Emerging Programming Languages
+## Backend Programming Languages
 
-Even if you’re a beginner the least you would have known is that Web Development is majorly classified into two facets: Frontend Development and Backend Development. And obviously, they both have their respective set of tools and technologies. For instance, when we talk about Frontend Development, there always comes 3 names first and foremost – HTML, CSS, and JavaScript.
+A backend language is a server side programming language that has the tools and frameworks required to build web backends.
 
-In the same way, when it comes to Backend Web Development – we primarily require a backend (or you can say server-side) programming language to make the website function along with various other tools & technologies such as databases, frameworks, web servers, etc.
+- Is able to listen for incoming HTTP/S connections.
+- Can access databases.
+- Can send HTTP/S requests.
+- Can access the filesystem.
+- Has a rich ecosystem of tools and frameworks to build web applications.
 
-Pick a language from the given list and make sure to learn its quirks, core details about its runtime e.g. concurrency, memory model etc.
+When it comes to Backend Web Development – we primarily require a backend (or you can say server-side) programming language to make the website function along with various other tools & technologies such as databases, frameworks, web servers, etc.
 
-- _Go_
-
-Go is an open source programming language supported by Google. Go can be used to write cloud services, CLI tools, used for API development, and much more.
-
-- [@roadmap@Visit Dedicated Go Roadmap](/golang)
-- [@official@A Tour of Go – Go Basics](https://go.dev/tour/welcome/1)
-- [@official@Go Reference Documentation](https://go.dev/doc/)
-- [@article@Go by Example - annotated example programs](https://gobyexample.com/)
-- [@article@W3Schools Go Tutorial ](https://www.w3schools.com/go/)
-- [@article@Making a RESTful JSON API in Go](https://thenewstack.io/make-a-restful-json-api-go/)
-- [@article@Go, the Programming Language of the Cloud](https://thenewstack.io/go-the-programming-language-of-the-cloud/)
-- [@video@Go Class by Matt](https://www.youtube.com/playlist?list=PLoILbKo9rG3skRCj37Kn5Zj803hhiuRK6)
-- [@feed@Explore top posts about Golang](https://app.daily.dev/tags/golang?ref=roadmapsh)
-
-- _Java_
-
-Java is general-purpose language, primarily used for Internet-based applications.
-It was created in 1995 by James Gosling at Sun Microsystems and is one of the most popular options for backend developers.
-
-Visit the following resources to learn more:
-
-- [@roadmap@Visit Dedicated Java Roadmap](/java)
-- [@official@Java Website](https://www.java.com/)
-- [@article@W3 Schools Tutorials](https://www.w3schools.com/java/)
-- [@video@Java Crash Course](https://www.youtube.com/watch?v=eIrMbAQSU34)
-- [@video@Complete Java course](https://www.youtube.com/watch?v=xk4_1vDrzzo)
-- [@feed@Explore top posts about Java](https://app.daily.dev/tags/java?ref=roadmapsh)
-
-One of the most basic skills you should focus on as a backend developer is on identifying key programming languages to learn (or at least keep an eye out for).
-There are some essential backend languages that the industry has adopted as de facto standards. This means most new projects are usually coded using one (or multiple) of these programming languages.
-
-- _JavaScript_
-
-Apart from being used in the browser, JavaScript is also used in backend e.g. using [Node.js](https://nodejs.org/) or [Deno](https://deno.land/) for writing server-side code in JavaScript.
-
-If you pick up JavaScript for the Backend, my personal recommendation would be to learn [JavaScript](/javascript) and then go with [Node.js](/nodejs) as it is the most popular and widely used option. Also, I would recommend learning TypeScript later on as you continue with your backend development Journey; it's a superset of JavaScript and is used in many projects.
-
-- [@roadmap@Visit Dedicated JavaScript Roadmap](/javascript)
-- [@article@W3Schools – JavaScript Tutorial](https://www.w3schools.com/js/)
-- [@article@The Modern JavaScript Tutorial](https://javascript.info/)
-- [@article@Eloquent Javascript - Book](https://eloquentjavascript.net/)
-- [@opensource@You Dont Know JS Yet (book series) ](https://github.com/getify/You-Dont-Know-JS)
-- [@video@JavaScript Crash Course for Beginners](https://youtu.be/hdI2bqOjy3c)
-- [@roadmap@Visit Dedicated Node.js Roadmap](/nodejs)
-- [@video@Node.js Crash Course](https://www.youtube.com/watch?v=fBNz5xF-Kx4)
-- [@video@Node.js Tutorial for Beginners](https://www.youtube.com/watch?v=TlB_eWDSMt4)
-- [@official@Official JavaScript Documentation](https://www.javascript.com/)
-- [@feed@Explore top posts about JavaScript](https://app.daily.dev/tags/javascript?ref=roadmapsh)
-
-- _PHP_
-
-PHP is a general purpose scripting language often used for making dynamic and interactive Web pages. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1994. The PHP reference implementation is now produced by The PHP Group and supported by PHP Foundation. PHP supports procedural and object-oriented styles of programming with some elements of functional programming as well.
-
-- [@official@PHP Website](https://php.net/)
-- [@article@Learn PHP - W3Schools](https://www.w3schools.com/php/)
-- [@article@PHP - The Right Way](https://phptherightway.com/)
-- [@video@PHP for Beginners](https://www.youtube.com/watch?v=U2lQWR6uIuo&list=PL3VM-unCzF8ipG50KDjnzhugceoSG3RTC)
-- [@video@PHP For Absolute Beginners](https://www.youtube.com/watch?v=2eebptXfEvw)
-- [@video@Full PHP 8 Tutorial - Learn PHP The Right Way In 2022](https://www.youtube.com/watch?v=sVbEyFZKgqk&list=PLr3d3QYzkw2xabQRUpcZ_IBk9W50M9pe-)
-- [@feed@Explore top posts about PHP](https://app.daily.dev/tags/php?ref=roadmapsh)
-
-- _Ruby_ - Ruby is a high-level, interpreted programming language that blends Perl, Smalltalk, Eiffel, Ada, and Lisp. Ruby focuses on simplicity and productivity along with a syntax that reads and writes naturally. Ruby supports procedural, object-oriented and functional programming and is dynamically typed.
-
-- [@article@Ruby Website](https://www.ruby-lang.org/en/)
-- [@article@Learn Ruby in 20 minutes](https://www.ruby-lang.org/en/documentation/quickstart/)
-- [@article@Ruby, An Introduction to a Programmer’s Best Friend](https://thenewstack.io/ruby-a-programmers-best-friend/)
-- [@video@Ruby Comprehensive courses](https://www.youtube.com/playlist?list=PL_EzhIKp343lBMH4UuklrMRL_WkilGoXe)
-- [@feed@Explore top posts about Ruby](https://app.daily.dev/tags/ruby?ref=roadmapsh)
-
-- _Rust_
-
-Rust is a modern systems programming language focusing on safety, speed, and concurrency. It accomplishes these goals by being memory safe without using garbage collection.
-
-- [@article@The Rust Programming Language - online book](https://doc.rust-lang.org/book/)
-- [@article@Rust by Example - collection of runnable examples](https://doc.rust-lang.org/stable/rust-by-example/index.html)
-- [@article@Rust vs. Go: Why They’re Better Together](https://thenewstack.io/rust-vs-go-why-theyre-better-together/)
-- [@article@Rust by the Numbers: The Rust Programming Language in 2021](https://thenewstack.io/rust-by-the-numbers-the-rust-programming-language-in-2021/)
-- [@feed@Explore top posts about Rust](https://app.daily.dev/tags/rust?ref=roadmapsh)
-
-_C#_ - C# (pronounced "C sharp") is a general purpose programming language made by Microsoft. It is used to perform different tasks and can be used to create web apps, games, mobile apps, etc.
-
-Visit the following resources to learn more:
-
-- [@article@C# Learning Path](https://docs.microsoft.com/en-us/learn/paths/csharp-first-steps/?WT.mc_id=dotnet-35129-website)
-- [@article@C# on W3 schools](https://www.w3schools.com/cs/index.php)
-- [@article@Introduction to C#](https://docs.microsoft.com/en-us/shows/CSharp-101/?WT.mc_id=Educationalcsharp-c9-scottha)
-- [@video@C# tutorials](https://www.youtube.com/watch?v=gfkTfcpWqAY&list=PLTjRvDozrdlz3_FPXwb6lX_HoGXa09Yef)
-- [@feed@Explore top posts about C#](https://app.daily.dev/tags/c#?ref=roadmapsh)
-
-**Java.** One of the most common alternatives for enterprise solutions, Java, has been constantly evolving since its first release back in 1995. All that time making its way into big enterprises that trust its robustness and ever-growing community of developers. While not the easiest language to learn, it’s definitely up there in the top 10 most popular [backend languages](https://roadmap.sh/backend/languages) (according to [StackOverflow’s 2023 Developer survey](https://survey.stackoverflow.co/2023/#technology-most-popular-technologies)).
-
-Java has a massive presence and for good reason (according to [JetBrain’s survey in 2022, Java was used by 48% of developers](https://w3techs.com/technologies/details/pl-php)).It's the kind of programming language that's everywhere – serving up websites, running your favorite apps, and even powering big-scale enterprise systems.
-
-While there are other options, the ones mentioned above, from the backend point of view, are some of the most relevant languages to pay attention to. Here are the top 10 most popular ones amongst professional developers (screenshot taken from SO’s survey of 2023):
-
-Now, learning Java, (a strongly typed, object oriented programming language (OOP), is a journey worth taking, but it's not a walk in the park. It's a bit like climbing a mountain – you start at the bottom with the basics, and as you ascend, you get into the nitty-gritty of things like object-oriented programming. The process will force you to learn a lot, which is a great thing, by the end you’ll have a lot of understanding of mechanics and concepts around OOP that can be extrapolated into other languages. However, that can also be overwhelming to some developers who just want to learn by building mini-projects. In those situations, the learning curve of Java might be too long (not steep, but long because there is a lot more to cover than with alternatives such as Python or JavaScript).
-
-That said, the community is big and there are tons of resources, from online courses to forums, helping you navigate the Java landscape. And good reason, considering Java has been around for quite a while.
+**Java** - One of the most common alternatives for enterprise solutions, Java, has been constantly evolving since its first release back in 1995. All that time making its way into big enterprises that trust its robustness and ever-growing community of developers.
+Java is general-purpose language, primarily used for Internet-based applications. It was created in 1995 by James Gosling at Sun Microsystems and is one of the most popular options for backend developers.
 
 Java's everywhere. From web development to mobile apps, and even diving into the world of big data, Java's got its fingerprints all over. And if it’s not the language itself, it’s the Java Virtual Machine (JVM) powering some other language, like Spark.
 
@@ -805,34 +713,12 @@ _Pros and Cons of Java_ - For all its power and robustness, there are some negat
   - Java’s verbose syntax might be a problem for some people. While you can still code without an issue, it all comes down to personal preference. If you like to write less and do more with your code, Java might not be the ideal pick for you. It’s verbosity can increase development time in some situations.
   - Java applications can have higher memory consumption than others, especially compared to others like PHP. While the reason for this is their entire architecture, the fact remains.
 
-**JavaScript (or any of its variants, such as TypeScript)- (Node.js).** This is a very common option because it’s also the language used by frontend developers, thus making it easier for developers to work on both sides of the same project.
-With Node.js, you can use the JavaScript language both for the frontend (client side) and for the backend (server side) of your application.
-
-![Stackoverflow Survey Result](https://assets.roadmap.sh/guest/6529303b545cb53d4aa730ca_1709057007054.png)
-
-They’re some of the most known and used languages in the industry right now (see [StackOverflow’s 2023 Developer Survey](https://survey.stackoverflow.co/2023/#most-popular-technologies-language-prof)). That said, keep in mind that these are all great options, and they’re not presented here in any particular order.
-
-If you've got the basics of JavaScript down, even if your experience has only been on the frontend, diving into Node.js is like leveling up. It lets you use the same language for both frontend and backend, which means less time juggling languages and more time building cool stuff.
+**JavaScript (or any of its variants, such as TypeScript)- (Node.js).** This is a very common option because it’s also the language used by frontend developers, thus making it easier for developers to work on both sides of the same project.With `Node.js` 0r `Deno`, you can use the JavaScript language both for the frontend (client side) and for the backend (server side) of your application.
 
 The event-driven, non-blocking architecture is one of the main features that make the language so special – it makes your web apps fast and efficient without you having to learn more complex concepts such as multi-threading. Plus, the community is constantly growing and there are tutorials everywhere to guide you through the Node.js universe.
 
-If you were to rank languages based on the amount of content out there to learn them, JavaScript would be one of the first ones (if not the first one) on the list.
-
-Now, let's talk about frameworks. In the case of JavaScript, this topic is so varied that recommending a single option for someone just getting started is really hard.
-
-For example, if you want to go frontend agnostic, or in other words, you don’t care about the technology being used to develop the client side of your app, then a good starting option would be [Express.js](https://expressjs.com/). This framework used to be the industry standard. And while that’s no longer the case, it’s still a perfect first choice if you’re looking for something with the required functionality to make your life a lot easier.
-
-Now, if on the other hand, you’re looking to build the frontend and the backend at the same time, then I would recommend going with [Next.js](https://nextjs.org/) if you’re already familiar with React. Or if on the other hand, you prefer Vue.js, then definitely try [Nuxt](https://nuxt.com/). Either one of those will help you get the job done with all the bells and whistles you can think of.
-
-According to [StackOverflow’s 2023 survey, JavaScript is the most used language by professionals](https://survey.stackoverflow.co/2023/#most-popular-technologies-language-prof) (with 65.85% of the votes).
-
-![JavaScript Interest](/guides/backend-languages/javascript-interest.png)
-
-If you’re coming from the client side, then adopting JS for your backend will let you start working in minutes. You’ll probably spend more time learning the backend-specific concepts than the language itself.
-
-On the other hand, if you’re coming from zero, or from other programming languages, JS has some quirks, for sure, but if you go the JS route, you’re already making way for a potential switch into the frontend in the future. Who knows, maybe in a few months you’ll also want to start working on the frontend, and by having picked up JS as your main backend language, you have 90% of the work already cut for you.
-
-There is really no downside to picking JS as your first backend language.
+If you want to go frontend agnostic, or in other words, you don’t care about the technology being used to develop the client side of your app, then a good starting option would be [Express.js](https://expressjs.com/). This framework used to be the industry standard. And while that’s no longer the case, it’s still a perfect first choice if you’re looking for something with the required functionality to make your life a lot easier.
+If you’re looking to build the frontend and the backend at the same time, then I would recommend going with [Next.js](https://nextjs.org/) if you’re already familiar with React. Or if on the other hand, you prefer Vue.js, then definitely try [Nuxt](https://nuxt.com/).
 
 _Pros and Cons of JavaScript_ - While there might not be a downside to picking JS, there is no perfect language out there, so let’s take a look at some of the pros and cons before moving on to the next one.
 
@@ -841,25 +727,16 @@ _Pros and Cons of JavaScript_ - While there might not be a downside to picking J
   - The ecosystem around JavaScript is one of the richest ones you can find. The community is constantly pushing the limits of the language and coming up with new solutions to everyday problems.
   - The simple syntax allows you to reduce development time because you don’t have to write as much code to achieve good results.
 
-`Cons` -
+- `Cons` -
+  - Asynchronous programming can be hard for some developers coming from other languages, like Python for example.
+  - The lack of strong types in JavaScript can cause some problems for big codebases.
+  - The single-thread nature of the language makes it really hard to implement CPU-intensive tasks. While there is support for multi-threading, it’s not extensive nor commonly used.
+  - Debugging asynchronous code can be difficult for new developers given the non-linear nature of it.
 
-- Asynchronous programming can be hard for some developers coming from other languages, like Python for example.
-- The lack of strong types in JavaScript can cause some problems for big codebases.
-- The single-thread nature of the language makes it really hard to implement CPU-intensive tasks. While there is support for multi-threading, it’s not extensive nor commonly used.
-- Debugging asynchronous code can be difficult for new developers given the non-linear nature of it.
+**PHP** - PHP is a general purpose scripting language often used for making dynamic and interactive Web pages. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1994. The PHP reference implementation is now produced by The PHP Group and supported by PHP Foundation. PHP supports procedural and object-oriented styles of programming with some elements of functional programming as well.
 
-**PHP** - Now, if you’re looking for something very well established in the web development industry, just like Java but with a shorter learning curve, then you’re probably looking for PHP.
-As a note about PHP’s relevancy, while many developers might claim that PHP is a dying tech, according to [W3Techs, over 75% of websites with a backend use PHP](https://w3techs.com/technologies/details/pl-php).
-It's the glue that holds a ton of websites together, and its longevity in the web development scene is no accident.
-
-If you're diving into PHP, you wouldn’t be so wrong (no matter what others might tell you). It's got a gentle learning curve, which means you can start building things pretty quickly. Getting everything set up and working will probably take you 10 minutes, and you’ll be writing your first “hello world” 5 minutes after that.
-The vast community support and an ocean of online resources make mastering PHP a breeze. Plus, its library support is like having a toolkit that's always expanding – you'll find what you need, whether you're wrangling databases, handling forms, or making your website dance with dynamic content.
-
-If you’re looking to pick up PHP, look for the LAMP stack, which stands for **L**inux, **A**pache, **M**ySQL, and **P**HP. With that tech stack, you’ll have everything you need to start creating websites in no time.
-
-_Modern PHP Frameworks and Their Impact_ - If we’re talking about PHP frameworks, then we gotta talk about [Laravel](https://laravel.com/) and [Symfony](https://symfony.com/). They are like the rockstars of the modern PHP world.
+_Modern PHP Frameworks and Their Impact_ - If we’re talking about PHP frameworks, then we gotta talk about [Laravel](https://laravel.com/) and [Symfony](https://symfony.com/).
 Laravel comes with a lot of tools and features that help you speed up your development process. On the other side, Symfony has a modular architecture, making it a solid choice for projects of all sizes.
-These frameworks showcase how PHP has evolved, staying relevant and powerful in the ever-changing landscape of web development.
 
 _Pros and Cons of PHP_ - Let’s take a look at some of the most common advantages of going with PHP for the backend and some cons to discuss why it might not be the best choice for you.
 
@@ -869,62 +746,29 @@ _Pros and Cons of PHP_ - Let’s take a look at some of the most common advantag
 
 - Cons - One of the major complaints developers have about the language is its inconsistent function naming convention. While not a huge problem, it makes it very hard for developers to intuitively find the right function by name. This causes you to constantly verify your code against the documentation to make sure you’re not making mistakes.
 
-**Go** - Now, let's close in on Go, the programming language born at Google that's all about simplicity and efficiency. Go embraces a clean and straightforward syntax. Despite its simplicity, it focuses heavily on performance, making it an excellent choice for building modern, scalable applications.
-
-According to the [PYPL index](https://pypl.github.io/PYPL.html) (using Google searches to weigh interest of developers in a particular language), we can see a clear worldwide growing interest in Go from the development community:
-
-- **Go (A.K.A Golang).** This programming language was developed by Google. It was designed with simplicity, efficiency, and concurrency in mind. That’s made it gain popularity in the backend development space, making it an interesting option for projects that prioritize performance and concurrency.
-  [Go Interest](/guides/backend-languages/pypl-go-index.png)
-
+**Go** - Go is an open source programming language developed by Google. Go can be used to write cloud services, CLI tools, used for API development, and much more.It was designed with simplicity, efficiency, and concurrency in mind.
 Go stands out in the crowd, especially when it comes to handling concurrency and scalability. Its built-in support for concurrent programming, through goroutines and channels, makes it a standout choice for applications that need to juggle multiple tasks simultaneously. This makes Go particularly adept at handling the demands of today's highly concurrent and distributed systems. In other words, Go is a great choice for building microservices, a type of system that is very commonly used as the backend for complex web applications.
-
-Learning Go is a smooth ride, thanks to its simplicity and extensive documentation. Developers often find themselves quickly transitioning from understanding the basics to building robust applications.
-
-The language's focus on developer productivity is evident in its quick compilation times and the absence of excessive boilerplate code, allowing developers to concentrate on building features rather than wrestling with the language itself.
 
 _Pros and Cons of Go_ - Let’s take a look at some pros and cons for the last programming language on our list.
 
-`Pros` -
+- `Pros` -
+  - Go code compiles quickly, which in turn leads to very fast development cycles. This is a big plus if you’re developing a big application with a large codebase because other options might slow down your process with their compilation times.
+  - Go's syntax is simple enough to make it easy to learn and understand for new developers.
 
-- Go code compiles quickly, which in turn leads to very fast development cycles. This is a big plus if you’re developing a big application with a large codebase because other options might slow down your process with their compilation times.
-- Go's syntax is simple enough to make it easy to learn and understand for new developers.
-
-`Cons`
-
-- Go’s ecosystem is quite young when compared to the other alternatives here, so the maturity of the tools available might not be the same as, for example, Java or JavaScript tooling.
+- `Cons`
+  - Go’s ecosystem is quite young when compared to the other alternatives here, so the maturity of the tools available might not be the same as, for example, Java or JavaScript tooling.
 
 **Python** - Python is a well known programming language which is both a strongly typed and a dynamically typed language. Being an interpreted language, code is executed as soon as it is written and the Python syntax allows for writing code in functional, procedural or object-oriented programmatic ways.
 Python has been around for decades already and while it’s never been the most popular option, it has always managed to stay within the top 5 choices. People love it for being easy to read, straightforward, and able to handle all sorts of tasks, making it a top pick for developers globally. Sure, Python's got a big name in data processing and machine learning, but let's not forget its solid impact on web development!.
 
 While a very common option for other types of projects (such as data processing and [data science](https://roadmap.sh/ai-data-scientist)), it’s still very popular in the web development world. Python has many good qualities and supporting frameworks that make it a very easy-to-pick-up option for coding backend systems.
 
-What makes Python extra appealing, especially for beginners, is the fact that reading and writing it feels very much like English (or at least, as pseudo code). This makes it a top choice for folks just starting out in coding.
-
-Visit the following resources to learn more:
-
-- [@roadmap@Visit Dedicated Python Roadmap](/python)
-- [@official@Python Website](https://www.python.org/)
-- [@official@Python Getting Started](https://www.python.org/about/gettingstarted/)
-- [@article@Automate the Boring Stuff](https://automatetheboringstuff.com/)
-- [@article@FreeCodeCamp.org - How to Learn Python ? ](https://www.freecodecamp.org/news/how-to-learn-python/)
-- [@article@Python principles - Python basics](https://pythonprinciples.com/)
-- [@article@W3Schools - Python Tutorial ](https://www.w3schools.com/python/)
-- [@article@Python Crash Course](https://ehmatthes.github.io/pcc/)
-- [@article@An Introduction to Python for Non-Programmers](https://thenewstack.io/an-introduction-to-python-for-non-programmers/)
-- [@article@Getting Started with Python and InfluxDB](https://thenewstack.io/getting-started-with-python-and-influxdb/)
-- [@video@Python for Beginners - Learn Python in 1 Hour](https://www.youtube.com/watch?v=kqtD5dpn9C8&ab_channel=ProgrammingwithMosh)
-- [@feed@Explore top posts about Python](https://app.daily.dev/tags/python?ref=roadmapsh)
-
-One of Python's standout features is its beginner-friendly syntax, making it an ideal language for those new to programming. The emphasis on readability and the absence of complex syntax (for the most part), eases the learning curve, enabling new developers to quickly grasp fundamental concepts.
-
-Python's community plays a critical role in its accessibility. Abundant learning resources, tutorials, and documentation are readily available, empowering beginners to progress from basic programming principles to advanced backend development seamlessly. Online platforms like Codecademy, Coursera, realpython.com, and even Google offer comprehensive courses tailored to all skill levels.
-
 _Practical Applications and Popular Frameworks_ - Python's versatility is evident in its applicability across a spectrum of industries, from web development and data science to artificial intelligence and automation. In the context of backend development, Python shines brightly with its two standout frameworks: [Django](https://www.djangoproject.com/) and [Flask](https://github.com/pallets/flask).
 
-`Django` - So, let's talk about Django – it's like the superhero of web frameworks, at least in the world of Python. This high-level powerhouse is all about that "batteries-included" style, giving you a whole package of tools and features that make development lightning-fast. It follows the [Model-View-Controller](https://www.crio.do/blog/understand-mvc-architecture/) (MVC) architecture that gives your web applications a solid structure, making them scalable and easy to keep up.
-Part of that whole “batteries-included” motto means that it comes with an admin panel, an [ORM](https://www.freecodecamp.org/news/what-is-an-orm-the-meaning-of-object-relational-mapping-database-tools/) (Object-Relational Mapping) for smooth data handling, and security features that make sure your project is secured out-of-the-box. All these goodies work together, making Django a top choice for projects, whether they're a walk in the park or a brain-bending challenge.
+- `Django` - So, let's talk about Django – it's like the superhero of web frameworks, at least in the world of Python. This high-level powerhouse is all about that "batteries-included" style, giving you a whole package of tools and features that make development lightning-fast. It follows the [Model-View-Controller](https://www.crio.do/blog/understand-mvc-architecture/) (MVC) architecture that gives your web applications a solid structure, making them scalable and easy to keep up.
+  Part of that whole “batteries-included” motto means that it comes with an admin panel, an [ORM](https://www.freecodecamp.org/news/what-is-an-orm-the-meaning-of-object-relational-mapping-database-tools/) (Object-Relational Mapping) for smooth data handling, and security features that make sure your project is secured out-of-the-box. All these goodies work together, making Django a top choice for projects, whether they're a walk in the park or a brain-bending challenge.
 
-`Flask` - On the other hand, Flask, a micro-framework, takes a minimalist approach, providing developers with the flexibility to choose components as needed. While Flask may be lighter than Django, it doesn't compromise on functionality. Its simplicity and modularity make it an excellent choice for small to medium-sized projects, allowing developers to tailor the framework to meet specific project requirements.
+- `Flask` - On the other hand, Flask, a micro-framework, takes a minimalist approach, providing developers with the flexibility to choose components as needed. While Flask may be lighter than Django, it doesn't compromise on functionality. Its simplicity and modularity make it an excellent choice for small to medium-sized projects, allowing developers to tailor the framework to meet specific project requirements.
 
 Both Django and Flask underscore Python's suitability for backend development, offering developers frameworks that cater to diverse project needs while maintaining Python's hallmark readability and efficiency.
 
@@ -938,37 +782,21 @@ _Pros and Cons of Python_ - As with all other backend languages in this article,
   - It’s not the most popular backend language, so while the frameworks available are constantly updated, they aren’t necessarily using the latest technology trends.
   - The GIL (Global Interpreter Lock) limits Python’s performance in multi-threaded applications.
 
-### Keeping an eye on the rising stars
+**Ruby** - Ruby is a high-level, interpreted programming language that blends Perl, Smalltalk, Eiffel, Ada, and Lisp. Ruby focuses on simplicity and productivity along with a syntax that reads and writes naturally. Ruby supports procedural, object-oriented and functional programming and is dynamically typed.
 
-If working with at least one of the most common backend languages was important, understanding what are the rising technologies in the backend world is just as crucial.
+**Rust** - Rust is a modern systems programming language focusing on safety, speed, and concurrency. It accomplishes these goals by being memory safe without using garbage collection.
 
-You won’t see a new programming language being released every month. However, in the span of a few years, you might see the release of several, and out of those, some might stick long enough to become new standards.
-
-For example, take a look at the period between 2012 and 2015; in just 3 years, 9 programming languages were released, out of which most of them are being used to this day.
-
-![Famous Languages](https://assets.roadmap.sh/guest/6529303b545cb53d4aa730ca_1709058257292.png)
-
-- In 2012, we got Julia, Elm, Go, and TypeScript.
-- In 2013, we got Dart
-- In 2014, we got Swift, Hack, and Crystal
-- And in 2015, we got Rust.
-
-Some of those languages are very relevant to this day, such as TypeScript and Rust, while others, such as Hack and Crystal, might be known to only a few in very niche sectors.
-
-Of course, it’s impossible to predict which programming language will become a standard. However, the skill that you need to hone is that of keeping an eye on the industry to spot new and emerging trends.
+**C#**- C# (pronounced "C sharp") is a general purpose programming language made by Microsoft. It is used to perform different tasks and can be used to create web apps, games, mobile apps, etc.
 
 ### The importance of supporting frameworks
 
 Frameworks for a specific programming language do change a lot faster than the language itself, though.
-
 Frameworks are there to provide you with a simplified gateway into the functionalities that you’d normally need for common tasks. For example, in the context of backend web development, frameworks usually take care of:
 
-- **Parsing HTTP requests** and turning them into objects you can easily interact with (so you don’t have to learn how the HTTP protocol works).
-- **Abstracting concepts,** such as a request or a response, into objects and functions that you can reason about at a higher level. This gives you an easier time thinking about how to solve a problem using these tools.
-- **Accessing data becomes a lot easier when there are abstractions.** Some frameworks provide what is known as an ORM (Object Relational Mapping). Through ORM, you can interact with databases without having to think about writing SQL queries or even database schemas.
+- _Parsing HTTP requests_ and turning them into objects you can easily interact with (so you don’t have to learn how the HTTP protocol works).
+- _Abstracting concepts_ such as a request or a response, into objects and functions that you can reason about at a higher level. This gives you an easier time thinking about how to solve a problem using these tools.
+- _Accessing data becomes a lot easier when there are abstractions_ Some frameworks provide what is known as an ORM (Object Relational Mapping). Through ORM, you can interact with databases without having to think about writing SQL queries or even database schemas.
 - And many more.
-
-Frameworks are an essential aspect of the work you’ll do as a backend developer, which is why you should not neglect them. Of course, learning and mastering every single framework out there is impossible. Instead, learn to keep an eye out in the industry and see what are the most common frameworks, and focus on one (or two) of them.
 
 ## API Development
 
@@ -1279,10 +1107,6 @@ _Realtime databases_ - A real-time database is broadly defined as a data store d
 - [@article@InfluxDB Website](https://www.influxdata.com/)
 - [@article@Time series database](https://www.influxdata.com/time-series-database/)
 - [@feed@Explore top posts about Backend Development](https://app.daily.dev/tags/backend?ref=roadmapsh)
-
-## Version Control
-
-Version control references the ability for you and other developers to share code with each other while you’re working on the same files.While Git is the industry standard at the moment, GitHub has created such a popular platform around Git.
 
 ## Tools
 
@@ -1602,57 +1426,6 @@ Web development is typically divided into two main categories: [backend developm
 Two of the key components when it comes to backend development are the programming language that you are going to code in and the database. In this article, we will be looking into a subset of programming languages that could be used for backend development. We will be discussing the pros and cons of each and the community to help you pick the best programming language for backend development.
 
 Diving straight in, I will cover the top 5 backend programming languages that you should to learn if you’re looking to broaden your horizons in the server-side world.
-
-## Choosing the Ideal Backend Language
-
-So, are these the best backend programming languages out there? Is there an absolute “best” backend programming language?
-
-As you’ve probably seen by now, there is no “perfect” or “ideal” backend language. When it comes to picking one out of the huge number of alternatives, you have to consider other aspects outside of the language itself:
-
-- What’s the size of your project? Are you building a large-scale platform? Or just a basic static website?
-- Do you mind spending more time learning or do you need to be efficient and start coding right away?
-- Do you already have some programming knowledge and would like to pick something that resembles what you already know? Or would you like to pick up something that’s entirely different?
-- Are you alone? Or are you part of a team?
-
-Once you’ve answered those questions, you’ll probably have some idea of where to go, but then you should look into the language itself, specifically into:
-
-- Does it have enough learning resources for you?
-- How big and active is the community around it?
-- Are the main frameworks still under development? Or have they been parked for a while?
-
-In the end, you’re evaluating the language and its ecosystem, making sure they’re both evolving right along the web industry. If you find that there are aspects that are falling behind, then it probably isn’t a good choice.
-
-A handy tool when trying to evaluate a language like that is [roadmap.sh](https://roadmap.sh).
-
-[![Roadmap.sh](/guides/backend-languages/backend-roadmap-part.png)](https://roadmap.sh/backend)
-
-<p align="center" style="font-size: 14px; margin-top: -10px; text-align: center">Small section of the full backend roadmap available on <a href="https://roadmap.sh/backend">roadmap.sh</a></p>
-
-There you’ll find community-maintained roadmaps for many career paths within software development. In particular, for this article, the [backend roadmap](https://roadmap.sh/backend) is a great place to start, because while picking a backend language is important, you’ll see there that it’s not just about the language. In fact, there is a lot of tech around the language that is also required (I’m referring to databases, git, understanding how client-server communication works, and a big “etc).
-
-## Backend languages
-
-When it comes to web development, there is a very clear distinction between frontend and backend technologies.
-
-While the frontend ecosystem is quite limited to JavaScript (and other JavaScript-based languages, like TypeScript) due to Browser compatibility, the backend (A.K.A server-side) is a very different scenario.
-
-Please note that neither of those lists is extensive, as they’re both constantly growing.
-
-You can think of a backend language as one that “runs on the server side”. That said, by that definition, any language is a backend language because even JavaScript nowadays can be used on the backend as well (thanks to Node, Bun, and Deno).
-
-However, we can go one step further and say:
-
-> “A backend language is a server side programming language that has the tools and frameworks required to build web backends”
-
-That will narrow down the list a little bit. But essentially, we can think of backend languages as anything that fits the following list:
-
-- Is able to listen for incoming HTTP/S connections.
-- Can access databases.
-- Can send HTTP/S requests.
-- Can access the filesystem.
-- Has a rich ecosystem of tools and frameworks to build web applications.
-
-With those features and a rich ecosystem of libraries and frameworks, a language can definitely be considered “backend-ready”.
 
 ## Guided Learning: From Online Courses to Bootcamps
 
