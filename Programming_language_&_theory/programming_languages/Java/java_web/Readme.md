@@ -183,7 +183,7 @@ Once you start the Web Application Manager,it will display all of the web applic
 
 When you write servlets and JSPs,the classes and methods of servlet API shelter you from having to work directly with HTTP.
 
-## Servlet/JSP Web Development
+### Servlet/JSP Web Development
 
 Web components are supported by the services of a runtime platform called a web container. A web container provides services such as request dispatching, security, concurrency, and life-cycle management. It also gives web components access to APIs such as naming, transactions, and email.Certain aspects of web application behavior can be configured when the application is installed, or deployed, to the web container. The configuration information is maintained in a text file in XML format called a web application deployment descriptor (DD).
 
@@ -2313,7 +2313,7 @@ From javax.resource:- AdministeredObjectDefinition,AdministeredObjectDefinitions
 
 ---
 
-## JSF
+### JSF
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -2419,7 +2419,7 @@ public class User {
 
 ---
 
-## Web on servlet stack(Spring MVC)
+### Web on servlet stack(Spring MVC)
 
 Servlet-stack applications are built on Servlet API and deployed to Servlet Containers.The Web-Servlet module contains Spring’s model-view-controller (MVC) implementation for web applications.
 
@@ -3524,7 +3524,7 @@ The HTML template mode will allow any kind of HTML input, including HTML5, HTML 
 
 ---
 
-## Service-Oriented (Web Services)
+## Service-Oriented (Web Services) / (Distributed Applications)Web Services
 
 `JAX-WS` stands for Java API for XML Web Services. JAX-WS is a technology for building web services and clients that communicate using XML. JAX-WS allows developers to write message-oriented as well as RPC-oriented web services.
 
@@ -3536,14 +3536,12 @@ With JAX-WS, clients and web services have a big advantage: the platform indepen
 
 `Setting the Port`:- Several files in the JAX-WS examples depend on the port that you specified when you installed the Application Server. The tutorial examples assume that the server runs on the default port, 8080. If you have changed the port, you must update the port number in the following file before building and running the JAX-WS examples:
 
-## (Distributed Applications)Web Services
-
-`Web services` are client and server applications that communicate over the World Wide Web's (WWW) HyperText Transfer Protocol (HTTP).Web services provide a standard means of interoperating between software applications running on a variety of platforms and frameworks.Web services are characterized by their great interoperability and extensibility as well as their machine-processable descriptions.
+`Web service` is a software system designed to support interoperable machine-to-machine interaction over a network.Are client and server applications that communicate over the World Wide Web's (WWW) HyperText Transfer Protocol (HTTP).Web services provide a standard means of interoperating between software applications running on a variety of platforms and frameworks.Web services are characterized by their great interoperability and extensibility as well as their machine-processable descriptions.
 On the conceptual level, a service is a software component provided through a network-accessible endpoint. The service consumer and provider use messages to exchange invocation request and response information in the form of self-containing documents that make very few assumptions about the technological capabilities of the
 receiver.
 On a technical level, web services can be implemented in various ways. The two types of web services discussed in this section can be distinguished as "big" web services and `RESTful` web services.
 
-_RESTful Web Services_ - Java has options for implementing and publishing RESTful web services. On the publishing side, the choices range from very basic, command-line servers that are well suited for development, testing, and even low-volume production; through lightweight, Java-centric web servers such as Tomcat and Jetty; and up to full-blown Java Application Servers (JAS) such as GlassFish, JBoss, Oracle WebLogic, and WebSphere.
+**RESTful Web Services** - Java has options for implementing and publishing RESTful web services. On the publishing side, the choices range from very basic, command-line servers that are well suited for development, testing, and even low-volume production; through lightweight, Java-centric web servers such as Tomcat and Jetty; and up to full-blown Java Application Servers (JAS) such as GlassFish, JBoss, Oracle WebLogic, and WebSphere.
 There is also variety among the APIs and their implementations for RESTful services:-
 
 1. The HttpServlet and JSP APIs.
@@ -3623,7 +3621,6 @@ public class WidgetsResource {
 ### Spring REST
 
 Starting with Spring 3.0, Spring introduced first-class support for creating REST APIs. And Spring’s REST implementation has continued to evolve through Spring.
-Spring’s REST support builds on Spring MVC.
 The REST capabilities are provided by the Spring MVC module (same module that provides model-view-controller capabilities). It is not a JAX-RS implementation and can be seen as a Spring alternative to the JAX-RS standard.
 
 Spring has long had some of the ingredients needed for exposing REST resources.Starting with version 3.0, however, Spring began adding enhancements to Spring MVC to provide first-class REST support.Spring supports the creation of REST resources in the following ways:
@@ -3637,8 +3634,7 @@ Spring has long had some of the ingredients needed for exposing REST resources.S
 7. Spring applications can consume REST resources using RestTemplate.
 
 NOTE:- Although Spring supports a variety of formats for representing resources, you aren’t obligated to use them all when defining your REST API.JSON and XML are often sufficient representations expected by most clients.
-Certainly, if you’ll be presenting content to be consumed by a human, you should probably support HTML formatted resources. Depending on the nature of the resource and the requirements of your application, you may even choose to present the resource as a PDF document or an Excel spreadsheet.
-For non-human consumers, such as other applications or code that invokes your REST endpoints, the leading choices for resource representation are XML and JSON.
+Certainly, if you’ll be presenting content to be consumed by a human, you should probably support HTML formatted resources. Depending on the nature of the resource and the requirements of your application, you may even choose to present the resource as a PDF document or an Excel spreadsheet.For non-human consumers, such as other applications or code that invokes your REST endpoints, the leading choices for resource representation are XML and JSON.
 It’s easy enough to support both of these options using Spring, so there’s no need to make a choice.
 
 Spring offers two options to transform a resource’s Java representation into the representation that’s shipped to the client:
@@ -3701,32 +3697,38 @@ For example, suppose the client has indicated via the request’s Accept header 
 
 Note that all but five of the HTTP message converters are registered by default, so no Spring configuration is required to use them. But you may need to add additional libraries to your application’s classpath to support them. For instance, if you want to use MappingJacksonHttpMessageConverter to convert JSON messages to and from Java objects, you’ll need to add the Jackson JSON Processor library to the classpath. Similarly, the JAXB library is required for Jaxb2RootElementHttpMessageConverter to convert messages between XML and Java objects. And the Rome library is required for AtomFeedHttpMessageConverter and RssChannelHttpMessageConverter when the message comes in Atom or RSS format.
 
-`RETURNING RESOURCE STATE IN THE RESPONSE BODY`:- Normally, when a handler method returns a Java object (anything other than String or an implementation of View), that object ends up in the model for rendering in the view. But if you’re going to employ message conversion, you need to tell Spring to skip the normal model/view flow and use a message converter instead. There are a handful of ways to do this, but the simplest is to annotate the controller method with @ResponseBody.
+**RESTful controllers** - REST APIs aren’t much different from websites. Both involve responding to HTTP requests. But the key difference is that instead of responding to those requests with HTML, as websites do, REST APIs typically respond with a data-oriented format such as JSON or XML.
+Same annotations used in Spring MVC will still come in handy as you define your REST API.Spring MVC’s HTTP request-handling annotations:-
+
+1. `@GetMapping` - HTTP GET requests.Used in reading resource data.
+2. `PostMapping` - HTTP POST requests. Used in creating a resource.
+3. `@PutMapping` - HTTP PUT requests. Used for updating a resource.
+4. `@PatchMapping` - HTTP PATCH requests. Used for updating a resource.
+5. `@DeleteMapping` - HTTP DELETE requests. Used to delete a resource.
+6. `@RequestMapping` - General-purpose request handling; HTTP method specified in the method attribute.
+
+_Returning resource state in the Response body_:- Normally, when a handler method returns a Java object (anything other than String or an implementation of View), that object ends up in the model for rendering in the view. But if you’re going to employ message conversion, you need to tell Spring to skip the normal model/view flow and use a message converter instead. There are a handful of ways to do this, but the simplest is to annotate the controller method with `@ResponseBody`.
+The `@ResponseBody annotation` tells Spring that you want to send the returned object as a resource to the client, converted into some representational form that the client can accept by bypassing the view resolution. More specifically, DispatcherServlet considers the request’s Accept header and looks for a message converter that can give the client the representation it wants.
+@ResponseBody - Annotation that indicates a method return value should be bound to the web response body.Indicates that the method returns the data directly to the HTTP response body,bypassing the view resolution. This is used in RESTful APIs and can automatically serialize objects to JSON/XML.
 
 ```java
 @RequestMapping(method=RequestMethod.GET,produces="application/json")
 public @ResponseBody List<Spittle> spittles(){}
 ```
 
-The `@ResponseBody annotation` tells Spring that you want to send the returned object as a resource to the client, converted into some representational form that the client can accept by bypassing the view resolution. More specifically, DispatcherServlet considers the request’s Accept header and looks for a message converter that can give the client the representation it wants.
-For illustration’s sake, if the client’s Accept header specifies that the client will accept application/json, and if the Jackson JSON library is in the application’s classpath, then either MappingJacksonHttpMessageConverter or MappingJackson2HttpMessageConverter will be chosen (depending on which version of Jackson is in the classpath). The message converter will convert the Spittle list returned from the controller into a JSON document that will be written to the body of the response.
-@ResponseBody - Annotation that indicates a method return value should be bound to the web response body.Indicates that the method returns the data directly to the HTTP response body,bypassing the view resolution. This is used in RESTful APIs and can automatically serialize objects to JSON/XML.
+If the client’s Accept header specifies that the client will accept application/json, and if the Jackson JSON library is in the application’s classpath, then either `MappingJacksonHttpMessageConverter` or `MappingJackson2HttpMessageConverter` will be chosen (depending on which version of Jackson is in the classpath). The message converter will convert the Spittle list returned from the controller into a JSON document that will be written to the body of the response.
 
-`RECEIVING RESOURCE STATE IN THE REQUEST BODY`:- A REST API can also receive resource representations from the client. It’d be inconvenient if your controller had to convert a JSON or XML representation sent from a client into an object it can use.
-Just as @ResponseBody tells Spring to employ a message converter when sending data to a client, the @RequestBody tells Spring to find a message converter to convert a resource representation coming from a client into an object.
+_Receiving resource state in Request Body_:- A REST API can also receive resource representations from the client. It’d be inconvenient if your controller had to convert a JSON or XML representation sent from a client into an object it can use.
+The `@RequestBody` tells Spring to find a message converter to convert a resource representation coming from a client into an object.
+@RequestBody - Annotation indicating a method parameter should be bound to the body of the web request.Spring treats result of method as response.Converts response to JSON.Binds HTTP request body to method parameter and automatically deserialize JSON/XML. It is used in POST or PUT requests to read data sent by the client and supports content negotiations.
 
 ```java
 @RequestMapping(method=RequestMethod.POST,consumes="application/json")
 public @ResponseBody Spittle saveSpittle(@RequestBody Spittle spittle) {}
 ```
 
-@RequestBody - Annotation indicating a method parameter should be bound to the body of the web request.Spring treats result of method as response.Converts response to JSON.Binds HTTP request body to method parameter and automatically deserialize JSON/XML. It is used in POST or PUT requests to read data sent by the client and supports content negotiations.
-
-`DEFAULTING CONTROLLERS FOR MESSAGE CONVERSION`:- The @ResponseBody and @RequestBody annotations are succinct yet powerful ways to engage Spring’s message converters when handling requests. But if you’re writing a controller that has several methods, all of which should use message conversion, then those annotations get somewhat repetitive.
-Spring 4.0 introduced the @RestController annotation to help with that. If you annotate your controller class with @RestController instead of @Controller, Spring applies message conversion to all handler methods in the controller. You don’t need to annotate each method with @ResponseBody.
-
-@RestController - A convenience annotation that is itself annotated with @Controller and @ResponseBody.Used to develop RESTful web apps.Used to define a controller class that handles RESTful web services. It returns data directly (like JSON) instead of views,eliminating the need for @ResponseBody on each method.
-It is a specialized version of the @Controller that combines @Controller and @ResponseBody. It is specifically designed for RESTful web services where every method returns data rather than a view.
+The @ResponseBody and @RequestBody annotations are powerful ways to engage Spring’s message converters when handling requests but if you’re writing a controller that has several methods, all of which should use message conversion, then those annotations get somewhat repetitive.Spring 4.0 introduced the `@RestController annotation` to help with that. If you annotate your controller class with @RestController instead of @Controller, Spring applies message conversion to all handler methods in the controller. You don’t need to annotate each method with @ResponseBody.
+`@RestController` - A convenience annotation that is itself annotated with @Controller and @ResponseBody.Used to develop RESTful web apps.Used to define a controller class that handles RESTful web services. It returns data directly (like JSON) instead of views,eliminating the need for @ResponseBody on each method.It is a specialized version of the @Controller that combines @Controller and @ResponseBody. It is specifically designed for RESTful web services where every method returns data rather than a view.
 
 ```java
 @RestController

@@ -60,8 +60,9 @@ Different API styles are suitable for different environments. For example, an or
 
 **Web Services** - Web services are a standardized way for different software applications to communicate with each other over a network, typically the internet, by exchanging messages. They enable interoperable machine-to-machine interaction and can be built on different platforms and written in different languages, making them ideal for connecting diverse systems in distributed applications. Web services use protocols like SOAP and technologies like XML and WSDL to define, describe, and discover their functions.
 
-A web service is a set of open protocols and standards that allow data to be exchanged between different applications or systems. Web services can be used by software programs written in a variety of programming languages and running on a variety of platforms to exchange data via computer networks such as the Internet in a similar way to inter-process communication on a single computer.
+`Web service` is a software system designed to support interoperable machine-to-machine interaction over a network.Are client and server applications that communicate over the World Wide Web's (WWW) HyperText Transfer Protocol (HTTP).Web services provide a standard means of interoperating between software applications running on a variety of platforms and frameworks.Web services are characterized by their great interoperability and extensibility as well as their machine-processable descriptions.
 
+A web service is a set of open protocols and standards that allow data to be exchanged between different applications or systems. Web services can be used by software programs written in a variety of programming languages and running on a variety of platforms to exchange data via computer networks such as the Internet in a similar way to inter-process communication on a single computer.
 Any software, application, or cloud technology that uses standardized web protocols (HTTP or HTTPS) to connect, interoperate, and exchange data messages – commonly XML (Extensible Markup Language) – across the internet is considered a web service.
 Web services have the advantage of allowing programs developed in different languages to connect with one another by exchanging data over a web service between clients and servers. A client invokes a web service by submitting an XML request, which the service responds with an XML response.
 
@@ -109,8 +110,6 @@ WSDL exists in SOAP but not in REST, and why REST is still considered a web serv
 
 So REST is a type of web service, just like SOAP.
 
-SOAP = Protocol
-
 SOAP web services follow strict standards:
 
 - WSDL (Web Services Description Language) required
@@ -119,11 +118,7 @@ SOAP web services follow strict standards:
 
 SOAP without WSDL is basically invalid.
 
-REST = Architectural Style
-
-REST is flexible and lightweight.
-It does not require WSDL because it doesn’t strictly define operations or message formats.
-Instead, REST uses:
+REEST does not require WSDL because it doesn’t strictly define operations or message formats.Instead, REST uses:
 
 - HTTP methods to describe actions GET, POST, PUT, DELETE
 - URL paths to represent resources
@@ -140,6 +135,20 @@ rest---->swagger--json/yaml
 
 - URL-Uniform Resource locator e.g <https://www.collo.com>
 - URI -Uniform Resource Identifier e.g <https://www.collo.com/resource1>, <https://www.collo.com/resource1/rest>.It can be one-to-one or many-to-one resource locator.It cant be many-to-one.
+
+_SOAP vs REST_ -
+
+1. SOAP is protocol-based communication standard while REST is architectural style for designing APIs.
+2. SOAP ues XML for message formatting while REST supports multiple formats like JSON and XML.
+3. SOAP is more complex and heavyweight;requires strict standards while REST is lightweight and easier to implement.
+4. SOAP works over protocols like HTTP,SMTP,FTP,TCP while REST laverages HTTP protocol only.
+5. In SOAP reads cannot be cached while in REST reads can be cached.
+
+**Web Application vs Web Service** -
+
+- Web application is designed for human clients to interact with while web service is designed for machine clients to interact with.
+- Web application provides a user interface(UI) like HTML pages or apps while web service has no UI; provides data in format of plain text like JSON or XML.
+- Web application is accessed via browsers like chrome,Edge while Web service is accessed via protocols like SOAP, REST.
 
 ### SOAP
 
@@ -160,19 +169,58 @@ The UDDI registry will hold the required information for the online service, jus
 
 If a web service can’t be found, it can’t be used. The client invoking the web service should be aware of the location of the web service. Second, the client application must understand what the web service does in order to invoke the correct web service. The WSDL, or Web services description language, is used to accomplish this. The WSDL file is another XML-based file that explains what the web service does to the client application. The client application will be able to understand where the web service is located and how to use it by using the WSDL document.
 
+SOAP Request:-
+
+```http
+HTTP Method: POST
+URL: http://localhost:8080/ws
+Body:
+<soapenv:Envelope xmnls:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmnls:dto="http://kipcollo.com/dto">
+      <soapenv:Header/>
+      <soapenv:Body>
+         <dto:getFactByIdRequest>
+            <dto:id>ba556dcd94004hfg00ghk9</dto:id>
+         </dto:getFactByIdRequest>
+      </soapenv:Body>
+</soapenv:Envelope>
+```
+
+SOAP Response:-
+
+```http
+Status Code: 200 OK
+Body:
+<SOAP-ENV:Envelope xmnls:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+      <SOAP_ENV:Header/>
+      <SOAP_ENV:Body>
+         <ns3:factResponse  xmnls:ns3="http://kipcollo.com/dto">
+            <id>ba556dcd94004hfg00ghk9</id>
+            <fact>Liking video, subscribing channel & sharing. </fact>
+         </ns3:factResponse>
+      </SOAP_ENV:Body>
+</SOAP-ENV:Envelope>
+```
+
 ---
 
 ### REST
 
-REST is an acronym for REpresentational State Transfer and an architectural style for distributed hypermedia systems. Roy Fielding first presented it in 2000 in his famous dissertation. Since then, it has become one of the most widely used approaches for building web-based APIs (Application Programming Interfaces).
+REST is an acronym for `REpresentational State Transfer` and an architectural style for distributed hypermedia systems used for developing web services to access a resource. Roy Fielding first presented it in 2000 in his famous dissertation. Since then, it has become one of the most widely used approaches for building web-based APIs (Application Programming Interfaces).
 REST, or REpresentational State Transfer, is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other.
 
 A REST API (Representational State Transfer Application Programming Interface) is an architectural style for designing networked applications, particularly web services. It utilizes standard web protocols, primarily HTTP, to facilitate communication between different software systems.
+
+REST is not a protocol or a standard, it is an architectural style. During the development phase, API developers can implement REST in a variety of ways.Like the other architectural styles, REST also has its guiding principles and constraints. These principles must be satisfied if a service interface is to be referred to as RESTful.
+
+REpresentational State Transfer (REST) is an architectural style that defines a set of constraints to be used for creating web services. REST API is a way of accessing web services in a simple and flexible way without having any processing.
+REST technology is generally preferred to the more robust Simple Object Access Protocol (SOAP) technology because REST uses less bandwidth, simple and flexible making it more suitable for internet usage. It’s used to fetch or give some information from a web service. All communication done via REST API uses only HTTP request.
 
 A REST API provides endpoints that allow clients to communicate with a server over the internet. Each endpoint represents a specific resource or action, such as retrieving data,creating new data, updating existing data, or deleting data. Clients send requests to these endpoints using HTTP methods like GET, POST, PUT, PATCH, and DELETE, and the server responds with the requested data or performs the requested action.
 
 This client-server communication follows the principles of REST (Representational State Transfer), which emphasizes statelessness, a uniform interface, and resource-based interactions.
 
+In HTTP there are five methods that are commonly used in a REST-based Architecture i.e., POST, GET, PUT, PATCH, and DELETE. These correspond to create, read, update, and delete (or CRUD) operations respectively. There are other methods which are less frequently used like OPTIONS and HEAD.
 REST APIs leverage standard HTTP methods (verbs) to perform operations on resources. So, in total, REST APIs support these seven HTTP methods:
 
 1. GET – Retrieve data (with response body). Retrieve a resource or collection of resources
@@ -190,56 +238,12 @@ _Benefits of using REST APIs_:
 3. Flexibility and Platform Independence:- Clients can be developed in various programming languages and on different platforms.
 4. Loose Coupling:- Client and server can evolve independently without tightly coupled dependencies.
 
-REST is not a protocol or a standard, it is an architectural style. During the development phase, API developers can implement REST in a variety of ways.Like the other architectural styles, REST also has its guiding principles and constraints. These principles must be satisfied if a service interface is to be referred to as RESTful.
-
-REpresentational State Transfer (REST) is an architectural style that defines a set of constraints to be used for creating web services. REST API is a way of accessing web services in a simple and flexible way without having any processing.
-REST technology is generally preferred to the more robust Simple Object Access Protocol (SOAP) technology because REST uses less bandwidth, simple and flexible making it more suitable for internet usage. It’s used to fetch or give some information from a web service. All communication done via REST API uses only HTTP request.
-
-In HTTP there are five methods that are commonly used in a REST-based Architecture i.e., POST, GET, PUT, PATCH, and DELETE. These correspond to create, read, update, and delete (or CRUD) operations respectively. There are other methods which are less frequently used like OPTIONS and HEAD.
-
-- What is a resource -Understand resource as the concept of a user. Don't think about the table in your database, think about an abstraction of a user with their set of attributes.
-- What is a representation in my example?-A JSON document can be used to represent the state of a particular resource. A resource can have many representations, such as JSON and/or XML documents, and the client can use content negotiation to request different representations of the same resource.
-- What is a state transfer or when does this happens in my example?-The state of a given resource can be retrieved and manipulated using representations.
-
-A GET request, for example, allows you to retrieve a representation of the state of a resource, sent in the response payload. A PUT request, for example, allows you to replace the state of a resource with the state defined by the representation enclosed in the request payload.
-
-Consider a user resource with attributes such as id and name stored somehow in your server:
-
-```
-ID: 1
-Name: John Doe
-```
-
-These details make the state of the resource.
-
-A URL such as /users/1 can be used to locate the resource in your server.
-
-Requests such as GET, PUT and DELETE can be performed against this URL to retrieve/manipulate the state of the resource using representations, such as JSON and/or XML documents (other representations can be supported according to your needs):
-
-```json
-{
-  "id": 1,
-  "name": "John Doe"
-}
-```
-
-```xml
-<user>
-  <id>1</id>
-  <name>John Doe</name>
-</user>
-```
-
 Old web features included; HTTP,Methods & URL.REST API extended the features and added Resource,URI,Representation,Uniform Interface & HATEOAS
 
 1. Resource- A resource can be any object the API can offer info about.i.e interface,images,file,method & database
 2. URI-A Uniform Resource Identifier (URI), formerly Universal Resource Identifier, is a unique sequence of characters that identifies an abstract or physical resource,
    such as resources on a webpage, mail address, phone number,books, real-world objects such as people and places, concepts.
 3. Representation- client and server exchange representations of a resource, which reflect its current state or its desired state. REST is a way for two machines to transfer the state of a resource via representations.Format request and response data is rep.i.e json,xml,text,html
-4. Uniform Interface-
-5. HATEOAS-
-
-- When apps follow the above principles;it becomes resful services
 
 When designing REST over HTTP, URLs are used to locate the resources, HTTP methods are used to express the operations over the resources and representations such as JSON and/or XML documents are used to represent the state of the resource. HTTP headers can be used to exchange some metadata about the request and response while HTTP status code are used to inform the client regarding the status of the operation.
 
@@ -257,20 +261,22 @@ In simpler words, REST defines a consistent and uniform interface for interactio
 2. `Client-Server` - The client-server design pattern enforces the separation of concerns, which helps the client and the server components evolve independently.By separating the user interface concerns (client) from the data storage concerns (server), we improve the portability of the user interface across multiple platforms and improve scalability by simplifying the server components.
    While the client and the server evolve, we have to make sure that the interface/contract between the client and the server does not break.
 
-3. `Stateless` - Statelessness mandates that each request from the client to the server must contain all of the information necessary to understand and complete the request.The server cannot take advantage of any previously stored context information on the server.For this reason, the client application must entirely keep the session state.
+3. `Stateless` - Statelessness mandates that each request from the client to the server must contain all of the information necessary to understand and complete the request.The server cannot take advantage of any previously stored context information on the server.For this reason, the client application must entirely keep the session state.Being stateless, the server will never store the state information of its clients.Rather, every request from a service consumer should carry all necessary information to make server understand and process request.
 4. `Cacheable` - The cacheable constraint requires that a response should implicitly or explicitly label itself as cacheable or non-cacheable.If the response is cacheable, the client application gets the right to reuse the response data later for equivalent requests and a specified period.Responses can be cached to improve performance.
 5. `Layered System` - The layered system style allows an architecture to be composed of hierarchical layers by constraining component behavior. In a layered system, each component cannot see beyond the immediate layer they are interacting with.APIs can have multiple layers for security, load balancing, etc. A layman’s example of a layered system is the MVC pattern. The MVC pattern allows for a clear separation of concerns, making it easier to develop, maintain, and scale the application.
 6. `Code on Demand (Optional)` - REST also allows client functionality to be extended by downloading and executing code in the form of applets or scripts.The downloaded code simplifies clients by reducing the number of features required to be pre-implemented. Servers can provide part of the features delivered to the client in the form of code, and the client only needs to execute the code.
 
 A Web API (or Web Service) conforming to the REST architectural style is called a REST API (or RESTful API).
 
-**Resource** - The key abstraction of information in REST is a resource. Any information that we can name can be a resource. For example, a REST resource can be a document or image, a temporal service, a collection of other resources, or a non-virtual object (e.g., a person).
+**Resource** - The key abstraction of information in REST is a resource. Any information that we can name can be a resource. For example, a REST resource can be a document or image, a temporal service, a collection of other resources, or a non-virtual object (e.g., a person).Every resource has a representation(XML/JSON) and a URI to identify the same.
+Resources are manipulated using HTTP's GET,POST,PUT,PATCH and DELETE methods.This allows us to perform multiple operations on the resource with a single URI.
 
-The state of the resource at any particular time is known as the resource representation. The resource representations consist of:- `the data`, `the metadata describing the data` and `the hypermedia links that can help the clients transition to the next desired state`.
+The state of the resource at any particular time is known as the **resource representation**. The resource representations consist of:- `the data`, `the metadata describing the data` and `the hypermedia links that can help the clients transition to the next desired state`.A JSON document can be used to represent the state of a particular resource. A resource can have many representations, such as JSON and/or XML documents, and the client can use content negotiation to request different representations of the same resource.
+
 A REST API consists of an assembly of interlinked resources. This set of resources is known as the REST API’s resource model.
 
 _Resource Identifiers_ - REST uses resource identifiers to identify each resource involved in the interactions between the client and the server components.
-_Hypermedia_ - The data format of a representation is known as a media type. The media type identifies a specification that defines how a representation is to be processed.
+_Hypermedia_ - The data format of a representation is known as a media type. The media type identifies a specification that defines how a representation is to be processed.It can be represented in many ways e.g JSON, XML.
 
 A RESTful API looks like hypertext. Every addressable unit of information carries an address, either explicitly (e.g., link and id attributes) or implicitly (e.g., derived from the media type definition and representation structure).
 Hypertext (or hypermedia) means the simultaneous presentation of information and controls such that the information becomes the affordance through which the user (or automaton) obtains choices and selects actions.
@@ -316,6 +322,56 @@ Types of API authentication methods:-
 
 Data format - XML, JSON, HTML,plain text.
 Uses Standard HTTP methods for resource manipulation, making it stateless and efficient.
+
+- `State transfer` - The state of a given resource can be retrieved and manipulated using representations.
+
+A GET request, for example, allows you to retrieve a representation of the state of a resource, sent in the response payload. A PUT request, for example, allows you to replace the state of a resource with the state defined by the representation enclosed in the request payload.
+
+Consider a user resource with attributes such as id and name stored somehow in your server:
+
+```
+ID: 1
+Name: John Doe
+```
+
+These details make the state of the resource.
+
+A URL such as /users/1 can be used to locate the resource in your server.
+
+Requests such as GET, PUT and DELETE can be performed against this URL to retrieve/manipulate the state of the resource using representations, such as JSON and/or XML documents (other representations can be supported according to your needs):
+
+```json
+{
+  "id": 1,
+  "name": "John Doe"
+}
+```
+
+```xml
+<user>
+  <id>1</id>
+  <name>John Doe</name>
+</user>
+```
+
+REST Request:-
+
+```http
+Http Method: GET
+URL: http://localhost:8080/facts/ba556dcd94004hfg00ghk9
+Body:
+```
+
+REST Response:-
+
+```http
+Status Code: 200 OK
+Body:
+{
+   "id": "ba556dcd94004hfg00ghk9",
+   "fact": "Liking video, subscribing channel & sharing."
+}
+```
 
 ### gRPC
 
