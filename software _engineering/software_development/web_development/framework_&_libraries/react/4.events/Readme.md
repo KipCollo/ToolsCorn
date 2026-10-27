@@ -1,5 +1,7 @@
 # Events and EventListeners
 
+_An event_ is an action or occurrence recognized by a software. To make an event more clear let's use the daily activities we do when we use a computer such as clicking on a button, hover on an image, pressing a keyboard, scrolling the mouse wheel and etc.
+
 Just like HTML DOM events, React can perform actions based on user events.Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:
 
 - React events are named using camelCase, rather than lowercase.

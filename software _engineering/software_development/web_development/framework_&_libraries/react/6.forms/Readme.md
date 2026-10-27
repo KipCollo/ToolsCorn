@@ -1,9 +1,13 @@
 # Forms
 
+Form is used to collect data from a user. Once in a while we use form to fill our information on a paper or on a website. Either to sign up, sign in or to apply for a job we fill different form fields to submit our data to remote database. We encounter different form fields when we fill a form such as simple text, email, password, telephone, date, checkbox, radio button, option selection and text area field. Currently, HTML5 has provide quite a lot of field types.
+
 In HTML, form data is usually handled by the DOM.In React, form data is usually handled by the components.When the data is handled by the components, all the data is stored in the component state.
 
 Although you can build forms using vanilla React, it normally requires a lot of boilerplate code. This is because the form is built using a combination of state and props. To make it easier to manage forms, we use some sort of library.
 Forms in React can be handled by using `controlled components` or `uncontrolled components`. Controlled components store form data in React state and update the state on user input. Uncontrolled components store form data internally and retrieve it using refs or other DOM methods.
+
+Input field has by default a memory to store input data.The input element has many attributes such as value, name, id, placeholder, type and event handler. In addition, we can link a label and an input field using an id of input field and `htmlFor` of the label.
 
 **Controlled components** are form elements whose values are controlled by React state. The state is updated whenever the user interacts with the form, and the input values are set explicitly using React state, allowing for more control and validation.
 

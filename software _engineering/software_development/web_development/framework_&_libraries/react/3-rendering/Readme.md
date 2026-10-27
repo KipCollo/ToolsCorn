@@ -28,6 +28,8 @@ function Garage() {
 Generally, the key should be a unique ID assigned to each item. As a last resort, you can use the array index as a key.
 Keys are used to give a unique identity to each element in a list of components. They help React efficiently update and re-render the components by identifying which items have changed, been added, or removed.
 
+Keys help React to identify items which have changed, added, or removed. Keys should be given to the elements inside the array to give the elements a stable identity. The key should be unique. Mostly data will come with as an id and we can use id as key. If we do not pass key to React during mapping it raises a warning on the browser. If the data does not have an id we have to find a way to create a unique identifier for each element when we map it.
+
 ```jsx
 function Car(props) {
   return (
@@ -59,6 +61,7 @@ function Garage() {
 
 ## Conditional Rendering
 
+conditional rendering is a way to render different JSX or component at different condition. We can implement conditional rendering using regular if and else statement, ternary operator and &&. Let's implement a different conditional rendering.
 In React, you can create distinct components that encapsulate behavior you need. Then, you can render only some of them, depending on the state of your application.
 
 Conditional rendering in React works the same way conditions work in JavaScript. Use JavaScript operators like [if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) or the [conditional operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) to create elements representing the current state, and let React update the UI to match them.
@@ -75,7 +78,7 @@ function Goal(props) {
 }
 ```
 
-`Logical && Operator`:- Another way to conditionally render a React component is by using the && operator.
+`Logical && Operator`:- Another way to conditionally render a React component is by using the && operator.Ternary operator is an an alternative for if else statement. However, there is more use cases for ternary operator than if else statement. For example, use can use ternary operator inside styles, className or many places in a component than regular if else statement.
 
 ```jsx
 function Garage(props) {
@@ -91,7 +94,7 @@ function Garage(props) {
 
 If cars.length is equates to true, the expression after && will render.
 
-`Ternary Operator`:- Another way to conditionally render elements is by using a ternary operator.
+`Ternary Operator`:- Another way to conditionally render elements is by using a ternary operator.The && operator render the right JSX operand if the left operand(expression) is true.
 
 ```jsx
 function Goal(props) {
