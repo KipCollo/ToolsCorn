@@ -94,3 +94,25 @@ Let's go ahead and run the development server.
 ```bash
 npm run dev
 ```
+
+## Vite
+
+Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects.
+
+Visit the following resources to learn more:
+
+- [@article@Vite Website](https://vitejs.dev)
+- [@article@Vite Documentation](https://vitejs.dev/guide)
+- [@video@Vite Crash Course](https://youtu.be/LQQ3CR2JTX8)
+- [@video@Vite Tutorial Video](https://www.youtube.com/watch?v=VAeRhmpcWEQ)
+- [@feed@Explore top posts about Vite](https://app.daily.dev/tags/vite?ref=roadmapsh)
+
+## Parcel
+
+Parcel is a web application bundler, differentiated by its developer experience. It offers blazing-fast performance utilizing multicore processing and requires zero configuration.
+
+Visit the following resources to learn more:
+
+- [@article@Official Website and Docs](https://parceljs.org/plugin-system/bundler/)
+- [@video@Using Parcel Bundler with React](https://www.youtube.com/watch?v=hCxvp3_o0gM)
+- [@feed@Explore top posts about Web Development](https://app.daily.dev/tags/webdev?ref=roadmapsh)

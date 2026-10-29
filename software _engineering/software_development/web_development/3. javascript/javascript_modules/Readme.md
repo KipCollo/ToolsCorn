@@ -248,3 +248,35 @@ The message variable and the showMessage() function are private, meaning they ca
 When we call myModule.displayMessage(), the displayMessage() function calls the private showMessage() function, which displays the message "Hello World!" in the console.
 
 The Module Pattern allows us to create reusable and encapsulated code, avoiding potential naming conflicts with other parts of our code. It also helps to keep our code organized and easier to maintain by hiding implementation details.
+
+## Module Bundlers
+
+A module bundler is a tool that takes pieces of JavaScript and their dependencies and bundles them into a single file, usually for use in the browser. You may have used tools such as Browserify, Webpack, Rollup or one of many others.
+
+It usually starts with an entry file, and from there it bundles up all of the code needed for that entry file.
+
+Visit the following resources to learn more:
+
+- [@article@Let’s learn how module bundlers work](https://www.freecodecamp.org/news/lets-learn-how-module-bundlers-work-and-then-write-one-ourselves-b2e3fe6c88ae/)
+- [@video@Module Bundlers Explained](https://www.youtube.com/watch?v=5IG4UmULyoA)
+
+## Webpack
+
+Webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.
+
+Visit the following resources to learn more:
+
+- [@article@Webpack Official Website](https://webpack.js.org/)
+- [@article@Webpack Documentation](https://webpack.js.org/concepts/)
+- [@article@A Complete Guide to Webpack 5](https://www.valentinog.com/blog/webpack)
+- [@feed@Explore top posts about Webpack](https://app.daily.dev/tags/webpack?ref=roadmapsh)
+
+## Rollup
+
+Rollup is a module bundler for JavaScript which compiles small pieces of code into something larger and more complex, such as a library or application.
+
+Visit the following resources to learn more:
+
+- [@article@Official Website and Docs](https://rollupjs.org/)
+- [@video@How to Set Up JavaScript Bundling Using Rollup](https://www.youtube.com/watch?v=ICYLOZuFMz8)
+- [@feed@Explore top posts about Web Development](https://app.daily.dev/tags/webdev?ref=roadmapsh)

@@ -111,3 +111,14 @@ _Elements_ - The most common elements are:- Text, Buttons, Images, Input Element
 _Components_ - Commons components includes:- Breadcrumbs, Pagination,Alert & status bars,Statistics,Gallery,Feature box,Preview & profile cards,Accordion,Tabs,Carousel,Customer testimonials,Customer logos,Featured-in logos,Steps,Forms,Tables,Pricing tables,Modal windows.
 _Section components_ - Navigation, Hero section,Footer,Call-to-action section,Feature row.
 _Layout patterns_ - Row of boxes or cards,Grid of boxes or cards,Z-pattern,F-pattern,Single-column,Sidebar,Multi-column/magazine,Assymetry/Experimental.
+
+# Web Components
+
+Web Components is a suite of different technologies allowing you to create reusable custom elements — with their functionality encapsulated away from the rest of your code — and utilize them in your web apps.
+
+Visit the following resources to learn more:
+
+- [@article@Web Components | MDN](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
+- [@article@WebComponents.org](https://webcomponents.github.io/)
+- [@video@Web Components Crash Course](https://www.youtube.com/watch?v=PCWaFLy3VUo)
+- [@feed@Explore top posts about Web Components](https://app.daily.dev/tags/web-components?ref=roadmapsh)

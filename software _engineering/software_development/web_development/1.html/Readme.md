@@ -100,6 +100,19 @@ Interactive content - <textarea>,<a>
 
 <CanIuse.com> - Checking browsers if it supports some elements and properties.
 
+Semantic element clearly describes its meaning to both the browser and the developer. In HTML, semantic element are the type of elements that can be used to define different parts of a web page such as `<form>`, `<table>`, `<article>`, `<header>`, `<footer>`, etc.
+
+Visit the following resources to learn more:
+
+- [@article@Guide to Writing Semantic HTML](https://cs.fyi/guide/writing-semantic-html)
+- [@article@W3Schools: Semantic HTML](https://www.w3schools.com/html/html5_semantic_elements.asp)
+- [@article@How To Write Semantic HTML](https://hackernoon.com/how-to-write-semantic-html-dkq3ulo)
+- [@article@HTML Best Practices – How to Build a Better HTML-Based Website](https://www.freecodecamp.org/news/html-best-practices/)
+- [@article@Semantic HTML: What It Is and How It Improves Your Site](https://blog.hubspot.com/website/semantic-html)
+- [@article@Semantic Markup](https://html.com/semantic-markup)
+- [@article@Semantic HTML - web.dev](https://web.dev/learn/html/semantic-html/)
+- [@feed@Explore top posts about HTML](https://app.daily.dev/tags/html?ref=roadmapsh)
+
 ## Accessibility
 
 Web accessibility means that websites, tools, and technologies are designed and developed in such a way that people with disabilities can use them easily.
@@ -149,3 +162,21 @@ over several
 lines
 -->
 ```
+
+## HTML Templates
+
+The `<template>` HTML element is a mechanism for holding HTML that is not to be rendered immediately when a page is loaded but may be instantiated subsequently during runtime using JavaScript. Think of a template as a content fragment that is being stored for subsequent use in the document.
+
+Visit the following resources to learn more:
+
+- [@article@Using templates and slots | MDN web docs](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots)
+- [@feed@Explore top posts about HTML](https://app.daily.dev/tags/html?ref=roadmapsh)
+
+## Custom Elements
+
+One of the key features of the Web Components standard is the ability to create custom elements that encapsulate your functionality on an HTML page, rather than having to make do with a long, nested batch of elements that together provide a custom page feature.
+
+Visit the following resources to learn more:
+
+- [@article@Using custom elements | MDN web docs](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
+- [@feed@Explore top posts about Web Development](https://app.daily.dev/tags/webdev?ref=roadmapsh)

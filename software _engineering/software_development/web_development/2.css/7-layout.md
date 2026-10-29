@@ -11,6 +11,22 @@ There are two types of layouts:-
 CSS provides several tools you can use to control the layout of a web page.Methods to alter document flow—floats, flexbox, and grid layout.Float, grid, flexbox, positioning, display and box model are some of the key topics that are used for making layouts.
 The flexbox and grid layouts are both new to CSS and are proving to be essential tools.
 
+Float, grid, flexbox, positioning, display and box model are some of the key topics that are used for making layouts. Use the resources below to learn about these topics:
+
+Visit the following resources to learn more:
+
+- [@article@Learn and Practice Flexbox](https://flexboxfroggy.com/)
+- [@article@Game for learning CSS Grid](https://cssgridgarden.com/)
+- [@article@All about Floats](https://css-tricks.com/all-about-floats/)
+- [@article@Positioning Types: How Do They Differ?](https://css-tricks.com/absolute-relative-fixed-positioining-how-do-they-differ/)
+- [@article@The Box Model](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model)
+- [@article@The CSS Display Property](https://www.freecodecamp.org/news/the-css-display-property-display-none-display-table-inline-block-and-more/)
+- [@article@A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox)
+- [@article@A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid)
+- [@article@Learn CSS Grid - Course](https://cssgrid.io/)
+- [@course@Learn CSS Grid for free](https://scrimba.com/learn/cssgrid)
+- [@article@Get on the Grid at Last with the CSS Grid Layout Module](https://thenewstack.io/get-grid-last-css-grid-template-markup/)
+
 **The display property** - The display CSS property is fundamental for controlling the layout and ﬂow of an HTML document. Most elements have a default display value of either block or inline (though some elements have other default values).
 
 - `Inline`:- An inline element occupies only as much width as necessary. It stacks horizontally with other elements of the same type and may not contain other non-inline elements.
