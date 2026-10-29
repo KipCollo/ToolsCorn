@@ -1,5 +1,7 @@
 # Java Generics
 
+You can introduce generics into your own classes. The syntax for introducing a generic is to declare a formal type parameter in angle brackets.A generic class declaration looks like a non-generic class declaration, except that the class name is followed by a type parameter section.
+
 You can introduce generics into your own classes. The syntax for introducing a generic is to declare a formal type parameter in angle brackets.
 
 ```java
@@ -13,11 +15,6 @@ this.contents = contents;
 }
 }
 ```
-
-# Generic Classes
-
-You can introduce generics into your own classes. The syntax for introducing a generic is to declare a formal type parameter in angle brackets.
-A generic class declaration looks like a non-generic class declaration, except that the class name is followed by a type parameter section.
 
 ## Need for Generics
 

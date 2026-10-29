@@ -1139,10 +1139,11 @@ _Method Overloading vs Method Overriding_ -
 
 NOTE : "final" keyword is used in Composition to make sure child variable is initialized.
 
-# Annotations (Metadata)
+---
 
-Since JDK 5, Java has supported a feature that enables you to embed supplemental information into a source file. This information, called an annotation, does not change the actions of a program. Thus, an annotation leaves the semantics of a program unchanged.
-However, this information can be used by various tools during both development and deployment. For example, an annotation might be processed by a source-code generator. The term metadata is also used to refer to this feature, but the term annotation is the most descriptive and more commonly used.
+## Annotations (Metadata)
+
+Since JDK 5, Java has supported a feature that enables you to embed supplemental information into a source file. This information, called an `annotation`, does not change the actions of a program. Thus, an annotation leaves the semantics of a program unchanged.However, this information can be used by various tools during both development and deployment. For example, an annotation might be processed by a source-code generator. The term `metadata` is also used to refer to this feature, but the term `annotation` is the most descriptive and more commonly used.
 
 An annotation is created through a mechanism based on the interface.
 
