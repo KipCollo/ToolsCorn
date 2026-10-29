@@ -430,16 +430,11 @@ Over time, the precise definition of an interface has changed, as new method typ
 We cannot instantiate an interface.It only shows the design and it does not provide any implementation.To provide an implementation of methods, you need to create a class and instantiate it also.
 If your class has only abstract methods then instead of using class, you can simply use an interface in place of it.
 
-- _An interface in java is a blueprint of a class. It has static constants and abstract methods._
-- _Since Java 8, we can have method body in interface. But we need to make it default or static method._
-- _The interface is a mechanism to achieve abstraction. It represents IS-A relationship._
-- _By using interface, we can support multiple inheritance._
-- _It can be also used to achieve loose coupling (coupling is degree of direct knowledge that one element has of another)._
-- _The Java compiler adds public & abstract before the interface method. Adds public, static & final before data members._
-- _A class extends another class, an interface extends another interface but a class implements an interface._
-- _Multiple inheritance is not supported by class because of ambiguity. But, supported by interface because there is no ambiguity as implementation is provided by the implementation class._
-- _An interface with no member is called marker/tagged interface. For example: Serializable, Cloneable, Remote etc._
-- _An interface can have another interface i.e. known as nested interface._
+An interface in java is a blueprint of a class. It has static constants and abstract methods.Since Java 8, we can have method body in interface. But we need to make it default or static method.
+The interface is a mechanism to achieve abstraction. It represents IS-A relationship.By using interface, we can support multiple inheritance.It can be also used to achieve loose coupling (coupling is degree of direct knowledge that one element has of another).
+The Java compiler adds public & abstract before the interface method. Adds public, static & final before data members.
+A class extends another class, an interface extends another interface but a class implements an interface.Multiple inheritance is not supported by class because of ambiguity. But, supported by interface because there is no ambiguity as implementation is provided by the implementation class.
+An interface can have another interface i.e. known as nested interface.
 
 **Declaring and Using an Interface** - In Java, an interface is defined with the interface keyword, analogous to the class keyword used when defining a class.
 
@@ -561,6 +556,7 @@ public class Skip {
 ```
 
 **Marker interface**- Marker interface are used to provide essential information to JVM, so that JVM may perform some useful operation.
+An interface with no member is called marker/tagged interface. For example: Serializable, Cloneable, Remote etc.
 
 **Abstract Class vs Interface** -
 
@@ -793,23 +789,20 @@ A package hierarchy must be reflected in the file system of your Java developmen
 package java.awt.image;
 ```
 
-- _Java package is used to categorize the classes and interfaces, provides access protection and removes naming collision._
-- _The package keyword is used to create a package. Package inside the package is called the subpackage._
-- _If you import a package (package._ ), subpackages will not be imported.\*
-- _To import subpackage, use import package.classname._
-- _Use fully qualified name to access only the declared class of a package._
-- _Sequence of the program must be package then import then class._
-- _The standard of defining package is domain.company.package. eg - com.oracle.database_
-- _There can be only one public class in a java source file and it must be saved by the public class name._
+Java package is used to categorize the classes and interfaces, provides access protection and removes naming collision.The package keyword is used to create a package. Package inside the package is called the subpackage.
+If you import a package (package.\_ ), subpackages will not be imported.To import subpackage, use import package.classname.
+Use fully qualified name to access only the declared class of a package.Sequence of the program must be package then import then class.
+The standard of defining package is domain.company.package. eg - com.oracle.database
+There can be only one public class in a java source file and it must be saved by the public class name.
 
 Packages may include:
 
 - `java.lang` :Provides classes that are fundamental to the design of the Java programming language.
 - `java. util`: Contains the collections framework, legacy collection classes, event model, date and time facilities, internationalization, and miscellaneous utility classes (a string tokenizer, a random-number generator, and a bit array).Contains the collections framework, some internationalization support classes, a service loader, properties, random number generation, string parsing and scanning classes, base64 encoding and decoding, a bit array, and several miscellaneous utility classes. This package also contains legacy collection classes and legacy date and time classes.
 - `java.awt`: Contains all of the classes for creating user interfaces and for painting graphics and images.
-- java.sql: Provides the API for server side data source access and processing from the JavaTM programming language.
-- java.net: Provides classes for networking applications
-- java.io: Provides for system input and output through data streams, serialization and the file system.
+- `java.sql`: Provides the API for server side data source access and processing from the JavaTM programming language.
+- `java.net`: Provides classes for networking applications
+- `java.io`: Provides for system input and output through data streams, serialization and the file system.
 
 ---
 
@@ -962,6 +955,23 @@ The key is that when Java sees you define a class that doesn’t extend another 
 
 On the other hand, when you define a new class that extends an existing class, Java does not automatically extend the Object class. Since all classes inherit from Object, extending an existing class means the child already inherits from Object by definition. If you look at the inheritance structure of any class, it will always end with Object on the top of the tree.Primitive types such as int and boolean do not inherit from Object, since they are not classes.Through autoboxing they can be assigned or passed as an instance of an associated wrapper class, which does inherit Object.
 
+- _Types of Inheritance (Supported through Class)_
+- _Types of Inheritance (Supported through Interface only)_
+- _Association vs Aggregation vs Composition_
+
+**Aggregation vs Composition** -
+
+- Aggregation is a weak Association.Composition is a strong Association.
+- Class can exist independently without owner.Class can not meaningfully exist without owner.
+- Child is not owned by 1 owner.Child can have only 1 owner.
+- Has-A relationship. A has B.Part-Of relationship. B is part of A.
+- Denoted by a empty diamond in UML.Denoted by a filled diamond in UML.
+- We do not use "final" keyword for Aggregation."final" keyword is used to represent Composition.
+- Examples:- Car has a Driver.- A Human uses Clothes.- A Company is an aggregation of People.- A Text Editor uses a File.- Mobile has a SIM Card.
+  Examples:- Engine is a part of Car.- A Human owns the Heart.- A Company is a composition of Accounts.- A Text Editor owns a Buffer.- IMEI Number is a part of a Mobile.
+
+NOTE : "final" keyword is used in Composition to make sure child variable is initialized.
+
 ---
 
 ## Abstraction
@@ -970,6 +980,14 @@ Abstraction is a process of hiding the implementation details and showing only f
 Encapsulation is an attribute of an object,and it contains all data which is hidden.That hidden data can be restricted to members of that class.
 
 There are two ways to achieve abstraction in java : Abstract class (0 to 100%) and Interface (100%).
+
+_Abstraction vs Encapsulation_ -
+
+- Abstraction is a process of hiding the implementation details and showing only functionality to the user. Encapsulation is a process of wrapping code and data together into a single unit.
+- Abstraction lets you focus on what the object does instead of how it does it.Encapsulation provides you the control over the data and keeping it safe from outside misuse.
+- Abstraction solves the problem in the Design Level.Encapsulation solves the problem in the Implementation Level.
+- Abstraction is implemented by using Interfaces and Abstract Classes.Encapsulation is implemented by using Access Modifiers (private, default, protected, public)
+- Abstraction means hiding implementation complexities by using interfaces and abstract class.Encapsulation means hiding data by using setters and getters.
 
 ---
 
@@ -1044,20 +1062,30 @@ There are two types of polymorphism in java: compile time polymorphism and runti
 1. method overloading, sometimes referred to as compile-time polymorphism.
 2. runtime polymorphism.
 
-- _If you overload static method in java, it is the example of compile time polymorphism._
-- _In Runtime polymorphism (Dynamic Method Dispatch), an overridden method is resolved at runtime rather than compile-time._
-- _A Virtual Method is an inheritable and overridable method for which dynamic dispatch is facilitated._
-- _All non-static, non-final and non-private methods are Virtual Methods by default._
-- _When reference variable of Parent class refers to the object of Child class, it is known as upcasting._
-- _Method is overridden not the datamembers, so runtime polymorphism can't be achieved by data members._
-- _Connecting a method call to the method body is known as binding._
-- _There are two types of binding : Static binding (early binding) and Dynamic binding (late binding)._
+If you overload static method in java, it is the example of compile time polymorphism.In Runtime polymorphism (Dynamic Method Dispatch), an overridden method is resolved at runtime rather than compile-time.
+A Virtual Method is an inheritable and overridable method for which dynamic dispatch is facilitated.All non-static, non-final and non-private methods are Virtual Methods by default.
+When reference variable of Parent class refers to the object of Child class, it is known as upcasting.Method is overridden not the datamembers, so runtime polymorphism can't be achieved by data members.
+Connecting a method call to the method body is known as binding.There are two types of binding : Static binding (early binding) and Dynamic binding (late binding).\_
+
+Method Overriding
+
+- _If subclass (child class) has the same method as declared in the parent class, it is known as method overriding._
+- _Method must have same name and parameters as in the parent class for overriding._
+- _Method overriding is used to provide specific implementation of a method that is already provided by its super class. Also used for runtime polymorphism._
+- _We cannot override static method (not also main method) because static method is bound with class whereas instance method is bound with object. Static belongs to class area and instance belongs to heap area._
+- _Method Overriding with Access Modifier: if you are overriding a method, overridden method (i.e. declared in subclass) must not be more restrictive._
+- _Covariant Return Type: It is possible to override method by changing the return type if subclass overrides any method whose return type is Non-Primitive but it changes its return type to subclass type._
 
 **Method Overloading**:- Overloaded methods may all be defined in the same class, or may be defined in different classes as long as those classes have a superclass-subclass relationship.
 Java allows you to have two or more method definitions in the same scope with the same name, provided that they have different formal argument lists.
 
 Method overloading occurs when methods in the same class have the same name but different method signatures, which means they use different parameter lists.
 Everything other than the method name can vary for overloading methods. This means there can be different access modifiers, optional specifiers (like static), return types, and exception lists.
+
+If a class has multiple methods having same name but different in parameters, it is known as Method Overloading.There are two ways to overload the method in java : by changing number of arguments, by changing the data type.
+In Java, Method Overloading is not possible by changing the return type of the method only because of ambiguity.Compile Time Error is better than Run Time Error. So, java compiler renders compiler time error if you declare the same method having same parameters.
+We can also overload Java main() method, but JVM calls main() method which receives string array as arguments only.One type is promoted to another implicitly if no matching datatype is found. eg. byte can be promoted to short, int, etc.
+If there are no matching type arguments method, and each method promotes similar number of arguments, there will be ambiguity.One type is not de-promoted implicitly for example double cannot be depromoted to any type implicitly.
 
 A valid overload differs in the number or type of its arguments. Differences in argument names are not significant. A different return type is permitted, but is not suficient by itself to distinguish an overloading method.
 A valid override has identical argument types and order, identical return type, and is not less accessible than the original method. The overriding method must not throw any checked exceptions that were not declared for the original method.
@@ -1149,50 +1177,6 @@ _Method Overloading vs Method Overriding_ -
 3. In case of method overloading, parameter must be differentIn case of method overriding, parameter must be same.
 4. Method overloading is the example of compile time polymorphism.Method overriding is the example of run time polymorphism.
 5. In java, method overloading can't be done by changing only the return type of method.Return type can be same/different in overloading, but you must change the parameter.Return type must be same or covariant (changing return type to subclass type) in method overriding.
-
-## Abstraction vs Encapsulation
-
-<table class="alt">
-<tbody><tr><th>Abstraction</th><th>Encapsulation</th></tr>
-<tr><td>Abstraction is a process of hiding the implementation details and showing only functionality to the user.</td>
-<td> Encapsulation is a process of wrapping code and data together into a single unit</td></tr>
-<tr><td>Abstraction lets you focus on what the object does instead of how it does it.</td>
-<td>Encapsulation provides you the control over the data and keeping it safe from outside misuse.</td></tr>
-<tr><td>Abstraction solves the problem in the Design Level.</td>
-<td>Encapsulation solves the problem in the Implementation Level.</td></tr>
-<tr><td>Abstraction is implemented by using Interfaces and Abstract Classes.</td>
-<td>Encapsulation is implemented by using Access Modifiers (private, default, protected, public)</td></tr>
-<tr><td>Abstraction means hiding implementation complexities by using interfaces and abstract class.</td>
-<td>Encapsulation means hiding data by using setters and getters.</td></tr>
-
-## Types of Inheritance (Supported through Class)
-
-![single inheritance](https://user-images.githubusercontent.com/2780145/34364364-40b6b646-eaab-11e7-8c92-2c4cd9d0b2ca.png)
-
-## Types of Inheritance (Supported through Interface only)
-
-![multiple inheritance](https://user-images.githubusercontent.com/2780145/34364363-407486b8-eaab-11e7-94e2-5c1876f414d3.png)
-
-## Association vs Aggregation vs Composition
-
-![association-aggregation-composition](https://user-images.githubusercontent.com/2780145/34364371-5db00694-eaab-11e7-8ef2-bf56d3394f15.png)
-
-## Aggregation vs Composition
-
-<table class="alt">
-<tbody><tr><th>Aggregation</th><th>Composition</th></tr>
-<tr><td>Aggregation is a weak Association.</td><td>Composition is a strong Association.</td></tr>
-<tr><td>Class can exist independently without owner.</td><td>Class can not meaningfully exist without owner.</td></tr>
-<tr><td>Have their own Life Time.</td><td>Life Time depends on the Owner.</td></tr>
-<tr><td>A uses B.</td><td>A owns B.</td></tr>
-<tr><td>Child is not owned by 1 owner.</td><td>Child can have only 1 owner.</td></tr>
-<tr><td>Has-A relationship. A has B.</td><td>Part-Of relationship. B is part of A.</td></tr>
-<tr><td>Denoted by a empty diamond in UML.</td><td>Denoted by a filled diamond in UML.</td></tr>
-<tr><td>We do not use "final" keyword for Aggregation.</td><td>"final" keyword is used to represent Composition.</td></tr>
-<tr><td>Examples:<br>- Car has a Driver.<br>- A Human uses Clothes.<br>- A Company is an aggregation of People.<br>- A Text Editor uses a File.<br>- Mobile has a SIM Card.</td><td>Examples:<br>- Engine is a part of Car.<br>- A Human owns the Heart.<br>- A Company is a composition of Accounts.<br>- A Text Editor owns a Buffer.<br>- IMEI Number is a part of a Mobile.</td></tr>
-</tbody></table>
-
-NOTE : "final" keyword is used in Composition to make sure child variable is initialized.
 
 ---
 
@@ -1296,9 +1280,7 @@ type member( ) default value ;
 }
 ```
 
-## The Built-In Annotations
-
-Java defines many built-in annotations. Most are specialized, but nine are general purpose.
+**The Built-In Annotations** - Java defines many built-in annotations. Most are specialized, but nine are general purpose.
 Of these, four are imported from java.lang.annotation: @Retention, @Documented,@Target, and @Inherited. Five—@Override, @Deprecated, @FunctionalInterface,@SafeVarargs, and @SuppressWarnings—are included in java.lang.
 
 NOTE:- To java.lang.annotation, JDK 8 adds the annotations Repeatable and Native. Repeatable supports repeatable annotations, as described later in this chapter. Native annotates a field that can be accessed by native code.
@@ -1321,26 +1303,6 @@ NOTE:- To java.lang.annotation, JDK 8 adds the annotations Repeatable and Native
 - TYPE - Class, interface, or enumeration
 - TYPE_PARAMETER - Type parameter (Added by JDK 8.)
 - TYPE_USE - Type use (Added by JDK 8.)
-
-### Method Overloading
-
-- _If a class has multiple methods having same name but different in parameters, it is known as Method Overloading._
-- _There are two ways to overload the method in java : by changing number of arguments, by changing the data type._
-- _In Java, Method Overloading is not possible by changing the return type of the method only because of ambiguity._
-- _Compile Time Error is better than Run Time Error. So, java compiler renders compiler time error if you declare the same method having same parameters._
-- _We can also overload Java main() method, but JVM calls main() method which receives string array as arguments only._
-- _One type is promoted to another implicitly if no matching datatype is found. eg. byte can be promoted to short, int, etc._
-- _If there are no matching type arguments method, and each method promotes similar number of arguments, there will be ambiguity._
-- _One type is not de-promoted implicitly for example double cannot be depromoted to any type implicitly._
-
-### Method Overriding
-
-- _If subclass (child class) has the same method as declared in the parent class, it is known as method overriding._
-- _Method must have same name and parameters as in the parent class for overriding._
-- _Method overriding is used to provide specific implementation of a method that is already provided by its super class. Also used for runtime polymorphism._
-- _We cannot override static method (not also main method) because static method is bound with class whereas instance method is bound with object. Static belongs to class area and instance belongs to heap area._
-- _Method Overriding with Access Modifier: if you are overriding a method, overridden method (i.e. declared in subclass) must not be more restrictive._
-- _Covariant Return Type: It is possible to override method by changing the return type if subclass overrides any method whose return type is Non-Primitive but it changes its return type to subclass type._
 
 ### Instance initializer block
 

@@ -1662,3 +1662,261 @@ This trail focuses on a simple, yet powerful, distributed application called a c
 The novel aspect of the compute engine is that the tasks it runs do not need to be defined when the compute engine is written or started. New kinds of tasks can be created at any time and then given to the compute engine to be run. The only requirement of a task is that its class implement a particular interface. The code needed to accomplish the task can be downloaded by the RMI system to the compute engine. Then, the compute engine runs the task, using the resources on the machine on which the compute engine is running.
 
 The ability to perform arbitrary tasks is enabled by the dynamic nature of the Java platform, which is extended to the network by RMI. RMI dynamically loads the task code into the compute engine's Java virtual machine and runs the task without prior knowledge of the class that implements the task. Such an application, which has the ability to download code dynamically, is often called a behavior-based application. Such applications usually require full agent-enabled infrastructures. With RMI, such applications are part of the basic mechanisms for distributed computing on the Java platform.
+
+---
+
+# RESTful WebServices
+
+## Distributed Technologies
+
+An object in one JVM trying to access with another object in another JVM is called **Java Distribute Technologies**.
+
+OBJ 1(JVM3)---------(N/W)-----------------------------> OBJ 2(JVM2)
+|
+|--------------------(N/W)--------> OBJ3(JVM1)
+
+Ther are many Java Distributed Tech:
+
+1. EJB
+2. RMI
+3. Socket Programming
+4. Corba
+
+- The drawback for using RMI and EJB is that it only supports JVM(Java) and is limited to only Java programming language.
+
+Java Distributed Technologies--------->java clients only can access
+.NET Distributed Technologies--------->.net clients only can access
+
+> To overcome the limitation, WEBSERVICES was introduced.
+
+        |------Java request object-------xml----------xml-----------java object request---------|
+
+consumer provider
+|------Java response object------xml-----------xml---------java object response---------|
+
+1. For every request--consumer end req object is converted to xml,provider end converts from xml to Java object
+2. For every response--consumer end response object is converted to xml,consumer end converts from xml to Java object
+
+## Web service in Java
+
+- REST API(JAXRS and Spring REST)
+- SOAP (Simple Object Access Protocol)(JAXWS)
+- JAXB - converts object to xml and xml to objects.
+- JACKSON- converts object to json and json to objects.
+
+## JSR 311: JAX-RS: The JavaTM API for RESTful Web Services
+
+This JSR will develop an API for providing support for RESTful(Representational State Transfer) Web Services in the Java Platform.
+
+1. Services
+2. API's
+3. Endpoint url
+4. Service userguides
+
+JAX-RS is a specification (which basically tells what to implement/follow) and Jersey is an implementation (which means how those specifications should be implemented).We can have multiple implementations for a Specification. We have libs for JAX-RS because we can use JAX-RS API's in your code so that in future if you change your implementation (in this case Jersey to something else) you code will still work fine.
+
+JAXRS implementations include:
+
+1. Jersey (shipped with GlassFish and Payara)
+2. Apache axis2
+3. Apache cxf(shipped with TomEE and WebSphere)
+4. RESTeasy(shipped with JBoss EAP and WildFly)
+
+### JAX-RS Annotations
+
+1. @Path-It identifies the URI path. It can be specified on class or method.
+2. @GET,@PUT,@DELETE,@POST,@HEAD-specifies method responds to GET,PUT,DELETE,POST,HEAD request.
+3. @Produces-defines media type for the response such as XML, PLAIN, JSON etc. It defines the media type that the methods of a resource class or MessageBodyWriter can produce.
+4. @PathParam-Used to read value from URI path.
+5. @Singleton
+6. @CookieParam-represents the parameter of the cookie.
+7. @BeanParam
+8. @FormParam-represents the parameter of the form.
+9. @QueryParam-represents the parameter of the query string of an URL.
+10. @Headerparam
+11. @matrixParam
+12. @Consumes-used to specify the MIME media types of representations a resource can consume that were sent by the client.
+
+```java
+@Path("/greetings")
+public class JaxRsController {
+
+    @GET
+    @Path("/{name}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response greeting(@PathParam("name") String name) {
+
+        String greeting = "Hello " + name;
+        return Response.ok(greeting).build();
+    }
+}
+```
+
+Deployment descriptor config
+
+```xml
+<web-app>
+//jaxrs implementation vendor e.g jersey
+//servlet configs
+
+<url-mapping>/order</url-mapping>
+</web-app>
+```
+
+- Plain Java Rest(JAXRS) is no longer used.Spring Rest is commonly used instead.
+
+## Importance of HTTP in REST
+
+Used to transfer data from client to server.Its stateless protocol.
+HTTP Request
+Client--<------------------------>---Server
+HTTP Response
+
+1. HTTP Request Format- Has 3 parts(Request Line,Headers,Body).Request Line includes mathod name and URI.Header include metadata of the request i.e client,user-agent.Body is optional ie Its not in GET methods,required in POST.
+2. HTTP Response- Has (Status Line,headers,Body).Status code shows request status.Metadata of response i.e content-length,content-type.Body is mandatory.
+
+example:
+
+GET | /orders | user-agent="mozilla" | No body
+POST | /orders/123 | user-agent="mozilla" | `<order><orderid>1234</orderid><name>Mobile</name></order>`
+
+200 | OK | content-length |`<orderresp><status>Delivered</status></orderrep>`
+
+Reading from HTTP Request - Request Line {Methods(GET for @GET,.etc.) and URI(Extract info from uri @PathParam,@QueryParam,etc)},Headers includes(@HeaderParam-can read only one header at a time,@Context HttpHeaders header-Can read one or more header),Body(Content Handler-Reading from body i.e Predefined- Java.io.File,byte[],jaxb classes,jackson classes.Custom-MessageBodyReader,MessageBodyReader)
+
+HTTP Response- Status Line{Status code-1XX and Message OK},Headers,Body(Content Handler-Custom-MessageBodyReader and MessageBodyWriter.Predefined-jaxb classes,jackson classes,String,java.io.OutputStream).To get only Response body use JAXB or Jackson classes,to get full response use javax.ws.rs.core.Response.Classes
+
+- Use Cases:
+
+1. ONLY GET Services-Reading data from URI using @QueryParam,@PathParam.
+2. GET service and Headers-Use @XXXParams and @HeaderParams
+3. POST Service-Reading data from body using predefined content handlers or custom handlers
+4. POST Service and Headers-Use content handlers and @HeaderParams or @Context HttpHeaders headers
+
+In GET,data is in URI while in POST data is in the body.
+
+## Steps to develop REST api at Provider endPoint
+
+1. Create maven web project
+2. add jaxrs vendor dependency in pom.xml
+3. Write resources that rep @Path annotation
+4. Write subresources rep @Path,@Get,@Produce annotation
+5. Write business logic in sub resources
+6. Write web.xml-configure servlet
+
+---
+
+# JSON
+
+1. Introduction
+2. Syntax
+3. XML vs JSON
+4. Json Serializion and Json Deserialization
+5. JACKSON
+6. JSON Annotations
+
+## Introduction
+
+JSON stands for JAvascript Object Notation.it is derived from Javascript but not dependending on javascript.JSON data is lightweight and human readable text.
+It has file extension of .json and its Media Type is "application/json"
+
+### Why Learn JSON
+
+Json is used in communication btwn application,since Json is not specific to any technologies,its generic for all technologies.
+
+## JSON Syntax and Data Types
+
+JSON Data is in the form of key value pair.
+JSON syntax is: {key1:value1,key2:value2..} where key is String and value can be String,number,Boolean,Object,null,Array
+
+There are 6 JSON Data types:
+
+1. Boolean
+2. String
+3. Number
+4. Object
+5. Null
+6. Arrays -Enclosed with a square brackets
+
+eg
+
+```json
+{"orderId":123,"name":"book","isDelivered":true,"desc":null}
+{
+    "orders":[
+        {"orderId":234,
+        "name":"laptop",
+        "isDelivered":true
+        },
+        {"orderId":908,
+        "name":"watch",
+        "isDelivered":false
+        }
+    ]
+}
+```
+
+## XML vs JSON
+
+- XML is heavy weight while JSON is lightweight
+
+```xml
+<orders>
+  <order>
+    <orderId>567</orderId>
+    <name>Phone</name>
+    <isDelivered>false</isDelivered>
+  </order>
+</orders>
+```
+
+- JSON Data is less in size, so data transfer in network is of high speed than XML
+
+## Json Serializion and Json Deserialization
+
+JSON Serialization is the process of converting Java Object into JSON and Deserialization is converting from JSON into Java Object.For every request consumer: JSON Serialization happens and for every response provider end.For every response consumer and request provider deserilization happens
+
+Jackson library takes care json serilization and deserialization in java
+
+## JACKSON
+
+Jackson is used to perform JSON Serialization and Deserialization.We add Jackson dependency(jackson-databind) to our project.
+
+It comes with other dependencies ie:
+
+- Jackson-core
+- Jackson-Annotations
+
+Jackson has provided utility classes to perform Json Serialization and Deserialization.
+The class is called ObjectMapper with the methods:
+
+- writeValue()- Java Object to Json
+- readValue()- JSON to Java Object
+
+Eg
+
+```java
+public class Order{
+    private int orderId;
+    private String name;
+    private boolean delivered;
+
+    //Setters and Getters
+}
+```
+
+JSON Serialization
+
+```java
+Order order1 =new Order();
+order1.setOrderId(1234);
+order1.setName("Monitor");
+order1.setDelivered(true);
+
+ObjectMapper mapper =new ObjectMapper();
+String json = mapper.writeValueAsString(order1)
+```
+
+NOTE: While doing serialization, Java Properties is converted to JSON Keys
+
+## JSON Annotations

@@ -57,12 +57,6 @@ The collection and map implementations except for Vector and Hashtable, are not 
 
 The Collections Framework defines several algorithms that can be applied to collections and maps. These algorithms are defined as static methods within the `Collections` class. Collection interface defines group of elements.
 
-Methods of Iterator Interface :-
-
-1. public boolean hasNext()- It returns true if iterator has more elements.
-2. public Object next()- It returns the element and moves the cursor pointer to the next element.
-3. public void remove() - It removes the last elements returned by the iterator. It is rarely used.
-
 ---
 
 ## Collection
