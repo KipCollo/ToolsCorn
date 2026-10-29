@@ -1,13 +1,18 @@
 # Java Collections Framework
 
-Java's Collection framework provides a way to store and manipulate groups of objects. Java Collections can be used for searching, sorting, inserting, manipulating, and deleting data.The Java Collections framework is a set of classes in java.util package for storing collections.
 In Java, a collection is a single unit of objects(A collection is a group of objects contained in a single object). ArrayList, Vector, LinkedList, PriorityQueue, HashSet, LinkedHashSet, TreeSet, and LinkedList are all classes of Java Collection framework.
+Java's Collection framework provides a way to store and manipulate groups of objects. Java Collections can be used for searching, sorting, inserting, manipulating, and deleting data.The Java Collections framework is a set of classes in java.util package for storing collections.
 
 Program design often requires the handling of collections of objects. The Java Collections Framework provides a set of standard utility classes for managing various kinds of collections. The core framework is provided in the java.util package and comprises three main parts:
 
 - The core interfaces that allow collections to be manipulated independently of their implementation. These generic interfaces define the common functionality exhibited by collections and facilitate data exchange between collections.
 - A set of implementations (i.e., concrete classes) that are specific implementations of the core interfaces, providing data structures that a program can readily use.
 - An assortment of static utility methods found in the Collections and Arrays classes that can be used to perform various operations on collections and arrays, such as sorting and searching, or creating customized collections.
+
+`Need For Collection Framework` -
+
+- It solves the limitations of arrays
+- Are global in nature
 
 **Core Interfaces**:- generic Collection interface is a generalized interface for maintaining collections and is root of the interface inheritance hierarchy for collections.Extends Iterable interface that specifies an `iterator` to sequentially access the elements of an `Iterable` object.
 
@@ -30,14 +35,14 @@ Program design often requires the handling of collections of objects. The Java C
                                                   NavigableSet<E>                         NavigableMap<K,V>
 ```
 
-- Collection<E> - A basic interface that defines the normal operations that allow a collection of objects to be maintained or handled as a single unit.
-- Set<E> - The Set interface extends the Collection interface to represent its mathematical namesake: a set of unique elements. - HashSet<E>, LinkedHashSet<E>.
+- `Collection<E>` - A basic interface that defines the normal operations that allow a collection of objects to be maintained or handled as a single unit.
+- `Set<E>` - The Set interface extends the Collection interface to represent its mathematical namesake: a set of unique elements. - `HashSet<E>`, `LinkedHashSet<E>`.Order is not guaranteed.
+- `List<E>` - The List interface extends the Collection interface to maintain a sequence of elements that can contain duplicates. - `ArrayList<E>`, `Vector<E>`, `LinkedList<E>`.
+- `Queue<E>` - The Queue interface extends the Collection interface to maintain a collection whose elements need to be processed in some way, i.e., insertion at one end and removal at the other, usually as FIFO (First-In, First-Out). - `PriorityQueue<E>`, `LinkedList<E>`.
+- `Map<K,V>` - A basic interface that defines operations for maintaining mappings of keys to values. - `HashMap<K,V>`, `Hashtable<K,V>`, `LinkedHashMap<K,V>`.A map is not ordered and cannot contain duplicate keys (but can contain duplicate values). Each key can map to at most one value.
 - SortedSet<E> - The SortedSet interface extends the Set interface to provide the required functionality for maintaining a set in which the elements are stored in some sorted order. - TreeSet<E>.
 - NavigableSet<E> - The NavigableSet interface extends and replaces the SortedSet interface to maintain a sorted set, and should be the preferred choice in new code. - TreeSet<E>.
-- List<E> - The List interface extends the Collection interface to maintain a sequence of elements that can contain duplicates. - ArrayList<E>, Vector<E>, LinkedList<E>.
-- Queue<E> - The Queue interface extends the Collection interface to maintain a collection whose elements need to be processed in some way, i.e., insertion at one end and removal at the other, usually as FIFO (First-In, First-Out). - PriorityQueue<E>, LinkedList<E>.
 - Deque<E> - The Deque interface extends the Queue interface to maintain a queue whose elements can be processed at both ends. - ArrayDeque<E>, LinkedList<E>.
-- Map<K,V> - A basic interface that defines operations for maintaining mappings of keys to values. - HashMap<K,V>, Hashtable<K,V>, LinkedHashMap<K,V>.
 - SortedMap<K,V> - The SortedMap interface extends the Map interface for maps that maintain their mappings sorted in key order. - TreeMap<K,V>.
 - NavigableMap<K,V> - The NavigableMap interface extends and replaces the SortedMap interface for sorted maps. - TreeMap<K,V>.
 
@@ -50,13 +55,20 @@ The collections framework is interface-based, meaning that collections are manip
 All the concrete classes implement the Serializable and the Cloneable interfaces; therefore, the objects of these classes can be serialized and also cloned.
 The collection and map implementations except for Vector and Hashtable, are not thread-safe, that is, their integrity can be jeopardized by concurrent access. The Java Collections Framework provides a plethora of collections and maps for use in single-threaded and concurrent applications.
 
+The Collections Framework defines several algorithms that can be applied to collections and maps. These algorithms are defined as static methods within the `Collections` class. Collection interface defines group of elements.
+
+Methods of Iterator Interface :-
+
+1. public boolean hasNext()- It returns true if iterator has more elements.
+2. public Object next()- It returns the element and moves the cursor pointer to the next element.
+3. public void remove() - It removes the last elements returned by the iterator. It is rarely used.
+
 ---
 
 ## Collection
 
 It is the root interface in the collection hierarchy. A collection represents a group of objects, known as its elements. Some collections allow duplicate elements and others do not. Some are ordered, and others are unordered. Collections that have a defined encounter order are generally subtypes of the SequencedCollection interface. The JDK does not provide any direct implementations of this interface: it provides implementations of more specific subinterfaces like Set and List. This interface is typically used to pass collections around and manipulate them where maximum generality is desired.
 
-The Collections Framework defines several algorithms that can be applied to collections and maps. These algorithms are defined as static methods within the `Collections` class.Collection interface defines group of elements.
 The Collection interface specifies the contract that all collections should implement. Some of the operations in the interface are optional, meaning that a collection may choose to provide a stub implementation of such an operation that throws an UnsupportedOperationException when invoked. The implementations of collections from the java.util package support all the optional operations in the Collection interface.
 Many of the methods return a boolean value to indicate whether the collection was modified as a result of the operation.
 
@@ -66,6 +78,7 @@ Many of the methods return a boolean value to indicate whether the collection wa
   - boolean contains(Object element)- is used to search an element.
   - boolean add(E element)- is used to insert an element in this collection.
   - boolean remove(Object element)- is used to delete an element from this collection.
+  - boolean removeIf(Predicate<? super E> filter) - The removeIf() method removes all elements that match a condition. We can specify what should be deleted using a block of code or even a method reference.
 
 The add() and remove() methods return true if the collection was modified as a result of the operation.By returning the value false, the add() method indicates that the collection excludes duplicates and that the collection already contains an object equal to the argument object.
 The contains() method checks for membership of the argument object in the collection, using object value equality.
@@ -87,142 +100,35 @@ Note that we can only add an object of a specific type (E). However, a collectio
 
 If the given array is big enough, the elements are stored in this array. If there is room to spare in the array, that is, the length of the array is greater than the number of elements in the collection, the spare room is filled with null values before the array is returned. If the array is too small, a new array of type T and appropriate size is created. If T is not a supertype of the runtime type of every element in the collection, an ArrayStoreException is thrown.
 
-Adding Data:-Ensures that this collection contains the specified element (optional operation). Returns true if this collection changed as a result of the call. (Returns false if this collection does not permit duplicates and already contains the specified element.)
-The add() method inserts a new element into the Collection and returns whether it was successful. The method signature is as follows:
+- `Iterating`:- There’s a forEach() method that you can call on a Collection instead of writing a loop. It uses a Consumer that takes a single parameter and doesn’t return anything. The method signature is as follows:
+  - forEach(Consumer<? super T> action)
 
-```java
-public boolean add(E element)
-```
-
-```java
-Collection<String> list = new ArrayList<>();
-list.add("Collins");//true
-list.add("Kosgei");//true
-
-Collection<String> set = new HashSet<>();
-set.add("Collins");//true
-set.add("Kosgei");//false
-```
-
-Removing Data:- The remove() method removes a single matching value in the Collection and returns whether it was successful. The method signature is as follows:
-
-```java
-public boolean remove(Object object)
-```
-
-```java
-Collection<String> list = new ArrayList<>();
-list.remove("Collins");//true
-list.remove("Kosgei");//true
-```
-
-Counting Elements:- The isEmpty() and size() methods look at how many elements are in the Collection. The method signatures are as follows:
-
-```java
-public boolean isEmpty()
-public int size()
-```
-
-```java
-Collection<String> list = new ArrayList<>();
-list.isEmpty()//true
-list.size()//0
-```
-
-Clearing the Collection:- The clear() method provides an easy way to discard all elements of the Collection. The method signature is as follows:
-
-```java
-public void clear()
-```
-
-```java
-Collection<String> list = new ArrayList<>();
-list.remove("Collins");
-list.clear();
-```
-
-Check Contents:- The contains() method checks whether a certain value is in the Collection. The method signature is as follows:
-
-```java
-public boolean contains(Object object)
-```
-
-```java
-Collection<String> list = new ArrayList<>();
-list.add("Collins");
-list.contains("Collins");//true
-```
-
-Removing with Conditions:- The removeIf() method removes all elements that match a condition. We can specify what should be deleted using a block of code or even a method reference.
-
-```java
-public boolean removeIf(Predicate<? super E> filter)
-```
-
-```java
-Collection<String> list = new ArrayList<>();
-list.add("Magician");
-list.add("Assistant");
-System.out.println(list);// [Magician, Assistant]
-list.removeIf(s -­> s.startsWith("A"));
-System.out.println(list);// [Magician]
-```
-
-Iterating:- There’s a forEach() method that you can call on a Collection instead of writing a loop. It uses a Consumer that takes a single parameter and doesn’t return anything. The method signature is as follows:
-
-```java
-public void forEach(Consumer<? super T> action)
-```
-
-Determining Equality:- There is a custom implementation of equals() so you can compare two Collections to compare the type and contents. The implementation will vary. For example, ArrayList checks order, while HashSet does not.
-
-```java
-boolean equals(Object object)
-```
+- `Determining Equality`:- There is a custom implementation of equals() so you can compare two Collections to compare the type and contents. The implementation will vary. For example, ArrayList checks order, while HashSet does not.
+  - boolean equals(Object object)
 
 **Sorting DaTa**:- When working with a String, remember that numbers sort before letters, and uppercase letters sort before lowercase letters.
 We use Collections.sort(). It returns void because themmethod parameter is what gets sorted.
 You can also sort objects that you create yourself. Java provides an interface called Comparable. If your class implements Comparable, it can be used in data structures that require comparison. There is also a class called Comparator, which is used to specify that you want to use a different order than the object itself provides.
 
-13. public boolean equals(Object element) - matches two collection.
-14. public int hashCode() - returns the hashcode number for collection.
+public boolean equals(Object element) - matches two collection.
+public int hashCode() - returns the hashcode number for collection.
 
 ---
 
-## List Interface
+## List
 
 The `List` interface is a child interface of the Collection interface.It extends the `Collection` interface and declares the behavior of a collection that stores a sequence of elements. Elements can be added or accessed by their position in the list, using a zero-based index. A list may also contain duplicate elements.
 List is an ordered collection.It maintains the insertion order, meaning it will display elements in same order in which they got inserted.It provides control over position where you can insert element.You use a list when you want an ordered collection that can contain duplicate entries.It allows 'null' elements.
 
 Items can be retrieved and inserted at specific positions in the list based on an int index, much like an array. Unlike an array, though, many List implementations can change in size after they are declared.Lists are commonly used because there are many situations in programming where you need to keep track of a list of objects.
-The main thing all List implementations have in common is that they are ordered and allow duplicates. Beyond that, they each offer different functionality.Some implementations include: ArrayList, LinkedList, Vectors, Stack, CopyOnWriteArrayList.
+The main thing all List implementations have in common is that they are ordered and allow duplicates. Beyond that, they each offer different functionality.Some implementations include: `ArrayList`, `LinkedList`, `Vectors`, `Stack`, `CopyOnWriteArrayList`.
 
 _Creating a List_:-
 
 - `Using Factory`:- When you create a List of type ArrayList or LinkedList, you know the type. There are a few special methods where you get a List back but don’t know the type.These method let you create a List including data in one line using a factory method. This is convenient, especially when testing. Some of these methods return an immutable object.
   1. Arrays.asList(varargs) - Returns fixed size list backed by an aaray.Cannot add or delete elements but can replace elements.
-  2. List.of(varargs) - Returns immutable list.Cannot add,replace or delete elements.
+  2. List.of(varargs) - Returns immutable list. Cannot add,replace or delete elements.
   3. List.copyof(collection ) - Returns immutable list with copy of original collection's values.Cannot add,replace or delete elements.
-
-```java
-String[] array = new String[] {"a", "b", "c"};
-List<String> asList = Arrays.asList(array); // [a, b, c]
-List<String> of = List.of(array);// [a, b, c]
-List<String> copy = List.copyOf(asList);// [a, b, c]
-
-array[0] = "z";
-
-System.out.println(asList);// [z, b, c]
-System.out.println(of);// [a, b, c]
-System.out.println(copy);// [a, b, c]
-
-asList.set(0, "x");
-System.out.println(Arrays.toString(array)); // [x, b, c]
-
-copy.add("y");// UnsupportedOperationException
-```
-
-- `Using a Constructor`:-
 
 - `List Methods`:- In addition to the operations inherited from the Collection interface, the List interface also defines operations that work specifically on lists: position-based access of the list elements, searching in a list, operations on parts of a list (called open range-view operations), and creation of customized iterators.
   - E get(int index)- Returns element at specified index.
@@ -235,11 +141,10 @@ copy.add("y");// UnsupportedOperationException
   - List<E> subList(int fromIndex, int toIndex) - This method returns a view of the list, which consists of the sublist of the elements from the index fromIndex to the index toIndex-1, i.e. a half-open interval. A view allows the range it represents in the underlying list to be manipulated. Any changes in the view are reflected in the underlying list, and vice versa. Views can be used to perform operations on specific ranges of a list.
   - ListIterator<E> listIterator() - traverses the elements consecutively, starting with the first element of the list.
   - ListIterator<E> listIterator(int index) - tarts traversing the list from the element indicated by the specified index.
+  - replaceAll( UnaryOperator<E> op) - Replaces each element in list with result of operator.
+  - void sort( Comparator<? super E> c) - Sorts list.
 
-The ListIterator interface is a bidirectional iterator for lists. It extends the Iterator interface and allows the list to be traversed in either direction. When traversing lists, it can be helpful to imagine a cursor moving forward or backward between the elements when calls are made to the next() and the previous() methods, respectively. The element that the cursor passes over is returned.When the remove() method is called, the element last passed over is removed from the list.
-
-5. public default void replaceAll( UnaryOperator<E> op) - Replaces each element in list with result of operator.
-6. public default void sort( Comparator<? super E> c) - Sorts list.
+The `ListIterator` interface is a bidirectional iterator for lists. It extends the Iterator interface and allows the list to be traversed in either direction. When traversing lists, it can be helpful to imagine a cursor moving forward or backward between the elements when calls are made to the next() and the previous() methods, respectively. The element that the cursor passes over is returned.When the remove() method is called, the element last passed over is removed from the list.
 
 - **LinkedList**:- A `LinkedList` is special because it implements both List and Deque. It has all the methods of a List. It also has additional methods to facilitate adding or removing from the beginning and/or end of the list.The main benefits of a LinkedList are that you can access, add to, and remove from the beginning and end of the list in constant time. The trade-­off is that dealing with an arbitrary index takes linear time. This makes a LinkedList a good choice when you’ll be using it as Deque.
 
@@ -347,9 +252,16 @@ When you aren’t sure which collection to use, use an ArrayList.The main benefi
 - `Iterating over the contents of a ArrayList`:-
   - Iterator<E> iterator() : Declared in the Collection interface. Returns an iterator for the invoking collection.
 
+**ArrayList vs LinkedList** :
+
+1. ArrayList internally uses dynamic array to store the elements.LinkedList internally uses doubly linked list to store the elements.
+2. Manipulation with ArrayList is slow because it internally uses array. If any element is removed from the array, all the bits are shifted in memory.Manipulation with LinkedList is faster than ArrayList because it uses doubly linked list so no bit shifting is required in memory.
+3. ArrayList class can act as a list only because it implements List only.LinkedList class can act as a list and queue both because it implements List and Deque interfaces.
+4. ArrayList is better for storing and accessing data.LinkedList is better for manipulating data.
+
 ---
 
-## Set Interface
+## Set
 
 A set is an unordered collection of elements allowing no duplicates, i.e. all the elements in a set are unique.The main thing that all Set implementations have in common is that they do not allow duplicates.This also means that a set can contain at most one null value.
 The Set interface does not define any new methods, and its add() and addAll() methods will not store duplicates. If an element is not currently in the set, two consecutive calls to the add() method to insert the element will first return true, then false.
@@ -373,7 +285,7 @@ Set<Character> copy = Set.copyOf(letters);
 
 ---
 
-## Queue Interface
+## Queue
 
 The 'Queue' interface extends 'Collection' interface and declares the behaviour of a queue. 'Queue' being an interface needs a class which provides implementation to its methods and also that we can create objects of that class. 'LinkedList' and 'PriorityQueue' are the most commonly used classes used while creating a queue object.
 The order of first-in, first-out is maintained through the queue interface. It can be characterized as an ordered list used to store pieces that are scheduled to undergo processing.
@@ -405,10 +317,6 @@ The Queue interface is expanded by the Deque interface. In Deque, we have the ab
 
 Deque methods includes:-
 
-1. public void addFirst(E e) - Add to front.
-2. public boolean offerFirst(E e)
-3. public boolean addLast(E e) - Add to back.
-4. public boolean offerLast(E e)
 5. public E getFirst() - Read from front.
 6. public E peekFirst()
 7. public E getLast() - Read from back.
@@ -444,7 +352,7 @@ Deque methods includes:-
 
 ---
 
-## Map Interface
+## Map
 
 The Map interface maps unique keys to values(stores key-value pairs). Both key and values are objects. Using a key you can find its value. Keys must be unique, but the values may contain duplicates.A key is an object that can be used to retrieve its corresponding value.
 The 'AbstractMap' class implements most of the 'Map' interface and serves as a superclass for all concrete map implementations.
@@ -486,23 +394,56 @@ _Working with Map Methods_:- Given that Map doesn’t extend Collection, more me
 16. public int size()Returns number of entries (key/value pairs) in map.
 17. public Collection<V> values()Returns Collection of all values.
 
+Object put(Object key, Object value) - It is used to insert an entry in this map.
+void putAll(Map map) - It is used to insert the specified map in this map.
+Object remove(Object key) - It is used to delete an entry for the specified key.
+Object get(Object key) - It is used to return the value for the specified key.
+boolean containsKey(Object key) - It is used to search the specified key from this map.
+Set keySet() - It is used to return the Set view containing all the keys.
+Set entrySet() - It is used to return the Set view containing all the keys and values.
+
+_Methods of Map.Entry Interface_:
+
+- Object getKey() - It is used to obtain key.
+- Object getValue() - It is used to obtain value.
+
 - **HashMap**:- A HashMap stores the keys in a hash table. This means that it uses the hashCode() method of the keys to retrieve their values more efficiently.
   The main benefit is that adding elements and retrieving the element by key both have constant time. The trade-­off is that you lose the order in which you inserted the elements.Most of the time, you aren’t concerned with this in a map anyway. If you were, you could use LinkedHashMap.
 
 - **TreeMap**:- A TreeMap stores the keys in a sorted tree structure. The main benefit is that the keys are always in sorted order. Like a TreeSet, the trade-­off is that adding and checking whether a key is present takes longer as the tree grows larger.
 
+**HashMap vs HashTable** :
+
+1. HashMap is non synchronized. It is not-thread safe and can't be shared between many threads without proper synchronization code.Hashtable is synchronized It is thread-safe and can be shared with many threads.
+2. HashMap allows one null key and multiple null values.Hashtable doesn't allow any null key or value.
+3. HashMap is a new class introduced in JDK 1.2.Hashtable is a legacy class<.
+4. HashMap is fast.Hashtable is slow.
+5. We can make the HashMap as synchronized by calling this code Map m = Collections.synchronizedMap(hashMap);Hashtable is internally synchronized and can't be unsynchronized.
+6. HashMap is traversed by Iterator.Hashtable is traversed by Enumerator and Iterator.
+7. Iterator in HashMap is fail-fast.Enumerator in Hashtable is not fail-fast.
+8. HashMap inherits AbstractMap class.Hashtable inherits Dictionary class.
+
 ---
 
 ## Vector
 
-Vector stores the data elements in a dynamic array. It resembles an array list.
-It is synchronized, though, and has a lot of methods that are not included in the Collection framework.
+Vector stores the data elements in a dynamic array. It resembles an array list. It is synchronized, though, and has a lot of methods that are not included in the Collection framework.
 
 ```java
 Vector<String> vec = new Vector<String>();
 vec.add("Java");
 vec.add("PHP");
 ```
+
+_ArrayList vs Vector_:
+
+1. ArrayList is not synchronized.Vector is synchronized.
+2. ArrayList increments 50% of current array size if number of element exceeds from its capacity.Vector increments 100% means doubles the array size if total number of element exceeds than its capacity.
+3. ArrayList is not a legacy class, it is introduced in JDK 1.2. Vector is a legacy class.
+4. ArrayList is fast because it is non-synchronized.Vector is slow because it is synchronized i.e. in multithreading environment, it will hold the other threads in runnable or non-runnable state until current thread releases the lock of object.
+5. ArrayList uses Iterator interface to traverse the elements.Vector uses Enumeration interface to traverse the elements. But it can use Iterator also.
+
+---
 
 ## Stack
 
@@ -515,86 +456,6 @@ stack.push("PHP");
 stack.push("Java");
 stack.pop();
 ```
-
-There are five main interfaces:-
-
-1. `Map` :An object that maps keys to values. A map is not ordered and cannot contain duplicate keys (but can contain duplicate values). Each key can map to at most one value.
-2. `Collection` :A collection represents a group of objects, known as its elements. The JDK provides implementations of more specific subinterfaces like Set and List.
-3. `List` :A list is an ordered list of objects, where the same object may well appear more than once. For example: [1, 7, 1, 3, 1, 1, 1, 5]. You can add an element anywhere in the list, change an element anywhere in the list, or remove an element from any position in the list.Elements in a list can be accessed by an int index.
-4. `Queue` :A queue is a collection that orders its elements in a specific order for processing.A Deque is a subinterface of Queue that allows access at both ends.A queue is also ordered, but you'll only ever touch elements at one end. All elements get inserted at the "end" and removed from the "beginning" (or head) of the queue. You can find out how many elements are in the queue,.
-5. `Set` :A set is not ordered and cannot contain duplicates. Any given object either is or isn't in the set. {7, 5, 3, 1} is the exact same set as {1, 7, 3, 5}. You can add or remove elements, and you can find out if a certain element exists.
-
-<table class="alt">
-<tbody>
-<tr><th> </th><th>List</th><th>Set</th><th>Queue</th><th>Map</th></tr>
-<tr><th>Order</th><th>Yes</th><th>No</th><th>Yes</th><th>No</th></tr>
-<tr><th>Duplicates</th><th>Yes</th><th>No</th><th>Yes</th><th>No (Allow duplicate values not keys)</th></tr>
-<tr><th>Null Values</th><th>Yes</th><th>Single Null</th><th>Yes (LinkedList Queue). No (Priority Queue).</th><th>Single null key and many null values</th></tr>
-</tbody></table>
-
-Methods of Iterator Interface :-
-
-1. public boolean hasNext()- It returns true if iterator has more elements.
-2. public Object next()- It returns the element and moves the cursor pointer to the next element.
-3. public void remove() - It removes the last elements returned by the iterator. It is rarely used.
-
-## ArrayList vs LinkedList :
-
-<table class="alt">
-<tbody><tr><th>ArrayList</th><th>LinkedList</th></tr>
-<tr><td>1) ArrayList internally uses <strong>dynamic array</strong> to store the elements.</td><td>LinkedList internally uses <strong>doubly linked list</strong> to store the elements.</td></tr>
-<tr><td>2) Manipulation with ArrayList is <strong>slow</strong> because it internally uses array. If any element is removed from the array, all the bits are shifted in memory.</td><td>Manipulation with LinkedList is <strong>faster</strong> than ArrayList because it uses doubly linked list so no bit shifting is required in memory.</td></tr>
-<tr><td>3) ArrayList class can <strong>act as a list</strong> only because it implements List only.</td><td>LinkedList class can <strong>act as a list and queue</strong> both because it implements List and Deque interfaces.</td></tr>
-<tr><td>4) ArrayList is <strong>better for storing and accessing</strong> data.</td><td>LinkedList is <strong>better for manipulating</strong> data.</td></tr>
-</tbody></table>
-
-## ArrayList vs Vector :
-
-<table class="alt">
-<tbody><tr><th>ArrayList</th><th>Vector</th></tr>
-<tr><td>1) ArrayList is <strong>not synchronized</strong>.</td><td>Vector is <strong>synchronized</strong>.</td></tr>
-<tr><td>2) ArrayList <strong>increments 50%</strong> of current array size if number of element exceeds from its capacity.</td><td>Vector <strong>increments 100%</strong> means doubles the array size if total number of element exceeds than its capacity.</td></tr>
-<tr><td>3) ArrayList is <strong>not a legacy</strong> class, it is introduced in JDK 1.2.</td><td>Vector is a <strong>legacy</strong> class.</td></tr>
-<tr><td>4) ArrayList is <strong>fast</strong> because it is non-synchronized.</td><td>Vector is <strong>slow</strong> because it is synchronized i.e. in multithreading environment, it will hold the other threads in runnable or non-runnable state until current thread releases the lock of object.</td></tr>
-<tr><td>5) ArrayList uses <strong>Iterator</strong> interface to traverse the elements.</td><td>Vector uses <strong>Enumeration</strong> interface to traverse the elements. But it can use Iterator also.</td></tr>
-</tbody></table>
-
-## Useful Methods of Map Interface :
-
-<table class="alt">
-<tbody><tr><th>Method</th><th>Description</th></tr>
-<tr><td> Object put(Object key, Object value)</td><td>It is used to insert an entry in this map.</td></tr>
-<tr><td>void putAll(Map map)</td><td>It is used to insert the specified map in this map.</td></tr>
-<tr><td>Object remove(Object key)</td><td>It is used to delete an entry for the specified key.</td></tr>
-<tr><td>Object get(Object key)</td><td>It is used to return the value for the specified key.</td></tr>
-<tr><td>boolean containsKey(Object key)</td><td>It is used to search the specified key from this map.</td></tr>
-<tr><td>Set keySet()</td><td>It is used to return the Set view containing all the keys.</td></tr>
-<tr><td>Set entrySet()</td><td>It is used to return the Set view containing all the keys and values.</td></tr>
-</tbody></table>
-
-## Methods of Map.Entry Interface :
-
-<table class="alt">
-<tbody><tr><th>Method</th><th>Description</th></tr>
-<tr><td> Object getKey()</td><td>It is used to obtain key.</td></tr>
-<tr><td>Object getValue()</td><td>It is used to obtain value.</td></tr>
-</tbody></table>
-
-## HashMap vs HashTable :
-
-<table class="alt">
-<tbody><tr><th>HashMap</th><th>Hashtable</th></tr>
-<tr><td>1) HashMap is <strong>non synchronized</strong>. It is not-thread safe and can't be shared between many threads without proper synchronization code.</td><td>Hashtable is <strong>synchronized</strong>. It is thread-safe and can be shared with many threads.</td></tr>
-<tr><td>2) HashMap <strong>allows one null key and multiple null values</strong>.</td><td>Hashtable <strong>doesn't allow any null key or value</strong>.</td></tr>
-<tr><td>3) HashMap is a <strong>new class introduced in JDK 1.2</strong>.</td><td>Hashtable is a <strong>legacy class</strong>.</td></tr>
-<tr><td>4) HashMap is <strong>fast</strong>.</td><td>Hashtable is <strong>slow</strong>.</td></tr>
-<tr><td>5) We can make the HashMap as synchronized by calling this code<br> Map m = Collections.synchronizedMap(hashMap);</td><td>Hashtable is internally synchronized and can't be unsynchronized.</td></tr>
-<tr><td>6) HashMap is <strong>traversed by Iterator</strong>.</td><td>Hashtable is <strong>traversed by Enumerator and Iterator</strong>.</td></tr>
-<tr><td>7) Iterator in HashMap is <strong>fail-fast</strong>.</td><td>Enumerator in Hashtable is <strong>not fail-fast</strong>.</td></tr>
-<tr><td>8) HashMap inherits <strong>AbstractMap</strong> class.</td><td>Hashtable inherits <strong>Dictionary</strong> class.</td></tr>
-</tbody></table>
-
-## Collections Framework Implementation Classes Summary :
 
 ## Comparable vs Comparator Interfaces :
 
@@ -611,17 +472,3 @@ Methods of Iterator Interface :-
 
 Legacy classes and interfaces are the classes and interfaces that formed the collections framework in the earlier versions of Java and has now been restructured or re-engineered. They are fully compatible with the framework.All legacy classes were re-engineered to support generic in JDK5.Legacy = heritage of old java version.
 Legacy classes and interfaces - Enumeration, Vector, Stack, Dictionary, HashTable, Properties...
-
-The collections framework consists of:
-
-Collection interfaces - The primary means by which collections are manipulated.
-Collection - A group of objects. No assumptions are made about the order of the collection (if any) or whether it can contain duplicate elements.
-Set - The familiar set abstraction. No duplicate elements permitted. May or may not be ordered. Extends the Collection interface.
-List - Ordered collection, also known as a sequence. Duplicates are generally permitted. Allows positional access. Extends the Collection interface.
-Queue - A collection designed for holding elements before processing. Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations.
-Deque - A double ended queue, supporting element insertion and removal at both ends. Extends the Queue interface.
-
-## Need For Collection Framework
-
-- It solves the limitations of arrays
-- Are global in nature
