@@ -572,29 +572,71 @@ public class Skip {
 
 ### Enumeration(Enums)
 
-An enumeration, or enum for short, is like a fixed set of constants.
+An enumeration, or enum for short, is like a fixed set of constants.Introduced in Java 5.Enums make code more readable, type-safe and maintainable.Internally Enum is treated as a class in Java.
 Using an enum is much better than using a bunch of constants because it provides type-­safe checking. With numeric or String constants, you can pass an invalid value and not find out until runtime. With enums, it is impossible to create an invalid enum value without introducing a compiler error.
+
+`Problem with int constants` -
+
+```java
+public static final int SUCCESS = 1;
+public static final int PENDING = 2;
+public static final int FAILED = 3;
+```
+
+1. No type safety - Any int value can be assigned.
+2. Maintenance issue - If valu changes, it affects many places.
+3. No Scope - Constants are global, can be misused anywhere.
+4. Hard to read - Magic numbers i.e 1,2 are unclear.
+
+`Problem with int constants` -
+
+```java
+public static final int SUCCESS = "SUCCESS";
+public static final int PENDING = "PENDING";
+public static final int FAILED = "FAILED";
+```
+
+1. No type safety - Any string value can be assigned.
+2. Hard to read - Long strings make code verbose.
+3. Performance issues - String comparison is slower.
+4. Prone to errors - Spelling mistakes leads to bugs.
+
+`How Enums improve type safety` -
+
+- Enum restrict values to a fixed set of contants.
+- Only declared enum can be used.
+- Compiler checks the type and prevents invalid values.
+- Enum make code safer, cleaner and more reliable.
+- Easier refactoring and maintenance.
+
+By default constants are public, static and final.Every Enum in java extends `java.lang.Enum`.
+
+Syntax of Enum -
+
+enum EnumName {
+CONSTANT1, CONSTANT2,..;
+}
 
 To create an enum, declare a type with the enum keyword, a name, and a list of values.
 
 ```java
 public enum Days {
-
-   MONDAY,
-   TUESDAY,
-   WEDNESDAY;
-
+   MONDAY, TUESDAY, WEDNESDAY;
 }
 ```
 
 We refer to an enum that only contains a list of values as a simple enum. When working with simple enums, the semicolon at the end of the list is optional.
-
-Enum values are considered constants and are commonly written using snake case. For example, an enum declaring a list of ice cream flavors
-might include values like VANILLA, ROCKY_ROAD, MINT_CHOCOLATE_CHIP, and so on.
+Enum values are considered constants and are commonly written using snake case. For example, an enum declaring a list of ice cream flavors might include values like VANILLA, ROCKY_ROAD, MINT_CHOCOLATE_CHIP, and so on.
 
 The values in an enum are fixed. You cannot add more by extending the enum.
 
-_Calling the values(), name(), and ordinal() Methods_
+**Enum Methos and Constructors** - Enums in java have some inbuilt methods and we can also create custom constructors, fields and methods.
+
+- `Enum[] values()` - Returns an array of all enum contants in declared order.
+- `Enum valueOf(String name)` - Return enum constant with specified name.
+- `int ordinal` - Returnsthe position(index) of the enum cxonstant (starting from 0).
+- `String name` - Returns the name of enum constant.
+- `String toString()` - Returns string representation. Default is same as name(). Can be override.
 
 An enum provides a `values()` method to get an array of all of the values. You can use this like any normal array, including in a for-­each loop:
 
@@ -604,33 +646,40 @@ for(var season: Season.values()) {
 }
 ```
 
-`ordinal()`:- Returns the ordinal of this enumeration constant (its position in its enum declaration, where the initial constant is assigned an ordinal of zero). Most programmers will have no use for this method. It is designed for use by sophisticated enum-based data structures, such as java. util. EnumSet and java. util. EnumMap.
+`ordinal()`:- Returns the ordinal of this enumeration constant (its position in its enum declaration, where the initial constant is assigned an ordinal of zero). Most programmers will have no use for this method. It is designed for use by sophisticated enum-based data structures, such as java.util.EnumSet and java.util.EnumMap.
 
-_Adding Constructors, Fields, and Methods_ -
-
-While a simple enum is composed of just a list of values, we can define a complex enum with additional elements.
+_Adding Constructors, Fields, and Methods_ - While a simple enum is composed of just a list of values, we can define a complex enum with additional elements.
+Enum constructors are always private by default to prevent direct object creation.
 
 ```java
-public enum Season{
-   WINTER("Low"),
-   SPRING("Medium"),
-   SUMMER("High"),
-   AUTUMN("Medium"),
-   FALL;
+public enum OrderStatus{
+   PENDING(1, "Order is pending"),
+   SHIPPED(2, "Order has been shipped"),
+   DELIVERED(3, "Order delivered").
+   CANCELLED(4, "Order has been cancelled");
 
-   private String visitors;
+   private final int code,
+   private final String description,
 
-   private Season(String visitors){
-      this.visitors = visitors;
-   }
+  OrderStatus(int code, String description){
+   this.code = code;
+   this.description = description;
+  }
 
-   private Season(){
-      visitors = "Medium"//Default when no visitors is specified
-   }
+  OrderStatus(){ //Default when no OrderStatus is specified
+   code = 1
+   description = "Order is pending"
+  }
 
-   public void printExpectedVisitors() {
-      System.out.println(visitors);
-   }
+  public int getCode(){
+   return code;
+  }
+
+  public String description(){
+   return description;
+  }
+
+
 }
 ```
 
@@ -641,8 +690,14 @@ The parentheses are constructor calls, but without the new keyword normally used
 To call an enum method we just use the enum value followed by the method call.
 
 ```java
-Season.SUMMER.printExpectedVisitors();
+OrderStatus.DELIVERED.getDescription();
 ```
+
+**Internal working of Enums** - Enums in Java are not just a special types of class,they have some unique internal working.
+
+`Jav compiles Enums` - When we create an enum, the Java compiler internally creates a class that extends java.lang.Enum. Each Enum is treated as a public static final object of that enum class. Each constants are created when the class is loaded(during class loading time).
+
+Enum Source Code --> Compiler ---> Class File
 
 ### Records
 
