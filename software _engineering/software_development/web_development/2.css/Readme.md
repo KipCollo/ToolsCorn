@@ -358,3 +358,9 @@ TODO:-
 - Container queries
 - Subgrid
 - BEM standards
+- box-shadow
+- pointer-events
+- clip-path - tools e.g clippy tool - polgon
+- backface visibility
+- linear-gradient
+- backgroud-size
