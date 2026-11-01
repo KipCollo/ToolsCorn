@@ -111,3 +111,34 @@ function Goal(props) {
   </div>
 </li>;
 ```
+
+- Rendering Lits in React:-
+
+```jsx
+state={
+    tags:["tag1","tag2","tag3"]
+};
+render(){
+    return (<
+    <ul>
+    {this.state.tags.map(tag => <li key={tag.id}>{tag}</li>)}
+     </ul>)
+ }
+```
+
+- Conditional Rendering:-
+
+```jsx
+state={
+    tags:["tag1","tag2","tag3"]
+};
+
+renderItems(){
+    if(this.state.tags.length==0) return <p>No Items</p>
+    else return <ul>{this.state.tags.map(tag => <li key={tag.id}>{tag}</li>)}</ul>
+}
+render(){
+    return (<
+    <div>{this.renderItems()}</div>)
+ }
+```

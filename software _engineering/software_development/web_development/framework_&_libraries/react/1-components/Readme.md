@@ -41,37 +41,6 @@ export default ClassName;
 
 TODO More on Lists and unique keys in lists
 
-- Rendering Lits in React:-
-
-```jsx
-state={
-    tags:["tag1","tag2","tag3"]
-};
-render(){
-    return (<
-    <ul>
-    {this.state.tags.map(tag => <li key={tag.id}>{tag}</li>)}
-     </ul>)
- }
-```
-
-- Conditional Rendering:-
-
-```jsx
-state={
-    tags:["tag1","tag2","tag3"]
-};
-
-renderItems(){
-    if(this.state.tags.length==0) return <p>No Items</p>
-    else return <ul>{this.state.tags.map(tag => <li key={tag.id}>{tag}</li>)}</ul>
-}
-render(){
-    return (<
-    <div>{this.renderItems()}</div>)
- }
-```
-
 **Functional Components** - Functional components are simply JavaScript functions that returns JSX. We can create a functional component to React by writing a JavaScript function. These functions may or may not receive data as parameters. In the functional Components, the return value is the JSX code to render to the DOM tree. Functional components can also have state which is managed using React hooks.
 
 ```jsx
@@ -100,14 +69,6 @@ function Garage() {
 }
 ```
 
-Props vs State
-
-Props (short for “properties”) and state are both plain JavaScript objects. While both hold information that influences the output of component render, they are different in one important way: props get passed to the component (similar to function parameters) whereas state is managed within the component (similar to variables declared within a function).
-
-Composition vs Inheritance
-
-React has a powerful composition model, and it is recommended to use composition instead of inheritance to reuse code between components.
-
 **Rendering a Component** - To use component in your application, use similar syntax as normal HTML: <Car />
 
 ```jsx
@@ -129,7 +90,56 @@ ReactDOM.render(element, document.getElementById("root")); //element is referenc
 
 The constructor is used to initialize the state and bind event handlers in a class component. It is called before the component is mounted.
 
----
+**Component Composition & Reusability** -
+
+Composition vs Inheritance - React has a powerful composition model, and it is recommended to use composition instead of inheritance to reuse code between components.
+
+`Splitting UI into Components` - There are 4 criteria for splitting a UI into components:-
+
+- Logical separation of content/layout.
+- Reusability.
+- Responsibilities/ complexity.
+- Personal coding style.
+
+Small components are highly reusable.They also have very low complexity.
+Huge component are not meant to be reused.
+
+_Component categories_ - Most of components will natuarlly fall into one of three categories:-
+
+1. `Stateless/presentational components` - Has no state. Can receive props and simply present received data or the content.Usually small and reusable.
+2. `Stateful components` - Have state. Can still be reusable.
+3. `Structural components` - Pages, layouts or screens of the app. Result of composition. Can be huge and non-reusable,
+
+_Prop Drilling_ - Passing props through several child nested components in order to get that data into deeply nested components.
+
+_Component Composition_ - It is technique of combining different components using the `children prop`(or explicitly defined props).Useful for:- Creating highly reusable & flexible components and fixing prop drilling(great for layouts).
+
+```js
+export default function App() {
+  const [movies, setMovies] = useState(tempMovieData);
+  <NavBarComponent>
+    <Search />
+    <NumResults movies={movies} />
+  </NavBarComponent>;
+}
+
+function NavBarComponent({ children }) {
+  return (
+    <nav className="nav-bar">
+      <Logo />
+      {children}
+    </nav>
+  );
+}
+
+function NumResults({ movies }) {
+  return (
+    <p className="num-results">
+      Found <strong>{movies.length}</strong> results
+    </p>
+  );
+}
+```
 
 ## JSX
 
