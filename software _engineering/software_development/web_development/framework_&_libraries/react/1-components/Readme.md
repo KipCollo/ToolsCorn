@@ -141,6 +141,28 @@ function NumResults({ movies }) {
 }
 ```
 
+`Explicit prop in composition` - Passing elements to children in composition.
+
+```js
+export default function App() {
+  const [movies, setMovies] = useState(tempMovieData);
+  <NavBarComponent element = {
+    <Search />
+    <NumResults movies={movies} />
+  } />
+
+}
+
+function NavBarComponent({ element }) {
+  return (
+    <nav className="nav-bar">
+      <Logo />
+      {element}
+    </nav>
+  );
+}
+```
+
 ## JSX
 
 JSX (JavaScript XML) is an extension to JavaScript that allows you to write HTML-like syntax within JavaScript file. It is used to describe the structure and appearance of React components.JSX stands for JavaScript XML. It allows writing HTML in JavaScript and converts the HTML tags into React elements.
