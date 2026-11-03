@@ -163,6 +163,31 @@ function NavBarComponent({ element }) {
 }
 ```
 
+**PropTypes** - Using proptypes to check each type of prop and specifying what type they need to have.
+It is no longer used, using `Typescript` is preferred.
+
+```js
+import PropTypes from "prop-types";
+StarRating.propTypes = {
+  maxRating: PropTypes.number.isRequired,
+  color: PropTypes.string,
+  defaultRating: PropTypes.number,
+  messages: PropTypes.array,
+  className: PropType.string,
+  onSetRating: PropType.func,
+};
+
+export default function StarRating({
+  maxRating = 5,
+  color = "#fcc419",
+  size = 48,
+  className,
+  onSetRating,
+  messages = [],
+  defaultRating = 0,
+}) {}
+```
+
 ## JSX
 
 JSX (JavaScript XML) is an extension to JavaScript that allows you to write HTML-like syntax within JavaScript file. It is used to describe the structure and appearance of React components.JSX stands for JavaScript XML. It allows writing HTML in JavaScript and converts the HTML tags into React elements.
