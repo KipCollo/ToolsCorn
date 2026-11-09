@@ -1,8 +1,42 @@
 # Flutter
 
+Flutter is a free and open-source mobile UI framework created by Google and released in May 2017. In a few words, it allows you to create a native mobile application with only one codebase. This means that you can use one programming language and one codebase to create two different apps (for iOS and Android).
+
+Flutter consists of two important parts:
+
+- An SDK (Software Development Kit): A collection of tools that are going to help you develop your applications. This includes tools to compile your code into native machine code (code for iOS and Android).
+- A Framework (UI Library based on widgets): A collection of reusable UI elements (buttons, text inputs, sliders, and so on) that you can personalize for your own needs.
+  To develop with Flutter, you will use a programming language called Dart. The language was created by Google in October 2011, but it has improved a lot over these past years.
+
+Dart focuses on front-end development, and you can use it to create mobile and web applications.
+
+If you know a bit of programming, Dart is a typed object programming language. You can compare Dart's syntax to JavaScript.
+
+Visit the following resources to learn more:
+
+- [@roadmap@Visit Dedicated Flutter Roadmap](/flutter)
+- [@official@Flutter Website](https://flutter.dev)
+- [@video@Flutter Tutorial for Beginners](https://www.youtube.com/watch?v=1ukSR1GRtMU&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ)
+- [@article@Learn Dart Programming](https://www.tutorialspoint.com/dart_programming/index.htm)
+- [@article@12 Ways Flutter Streamlines App Development](https://thenewstack.io/12-ways-flutter-streamlines-app-development/)
+- [@feed@Explore top posts about Flutter](https://app.daily.dev/tags/flutter?ref=roadmapsh)
+
+Flutter is a free and open-source multi-platform UI framework created by Google and released in May 2017. In a few words, it allows you to create a native mobile application with only one codebase. This means that you can use one programming language and one codebase to create three different apps (for iOS, Android and Desktop).
+
+Visit the following resources to learn more:
+
+- [@roadmap@Visit Dedicated Flutter Roadmap](/flutter)
+- [@official@Flutter Website](https://flutter.dev)
+- [@official@Flutter for Desktop](https://flutter.dev/multi-platform/desktop)
+- [@video@Flutter Tutorial for Beginners](https://www.youtube.com/watch?v=1ukSR1GRtMU&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ)
+- [@article@Learn Dart Programming](https://www.tutorialspoint.com/dart_programming/index.htm)
+- [@article@12 Ways Flutter Streamlines App Development](https://thenewstack.io/12-ways-flutter-streamlines-app-development/)
+- [@feed@Explore top posts about Flutter](https://app.daily.dev/tags/flutter?ref=roadmapsh)
+
 Flutter is an open-source user interface software development kit(app SDK) created by google.Used for building high performance,high-fidelity apps for IOS,Android, and web from single codebase.
 
 Advantages of flutter include:-
+
 1. Highly productive:-
    - Develop IOS and Android from a single codebase.
    - Prototype and iterate easily where you can change your code and reload it as your app runs(hot reload feature) and also fixes crashes and continue debugging from where the app is left off.
@@ -27,7 +61,6 @@ Flutter apps are written in the programming language called Dart.Dart is also ow
    - Dart’s optional JIT compiling allows hot reloading to exist. Fast development and iteration is a key to the joy of using Flutter.
 2. Dart is object-oriented. This makes it easy to write visual user experiences with Dart, with no need for a markup language.
 3. Dart is a productive, predictable language. It’s easy to learn, and it feels familiar.Whether you come from a dynamic language or a static language, you can get up and running with ease.
-
 
 At a high level, Flutter is a reactive, declarative, and composable view-layer library, much like ReactJS on the web (but more like React mixed with the browser, because Flutter is a complete rendering engine as well). In a nutshell, you build a mobile UI by composing together a bunch of smaller components called widgets. Everything is a widget, and widgets are just Dart classes that know how to describe their view. Structure is defined with widgets, styles are defined with widgets, and so are animations and anything else you can think of that makes up a UI.
 
@@ -56,7 +89,7 @@ Flutter has the following channels in increasing order of stability:-
 
 1. Master - Active development channel;extremely experimental and likely unstable.
 2. Beta - Fast-moving alternative to stable;releases every month.
-3. Stable - Most stable and mature branch;releases once  a quarter.
+3. Stable - Most stable and mature branch;releases once a quarter.
 
 ```bash
 flutter channel # Checking current channel

@@ -2,6 +2,32 @@
 
 PostgreSQL supports a wide range of data types that allow you to store various kinds of information in your database. In this section, we'll take a look at some of the most commonly used data types and provide a brief description of each. This will serve as a useful reference as you work with PostgreSQL.
 
+1. serial
+2. smallint
+3. integer
+4. bigint
+5. decimal
+6. numeric
+7. real
+8. double precision
+9. char
+10. varchar
+11. text
+12. boolean
+13. date
+14. time
+15. timestamp
+16. timestampz
+17. interval
+18. UUID
+19. JSON
+20. JSONB
+21. integer[]
+22. inet
+23. macaddr
+24. point
+25. XML
+
 ## Numeric Data Types
 
 PostgreSQL offers several numeric data types to store integers and floating-point numbers:
