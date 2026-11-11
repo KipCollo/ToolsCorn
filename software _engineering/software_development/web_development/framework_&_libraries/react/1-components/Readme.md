@@ -163,8 +163,7 @@ function NavBarComponent({ element }) {
 }
 ```
 
-**PropTypes** - Using proptypes to check each type of prop and specifying what type they need to have.
-It is no longer used, using `Typescript` is preferred.
+**PropTypes** - Using proptypes to check each type of prop and specifying what type they need to have.It is no longer used, using `Typescript` is preferred.
 
 ```js
 import PropTypes from "prop-types";

@@ -1,6 +1,6 @@
 # PHP
 
-PHP stands for Hypertext Preprocessor. It is one of a server-side scripting language and specifically designed for web development. Which is widely used for creating dynamic and interactive web pages. PHP code executes on the web server before the resulting HTML content to the browser. 
+PHP stands for Hypertext Preprocessor. It is one of a server-side scripting language and specifically designed for web development. Which is widely used for creating dynamic and interactive web pages. PHP code executes on the web server before the resulting HTML content to the browser.
 `PHP`, an acronym for Hypertext Preprocessor, is a popular server-side scripting language favored for web development. It's versatile, dynamic, and can be embedded seamlessly into HTML code. PHP scripts are executed on the server, and the result is sent back to the browser as plain HTML.
 
 PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.
@@ -17,7 +17,6 @@ Visit the following resources to learn more:
 - [@video@Introduction to PHP](https://www.youtube.com/watch?v=KBT2gmAfav4)
 - [@video@PHP Tutorial - Full Course](https://www.youtube.com/watch?v=OK_JCtrrv-c)
 
-
 In other words, when you access a PHP page on your browser, the code is not processed on your computer. Instead, your browser sends a request to a web server, which then processes the code and returns the result to the browser in the form of a web page.
 web server is a remote computer where the PHP files are stored. For the web server to process PHP code, a special software known as the PHP interpreter needs to be installed.
 
@@ -27,13 +26,13 @@ PHP is a scripting language. A `scripting language` is different than an actual 
 In PHP 8, the code is first transformed into opcode, which can quickly be transformed into efficient machine-level (executable) code. The executable code can, optionally, stay in the memory of the computer, or server, for other executions. If the programmer changes this code, a new version can replace the previous version in memory. Although, this may require rebooting the web server to take effect.
 
 PHP can:
+
 - Access and manipulate databases,
 - Process user input from forms and requests,
 - Generate dynamic content based on different conditions and logics,
 - Create interactive features like user authentication and handling user data.
 
 PHP code can be embedded within HTML files using special tags. When a web server receives a request for the web page, That server executes the PHP code first, then it generating HTML content that is then sent back to the user's browser.
-
 
 ## PHP Versions and Features
 
@@ -49,45 +48,45 @@ Visit the following resources to learn more:
 - [@official@Versions and Features](https://www.php.net/manual/en/history.php.php)
 
 The origins of PHP date back to 1995 when an independent software development contractor named Rasmus Lerdorf developed a Perl/CGI script that enabled him to know how many visitors were reading his online résumé. His script performed two tasks: logging visitor information, and displaying the count of visitors to the web page.Lerdorf began giving away his toolset, dubbed Personal Home Page (PHP).
-The clamor prompted Lerdorf to continue developing the language, with perhaps the most notable early change being a new feature for converting data entered in an HTML form into symbolic variables,encouraging exportation into other systems. To accomplish this, he opted to continue development in C code rather than Perl. Ongoing additions to the PHP toolset culminated in November 1997 with the release of *PHP 2.0*, or Personal Home Page/Form Interpreter (PHP/FI). The 2.0 release was accompanied by a number of enhancements and improvements from programmers worldwide.
-The new PHP release was extremely popular, and a core team of developers soon joined Lerdorf.They kept the original concept of incorporating code directly alongside HTML and rewrote the parsing engine, giving birth to *PHP 3.0*.
+The clamor prompted Lerdorf to continue developing the language, with perhaps the most notable early change being a new feature for converting data entered in an HTML form into symbolic variables,encouraging exportation into other systems. To accomplish this, he opted to continue development in C code rather than Perl. Ongoing additions to the PHP toolset culminated in November 1997 with the release of _PHP 2.0_, or Personal Home Page/Form Interpreter (PHP/FI). The 2.0 release was accompanied by a number of enhancements and improvements from programmers worldwide.
+The new PHP release was extremely popular, and a core team of developers soon joined Lerdorf.They kept the original concept of incorporating code directly alongside HTML and rewrote the parsing engine, giving birth to _PHP 3.0_.
 
-- **1994:** Initial PHP version 1.0 released, It was created by *Rasmus Lerdorf*. As a set of Common Gateway Interface (CGI) scripts to manage his personal website.
+- **1994:** Initial PHP version 1.0 released, It was created by _Rasmus Lerdorf_. As a set of Common Gateway Interface (CGI) scripts to manage his personal website.
 - **1995:** PHP 3.0 introduced, Which offering features like database access and forms processing. That gaining popularity for its simplicity and ease of use.
 - **1997-1998:** During, PHP/FI (Fast Interpreter) released, That significantly improving performance.
 - **1999-2004:** During, PHP 3 and 4 released, Which introducing features like object-oriented programming and database integration.
 - **2004-2010:** During, PHP 5 and later versions focused on improvements for performance, security, introduced namespaces, closures, generators, traits and object-oriented programming.
 - **2010 and beyond:** That emphasis on PHP related frameworks (like Laravel and Symfony) to streamline web development, provides possibility to integrate with modern technologies like JSON and REST APIs, and focus on security best practices.
 
-- *PHP 4*:- Two core developers, Zeev Suraski and Andi Gutmans, took the initiative to completely rethink the way PHP operated, culminating in a rewriting of the PHP parser, dubbed the Zend scripting engine. The result of this work was in the PHP 4 release.PHP 4 added several enterprise-level improvements to the language, including the following:
-   1. Improved resource handling: One of version 3.X’s primary drawbacks was scalability. This was largely because the designers underestimated how rapidly the language would be adopted for large-scale applications. The language wasn’t originally intended to run enterprise-class web sites, and continued interest in using it for such purposes caused the developers to rethink much of the language’s mechanics in this regard.
-   2. Object-oriented support: Version 4 incorporated a degree of object-oriented functionality, although it was largely considered an unexceptional and even poorly conceived implementation. Nonetheless, the new features played an important role in attracting users used to working with traditional object-oriented programming (OOP) languages. Standard class and object development methodologies were made available in addition to features such as object overloading and run-time class information. (A much more comprehensive OOP implementation is available in version 5; see Chapter 6 for details.)
-   3. Native session-handling support: HTTP session handling, available to version 3.X users only through a third-party solution, was natively incorporated into version 4.This feature offered developers a means for tracking user activity and preferences with unparalleled efficiency and ease. Chapter 18 covers PHP’s session-handling capabilities.
-   4. Encryption: The MCrypt library was incorporated into the default distribution,offering users both full and hash encryption using encryption algorithms including Blowfish, MD5, SHA1, and TripleDES, among others. Chapter 21 delves into PHP’s encryption capabilities.
-   5. ISAPI support: ISAPI support gave users the ability to use PHP in conjunction with Microsoft’s IIS Web server. A later joint collaboration between Zend and Microsoft greatly improved IIS’ PHP support using FastCGI. In Chapter 2, I’ll show you how to install PHP on both the IIS and Apache Web servers.
-   6. Native COM/DCOM support: Another bonus for Windows users is PHP 4’s ability to access and instantiate COM objects. This functionality opened up a wide range of interoperability with Windows applications.
-   7. Native Java support: In another boost to PHP’s interoperability, version 4 offered support for binding to Java objects from a PHP application.
-   8. Perl Compatible Regular Expressions (PCRE) library: The Perl language has long been heralded as the reigning royalty of the string-parsing kingdom. The developers knew that powerful regular expression functionality would play a major role in the widespread acceptance of PHP and opted to simply incorporate Perl’s functionality rather than reproduce it, rolling the PCRE library package into PHP’s default distribution (as of version 4.2.0). Chapter 9 covers this important feature in great detail and offers a general introduction to the often confusing regular expression syntax.
-In addition to these features, literally hundreds of functions were added to version 4, greatly enhancing the language’s capabilities
+- _PHP 4_:- Two core developers, Zeev Suraski and Andi Gutmans, took the initiative to completely rethink the way PHP operated, culminating in a rewriting of the PHP parser, dubbed the Zend scripting engine. The result of this work was in the PHP 4 release.PHP 4 added several enterprise-level improvements to the language, including the following:
+  1.  Improved resource handling: One of version 3.X’s primary drawbacks was scalability. This was largely because the designers underestimated how rapidly the language would be adopted for large-scale applications. The language wasn’t originally intended to run enterprise-class web sites, and continued interest in using it for such purposes caused the developers to rethink much of the language’s mechanics in this regard.
+  2.  Object-oriented support: Version 4 incorporated a degree of object-oriented functionality, although it was largely considered an unexceptional and even poorly conceived implementation. Nonetheless, the new features played an important role in attracting users used to working with traditional object-oriented programming (OOP) languages. Standard class and object development methodologies were made available in addition to features such as object overloading and run-time class information. (A much more comprehensive OOP implementation is available in version 5; see Chapter 6 for details.)
+  3.  Native session-handling support: HTTP session handling, available to version 3.X users only through a third-party solution, was natively incorporated into version 4.This feature offered developers a means for tracking user activity and preferences with unparalleled efficiency and ease. Chapter 18 covers PHP’s session-handling capabilities.
+  4.  Encryption: The MCrypt library was incorporated into the default distribution,offering users both full and hash encryption using encryption algorithms including Blowfish, MD5, SHA1, and TripleDES, among others. Chapter 21 delves into PHP’s encryption capabilities.
+  5.  ISAPI support: ISAPI support gave users the ability to use PHP in conjunction with Microsoft’s IIS Web server. A later joint collaboration between Zend and Microsoft greatly improved IIS’ PHP support using FastCGI. In Chapter 2, I’ll show you how to install PHP on both the IIS and Apache Web servers.
+  6.  Native COM/DCOM support: Another bonus for Windows users is PHP 4’s ability to access and instantiate COM objects. This functionality opened up a wide range of interoperability with Windows applications.
+  7.  Native Java support: In another boost to PHP’s interoperability, version 4 offered support for binding to Java objects from a PHP application.
+  8.  Perl Compatible Regular Expressions (PCRE) library: The Perl language has long been heralded as the reigning royalty of the string-parsing kingdom. The developers knew that powerful regular expression functionality would play a major role in the widespread acceptance of PHP and opted to simply incorporate Perl’s functionality rather than reproduce it, rolling the PCRE library package into PHP’s default distribution (as of version 4.2.0). Chapter 9 covers this important feature in great detail and offers a general introduction to the often confusing regular expression syntax.
+      In addition to these features, literally hundreds of functions were added to version 4, greatly enhancing the language’s capabilities
 
-- *PHP 5*:- Although previous major releases had enormous numbers of new library additions, version 5 contained improvements over existing functionality and added several features commonly associated with mature programming language architectures:
-   1. Vastly improved object-oriented capabilities: Improvements to PHP’s object-oriented architecture were version 5’s most visible feature. Version 5 included numerous functional additions such as explicit constructors and destructors, object cloning, class abstraction, variable scope, and interfaces, and a major improvement regarding how PHP handles object management.
-   2. Try/catch exception handling: Devising error-handling strategies within programming languages is, ironically, error-prone and inconsistent. To remedy this problem, version 5 added support for exception handling. Long a mainstay of error management in many languages, such as C++, C#, Python, and Java, exception handling offers an excellent means for standardizing your error- reporting logic.
-   3. Improved XML and Web Services support: As of version 5, XML support is based on the libxml2 library; and a new and rather promising extension for parsing and manipulating XML, known as SimpleXML, was introduced.
-   4. Native support for SQLite: Always keen on providing developers with a multitude of choices, support was added for the powerful yet compact SQLite database server (www.sqlite.org). SQLite offers a convenient solution for developers looking for many of the features found in some of the heavyweight database products without incurring the accompanying administrative overhead.
+- _PHP 5_:- Although previous major releases had enormous numbers of new library additions, version 5 contained improvements over existing functionality and added several features commonly associated with mature programming language architectures:
+  1.  Vastly improved object-oriented capabilities: Improvements to PHP’s object-oriented architecture were version 5’s most visible feature. Version 5 included numerous functional additions such as explicit constructors and destructors, object cloning, class abstraction, variable scope, and interfaces, and a major improvement regarding how PHP handles object management.
+  2.  Try/catch exception handling: Devising error-handling strategies within programming languages is, ironically, error-prone and inconsistent. To remedy this problem, version 5 added support for exception handling. Long a mainstay of error management in many languages, such as C++, C#, Python, and Java, exception handling offers an excellent means for standardizing your error- reporting logic.
+  3.  Improved XML and Web Services support: As of version 5, XML support is based on the libxml2 library; and a new and rather promising extension for parsing and manipulating XML, known as SimpleXML, was introduced.
+  4.  Native support for SQLite: Always keen on providing developers with a multitude of choices, support was added for the powerful yet compact SQLite database server (www.sqlite.org). SQLite offers a convenient solution for developers looking for many of the features found in some of the heavyweight database products without incurring the accompanying administrative overhead.
 
-- *PHP 5.3*:- Although officially a point release, PHP 5.3 is actually the most significant upgrade to the language since the release of 5.0. Heralding a powerful array of new features including namespaces, late static binding, lambda functions and closures, a new MySQL driver, and a variety of syntactical additions such as NOWDOC syntax.
+- _PHP 5.3_:- Although officially a point release, PHP 5.3 is actually the most significant upgrade to the language since the release of 5.0. Heralding a powerful array of new features including namespaces, late static binding, lambda functions and closures, a new MySQL driver, and a variety of syntactical additions such as NOWDOC syntax.
 
-- *PHP 6*:-
+- _PHP 6_:-
 
-- *PHP 7*:- is based on the PHPNG project (PHP Next-Gen), that was led by Zend to speed up PHP applications. The performance gains realized from PHP 7 are huge! They vary between 25% and 70% on real-world apps, and all of that just from upgrading PHP, without having to change a single line of code.
-PHP 7 also replaces fatal errors, which previously would crash a program, with exceptions that can be handled within the program itself. PHP 7 added many additional features, including type declarations for classes and functions, and a spaceship operator.
-In addition to bug fixes and security enhancements, PHP 7.4 introduced the spread operator which provides much better performance for merging arrays than array_merge. The preload of functions and classes available in PHP 7.4 greatly increases PHP performance on heavy used systems.
-Arrow functions have been introduced to provide easier use of anonymous functions. Type declarations in class properties have also been improved and expanded.
-The order of preference for concatenation of strings and numbers has been adjusted to reduce error situations.
+- _PHP 7_:- is based on the PHPNG project (PHP Next-Gen), that was led by Zend to speed up PHP applications. The performance gains realized from PHP 7 are huge! They vary between 25% and 70% on real-world apps, and all of that just from upgrading PHP, without having to change a single line of code.
+  PHP 7 also replaces fatal errors, which previously would crash a program, with exceptions that can be handled within the program itself. PHP 7 added many additional features, including type declarations for classes and functions, and a spaceship operator.
+  In addition to bug fixes and security enhancements, PHP 7.4 introduced the spread operator which provides much better performance for merging arrays than array_merge. The preload of functions and classes available in PHP 7.4 greatly increases PHP performance on heavy used systems.
+  Arrow functions have been introduced to provide easier use of anonymous functions. Type declarations in class properties have also been improved and expanded.
+  The order of preference for concatenation of strings and numbers has been adjusted to reduce error situations.
 
-- *PHP 8*:- With the introduction of PHP 8, code is compiled using a JIT (just-in-time) compiler. This technique has been used for many years in other languages, such as Java. Code compiled with JIT will initially be transformed into opcode. When the opcode is executed, it transitions into executable machine-level code. This change in combination with the preloaded classes and functions introduced in PHP 7.4 dramatically increases ode efficiency and speed.
-In addition, PHP 8 introduces union types and static return types. It builds upon PHP 7.4’s introduction of weak references and allows a weakmap relationship with objects to allow them to remain in memory without being destroyed by the server’s garbage collector. The str_contains function (finally) allows us to search more efficiently for contents in a string. Internal function errors now behave in the same way as user-defined function errors. The @ operator, which you may have seen in older PHP code, is removed.To stop errors from being displayed, you must set this feature within your server.
+- _PHP 8_:- With the introduction of PHP 8, code is compiled using a JIT (just-in-time) compiler. This technique has been used for many years in other languages, such as Java. Code compiled with JIT will initially be transformed into opcode. When the opcode is executed, it transitions into executable machine-level code. This change in combination with the preloaded classes and functions introduced in PHP 7.4 dramatically increases ode efficiency and speed.
+  In addition, PHP 8 introduces union types and static return types. It builds upon PHP 7.4’s introduction of weak references and allows a weakmap relationship with objects to allow them to remain in memory without being destroyed by the server’s garbage collector. The str_contains function (finally) allows us to search more efficiently for contents in a string. Internal function errors now behave in the same way as user-defined function errors. The @ operator, which you may have seen in older PHP code, is removed.To stop errors from being displayed, you must set this feature within your server.
 
 ## PHP Database Migrations
 
@@ -100,28 +99,23 @@ Popular migration tools includes:-
 - `Phoenix`:- Specialisezes in generating migration files directly from existing database structures via dump command.
 
 ## Role in Web Development:
+
 PHP plays a crucial and important role in web development:
 
-- **Building Web Applications:**  PHP can be used to create powerful, scalable and interactive web applications that go beyond the limits of static websites.
-- **Dynamic Content Generation:**  PHP can interact with databases and other resources to generate customized content for each user. 
+- **Building Web Applications:** PHP can be used to create powerful, scalable and interactive web applications that go beyond the limits of static websites.
+- **Dynamic Content Generation:** PHP can interact with databases and other resources to generate customized content for each user.
 - **Request Processing:** It can handle user input from forms and user requests, validate and perform actions like storing data in databases, providing results and sending emails.
 - **Server-Side Logic:** PHP can perform complex calculations, data handling and database operations that are not possible with client-side languages.
 - **Session Management:** PHP can track user sessions and maintain identity and state across multiple pages.
-
 
 ## Benefits of Using PHP:
 
 - **Open Source and Free:** PHP is a free and open-source server-side scripting language, makes it accessible to anyone.
 - **Large Community and Resources:** PHP has a vast community of developers for support and a enormous amount of online resources for learning, support and troubleshooting.
-- **Versatile and Scalable:**  It can be used from simple websites to large complex web applications and API development.
-- **Integration with Various Technologies:**  PHP can easily integrate with databases, frameworks, and other web technologies.
+- **Versatile and Scalable:** It can be used from simple websites to large complex web applications and API development.
+- **Integration with Various Technologies:** PHP can easily integrate with databases, frameworks, and other web technologies.
 
-
-# PHP(HyperTEXT )
-
-
-
-------
+---
 
 The PHP download page provides the ability to gain easy access to the latest versions of the language. However, as you will note, only the language itself is provided. It is more common, and recommended, that the beginning user use a `WAMP` (Windows, Apache, MySQL/MariaDB, PHP), `LAMP` (Linux, Apache, MySQL/MariaDB, PHP), or `MAMP` (Mac, Apache, MySQL/MariaDB, PHP) stack package for initial installation. These packages (which we will look at later) allow for easy installation of multiple products at the same time. Otherwise, you have to run many separate installations.
 
@@ -134,7 +128,6 @@ The MariaDB database server is a community-developed fork of the MySQL server. A
 
 Many servers PHP has a direct module interface (also called SAPI). These servers include Apache, Microsoft Internet Information Server, Netscape and iPlanet servers. If PHP has no module support for your web server, you can always use it as a CGI or FastCGI processor. This means you set up your server to use the CGI executable of PHP to process all PHP file requests on the server.
 
-
 An `application` is a program or a group of programs designed for use by an end user (for example, customers, members, circus acrobats, and so on). If the end user interacts with the application via a Web browser, the application is a `Web-based` or `Web application`. If the Web application requires the long-term storage of information, using a database, it is a `Web database applica­tion`.
 The Web pages created with HTML alone are static,meaning the user can’t interact with the Web page. All users see the same Web page. Dynamic Web pages, on the other hand, allow the user to interact with the Web page. Different users might see different Web pages. For instance,one user looking at a furniture store’s online product catalog might choose to view information about the sofas, whereas another user might choose to view information about coffee tables. To create dynamic Web pages, you must use another language in addition to HTML.
 One language widely used to make Web pages dynamic is JavaScript.JavaScript is useful for several purposes, such as mouse-overs (for example, to highlight a navigation button when the user moves the mouse pointer over it) or accepting and validating information that users type into a Web form.However, it’s not useful for interacting with a database. You wouldn’t use JavaScript to move the information from the Web form into a database. PHP, however, is a language that is particularly well suited to interacting with data­bases. PHP can accept and validate the information that users type into a Web form and can also move the information into a database.
@@ -146,13 +139,11 @@ Visit the following resources to learn more:
 - [@official@Installing Apache2](https://www.php.net/manual/en/install.windows.apache2.php)
 - [@official@XAMPP](https://www.apachefriends.org/)
 
-
 `WAMP`:- is a popular software stack used for developing PHP web applications on Windows systems. Acting as an abbreviation for Windows, Apache, MySQL, and PHP, WAMP provides all the components necessary to set up a local web server. Apache is used to handle HTTP requests, MySQL manages the databases, and PHP serves as the programming language. The benefit of using WAMP lies in its convenience as it pre-packages all these components, saving time for the developer. You can download WAMP from its official website, then after installation, testing of your PHP scripts can be done locally without needing an internet connection.
 
 Visit the following resources to learn more:
 
 - [@official@Windows Installation](https://www.php.net/manual/en/install.windows.manual.php)
-
 
 `LAMP` refers to the combined use of Linux OS, Apache HTTP Server, MySQL relational database management system, and PHP; it's a popular stack for creating and hosting websites. For PHP, LAMP is a robust, open-source web development platform that supports a wide range of dynamic websites and applications. Suppose you plan to develop a content management system (CMS), forums, or e-commerce shops. In that case, PHP, as a part of the LAMP stack, helps provide a flexible development environment. Here, PHP works hand-in-hand with MySQL to access and manage databases, get queried results, and embed them into HTML pages by the Apache HTTP Server before sending them to the client side.
 
@@ -160,13 +151,11 @@ Visit the following resources to learn more:
 
 - [@official@PHP Lamp](https://www.php.net/manual/en/introduction.php)
 
-
 `MAMP` stands for Macintosh, Apache, MySQL, and PHP. It is a popular software stack that enables developers to run a local server environment. While other technology stacks might be more relevant to different languages or platform-specific development, MAMP is highly beneficial for PHP development. MAMP allows PHP developers to run their code in a localhost environment on their systems, making testing and debugging more straightforward. MAMP bundles all the required software packages (Apache, MySQL, PHP) into one convenient installation, supporting developers in creating a reliable, consistent development environment without tussle. However, as an assistant, I cannot provide a code sample for this topic since it's not directly related to coding in PHP.
 
 Visit the following resources to learn more:
 
 - [@official@MAMP](https://www.mamp.info/en/)
-
 
 **Installations**:- Installing PHP is an essential process to start developing PHP applications. PHP can be installed on Windows, macOS, and various distributions of Linux. Places to get PHP include the official PHP website, package managers like APT for Linux and Homebrew for macOS, or bundled solutions like XAMPP or WAMP that provide PHP along with a web server and database. After successful installation, you can run a simple PHP script to verify the installation. Here's an example, `<?php echo 'Hello, World!'; ?>`, which should display "Hello, World!" when accessed in a web browser.
 
@@ -176,7 +165,7 @@ Visit the following resources to learn more:
 
 1. `Linux` - Most Unix (and Linux) operating systems and distributions have a packaged version of PHP and extensions available through their packaging system.
 
-*Testing Installation*:- The best way to verify your PHP installation is by attempting to execute a PHP script.
+_Testing Installation_:- The best way to verify your PHP installation is by attempting to execute a PHP script.
 
 ```php
 phpinfo();
@@ -195,14 +184,13 @@ php -v
 PHP is mainly focused on server-side scripting, so it can do anything any other CGI program can do, such as collect form data, generate dynamic page content, or send and receive cookies.
 
 There are two main areas where PHP scripts are used.
-   1. Server-side scripting. This is the most widely used and main target field for PHP. Three things are needed to make this work: the PHP parser (CGI or server module), a web server, and a web browser. All these can run on a local machine in order to just experiment with PHP programming. 
-   2. Command line scripting. A PHP script can be run without any server or browser, only the PHP parser is needed to use it this way. This type of usage is ideal for scripts regularly executed using cron (on Unix or macOS) or Task Scheduler (on Windows). These scripts can also be used for simple text processing tasks.
+
+1.  Server-side scripting. This is the most widely used and main target field for PHP. Three things are needed to make this work: the PHP parser (CGI or server module), a web server, and a web browser. All these can run on a local machine in order to just experiment with PHP programming.
+2.  Command line scripting. A PHP script can be run without any server or browser, only the PHP parser is needed to use it this way. This type of usage is ideal for scripts regularly executed using cron (on Unix or macOS) or Task Scheduler (on Windows). These scripts can also be used for simple text processing tasks.
 
 PHP can be used on all major operating systems, including Linux, many Unix variants (including HP-UX, Solaris and OpenBSD), Microsoft Windows, macOS, RISC OS, and probably others. PHP also has support for most of the web servers today. This includes Apache, IIS, and many others. And this includes any web server that can utilize the FastCGI PHP binary, like lighttpd and nginx. PHP works as either a module, or as a CGI processor.
 
 PHP is not limited to outputting HTML. PHP's abilities include outputting rich file types, such as images or PDF files, encrypting data, and sending emails. It can also output easily any text, such as JSON or XML. PHP can autogenerate these files, and save them in the file system, instead of printing it out, forming a server-side cache for dynamic content.
-
-
 
 ## PHP, JavaScript, CSS, HTML, and Apache Web Server
 
@@ -213,11 +201,11 @@ The web server receiving the request will determine that PHP code must first be 
 The PHP print or echo functions will return any HTML (or JavaScript or CSS) code that has been placed between the "". The browser will interpret any code returned by the web server.
 
 There are many choices of web servers that will work with PHP and MySQL/MariaDB databases. Some of the most popular choices include
-   - Microsoft Internet Information Server (IIS): www.iis.net/
-   - Lighttpd: www.lighttpd.net/
-   - NGINX: www.nginx.com/ (event-driven, good for static pages)
-   - Apache: www.apache.org/ (process-driven, good for dynamic pages)
 
+- Microsoft Internet Information Server (IIS): www.iis.net/
+- Lighttpd: www.lighttpd.net/
+- NGINX: www.nginx.com/ (event-driven, good for static pages)
+- Apache: www.apache.org/ (process-driven, good for dynamic pages)
 
 ## PHP Three-Tier Architecture
 
@@ -238,7 +226,6 @@ The business rules tier returns values to the tiers that request it.
 
 `Data Tier` The data tier’s main function is to store information on a secondary device or to return data to the business rules tier. Data can (and usually is) be stored in a database using a Database Management System (like MySQL or MariaDB). The tier interfaces with the business rules tier, since data may be manipulated before being displayed, as in the creation of a report. Data is returned from the tier in a format that the business rules tier (and programming languages) can accept. Common formats include JSON, XML, SOAP,and datasets.
 Data storage can be local and/or remote. Mobile devices can restrict storage to local databases (smart phones) but can also use WSDL (web services) to store and retrieve information remotely on a server or within a cloud.Additionally, many applications save small amounts of information locally with cookies,or larger amounts of information in remote databases.
-
 
 **MVC and Dependency Injection**:- MVC (Model-View-Controller) is a design pattern used by software engineers (including PHP application designers) to communicate between the view and model using a controller. The controller is software that transfers any user input to the model. MVC design can be considered circular because the model, controller, and view have the ability to communicate with each other. The standard three-tier model is linear; for the Interface to receive or pass information to the data tier, it must pass the information through the business rules tier.
 MVC and component-based design can use dependency injection. Dependency injection allows the program (client) that will use a block of code (such as a class) while not know the actual implementation of the block of code. This allows for independent development, updating, testing, and reusability of modules.
