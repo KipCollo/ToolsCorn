@@ -33,12 +33,6 @@ The view is a result of the application state. State can only change when action
 
 In React, a state is always owned by one component. Any changes made by this state can only affect the components below it, i.e its `children`. Changing state on a component will never affect its parent or its siblings, only the children will be affected. This is the main reason that the state is often moved up in the component tree so that it can be shared between the components that need to access it.
 
-**Virtual DOM**:- React uses a Virtual DOM, a lightweight replica of the browser's DOM, which enables fast and efficient rendering.
-The virtual DOM is a lightweight copy of the actual DOM. React uses the virtual DOM to optimize and speed up the process of updating the real DOM by comparing the current virtual DOM with the previous one.
-ReactJS uses virtual DOM based mechanism to ﬁll in data (views) in HTML DOM. The virtual DOM works fast owning to the fact that it only changes individual DOM elements instead of reloading complete DOM every time
-React creates a VIRTUAL DOM in memory.Instead of manipulating the browser's DOM directly, React creates a virtual DOM in memory, where it does all the necessary manipulating, before making the changes in the browser DOM.React only changes what needs to be changed.
-React finds out what changes have been made, and changes only what needs to be changed.
-
 ## Vanilla Javascript vs React code
 
 https://codesandbox.io/s/react-first-app-advice-52879f
@@ -256,7 +250,7 @@ A controlled component is a component where form data is handled by React statea
 
 Error boundaries are React components that catch JavaScript errors during rendering, in lifec
 
-## React Render HTML
+## React Render
 
 Since React can be rendered in other environment such as native application or mobile application using react native,ReactDOM renders it to browser.React's goal is in many ways to render HTML in a web page.React renders HTML to the web page by using a function called ReactDOM.render().
 
@@ -281,18 +275,106 @@ Note that the element id does not have to be called "root", but this is the stan
 
 `The Root Node`: The root node is the HTML element where you want to display the result.It is like a container for content managed by React.It does NOT have to be a <div> element and it does NOT have to have the id='root'.
 
+_Component vs component instance vs element_ - `Components` is piece of UI.It is blueprint.`Component Instances` are created when we use components.It is actual physical manifestation of a component.Has its own state and props.Has a lifecycle.`React Elements` are results of using components.Contains info necessary to create DOM elements.`DOM Element` is actual visual representation of the component instance in the browser.
+
+Component ---> Component instance -----> React Element -----> DOM Element(HMTL) ---> UI
+
+**How rendering works** -
+
+_How components are displayed_ -
+
+```
+Render is triggered ------> Render phase -------------------> Commit phase -----------------------> Browser paint
+  |                           |                                   |
+By updating state       React calls component                 React actually writes to
+somewhere             function and figures out how DOM          the DOM, updating, inserting
+                        should be updated                      and deleting elements
+```
+
+In react, rendering is NOT updating the DOM or displaying elements on the screen.Rendering only happens internally inside React, it does not produce visual changes.
+
+`Render Triggering` - There are two situations that triggers a render:-
+
+- Initial render of application
+- State is updated in one or more component instance(re-render)
+
+The render process is triggered for entire application.Render are not triggered immediately, but scheduled for when the JS egine has some free time.There is also batching of multiple setState calls in event handlers.
+Updated state variables are not immediately available after setState call, but only after the re-render.This also applies when only one state variable is updated.If we need to update state based on previous update we use setState with callback.
+
+`Render phase` - Rendering a component will cause all of its child components be rendered as well(no matter if props change or not.)
+
+```
+component instances that------> React elements
+triggered re-render                 |
+                                    |
+                                New Virtual DOM
+                                    |
+                                    |
+Current Fiber tree ---------->  Reconciliation + Diffing ----> updated Fiber tree ----> List of DOM
+(before state update)                                                                     updates
+```
+
+Virtual DOM is tree of all React elements created from all instances in the component tree.
+_Virtual DOM_:- React uses a Virtual DOM, a lightweight replica of the browser's DOM, which enables fast and efficient rendering.
+The virtual DOM is a lightweight copy of the actual DOM. React uses the virtual DOM to optimize and speed up the process of updating the real DOM by comparing the current virtual DOM with the previous one.
+ReactJS uses virtual DOM based mechanism to ﬁll in data (views) in HTML DOM. The virtual DOM works fast owning to the fact that it only changes individual DOM elements instead of reloading complete DOM every time
+React creates a VIRTUAL DOM in memory.Instead of manipulating the browser's DOM directly, React creates a virtual DOM in memory, where it does all the necessary manipulating, before making the changes in the browser DOM.React only changes what needs to be changed.
+React finds out what changes have been made, and changes only what needs to be changed.
+
+Reasons why not update entire DOM whenever state changes:-
+
+1. Writing to the DOM is (relatively) slow.
+2. Usually only a small part of DOM needs to be updated.
+
+_Reconciliation_ - Deciding which DOM elements actually need to be inserted, deleted, or updated in order to reflect the latest state changes.Processed by the reconciler.
+
+Reconciler(Fiber) - Fiber tree is internal tree that has a fiber for each component instance and DOM element.Fibers are NOT re-created on every render.Work can be done asynchronously.
+
+- Rendering process can be split into chunks, tasks can be prioritized and work can be paused, re-used or thrown away.
+  - Enables concurrent features like Suspense or transitions
+  - Long renders won't block JS engine
+
+_Diffing_ - Diffing uses 2 fundamentals rules:-
+
+1. Two elements of different types will produce different trees. - React assumes entire sub-tree is no longer valid.Old components are destroyed and removed from DOM, including state.Tree might be rebuilt if children stayed the same(state is reset).
+   Same position, same element - Elements will be kept(as well as child elements), including state.New props/attributes are passed if they changed between renders.Sometimes this is not what we want, then we can use key prop.
+2. Elements with stable key prop stay the same across renders. Key prop is a special prop that we use to tell the diffing algorithm that an element is unique.Allows react to distinguish multiple instances of the same component type.When a key stays the same across renders, the element will be kept in the DOM(even if the position in the tree changes) i.e using keys in lists.
+   When a key changes between renders, the element will be destroyed and a new one will be created(even if the position in the tree is same as before) i.e using keys to reset state.
+
+`Commit phase` - React writes to the DOM(insertions, deletions and updates(list of DOM updates are flushed to the DOM)).
+Commiting is synchronous - DOM is updated in one go, it can't be interrupted.This is necessary so that the DOM never shows partial results, ensuring a consistent UI(in sync with state at all times).
+After the commit phase completes, the workInProgress fiber tree becomes the current tree for the next render cycle.
+
+```
+List of DOM -----> Updated DOM ------> Updated UI on
+updates               |                   the screen
+  |                   |                       |
+React               ReactDOM                Browsers
+```
+
+**Logics** - There are two types of logic in react components:-
+
+- `Render logic` - Code that lives at top level of component function.Participates in describing how the component view looks like.Rule for render logic-
+  - Components must be pure when it comes to render logic - given same props (input), a component instance should always return the same JSX(output).
+  - Render logic must produce no side effects:- no interaction with the outside world is allowed.So in render logic:-
+    1. Do NOT perform network requests(API calls).
+    2. Do NOT start timers.
+    3. Do NOT directly use the DOM API.
+    4. Do NOT mutate objects or variables outside of function scope.
+    5. Do NOT update state(or refs) -this will create an infinite loop
+- `Event Handler Functions` - Executed as a consequence of the event that the handler is listening for.Code that does things:- update state, perform an HTTP request, read an input field, navigate to another page.Side effects are allowed in event handler functions.
+
 ## React JS packages
 
 1. React Router
 2. React Query
-3. Axios
-4. React Hook Form
-5. Styled components
-6. Storybook
-7. Framer Motion.
-8. Zustand/Redux
-9. Styled Components/Emotion
-10. Material react
+3. React Hook Form
+4. Styled components
+5. Storybook
+6. Framer Motion.
+7. Zustand/Redux
+8. Styled Components/Emotion
+9. Material react
 
 - React Hook Form
 - Tanstack Query
@@ -340,7 +422,7 @@ The "thinking in react" process:-
 
 ## Tools
 
-**React.StrictMode** is a component that helps highlight potential problems in an application. It enables additional checks and warnings in the development mode to help identify and address potential bugs and deprecated features.
+_React.StrictMode_ is a component that helps highlight potential problems in an application. It enables additional checks and warnings in the development mode to help identify and address potential bugs and deprecated features.
 
 ```js
 <React.StrictMode>
@@ -348,4 +430,4 @@ The "thinking in react" process:-
 </React.StrictMode>
 ```
 
-**React DevTools** is a browser extension that allows you to inspect and debug React component hierarchies. It provides a set of tools for inspecting components, examining props and state, and profiling performance.
+_React DevTools_ is a browser extension that allows you to inspect and debug React component hierarchies. It provides a set of tools for inspecting components, examining props and state, and profiling performance.
