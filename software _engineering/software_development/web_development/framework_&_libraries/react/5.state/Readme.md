@@ -167,7 +167,6 @@ function handleClick() {
 - In Strict Mode, React will call your updater function twice in order to help you ind accidental ipurities.This is development-only behaviour and does not affect production.
 
 **useEffect Hook** - `useEffect` is a special hook that lets you run side effects in React. It is similar to componentDidMount and componentDidUpdate, but it only runs when the component (or some of its props) changes and during the initial mount.
-
 The useEffect hook is used to perform side effects in functional components. It allows you to run code after the component has rendered and handle actions such as data fetching, subscriptions, or manually updating the DOM.It lets you synchronize a component with external system.
 
 ```js

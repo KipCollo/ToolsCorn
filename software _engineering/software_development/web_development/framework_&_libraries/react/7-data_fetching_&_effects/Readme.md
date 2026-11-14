@@ -1,59 +1,33 @@
-# API Calls
+# Effects and Data Fetching
 
-APIs, short for Application Programming Interfaces, are software-to-software interfaces. Meaning, they allow different applications to talk to each other and exchange information or functionality. This allows businesses to access another business’s data, piece of code, software, or services in order to extend the functionality of their own products — all while saving time and money.
+`API Calls` - APIs, short for Application Programming Interfaces, are software-to-software interfaces. Meaning, they allow different applications to talk to each other and exchange information or functionality. This allows businesses to access another business’s data, piece of code, software, or services in order to extend the functionality of their own products — all while saving time and money.
 
 JSONPlaceholder - it is a fake online REST API for Testing and Prototyping.
 
 There are several options available to make API calls from your React.js applications.
 
-## Apollo
-
-Apollo is a platform for building a unified graph, a communication layer that helps you manage the flow of data between your application clients (such as web and native apps) and your back-end services.
-
-## Relay
-
-Relay is a JavaScript client used in the browser to fetch GraphQL data. It's a JavaScript framework developed by Facebook for managing and fetching data in React applications. It is built with scalability in mind in order to power complex applications like Facebook. The ultimate goal of GraphQL and Relay is to deliver instant UI-response interactions.
-
-## urql
-
-urql (Universal React Query Library) is a library for managing GraphQL data in React applications. It is developed and maintained by Formidable Labs and is available as open-source software.
-
-urql is designed to be easy to use and flexible, with a simple API for performing GraphQL queries and mutations. It is based on the concept of a client, which is used to manage the GraphQL data for an application. The client provides a set of utilities and APIs for managing GraphQL data, including:
-
-- executeQuery: A utility for executing a GraphQL query.
-- executeMutation: A utility for executing a GraphQL mutation.
-- useQuery: A hook for executing a GraphQL query and accessing the result in a component.
-- useMutation: A hook for executing a GraphQL mutation and accessing the result in a component.
-
-urql is often used as an alternative to other GraphQL libraries, such as Apollo Client, because of its simplicity and lightweight size. It is particularly well-suited for small to medium-sized React applications where the complexity of other GraphQL libraries may not be required.
-
-## Fetch API
-## jQuery AJAX
-## SWR
-## Unfetch API
-
-SWR is a React Hooks library for data fetching.
-
-The name “SWR” is derived from stale-while-revalidate, a cache invalidation strategy popularized by HTTP RFC 5861. SWR first returns the data from cache (stale), then sends the request (revalidate), and finally comes with the up-to-date data again.
-
-With just one hook, you can significantly simplify the data fetching logic in your project.
-
-## React Query
-
-Powerful asynchronous state management, server-state utilities and data fetching for TS/JS, React, Solid, Svelte and Vue.
-
-## Superagent
-
-Small progressive client-side HTTP request library, and Node.js module with the same API, supporting many high-level HTTP client features
-
-## rtk-query
-
-[RTK Query](https://redux-toolkit.js.org/rtk-query/overview) is a data fetching and caching tool that is included in the Redux Toolkit package. It is designed to simplify common use cases for fetching data, including caching, polling, and invalidation.
+1. `Apollo` - Apollo is a platform for building a unified graph, a communication layer that helps you manage the flow of data between your application clients (such as web and native apps) and your back-end services.
+2. `Relay` - Relay is a JavaScript client used in the browser to fetch GraphQL data. It's a JavaScript framework developed by Facebook for managing and fetching data in React applications. It is built with scalability in mind in order to power complex applications like Facebook. The ultimate goal of GraphQL and Relay is to deliver instant UI-response interactions.
+3. `urql` - urql (Universal React Query Library) is a library for managing GraphQL data in React applications. It is developed and maintained by Formidable Labs and is available as open-source software.
+   urql is designed to be easy to use and flexible, with a simple API for performing GraphQL queries and mutations. It is based on the concept of a client, which is used to manage the GraphQL data for an application. The client provides a set of utilities and APIs for managing GraphQL data, including:
+   - executeQuery: A utility for executing a GraphQL query.
+   - executeMutation: A utility for executing a GraphQL mutation.
+   - useQuery: A hook for executing a GraphQL query and accessing the result in a component.
+   - useMutation: A hook for executing a GraphQL mutation and accessing the result in a component.
+     urql is often used as an alternative to other GraphQL libraries, such as Apollo Client, because of its simplicity and lightweight size. It is particularly well-suited for small to medium-sized React applications where the complexity of other GraphQL libraries may not be required.
+4. `Fetch API`
+5. `jQuery AJAX`
+6. `SWR` - SWR is a React Hooks library for data fetching.
+   The name “SWR” is derived from stale-while-revalidate, a cache invalidation strategy popularized by HTTP RFC 5861. SWR first returns the data from cache (stale), then sends the request (revalidate), and finally comes with the up-to-date data again.
+   With just one hook, you can significantly simplify the data fetching logic in your project.
+7. `Unfetch API`
+8. `React Query` - Powerful asynchronous state management, server-state utilities and data fetching for TS/JS, React, Solid, Svelte and Vue.
+9. `Superagent` - Small progressive client-side HTTP request library, and Node.js module with the same API, supporting many high-level HTTP client features
+10. `rtk-query` - [RTK Query](https://redux-toolkit.js.org/rtk-query/overview) is a data fetching and caching tool that is included in the Redux Toolkit package. It is designed to simplify common use cases for fetching data, including caching, polling, and invalidation.
 
 ## Axios
 
 The most common way for frontend programs to communicate with servers is through the HTTP protocol. You are probably familiar with the Fetch API and the XMLHttpRequest interface, which allows you to fetch resources and make HTTP requests.
-
 Axios is a client HTTP API based on the XMLHttpRequest interface provided by browsers.
 
 Installing axios:-
@@ -67,35 +41,35 @@ pnpm install axios
 Once the package is installed, you can import the library using import or require approach:
 
 ```js
-import axios, {isCancel, AxiosError} from 'axios';
+import axios, { isCancel, AxiosError } from "axios";
 ```
 
 You can also use the default export, since the named export is just a re-export from the Axios factory:
 
 ```js
-import axios from 'axios';
+import axios from "axios";
 
-console.log(axios.isCancel('something'));
+console.log(axios.isCancel("something"));
 ```
 
 If you use require for importing, only default export is available:
 
 ```js
-const axios = require('axios');
+const axios = require("axios");
 
-console.log(axios.isCancel('something'));
+console.log(axios.isCancel("something"));
 ```
 
 For some bundlers and some ES6 linters you may need to do the following:
 
 ```js
-import { default as axios } from 'axios';
+import { default as axios } from "axios";
 ```
 
 For cases where something went wrong when trying to import a module into a custom or legacy environment, you can try importing the module package directly:
 
 ```js
-const axios = require('axios/dist/browser/axios.cjs'); // browser commonJS bundle (ES2017)
+const axios = require("axios/dist/browser/axios.cjs"); // browser commonJS bundle (ES2017)
 // const axios = require('axios/dist/node/axios.cjs'); // node commonJS bundle (ES2017)
 ```
 
@@ -141,26 +115,27 @@ const [customers, setCustomers] = useState([]);
 }, []);
 ```
 
-
 POST request- Performing a POST request
 
 ```js
 state = {
-   products: []
+  products: [],
 };
 
 handleAdd = async () => {
-   const product = { name: "Laptop", Price: 3000}
-   const { data: products } = await axios.get('https://jsonplaceholder.typicode.com/products');
+  const product = { name: "Laptop", Price: 3000 };
+  const { data: products } = await axios.get(
+    "https://jsonplaceholder.typicode.com/products",
+  );
 
-   const products = [products, ...this.state.products]
-   this.setState({ products })
-}
+  const products = [products, ...this.state.products];
+  this.setState({ products });
+};
 
-
-axios.post('/user', {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
+axios
+  .post("/user", {
+    firstName: "Fred",
+    lastName: "Flintstone",
   })
   .then(function (response) {
     console.log(response);
@@ -170,29 +145,29 @@ axios.post('/user', {
   });
 
 const [user, setUser] = useState({
-    name: '',
-    email: '',
-    username: ''
-  });
+  name: "",
+  email: "",
+  username: "",
+});
 
-  const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
+const handleChange = (e) => {
+  setUser({ ...user, [e.target.name]: e.target.value });
+};
 
-   const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    axios.post('http://localhost:5000/api/users', user)
-      .then(response => {
-        console.log('User added:', response.data);
-        alert('User successfully added!');
-      })
-      .catch(error => {
-        console.error('There was an error!', error);
-      });
-   }
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  axios
+    .post("http://localhost:5000/api/users", user)
+    .then((response) => {
+      console.log("User added:", response.data);
+      alert("User successfully added!");
+    })
+    .catch((error) => {
+      console.error("There was an error!", error);
+    });
+};
 ```
-
 
 Update request- Performing a PUT request
 
@@ -228,7 +203,6 @@ const [user, setUser] = useState({
       });
   };
 ```
-
 
 Delete Data - Performing a DELETE request.
 

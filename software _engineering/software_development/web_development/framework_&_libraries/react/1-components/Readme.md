@@ -187,6 +187,14 @@ export default function StarRating({
 }) {}
 ```
 
+**Component Lifecycle** -
+
+1. `Mount/Initial Render` - Component instance is rendered for the first time.Fresh state and props are created.
+2. `Re-render` - Happens when state changes,props change,parent re-renders and Context changes.
+3. `Unmount` - Component instance is destroyed and removed.State and props are destroyed.
+
+We can define code to run at these specific points.
+
 ## JSX
 
 JSX (JavaScript XML) is an extension to JavaScript that allows you to write HTML-like syntax within JavaScript file. It is used to describe the structure and appearance of React components.JSX stands for JavaScript XML. It allows writing HTML in JavaScript and converts the HTML tags into React elements.
