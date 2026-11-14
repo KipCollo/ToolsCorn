@@ -54,7 +54,12 @@ Visit the following resources to learn more:
 - [@video@What is server-side rendering for web development?](https://www.youtube.com/watch?v=okvg3MRAPs0)
 - [@feed@Explore top posts about Web Development](https://app.daily.dev/tags/webdev?ref=roadmapsh)
 
-## Examples of libraries & framework
+## Frameworks vs Library
+
+Framework include everything including HTTP requests, Styling, Routing,Form management.
+Libaray has separate ingredients.You need to choose multiple 3rd party libraries to build a complete application.
+
+**Examples of libraries & framework** -
 
 - _Qwik_ - Qwik is a new kind of web framework that can deliver instant loading web applications at any size or complexity. Your sites and apps can boot with about 1kb of JS (regardless of application complexity), and achieve consistent performance at scale.(https://qwik.builder.io/).
 

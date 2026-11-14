@@ -354,7 +354,7 @@ React               ReactDOM                Browsers
 
 **Logics** - There are two types of logic in react components:-
 
-- `Render logic` - Code that lives at top level of component function.Participates in describing how the component view looks like.Rule for render logic-
+- `Render logic` - Code that lives at top level of component function.Participates in describing how the component view looks like. produces JSX output for component.Rule for render logic-
   - Components must be pure when it comes to render logic - given same props (input), a component instance should always return the same JSX(output).
   - Render logic must produce no side effects:- no interaction with the outside world is allowed.So in render logic:-
     1. Do NOT perform network requests(API calls).
@@ -363,46 +363,6 @@ React               ReactDOM                Browsers
     4. Do NOT mutate objects or variables outside of function scope.
     5. Do NOT update state(or refs) -this will create an infinite loop
 - `Event Handler Functions` - Executed as a consequence of the event that the handler is listening for.Code that does things:- update state, perform an HTTP request, read an input field, navigate to another page.Side effects are allowed in event handler functions.
-
-## React JS packages
-
-1. React Router
-2. React Query
-3. React Hook Form
-4. Styled components
-5. Storybook
-6. Framer Motion.
-7. Zustand/Redux
-8. Styled Components/Emotion
-9. Material react
-
-- React Hook Form
-- Tanstack Query
-- React intl
-- Jest
-- React Testing Loibrary
-- Apollo client
-- NextJS
-
-## UI Frameworks
-
-1. Material UI
-2. Ant Design
-3. Chakra UI
-4. React Bootstrap
-5. Rebass
-6. Blueprint
-7. Semantic UI.
-
-- Render props
-- Forward refs
-- React.lazy
-- context API
-- High order components
-- Advanced & custom hooks
-- Error boundaries
-- Reconciliation
-- React internals
 
 ## How React.js Compares to Other Frameworks
 
@@ -431,3 +391,32 @@ _React.StrictMode_ is a component that helps highlight potential problems in an 
 ```
 
 _React DevTools_ is a browser extension that allows you to inspect and debug React component hierarchies. It provides a set of tools for inspecting components, examining props and state, and profiling performance.
+
+## React Ecosystem
+
+React 3rd party library ecosystem -
+
+1. `Routing` - React Router, React Location.
+2. `HTTP requests` - fetch(), Axios.
+3. `Remote state management` - React Query, SWR, APOLLO, Tanstack Query
+4. `Global state management` - Context API, Redux, Zustand.
+5. `Styling` - SCC Modules, Styled components/Emotion, tailwindcss, Material react, React Bootstrap.
+6. `Form management` - React Hook Form, FORMIK.
+7. `Animations/transitions` - Framer Motion, react-spring.
+8. `UI components` - chakra, Mantime, Material UI, Storybook, Semantic UI, Ant Design, Blueprint, Rebass.
+9. `Testing` - Jest, React Testing library,React intl
+
+UI Frameworks built on top of react - Offers many features i.e server-side rendering(SSR), static site generation(SSG), better developer experience
+
+1. Next.js
+2. Remix
+3. Gatsby.
+
+- Render props
+- Forward refs
+- React.lazy
+- context API
+- High order components
+- Advanced & custom hooks
+- Error boundaries
+- React internals
