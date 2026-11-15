@@ -3,20 +3,38 @@
 PHP has support for over 20 databases, including the most popular commercial and open source varieties.It sup­ports pretty much every database.
 It handles connecting to the database and communicating with it.You don’t need to know the technical details for connecting to a database or for exchanging messages with it. You tell PHP the name of the database and where it is, and PHP handles the details. It connects to the database, passes your instructions to the database, and returns the database response to you.
 
-PHP has built-in features to use when writing programs that move data into and out of a database.`PHP Data Objects (PDO)` library lets you use the same functions to access any database, rather than on the myriad database-specific extensions.
-
 When the task to be performed by the application requires storing or retrieving data,you use specific PHP statements designed to interact with a database.You use one PHP statement to connect to the correct database, telling PHP where the database is located, its name, and the password needed to connect to it. The database doesn’t need to be on the same machine as your Web site;PHP can communicate with a database across a network. You use another PHP statement to send instructions to database. You send an SQL message across the connection, giving databases instructions for the task that you want done.The database returns a status message that shows whether it successfully performed the task. If there was a problem, it returns an error message. If your SQL message asked to retrieve some data, database sends the data that you asked for, and PHP stores it in a temporary location where it is available to you.
 
 Note:- We create one common file connection.php to save Database connectivity functionality.We later call this SAME file in all our scripts. This is desirable since in future if the login credential would change , you do not need to make changed in each and every script.
 
-_Access a Database_ - There are two ways to access databases from PHP. One is to use a database-specific extension; the other is to use the database-independent PDO library. There are advantages and disadvantages to each approach.
+_Access a Database_ - There are two ways to access databases from PHP. One is to use a `database-specific extension`; the other is to use the `database-independent PDO library`. There are advantages and disadvantages to each approach.
+If you use a database-specific extension, your code is intimately tied to the database you’re using.For example, the MySQL extension’s function names, parameters, error handling, and so on are completely different from those of the other database extensions. If you want to move your database from MySQL to PostgreSQL, it will involve significant changes to your code. PDO, on the other hand, hides the database-specific functions from you with an abstraction layer, so moving between database systems can be as simple as changing one line of your program or your php.ini file.
 
----
+PHP has built-in features to use when writing programs that move data into and out of a database.`PHP Data Objects (PDO)` library lets you use the same functions to access any database, rather than on the myriad database-specific extensions.
 
-## POSTGRESQL
+## PHP Data Objects
 
-- `pg_connect(string $connection_string,int $flags =0)`:-Opens a PostgreSQL connection specified by the connection_string.
-  If a second call is made to pg_connect() with same connection_string as an existing connection,the existing connection will be returned unless you pass `PGSQL_CONNECT_FORCE_NEW` as flag.
+The PHP Data Objects (PDO) extension defines a lightweight, consistent interface for accessing databases in PHP. Each database driver that implements the PDO interface can expose database-specific features as regular extension functions. Note that you cannot perform any database functions using the PDO extension by itself; you must use a database-specific PDO driver to access a database server.
+It has drivers for almost all database engines in existence, and those drivers that PDO does not supply should be accessible through PDO’s generic ODBC connection. PDO is modular in that it has to have at least two extensions enabled to be active: the PDO extension itself and the PDO extension specific to the database to which you will be interfacing.
+The PDO library is also an object-oriented extension.
+
+_Making connection_ - The first requirement for PDO is to make a connection to the database and hold that connection in a connection handle variable.
+
+```php
+$db = new PDO($dsn, $username, $password); //The $dsn stands for data source name
+```
+
+Specifically, for a MySQL connection, you would write the following code:
+
+```php
+$db = new PDO("mysql:host=localhost;dbname=library", "petermac","abc123");
+```
+
+_Interacting with database_ - Once you have connected to your database engine and the database that you want to interact with, you can use that connection to send SQL commands to the server. A simple UPDATE statement would look like this:
+
+```php
+$db->query("UPDATE books SET authorid=4 WHERE pub_year=1982");
+```
 
 ---
 
@@ -25,10 +43,9 @@ _Access a Database_ - There are two ways to access databases from PHP. One is to
 PHP offers several MySQL drivers and plugins for accessing and handling MySQL. Examples of compatible database servers are MariaDB Server,MySQL Server,Percona Server for MySQL, and TiDB.
 PHP has supported MySQL almost since the project’s inception, including an API with the version 2 release. In fact, using MySQL with PHP eventually became so commonplace that for several years the extension was enabled by default. But perhaps the most indicative evidence of the strong bonds between the two technology camps was the release of an updated MySQL extension with PHP 5, known as MySQL Improved (and typically referred to as mysqli).
 
-There are several PHP APIs for accessing the MySQL database. Users can choose between the `mysqli` or ``PDO_MySQL` extensions.
+There are several PHP APIs for accessing the MySQL database. Users can choose between the `mysqli` or `PDO_MySQL` extensions.
 
-MySQL Improved Extension.
-The mysqli extension allows you to access the functionality provided by MySQL 4.1 and above.
+**MySQL Improved Extension**. - The mysqli extension allows you to access the functionality provided by MySQL 4.1 and above.
 Reason for extension:-
 
 1. First, MySQL’s rapid evolution prevented users who were relying on the original extension from taking advantage of new features such as prepared statements, advanced connection options, and security enhancements.
@@ -48,7 +65,7 @@ A detailed list of the key enhancements follows:
 7. Dual procedural and object-oriented interface:- The mysqli extension features a dual interface. It supports the procedural and object-oriented programming paradigm.
    Users migrating from the old mysql extension may prefer the procedural interface. The procedural interface is similar to that of the old mysql extension. In many cases, the function names differ only by prefix. Some mysqli functions take a connection handle as their first argument, whereas matching functions in the old mysql interface take it as an optional last argument.
 
-**Installation**:- As of PHP 5, MySQL support is no longer bundled with the standard PHP distribution. Therefore, you need to explicitly configure PHP to take advantage of this extension.
+_Installation_:- As of PHP 5, MySQL support is no longer bundled with the standard PHP distribution. Therefore, you need to explicitly configure PHP to take advantage of this extension.
 Enabling the mysqli extension on the Linux/Unix platform is accomplished by configuring PHP using the --with-mysqli flag. This flag should point to the location of the mysql_config program available to MySQL 4.1 and greater.
 To enable the mysqli extension on Windows, you need to uncomment the following line from the
 php.ini file, or add it if it doesn’t exist:- extension=php_mysqli.dll
@@ -285,3 +302,10 @@ while (list($room_bed_no, $room_master_id, $bed_name, $nStatus, $patient_no, $In
 $delete = "delete from room_beds where room_bed_id=331";
 $con->query($delete);
 ```
+
+---
+
+## POSTGRESQL
+
+- `pg_connect(string $connection_string,int $flags =0)`:-Opens a PostgreSQL connection specified by the connection_string.
+  If a second call is made to pg_connect() with same connection_string as an existing connection,the existing connection will be returned unless you pass `PGSQL_CONNECT_FORCE_NEW` as flag.
