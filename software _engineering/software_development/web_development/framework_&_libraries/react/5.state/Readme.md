@@ -166,35 +166,6 @@ function handleClick() {
 - Calling the set function during rerendering is only allowed from within the currently rendering component.React will discard its output and immediately attempt to render it again with the new state.This pattern is rarely neede, but you can use it to store information from previous renders.
 - In Strict Mode, React will call your updater function twice in order to help you ind accidental ipurities.This is development-only behaviour and does not affect production.
 
-**useEffect Hook** - `useEffect` is a special hook that lets you run side effects in React. It is similar to componentDidMount and componentDidUpdate, but it only runs when the component (or some of its props) changes and during the initial mount.
-The useEffect hook is used to perform side effects in functional components. It allows you to run code after the component has rendered and handle actions such as data fetching, subscriptions, or manually updating the DOM.It lets you synchronize a component with external system.
-
-```js
-useEffect(setup,dependencies?)
-```
-
-```js
-import { useEffect } from 'react'
-import { createConnectio } from './chat.js'
-
-function ChatRoom({ roomId }){
-   const [serverurl, setserverUrl] = useState('https://localhost:1234');
-
-   useeffect(() => {
-      const connection = createConnection(serverUrl, roomId);
-      connection.connect();
-      return () + {
-         connection.disconnect();
-      }
-   },[serverUrl, roomId]);
-   // ...
-}
-```
-
-- `parameters`:-
-  1.  setup - The functinwith your effect's logic.Can optionally return a cleanup function.When your component is added to the DOM,react will run your setup function.After every re-render with changed dependencies,react will first run cleanup function(if you provided it) with old values,and then run uyour setup function with new values.After your component is removed from the DOM,React will run your cleanup function.
-  2.  optional dependencies - The list of all reactive values referenced inside of the setup code.
-
 ## useContext
 
 ## Writing Custom Hooks

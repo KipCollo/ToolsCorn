@@ -473,3 +473,25 @@ It usually starts with an entry file, and from there it bundles up all of the co
 _Build Tools_
 
 - `Vite` - Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects.Vite takes advantage of native ES Modules.Serves directly to the browser.It uses rollup to bundle files for production(npm run build).
+
+````js
+async function fetchMovies() {
+      try {
+        setIsLoading(true);
+        const res = await fetch(
+          `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`,
+        );
+        if (!res.ok) throw new Error("Something went wrong!");
+        const data = await res.json();
+        if (data.Response === "False") throw new Error("Movie not Found");
+        setMovies(data.Search);
+        setIsLoading(false);
+      } catch (err) {
+        console.log(err);
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    ```
+````

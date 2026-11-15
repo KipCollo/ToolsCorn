@@ -244,3 +244,45 @@ try{
 
 }
 ```
+
+## Side Effects
+
+A side effect is basically any interaction between a React component and the world outside the component.Examples are data fetching, setting up subscriptions, setting up timers, manually accessing the DOM.
+Side effects can be created in two ways:-
+
+1. Event Handlers - Triggered by events.
+2. Effects - useEffect hook. Allows us to write code that will run at different moments: mount, re-render or unmount.
+
+**useEffect Hook** - `useEffect` is a special hook that lets you run side effects in React. It is similar to componentDidMount and componentDidUpdate, but it only runs when the component (or some of its props) changes and during the initial mount.
+The useEffect hook is used to perform side effects in functional components. It allows you to run code after the component has rendered and handle actions such as data fetching, subscriptions, or manually updating the DOM.It lets you synchronize a component with external system.
+
+_Mechanics of effects_ - useEffect is like an event listener that is listening for one dependency to change. Whenever a dependency changes, it will execute the effect again.
+Effects react to updates to state and props used inside the effect (the dependencies). So effects are “reactive” (like state updates re-rendering the UI)
+
+```js
+useEffect(setup,dependencies?)
+```
+
+```js
+import { useEffect } from "react";
+
+export default function App() {
+  const [movies, setMovies] = useState(tempMovieData);
+  useEffect(function () {
+    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=interstellar`)
+      .then((res) => res.json())
+      .then((data) => setMovies(data.Search));
+  }, []);
+}
+```
+
+- `parameters`:-
+  1.  setup - The functinwith your effect's logic.Can optionally return a cleanup function.When your component is added to the DOM,react will run your setup function.After every re-render with changed dependencies,react will first run cleanup function(if you provided it) with old values,and then run uyour setup function with new values.After your component is removed from the DOM,React will run your cleanup function.
+  2.  optional dependency array - The list of all reactive values referenced inside of the setup code.By default,effects run after every render.We can prevent that by passing a dependency array.Without dependency array, React doesn't know when to run th effect.Each time one of the dependencies changes, the effect will be executed again.Every state variable and prop used inside the effect MUST be included in the dependency array.Otherwise we get stale closure.
+
+```js
+const [movies, setMovies] = useState([]);
+const title = props.movie.Title;
+
+useEffect(function () {}, [title, movies]);
+```
