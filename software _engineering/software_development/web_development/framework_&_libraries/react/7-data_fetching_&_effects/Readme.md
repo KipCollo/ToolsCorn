@@ -286,3 +286,37 @@ const title = props.movie.Title;
 
 useEffect(function () {}, [title, movies]);
 ```
+
+_Setting up titles_ -
+
+```js
+useEffect(
+  function () {
+    if (!title) return;
+    document.title = `Movie | ${title}`;
+  },
+  [title],
+);
+```
+
+_Cleanup function_ - Is a function we can return from an effect(optional).Runs on two diff occasions:- Before the effect is executed again, after a component has unmounted.
+Necessary whenever the side effect keeps happening after the component has been re-rendered or unmounted.
+
+- HTTP request - Cancel request
+- API subscription - Cancel subscription
+- Start timer - Stop timer
+- Add event listener - Remove listener.
+
+```js
+useEffect(
+  function () {
+    if (!title) return;
+    document.title = `Movie | ${title}`;
+
+    return function () {
+      document.title = "usePopcorn";
+    };
+  },
+  [title],
+);
+```
