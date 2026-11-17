@@ -102,8 +102,16 @@ const totalPrice = cart.reduce((acc, cur) => acc + cur.price, 0);
 ## Hooks
 
 Hooks were introduced in React 16.8 and they let us use React's features-like managing your component's state and or performing an after effect when certain changes occur in state(s) without writing a class.Hooks are functions that allow you to use state and other React features without writing a class. They were introduced in React 16.8 to provide a simpler and more readable way to write React components.
+Hooks are special built-in functions that allows us to "hook" into React internals:
 
-Hooks have some rules: They must be used only at the top level of a function component, hooks mustbe called in the same order every time the component renders, and they cannot be called conditionally.
+- Creating and accessing state from Fiber tree.
+- Registering side effects in Fiber tree.
+- Manual DOM selections.
+
+Always start with `use`.Enable easy reusing of non-visual logic: We can compose multiple hooks into our own custom hooks.
+
+Hooks have some rules: They must be used only at the top level of a function component, hooks must be called in the same order every time the component renders, and they cannot be called conditionally.
+Only call hooks from React functions.
 
 1. The `useState` hook is used to add state to functional components. It returns a stateful value and a function to update that value. By calling the update function, the component can trigger a re-render with the updated state.
 2. The `useEffect` hook is used to perform side effects in functional components. It allows you to run code after the component has rendered and handle actions such as data fetching, subscriptions, or manually updating the DOM.
@@ -113,6 +121,7 @@ Hooks have some rules: They must be used only at the top level of a function com
 6. The `useRef()` hook is used to create a mutable reference that persists across component renders. It returns a mutable object with a current property that can be used to store values or reference DOM nodes or other React elements.
 7. The `useReducer()` hook is used to manage state in functional components using the reducer pattern. It is an alternative to useState() and is suitable for managing more complex state or state transitions. It returns the current state and a dispatch function to update the state
 8. The `useContext()` hook is used to consume values from a React context. It allows functional components to access context values without nesting multiple layers of components or using render props.
+9. `useTransition`
 
 **useState** - `useState` is a React hook that lets you add a state variable to your components. Calling useState returns an array with two elements: the current state value and a function to update the state.By calling the update function, the component can trigger a re-render with the updated state.
 useState is a Hook,it's called only at the top level of your component or your own hooks.It can't be called inside loops or conditions,if you need to,extract a new component and move state into it.
