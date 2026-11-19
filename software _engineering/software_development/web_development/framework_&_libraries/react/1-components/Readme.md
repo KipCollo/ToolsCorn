@@ -26,7 +26,7 @@ _Benefits of the Component Approach_ -
 **Class Components** - These components are simple classes (made up of multiple functions that add functionality to the application). All class based components are child classes for the Component class of ReactJS.These components are JavaScript Classes that extends React Component and have their own state and lifecycle methods.
 
 A class component must include the extends React.Component statement. This statement creates an inheritance to React.Component, and gives your component access to React.Component's functions.
-The component also requires a render() method, this method returns HTML.
+The component also requires a render() method, this method returns JSX.
 
 ```jsx
 class ClassName extends Component {
@@ -38,8 +38,6 @@ class ClassName extends Component {
 
 export default ClassName;
 ```
-
-TODO More on Lists and unique keys in lists
 
 **Functional Components** - Functional components are simply JavaScript functions that returns JSX. We can create a functional component to React by writing a JavaScript function. These functions may or may not receive data as parameters. In the functional Components, the return value is the JSX code to render to the DOM tree. Functional components can also have state which is managed using React hooks.
 
@@ -68,6 +66,12 @@ function Garage() {
   );
 }
 ```
+
+**Functional component vs Class component** -
+
+- Functional components was introduced in v16.8(2019, with hooks) while class components was introduced in v0.13(2015)
+- Functiona components is created by Javascript function while class components is created by ES6 classes extending React.Component.
+- In functional components side effects is handled by useEffect hook while in class component is handled by lifecycle methods.
 
 **Rendering a Component** - To use component in your application, use similar syntax as normal HTML: <Car />
 
