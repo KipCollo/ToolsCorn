@@ -2474,13 +2474,16 @@ Spring’s view resolution is extremely flexible. A `Controller` is typically re
   5. `View`-Views is rendering/displaying the data.i.e what format to display data.Different views are available ie pdf,webpage,excel.We can change one view to another in view layer. i.e Jsp----------->Thymeleaf
 
 ```
-                 1                           2
-  CLIENT-------------->DispatcherServlet----------------->HandlerMapping
- |                        |   |   |          3
- |                        |   |   |----------><---------------Controller
- |                        |   |              4
- |   Http Response        |   |------------><--------------ViewRessolver
-  -------<-------------VIEW
+                                        |<------> Handler Mapping
+Request   ----->                        |
+                 Dispatcher Servlet     |
+                 (Front Controller)     |<-----> Controller  <-------- > Service  <-----> Repository <------> Dtatabase
+                                        |
+Response  <-----                        |
+                                        |<------> View Resolver
+                                        |
+                                        |
+                                        |<-------> View
 ```
 
 The first stop in the request’s travels is at Spring’s DispatcherServlet. Like most Java-based web frameworks, Spring MVC funnels requests through a single front controller servlet. A front controller is a common web application pattern where a single servlet delegates responsibility for a request to other components of an application to perform actual processing. In the case of Spring MVC, DispatcherServlet is the front controller.
@@ -3618,7 +3621,7 @@ public class WidgetsResource {
 }
 ```
 
-### Spring REST
+### Spring MVC REST
 
 Starting with Spring 3.0, Spring introduced first-class support for creating REST APIs. And Spring’s REST implementation has continued to evolve through Spring.
 The REST capabilities are provided by the Spring MVC module (same module that provides model-view-controller capabilities). It is not a JAX-RS implementation and can be seen as a Spring alternative to the JAX-RS standard.
@@ -3636,6 +3639,14 @@ Spring has long had some of the ingredients needed for exposing REST resources.S
 NOTE:- Although Spring supports a variety of formats for representing resources, you aren’t obligated to use them all when defining your REST API.JSON and XML are often sufficient representations expected by most clients.
 Certainly, if you’ll be presenting content to be consumed by a human, you should probably support HTML formatted resources. Depending on the nature of the resource and the requirements of your application, you may even choose to present the resource as a PDF document or an Excel spreadsheet.For non-human consumers, such as other applications or code that invokes your REST endpoints, the leading choices for resource representation are XML and JSON.
 It’s easy enough to support both of these options using Spring, so there’s no need to make a choice.
+
+```
+Request   ----->                        |<------> Handler Mapping
+                 Dispatcher Servlet     |
+                 (Front Controller)     |
+Response  <-----                        |<-----> Rest Controller  <-------- > Service  <-----> Repository <------> Dtatabase
+
+```
 
 Spring offers two options to transform a resource’s Java representation into the representation that’s shipped to the client:
 
@@ -3744,9 +3755,7 @@ public class SpittleController {
 
 Neither of the handler methods are annotated with @ResponseBody. But because the controller is annotated with @RestController, the objects returned from those methods will still go through message conversion to produce a resource representation for the client.
 
-**Validation**:-
-
-Use `@Valid` to validate incoming request data automatically.Triggers validation of an object on the method level.It is used with BindingResult interface to capture valoidation errors.
+**Validation**:- Use `@Valid` to validate incoming request data automatically.Triggers validation of an object on the method level.It is used with BindingResult interface to capture valoidation errors.
 
 ```java
 public String addUser(@Valid @RequestBody User user, BindingResult result){
@@ -4297,6 +4306,61 @@ By default, the request version is parsed into a semantic version with major, mi
 
 }
 ```
+
+**Consuming REST services** - A Spring application can consume a REST API with the following:
+
+1. RestTemplate—A straightforward, synchronous REST client provided by the core Spring Framework.
+2. Traverson—A wrapper around Spring’s RestTemplate, provided by Spring HATEOAS, to enable a hyperlink-aware, synchronous REST client. Inspired from a JavaScript library of the same name.
+3. OpenFeign - A tool offered by Spring Cloud.
+4. Traverson—A hyperlink-aware, synchronous REST client provided by Spring HATEOAS. Inspired from a JavaScript library of the same name.
+5. WebClient—A reactive, asynchronous REST client introduced in Spring 5.Uses different programming approach named reactive programming.
+
+It’s not uncommon for Spring applications to both provide an API and make requests to another application’s API. In fact, this is becoming prevalent in the world of microservices.
+
+_RestTemplate_:- Working with low-level HTTP libraries, the client needs to create a client instance and a request object, execute the request, interpret the response, map the response to domain objects, and handle any exceptions that may be thrown along the way. And all of this boilerplate is repeated, regardless of what HTTP request is sent.
+
+```java
+HttpClient client = HttpClients.createDefault();
+
+HttpGet request = new HttpGet("http://graph.facebook.com/" + id);
+request.setHeader("Accept", "application/json");
+
+HttpResponse response = client.execute(request);
+
+HttpEntity entity = response.getEntity();
+ObjectMapper mapper = new ObjectMapper();
+return mapper.readValue(entity.getContent(), Profile.class);
+```
+
+To avoid such boilerplate code, Spring provides RestTemplate which frees you from dealing with the tedium of consuming REST resources.
+RestTemplate provides 41 methods for interacting with REST resources.It defines 12 unique operations, each of which is overloaded, providing a total of 41 methods.
+
+1. delete(…) - Performs an HTTP DELETE request on a resource at a specified URL
+2. exchange(…) - Executes a specified HTTP method against a URL, returning a ResponseEntity containing an object mapped from the response body
+3. execute(…) - Executes a specified HTTP method against a URL, returning an object mapped from the response body
+4. getForEntity(…) - Sends an HTTP GET request, returning a ResponseEntity containing an object mapped from the response body
+5. getForObject(…) - Sends an HTTP GET request, returning an object mapped from a response body
+6. headForHeaders(…) - Sends an HTTP HEAD request, returning the HTTP headers for the specified resource URL
+7. optionsForAllow(…) - Sends an HTTP OPTIONS request, returning the Allow header for the specified URL
+8. patchForObject(…) - Sends an HTTP PATCH request, returning the resulting object mapped from the response body
+9. postForEntity(…) - POSTs data to a URL, returning a ResponseEntity containing an object mapped from the response body
+10. postForLocation(…) - POSTs data to a URL, returning the URL of the newly created resource
+11. postForObject(…) - POSTs data to a URL, returning an object mapped from the response body
+12. put(…) - PUTs resource data to the specified URL
+
+With the exception of TRACE, RestTemplate has at least one method for each of the standard HTTP methods. In addition, execute() and exchange() provide lower-level, general-purpose methods for sending requests with any HTTP method.
+
+Most of the methods are overloaded into three method forms:
+
+- One accepts a String URL specification with URL parameters specified in a variable argument list.
+- One accepts a String URL specification with URL parameters specified in a Map<String,String>.
+- One accepts a java.net.URI as the URL specification, with no support for parameterized URLs.
+
+`GETting resources`:- There are two kinds of methods for performing GET requests: getForObject() and getForEntity().
+Except for the return type, the getForEntity() methods are mirror images of the getForObject() methods. And they work much the same way. They both perform a GET request, retrieving a resource given a URL. And they both map that resource to an instance of some type specified by the responseType parameter. The only difference is that getForObject() returns an object of the type requested, whereas getForEntity() returns that object along with extra information about the response.
+
+_Spring Cloud OpenFeign_:- To implement the REST endpoint call using OpenFeign, we only need to define an interface and use annotations to instruct OpenFeign on how to implement this interface.
+Openfeign implements the given interface and defines a bean of the implementation in the Spring context.You can inject the bean from the Spring context anywhere you need it in your app.
 
 ---
 

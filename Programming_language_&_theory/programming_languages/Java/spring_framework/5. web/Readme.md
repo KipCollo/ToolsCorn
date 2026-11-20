@@ -1,70 +1,12 @@
 # Web Layer
 
 - The Web layer consists of the Web, Web-Servlet, WebSocket and Web-Portlet modules.
-    - `Spring’s Web module` provides basic web-oriented integration features such as multipart file-upload functionality and the initialization of the IoC container using servlet listeners and a web-oriented application context. It also contains the web-related parts of Spring’s remoting support.
-    - `The Web-Servlet module` contains Spring’s model-view-controller (MVC) implementation for web applications. Spring’s MVC framework provides a clean separation between domain model code and web forms, and integrates with all the other features of the Spring Framework.
-    - `The Web-Portlet module` provides the MVC implementation to be used in a portlet environment and mirrors the functionality of Web-Servlet module.
-    - `WebSocket module` Support for Web Socket style messaging.
+  - `Spring’s Web module` provides basic web-oriented integration features such as multipart file-upload functionality and the initialization of the IoC container using servlet listeners and a web-oriented application context. It also contains the web-related parts of Spring’s remoting support.
+  - `The Web-Servlet module` contains Spring’s model-view-controller (MVC) implementation for web applications. Spring’s MVC framework provides a clean separation between domain model code and web forms, and integrates with all the other features of the Spring Framework.
+  - `The Web-Portlet module` provides the MVC implementation to be used in a portlet environment and mirrors the functionality of Web-Servlet module.
+  - `WebSocket module` Support for Web Socket style messaging.
 
-
-## Consuming REST services
-
-It’s not uncommon for Spring applications to both provide an API and make requests to another application’s API. In fact, this is becoming prevalent in the world of microservices.
-A Spring application can consume a REST API with:-
-
-1. RestTemplate — A straightforward, synchronous REST client provided by the core Spring Framework.
-2. Traverson—A hyperlink-aware, synchronous REST client provided by Spring HATEOAS. Inspired from a JavaScript library of the same name.
-3. WebClient—A reactive, asynchronous REST client introduced in Spring 5.Uses different programming approach named reactive programming.
-4. OpenFeign - A tool offered by Spring Cloud.
-
-
-**Consuming REST endpoints with RestTemplate**:- Working with low-level HTTP libraries, the client needs to create a client instance and a request object, execute the request, interpret the response, map the response to domain objects, and handle any exceptions that may be thrown along the way. And all of this boilerplate is repeated, regardless of what HTTP request is sent.
-
-```java
-HttpClient client = HttpClients.createDefault();
-
-HttpGet request = new HttpGet("http://graph.facebook.com/" + id);
-request.setHeader("Accept", "application/json");
-
-HttpResponse response = client.execute(request);
-
-HttpEntity entity = response.getEntity();
-ObjectMapper mapper = new ObjectMapper();
-return mapper.readValue(entity.getContent(), Profile.class);
-```
-
-To avoid such boilerplate code, Spring provides RestTemplate which frees you from dealing with the tedium of consuming REST resources.
-RestTemplate provides 41 methods for interacting with REST resources.It defines 12 unique operations, each of which is overloaded, providing a total of 41 methods.
-
-1. delete(…) - Performs an HTTP DELETE request on a resource at a specified URL
-2. exchange(…) - Executes a specified HTTP method against a URL, returning a ResponseEntity containing an object mapped from the response body
-3. execute(…) - Executes a specified HTTP method against a URL, returning an object mapped from the response body
-4. getForEntity(…) - Sends an HTTP GET request, returning a ResponseEntity containing an object mapped from the response body
-5. getForObject(…) - Sends an HTTP GET request, returning an object mapped from a response body
-6. headForHeaders(…) - Sends an HTTP HEAD request, returning the HTTP headers for the specified resource URL
-7. optionsForAllow(…) - Sends an HTTP OPTIONS request, returning the Allow header for the specified URL
-8. patchForObject(…) - Sends an HTTP PATCH request, returning the resulting object mapped from the response body
-9. postForEntity(…) - POSTs data to a URL, returning a ResponseEntity containing an object mapped from the response body
-10. postForLocation(…) - POSTs data to a URL, returning the URL of the newly created resource
-11. postForObject(…) - POSTs data to a URL, returning an object mapped from the response body
-12. put(…) - PUTs resource data to the specified URL
-
-With the exception of TRACE, RestTemplate has at least one method for each of the standard HTTP methods. In addition, execute() and exchange() provide lower-level, general-purpose methods for sending requests with any HTTP method.
-
-Most of the methods are overloaded into three method forms:
-- One accepts a String URL specification with URL parameters specified in a variable argument list.
-- One accepts a String URL specification with URL parameters specified in a Map<String,String>.
-- One accepts a java.net.URI as the URL specification, with no support for parameterized URLs.
-
-`GETting resources`:- There are two kinds of methods for performing GET requests: getForObject() and getForEntity().
-Except for the return type, the getForEntity() methods are mirror images of the getForObject() methods. And they work much the same way. They both perform a GET request, retrieving a resource given a URL. And they both map that resource to an instance of some type specified by the responseType parameter. The only difference is that getForObject() returns an object of the type requested, whereas getForEntity() returns that object along with extra information about the response.
-
-
-**Spring Cloud OpenFeign**:- To implement the REST endpoint call using OpenFeign, we only need to define an interface and use annotations to instruct OpenFeign on how to implement this interface.
-Openfeign implements the given interface and defines a bean of the implementation in the Spring context.You can inject the bean from the Spring context anywhere you need it in your app.
-
-
-----------------
+---
 
 # Web module
 
@@ -76,20 +18,19 @@ This module also supports integration with popular web frameworks like Jakarta S
 
 It includes:
 
-* @BindParam - Annotation to bind values from a web request such as request parameters or path variables to fields of a Java object.
-* @CookieValue - Annotation to indicate that a method parameter is bound to an HTTP cookie.
-* @CrossOrigin - Annotation for permitting cross-origin requests on specific handler classes and/or handler methods.
-* @InitBinder - Annotation that identifies methods that initialize the WebDataBinder which will be used for populating command and form object arguments of annotated handler methods.
-* @Mapping - Meta annotation that indicates a web mapping annotation.
-* @MatrixVariable - Annotation which indicates that a method parameter should be bound to a name-value pair within a path segment.
-* @RequestHeader - Annotation which indicates that a method parameter should be bound to a web request header.
-* @RequestPart - Annotation that can be used to associate the part of a "multipart/form-data" request with a method argument.
-* @SessionAttribute - Annotation to bind a method parameter to a session attribute.
-* @SessionAttributes - Annotation that indicates the session attributes that a specific handler uses.
-ValueConstants - Common value constants shared between bind annotations.
+- @BindParam - Annotation to bind values from a web request such as request parameters or path variables to fields of a Java object.
+- @CookieValue - Annotation to indicate that a method parameter is bound to an HTTP cookie.
+- @CrossOrigin - Annotation for permitting cross-origin requests on specific handler classes and/or handler methods.
+- @InitBinder - Annotation that identifies methods that initialize the WebDataBinder which will be used for populating command and form object arguments of annotated handler methods.
+- @Mapping - Meta annotation that indicates a web mapping annotation.
+- @MatrixVariable - Annotation which indicates that a method parameter should be bound to a name-value pair within a path segment.
+- @RequestHeader - Annotation which indicates that a method parameter should be bound to a web request header.
+- @RequestPart - Annotation that can be used to associate the part of a "multipart/form-data" request with a method argument.
+- @SessionAttribute - Annotation to bind a method parameter to a session attribute.
+- @SessionAttributes - Annotation that indicates the session attributes that a specific handler uses.
+  ValueConstants - Common value constants shared between bind annotations.
 
-
------------------
+---
 
 ## WebSockets
 
@@ -100,8 +41,8 @@ The WebSocket protocol, RFC 6455, provides a standardized way to establish a ful
 ```h
 GET /spring-websocket-portfolio/portfolio HTTP/1.1
 Host: localhost:8080
-Upgrade: websocket 
-Connection: Upgrade 
+Upgrade: websocket
+Connection: Upgrade
 Sec-WebSocket-Key: Uc9l9TMkWGbHFD2qnFHltg==
 Sec-WebSocket-Protocol: v10.stomp, v11.stomp
 Sec-WebSocket-Version: 13
@@ -111,7 +52,7 @@ Origin: http://localhost:8080
 Instead of the usual 200 status code, a server with WebSocket support returns output similar to the following:
 
 ```r
-HTTP/1.1 101 Switching Protocols 
+HTTP/1.1 101 Switching Protocols
 Upgrade: websocket
 Connection: Upgrade
 Sec-WebSocket-Accept: 1qVdfYHU9hPOl4JYYNXF623Gzn0=
@@ -272,7 +213,7 @@ The following example shows a client subscribing to receive stock quotes, which 
 
 SUBSCRIBE
 id:sub-1
-destination:/topic/price.stock.*
+destination:/topic/price.stock.\*
 
 ^@
 
@@ -358,9 +299,9 @@ public String sendMessage(String message) {
 
 5. @MessageExceptionHandler
 
-    Usage: Handles exceptions that occur during message handling. You can define a method that will respond to specific exceptions.
+   Usage: Handles exceptions that occur during message handling. You can define a method that will respond to specific exceptions.
 
-    Where to Use: On methods within a controller to catch and handle exceptions.
+   Where to Use: On methods within a controller to catch and handle exceptions.
 
 ```java
     @MessageExceptionHandler
@@ -397,8 +338,8 @@ Here are the main methods you typically override when implementing WebSocketMess
 
 2. registerStompEndpoints(StompEndpointRegistry registry)
 
-    PurpRegisters STOMP endpoints that clients can connect to. You can also configure SockJS fallback options here.
-    Example:
+   PurpRegisters STOMP endpoints that clients can connect to. You can also configure SockJS fallback options here.
+   Example:
 
 ```java
 
@@ -410,8 +351,8 @@ Here are the main methods you typically override when implementing WebSocketMess
 
 3. configureClientInboundChannel(ChannelRegistration registration)
 
-    Purpose: Customize the inbound channel for messages sent by clients. You can add interceptors here to handle or modify messages.
-    Example:
+   Purpose: Customize the inbound channel for messages sent by clients. You can add interceptors here to handle or modify messages.
+   Example:
 
 ```java
 @Override
@@ -422,8 +363,8 @@ Here are the main methods you typically override when implementing WebSocketMess
 
 4. configureClientOutboundChannel(ChannelRegistration registration)
 
-    Purpose: Customize the outbound channel for messages sent to clients. Similar to the inbound channel configuration.
-    Example:
+   Purpose: Customize the outbound channel for messages sent to clients. Similar to the inbound channel configuration.
+   Example:
 
 ```java
 
@@ -433,4 +374,4 @@ public void configureClientOutboundChannel(ChannelRegistration registration) {
 }
 ```
 
-----------------
+---
