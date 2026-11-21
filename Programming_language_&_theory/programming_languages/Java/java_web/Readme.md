@@ -3712,7 +3712,7 @@ Note that all but five of the HTTP message converters are registered by default,
 Same annotations used in Spring MVC will still come in handy as you define your REST API.Spring MVC’s HTTP request-handling annotations:-
 
 1. `@GetMapping` - HTTP GET requests.Used in reading resource data.
-2. `PostMapping` - HTTP POST requests. Used in creating a resource.
+2. `@PostMapping` - HTTP POST requests. Used in creating a resource.
 3. `@PutMapping` - HTTP PUT requests. Used for updating a resource.
 4. `@PatchMapping` - HTTP PATCH requests. Used for updating a resource.
 5. `@DeleteMapping` - HTTP DELETE requests. Used to delete a resource.
@@ -3729,17 +3729,10 @@ public @ResponseBody List<Spittle> spittles(){}
 
 If the client’s Accept header specifies that the client will accept application/json, and if the Jackson JSON library is in the application’s classpath, then either `MappingJacksonHttpMessageConverter` or `MappingJackson2HttpMessageConverter` will be chosen (depending on which version of Jackson is in the classpath). The message converter will convert the Spittle list returned from the controller into a JSON document that will be written to the body of the response.
 
-_Receiving resource state in Request Body_:- A REST API can also receive resource representations from the client. It’d be inconvenient if your controller had to convert a JSON or XML representation sent from a client into an object it can use.
-The `@RequestBody` tells Spring to find a message converter to convert a resource representation coming from a client into an object.
-@RequestBody - Annotation indicating a method parameter should be bound to the body of the web request.Spring treats result of method as response.Converts response to JSON.Binds HTTP request body to method parameter and automatically deserialize JSON/XML. It is used in POST or PUT requests to read data sent by the client and supports content negotiations.
+The @ResponseBody and @RequestBody annotations are powerful ways to engage Spring’s message converters when handling requests but if you’re writing a controller that has several methods, all of which should use message conversion, then those annotations get somewhat repetitive.
 
-```java
-@RequestMapping(method=RequestMethod.POST,consumes="application/json")
-public @ResponseBody Spittle saveSpittle(@RequestBody Spittle spittle) {}
-```
-
-The @ResponseBody and @RequestBody annotations are powerful ways to engage Spring’s message converters when handling requests but if you’re writing a controller that has several methods, all of which should use message conversion, then those annotations get somewhat repetitive.Spring 4.0 introduced the `@RestController annotation` to help with that. If you annotate your controller class with @RestController instead of @Controller, Spring applies message conversion to all handler methods in the controller. You don’t need to annotate each method with @ResponseBody.
-`@RestController` - A convenience annotation that is itself annotated with @Controller and @ResponseBody.Used to develop RESTful web apps.Used to define a controller class that handles RESTful web services. It returns data directly (like JSON) instead of views,eliminating the need for @ResponseBody on each method.It is a specialized version of the @Controller that combines @Controller and @ResponseBody. It is specifically designed for RESTful web services where every method returns data rather than a view.
+Spring 4.0 introduced the `@RestController annotation` to help with that. If you annotate your controller class with @RestController instead of @Controller, Spring applies message conversion to all handler methods in the controller. You don’t need to annotate each method with @ResponseBody.
+@RestController - A convenience annotation that is itself annotated with @Controller and @ResponseBody.Used to develop RESTful web apps.Used to define a controller class that handles RESTful web services. It returns data directly (like JSON) instead of views,eliminating the need for @ResponseBody on each method.It is a specialized version of the @Controller that combines @Controller and @ResponseBody. It is specifically designed for RESTful web services where every method returns data rather than a view.
 
 ```java
 @RestController
@@ -3754,6 +3747,53 @@ public class SpittleController {
 ```
 
 Neither of the handler methods are annotated with @ResponseBody. But because the controller is annotated with @RestController, the objects returned from those methods will still go through message conversion to produce a resource representation for the client.
+
+The @ResponseBody annotation is helpful in transforming a Java object returned from a controller to a resource representation to send to the client.A good REST API does more than transfer resources between the client and server. It also gives the client additional metadata to help the client understand the resource or know what has just taken place in the request.
+
+`ResponseEntity`:- Is an alternative to @ResponseBody, controller methods can return a ResponseEntity.ResponseEntity is an object that carries metadata (such as headers and the status code) about a response in addition to the object to be converted to a resource representation.
+ResponseEntity represents the whole HTTP response,status code,headers and body.ResponseEntity is a generic type.Consequently,we can use any type as the response type.
+
+```java
+return new ResponseEntity<>("Custom header set",headers,HttpStatus.OK)
+```
+
+Furthermore,ResponseEntity provides two nested builder interfaces: HeadersBuilder and its subinterface, BodyBuilder.Therefore,we can access their capabilities through static methods of ResponseEntity.
+The simplest case is a response with a body and HTTP 200 response code.
+
+```java
+return ResponseEntity.ok("Created user");
+```
+
+In addition,we can use the BodyBuilder status(HttpStatus status) and the BodyBuilder status(int status) methods to set any HTTP status.
+
+```java
+return ResponseEntity.status(HttpStatus.CREATED).body("User created");
+```
+
+We can also set custom headers:-
+
+```java
+return ResponseEntity.ok().header("Custom-Header","foo").body("User created");
+```
+
+Since BodyBuilder.body() returns a ResponseEntity instead of BodyBuilder, it should be last call.
+NOTE: In HeaderBuilder we can't set any properties of the response body.
+
+In addition to carrying response headers, a status code, and a payload, ResponseEntity implies the semantics of @ResponseBody, so the payload will be rendered into the response body just as if the method were annotated with @ResponseBody. There’s no need to annotate the method with @ResponseBody if it returns ResponseEntity.
+
+@PathVariable – Extracts values from the URI path.
+@RequestParam – Extracts query parameters from the request.
+@RequestBody – Maps request JSON data to a Java object.
+@ResponseEntity – Used to customize HTTP responses.
+
+_Receiving resource state in Request Body_:- A REST API can also receive resource representations from the client. It’d be inconvenient if your controller had to convert a JSON or XML representation sent from a client into an object it can use.
+The `@RequestBody` tells Spring to find a message converter to convert a resource representation coming from a client into an object.
+@RequestBody - Annotation indicating a method parameter should be bound to the body of the web request.Spring treats result of method as response.Converts response to JSON.Binds HTTP request body to method parameter and automatically deserialize JSON/XML. It is used in POST or PUT requests to read data sent by the client and supports content negotiations.
+
+```java
+@RequestMapping(method=RequestMethod.POST,consumes="application/json")
+public @ResponseBody Spittle saveSpittle(@RequestBody Spittle spittle) {}
+```
 
 **Validation**:- Use `@Valid` to validate incoming request data automatically.Triggers validation of an object on the method level.It is used with BindingResult interface to capture valoidation errors.
 
@@ -3870,8 +3910,8 @@ public class UserRequest{
 }
 ```
 
-**Pagination**:- Spring Boot provides many features to support Pagination natively.
-As of Spring version 3.3, a class PagedModel is available to enable the serialization of a page in the API. The last section describes the old approach providing our own implementation.
+**Pagination**:- Spring Boot provides many features to support Pagination natively.Pagination is implemented using Spring Data JPA’s Pageable interface.
+As of Spring version 3.3, a class PagedModel is available to enable the serialization of a page in the API.
 
 ```java
 @GetMapping("/tutorials")
@@ -4124,7 +4164,11 @@ public ResponseEntity<User> getUserById(@PathVariable Integer userId) throws Use
 }
 ```
 
-`HANDLING ERRORS & EXCEPTIONS`:-
+**Handling Errors & Exceptions**:- Exception handling can be done using:
+
+- `@ExceptionHandler` – Handles specific exceptions in a controller.
+- `@ControllerAdvice` – Global exception handling across multiple controllers.
+- `ResponseEntityExceptionHandler` – Provides default exception handling.
 
 ```java
 @ExceptionHandler(SpittleNotFoundException.class)
@@ -4362,6 +4406,17 @@ Except for the return type, the getForEntity() methods are mirror images of the 
 _Spring Cloud OpenFeign_:- To implement the REST endpoint call using OpenFeign, we only need to define an interface and use annotations to instruct OpenFeign on how to implement this interface.
 Openfeign implements the given interface and defines a bean of the implementation in the Spring context.You can inject the bean from the Spring context anywhere you need it in your app.
 
+**Securing a Spring Boot REST API** -
+
+- JWT (JSON Web Token) – Token-based authentication.
+- OAuth 2.0 – Secure access delegation.
+- Spring Security – Manages authentication & authorization.
+- API Keys – Secure APIs using a unique key.
+- HTTPS – Encrypt data in transit.
+
+**API Gateway in Spring** - An API Gateway acts as an entry point for all client requests, handling authentication, load balancing, and routing.
+`Spring Cloud Gateway` is the most used gateway in Spring Boot microservices.
+
 ---
 
 ## Web on Reative Stack
@@ -4412,3 +4467,7 @@ To make Spring web app:
 4. Write web.xml
 5. Write controller class
 6. configure annotations e,g(@RequestBody)
+
+**RESTful APIs** - Spring Boot provides excellent support for creating RESTful APIs using `Spring MVC` and `embedded HTTP servers` like Tomcat, Jetty, or Undertow. Developers can define RESTful endpoints using `@RestController` and `@RequestMapping` annotations, handle request and response payloads with ease, and leverage features like content negotiation, validation, and error handling.
+
+_Document Spring Boot REST API_ - API documentation is done using: Swagger (Springdoc OpenAPI).

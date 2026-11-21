@@ -34,13 +34,14 @@ The API authentication process validates the identity of the client attempting t
 Types of Authentication for APIs:-
 
 1. `API Key Authentication` - A unique key is assigned to each client.Simple but lacks fine-grained control.The key is attached to each API request. The API server checks for the key when it receives an API request to make sure it is from an authenticated client.The downside of this authentication method is that if the key is stolen, an attacker can use it to impersonate a legitimate client and can then carry out a variety of attacks. It is important to encrypt requests and responses to and from an API using an encryption protocol like Transport Layer Security (TLS) — that way, the key is not exposed in plaintext as it crosses the Internet.
-2. `OAuth 2.0 Authentication` - Token-based authentication framework.Grants access based on client credentials.Supports Access Tokens and Refresh Tokens.Instead of requiring authentication directly from the client, an API server can get an authentication token from a trusted authentication server using the OAuth protocol. To use the API, a user logs in to a third-party service instead of directly logging in to the API. Like the username-and-password approach, this authentication method is vulnerable to credential stuffing and other attacks.
+2. `OAuth 2.0 Authentication` - Token-based authentication framework.Grants access based on client credentials.Supports Access Tokens and Refresh Tokens.Instead of requiring authentication directly from the client, an API server can get an authentication token from a trusted authentication server using the OAuth protocol. To use the API, a user logs in to a third-party service instead of directly logging in to the API. Like the username-and-password approach, this authentication method is vulnerable to credential stuffing and other attacks.Secure authorization framework for third-party access.
 3. `JWT (JSON Web Token) Authentication` - Stateless authentication mechanism.Uses a signed token for secure identity verification.
 4. `OpenID Connect (OIDC)` - Built on OAuth 2.0, adds user identity verification.Used by Keycloak, Auth0, Google Sign-In.
 5. `HTTP Basic authentication(Username and password)` - API requests can use typical username and password credentials for authentication via a method called HTTP authentication. In HTTP authentication, a username and password are encoded and added to the HTTP header for all API requests. The server can check these credentials against the credentials of allowed clients to authenticate the requests.This approach comes with all the challenges normally associated with passwords: passwords can be lost, leaked, stolen, guessed, or shared with untrusted parties. Passwords are also subject to credential stuffing and brute force attacks, among others.
 6. `Session based Authentication`
 7. `SSO - Single Sign On`
 8. `Token based Authentication`
+9. `Bearer Token Authentication` - Uses a token in the Authorization header.
 
 _HTTP Authentication_:- HTTP protocol provides built-in authentication support—called basic authentication—based on a simple challenge/response, username/password model. With this technique, the web server maintains a database of usernames and passwords and identifies certain resources (files, directories, servlets, etc.) as protected. When a user requests access to a protected resource, the server responds with a request for the client's username and password. At this point, the browser usually pops up a dialog box where the user enters the information, and that input is sent back to the server as part of a second authorized request. If the submitted username and password match the information in the server's database, access is granted. The whole authentication process is handled by the server itself.
 
@@ -57,7 +58,7 @@ Role-based authentication - Using tags in the web application deployment descrip
 
 **Basic authentication** - Given the name "Basic Authentication", you should not confuse Basic Authentication with the standard username and password authentication. Basic authentication is a part of the HTTP specification, and the details can be [found in the RFC7617](https://www.rfc-editor.org/rfc/rfc7617.html).
 
-Because it is a part of the HTTP specifications, all the browsers have native support for "HTTP Basic Authentication".
+Because it is a part of the HTTP specifications, all the browsers have native support for "HTTP Basic Authentication". It uses username & password(Base64 encoded).
 
 - [HTTP Basic Authentication](https://roadmap.sh/guides/http-basic-authentication)
 - [Illustrated HTTP Basic Authentication](https://www.youtube.com/watch?v=mwccHwUn7Gc)

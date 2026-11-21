@@ -226,7 +226,7 @@ REST APIs leverage standard HTTP methods (verbs) to perform operations on resour
 1. GET – Retrieve data (with response body). Retrieve a resource or collection of resources
 2. POST – Create a new resource.
 3. PUT – Update/replace an existing resource.
-4. PATCH – Partially update an existing resource.
+4. PATCH – Partially update an existing resource(only specified fields).E.g updating specified fields like email or name.
 5. DELETE – Remove a resource.
 6. OPTIONS – Fetch allowed HTTP methods for a resource.
 7. HEAD – Retrieve only headers (without response body).
@@ -235,8 +235,9 @@ _Benefits of using REST APIs_:
 
 1. Simplicity and Ease of Use:- Leverages familiar HTTP protocols and concepts, making them relatively straightforward to design and consume.
 2. Scalability:- Statelessness and client-server separation contribute to easier scaling of applications.
-3. Flexibility and Platform Independence:- Clients can be developed in various programming languages and on different platforms.
+3. Flexibility and Platform Independence:- Clients can be developed in various programming languages and on different platforms.RESTful services support multiple data formats, including JSON, XML, and plain text, making them suitable for a wide range of clients and applications.
 4. Loose Coupling:- Client and server can evolve independently without tightly coupled dependencies.
+5. Interoperability:- RESTful services use standard HTTP protocols, making them compatible with a variety of platforms, programming languages, and devices. This interoperability enables communication between different systems and components.
 
 Old web features included; HTTP,Methods & URL.REST API extended the features and added Resource,URI,Representation,Uniform Interface & HATEOAS
 
@@ -291,6 +292,7 @@ Media Types have no relation to the resource methods GET/PUT/POST/DELETE/… oth
 In simpler words, REST defines a consistent and uniform interface for interactions between clients and servers. For example, the HTTP-based REST APIs make use of the standard HTTP methods (GET, POST, PUT, DELETE, etc.) and the URIs (Uniform Resource Identifiers) to identify resources.
 
 **HATEOAS** is an acronym for Hypermedia As The Engine Of Application State, it's the concept that when sending information over a RESTful API the document received should contain everything the client needs in order to parse and use the data i.e they don't have to contact any other endpoint not explicitly mentioned within the Document.
+HATEOAS (Hypermedia as the Engine of Application State) is a REST principle that provides links to related resources in the API response, allowing clients to navigate dynamically.
 
 **Resource Design**:- The resource should always be prural nouns in the API endpoint and is one instance resource should be retrieved,pass the id in the URL.
 (GET /accounts, GET /accounts/1).
@@ -372,6 +374,12 @@ Body:
    "fact": "Liking video, subscribing channel & sharing."
 }
 ```
+
+**Idempotency in REST API** - An idempotent operation means that making multiple identical requests will not change the server state beyond the first request.
+Idempotent methods: GET, PUT, DELETE, HEAD, OPTIONS
+Non-idempotent methods: POST, PATCH
+
+Example: Calling DELETE /users/123 multiple times should delete the user once and return the same response.
 
 ### gRPC
 
@@ -784,3 +792,8 @@ The value for these path parameters MUST NOT contain any unescaped "generic synt
 ## JSON APIs
 
 JSON or JavaScript Object Notation is an encoding scheme that is designed to eliminate the need for an ad-hoc code for each application to communicate with servers that communicate in a defined way. JSON API module exposes an implementation for data stores and data structures, such as entity types, bundles, and fields.
+
+## API Gateway
+
+An API Gateway is a management tool that acts as an entry point for client requests, providing functionalities like authentication, rate limiting, logging, and request routing.
+Examples:- AWS API Gateway, Apigee , Kong, Zuul
