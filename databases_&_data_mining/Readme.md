@@ -2,7 +2,7 @@
 
 A `database` is a collection of data organized in some format so that the data can be easily accessed, managed and updated.A database is a set of related data organised in rows and columns in a book or computer.
 
-`Database management system (DBMS)`, the software that interacts with end users, applications, and the database itself to capture and analyze the data.The DBMS additionally encompasses the core facilities provided to administer the database.
+`Database management system (DBMS)`, the software that interacts with end users, applications, and the database itself to capture and analyze the data i.e manage database.The DBMS additionally encompasses the core facilities provided to administer the database.
 A DBMS is the software system that allows users to define, create and maintain a database and provides controlled access to the data. It is basically a collection of programs that enables users to store, modify, and extract information from a database as per the requirements. The DBMS is an intermediate layer between programs and the data. Programs access the DBMS, which then accesses the data.
 Clients (Services or applications) interact with databases through queries (remote or otherwise) to Create, Retrieve, Update and Delete (CRUD) data within a database. This process is facilitated through a Database Management System (DBMS). Additionally, a DBMS also provides tools for maintenance such as running security checks, ensuring data integrity, backup and recovery.
 
