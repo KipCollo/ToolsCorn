@@ -1571,6 +1571,21 @@ The login page must include a form with special values to ensure the proper data
 Compared with basic authentication, form-based login has the advantage that the user can enter your site through a friendly and descriptive login page. It shares the problem with basic authentication that the password is transmitted in plain text unless the communication channel has been secured by other means.
 Both Basic and form-based login also have the problem that they support no standard logout mechanism. Calling session.invalidate( ) is likely to have that effect for form-based login, but there are no guarantees. Both also rely on the server to validate users, even though there are cases where validation should be done in ways not supported by the server (for example, some banks require an account number, password, and PIN for access). To solve these problems, we can implement custom authentication.
 
+Authorization: Basic ZGVtbzpjaGFuZ2VpdA==
+
+The Authorization header is a standard HTTP header for sending credentials to the server. It’s extensible, allowing different authentication schemes,but in this case you’re using the Basic scheme. The credentials follow the authentication scheme identifier. For Basic authentication, these consist of a string of the username followed by a colon and then the password. The string is then converted into bytes (usually in UTF-8, but the standard does not specify) and Base64-encoded.
+
+```java
+String user = "Colins";
+String password = "pass"
+String basic = Base64.getEncoder().encodeToString((user + ":" + password).getBytes());
+
+HttpURLConnection conn = (HttpURLConnection)new URL("https://kipcollo.com")
+               .openConnection();
+conn.setRequestMethod("GET");
+conn.setRequestProperty("Authorization","Basic"+ basic);
+```
+
 **SSL(secure connection)** - To prevent others from reading data that is transmitted over the Internet,you can use the `Secure Sockets Layer(SSL)`.This is the protocol that lets you transfer data between the server and client over a secure connection.
 
 To determine if you're transmitting data over a secure connection,you can read the URL.If it starts with https rather than http,then you're transmitting data over a secure connection.In addition, a small lock icon appears in the lower right of the browser when you're using a secure connection.
