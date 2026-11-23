@@ -2,17 +2,10 @@
 
 Authentication and authorization are fundamental aspects of security that ensure only legitimate users have access to specific resources.
 
-Visit the following resources to learn more:
-
-- [@roadmap.sh@SSO - Single Sign On](https://roadmap.sh/guides/sso)
-- [@roadmap.sh@OAuth - Open Authorization](https://roadmap.sh/guides/oauth)
-- [@roadmap.sh@JWT Authentication](https://roadmap.sh/guides/jwt-authentication)
-- [@roadmap.sh@Token Based Authentication](https://roadmap.sh/guides/token-authentication)
-
 ## Authentication
 
 Authentication verifies the identity of a user or system trying to access an API. It answers: "Who are you?".
-Authentication is the process of verifying who you are. When you log in to an application with a username and password, you are authenticating.
+Authentication is the process of verifying someone's identity. When you log in to an application with a username and password, you are authenticating.
 
 Advantages of Auth:-
 
@@ -24,8 +17,9 @@ Advantages of Auth:-
 Authentication is one of two key security concepts that you must internalize when developing secure applications (the other being authorization). Authentication identifies who is attempting to request a resource. You may be familiar with authentication in your daily online and offline life, in very different contexts, as follows:
 
 - `Credential-based authentication`: When you log in to your web-based email account, you most likely provide your username and password. The email provider matches your username with a known user in its database and verifies that your password matches what they have on record. These credentials are what the email system uses to validate that you are a valid user of the system.Technically speaking, the email system can check credentials not only in the database but anywhere, for example, a corporate directory server such as Microsoft Active Directory
-- `Two-factor authentication:`
-- `Hardware authentication:`
+- `security codes`:
+- `Hardware authentication:` i.e Biometrics
+- `Hard Tokens/Soft Tokens`
 
 Typically, a software system will be divided into two high-level realms, such as unauthenticated (or anonymous) and authenticated.
 Application functionality in the anonymous realm is the functionality that is independent of a user’s identity (think of a welcome page for an online application).
@@ -39,20 +33,29 @@ Unauthenticated areas of the system are intended for use by everyone, even by us
 
 The API authentication process validates the identity of the client attempting to make a connection by using an authentication protocol. The protocol sends the credentials from the remote client requesting the connection to the remote access server in either plain text or encrypted form. The server then knows whether it can grant access to that remote client or not.
 
-Types of Authentication for APIs:-
+_Two-factor authentication & Multi-factor Authentication_ -
 
-1. `API Key Authentication` - A unique key is assigned to each client.Simple but lacks fine-grained control.The key is attached to each API request. The API server checks for the key when it receives an API request to make sure it is from an authenticated client.The downside of this authentication method is that if the key is stolen, an attacker can use it to impersonate a legitimate client and can then carry out a variety of attacks. It is important to encrypt requests and responses to and from an API using an encryption protocol like Transport Layer Security (TLS) — that way, the key is not exposed in plaintext as it crosses the Internet.
-2. `OAuth 2.0 Authentication` - Token-based authentication framework.Grants access based on client credentials.Supports Access Tokens and Refresh Tokens.Instead of requiring authentication directly from the client, an API server can get an authentication token from a trusted authentication server using the OAuth protocol. To use the API, a user logs in to a third-party service instead of directly logging in to the API. Like the username-and-password approach, this authentication method is vulnerable to credential stuffing and other attacks.Secure authorization framework for third-party access.
-3. `JWT (JSON Web Token) Authentication` - Stateless authentication mechanism.Uses a signed token for secure identity verification.
-4. `OpenID Connect (OIDC)` - Built on OAuth 2.0, adds user identity verification.Used by Keycloak, Auth0, Google Sign-In.
-5. `HTTP Basic authentication(Username and password)` - API requests can use typical username and password credentials for authentication via a method called HTTP authentication. In HTTP authentication, a username and password are encoded and added to the HTTP header for all API requests. The server can check these credentials against the credentials of allowed clients to authenticate the requests.This approach comes with all the challenges normally associated with passwords: passwords can be lost, leaked, stolen, guessed, or shared with untrusted parties. Passwords are also subject to credential stuffing and brute force attacks, among others.
-6. `Session based Authentication`
+`Two-factor authentication (2FA)` strengthens access security by requiring two methods (also referred to as factors) to verify a user’s identity.It is a type of multi-factor authentication which provides an extra layer of security.
+You must have the correct combination of the bank card (something you possess) and the PIN (something you know) to be authenticated. If someone steals your ATM card, it is of not much use until they also know your PIN.
+
+That means, in a two-factor authentication system, a user is granted access only after successfully presenting several separate pieces of evidence to an authentication mechanism.
+Two-factor authentication is based on the user providing two of the following three somethings:
+
+1. Something you know — the password or pin for an account.
+2. Something you have — a physical device, such as a mobile phone or a software application, that can generate one-time passwords.
+3. Something you are — a biologically unique feature to you, such as your fingerprints, voice, or retina.
+
+_Types of Authentication_:-
+
+1. `HTTP Basic authentication(Username and password)` - API requests can use typical username and password credentials for authentication via a method called HTTP authentication. In HTTP authentication, a username and password are encoded and added to the HTTP header for all API requests. The server can check these credentials against the credentials of allowed clients to authenticate the requests.This approach comes with all the challenges normally associated with passwords: passwords can be lost, leaked, stolen, guessed, or shared with untrusted parties. Passwords are also subject to credential stuffing and brute force attacks, among others.
+2. `Session based Authentication`
+3. `Token based Authentication` - Stateless authentication mechanism.Uses a signed token for secure identity verification.
+4. `API Key Authentication` - A unique key is assigned to each client.Simple but lacks fine-grained control.The key is attached to each API request. The API server checks for the key when it receives an API request to make sure it is from an authenticated client.The downside of this authentication method is that if the key is stolen, an attacker can use it to impersonate a legitimate client and can then carry out a variety of attacks. It is important to encrypt requests and responses to and from an API using an encryption protocol like Transport Layer Security (TLS) — that way, the key is not exposed in plaintext as it crosses the Internet.
+5. `OAuth 2.0 Authentication` - Token-based authentication framework.Grants access based on client credentials.Supports Access Tokens and Refresh Tokens.Instead of requiring authentication directly from the client, an API server can get an authentication token from a trusted authentication server using the OAuth protocol. To use the API, a user logs in to a third-party service instead of directly logging in to the API. Like the username-and-password approach, this authentication method is vulnerable to credential stuffing and other attacks.Secure authorization framework for third-party access.
+6. `OpenID Connect (OIDC)` - Built on OAuth 2.0, adds user identity verification.Used by Keycloak, Auth0, Google Sign-In.
 7. `SSO - Single Sign On`
-8. `Token based Authentication`
-9. `Bearer Token Authentication` - Uses a token in the Authorization header.
-10. `Passwordless`.
-
-_Types of Authentication_ -
+8. `Passwordless`.
+9. `SAML`
 
 **Session-Based/ Cookie-based Authentication** - The HTTP protocol is stateless. This means that, if we authenticate a user with a username and password, on the next request our application won’t know that this is the same person as the previous request.We would have to authenticate again. At each request, HTTP doesn’t know anything about what happened before, it just carries the request.So, for any request for private data, you would have to log in again to make sure the application knows this is really you. This would be very annoying.
 To avoid this problem, session or cookie-based authentication was introduced.It makes the authentication process stateful, meaning that an authentication record or session must be kept at both server and client-side.The server needs to keep track of active sessions in a database or memory, while a cookie is created on the front end that holds a session identifier. This is why it’s called cookie-based authentication.
@@ -162,8 +165,6 @@ _Digest authentication_ - The Digest scheme is based on a simple challenge-respo
 Both sides of the transaction know the password and use it to compute digests. If the digests match, access is granted. Transactions are thus somewhat more secure than they would be otherwise because digests are valid for only a single URI request and nonce value. The server, however, must still maintain a database of the original passwords. And, as of this writing, digest authentication is not supported by very many browsers.
 
 - [@video@Illustrated HTTP Basic Authentication](https://www.youtube.com/watch?v=mwccHwUn7Gc)
-- [@feed@Explore top posts about Authentication](https://app.daily.dev/tags/authentication?ref=roadmapsh)
-- [Illustrated HTTP Basic Authentication](https://www.youtube.com/watch?v=mwccHwUn7Gc)
 
 _Other authentication schemes_:- HTTP Basic authentication is just one of several authentication schemes that are supported by HTTP. The most common alternative is HTTP Digest authentication, which sends a salted hash of the password instead of sending the raw value. Although this sounds like a security improvement, the hashing algorithm used by HTTP Digest,MD5, is considered insecure by modern standards and the widespread adoption of HTTPS has largely eliminated its advantages. Certain design choices in HTTP Digest also prevent the server from storing the password more securely, because the weakly-hashed value must be available. An attacker who compromises the database therefore has a much easier job than they would if a more secure algorithm had been used.
 If that wasn’t enough, there are several incompatible variants of HTTP Digest in use.You should avoid HTTP Digest authentication in new applications.
@@ -263,6 +264,8 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer realm="users", error="invalid_token",
 error_description="Token has expired"
 
+`Bearer Token Authentication` - Uses a token in the Authorization header.
+
 `Access & Refresh Tokens`:- Refresh tokens should be stored generally in server-side for security reasons.
 Access tokens - Expires fast.Used for Api calls.
 Refresh tokens - Lives longer.
@@ -290,6 +293,13 @@ Because of these benefits and the simplified approach, token-based authenticatio
 
 In its most simplest form, OAuth delegates authentication to services like Facebook, Amazon, Twitter and authorizes third-party applications to access the user account without having to enter their login and password.
 
+Visit the following resources to learn more:
+
+- [@roadmap.sh@SSO - Single Sign On](https://roadmap.sh/guides/sso)
+- [@roadmap.sh@OAuth - Open Authorization](https://roadmap.sh/guides/oauth)
+- [@roadmap.sh@JWT Authentication](https://roadmap.sh/guides/jwt-authentication)
+- [@roadmap.sh@Token Based Authentication](https://roadmap.sh/guides/token-authentication)
+
 It is mostly utilized for REST/APIs and only provides a limited scope of a user's data.
 
 - [Okta - What the Heck is OAuth](https://developer.okta.com/blog/2017/06/21/what-the-heck-is-oauth)
@@ -315,7 +325,22 @@ It is mostly utilized for REST/APIs and only provides a limited scope of a user'
 - [@video@OAuth 2.0: An Overview](https://www.youtube.com/watch?v=CPbvxxslDTU)
 - [@feed@Explore top posts about OAuth](https://app.daily.dev/tags/oauth?ref=roadmapsh)
 
-**API key Authentication**:-
+**API key Authentication**:- API key authentication is a type of authentication that uses long-lived access tokens embedded directly into an application to authenticate requests to access secure services and items. The access tokens are called API keys and managed through API key credentials.
+API key authentication is the easiest type of authentication to use, but it is not sufficient to protect confidential information.
+
+You can use API key authentication to:
+
+1. Create public applications that do not require users to sign in.
+2. Build applications that access location services and private items such as hosted layers and data services.
+3. Create personal automation scripts that access the portal service and spatial analysis services.
+4. Quickly and easily generate access tokens.
+5. Embed an access token directly into apps that remains valid for up to 1 year.
+6. Access secure resources with the privileges of your account.
+
+API keys are often included in the request header of an API call, although they can also be embedded in query strings or cookies. API key authentication is also stateless; an API key must be added to every API request because the server doesn’t store per-request session state.
+Because the API provider manages each API key, the provider can easily track usage and discard keys to revoke access if it detects a cybersecurity threat or a breach of API guidelines. The provider can also apply fine-grained permissions to precisely control each key’s scope. In basic auth frameworks, meanwhile, users create their own passwords, and API providers have limited ability to monitor and manage them. Finally, organizations can apply rate limits to particular projects, improving performance across services.
+
+API key authentication is often best for public API environments because it enables service providers to monitor the developers who use their APIs. For example, for a restaurant to add a Google Maps integration to its website, it needs an API key.
 
 ```java
 String apiKey = "agy3rnf";
@@ -333,13 +358,21 @@ HttpURLConnection conn = (HttpURLConnection)new URL("https://kipcollo.com/resour
 conn.setRequestProperty("X-API-KEY",apiKey);
 ```
 
-**OpenID** - OpenID is a protocol that utilizes the authorization and authentication mechanisms of OAuth 2.0 and is now widely adopted by many identity providers on the Internet.
+API key authentication requires creating and configuring API key credentials so you can get an API key. An API key is a long-lived access token. API key credentials are an item created in your portal that are used to create API keys and manage their privileges.
+The general steps to implement API key authentication are:
+
+1. Create API key credentials to get an API key.
+2. Paste the API key access token into your application.
+3. Your application uses the API key as an access token to access secure resources.
+
+Your API key must have the correct privileges to access secure resources. It is also recommended that you set referrer URLs in order to enhance the security of the token. These properties are managed through setting page of API key credentials.
+
+**OpenID Connect** - OpenID is a protocol that utilizes the authorization and authentication mechanisms of OAuth 2.0 and is now widely adopted by many identity providers on the Internet.
 It solves the problem of needing to share user's personal info between many different web services(e.g. online shops, discussion forums etc.)
+OpenID Connect (OIDC) is a modern authentication protocol that achieves federated authentication through SSO. However, OIDC is optimized for mobile, API-driven and cloud-native applications and is different from SAML in several ways.
 
 Visit the following resources to learn more:
 
-- [Official Website](https://openid.net/)
-- [What is OpenID](https://openid.net/connect/)
 - [OAuth vs OpenID](https://securew2.com/blog/oauth-vs-openid-which-is-better)
 - [An Illustrated Guide to OAuth and OpenID Connect](https://www.youtube.com/watch?v=t18YB3xDfXI)
 - [OAuth 2.0 and OpenID Connect (in plain English)](https://www.youtube.com/watch?v=996OiexHze0)

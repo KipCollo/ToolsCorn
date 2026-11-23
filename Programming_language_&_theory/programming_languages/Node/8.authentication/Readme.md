@@ -29,7 +29,10 @@ app.listen(port, () => {
 const base64 = require("base-64");
 
 function decodeCredentials(authHeader) {
-  // ...
+  // authHeader: Basic YWRtaW46YWRtaW4=
+  const encodedCredentials = authHeader.trim().replace("Basic ", "");
+  const decodedCredentials = base64.decode(encodedCredentials);
+  return decodedCredentials.split(":");
 }
 
 module.exports = function (req, res, next) {
