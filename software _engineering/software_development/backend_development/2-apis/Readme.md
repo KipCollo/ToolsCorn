@@ -4,6 +4,9 @@ API is the acronym for `Application Programming Interface`, is a software interm
 API is a boundary between one part of a software system and another. It defines a set of operations that one component provides for other parts of the system (or other systems) to use.
 An API handles requests from clients on behalf of users. Clients may be web browsers, mobile apps, devices in the Internet of Things, or other APIs. The API services requests according to its internal logic and then at some point returns a response to the client. The implementation of the API may require talking to other “backend” APIs, provided by databases or processing systems.
 
+APIs are mechanisms that enable two software components to communicate with each other using a set of definitions and protocols. For example, the weather bureau’s software system contains daily weather data. The weather app on your phone “talks” to this system via APIs and shows you daily weather updates on your phone.
+In the context of APIs, the word Application refers to any software with a distinct function. Interface can be thought of as a contract of service between two applications. This contract defines how the two communicate with each other using requests and responses. Their API documentation contains information on how developers are to structure those requests and responses.
+
 Can be libraries, SDKs, OS interfaces, or web-based.
 Examples:- Java API,Mobile Phone Camera API,Windows API,Payment API,(REST API, SOAP API (these are web APIs)).
 

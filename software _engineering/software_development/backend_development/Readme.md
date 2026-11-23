@@ -173,7 +173,6 @@ With SAML, you can streamline user authentication and authorization across vario
 
 **APIs** - API is the acronym for Application Programming Interface, which is a software intermediary that allows two applications to talk to each other.
 
-- [@article@What is an API?](https://aws.amazon.com/what-is/api/)
 - [@video@What is an API?](https://www.youtube.com/watch?v=s7wmiS2mSXY)
 
 _REST_ - REST, or REpresentational State Transfer, is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other.
