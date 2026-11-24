@@ -21,6 +21,7 @@ FROM table_name;
 - `Selecting Everything`:- If we want to select all the columns and rows from a table, we write
 
 ```sh
+SELECT first_name, last_name,salary, (salary * 0.10) AS "bonus" FROM employees;
 SELECT * FROM orders;
 
  order_id | customer_id | order_date | sales
@@ -54,6 +55,12 @@ SELECT order_id, order_date,sales FROM orders;
      1002 | 2021-04-05 |    15
      1003 | 2021-06-18 |    20
      1004 | 2021-08-31 |    10
+```
+
+A SELECT without FROM is the SQL equivalent of a calculator. PostgreSQL, MySQL, SQLite, and SQL Server all allow it. Oracle is the famous exception — it requires a FROM clause, so you use the special one-row table DUAL.
+
+```sql
+SELECT 1 + 1 AS result;
 ```
 
 _DISTINCT_(FILTER DUPLICATES) - Removes duplicates(Repeated values). Each value appears only once.
@@ -260,6 +267,12 @@ For example, if we want to select all unique designations from the `EMPLOYEES` t
 
 ```sql
 SELECT DISTINCT designation FROM EMPLOYEES;
+```
+
+DISTINCT ON multiple Columns - DISTINCT operates on the whole projected row. So `SELECT DISTINCT a, b` returns each unique (a, b) pair, not each unique a and each unique b separately.
+
+```sql
+SELECT DISTINCT department_id,  job_id FROM employees;
 ```
 
 ## SELECT WHERE
@@ -558,4 +571,31 @@ Item    SUM(Amount)
 ------  ----------
 A        550
 B        400
+```
+
+## Aliases
+
+Table aliases shorten table names and disambiguate columns when multiple tables share a column name (e.g. id). Even in single-table queries, aliasing is a good habit because it makes the query trivial to extend with JOINs later.
+
+```sql
+SELECT e.first_name, e.salary FROM employees AS e;
+```
+
+## Constant Literals
+
+In SQL, a constant (also called a literal) is a fixed, hardcoded data value written directly into a query or procedural block. Because standard SQL does not support global named constants like traditional programming languages, how you use them depends on whether you are writing a basic query or procedural SQL.
+
+- `Constants (Literals) in Standard SQL Queries` - In standard SELECT, INSERT, or UPDATE statements, constants are hardcoded values categorized by data type:
+  1. String constants. Text enclosed in single quotes (e.g., 'Active', '2026-11-24'). In SQL Server, prefix with an uppercase N for Unicode (e.g., N'Michél').
+  2. Numeric constants. Unquoted numbers, including integers (42), decimals (19.99), and scientific notation (1.5E3).
+  3. Date and time constants. Formatted strings representing dates or timestamps (e.g., DATE '2026-11-24').
+  4. Boolean and Null constants. Keywords representing fixed states, such as TRUE, FALSE, or NULL.
+
+```SQL
+SELECT
+    employee_name,
+    'Full-Time' AS status, -- String constant
+    500 AS bonus           -- Numeric constant
+FROM employees
+WHERE department_id = 10;  -- Numeric constant
 ```
