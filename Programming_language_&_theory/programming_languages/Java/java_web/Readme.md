@@ -3765,7 +3765,7 @@ Neither of the handler methods are annotated with @ResponseBody. But because the
 
 The @ResponseBody annotation is helpful in transforming a Java object returned from a controller to a resource representation to send to the client.A good REST API does more than transfer resources between the client and server. It also gives the client additional metadata to help the client understand the resource or know what has just taken place in the request.
 
-`ResponseEntity`:- Is an alternative to @ResponseBody, controller methods can return a ResponseEntity.ResponseEntity is an object that carries metadata (such as headers and the status code) about a response in addition to the object to be converted to a resource representation.
+`ResponseEntity`:- Is an alternative to @ResponseBody, controller methods can return a ResponseEntity.ResponseEntity is an object that carries metadata (such as headers and the status code) about a response in addition to the object to be converted to a resource representation.Used to customize HTTP responses.
 ResponseEntity represents the whole HTTP response,status code,headers and body.ResponseEntity is a generic type.Consequently,we can use any type as the response type.
 
 ```java
@@ -3783,6 +3783,7 @@ In addition,we can use the BodyBuilder status(HttpStatus status) and the BodyBui
 
 ```java
 return ResponseEntity.status(HttpStatus.CREATED).body("User created");
+return ResponseEntity.status(HttpStatus.CREATED).build();
 ```
 
 We can also set custom headers:-
@@ -3796,19 +3797,43 @@ NOTE: In HeaderBuilder we can't set any properties of the response body.
 
 In addition to carrying response headers, a status code, and a payload, ResponseEntity implies the semantics of @ResponseBody, so the payload will be rendered into the response body just as if the method were annotated with @ResponseBody. There’s no need to annotate the method with @ResponseBody if it returns ResponseEntity.
 
-@PathVariable – Extracts values from the URI path.
-@RequestParam – Extracts query parameters from the request.
-@RequestBody – Maps request JSON data to a Java object.
-@ResponseEntity – Used to customize HTTP responses.
-
 _Receiving resource state in Request Body_:- A REST API can also receive resource representations from the client. It’d be inconvenient if your controller had to convert a JSON or XML representation sent from a client into an object it can use.
-The `@RequestBody` tells Spring to find a message converter to convert a resource representation coming from a client into an object.
+
+The `@RequestBody` tells Spring to find a message converter to convert a resource representation coming from a client into an object.Maps request JSON data to a Java object.
 @RequestBody - Annotation indicating a method parameter should be bound to the body of the web request.Spring treats result of method as response.Converts response to JSON.Binds HTTP request body to method parameter and automatically deserialize JSON/XML. It is used in POST or PUT requests to read data sent by the client and supports content negotiations.
 
 ```java
 @RequestMapping(method=RequestMethod.POST,consumes="application/json")
-public @ResponseBody Spittle saveSpittle(@RequestBody Spittle spittle) {}
+public ResponseEntity<User> saveUser(@RequestBody User user) {}
 ```
+
+Taking query parameters - Query parameters are a common way to pass information to a controller in a request.Query strings are used to extract the query string data from uri.In query string data is optional,if you will not send then default value will be used.
+
+`@PathVariable Annotation` which indicates that a method parameter should be bound to a URI template variable.Extracts values from URL template variables, and binds them to the method parameters.It can be used to make dynamic URLs.
+
+```java
+@GetMapping("/{userId}")
+public User getUser(@PathVariable("userId") int userId) {}
+```
+
+Taking input via path parameters:- Used to etract uri path data from uri.Data is mandatory,if you will not send data 404 error is thrown.
+To accommodate path variables, Spring MVC allows for placeholders in an @RequestMapping path. The placeholders are names surrounded by curly braces ({ and }). Although all the other parts of the path need to match exactly for the request to be handled, the placeholder can carry any value.
+
+- `@RequestParam Annotation` indicates that a method parameter should be bound to a web request parameter.Extracts query parameters from the request.Binds request parameters to the method parameters and extracts query parameters from the URL. It can handle multiple parameter types. It supports the following attributes:-
+  1. required: Specifies if the parameter is mandatory
+  2. defaultValue: Default value if the parameter is missing
+  3. value/name: Parameter name
+
+```java
+@RequestMapping(method=RequestMethod.GET)
+public List<Spittle> spittles(
+      @RequestParam(name="max",required=false,default="10") long max,
+      @RequestParam("count") int count) {
+   return spittleRepository.findSpittles(max, count);
+}
+```
+
+Query parameters and path parameters are fine for passing small amounts of data on a request. But often you need to pass a lot of data (perhaps data coming from a form submission), and query parameters are too awkward and limited for that.
 
 **Validation**:- Use `@Valid` to validate incoming request data automatically.Triggers validation of an object on the method level.It is used with BindingResult interface to capture valoidation errors.
 
