@@ -276,6 +276,13 @@ const myElement = (
     <p>I am a paragraph too.</p>
   </>
 );
+
+const myElement = (
+  <React.Fragment>
+    <p>I am a paragraph.</p>
+    <p>I am a paragraph too.</p>
+  </React.Fragment>
+);
 ```
 
 JSX follows XML rules, and therefore HTML elements must be properly closed.Close empty elements with />
@@ -294,7 +301,7 @@ While "CSS in JS" is the most predominant way of styling modern frontend applica
 
 There are multiple ways to style components in React, including `inline styles`, using `CSS classes with className`,using`CSS stylesheets`,using `CSS Modules`, `CSS-in-JS libraries`like styled-components, and using`preprocessor-based solutions` like Sass or Less.
 
-**Inline Styling**:- To style an element with the inline style attribute, the value must be a JavaScript object:.It also should be enclosed with two curly brackets.
+**Inline Styling**:- To style an element with the inline style attribute, the value must be a JavaScript object. It also should be enclosed with two curly brackets.
 camelCased Property Names - Since the inline CSS is written in a JavaScript object, properties with hyphen separators, like background-color, must be written with camel case syntax
 
 ```jsx

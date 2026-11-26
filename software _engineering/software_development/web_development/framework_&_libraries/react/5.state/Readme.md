@@ -99,6 +99,23 @@ const numItems = cart.length;
 const totalPrice = cart.reduce((acc, cur) => acc + cur.price, 0);
 ```
 
+## State in Class-based components
+
+```js
+class Counter extends Component {
+  state = {count: 0};
+
+  handleState = () => {
+    this.setState({count: this.state.count + 1})
+  }
+
+
+  render(){
+    <h2>{this.state.}</h2>
+  }
+}
+```
+
 ## Hooks
 
 Hooks were introduced in React 16.8 and they let us use React's features-like managing your component's state and or performing an after effect when certain changes occur in state(s) without writing a class.Hooks are functions that allow you to use state and other React features without writing a class. They were introduced in React 16.8 to provide a simpler and more readable way to write React components.
