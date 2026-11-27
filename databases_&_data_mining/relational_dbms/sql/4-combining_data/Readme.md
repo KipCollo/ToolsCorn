@@ -292,3 +292,97 @@ Types include:-
 - Union All
 - Except(Minus)
 - Intersect
+
+Rules of SET operators:-
+
+1. SET Operator can be used almost in all clauses WHERE | JOIN | GROUP BY | HAVING
+   ORDER BY is allowed only once at the end of query.
+2. The number of columns - The number of columns in each query must be same.
+3. Data types - Data types of columns in each query must be comptible.
+4. The order of columns in each query must be same.
+5. The column names in the result set are determined by the column names specified in first query.
+
+Customers Table -
+
+```
+ customerid | firstname | lastname | country | score
+------------+-----------+----------+---------+-------
+          1 | Jossef    | Goldberg | Germany |   350
+          2 | Kevin     | Brown    | USA     |   900
+          3 | Mary      |          | USA     |   750
+          4 | Mark      | Schwarz  | Germany |   500
+          5 | Anna      | Adams    | USA     |
+```
+
+Employees Table:-
+
+```
+ employeeid | firstname | lastname | department | birthdate  | gender | salary | managerid
+------------+-----------+----------+------------+------------+--------+--------+-----------
+          1 | Frank     | Lee      | Marketing  | 1988-12-05 | M      |  55000 |
+          2 | Kevin     | Brown    | Marketing  | 1972-11-25 | M      |  65000 |         1
+          3 | Mary      |          | Sales      | 1986-01-05 | F      |  75000 |         1
+          4 | Michael   | Ray      | Sales      | 1977-02-10 | M      |  90000 |         2
+          5 | Carol     | Baker    | Sales      | 1982-02-11 | F      |  55000 |         3
+(5 rows)
+
+```
+
+**UNION** - Returns all distinct rows from both queries.Removes duplicate from combined resultsets.
+
+```sh
+ SELECT FirstName, LastNaMe FROM sales.customers UNION SELECT FirstName, LastName FROM sales.employees;
+
+ firstname | lastname
+-----------+----------
+ Carol     | Baker
+ Michael   | Ray
+ Anna      | Adams
+ Mark      | Schwarz
+ Jossef    | Goldberg
+ Mary      |
+ Frank     | Lee
+ Kevin     | Brown
+```
+
+**UNION ALL** - Returns all rows from both queries including duplicates.Generally fast.
+
+```sh
+ SELECT FirstName, LastNaMe FROM sales.customers UNION ALL SELECT FirstName, LastName FROM sales.employees;
+
+ firstname | lastname
+-----------+----------
+ Jossef    | Goldberg
+ Kevin     | Brown
+ Mary      |
+ Mark      | Schwarz
+ Anna      | Adams
+ Frank     | Lee
+ Kevin     | Brown
+ Mary      |
+ Michael   | Ray
+ Carol     | Baker
+```
+
+**EXCEPT** - Returns all distinct rows from the first query that are not found in second query.
+
+```sh
+SELECT FirstName, LastName FROM sales.customers EXCEPT  SELECT FirstName, LastName FROM sales.employees;
+
+ firstname | lastname
+-----------+----------
+ Anna      | Adams
+ Mark      | Schwarz
+ Jossef    | Goldberg
+```
+
+**INTERSECT** - Returns only the rows that are common in both queries.
+
+```sh
+ SELECT FirstName, LastName FROM sales.customers INTERSECT  SELECT FirstName, LastName FROM sales.employees;
+
+ firstname | lastname
+-----------+----------
+ Kevin     | Brown
+ Mary      |
+```
